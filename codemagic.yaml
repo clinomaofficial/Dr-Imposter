@@ -2,7 +2,7 @@ workflows:
   android-capacitor:
     name: Android Capacitor APK Build
     environment:
-      node: 20
+      node: 22
       java: 17
     triggering:
       events:
