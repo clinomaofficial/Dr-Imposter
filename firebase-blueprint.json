@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "User": {
+      "title": "App User",
+      "description": "User profile and permissions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "enum": ["admin", "user"] },
+        "status": { "enum": ["active", "blocked"] },
+        "permissions": {
+          "type": "object",
+          "properties": {
+            "medicalSubject": { "type": "boolean" },
+            "educationalFile": { "type": "boolean" }
+          }
+        },
+        "subscriptionActive": { "type": "boolean" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "email", "role", "status", "permissions", "subscriptionActive"]
+    },
+    "Session": {
+      "title": "Learning Session",
+      "description": "A saved medical learning session including input text and AI generated guide.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "inputText": { "type": "string" },
+        "difficulty": { "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "qType": { "enum": ["Academic", "Clinical", "Both"] },
+        "duration": { "enum": ["15 min", "30 min", "60 min"] },
+        "data": { "type": "object" }
+      },
+      "required": ["id", "userId", "timestamp", "inputText", "difficulty", "qType", "duration", "data"]
+    },
+    "PublicProject": {
+      "title": "Public Case Bank Project",
+      "description": "Cases shared by admins/moderators for pro users.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "inputText": { "type": "string" },
+        "difficulty": { "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "qType": { "enum": ["Academic", "Clinical", "Both"] },
+        "duration": { "enum": ["15 min", "30 min", "60 min"] },
+        "data": { "type": "object" },
+        "isPublished": { "type": "boolean" }
+      },
+      "required": ["id", "authorId", "timestamp", "inputText", "data"]
+    },
+    "HiddenProject": {
+      "title": "Hidden User Project",
+      "description": "Mapping to hide public projects from specific users.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "projectId": { "type": "string" }
+      },
+      "required": ["userId", "projectId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of app users and their permissions."
+    },
+    "/sessions/{sessionId}": {
+      "schema": "Session",
+      "description": "Collection of saved learning sessions for users."
+    },
+    "/publicProjects/{projectId}": {
+      "schema": "PublicProject",
+      "description": "Collection of public case studies shared by admins."
+    },
+    "/hiddenProjects/{userId}_{projectId}": {
+      "schema": "HiddenProject",
+      "description": "Registry of projects hidden from specific users."
+    }
+  }
+}

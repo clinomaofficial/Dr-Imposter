@@ -1,0 +1,127 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSuperAdmin() {
+      return request.auth.token.email == 'salahsalman4455@gmail.com';
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        isSuperAdmin() || 
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
+      );
+    }
+
+    function isSupervisor() {
+      return isSignedIn() && (
+        isAdmin() || 
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'supervisor')
+      );
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidUser(data) {
+      return (data.get('id', null) == null || data.get('id', null) is string) &&
+             (data.get('email', null) == null || data.get('email', null) is string) &&
+             (data.get('role', 'user') in ['user', 'admin', 'supervisor', 'super_admin']) &&
+             (data.get('status', 'active') in ['active', 'blocked']);
+    }
+
+    function isTargetSuperAdmin(userId) {
+      return userId == 'oQnUKHWGGteNSnkRBRHjZJ9fw3x1' || 
+             (exists(/databases/$(database)/documents/users/$(userId)) && 
+              get(/databases/$(database)/documents/users/$(userId)).data.get('email', '') == 'salahsalman4455@gmail.com');
+    }
+
+    function isValidSession(data) {
+      return data.keys().hasAll(['id', 'userId', 'timestamp', 'inputText', 'difficulty', 'qType', 'duration', 'data']) &&
+             data.id is string &&
+             data.userId == request.auth.uid &&
+             data.timestamp is number &&
+             data.inputText is string &&
+             data.inputText.size() <= 1000000 &&
+             data.difficulty in ['Beginner', 'Intermediate', 'Advanced'] &&
+             data.qType in ['Academic', 'Clinical', 'Both'] &&
+             data.duration in ['15 min', '30 min', '60 min'] &&
+             data.data is map;
+    }
+
+    function isValidPublicProject(data) {
+      return data.keys().hasAll(['id', 'authorId', 'timestamp', 'inputText', 'difficulty', 'qType', 'duration', 'data', 'isPublished']) &&
+             data.id is string &&
+             data.authorId is string &&
+             data.timestamp is number &&
+             data.inputText is string &&
+             data.difficulty in ['Beginner', 'Intermediate', 'Advanced'] &&
+             data.qType in ['Academic', 'Clinical', 'Both'] &&
+             data.duration in ['15 min', '30 min', '60 min'] &&
+             data.data is map &&
+             data.isPublished is bool;
+    }
+
+    function isSubscribed() {
+      return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.subscriptionActive == true;
+    }
+
+    match /rooms/{roomId} {
+      allow read, write: if true;
+    }
+
+    match /users/{userId} {
+      allow read: if isSignedIn(); 
+      allow create: if isSignedIn() && userId == request.auth.uid && isValidUser(incoming());
+      allow update: if isSignedIn() && (
+        (isOwner(userId) && incoming().get('role', 'user') == existing().get('role', 'user') && incoming().get('email', '') == existing().get('email', '')) || 
+        (isAdmin() && !isTargetSuperAdmin(userId))
+      ) && isValidUser(incoming());
+    }
+
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /sessions/{sessionId} {
+      allow get: if isOwner(resource.data.userId) || isAdmin();
+      allow list: if (isSignedIn() && resource.data.userId == request.auth.uid) || isAdmin();
+      allow create: if isSignedIn() && isValidId(sessionId) && isValidSession(request.resource.data);
+      allow delete: if isOwner(resource.data.userId) || isAdmin();
+    }
+
+    match /publicProjects/{projectId} {
+      allow get: if (isSubscribed() && !exists(/databases/$(database)/documents/hiddenProjects/$(request.auth.uid + "_" + projectId))) || isSupervisor();
+      allow list: if (isSubscribed() && !exists(/databases/$(database)/documents/hiddenProjects/$(request.auth.uid + "_" + projectId))) || isSupervisor();
+      allow write: if isSupervisor() && isValidPublicProject(request.resource.data);
+    }
+
+    match /hiddenProjects/{hiddenId} {
+      allow read, write: if isSupervisor();
+    }
+  }
+}

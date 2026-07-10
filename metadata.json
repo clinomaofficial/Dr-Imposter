@@ -1,0 +1,8 @@
+{
+  "name": "Dr. Imposter",
+  "description": "Advanced medical education platform with expert-curated case banks, clinical synthesis tools, and granular moderator controls for professional medical training.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
