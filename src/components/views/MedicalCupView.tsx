@@ -37,7 +37,11 @@ import {
   getTrueCardSystem,
   MisleadingEntry
 } from '../../data/clinicalInquiryTree';
-import { db } from '../../firebase';
+import { db, acquireCloudAccess, withCloudAccess, ensureOnlineIdentity } from '../../firebase';
+import { subscribePublicData } from '../../lib/publicData';
+import { scoreBank, saveLocalScore } from '../../lib/localScore';
+import { readLocal, writeLocal } from '../../lib/localStore';
+import { joinRoom, leaveRoom, voteInRoom, guessInDuel } from '../../lib/onlineRoom';
 import { doc, setDoc, onSnapshot, getDoc, updateDoc, collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { AdCampaign } from '../../types/ads';
 import { InterstitialAdModal } from '../ads/InterstitialAdModal';
@@ -1087,9 +1091,30 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
   const roomUnsubscribeRef = useRef<(() => void) | null>(null);
 
+  const roomConnectionRef = useRef<(() => void) | null>(null);
+  const openRoomConnection = async () => {
+    if (!navigator.onLine) throw new Error('offline');
+    if (!roomConnectionRef.current) roomConnectionRef.current = await acquireCloudAccess();
+  };
+  const closeRoomConnection = () => {
+    roomUnsubscribeRef.current?.();
+    roomUnsubscribeRef.current = null;
+    roomConnectionRef.current?.();
+    roomConnectionRef.current = null;
+  };
+  const leaveCurrentRoom = async () => {
+    roomUnsubscribeRef.current?.();
+    roomUnsubscribeRef.current = null;
+    try { if (roomId && localPlayerId) await leaveRoom(roomId, localPlayerId); }
+    catch (error) { console.warn('Room departure failed; room has a two-hour expiry.', error); }
+    finally { closeRoomConnection(); }
+  };
+
   // Clean up Firestore real-time listener when component unmounts to prevent memory leaks and UI freezes
   useEffect(() => {
     return () => {
+      roomConnectionRef.current?.();
+      roomConnectionRef.current = null;
       if (roomUnsubscribeRef.current) {
         roomUnsubscribeRef.current();
         roomUnsubscribeRef.current = null;
@@ -1097,23 +1122,11 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     };
   }, []);
 
-  // Synchronize dynamic global game settings from Firestore in real-time (Remote Config)
-  useEffect(() => {
-    const unsub = onSnapshot(doc(db, 'settings', 'gameConfig'), (snap) => {
-      if (snap.exists()) {
-        const cfg = snap.data();
-        if (typeof cfg.turnTimeLimit === 'number' && cfg.turnTimeLimit > 0) {
-          setQuestionTimeLimit(cfg.turnTimeLimit);
-        }
-        if (typeof cfg.questionsPerPlayer === 'number' && cfg.questionsPerPlayer > 0) {
-          setQuestionsPerPlayer(cfg.questionsPerPlayer);
-        }
-      }
-    }, (err) => {
-      console.warn("Global game settings fallback to defaults:", err);
-    });
-    return () => unsub();
-  }, []);
+  // Optional settings come from disk, never a live listener during local play.
+  useEffect(() => subscribePublicData(({ gameConfig: cfg }) => {
+    if (typeof cfg.turnTimeLimit === 'number' && cfg.turnTimeLimit >= 0) setQuestionTimeLimit(cfg.turnTimeLimit);
+    if (typeof cfg.questionsPerPlayer === 'number' && cfg.questionsPerPlayer >= 0) setQuestionsPerPlayer(cfg.questionsPerPlayer);
+  }), []);
 
   // Modal / Toggles
   const [showQuestionExamples, setShowQuestionExamples] = useState(false);
@@ -1205,40 +1218,12 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setShowMoreClues(false);
   }, [phase, revealIndex]);
 
-  // Sync singleScore with appUser points. Guests bank their score in
-  // localStorage; on first sign-in the bank is merged into the account
-  // once (idempotent: the key is removed after merging).
+  // Signed-in and guest scores both persist locally; sync is explicit.
   useEffect(() => {
-    if (appUser) {
-      if (appUser.isOfflineFallback) {
-        setSingleScore(appUser.detectiveScore || 0);
-        return;
-      }
-      let guestPts = 0;
-      try { guestPts = Number(localStorage.getItem(GUEST_SCORE_KEY) || '0') || 0; } catch {}
-      if (guestPts > 0) {
-        const merged = (appUser.detectiveScore || 0) + guestPts;
-        setSingleScore(merged);
-        updateDoc(doc(db, 'users', appUser.id), { detectiveScore: merged })
-          .then(() => { try { localStorage.removeItem(GUEST_SCORE_KEY); } catch {} })
-          .catch(console.error);
-      } else {
-        setSingleScore(appUser.detectiveScore || 0);
-      }
-    } else {
-      try {
-        setSingleScore(Number(localStorage.getItem(GUEST_SCORE_KEY) || '0') || 0);
-      } catch {}
-    }
-  }, [appUser]);
-
-  // Persist a new total score: Firestore for accounts, localStorage for guests.
+    setSingleScore(scoreBank(appUser?.id, appUser?.detectiveScore || 0).total);
+  }, [appUser?.id, appUser?.detectiveScore]);
   const persistScore = (newScore: number) => {
-    if (appUser) {
-      updateDoc(doc(db, 'users', appUser.id), { detectiveScore: newScore }).catch(console.error);
-    } else {
-      try { localStorage.setItem(GUEST_SCORE_KEY, String(newScore)); } catch {}
-    }
+    saveLocalScore(newScore, appUser?.id, appUser?.detectiveScore || 0);
   };
 
   // Handle direct URL room invitation (?room=CODE or ?join=CODE)
@@ -1349,8 +1334,8 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setLoadingLeaderboard(true);
     setLeaderboardError(false);
     try {
-      const q = query(collection(db,'users'), orderBy('detectiveScore','desc'), limit(100));
-      const snap = await getDocs(q);
+      const q = query(collection(db,'users'), orderBy('detectiveScore','desc'), limit(25));
+      const snap = await withCloudAccess(() => getDocs(q));
       const list: any[] = [];
       snap.forEach(docSnap => {
         const data = docSnap.data();
@@ -2126,13 +2111,15 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setLoadingPublicRooms(true);
     setRoomsError(false);
     try {
+      await ensureOnlineIdentity();
       const q = query(
         collection(db, 'rooms'),
         where('status', '==', 'LOBBY'),
         where('isPublic', '==', true),
+        where('expiresAt', '>', Date.now()),
         limit(25)
       );
-      const snap = await getDocs(q);
+      const snap = await withCloudAccess(() => getDocs(q));
       const rooms: any[] = [];
       const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
       snap.forEach(docSnap => {
@@ -2166,7 +2153,8 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setOnlineActionLoading(true);
     try {
       const code = generateRoomCode();
-      const pid = Math.random().toString(36).substr(2, 9);
+      await openRoomConnection();
+      const pid = await ensureOnlineIdentity();
       setLocalPlayerId(pid);
       setRoomId(code);
 
@@ -2174,6 +2162,8 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       const initialData = {
         id: code,
         hostId: pid,
+        memberIds: [pid],
+        expiresAt: Date.now() + 2 * 60 * 60 * 1000,
         status:'LOBBY',
         maxPlayers: onlineMaxPlayers,
         isPublic: true,
@@ -2191,7 +2181,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
         currentCycleIdx: 0,
         imposterHistory: {},
         players: [
-          { id: pid, name: currentPlayerName.trim(), score: 0, role:'NORMAL', assignedWordId:'' }
+          { id: pid, name: currentPlayerName.trim().slice(0, 40), score: 0, role:'NORMAL', assignedWordId:'' }
         ],
         votes: {},
         secretWord: null,
@@ -2204,6 +2194,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       listenToRoom(code, pid);
       setPhase('ONLINE_LOBBY');
     } catch (error: any) {
+      closeRoomConnection();
       console.error("Firestore create room error:", error);
       setNotice(languageState ==='Arabic' 
         ? `عذراً، فشل إنشاء الغرفة. يرجى التحقق من اتصالك بالإنترنت. ` 
@@ -2226,40 +2217,15 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     setOnlineActionLoading(true);
     try {
-      const roomRef = doc(db,'rooms', code);
-      const snap = await getDoc(roomRef);
-      if (!snap.exists()) {
-        setNotice(languageState ==='Arabic' ?'هذه الغرفة غير موجودة أو انتهت صلاحيتها!' :'Room does not exist or expired!');
-        setOnlineActionLoading(false);
-        return;
-      }
-
-      const data = snap.data();
-      if (!initialRoomCode && !roomMatchesMode(data.maxPlayers || 4, gameModeLock)) {
-        setNotice(languageState === 'Arabic' ? 'هذه الغرفة لنمط لعب مختلف. اختر اللعبة المناسبة من البوابة.' : 'This room uses a different game mode. Choose that game from the hub.');
-        return;
-      }
-      if (data.status !=='LOBBY') {
-        setNotice(languageState ==='Arabic' ?'بدأت اللعبة بالفعل داخل هذه الغرفة!' :'Game already started in this room!');
-        setOnlineActionLoading(false);
-        return;
-      }
-      if (data.players.length >= (data.maxPlayers || 4)) {
-        setNotice(languageState ==='Arabic' ?'الغرفة ممتلئة بالفعل!' :'Room is already full!');
-        setOnlineActionLoading(false);
-        return;
-      }
-
-      const pid = Math.random().toString(36).substr(2, 9);
+      await openRoomConnection();
+      const pid = await joinRoom(code, currentPlayerName, capacity => !!initialRoomCode || roomMatchesMode(capacity, gameModeLock));
       setLocalPlayerId(pid);
       setRoomId(code);
-
-      const updatedPlayers = [...data.players, { id: pid, name: currentPlayerName.trim(), score: 0, role:'NORMAL', assignedWordId:'' }];
-      await updateDoc(roomRef, { players: updatedPlayers });
 
       listenToRoom(code, pid);
       setPhase('ONLINE_LOBBY');
     } catch (error: any) {
+      closeRoomConnection();
       console.error("Firestore join room error:", error);
       setNotice(languageState ==='Arabic' 
         ? `عذراً، فشل الانضمام للغرفة. ` 
@@ -2474,7 +2440,14 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     const roomRef = doc(db,'rooms', code);
     const unsub = onSnapshot(roomRef, (snapshot) => {
-      if (!snapshot.exists()) return;
+      if (!snapshot.exists()) {
+        closeRoomConnection();
+        setOnlineRoomState(null);
+        setRoomId('');
+        setPhase('MULTI_SETUP_ONLINE');
+        setNotice(t('أُغلقت الغرفة. يمكنك إنشاء غرفة جديدة.', 'The room closed. You can create another room.'));
+        return;
+      }
       const data = snapshot.data();
       setOnlineRoomState(data);
 
@@ -2540,36 +2513,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     if (!onlineRoomState || onlineVoteSaving || onlineRoomState.votes[localPlayerId]) return;
     setOnlineVoteSaving(true);
     try {
-    const currentVotes = { ...onlineRoomState.votes, [localPlayerId]: votedId };
-    const roomRef = doc(db,'rooms', roomId);
-
-    if (Object.keys(currentVotes).length === onlineRoomState.players.length) {
-      const tallies: Record<string, number> = {};
-      Object.values(currentVotes).forEach((id: any) => {
-        tallies[id] = (tallies[id] || 0) + 1;
-      });
-      let maxVotes = 0;
-      Object.keys(tallies).forEach(id => {
-        if (tallies[id] > maxVotes) {
-          maxVotes = tallies[id];
-        }
-      });
-      const tiedCandidates = Object.keys(tallies).filter(id => tallies[id] === maxVotes);
-      let votedOutId = '';
-      if (tiedCandidates.length > 0) {
-        votedOutId = tiedCandidates[Math.floor(Math.random() * tiedCandidates.length)];
-      } else if (onlineRoomState.players.length > 0) {
-        votedOutId = onlineRoomState.players[0].id;
-      }
-
-      await updateDoc(roomRef, {
-        votes: currentVotes,
-        votedOutPlayerId: votedOutId,
-        status:'REVEALED'
-      });
-    } else {
-      await updateDoc(roomRef, { votes: currentVotes });
-    }
+      await voteInRoom(roomId, localPlayerId, votedId);
     } catch {
       setNotice(t('تعذر تسجيل صوتك. حاول مرة أخرى.', 'Could not save your vote. Please try again.'));
     } finally {
@@ -2578,29 +2522,8 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   };
 
   const submitOnlineTwoPlayersGuess = async (targetWordId: string) => {
-    if (!onlineRoomState) return;
-    const guesses = { ...onlineRoomState.twoPlayersGuessMatched, [localPlayerId]: targetWordId };
-    const roomRef = doc(db,'rooms', roomId);
-
-    if (Object.keys(guesses).length === 2) {
-      const members = [...onlineRoomState.players];
-      const p1 = members[0];
-      const p2 = members[1];
-
-      const p1Correct = guesses[p1.id] === p2.assignedWordId;
-      const p2Correct = guesses[p2.id] === p1.assignedWordId;
-
-      p1.score += p1Correct ? 50 : 0;
-      p2.score += p2Correct ? 50 : 0;
-
-      await updateDoc(roomRef, {
-        twoPlayersGuessMatched: guesses,
-        players: members,
-        status:'SCOREBOARD'
-      });
-    } else {
-      await updateDoc(roomRef, { twoPlayersGuessMatched: guesses });
-    }
+    try { await guessInDuel(roomId, localPlayerId, targetWordId); }
+    catch { setNotice(t('تعذر حفظ التخمين. حاول مجددًا.', 'Could not save your guess. Please try again.')); }
   };
 
   // Online Clinical Inquiry Handlers
@@ -4531,19 +4454,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
               <Screen
                 title={t('غرفة اللعب','Game Room')}
                 onBack={() => {
-                  if (roomUnsubscribeRef.current) {
-                    roomUnsubscribeRef.current();
-                    roomUnsubscribeRef.current = null;
-                  }
-                  if (onlineRoomState && roomId) {
-                    try {
-                      const roomRef = doc(db, 'rooms', roomId);
-                      const remaining = (onlineRoomState.players || []).filter((p: any) => p.id !== localPlayerId);
-                      if (remaining.length > 0) {
-                        updateDoc(roomRef, { players: remaining }).catch(() => {});
-                      }
-                    } catch {}
-                  }
+                  void leaveCurrentRoom();
                   setOnlineRoomState(null);
                   setRoomId('');
                   setPhase('MULTI_SETUP_ONLINE');
@@ -7061,10 +6972,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
                 <button
                   type="button"
                   onClick={() => {
-                    if (roomUnsubscribeRef.current) {
-                      roomUnsubscribeRef.current();
-                      roomUnsubscribeRef.current = null;
-                    }
+                    void leaveCurrentRoom();
                     if (gameModeLock) onGoBack(); else setPhase('ENTRY');
                     setRoomId('');
                     setOnlineRoomState(null);

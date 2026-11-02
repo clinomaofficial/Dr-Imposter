@@ -1,77 +1,33 @@
-const CACHE_NAME = 'dr-imposter-v2';
-const ASSETS_TO_CACHE = [
-  './',
-  'index.html',
-  'manifest.json',
-  'logo.jpg'
-];
+const CACHE_PREFIX = 'clinoma-offline-';
+const CACHE_NAME = CACHE_PREFIX + '__BUILD_VERSION__';
+const PRECACHE = /* __PRECACHE_FILES__ */ ['/index.html', '/manifest.json', '/logo.jpg'];
 
-// Install Event - cache core shell
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Pre-caching offline shell');
-      return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
-  );
+self.addEventListener('install', event => {
+  // The worker waits until every game chunk and bundled asset is available.
+  // No skipWaiting: an old open game keeps its compatible chunks until closed.
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE)));
 });
-
-// Activate Event - clean up old caches
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log('[Service Worker] Removing old cache', key);
-            return caches.delete(key);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+      .map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
-
-// Fetch Event - network-first for index/API, cache-first for static assets
-self.addEventListener('fetch', (event) => {
-  const requestUrl = new URL(event.request.url);
-
-  // Skip non-GET requests or Firebase API calls (Firestore, Auth, etc.) should go directly to network
-  if (event.request.method !== 'GET' || requestUrl.hostname.includes('firebase') || requestUrl.pathname.includes('/api/')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Fetch fresh in background to update cache for next time
-        fetch(event.request).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, networkResponse));
-          }
-        }).catch(() => { /* Ignore background fetch failures offline */ });
-
-        return cachedResponse;
-      }
-
-      // If not in cache, fetch from network and cache it
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
-        }
-
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
-        return networkResponse;
-      }).catch(() => {
-        // Fallback to offline index.html for SPA routing if offline
-        if (event.request.mode === 'navigate') {
-          return caches.match('index.html') || caches.match('/index.html');
-        }
-      });
-    })
-  );
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  // Auth, Firestore, third-party media and APIs never enter the static cache.
+  if (event.request.method !== 'GET' || url.origin !== self.location.origin ||
+      url.pathname.startsWith('/api/') || url.pathname.startsWith('/__/') ||
+      url.pathname === '/sw.js') return;
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    if (event.request.mode === 'navigate') {
+      return (await cache.match('/index.html')) || fetch(event.request);
+    }
+    const cached = await cache.match(event.request);
+    if (cached) return cached; // Immutable assets: no background download per use.
+    return fetch(event.request);
+  })());
 });

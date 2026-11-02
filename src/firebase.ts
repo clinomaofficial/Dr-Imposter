@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, signInAnonymously, connectAuthEmulator } from 'firebase/auth';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import { 
   initializeFirestore,
   persistentLocalCache,
@@ -14,11 +15,14 @@ import {
   doc, 
   setDoc,
   getDoc,
-  getDocFromServer
+  getDocFromServer,
+  disableNetwork, enableNetwork, connectFirestoreEmulator
 } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
 import { AppUser } from './types';
 import { isOwnerEmail } from './lib/ownerAdminIdentity';
+import { readLocal, writeLocal } from './lib/localStore';
+import { scoreBank } from './lib/localScore';
 
 const getEnvVar = (key: string, fallback: string) => {
   const value = import.meta.env[key];
@@ -69,6 +73,7 @@ export const auth = getAuth(app);
 let firestoreSettings: any = {};
 try {
   firestoreSettings = {
+    ignoreUndefinedProperties: true,
     localCache: persistentLocalCache({
       tabManager: persistentMultipleTabManager(),
       cacheSizeBytes: 50 * 1024 * 1024, // 50MB bound prevents unbounded SQLite/IndexedDB growth
@@ -84,46 +89,87 @@ export const db = dbId
   ? initializeFirestore(app, firestoreSettings, dbId)
   : initializeFirestore(app, firestoreSettings);
 
+// Development-only local services. Production can never be redirected by URL.
+if (import.meta.env.DEV && import.meta.env.VITE_USE_FIREBASE_EMULATORS === 'true') {
+  connectFirestoreEmulator(db, '127.0.0.1', 8080);
+  connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true });
+}
+let appCheckReady = false;
+function prepareAppCheck() {
+  const siteKey = import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY;
+  if (appCheckReady || !siteKey) return;
+  initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(siteKey), isTokenAutoRefreshEnabled: false });
+  appCheckReady = true;
+}
+
+// Network leases are explicit: opening the game or playing locally is never a
+// reason to connect Firestore. Serialize transitions so overlapping actions and
+// React StrictMode cannot disable another action's connection.
+let cloudUsers = 0;
+let networkTransition = disableNetwork(db);
+export async function acquireCloudAccess(): Promise<() => void> {
+  prepareAppCheck();
+  cloudUsers++;
+  networkTransition = networkTransition.catch(() => {}).then(() => enableNetwork(db));
+  try { await networkTransition; } catch (error) { cloudUsers--; throw error; }
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    cloudUsers--;
+    networkTransition = networkTransition.catch(() => {}).then(async () => {
+      if (cloudUsers === 0) await disableNetwork(db);
+    });
+  };
+}
+export async function withCloudAccess<T>(action: () => Promise<T>): Promise<T> {
+  if (typeof navigator !== 'undefined' && !navigator.onLine) throw new Error('offline');
+  const release = await acquireCloudAccess();
+  try { return await action(); } finally { release(); }
+}
+let anonymousSignIn: Promise<any> | null = null;
+export async function ensureOnlineIdentity(): Promise<string> {
+  if (auth.currentUser) return auth.currentUser.uid;
+  anonymousSignIn ??= signInAnonymously(auth).finally(() => { anonymousSignIn = null; });
+  return (await anonymousSignIn).user.uid;
+}
+
 export const googleProvider = new GoogleAuthProvider();
 
-export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
-  if (!user) return null;
+export const syncUserDoc = async (user: any, refresh = false): Promise<AppUser | null> => {
+  if (!user || user.isAnonymous) return null;
+  const cacheKey = `clinoma-profile:${user.uid}`;
+  const cached = readLocal<AppUser | null>(cacheKey, null);
+  const fallbackUser: AppUser = cached || {
+    id: user.uid, email: user.email || '', displayName: user.displayName || 'Doctor',
+    role: 'user', status: 'active',
+    permissions: { medicalSubject: true, educationalFile: true, medicalDetective: true, tikTeb: true },
+    subscriptionActive: true, totalAttempts: 99999, remainingAttempts: 99999,
+    remainingDetectiveAttempts: 99999, lastLogin: 0, detectiveScore: 0,
+  };
+  if (!refresh) return { ...fallbackUser, detectiveScore: scoreBank(user.uid, fallbackUser.detectiveScore).total };
+  return withCloudAccess(async () => {
   
   const userRef = doc(db, 'users', user.uid);
   try {
     const userSnap = await getDoc(userRef);
-    const isManager = isOwnerEmail(user.email);
     
     if (userSnap.exists()) {
       const userData = userSnap.data() as AppUser;
       
-      // Force super_admin/manager role if email matches
-      if (isManager && userData.role !== 'super_admin') {
-        const updates = { 
-          role: 'super_admin' as const,
-          totalAttempts: 99999,
-          remainingAttempts: 99999,
-          remainingDetectiveAttempts: 99999,
-          subscriptionActive: true,
-          detectiveScore: userData.detectiveScore || 0,
-          'permissions.medicalSubject': true,
-          'permissions.educationalFile': true,
-          'permissions.medicalDetective': true,
-          'permissions.tikTeb': true
-        };
-        await setDoc(userRef, updates, { merge: true });
-        return { ...userData, ...updates };
+      // At most one last-login write per day, and only during an explicit sync.
+      if (Date.now() - (userData.lastLogin || 0) >= 24 * 60 * 60 * 1000) {
+        userData.lastLogin = Date.now();
+        await setDoc(userRef, { lastLogin: userData.lastLogin }, { merge: true });
       }
-
-      // Update last login
-      setDoc(userRef, { lastLogin: Date.now() }, { merge: true }).catch(console.error);
+      writeLocal(cacheKey, userData);
       return userData;
     } else {
       const isAdmin = user.role === 'admin' || user.role === 'supervisor';
       const newUser: AppUser = {
         id: user.uid,
         email: user.email,
-        role: isManager ? 'super_admin' : 'user',
+        role: 'user',
         status: 'active',
         permissions: {
           medicalSubject: true,
@@ -139,33 +185,14 @@ export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
         detectiveScore: 0
       };
       await setDoc(userRef, newUser);
+      writeLocal(cacheKey, newUser);
       return newUser;
     }
   } catch (error: any) {
     console.warn("⚠️ Firestore is offline or unprovisioned. Falling back to local/offline user state:", error);
-    const isManager = isOwnerEmail(user.email);
-    const fallbackUser: AppUser = {
-      id: user.uid,
-      email: user.email || 'offline_user@dr-imposter.com',
-      displayName: user.displayName || user.email?.split('@')[0] || 'Doctor',
-      role: isManager ? 'super_admin' : 'user',
-      status: 'active',
-      permissions: {
-        medicalSubject: true,
-        educationalFile: true,
-        medicalDetective: true,
-        tikTeb: true
-      },
-      subscriptionActive: true,
-      totalAttempts: 99999,
-      remainingAttempts: 99999,
-      remainingDetectiveAttempts: 99999,
-      lastLogin: Date.now(),
-      detectiveScore: 0,
-      isOfflineFallback: true
-    };
-    return fallbackUser;
+    return { ...fallbackUser, isOfflineFallback: true };
   }
+  });
 };
 
 // Test connection
@@ -213,7 +240,8 @@ Troubleshooting:
     }
   }
 }
-testConnection();
+// Diagnostics are opt-in; never spend a read on every application launch.
+export const checkFirebaseConnection = () => withCloudAccess(testConnection);
 
 export enum OperationType {
   CREATE = 'create',

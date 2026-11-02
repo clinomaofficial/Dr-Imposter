@@ -9,7 +9,10 @@ import { sfx } from './lib/sfx';
 import { Language, AppUser } from './types';
 import { Globe, LogIn, LogOut, HelpCircle, Volume2, VolumeX, Mail, Send, Trash2, ShieldAlert, Sparkles, Check, Timer, Image as ImageIcon, Search, Brain, Zap, AlertTriangle, FileText, EyeOff, MessagesSquare, Trophy, Vote, Users, Swords, Stethoscope, History, Pencil, Crown, UserX, Flame, MoreVertical, ChevronRight, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { auth, loginWithGoogle, syncUserDoc, db } from './firebase';
+import { auth, loginWithGoogle, syncUserDoc, db, acquireCloudAccess, withCloudAccess } from './firebase';
+import { subscribePublicData, refreshPublicData } from './lib/publicData';
+import { syncAccount } from './lib/accountSync';
+import { writeLocal, readLocal } from './lib/localStore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, updateDoc, collection, query, orderBy, limit, onSnapshot, addDoc, getDocs, deleteDoc } from 'firebase/firestore';
 import { isOwnerAdmin } from './lib/ownerAdminIdentity';
@@ -40,6 +43,7 @@ export default function App() {
   const [appUser, setAppUser] = useState<AppUser | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
   const [currentPhase, setCurrentPhase] = useState<string>('ENTRY');
   const [showHelp, setShowHelp] = useState(false);
   const [appNotice, setAppNotice] = useState('');
@@ -123,6 +127,13 @@ export default function App() {
 
   // Admin & Announcements states
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  useEffect(() => {
+    if (!showAdminPanel) return;
+    let release: (() => void) | undefined;
+    let disposed = false;
+    acquireCloudAccess().then(close => { if (disposed) close(); else release = close; });
+    return () => { disposed = true; release?.(); };
+  }, [showAdminPanel]);
   const [activeAnnouncement, setActiveAnnouncement] = useState<any>(null);
   const [dismissedAnnouncementId, setDismissedAnnouncementId] = useState<string | null>(() => {
     try {
@@ -152,7 +163,7 @@ export default function App() {
   useEffect(() => {
     let unblocked = false;
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user && !user.isAnonymous) {
         syncUserDoc(user)
           .then((synced) => {
             if (synced) {
@@ -210,6 +221,8 @@ export default function App() {
     setIsLoggingIn(true);
     try {
       await loginWithGoogle();
+      const profile = await syncAccount();
+      if (profile) setAppUser(profile);
     } catch (err) {
       console.error("Login action error", err);
       setAppNotice(language === 'Arabic' ? 'تعذر تسجيل الدخول. تحقق من الاتصال وحاول مجددًا.' : 'Could not sign in. Check your connection and try again.');
@@ -228,13 +241,11 @@ export default function App() {
     }
   };
 
-  // Real-time announcement listener
+  // Display optional announcements from disk. Refresh only on user request.
   useEffect(() => {
-    const q = query(collection(db,'announcements'), orderBy('createdAt','desc'), limit(1));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      if (!snapshot.empty) {
-        const docData = snapshot.docs[0].data();
-        const id = snapshot.docs[0].id;
+    return subscribePublicData(({ announcement: docData }) => {
+      if (docData) {
+        const id = docData.id;
         const now = Date.now();
 
         if (now < docData.expiresAt && id !== dismissedAnnouncementId) {
@@ -245,12 +256,21 @@ export default function App() {
       } else {
         setActiveAnnouncement(null);
       }
-    }, (error) => {
-      console.warn("Announcements subscription warning:", error);
     });
-
-    return () => unsubscribe();
   }, [dismissedAnnouncementId]);
+
+  const handleSync = async () => {
+    if (isSyncing) return;
+    setIsSyncing(true);
+    try {
+      await refreshPublicData();
+      const profile = await syncAccount();
+      if (profile) setAppUser(profile);
+      setAppNotice(language === 'Arabic' ? 'تم تحديث البيانات ومزامنة النقاط. اللعب المحلي لا يحتاج إنترنت.' : 'Data updated and scores synced. Local play needs no internet.');
+    } catch {
+      setAppNotice(language === 'Arabic' ? 'تعذرت المزامنة. نقاطك محفوظة على الجهاز؛ حاول عند توفر الإنترنت.' : 'Could not sync. Your scores are saved on this device; try again when online.');
+    } finally { setIsSyncing(false); }
+  };
 
   // Countdown timer for active announcement
   useEffect(() => {
@@ -363,14 +383,10 @@ export default function App() {
   const handleSaveOnboarding = async (onboardingData: { academicLevel: string; academicYear?: string; university: string }) => {
     if (!appUser) return;
     try {
-      if (!appUser.isOfflineFallback) {
-        const userRef = doc(db,'users', appUser.id);
-        await updateDoc(userRef, {
-          academicLevel: onboardingData.academicLevel,
-          academicYear: onboardingData.academicYear ||'',
-          university: onboardingData.university
-        });
-      } else {
+      {
+        const edits = { ...onboardingData, academicYear: onboardingData.academicYear || '' };
+        writeLocal(`clinoma-profile-edits:${appUser.id}`, { ...readLocal(`clinoma-profile-edits:${appUser.id}`, {}), ...edits });
+        writeLocal(`clinoma-profile:${appUser.id}`, { ...appUser, ...edits });
         try {
           localStorage.setItem(`offline_onboarding_${appUser.id}`, JSON.stringify(onboardingData));
         } catch (e) {
@@ -395,8 +411,8 @@ export default function App() {
     setIsSavingName(true);
     setSaveSuccess(false);
     try {
-      const userRef = doc(db,'users', appUser.id);
-      await updateDoc(userRef, { displayName: tempDisplayName.trim() });
+      writeLocal(`clinoma-profile:${appUser.id}`, { ...appUser, displayName: tempDisplayName.trim() });
+      writeLocal(`clinoma-profile-edits:${appUser.id}`, { ...readLocal(`clinoma-profile-edits:${appUser.id}`, {}), displayName: tempDisplayName.trim() });
       setAppUser(prev => prev ? { ...prev, displayName: tempDisplayName.trim() } : null);
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3000);
@@ -648,6 +664,13 @@ export default function App() {
         dir={ar ? 'rtl' : 'ltr'}
       >
         <div className="space-y-2.5 py-1">
+          <button type="button" onClick={handleSync} disabled={isSyncing}
+            className="w-full min-h-[54px] px-4 py-3 rounded-2xl bg-ink-3 border border-ink-4 text-start flex items-center gap-3 font-display font-bold">
+            <Globe size={20} className="text-mint" />
+            <span>{isSyncing ? (ar ? 'جارٍ التحديث...' : 'Syncing...') : (ar ? 'تحديث البيانات ومزامنة النقاط' : 'Update data & sync scores')}
+              <small className="block text-white/70 font-normal">{ar ? 'اللعب مجاني ومحلي؛ الاتصال عند الطلب' : 'Free local play; connect only when needed'}</small>
+            </span>
+          </button>
           {/* Sound & Haptics toggle */}
           <button
             type="button"

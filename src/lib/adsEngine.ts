@@ -1,8 +1,8 @@
-import { db } from '../firebase';
-import { collection, doc, updateDoc, increment, onSnapshot, query, where } from 'firebase/firestore';
+import { cachedPublicData, subscribePublicData } from './publicData';
+import { readLocal, writeLocal } from './localStore';
 import { AdCampaign, AdPlacement } from '../types/ads';
 
-let cachedAds: AdCampaign[] = [];
+let cachedAds: AdCampaign[] = cachedPublicData().ads;
 let adsListenerInitialized = false;
 
 type AdListener = (ads: AdCampaign[]) => void;
@@ -22,18 +22,11 @@ export const initAdsListener = () => {
   adsListenerInitialized = true;
 
   try {
-    const q = query(collection(db, 'ads'), where('isActive', '==', true));
-    onSnapshot(q, (snapshot) => {
-      const list: AdCampaign[] = [];
-      snapshot.forEach(docSnap => {
-        list.push({ id: docSnap.id, ...docSnap.data() } as AdCampaign);
-      });
+    subscribePublicData(({ ads: list }) => {
       cachedAds = list;
       listeners.forEach(fn => {
         try { fn(list); } catch (e) { console.error(e); }
       });
-    }, (err) => {
-      console.warn("⚠️ Ads real-time listener warning:", err);
     });
   } catch (err) {
     console.warn("⚠️ Failed to init ads listener:", err);
@@ -52,25 +45,23 @@ export const getRandomAdForPlacement = (placement: AdPlacement): AdCampaign | nu
 };
 
 export const trackAdImpression = async (adId: string) => {
-  try {
-    const adRef = doc(db, 'ads', adId);
-    await updateDoc(adRef, {
-      impressionsCount: increment(1)
-    });
-  } catch (e) {
-    // Silently fail without interrupting game flow
-  }
+  trackLocalAd(adId, 'impressions');
 };
 
-export const trackAdClick = async (adId: string, url: string) => {
-  try {
-    const adRef = doc(db, 'ads', adId);
-    updateDoc(adRef, {
-      clicksCount: increment(1)
-    }).catch(() => {});
-  } catch (e) {}
+function trackLocalAd(adId: string, field: 'impressions' | 'clicks') {
+  const stats = readLocal<Record<string, { impressions: number; clicks: number }>>('clinoma-ad-stats', {});
+  const active = new Set(cachedPublicData().ads.map(ad => ad.id));
+  for (const id of Object.keys(stats)) if (!active.has(id)) delete stats[id];
+  if (!active.has(adId)) return;
+  stats[adId] ??= { impressions: 0, clicks: 0 };
+  stats[adId][field]++;
+  writeLocal('clinoma-ad-stats', stats);
+}
 
-  if (url) {
+export const trackAdClick = async (adId: string, url: string) => {
+  trackLocalAd(adId, 'clicks');
+
+  if (/^https?:\/\//i.test(url)) {
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 };

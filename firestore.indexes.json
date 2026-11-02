@@ -1,0 +1,11 @@
+{
+  "indexes": [{
+    "collectionGroup": "rooms", "queryScope": "COLLECTION",
+    "fields": [
+      { "fieldPath": "status", "order": "ASCENDING" },
+      { "fieldPath": "isPublic", "order": "ASCENDING" },
+      { "fieldPath": "expiresAt", "order": "ASCENDING" }
+    ]
+  }],
+  "fieldOverrides": []
+}

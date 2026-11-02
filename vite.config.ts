@@ -1,13 +1,32 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     base: '/',
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), {
+      name: 'offline-game-manifest',
+      apply: 'build',
+      closeBundle() {
+        const outDir = path.resolve('dist');
+        if (!fs.existsSync(path.join(outDir, 'index.html'))) return;
+        // Include lazy game chunks and bundled fonts/media, not just the shell.
+        const files = fs.readdirSync(outDir, { recursive: true }).map(String)
+          .filter(file => fs.statSync(path.join(outDir, file)).isFile() && file !== 'sw.js')
+          .sort();
+        const hash = createHash('sha256');
+        for (const file of files) hash.update(file).update(fs.readFileSync(path.join(outDir, file)));
+        const sw = fs.readFileSync(path.resolve('public/sw.js'), 'utf8')
+          .replace('__BUILD_VERSION__', hash.digest('hex').slice(0, 16))
+          .replace('/* __PRECACHE_FILES__ */', JSON.stringify(files.map(file => `/${file.replaceAll('\\', '/')}`)));
+        fs.writeFileSync(path.join(outDir, 'sw.js'), sw);
+      },
+    }],
     define: {
       'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(env.VITE_GEMINI_API_KEY || env.GEMINI_API_KEY || process.env.GEMINI_API_KEY || ""),
       'import.meta.env.VITE_FIREBASE_API_KEY': JSON.stringify(env.VITE_FIREBASE_API_KEY || process.env.VITE_FIREBASE_API_KEY || ""),
