@@ -1,17 +1,53 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { ModalFrame } from '../game/ModalFrame';
+import { RoundOutcome } from '../game/RoundOutcome';
+import { SoloClues } from '../game/SoloClues';
+import { RoomInvite } from '../game/RoomInvite';
+import { rosterForMode, roomMatchesMode, minimumRoomPlayers } from '../../lib/mobileGame';
+import { HomeView, type HomeAction } from '../home/HomeView';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Users, ArrowLeft, RefreshCcw, 
-  Info, AlertCircle, MessageCircle, 
+import {
+  Users, ArrowLeft, RefreshCcw,
+  Info, AlertCircle, MessageCircle,
   CheckCircle2, Trophy, ChevronRight, ChevronDown,
   ShieldAlert, Target, Play, Copy, Landmark, Check, HelpCircle, Search, Settings, Lock,
-  X, Plus, Stethoscope
+  X, Plus, Stethoscope, Flame, Star, Crown, Smartphone, Globe, LogIn, LogOut, Lightbulb, UserX, Brain, DoorOpen,
+  Pill, Activity, Bug, Bone, GraduationCap, Sparkles, Timer, Zap, Award, HeartPulse, FileText,
+  Share2, Link2, Camera, Maximize2, Eye, XCircle, SlidersHorizontal, Trash2, Home
 } from 'lucide-react';
 import { AppUser, Language } from '../../types';
+import { Screen, ModeCard, SegOptions, BigBtn, IconBtn, StatPill, Dots, Label, Sheet, CountUp, Disclosure, isAr } from '../game/ui';
+import { Confetti } from '../game/Confetti';
+import { sfx } from '../../lib/sfx';
 import { medicalWords, MedicalWord } from '../../data/medicalWords';
-import { getCluesForWord } from '../../data/hints';
+import { WORD_IMAGES, getWordImage } from '../../data/wordImages';
+import { getCluesForWord, HINTS_DICTIONARY } from '../../data/hints';
+import { getSoloProgressiveHints, generateSoloOptions } from '../../data/soloHints';
+import { getSoloFlashcard, SoloFlashcard } from '../../data/soloFlashcards';
+import {
+  InquiryQuestion,
+  ClinicalBranch,
+  INQUIRY_ANSWER_OPTIONS,
+  STAGE_1_QUESTIONS,
+  getAdaptiveQuestionsForStage,
+  getBranchQuestionsForStage,
+  getWordBranch,
+  evaluateQuestionTruth,
+  detectSystemFromQuestionAndAnswer,
+  getTrueCardSystem,
+  MisleadingEntry
+} from '../../data/clinicalInquiryTree';
 import { db } from '../../firebase';
-import { doc, setDoc, onSnapshot, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, setDoc, onSnapshot, getDoc, updateDoc, collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
+import { AdCampaign } from '../../types/ads';
+import { InterstitialAdModal } from '../ads/InterstitialAdModal';
+import { getRandomAdForPlacement, incrementAndGetMatchesPlayed } from '../../lib/adsEngine';
+
+// Local bank for score earned while playing as a guest (not signed in).
+// On first sign-in it is merged once into the account and removed.
+const GUEST_SCORE_KEY = 'dr_imposter_guest_score';
+// Local bank for missed solo diagnoses (used by the "from your mistakes" mode).
+const MISSED_CASES_KEY = 'dr_imposter_missed_cases';
 
 export const AVATAR_TEMPLATES = [
   {
@@ -293,7 +329,7 @@ export const AVATAR_TEMPLATES = [
   }
 ];
 
-export const AnimalDoctorAvatar: React.FC<{ avatarId?: number; size?: number; className?: string }> = ({ avatarId = 0, size = 48, className = "" }) => {
+export const AnimalDoctorAvatar: React.FC<{ avatarId?: number; size?: number; className?: string }> = ({ avatarId = 0, size = 48, className ="" }) => {
   const finalId = Math.max(0, Math.min(9, Math.floor(avatarId))) % 10;
   const template = AVATAR_TEMPLATES[finalId];
   return (
@@ -308,57 +344,57 @@ export interface AdvancedFilterState {
   subjects: string[];
   moduleFilterEnabled: boolean;
   selectedModule: string;
-  subjectModules?: Record<string, string>; // Maps specialty/subject ID to specific module ID (e.g. 'Anatomy' -> 'GIT') or 'All'
+  subjectModules?: Record<string, string>; // Maps specialty/subject ID to specific module ID (e.g.'Anatomy' ->'GIT') or'All'
 }
 
 export const MODULE_MAPPINGS: Record<string, { nameEn: string; nameAr: string; subjects: string[]; keywords: string[] }> = {
   CVS: {
-    nameEn: 'Cardiovascular (CVS)',
-    nameAr: 'القلب والأوعية الدموية (CVS)',
-    subjects: ['Cardiology', 'Vascular Surgery'],
-    keywords: ['heart', 'cardiac', 'valve', 'vein', 'artery', 'aorta', 'mitral', 'atrial', 'ventricle', 'coronary', 'thrombosis', 'hypertension', 'angina', 'infarction']
+    nameEn:'Cardiovascular (CVS)',
+    nameAr:'القلب والأوعية الدموية (CVS)',
+    subjects: ['Cardiology','Vascular Surgery'],
+    keywords: ['heart','cardiac','valve','vein','artery','aorta','mitral','atrial','ventricle','coronary','thrombosis','hypertension','angina','infarction']
   },
   GIT: {
-    nameEn: 'Gastrointestinal (GIT)',
-    nameAr: 'الجهاز الهضمي (GIT)',
-    subjects: ['Gastroenterology', 'General Surgery'],
-    keywords: ['liver', 'stomach', 'colon', 'intestine', 'appendix', 'bile', 'gallbladder', 'esophagus', 'pancreas', 'gastric', 'duodenum', 'rectum', 'abdominal', 'colorectal', 'portal', 'hernia']
+    nameEn:'Gastrointestinal (GIT)',
+    nameAr:'الجهاز الهضمي (GIT)',
+    subjects: ['Gastroenterology','General Surgery'],
+    keywords: ['liver','stomach','colon','intestine','appendix','bile','gallbladder','esophagus','pancreas','gastric','duodenum','rectum','abdominal','colorectal','portal','hernia']
   },
   CNS: {
-    nameEn: 'Nervous System (CNS)',
-    nameAr: 'الجهاز العصبي (CNS)',
-    subjects: ['Neurology', 'Psychiatry'],
-    keywords: ['brain', 'nerve', 'spinal', 'cerebral', 'meninges', 'neural', 'encephalitis', 'seizure', 'dementia', 'paralysis', 'sleep', 'panic', 'anxiety', 'compulsive', 'obsessive']
+    nameEn:'Nervous System (CNS)',
+    nameAr:'الجهاز العصبي (CNS)',
+    subjects: ['Neurology','Psychiatry'],
+    keywords: ['brain','nerve','spinal','cerebral','meninges','neural','encephalitis','seizure','dementia','paralysis','sleep','panic','anxiety','compulsive','obsessive']
   },
   Respiratory: {
-    nameEn: 'Respiratory System',
-    nameAr: 'الجهاز التنفسي',
+    nameEn:'Respiratory System',
+    nameAr:'الجهاز التنفسي',
     subjects: ['Pulmonology'],
-    keywords: ['lung', 'bronch', 'trachea', 'pleura', 'larynx', 'pharynx', 'alveoli', 'oxygen', 'respiratory', 'asthma', 'pneumonia', 'croup', 'apnea']
+    keywords: ['lung','bronch','trachea','pleura','larynx','pharynx','alveoli','oxygen','respiratory','asthma','pneumonia','croup','apnea']
   },
   Renal: {
-    nameEn: 'Renal & Urinary',
-    nameAr: 'الجهاز البولي والكلى',
-    subjects: ['Nephrology', 'Urology'],
-    keywords: ['kidney', 'urinary', 'bladder', 'ureter', 'prostate', 'renal', 'nephritis', 'calculus', 'dialysis', 'urine', 'cystitis']
+    nameEn:'Renal & Urinary',
+    nameAr:'الجهاز البولي والكلى',
+    subjects: ['Nephrology','Urology'],
+    keywords: ['kidney','urinary','bladder','ureter','prostate','renal','nephritis','calculus','dialysis','urine','cystitis']
   },
   Endocrine: {
-    nameEn: 'Endocrine System',
-    nameAr: 'الغدد الصماء',
+    nameEn:'Endocrine System',
+    nameAr:'الغدد الصماء',
     subjects: ['Endocrinology'],
-    keywords: ['thyroid', 'adrenal', 'pituitary', 'hormone', 'insulin', 'diabetes', 'pancreas', 'endocrine', 'gland']
+    keywords: ['thyroid','adrenal','pituitary','hormone','insulin','diabetes','pancreas','endocrine','gland']
   },
   Musculoskeletal: {
-    nameEn: 'Musculoskeletal',
-    nameAr: 'الجهاز الحركي والعظام',
+    nameEn:'Musculoskeletal',
+    nameAr:'الجهاز الحركي والعظام',
     subjects: ['Orthopedics'],
-    keywords: ['bone', 'muscle', 'joint', 'tendon', 'ligament', 'spine', 'femur', 'tibia', 'humerus', 'scoliosis', 'fracture', 'arthritis', 'carpal', 'myalgia']
+    keywords: ['bone','muscle','joint','tendon','ligament','spine','femur','tibia','humerus','scoliosis','fracture','arthritis','carpal','myalgia']
   },
   Reproductive: {
-    nameEn: 'Reproductive System',
-    nameAr: 'الجهاز التناسلي والولادة',
+    nameEn:'Reproductive System',
+    nameAr:'الجهاز التناسلي والولادة',
     subjects: ['Obstetrics and Gynecology'],
-    keywords: ['uterus', 'ovary', 'vagina', 'pregnancy', 'fetus', 'placenta', 'cervix', 'uterine', 'ovarian', 'semen', 'testis']
+    keywords: ['uterus','ovary','vagina','pregnancy','fetus','placenta','cervix','uterine','ovarian','semen','testis']
   }
 };
 
@@ -375,7 +411,7 @@ export const isWordInModule = (word: MedicalWord, moduleId: string): boolean => 
     ...(word.synonyms || []).map(s => s.toLowerCase()),
     word.type.toLowerCase(),
     ...word.subjects.map(s => s.toLowerCase())
-  ].join(' ');
+  ].join('');
   
   return mapping.keywords.some(kw => textToSearch.includes(kw.toLowerCase()));
 };
@@ -395,7 +431,7 @@ export const checkAdvancedFilterWord = (w: MedicalWord, adv: AdvancedFilterState
     if (matchedSubjects.length > 0) {
       const hasAnyValidSubjectMatch = matchedSubjects.some(sub => {
         const targetModule = adv.subjectModules?.[sub];
-        if (!targetModule || targetModule === 'All') {
+        if (!targetModule || targetModule ==='All') {
           return true;
         }
         return isWordInModule(w, targetModule);
@@ -405,7 +441,7 @@ export const checkAdvancedFilterWord = (w: MedicalWord, adv: AdvancedFilterState
 
     if (matchedType) {
       const targetModule = adv.subjectModules?.[matchedType];
-      if (!targetModule || targetModule === 'All') {
+      if (!targetModule || targetModule ==='All') {
         return true;
       }
       return isWordInModule(w, targetModule);
@@ -416,7 +452,7 @@ export const checkAdvancedFilterWord = (w: MedicalWord, adv: AdvancedFilterState
 
   // 3. Fallback to legacy global module filter
   if (adv.moduleFilterEnabled && adv.selectedModule) {
-    const isAcademic = w.level === 'Academic' || w.level === 'Both';
+    const isAcademic = w.level ==='Academic' || w.level ==='Both';
     if (isAcademic) {
       if (!isWordInModule(w, adv.selectedModule)) {
         return false;
@@ -431,28 +467,29 @@ interface Player {
   id: string;
   name: string;
   score: number;
-  role: 'NORMAL' | 'IMPOSTER';
-  assignedWordId: string; // The word they got shown (either the real word, or 'Imposter', or a close word)
+  role:'NORMAL' |'IMPOSTER';
+  assignedWordId: string; // The word they got shown (either the real word, or'Imposter', or a close word)
   votedFor?: string; // ID of the player they voted for
   avatarId?: number; // Cute animal doctor avatar index
 }
 
 type GamePhase = 
-  | 'ENTRY'             // Let user select number of players (1 to 10)
-  | 'SINGLE_SETUP'      // 1 player setup
-  | 'SINGLE_PLAYING'    // 1 player game
-  | 'MULTI_MODE_SELECT'   // 2+ player select Online / Offline
-  | 'MULTI_SETUP_OFFLINE' // pass-and-play setup - Page 1 (Names)
-  | 'MULTI_SETUP_OFFLINE_CONFIG' // pass-and-play setup - Page 2 (Specialty & settings)
-  | 'MULTI_SETUP_ONLINE'  // online setup (create/join room)
-  | 'ONLINE_LOBBY'      // waiting in online lobby
-  | 'ROLES_REVEAL'      // pass-and-play / online role screen
-  | 'PLAY_DISCUSSION'   // real-life discussion & questioning (with example questions)
-  | 'VOTING_PHASE'      // players vote who is the imposter
-  | 'REVEAL_IMPOSTER'   // reveal vote outcome
-  | 'IMPOSTER_GUESS'    // imposter guesses the secret word for a comeback
-  | 'ROUND_RESULT'      // final scoreboard / round summary
-  | 'TWO_PLAYERS_DISCUSSION_GUESS'; // 2 players specific guessing screen
+  |'ENTRY'             // Let user select number of players (1 to 10)
+  |'SINGLE_SETUP'      // 1 player setup
+  |'SINGLE_PLAYING'    // 1 player game
+  |'VISUAL_PLAYING'    // 41 photorealistic visual mystery cards
+  |'MULTI_MODE_SELECT'   // 2+ player select Online / Offline
+  |'MULTI_SETUP_OFFLINE' // pass-and-play setup - Page 1 (Names)
+  |'MULTI_SETUP_OFFLINE_CONFIG' // pass-and-play setup - Page 2 (Specialty & settings)
+  |'MULTI_SETUP_ONLINE'  // online setup (create/join room)
+  |'ONLINE_LOBBY'      // waiting in online lobby
+  |'ROLES_REVEAL'      // pass-and-play / online role screen
+  |'PLAY_DISCUSSION'   // real-life discussion & questioning (with example questions)
+  |'VOTING_PHASE'      // players vote who is the imposter
+  |'REVEAL_IMPOSTER'   // reveal vote outcome
+  |'IMPOSTER_GUESS'    // imposter guesses the secret word for a comeback
+  |'ROUND_RESULT'      // final scoreboard / round summary
+  |'TWO_PLAYERS_DISCUSSION_GUESS'; // 2 players specific guessing screen
 
 interface Props {
   language: Language;
@@ -461,47 +498,121 @@ interface Props {
   appUser: AppUser | null;
   onLogin: () => void;
   onPhaseChange?: (phase: string) => void;
+  onUpdateScore?: (newScore: number) => void;
+  onShowHelp?: () => void;
+  initialRoomCode?: string;
+  initialAction?: HomeAction;
+  overlayOpen?: boolean;
+  gameModeLock?: 'GUESS' | 'BATTLE_1V1' | 'DR_IMPOSTER';
 }
 
-const renderClueText = (clue: string, size: 'sm' | 'xs' = 'sm') => {
-  // Check if the clue matches our badge pattern: e.g. "💊 [علاجي / Rx]: " or "💊 [Rx / Treatment]: "
-  const badgeRegex = /^([\u2300-\u27BF\uD83C-\uD83E][\uDF00-\uDFFF]?)\s*\[([^\]]+)\]:\s*(.*)$/;
-  const match = clue.match(badgeRegex);
-  
-  if (match) {
-    const [_, emoji, badgeText, rest] = match;
-    
-    // Choose professional color themes based on the badge type
-    let badgeClass = "bg-zinc-800 text-zinc-300 border-zinc-700/50";
-    if (badgeText.includes("علاجي") || badgeText.includes("Rx")) {
-      badgeClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
-    } else if (badgeText.includes("تشخيصي") || badgeText.includes("Dx")) {
-      badgeClass = "bg-blue-500/10 text-blue-400 border-blue-500/20";
-    } else if (badgeText.includes("سريري") || badgeText.includes("Sx")) {
-      badgeClass = "bg-rose-500/10 text-rose-400 border-rose-500/20";
-    } else if (badgeText.includes("مسببات") || badgeText.includes("Etiology")) {
-      badgeClass = "bg-indigo-500/10 text-indigo-400 border-indigo-500/20";
-    } else if (badgeText.includes("تشريحي") || badgeText.includes("Anatomy")) {
-      badgeClass = "bg-amber-500/10 text-amber-400 border-amber-500/20";
-    } else if (badgeText.includes("أكاديمي") || badgeText.includes("Classification")) {
-      badgeClass = "bg-sky-500/10 text-sky-400 border-sky-500/20";
-    } else if (badgeText.includes("ملاحظة") || badgeText.includes("Pearl")) {
-      badgeClass = "bg-zinc-500/10 text-zinc-400 border-zinc-500/20";
-    }
-
-    return (
-      <div className="flex flex-col gap-1 w-full text-left">
-        <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase border tracking-tight w-fit ${badgeClass}`}>
-          <span>{emoji}</span>
-          <span>{badgeText}</span>
-        </span>
-        <span className={`${size === 'xs' ? 'text-[11px] text-zinc-300' : 'text-sm text-zinc-100'} font-medium leading-relaxed`}>{rest}</span>
-      </div>
-    );
-  }
-  
-  return <span className={`${size === 'xs' ? 'text-[11px] text-zinc-300' : 'text-sm text-zinc-100'} leading-relaxed text-left block`}>{clue}</span>;
+/* Category metadata for clue chips: icon + colors + bilingual label */
+const CLUE_META: Record<string, { icon: React.FC<{ size?: number; className?: string }>; chip: string; ar: string; en: string }> = {
+  Rx:             { icon: Pill,          chip: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/25', ar: 'علاجي',  en: 'Treatment' },
+  Dx:             { icon: Stethoscope,   chip: 'bg-sky-500/10 text-sky-300 border-sky-500/25',             ar: 'تشخيصي', en: 'Diagnosis' },
+  Sx:             { icon: Activity,      chip: 'bg-rose-500/10 text-rose-300 border-rose-500/25',          ar: 'أعراض',  en: 'Symptoms' },
+  Etiology:       { icon: Bug,           chip: 'bg-lilac/10 text-lilac border-lilac/30',                   ar: 'المسبب', en: 'Etiology' },
+  Anatomy:        { icon: Bone,          chip: 'bg-gold/10 text-gold border-gold/30',                      ar: 'تشريحي', en: 'Anatomy' },
+  Classification: { icon: GraduationCap, chip: 'bg-pop/10 text-pop border-pop/30',                         ar: 'تصنيف',  en: 'Category' },
+  Pearl:          { icon: Lightbulb,     chip: 'bg-mint/10 text-mint border-mint/30',                      ar: 'خلاصة',  en: 'Pearl' },
 };
+
+const renderClueText = (clue: string, size: 'sm' | 'xs' = 'sm', lang: 'Arabic' | 'English' = 'English') => {
+  // Clues arrive tagged as "[Rx] text..." from getCluesForWord
+  const match = clue.match(/^\[(Rx|Dx|Sx|Etiology|Anatomy|Classification|Pearl)\]\s*([\s\S]*)$/);
+  const cat = match ? match[1] : 'Pearl';
+  const text = match ? match[2] : clue;
+  const meta = CLUE_META[cat] || CLUE_META.Pearl;
+  const Icon = meta.icon;
+
+  return (
+    <div className="flex items-start gap-2.5 w-full">
+      <span className={`inline-flex items-center gap-1 px-2 h-[22px] rounded-full border text-[0.8125rem] font-display font-bold shrink-0 ${meta.chip}`}>
+        <Icon size={11} />
+        {lang === 'Arabic' ? meta.ar : meta.en}
+      </span>
+      <p className={`flex-1 font-semibold text-white/85 leading-relaxed ${size === 'xs' ? 'text-[0.84375rem]' : 'text-[0.9375rem]'}`}>
+        {text}
+      </p>
+    </div>
+  );
+};
+
+export interface StageMeta {
+  stage: 1 | 2 | 3 | 4 | 5;
+  titleAr: string;
+  titleEn: string;
+  descAr: string;
+  descEn: string;
+  shortAr: string;
+  shortEn: string;
+  icon: React.FC<{ size?: number; className?: string }>;
+  tone: string;
+  glow: string;
+}
+
+export const STAGE_META: StageMeta[] = [
+  {
+    stage: 1,
+    titleAr: 'المرحلة ١: التصنيف الطبي الشامل',
+    titleEn: 'Stage 1: Macro Classification',
+    descAr: 'حصر الكيان الطبي العام: مرض، عضو، دواء، ميكروب، أم أداة؟',
+    descEn: 'Identify entity: Disease, Organ, Drug, Pathogen, Tool?',
+    shortAr: 'التصنيف',
+    shortEn: 'Macro',
+    icon: GraduationCap,
+    tone: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
+    glow: 'shadow-[0_0_15px_rgba(245,158,11,0.25)]'
+  },
+  {
+    stage: 2,
+    titleAr: 'المرحلة ٢: المنظومة والجهاز العضوي',
+    titleEn: 'Stage 2: Organ System / Class',
+    descAr: 'تحديد الجهاز المصاب (قلب، هضم، تنفس، أعصاب...) أو الفئة العلاجية',
+    descEn: 'Target system: CVS, GIT, Resp, CNS, or Drug Class',
+    shortAr: 'الجهاز',
+    shortEn: 'System',
+    icon: HeartPulse,
+    tone: 'text-sky-400 bg-sky-500/10 border-sky-500/30',
+    glow: 'shadow-[0_0_15px_rgba(56,189,248,0.25)]'
+  },
+  {
+    stage: 3,
+    titleAr: 'المرحلة ٣: الطبيعة والآلية الإمراضية',
+    titleEn: 'Stage 3: Pathogenesis & Nature',
+    descAr: 'السبب المرضي (التهابي، ورمي، مناعي...) أو طبيعة التركيب أو آلية العمل الدوائي',
+    descEn: 'Etiology: Inflammatory, Tumor, Autoimmune, Structure, or MOA',
+    shortAr: 'الآلية',
+    shortEn: 'Pathology',
+    icon: Activity,
+    tone: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
+    glow: 'shadow-[0_0_15px_rgba(168,85,247,0.25)]'
+  },
+  {
+    stage: 4,
+    titleAr: 'المرحلة ٤: الأعراض السريرية والوظائف',
+    titleEn: 'Stage 4: Cardinal Signs & Functions',
+    descAr: 'الأعراض الكاردينال الجوهرية، مسار الحالة، أو الوظائف الحيوية',
+    descEn: 'Cardinal symptoms, clinical course, or vital functions',
+    shortAr: 'الأعراض',
+    shortEn: 'Symptoms',
+    icon: Stethoscope,
+    tone: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
+    glow: 'shadow-[0_0_15px_rgba(244,63,94,0.25)]'
+  },
+  {
+    stage: 5,
+    titleAr: 'المرحلة ٥: التشخيص الذهبي والتدبير',
+    titleEn: 'Stage 5: Gold Standard Dx & Management',
+    descAr: 'الفحص التأكيدي الحاسم (خزعة، أشعة، تحليل نوعي) أو التدبير العلاجي الجذري',
+    descEn: 'Gold standard confirmation: Biopsy, CT/MRI, Surgery, Definitive Rx',
+    shortAr: 'التشخيص',
+    shortEn: 'Gold Dx',
+    icon: Award,
+    tone: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+    glow: 'shadow-[0_0_15px_rgba(16,185,129,0.25)]'
+  }
+];
 
 interface CategoryQuestion {
   id: string;
@@ -512,56 +623,56 @@ interface CategoryQuestion {
 
 const categoryQuestionsList: CategoryQuestion[] = [
   {
-    id: 'disease',
-    ar: 'هل هذا المصطلح مرض؟',
-    en: 'Is this term a disease?',
-    types: ['Disease', 'Syndrome']
+    id:'disease',
+    ar:'هل هذا المصطلح مرض؟',
+    en:'Is this term a disease?',
+    types: ['Disease','Syndrome']
   },
   {
-    id: 'drug',
-    ar: 'هل هذا المصطلح دواء؟',
-    en: 'Is this term a drug?',
+    id:'drug',
+    ar:'هل هذا المصطلح دواء؟',
+    en:'Is this term a drug?',
     types: ['Pharma']
   },
   {
-    id: 'organ',
-    ar: 'هل هذا المصطلح عضو بشري؟',
-    en: 'Is this term a human organ?',
-    types: ['Organ', 'Tissue', 'Cell', 'Component']
+    id:'organ',
+    ar:'هل هذا المصطلح عضو بشري؟',
+    en:'Is this term a human organ?',
+    types: ['Organ','Tissue','Cell','Component']
   },
   {
-    id: 'bacteria',
-    ar: 'هل هذا المصطلح بكتيريا؟',
-    en: 'Is this term a bacterium?',
+    id:'bacteria',
+    ar:'هل هذا المصطلح بكتيريا؟',
+    en:'Is this term a bacterium?',
     types: []
   },
   {
-    id: 'equipment',
-    ar: 'هل هذا المصطلح جهاز؟',
-    en: 'Is this term a device/equipment?',
-    types: ['Equipment', 'Technique']
+    id:'equipment',
+    ar:'هل هذا المصطلح جهاز؟',
+    en:'Is this term a device/equipment?',
+    types: ['Equipment','Technique']
   },
   {
-    id: 'parasite',
-    ar: 'هل هذا المصطلح طفيلي؟',
-    en: 'Is this term a parasite?',
+    id:'parasite',
+    ar:'هل هذا المصطلح طفيلي؟',
+    en:'Is this term a parasite?',
     types: ['Parasite']
   }
 ];
 
 const getDynamicQuestions = (secretWord: MedicalWord | null) => {
   const baseQuestions = [
-    { ar: "هل يندرج هذا المرض/المصطلح تحت تخصص الباطنة؟", en: "Is this condition studied under Internal Medicine?" },
-    { ar: "في أي جهاز (Organ System) يقع أو يؤثر هذا العضو/المصطلح؟", en: "Which organ system does this involve or affect?" },
-    { ar: "هل يعتبر هذا المرض مناعياً تلقائياً (Autoimmune)؟", en: "Is this an autoimmune condition?" },
-    { ar: "هل هذا الشيء يؤثر بشكل مباشر على الوجه أو المظهر الخارجي؟", en: "Does it affect the face or look directly?" },
-    { ar: "هل هو متلازمة (Syndrome) أم مرض حاد؟", en: "Is it a custom syndrome or an acute disease?" },
-    { ar: "هل يفرز هذا العضو أو يعالج هرمونات معينة؟", en: "Does this organ secrete or process specific hormones?" },
-    { ar: "هل يستدعي هذا المرض تدخلاً جراحياً عاجلاً؟", en: "Does this disease require immediate surgical intervention?" },
-    { ar: "هل يتم تشخيصه عادةً عن طريق الأشعة أم التحاليل المخبرية؟", en: "Is it usually diagnosed via imaging or lab tests?" },
-    { ar: "هل هذا الشيء مجهري ولا يُرى بالعين المجردة؟", en: "Is this entity microscopic and invisible to the naked eye?" },
-    { ar: "هل يرتبط هذا المصطلح بأعراض عصبية أو حركية؟", en: "Is this term associated with neurological or motor symptoms?" },
-    { ar: "هل يتطلب علاج هذا المصطلح أسلوب حياة خاص أو حمية غذائية معينة؟", en: "Does treating this require a specific lifestyle or diet?" }
+    { ar:"هل يندرج هذا المرض/المصطلح تحت تخصص الباطنة؟", en:"Is this condition studied under Internal Medicine?" },
+    { ar:"في أي جهاز (Organ System) يقع أو يؤثر هذا العضو/المصطلح؟", en:"Which organ system does this involve or affect?" },
+    { ar:"هل يعتبر هذا المرض مناعياً تلقائياً (Autoimmune)؟", en:"Is this an autoimmune condition?" },
+    { ar:"هل هذا الشيء يؤثر بشكل مباشر على الوجه أو المظهر الخارجي؟", en:"Does it affect the face or look directly?" },
+    { ar:"هل هو متلازمة (Syndrome) أم مرض حاد؟", en:"Is it a custom syndrome or an acute disease?" },
+    { ar:"هل يفرز هذا العضو أو يعالج هرمونات معينة؟", en:"Does this organ secrete or process specific hormones?" },
+    { ar:"هل يستدعي هذا المرض تدخلاً جراحياً عاجلاً؟", en:"Does this disease require immediate surgical intervention?" },
+    { ar:"هل يتم تشخيصه عادةً عن طريق الأشعة أم التحاليل المخبرية؟", en:"Is it usually diagnosed via imaging or lab tests?" },
+    { ar:"هل هذا الشيء مجهري ولا يُرى بالعين المجردة؟", en:"Is this entity microscopic and invisible to the naked eye?" },
+    { ar:"هل يرتبط هذا المصطلح بأعراض عصبية أو حركية؟", en:"Is this term associated with neurological or motor symptoms?" },
+    { ar:"هل يتطلب علاج هذا المصطلح أسلوب حياة خاص أو حمية غذائية معينة؟", en:"Does treating this require a specific lifestyle or diet?" }
   ];
 
   let selectedCategories: { ar: string; en: string }[] = [];
@@ -578,7 +689,7 @@ const getDynamicQuestions = (secretWord: MedicalWord | null) => {
     const incorrectCategories = categoryQuestionsList.filter(cat => {
       if (trueCategory && cat.id === trueCategory.id) return false;
       // Also if the word is actually a parasite, exclude bacteria too as they are closely related micro-organisms
-      if (secretWord.type === 'Parasite' && cat.id === 'bacteria') return false;
+      if (secretWord.type ==='Parasite' && cat.id ==='bacteria') return false;
       return true;
     });
 
@@ -593,10 +704,179 @@ const getDynamicQuestions = (secretWord: MedicalWord | null) => {
   return combined.sort(() => 0.5 - Math.random());
 };
 
-export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack, appUser, onLogin, onPhaseChange }) => {
+export interface MedicalRank {
+  titleAr: string;
+  titleEn: string;
+  icon: string;
+  badgeTone: 'pop' | 'gold' | 'mint' | 'sky' | 'default';
+  color: string;
+  level: number;
+}
+
+export function getMedicalRank(streak: number): MedicalRank {
+  if (streak >= 7) {
+    return {
+      titleAr: 'د. هاوس الأسطوري',
+      titleEn: 'Dr. House Legend',
+      icon: '👑',
+      badgeTone: 'pop',
+      color: 'text-pop',
+      level: 5
+    };
+  }
+  if (streak >= 5) {
+    return {
+      titleAr: 'استشاري أول',
+      titleEn: 'Senior Consultant',
+      icon: '🎖️',
+      badgeTone: 'gold',
+      color: 'text-gold',
+      level: 4
+    };
+  }
+  if (streak >= 3) {
+    return {
+      titleAr: 'أخصائي تشخيص',
+      titleEn: 'Diagnostic Specialist',
+      icon: '🔬',
+      badgeTone: 'mint',
+      color: 'text-mint',
+      level: 3
+    };
+  }
+  if (streak >= 1) {
+    return {
+      titleAr: 'طبيب مقيم',
+      titleEn: 'Resident Physician',
+      icon: '📋',
+      badgeTone: 'sky',
+      color: 'text-sky-400',
+      level: 2
+    };
+  }
+  return {
+    titleAr: 'طبيب امتياز',
+    titleEn: 'Medical Intern',
+    icon: '🩺',
+    badgeTone: 'default',
+    color: 'text-white/70',
+    level: 1
+  };
+}
+
+export function getStreakMultiplier(streak: number): number {
+  if (streak >= 7) return 2.0;
+  if (streak >= 5) return 1.75;
+  if (streak >= 3) return 1.5;
+  if (streak >= 2) return 1.25;
+  return 1.0;
+}
+
+export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack, appUser, onLogin, onPhaseChange, onUpdateScore, onShowHelp, initialRoomCode, initialAction, gameModeLock, overlayOpen = false }) => {
   const [phase, setPhase] = useState<GamePhase>('ENTRY');
+  const [notice, setNotice] = useState('');
+  const [showSoloLifelines, setShowSoloLifelines] = useState(false);
+  const [offlineHandoff, setOfflineHandoff] = useState<{ id: string; name: string } | null>(null);
+  const [pageHidden, setPageHidden] = useState(document.hidden);
+  const [roundDelta, setRoundDelta] = useState(0);
+  const [roundReason, setRoundReason] = useState<'correct' | 'miss' | 'timeout' | 'giveup'>('miss');
+  const [leaderboardError, setLeaderboardError] = useState(false);
+  const [roomsError, setRoomsError] = useState(false);
+  const [onlineVoteSaving, setOnlineVoteSaving] = useState(false);
+  useEffect(() => { setLanguageState(language); }, [language]);
+  useEffect(() => {
+    const update = () => setPageHidden(document.hidden);
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+
+  const initialActionHandled = useRef(false);
+  const inspectTriggerRef = useRef<HTMLButtonElement>(null);
+  const inspectCloseRef = useRef<HTMLButtonElement>(null);
   const [playerCount, setPlayerCount] = useState<number>(1);
   const [languageState, setLanguageState] = useState<Language>(language);
+
+  // Campaign Levels & Leaderboards
+  const [singlePlayerLevel, setSinglePlayerLevel] = useState<number>(1);
+  const [singleGuessSuccess, setSingleGuessSuccess] = useState<boolean | null>(null);
+
+  const [globalLeaderboard, setGlobalLeaderboard] = useState<any[]>([]);
+  const [localLeaderboard, setLocalLeaderboard] = useState<any[]>([]);
+  const [loadingLeaderboard, setLoadingLeaderboard] = useState(false);
+  const [activeLeaderboardTab, setActiveLeaderboardTab] = useState<'global' |'local'>('global');
+  const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
+
+  // Visual Mystery Challenge States
+  const [visualPool, setVisualPool] = useState<MedicalWord[]>([]);
+  const [visualCurrentIdx, setVisualCurrentIdx] = useState<number>(0);
+  const [visualScore, setVisualScore] = useState<number>(0);
+  const [visualStreak, setVisualStreak] = useState<number>(0);
+  const [visualCluesUnlocked, setVisualCluesUnlocked] = useState<number>(0);
+  const [visualOptions, setVisualOptions] = useState<MedicalWord[]>([]);
+  const [visualSelectedIdx, setVisualSelectedIdx] = useState<number | null>(null);
+  const [visualAnswered, setVisualAnswered] = useState<boolean>(false);
+  const [visualIsInspecting, setVisualIsInspecting] = useState<boolean>(false);
+  const [visualGameFinished, setVisualGameFinished] = useState<boolean>(false);
+
+  // Sponsored Ad Network states
+  const [activeAd, setActiveAd] = useState<AdCampaign | null>(null);
+  const [adModalOpen, setAdModalOpen] = useState<boolean>(false);
+  const [adHeaderTitle, setAdHeaderTitle] = useState<string>('إعلان الراعي الطبي');
+  const [adSkipButtonText, setAdSkipButtonText] = useState<string>('تخطي');
+  const [wordRevealedAfterAd, setWordRevealedAfterAd] = useState<boolean>(false);
+  const [showIntegrityReport, setShowIntegrityReport] = useState<boolean>(false);
+  const adTriggeredRoundRef = useRef<string | null>(null);
+  const prevPhaseForAdRef = useRef<GamePhase>(phase);
+
+  // 1. Pre-Round Sponsor Ad ("قبل كل جولة في ظهور لصورة إعلان")
+  const triggerPreRoundAd = () => {
+    const candidateAd = getRandomAdForPlacement('pre_round');
+    if (candidateAd) {
+      setActiveAd(candidateAd);
+      setAdHeaderTitle(languageState === 'Arabic' ? 'الجولة برعاية' : 'Round Sponsored By');
+      setAdSkipButtonText(languageState === 'Arabic' ? 'بدء الجولة ➔' : 'Start Round ➔');
+      setAdModalOpen(true);
+    }
+  };
+
+  // 2. Secret Word Climax Ad (Prior to revealing the secret diagnosis)
+  const triggerPreRevealWordAd = (triggerKey: string) => {
+    if (adTriggeredRoundRef.current === triggerKey) return;
+    adTriggeredRoundRef.current = triggerKey;
+    setWordRevealedAfterAd(false);
+
+    const candidateAd = getRandomAdForPlacement('pre_reveal');
+    if (candidateAd) {
+      setActiveAd(candidateAd);
+      setAdHeaderTitle(languageState === 'Arabic' ? 'كشف الكلمة السرية برعاية' : 'Secret Word Sponsored By');
+      setAdSkipButtonText(languageState === 'Arabic' ? 'كشف الكلمة السرية ➔' : 'Reveal Secret Word ➔');
+      setAdModalOpen(true);
+    } else {
+      setWordRevealedAfterAd(true);
+    }
+  };
+
+  const maybeTriggerPostGameAd = (triggerKey: string) => {
+    triggerPreRevealWordAd(triggerKey);
+  };
+
+  // Phase transition detector for automatic Pre-Round & Pre-Reveal Ads
+  useEffect(() => {
+    const isStartingRound = (
+      (phase === 'SINGLE_PLAYING' && prevPhaseForAdRef.current !== 'SINGLE_PLAYING') ||
+      (phase === 'VISUAL_PLAYING' && prevPhaseForAdRef.current !== 'VISUAL_PLAYING') ||
+      (phase === 'ROLES_REVEAL' && prevPhaseForAdRef.current !== 'ROLES_REVEAL')
+    );
+    if (isStartingRound) {
+      triggerPreRoundAd();
+    }
+
+    if (phase === 'ROUND_RESULT' && prevPhaseForAdRef.current !== 'ROUND_RESULT') {
+      triggerPreRevealWordAd(`round_${Date.now()}`);
+    }
+
+    prevPhaseForAdRef.current = phase;
+  }, [phase]);
 
   useEffect(() => {
     if (onPhaseChange) {
@@ -605,48 +885,96 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   }, [phase, onPhaseChange]);
 
   const clinicalSpecialties = [
-    { id: 'Internal Medicine', nameEn: 'Internal Medicine', nameAr: 'الباطنية العامة' },
-    { id: 'Cardiology', nameEn: 'Cardiology', nameAr: 'أمراض القلب' },
-    { id: 'Neurology', nameEn: 'Neurology', nameAr: 'أمراض الأعصاب' },
-    { id: 'Pediatrics', nameEn: 'Pediatrics', nameAr: 'طب الأطفال' },
-    { id: 'General Surgery', nameEn: 'General Surgery', nameAr: 'الجراحة العامة' },
-    { id: 'Pharmacology', nameEn: 'Pharmacology', nameAr: 'علم الأدوية' },
-    { id: 'Emergency Medicine', nameEn: 'Emergency Medicine', nameAr: 'طب الطوارئ' },
-    { id: 'Infectious Diseases', nameEn: 'Infectious Diseases', nameAr: 'الأمراض المعدية' },
-    { id: 'Oncology', nameEn: 'Oncology', nameAr: 'الأورام' },
-    { id: 'Hematology', nameEn: 'Hematology', nameAr: 'أمراض الدم' },
-    { id: 'Gastroenterology', nameEn: 'Gastroenterology', nameAr: 'الجهاز الهضمي' },
-    { id: 'Pulmonology', nameEn: 'Pulmonology', nameAr: 'الأمراض الصدرية' },
-    { id: 'Endocrinology', nameEn: 'Endocrinology', nameAr: 'الغدد الصماء' },
-    { id: 'Rheumatology', nameEn: 'Rheumatology', nameAr: 'الروماتيزم' },
-    { id: 'Dermatology', nameEn: 'Dermatology', nameAr: 'الجلدية' },
-    { id: 'Obstetrics and Gynecology', nameEn: 'Obstetrics and Gynecology', nameAr: 'النساء والتوليد' },
-    { id: 'Urology', nameEn: 'Urology', nameAr: 'المسالك البولية' },
-    { id: 'Psychiatry', nameEn: 'Psychiatry', nameAr: 'الطب النفسي' },
-    { id: 'Ophthalmology', nameEn: 'Ophthalmology', nameAr: 'الرمد والعيون' },
-    { id: 'Orthopedics', nameEn: 'Orthopedics', nameAr: 'العظام' },
-    { id: 'Anaesthesia', nameEn: 'Anaesthesia', nameAr: 'التخدير' },
-    { id: 'Vascular Surgery', nameEn: 'Vascular Surgery', nameAr: 'جراحة الأوعية الدموية' }
+    { id:'Radiology', nameEn:'Radiology', nameAr:'الأشعة والتصوير الطبي' },
+    { id:'Internal Medicine', nameEn:'Internal Medicine', nameAr:'الباطنية العامة' },
+    { id:'Cardiology', nameEn:'Cardiology', nameAr:'أمراض القلب' },
+    { id:'Neurology', nameEn:'Neurology', nameAr:'أمراض الأعصاب' },
+    { id:'Pediatrics', nameEn:'Pediatrics', nameAr:'طب الأطفال' },
+    { id:'General Surgery', nameEn:'General Surgery', nameAr:'الجراحة العامة' },
+    { id:'Pharmacology', nameEn:'Pharmacology', nameAr:'علم الأدوية' },
+    { id:'Emergency Medicine', nameEn:'Emergency Medicine', nameAr:'طب الطوارئ' },
+    { id:'Infectious Diseases', nameEn:'Infectious Diseases', nameAr:'الأمراض المعدية' },
+    { id:'Oncology', nameEn:'Oncology', nameAr:'الأورام' },
+    { id:'Hematology', nameEn:'Hematology', nameAr:'أمراض الدم' },
+    { id:'Gastroenterology', nameEn:'Gastroenterology', nameAr:'الجهاز الهضمي' },
+    { id:'Pulmonology', nameEn:'Pulmonology', nameAr:'الأمراض الصدرية' },
+    { id:'Endocrinology', nameEn:'Endocrinology', nameAr:'الغدد الصماء' },
+    { id:'Rheumatology', nameEn:'Rheumatology', nameAr:'الروماتيزم' },
+    { id:'Dermatology', nameEn:'Dermatology', nameAr:'الجلدية' },
+    { id:'Obstetrics and Gynecology', nameEn:'Obstetrics and Gynecology', nameAr:'النساء والتوليد' },
+    { id:'Urology', nameEn:'Urology', nameAr:'المسالك البولية' },
+    { id:'Psychiatry', nameEn:'Psychiatry', nameAr:'الطب النفسي' },
+    { id:'Ophthalmology', nameEn:'Ophthalmology', nameAr:'الرمد والعيون' },
+    { id:'Orthopedics', nameEn:'Orthopedics', nameAr:'العظام' },
+    { id:'Anaesthesia', nameEn:'Anaesthesia', nameAr:'التخدير' },
+    { id:'Vascular Surgery', nameEn:'Vascular Surgery', nameAr:'جراحة الأوعية الدموية' },
+    { id:'Clinical Toxicology', nameEn:'Clinical Toxicology', nameAr:'علم السموم الإكلينيكي' }
   ];
 
   const academicSpecialties = [
-    { id: 'Anatomy', nameEn: 'Anatomy', nameAr: 'التشريح' },
-    { id: 'Physiology', nameEn: 'Physiology', nameAr: 'علم وظائف الأعضاء' },
-    { id: 'Biochemistry', nameEn: 'Biochemistry', nameAr: 'الكيمياء الحيوية' },
-    { id: 'Histology', nameEn: 'Histology', nameAr: 'علم الأنسجة' },
-    { id: 'Microbiology', nameEn: 'Microbiology', nameAr: 'علم الأحياء الدقيقة' },
-    { id: 'Parasitology', nameEn: 'Parasitology', nameAr: 'علم الطفيليات' },
-    { id: 'Genetics', nameEn: 'Genetics', nameAr: 'علم الوراثة' },
-    { id: 'Immunology', nameEn: 'Immunology', nameAr: 'علم المناعة' },
-    { id: 'Pathology', nameEn: 'Pathology', nameAr: 'علم الأمراض' }
+    { id:'Anatomy', nameEn:'Anatomy', nameAr:'التشريح' },
+    { id:'Physiology', nameEn:'Physiology', nameAr:'علم وظائف الأعضاء' },
+    { id:'Biochemistry', nameEn:'Biochemistry', nameAr:'الكيمياء الحيوية' },
+    { id:'Histology', nameEn:'Histology', nameAr:'علم الأنسجة' },
+    { id:'Microbiology', nameEn:'Microbiology', nameAr:'علم الأحياء الدقيقة' },
+    { id:'Parasitology', nameEn:'Parasitology', nameAr:'علم الطفيليات' },
+    { id:'Genetics', nameEn:'Genetics', nameAr:'علم الوراثة' },
+    { id:'Immunology', nameEn:'Immunology', nameAr:'علم المناعة' },
+    { id:'Pathology', nameEn:'Pathology', nameAr:'علم الأمراض' },
+    { id:'Forensic Medicine', nameEn:'Forensic Medicine', nameAr:'الطب الشرعي' }
   ];
 
   // 1 Player (Single Player) State
   const [singleName, setSingleName] = useState('');
   const [singleSpecialty, setSingleSpecialty] = useState('All');
   const [singleDifficulty, setSingleDifficulty] = useState('All');
+
+  // ===== Missed-case bank (from-your-mistakes review mode) =====
+  // Diagnoses the player got wrong (wrong pick / timeout / gave up), stored
+  // as wordId -> miss count in localStorage. Correctly diagnosing a case in
+  // review removes it from the bank, closing the learning loop.
+  const [missedCases, setMissedCases] = useState<Record<string, number>>({});
+  const [reviewFromMistakes, setReviewFromMistakes] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(MISSED_CASES_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') setMissedCases(parsed);
+      }
+    } catch {}
+  }, []);
+
+  const recordMissedCase = (wordId: string) => {
+    setMissedCases(prev => {
+      const next = { ...prev, [wordId]: (prev[wordId] || 0) + 1 };
+      try { localStorage.setItem(MISSED_CASES_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  const resolveMissedCase = (wordId: string) => {
+    setMissedCases(prev => {
+      if (!(wordId in prev)) return prev;
+      const next = { ...prev };
+      delete next[wordId];
+      try { localStorage.setItem(MISSED_CASES_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  const clearMissedBank = () => {
+    setMissedCases({});
+    setReviewFromMistakes(false);
+    try { localStorage.removeItem(MISSED_CASES_KEY); } catch {}
+  };
+
+  const missedCaseCount = Object.keys(missedCases).length;
   const [singleGuessingDifficulty, setSingleGuessingDifficulty] = useState('All');
   const [singleWord, setSingleWord] = useState<MedicalWord | null>(null);
+  const [singleOptions, setSingleOptions] = useState<MedicalWord[]>([]);
+  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [unlockedHints, setUnlockedHints] = useState<number>(1);
   const [unlockedHintsMulti, setUnlockedHintsMulti] = useState<number>(5);
   const [singleGuess, setSingleGuess] = useState('');
@@ -654,32 +982,63 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const [singleGameEnded, setSingleGameEnded] = useState(false);
   const [singleGameOverMsg, setSingleGameOverMsg] = useState('');
 
+  // Feature 1: Emergency Timer State
+  const [singleTimerEnabled, setSingleTimerEnabled] = useState<boolean>(true);
+  const [timeLeft, setTimeLeft] = useState<number>(45);
+  const [speedBonusEarned, setSpeedBonusEarned] = useState<boolean>(false);
+
+  // Feature 2: Diagnostic Streaks & Ranks
+  const [singleStreak, setSingleStreak] = useState<number>(0);
+  const [highestStreak, setHighestStreak] = useState<number>(0);
+
+  // Feature 3: Clinical Lifelines (50:50 and Consultant Hint)
+  const [usedFiftyFifty, setUsedFiftyFifty] = useState<boolean>(false);
+  const [usedConsultantHint, setUsedConsultantHint] = useState<boolean>(false);
+  const [eliminatedOptionIds, setEliminatedOptionIds] = useState<string[]>([]);
+
+  // Feature 4: Case Debrief Flashcard Modal
+  const [showFlashcardModal, setShowFlashcardModal] = useState<boolean>(false);
+  const [showSoloAdvancedOptions, setShowSoloAdvancedOptions] = useState<boolean>(false);
+
   // Advanced Category Filter States
   const [singleAdvancedFilter, setSingleAdvancedFilter] = useState<AdvancedFilterState>({
     enabled: false,
     subjects: [],
     moduleFilterEnabled: false,
-    selectedModule: 'GIT',
+    selectedModule:'GIT',
     subjectModules: {}
   });
   const [multiAdvancedFilter, setMultiAdvancedFilter] = useState<AdvancedFilterState>({
     enabled: false,
     subjects: [],
     moduleFilterEnabled: false,
-    selectedModule: 'GIT',
+    selectedModule:'GIT',
     subjectModules: {}
   });
   const [isAdvancedModalOpen, setIsAdvancedModalOpen] = useState(false);
-  const [editingFilterType, setEditingFilterType] = useState<'single' | 'multi' | null>(null);
+  const [editingFilterType, setEditingFilterType] = useState<'single' |'multi' | null>(null);
   const [tempAdvancedFilter, setTempAdvancedFilter] = useState<AdvancedFilterState>({
     enabled: false,
     subjects: [],
     moduleFilterEnabled: false,
-    selectedModule: 'GIT',
+    selectedModule:'GIT',
     subjectModules: {}
   });
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [showOnlineModeHelp, setShowOnlineModeHelp] = useState(false);
+
+  // Specialty picker sheet + tiny i18n helper for the redesigned UI
+  const [specSheet, setSpecSheet] = useState<null |'single' |'multi'>(null);
+  const [specSearch, setSpecSearch] = useState('');
+  const t = (arText: string, enText: string) => languageState ==='Arabic' ? arText : enText;
+  const arLangBool = languageState ==='Arabic';
+
+  const specialtyLabel = (id: string, lang: Language): string => {
+    if (id ==='All') return lang ==='Arabic' ?'كل التخصصات' :'All specialties';
+    const all = [...clinicalSpecialties, ...academicSpecialties];
+    const found = all.find(s => s.id === id);
+    return found ? (lang ==='Arabic' ? found.nameAr : found.nameEn) : id;
+  };
 
   // 2+ Players Shared Options
   const [isOnline, setIsOnline] = useState(false); // Online vs Offline
@@ -689,8 +1048,13 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const [multiSpecialty, setMultiSpecialty] = useState('All');
   const [multiDifficulty, setMultiDifficulty] = useState('All');
   const [multiGuessingDifficulty, setMultiGuessingDifficulty] = useState('All');
+  const [multiImageOnlyMode, setMultiImageOnlyMode] = useState<boolean>(false);
   const [imposterCount, setImposterCount] = useState(1);
-  const [imposterRevealsMode, setImposterRevealsMode] = useState<'IMPOSTER' | 'RELATED_WORD'>('RELATED_WORD');
+  const [imposterRevealsMode, setImposterRevealsMode] = useState<'IMPOSTER' |'RELATED_WORD'>('RELATED_WORD');
+  const [onlineMaxPlayers, setOnlineMaxPlayers] = useState<number>(4);
+  const [publicRooms, setPublicRooms] = useState<any[]>([]);
+  const [loadingPublicRooms, setLoadingPublicRooms] = useState<boolean>(false);
+  const [copyLinkSuccess, setCopyLinkSuccess] = useState<boolean>(false);
 
   // Offline Multi list
   const [offlinePlayerNames, setOfflinePlayerNames] = useState<string[]>([]);
@@ -698,6 +1062,10 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
   // Active Gameplay lists
   const [activePlayers, setActivePlayers] = useState<Player[]>([]);
+  const roundStartScores = useRef<Record<string, number>>({});
+  useEffect(() => {
+    if (phase === 'ROLES_REVEAL') roundStartScores.current = Object.fromEntries(activePlayers.map(p => [p.id, p.score]));
+  }, [phase, activePlayers]);
   const [secretWord, setSecretWord] = useState<MedicalWord | null>(null);
   const [imposterAssignedWord, setImposterAssignedWord] = useState<MedicalWord | null>(null); // Closes related word if applicable
 
@@ -717,17 +1085,54 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const [localPlayerId, setLocalPlayerId] = useState<string>('');
   const [onlineActionLoading, setOnlineActionLoading] = useState<boolean>(false);
   const [copySuccess, setCopySuccess] = useState<boolean>(false);
+  const roomUnsubscribeRef = useRef<(() => void) | null>(null);
+
+  // Clean up Firestore real-time listener when component unmounts to prevent memory leaks and UI freezes
+  useEffect(() => {
+    return () => {
+      if (roomUnsubscribeRef.current) {
+        roomUnsubscribeRef.current();
+        roomUnsubscribeRef.current = null;
+      }
+    };
+  }, []);
+
+  // Synchronize dynamic global game settings from Firestore in real-time (Remote Config)
+  useEffect(() => {
+    const unsub = onSnapshot(doc(db, 'settings', 'gameConfig'), (snap) => {
+      if (snap.exists()) {
+        const cfg = snap.data();
+        if (typeof cfg.turnTimeLimit === 'number' && cfg.turnTimeLimit > 0) {
+          setQuestionTimeLimit(cfg.turnTimeLimit);
+        }
+        if (typeof cfg.questionsPerPlayer === 'number' && cfg.questionsPerPlayer > 0) {
+          setQuestionsPerPlayer(cfg.questionsPerPlayer);
+        }
+      }
+    }, (err) => {
+      console.warn("Global game settings fallback to defaults:", err);
+    });
+    return () => unsub();
+  }, []);
 
   // Modal / Toggles
   const [showQuestionExamples, setShowQuestionExamples] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // Custom Local Voting and Questioning States
+  const [questionsPerPlayer, setQuestionsPerPlayer] = useState<number>(1);
+  const [questionTimeLimit, setQuestionTimeLimit] = useState<number>(45);
+  const [currentCycleIdx, setCurrentCycleIdx] = useState<number>(0);
+  const [turnTimeRemaining, setTurnTimeRemaining] = useState<number>(45);
+  const [showAllQuestionsList, setShowAllQuestionsList] = useState<boolean>(false);
   const [questioningCycle, setQuestioningCycle] = useState<{
     askerId: string;
     askerName: string;
+    askerAvatarId?: number;
     targetId: string;
     targetName: string;
+    targetAvatarId?: number;
+    roundNum?: number;
     completed: boolean;
   }[]>([]);
   const [localVotingVotes, setLocalVotingVotes] = useState<Record<string, string[]>>({});
@@ -736,6 +1141,53 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const [isLocalVotingActive, setIsLocalVotingActive] = useState<boolean>(false);
   const [showLocalVoterTargetSelection, setShowLocalVoterTargetSelection] = useState<boolean>(false);
   const [votedSuspectIds, setVotedSuspectIds] = useState<string[]>([]);
+
+  // 5-Stage Clinical Inquiry States (Online & Offline)
+  const [showFinalGuessBox, setShowFinalGuessBox] = useState<boolean>(false);
+  const [showInquiryHistory, setShowInquiryHistory] = useState<boolean>(false);
+  const [selectedInterrogateDoctorId, setSelectedInterrogateDoctorId] = useState<string | null>(null);
+  const [groupInquiryStageTab, setGroupInquiryStageTab] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [showGroupInquirySheet, setShowGroupInquirySheet] = useState<boolean>(false);
+
+  // Offline 2-Player Inquiry States
+  const [offlineInquiryStage, setOfflineInquiryStage] = useState<1 | 2 | 3 | 4 | 5>(1);
+  const [offlineInquiryTurnIdx, setOfflineInquiryTurnIdx] = useState<number>(0); // 0 = Player 1, 1 = Player 2
+  const [offlineFinalGuessNextIdx, setOfflineFinalGuessNextIdx] = useState<number | null>(null);
+  const [offlineInquiryTurnsInStage, setOfflineInquiryTurnsInStage] = useState<number>(0);
+  const [offlineInquiryActiveQ, setOfflineInquiryActiveQ] = useState<InquiryQuestion | null>(null);
+  const [offlineInquiryHistory, setOfflineInquiryHistory] = useState<Array<{
+    id: string;
+    stage: number;
+    askerId: string;
+    askerName: string;
+    targetId: string;
+    targetName: string;
+    questionId: string;
+    questionAr: string;
+    questionEn: string;
+    answer: 'YES' | 'NO' | 'MAYBE';
+    timestamp: number;
+  }>>([]);
+  const [offlineInquiryBranches, setOfflineInquiryBranches] = useState<Record<string, ClinicalBranch>>({});
+  const [offlineInquirySystems, setOfflineInquirySystems] = useState<Record<string, string>>({});
+  const [offlineMisleadingLog, setOfflineMisleadingLog] = useState<MisleadingEntry[]>([]);
+
+  // Audio chime / urgent beep when receiving inquiry question
+  const lastSeenQuestionIdRef = React.useRef<string | null>(null);
+  useEffect(() => {
+    const activeQ = onlineRoomState?.inquiry?.activeQuestion;
+    const targetId = onlineRoomState?.inquiry?.targetPlayerId;
+    if (activeQ && activeQ.id !== lastSeenQuestionIdRef.current) {
+      lastSeenQuestionIdRef.current = activeQ.id;
+      if (targetId === localPlayerId) {
+        sfx.urgent();
+      } else {
+        sfx.click();
+      }
+    } else if (!activeQ) {
+      lastSeenQuestionIdRef.current = null;
+    }
+  }, [onlineRoomState?.inquiry?.activeQuestion, onlineRoomState?.inquiry?.targetPlayerId, localPlayerId]);
 
   // Keep track of how many times each name has been the imposter
   const [imposterHistory, setImposterHistory] = useState<Record<string, number>>({});
@@ -753,22 +1205,197 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setShowMoreClues(false);
   }, [phase, revealIndex]);
 
+  // Sync singleScore with appUser points. Guests bank their score in
+  // localStorage; on first sign-in the bank is merged into the account
+  // once (idempotent: the key is removed after merging).
+  useEffect(() => {
+    if (appUser) {
+      if (appUser.isOfflineFallback) {
+        setSingleScore(appUser.detectiveScore || 0);
+        return;
+      }
+      let guestPts = 0;
+      try { guestPts = Number(localStorage.getItem(GUEST_SCORE_KEY) || '0') || 0; } catch {}
+      if (guestPts > 0) {
+        const merged = (appUser.detectiveScore || 0) + guestPts;
+        setSingleScore(merged);
+        updateDoc(doc(db, 'users', appUser.id), { detectiveScore: merged })
+          .then(() => { try { localStorage.removeItem(GUEST_SCORE_KEY); } catch {} })
+          .catch(console.error);
+      } else {
+        setSingleScore(appUser.detectiveScore || 0);
+      }
+    } else {
+      try {
+        setSingleScore(Number(localStorage.getItem(GUEST_SCORE_KEY) || '0') || 0);
+      } catch {}
+    }
+  }, [appUser]);
+
+  // Persist a new total score: Firestore for accounts, localStorage for guests.
+  const persistScore = (newScore: number) => {
+    if (appUser) {
+      updateDoc(doc(db, 'users', appUser.id), { detectiveScore: newScore }).catch(console.error);
+    } else {
+      try { localStorage.setItem(GUEST_SCORE_KEY, String(newScore)); } catch {}
+    }
+  };
+
+  // Handle direct URL room invitation (?room=CODE or ?join=CODE)
+  useEffect(() => {
+    if (initialRoomCode) {
+      setRoomCodeInput(initialRoomCode.toUpperCase());
+      setIsOnline(true);
+      setIsCreatingRoom(false);
+      setPhase('MULTI_SETUP_ONLINE');
+    }
+  }, [initialRoomCode]);
+
+  // Fetch active open rooms whenever online setup is active
+  useEffect(() => {
+    if (phase === 'MULTI_SETUP_ONLINE' && isCreatingRoom !== true) {
+      fetchPublicRooms();
+    }
+  }, [phase, isCreatingRoom]);
+
+  // Game feedback: sounds + confetti on the moments that matter
+  const [confettiBurst, setConfettiBurst] = useState(0);
+  useEffect(() => {
+    if (phase ==='SINGLE_PLAYING' && singleGameEnded) {
+      if (singleGuessSuccess) { sfx.win(); setConfettiBurst(b => b + 1); }
+      else sfx.lose();
+      maybeTriggerPostGameAd(`single_${Date.now()}`);
+    }
+    if (phase ==='ROLES_REVEAL' && (isOnline || !isCardHidden)) sfx.reveal();
+    if (phase ==='REVEAL_IMPOSTER') {
+      const votedId = isOnline ? onlineRoomState?.votedOutPlayerId : votedPlayerId;
+      const vp = activePlayers.find(m => m.id === votedId);
+      if (vp?.role ==='IMPOSTER') { sfx.win(); setConfettiBurst(b => b + 1); }
+      else sfx.lose();
+    }
+    if (phase ==='ROUND_RESULT') {
+      sfx.pop();
+      setConfettiBurst(b => b + 1);
+      maybeTriggerPostGameAd(`round_${onlineRoomState?.roomCode || 'offline'}_${Date.now()}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, singleGameEnded, isCardHidden]);
+
+  // Turn timer effect for structured group interrogation
+  useEffect(() => {
+    if (phase !== 'PLAY_DISCUSSION' || isLocalVotingActive || questionTimeLimit === 0) return;
+    if (turnTimeRemaining <= 0) return;
+
+    const interval = setInterval(() => {
+      setTurnTimeRemaining(prev => {
+        if (prev <= 1) {
+          sfx.tick();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [phase, isLocalVotingActive, questionTimeLimit, turnTimeRemaining]);
+
+  const handleNextQuestionTurn = async () => {
+    sfx.tick();
+    const updated = [...questioningCycle];
+    const nextIdx = currentCycleIdx + 1;
+    if (updated[currentCycleIdx]) {
+      updated[currentCycleIdx].completed = true;
+      setQuestioningCycle(updated);
+    }
+    if (nextIdx < questioningCycle.length) {
+      setCurrentCycleIdx(nextIdx);
+      setTurnTimeRemaining(questionTimeLimit || 45);
+    } else {
+      sfx.win();
+      setCurrentCycleIdx(questioningCycle.length);
+    }
+
+    if (isOnline && roomId) {
+      try {
+        const roomRef = doc(db, 'rooms', roomId);
+        await updateDoc(roomRef, {
+          questioningCycle: updated,
+          currentCycleIdx: Math.min(nextIdx, questioningCycle.length)
+        });
+      } catch (e) {
+        console.error('Failed to sync question cycle online:', e);
+      }
+    }
+  };
+
+  const getSinglePlayerClues = (wordObj: MedicalWord) => {
+    const cluesLang = languageState ==='Arabic' ?'Arabic' :'English';
+    const rawClues = getCluesForWord(wordObj.id, wordObj, cluesLang);
+    
+    const customSet = HINTS_DICTIONARY[wordObj.id];
+    const handWrittenCount = customSet ? (customSet[cluesLang]?.length || 0) : 0;
+    
+    if (handWrittenCount > 0) {
+      const handWritten = rawClues.slice(0, handWrittenCount);
+      const dynamicClues = rawClues.slice(handWrittenCount);
+      // Reverse hand-written so index N-1 is shown first (hardest/most specific)
+      const reversedHandWritten = [...handWritten].reverse();
+      return [...reversedHandWritten, ...dynamicClues];
+    }
+    return [...rawClues].reverse();
+  };
+
+  const fetchLeaderboard = async () => {
+    setLoadingLeaderboard(true);
+    setLeaderboardError(false);
+    try {
+      const q = query(collection(db,'users'), orderBy('detectiveScore','desc'), limit(100));
+      const snap = await getDocs(q);
+      const list: any[] = [];
+      snap.forEach(docSnap => {
+        const data = docSnap.data();
+        list.push({
+          id: docSnap.id,
+          displayName: data.displayName || data.email?.split('@')[0] || (languageState ==='Arabic' ?'طبيب' :'Doctor'),
+          detectiveScore: data.detectiveScore || 0,
+        });
+      });
+
+      const sorted = list.sort((a, b) => b.detectiveScore - a.detectiveScore);
+      const ranked = sorted.map((p, idx) => ({ ...p, rank: idx + 1 }));
+      setGlobalLeaderboard(ranked);
+
+      if (appUser) {
+        const userIndex = ranked.findIndex(p => p.id === appUser.id);
+        if (userIndex !== -1) {
+          const start = Math.max(0, userIndex - 4);
+          const end = Math.min(ranked.length, start + 10);
+          setLocalLeaderboard(ranked.slice(start, end));
+        } else {
+          setLocalLeaderboard([]);
+        }
+      } else {
+        setLocalLeaderboard([]);
+      }
+    } catch (err) {
+      setLeaderboardError(true);
+      setGlobalLeaderboard([]);
+      setLocalLeaderboard([]);
+    } finally {
+      setLoadingLeaderboard(false);
+    }
+  };
+
   // Load saved inputs and filters from localStorage (cache) on mount
   useEffect(() => {
     try {
       const savedSingleName = localStorage.getItem('medical_cup_single_name');
       if (savedSingleName) setSingleName(savedSingleName);
+      else if (appUser?.name) setSingleName(appUser.name);
 
       const savedCurrentPlayerName = localStorage.getItem('medical_cup_current_player_name');
       if (savedCurrentPlayerName) setCurrentPlayerName(savedCurrentPlayerName);
-
-      const savedOfflinePlayerNames = localStorage.getItem('medical_cup_offline_player_names');
-      if (savedOfflinePlayerNames) {
-        const parsed = JSON.parse(savedOfflinePlayerNames);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setOfflinePlayerNames(parsed);
-        }
-      }
+      else if (appUser?.name) setCurrentPlayerName(appUser.name);
 
       const savedSingleSpecialty = localStorage.getItem('medical_cup_single_specialty');
       if (savedSingleSpecialty) setSingleSpecialty(savedSingleSpecialty);
@@ -791,19 +1418,19 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       const savedSingleAdvanced = localStorage.getItem('medical_cup_single_advanced_filter');
       if (savedSingleAdvanced) {
         const parsed = JSON.parse(savedSingleAdvanced);
-        if (parsed && typeof parsed === 'object') setSingleAdvancedFilter(parsed);
+        if (parsed && typeof parsed ==='object') setSingleAdvancedFilter(parsed);
       }
 
       const savedMultiAdvanced = localStorage.getItem('medical_cup_multi_advanced_filter');
       if (savedMultiAdvanced) {
         const parsed = JSON.parse(savedMultiAdvanced);
-        if (parsed && typeof parsed === 'object') setMultiAdvancedFilter(parsed);
+        if (parsed && typeof parsed ==='object') setMultiAdvancedFilter(parsed);
       }
 
       const savedImposterHistory = localStorage.getItem('medical_cup_imposter_history');
       if (savedImposterHistory) {
         const parsed = JSON.parse(savedImposterHistory);
-        if (parsed && typeof parsed === 'object') setImposterHistory(parsed);
+        if (parsed && typeof parsed ==='object') setImposterHistory(parsed);
       }
     } catch (e) {
       console.error('Error loading cached game data:', e);
@@ -881,21 +1508,43 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     }
   }, [imposterHistory]);
 
+  // Initialize roster depending on game mode (2 players for 1v1 Battle, 3+ for Dr. Imposter)
+  const ensureOfflineRoster = () => {
+    let savedNames: string[] = [];
+    let savedAvatars: number[] = [];
+    try {
+      const s = localStorage.getItem('medical_cup_offline_player_names');
+      if (s) { const p = JSON.parse(s); if (Array.isArray(p)) savedNames = p; }
+      const sa = localStorage.getItem('medical_cup_offline_player_avatars');
+      if (sa) { const p = JSON.parse(sa); if (Array.isArray(p)) savedAvatars = p; }
+    } catch { /* ignore cache errors */ }
+
+    const roster = rosterForMode(savedNames, savedAvatars, gameModeLock, languageState === 'Arabic');
+    setOfflinePlayerNames(roster.names);
+    setOfflinePlayerAvatars(roster.avatars);
+    setPlayerCount(roster.names.length);
+  };
+
   const generateRoomCode = () => {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let code = '';
+    const chars ='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code ='';
     for (let i = 0; i < 6; i++) {
       code += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return code;
   };
 
-  const getRelatedWord = (baseWord: MedicalWord): MedicalWord => {
+  const getRelatedWord = (baseWord: MedicalWord, candidateWords: MedicalWord[] = medicalWords): MedicalWord => {
+    // Guard: the DB has duplicate-name entries (e.g. two "Heparin") — never hand the imposter the same name
+    const diffName = (w: MedicalWord) =>
+      w.word.English !== baseWord.word.English && w.word.Arabic !== baseWord.word.Arabic;
+
     // Stage 1: Same difficulty AND same guessingDifficulty, but DIFFERENT type and NOT necessarily sharing subjects
-    // This makes their memory recall, suspicion level, and overall difficulty perfectly identical, 
-    // while preventing the easy "category/subject hack" (e.g. if one gets a nerve, the other gets a nerve).
-    let pool = medicalWords.filter(w =>
+    // This makes their memory recall, suspicion level, and overall difficulty perfectly identical,
+    // while preventing the easy"category/subject hack" (e.g. if one gets a nerve, the other gets a nerve).
+    let pool = candidateWords.filter(w =>
       w.id !== baseWord.id &&
+      diffName(w) &&
       w.difficulty === baseWord.difficulty &&
       w.guessingDifficulty === baseWord.guessingDifficulty &&
       w.type !== baseWord.type
@@ -903,8 +1552,9 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     // Stage 2: Same difficulty and same guessingDifficulty (allows same type if no different type exists)
     if (pool.length === 0) {
-      pool = medicalWords.filter(w =>
+      pool = candidateWords.filter(w =>
         w.id !== baseWord.id &&
+        diffName(w) &&
         w.difficulty === baseWord.difficulty &&
         w.guessingDifficulty === baseWord.guessingDifficulty
       );
@@ -912,8 +1562,9 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     // Stage 3: Same difficulty and different type
     if (pool.length === 0) {
-      pool = medicalWords.filter(w =>
+      pool = candidateWords.filter(w =>
         w.id !== baseWord.id &&
+        diffName(w) &&
         w.difficulty === baseWord.difficulty &&
         w.type !== baseWord.type
       );
@@ -921,23 +1572,25 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     // Stage 4: Just same difficulty
     if (pool.length === 0) {
-      pool = medicalWords.filter(w =>
+      pool = candidateWords.filter(w =>
         w.id !== baseWord.id &&
+        diffName(w) &&
         w.difficulty === baseWord.difficulty
       );
     }
 
     // Stage 5: Fallback to different type (any difficulty)
     if (pool.length === 0) {
-      pool = medicalWords.filter(w =>
+      pool = candidateWords.filter(w =>
         w.id !== baseWord.id &&
+        diffName(w) &&
         w.type !== baseWord.type
       );
     }
 
-    // Stage 6: Absolute fallback (any other word)
+    // Stage 6: Absolute fallback (any other word with a different name)
     if (pool.length === 0) {
-      pool = medicalWords.filter(w => w.id !== baseWord.id);
+      pool = candidateWords.filter(w => w.id !== baseWord.id && diffName(w));
     }
 
     return pool[Math.floor(Math.random() * pool.length)];
@@ -945,47 +1598,233 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
   const startSingleGame = () => {
     if (!singleName.trim()) {
-      setSingleName(languageState === 'Arabic' ? 'طبيب' : 'Doctor');
+      setSingleName(languageState ==='Arabic' ?'طبيب' :'Doctor');
     }
-    const filtered = medicalWords.filter(w => {
+    const missedIds = new Set(Object.keys(missedCases));
+    const pool = (reviewFromMistakes && missedIds.size > 0)
+      // Review mode: draw only from cases the player previously misdiagnosed.
+      ? medicalWords.filter(w => missedIds.has(w.id))
+      : medicalWords.filter(w => {
       // 1. Specialty Filter (Advanced or Simple)
       if (singleAdvancedFilter.enabled) {
         if (!checkAdvancedFilterWord(w, singleAdvancedFilter)) return false;
-      } else if (singleSpecialty !== 'All') {
+      } else if (singleSpecialty !=='All') {
         const hasSpec = w.subjects.includes(singleSpecialty) || w.type === singleSpecialty;
         if (!hasSpec) return false;
       }
       // 2. Difficulty Filter
-      if (singleDifficulty !== 'All') {
+      if (singleDifficulty !=='All') {
         if (w.difficulty !== Number(singleDifficulty)) return false;
+      } else {
+        // Progressive level scaling when difficulty is set to'All'
+        const expectedDiff = singlePlayerLevel <= 2 ? 1 : (singlePlayerLevel <= 4 ? 2 : 3);
+        if (w.difficulty !== expectedDiff) return false;
       }
       // 3. Guessing Difficulty Filter
-      if (singleGuessingDifficulty !== 'All') {
+      if (singleGuessingDifficulty !=='All') {
         if (w.guessingDifficulty !== Number(singleGuessingDifficulty)) return false;
       }
       return true;
     });
 
-    const selected = filtered.length > 0 
-      ? filtered[Math.floor(Math.random() * filtered.length)] 
+    const selected = pool.length > 0 
+      ? pool[Math.floor(Math.random() * pool.length)] 
       : medicalWords[Math.floor(Math.random() * medicalWords.length)];
     
+    const options = generateSoloOptions(selected, medicalWords);
+
     setSingleWord(selected);
+    setSingleOptions(options);
+    setSelectedOptionId(null);
     setUnlockedHints(1);
     setSingleGuess('');
     setSingleGameEnded(false);
+    setSingleGuessSuccess(null);
+    setTimeLeft(45);
+    setSpeedBonusEarned(false);
+    setUsedFiftyFifty(false);
+    setUsedConsultantHint(false);
+    setEliminatedOptionIds([]);
+    setShowFlashcardModal(false);
     setPhase('SINGLE_PLAYING');
   };
 
+  // Visual Mystery Challenge Handlers
+  const initVisualRound = (word: MedicalWord) => {
+    const sameTypeWords = medicalWords.filter(w => w.id !== word.id && w.type === word.type);
+    const otherWords = medicalWords.filter(w => w.id !== word.id && w.type !== word.type);
+
+    const shuffledSame = [...sameTypeWords].sort(() => 0.5 - Math.random());
+    const shuffledOther = [...otherWords].sort(() => 0.5 - Math.random());
+
+    const distractors = [...shuffledSame, ...shuffledOther].slice(0, 3);
+    const options = [word, ...distractors].sort(() => 0.5 - Math.random());
+
+    setVisualOptions(options);
+    setVisualCluesUnlocked(0);
+    setVisualSelectedIdx(null);
+    setVisualAnswered(false);
+  };
+
+  const startVisualChallenge = () => {
+    const wordsWithImages = medicalWords.filter(w => !!WORD_IMAGES[w.id]);
+    const shuffled = [...wordsWithImages].sort(() => 0.5 - Math.random());
+
+    setVisualPool(shuffled);
+    setVisualCurrentIdx(0);
+    setVisualScore(0);
+    setVisualStreak(0);
+    setVisualGameFinished(false);
+
+    if (shuffled.length > 0) {
+      initVisualRound(shuffled[0]);
+      setPhase('VISUAL_PLAYING');
+      sfx.play('reveal');
+    }
+  };
+
+  useEffect(() => {
+    if (initialActionHandled.current || !initialAction || initialRoomCode) return;
+    initialActionHandled.current = true;
+    if (initialAction === 'solo') setPhase('SINGLE_SETUP');
+    if (initialAction === 'visual') {
+      setMultiImageOnlyMode(true);
+      ensureOfflineRoster();
+      setIsOnline(false);
+      setPhase('MULTI_SETUP_OFFLINE');
+    }
+    if (initialAction === 'offline') {
+      setMultiImageOnlyMode(false);
+      ensureOfflineRoster();
+      setIsOnline(false);
+      setPhase('MULTI_SETUP_OFFLINE');
+    }
+    if (initialAction === 'online') { setOnlineMaxPlayers(gameModeLock === 'BATTLE_1V1' ? 2 : 4); setPlayerCount(gameModeLock === 'BATTLE_1V1' ? 2 : 4); setIsOnline(true); setPhase('MULTI_SETUP_ONLINE'); }
+    if (initialAction === 'ranking') { fetchLeaderboard(); setShowLeaderboardModal(true); }
+  }, [initialAction, initialRoomCode]);
+
+  useEffect(() => {
+    if (!visualIsInspecting) return;
+    inspectCloseRef.current?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setVisualIsInspecting(false);
+      if (event.key === 'Tab') { event.preventDefault(); inspectCloseRef.current?.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); inspectTriggerRef.current?.focus(); };
+  }, [visualIsInspecting]);
+
+  const handleVisualAnswer = (selectedWord: MedicalWord, index: number) => {
+    if (visualAnswered) return;
+
+    setVisualSelectedIdx(index);
+    setVisualAnswered(true);
+
+    const currentWord = visualPool[visualCurrentIdx];
+    const isCorrect = selectedWord.id === currentWord.id;
+
+    if (isCorrect) {
+      sfx.play('correct');
+      setConfettiBurst(prev => prev + 1);
+      const basePts = visualCluesUnlocked === 0 ? 100 : visualCluesUnlocked === 1 ? 70 : visualCluesUnlocked === 2 ? 50 : 30;
+      const streakBonus = Math.min(visualStreak * 15, 60);
+      const totalEarned = basePts + streakBonus;
+
+      setVisualScore(prev => prev + totalEarned);
+      setVisualStreak(prev => prev + 1);
+    } else {
+      sfx.play('wrong');
+      setVisualStreak(0);
+    }
+  };
+
+  const nextVisualCase = () => {
+    if (visualCurrentIdx + 1 < visualPool.length) {
+      const nextIdx = visualCurrentIdx + 1;
+      setVisualCurrentIdx(nextIdx);
+      initVisualRound(visualPool[nextIdx]);
+      sfx.play('pop');
+    } else {
+      setVisualGameFinished(true);
+      sfx.play('victory');
+      setConfettiBurst(prev => prev + 2);
+      maybeTriggerPostGameAd(`visual_${Date.now()}`);
+    }
+  };
+
+  // Feature 1: Emergency Rapid Response Timer (45s)
+  useEffect(() => {
+    if (phase !== 'SINGLE_PLAYING' || singleGameEnded || !singleTimerEnabled || overlayOpen || showExitConfirm || showSoloLifelines || adModalOpen || pageHidden || !!notice) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          handleSingleTimeout();
+          return 0;
+        }
+        if (prev <= 6 && prev > 1) {
+          sfx.urgentTimer();
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [phase, singleGameEnded, singleTimerEnabled, singleWord, overlayOpen, showExitConfirm, showSoloLifelines, adModalOpen, pageHidden, notice]);
+
+  const handleSingleTimeout = () => {
+    if (singleGameEnded || !singleWord) return;
+    sfx.lose();
+    const penalty = 10;
+    const newScore = Math.max(0, singleScore - penalty);
+    setRoundDelta(newScore - singleScore);
+    setRoundReason('timeout');
+    setSingleScore(newScore);
+    setSingleStreak(0);
+    setSinglePlayerLevel(1);
+    persistScore(newScore);
+    recordMissedCase(singleWord.id);
+    setSingleGuessSuccess(false);
+    setSingleGameOverMsg(
+      languageState === 'Arabic'
+        ? `نفد وقت الاستجابة الطارئة (45 ثانية)! تم خصم ${penalty} نقاط وانكسرت السلسلة. التشخيص الصحيح هو "${singleWord.word.Arabic} (${singleWord.word.English})".`
+        : `Emergency response window expired (45s)! Deducted ${penalty} points; streak lost. The correct diagnosis was "${singleWord.word.English} (${singleWord.word.Arabic})".`
+    );
+    setSingleGameEnded(true);
+  };
+
+  // Feature 3: Clinical Lifelines Handlers
+  const handleFiftyFifty = () => {
+    if (usedFiftyFifty || singleGameEnded || !singleWord) return;
+    sfx.fiftyFifty();
+    const wrongOptions = singleOptions.filter(o => o.id !== singleWord.id);
+    const shuffledWrong = [...wrongOptions].sort(() => 0.5 - Math.random());
+    const toEliminate = shuffledWrong.slice(0, 2).map(o => o.id);
+    setEliminatedOptionIds(toEliminate);
+    setUsedFiftyFifty(true);
+  };
+
+  const handleConsultantHint = () => {
+    if (usedConsultantHint || singleGameEnded || !singleWord) return;
+    sfx.pop();
+    setUsedConsultantHint(true);
+    if (unlockedHints < 3) {
+      setUnlockedHints(prev => Math.min(3, prev + 1));
+    }
+  };
+
   const normalizeText = (text: string) => {
-    if (!text) return '';
+    if (!text) return'';
     return text
       .toLowerCase()
-      .replace(/[أإآ]/g, 'ا')
-      .replace(/ة/g, 'ه')
-      .replace(/ى/g, 'ي')
-      .replace(/[\u064B-\u065F]/g, '') // remove Arabic diacritics
-      .replace(/\s+/g, ' ') // collapse multi-spaces
+      .replace(/[أإآ]/g,'ا')
+      .replace(/ة/g,'ه')
+      .replace(/ى/g,'ي')
+      .replace(/[\u064B-\u065F]/g,'') // remove Arabic diacritics
+      .replace(/\s+/g,'') // collapse multi-spaces
       .trim();
   };
 
@@ -1004,7 +1843,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       const normArabic = normalizeText(w.word.Arabic);
       if (normArabic.includes(normQuery)) return true;
       
-      // 3. Match without the 'ال' (Al-) article
+      // 3. Match without the'ال' (Al-) article
       const arabicNoAl = normArabic.startsWith('ال') ? normArabic.substring(2) : normArabic;
       if (arabicNoAl.includes(queryNoAl)) return true;
       if (queryNoAl.includes(arabicNoAl)) return true;
@@ -1022,32 +1861,93 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   }, [searchQuery]);
 
   const submitSingleGuess = (word: MedicalWord) => {
-    if (!singleWord) return;
-    const isCorrect = word.id === singleWord.id;
-    let gained = 0;
+    if (!singleWord || singleGameEnded) return;
+    
+    setSelectedOptionId(word.id);
+
+    // Robust name/text matching to handle duplicate names or synonyms in database
+    const isCorrect = 
+      word.id === singleWord.id || 
+      normalizeText(word.word.English) === normalizeText(singleWord.word.English) || 
+      normalizeText(word.word.Arabic) === normalizeText(singleWord.word.Arabic);
+      
     if (isCorrect) {
-      gained = Math.max(10, 60 - unlockedHints * 10);
-      setSingleScore(prev => prev + gained);
+      sfx.win();
+      let baseGain = 0;
+      if (unlockedHints === 1) baseGain = 50;
+      else if (unlockedHints === 2) baseGain = 30;
+      else baseGain = 15;
+
+      const hasSpeedBonus = singleTimerEnabled && timeLeft >= 30;
+      const speedBonus = hasSpeedBonus ? 10 : 0;
+      setSpeedBonusEarned(hasSpeedBonus);
+
+      const nextStreak = singleStreak + 1;
+      setSingleStreak(nextStreak);
+      if (nextStreak > highestStreak) {
+        setHighestStreak(nextStreak);
+      }
+      if (nextStreak >= 2) {
+        setTimeout(() => sfx.streak(), 380);
+      }
+      const mult = getStreakMultiplier(nextStreak);
+      const totalGained = Math.round((baseGain + speedBonus) * mult);
+
+      const newScore = singleScore + totalGained;
+      setRoundDelta(newScore - singleScore);
+      setSingleScore(newScore);
+      if (onUpdateScore) {
+        onUpdateScore(newScore);
+      }
+      persistScore(newScore);
+      resolveMissedCase(singleWord.id);
+      setRoundReason('correct');
+      setSingleGuessSuccess(true);
+      setSinglePlayerLevel(prev => prev + 1); // Advance to next campaign level!
+
+      let bonusText = '';
+      if (hasSpeedBonus) {
+        bonusText += languageState === 'Arabic' ? ' [مكافأة سرعة +10]' : ' [Speed bonus +10]';
+      }
+      if (mult > 1) {
+        bonusText += languageState === 'Arabic' ? ` [مضاعف السلسلة x${mult}]` : ` [Streak x${mult}]`;
+      }
+
       setSingleGameOverMsg(
-        languageState === 'Arabic' 
-          ? `إجابة صحيحة ممتازة! لقد كشفت المصطلح من التلميح رقم (${unlockedHints}) وحصلت على ${gained} نقطة.` 
-          : `Excellent correct answer! You revealed the term from hint #${unlockedHints} and earned ${gained} points.`
+        languageState ==='Arabic' 
+          ? `تشخيص صحيح! حصلت على ${totalGained} نقطة.${bonusText}` 
+          : `Correct diagnosis! +${totalGained} points.${bonusText}`
       );
     } else {
+      sfx.lose();
+      const penalty = 10;
+      const newScore = Math.max(0, singleScore - penalty);
+      setRoundDelta(newScore - singleScore);
+      setSingleScore(newScore);
+      setSingleStreak(0); // reset streak on incorrect guess
+      if (onUpdateScore) {
+        onUpdateScore(newScore);
+      }
+      persistScore(newScore);
+      recordMissedCase(singleWord.id);
+      setRoundReason('miss');
+      setSingleGuessSuccess(false);
+      setSinglePlayerLevel(1); // Reset campaign level on incorrect guess
       setSingleGameOverMsg(
-        languageState === 'Arabic' 
-          ? `إجابة غير دقيقة! المصطلح الصحيح كان: "${singleWord.word.English}".` 
-          : `Incorrect guess! The correct term was: "${singleWord.word.English}".`
+        languageState ==='Arabic' 
+          ? `تشخيص غير دقيق! تم خصم ${penalty} نقاط وانكسرت السلسلة. التشخيص الصحيح هو "${singleWord.word.Arabic} (${singleWord.word.English})".` 
+          : `Incorrect diagnosis! Deducted ${penalty} points; streak lost. The correct diagnosis was "${singleWord.word.English} (${singleWord.word.Arabic})".`
       );
     }
     setSingleGameEnded(true);
     setSearchQuery('');
   };
 
-  const startOfflineMultiGame = () => {
-    if (offlinePlayerNames.length < playerCount) {
-      alert(
-        languageState === 'Arabic' 
+  const startOfflineMultiGame = (keepScores: boolean = false) => {
+    const minPlayers = gameModeLock === 'DR_IMPOSTER' ? 3 : 2;
+    if (offlinePlayerNames.length !== playerCount || playerCount < minPlayers || playerCount > 10 || (gameModeLock === 'BATTLE_1V1' && playerCount !== 2) || offlinePlayerNames.some(n => !n.trim())) {
+      setNotice(
+        languageState ==='Arabic' 
           ? `يرجى إدخال أسماء جميع اللاعبين الـ ${playerCount} لتبدأ الجولة!` 
           : `Please fill names for all ${playerCount} players to start!`
       );
@@ -1055,39 +1955,48 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     }
 
     const filtered = medicalWords.filter(w => {
+      // 0. Image Only Mode Filter
+      if (multiImageOnlyMode && !WORD_IMAGES[w.id]) return false;
       // 1. Specialty Filter (Advanced or Simple)
       if (multiAdvancedFilter.enabled) {
         if (!checkAdvancedFilterWord(w, multiAdvancedFilter)) return false;
-      } else if (multiSpecialty !== 'All') {
+      } else if (multiSpecialty !=='All') {
         const hasSpec = w.subjects.includes(multiSpecialty) || w.type === multiSpecialty;
         if (!hasSpec) return false;
       }
       // 2. Difficulty Filter
-      if (multiDifficulty !== 'All') {
+      if (multiDifficulty !=='All') {
         if (w.difficulty !== Number(multiDifficulty)) return false;
       }
       // 3. Guessing Difficulty Filter
-      if (multiGuessingDifficulty !== 'All') {
+      if (multiGuessingDifficulty !=='All') {
         if (w.guessingDifficulty !== Number(multiGuessingDifficulty)) return false;
       }
       return true;
     });
+    const wordsWithImages = medicalWords.filter(w => !!WORD_IMAGES[w.id]);
     const chosenWord = filtered.length > 0
       ? filtered[Math.floor(Math.random() * filtered.length)]
-      : medicalWords[Math.floor(Math.random() * medicalWords.length)];
+      : (multiImageOnlyMode && wordsWithImages.length > 0
+          ? wordsWithImages[Math.floor(Math.random() * wordsWithImages.length)]
+          : medicalWords[Math.floor(Math.random() * medicalWords.length)]);
     setSecretWord(chosenWord);
 
-    const secondaryWord = getRelatedWord(chosenWord);
+    const secondaryPool = multiImageOnlyMode && playerCount === 2 ? wordsWithImages : medicalWords;
+    const secondaryWord = getRelatedWord(chosenWord, secondaryPool);
     setImposterAssignedWord(secondaryWord);
 
-    const updated: Player[] = offlinePlayerNames.map((name, idx) => ({
-      id: Math.random().toString(36).substr(2, 9),
-      name: name,
-      score: 0,
-      role: 'NORMAL',
-      assignedWordId: chosenWord.id,
-      avatarId: offlinePlayerAvatars[idx] !== undefined ? offlinePlayerAvatars[idx] : (idx % 10)
-    }));
+    const updated: Player[] = offlinePlayerNames.map((name, idx) => {
+      const existing = activePlayers.find(p => p.name === name);
+      return {
+        id: existing?.id || Math.random().toString(36).substr(2, 9),
+        name: name,
+        score: keepScores ? (existing?.score || 0) : 0,
+        role: 'NORMAL',
+        assignedWordId: chosenWord.id,
+        avatarId: offlinePlayerAvatars[idx] !== undefined ? offlinePlayerAvatars[idx] : (idx % 10)
+      };
+    });
 
     if (playerCount >= 3) {
       const actualImposterCount = (playerCount >= 5 && imposterCount === 2) ? 2 : 1;
@@ -1112,14 +2021,14 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       // This guarantees players with lower imposter counts are selected first.
       shuffled.sort((a, b) => a.count - b.count);
 
-      // Select the first 'actualImposterCount' players
+      // Select the first'actualImposterCount' players
       const chosenImposters = shuffled.slice(0, actualImposterCount);
 
       // Update roles and assigned words
       chosenImposters.forEach(item => {
         const idx = item.index;
-        updated[idx].role = 'IMPOSTER';
-        updated[idx].assignedWordId = imposterRevealsMode === 'RELATED_WORD' ? secondaryWord.id : 'IMPOSTER';
+        updated[idx].role ='IMPOSTER';
+        updated[idx].assignedWordId = imposterRevealsMode ==='RELATED_WORD' ? secondaryWord.id :'IMPOSTER';
       });
 
       // Increment counts in history
@@ -1153,22 +2062,44 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       }
 
       const cycle = [];
-      for (let i = 0; i < cyclePlayers.length; i++) {
-        const asker = cyclePlayers[i];
-        const target = cyclePlayers[(i + 1) % cyclePlayers.length];
-        cycle.push({
-          askerId: asker.id,
-          askerName: asker.name,
-          targetId: target.id,
-          targetName: target.name,
-          completed: false
-        });
+      const numRounds = questionsPerPlayer === 0 ? 0 : questionsPerPlayer;
+      for (let r = 0; r < numRounds; r++) {
+        const offset = r + 1;
+        for (let i = 0; i < cyclePlayers.length; i++) {
+          const asker = cyclePlayers[i];
+          const target = cyclePlayers[(i + offset) % cyclePlayers.length];
+          cycle.push({
+            askerId: asker.id,
+            askerName: asker.name,
+            askerAvatarId: asker.avatarId,
+            targetId: target.id,
+            targetName: target.name,
+            targetAvatarId: target.avatarId,
+            roundNum: r + 1,
+            completed: false
+          });
+        }
       }
       setQuestioningCycle(cycle);
+      setCurrentCycleIdx(0);
+      setTurnTimeRemaining(questionTimeLimit || 45);
     } else {
       if (playerCount === 2) {
         updated[0].assignedWordId = chosenWord.id;
         updated[1].assignedWordId = secondaryWord.id;
+        setOfflineInquiryStage(1);
+        setOfflineInquiryTurnsInStage(0);
+        setOfflineInquiryTurnIdx(0);
+        setOfflineFinalGuessNextIdx(null);
+        setOfflineInquiryActiveQ(null);
+        setOfflineInquiryHistory([]);
+        setOfflineInquirySystems({});
+        setOfflineMisleadingLog([]);
+        setOfflineInquiryBranches({
+          [updated[0].id]: getWordBranch(chosenWord),
+          [updated[1].id]: getWordBranch(secondaryWord)
+        });
+        setShowFinalGuessBox(false);
       }
       setQuestioningCycle([]);
     }
@@ -1188,10 +2119,48 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setPhase('ROLES_REVEAL');
   };
 
+  // Public Rooms Browser for lonely study-at-home medical students
+  // NOTE: Firestore rules only allow listing LOBBY + isPublic rooms with a
+  // hard limit (no harvesting of live games), so the filter is server-side.
+  const fetchPublicRooms = async () => {
+    setLoadingPublicRooms(true);
+    setRoomsError(false);
+    try {
+      const q = query(
+        collection(db, 'rooms'),
+        where('status', '==', 'LOBBY'),
+        where('isPublic', '==', true),
+        limit(25)
+      );
+      const snap = await getDocs(q);
+      const rooms: any[] = [];
+      const twoHoursAgo = Date.now() - 2 * 60 * 60 * 1000;
+      snap.forEach(docSnap => {
+        const d = docSnap.data();
+        if (
+          d.status === 'LOBBY' &&
+          Array.isArray(d.players) &&
+          d.players.length < (d.maxPlayers || 4) &&
+          (!d.createdAt || d.createdAt > twoHoursAgo)
+        ) {
+          if (roomMatchesMode(d.maxPlayers || 4, gameModeLock)) rooms.push({ ...d, id: docSnap.id });
+        }
+      });
+      rooms.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      setPublicRooms(rooms);
+    } catch (err) {
+      setRoomsError(true);
+      setPublicRooms([]);
+      console.warn('Could not fetch public rooms:', err);
+    } finally {
+      setLoadingPublicRooms(false);
+    }
+  };
+
   // Firestore Real-time Multi Code
   const createOnlineRoom = async () => {
     if (!currentPlayerName.trim()) {
-      alert(languageState === 'Arabic' ? 'يرجى إدخال اسمك أولاً!' : 'Please enter your name first!');
+      setNotice(languageState ==='Arabic' ?'يرجى إدخال اسمك أولاً!' :'Please enter your name first!');
       return;
     }
     setOnlineActionLoading(true);
@@ -1201,21 +2170,28 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       setLocalPlayerId(pid);
       setRoomId(code);
 
-      const roomRef = doc(db, 'rooms', code);
+      const roomRef = doc(db,'rooms', code);
       const initialData = {
         id: code,
         hostId: pid,
-        status: 'LOBBY',
-        maxPlayers: playerCount < 2 ? 2 : playerCount,
+        status:'LOBBY',
+        maxPlayers: onlineMaxPlayers,
+        isPublic: true,
+        createdAt: Date.now(),
         specialty: multiSpecialty,
         advancedFilter: multiAdvancedFilter,
         difficulty: multiDifficulty,
         guessingDifficulty: multiGuessingDifficulty,
-        imposterCount: imposterCount,
+        imposterCount: onlineMaxPlayers >= 5 ? imposterCount : 1,
         imposterRevealsMode: imposterRevealsMode,
+        imageOnlyMode: multiImageOnlyMode,
+        questionsPerPlayer: questionsPerPlayer,
+        questionTimeLimit: questionTimeLimit,
+        questioningCycle: [],
+        currentCycleIdx: 0,
         imposterHistory: {},
         players: [
-          { id: pid, name: currentPlayerName, score: 0, role: 'NORMAL', assignedWordId: '' }
+          { id: pid, name: currentPlayerName.trim(), score: 0, role:'NORMAL', assignedWordId:'' }
         ],
         votes: {},
         secretWord: null,
@@ -1229,43 +2205,47 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       setPhase('ONLINE_LOBBY');
     } catch (error: any) {
       console.error("Firestore create room error:", error);
-      alert(languageState === 'Arabic' 
-        ? `عذراً، فشل إنشاء الغرفة. يرجى التحقق من اتصالك بالإنترنت. التفاصيل: ${error.message || error}` 
-        : `Failed to create room. Please check your internet. Details: ${error.message || error}`);
+      setNotice(languageState ==='Arabic' 
+        ? `عذراً، فشل إنشاء الغرفة. يرجى التحقق من اتصالك بالإنترنت. ` 
+        : `Failed to create room. Please check your internet. `);
     } finally {
       setOnlineActionLoading(false);
     }
   };
 
-  const joinOnlineRoom = async () => {
+  const joinOnlineRoom = async (codeOverride?: string) => {
     if (!currentPlayerName.trim()) {
-      alert(languageState === 'Arabic' ? 'يرجى إدخال اسمك أولاً!' : 'Please enter your name first!');
+      setNotice(languageState ==='Arabic' ?'يرجى إدخال اسمك أولاً!' :'Please enter your name first!');
       return;
     }
-    const code = roomCodeInput.trim().toUpperCase();
+    const code = (codeOverride || roomCodeInput).trim().toUpperCase();
     if (code.length !== 6) {
-      alert(languageState === 'Arabic' ? 'رمز الغرفة غير صحيح!' : 'Invalid room code format!');
+      setNotice(languageState ==='Arabic' ?'رمز الغرفة غير صحيح (يجب أن يتكون من 6 حروف/أرقام)!' :'Invalid room code format (must be 6 chars)!');
       return;
     }
 
     setOnlineActionLoading(true);
     try {
-      const roomRef = doc(db, 'rooms', code);
+      const roomRef = doc(db,'rooms', code);
       const snap = await getDoc(roomRef);
       if (!snap.exists()) {
-        alert(languageState === 'Arabic' ? 'هذه الغرفة غير موجودة!' : 'Room does not exist!');
+        setNotice(languageState ==='Arabic' ?'هذه الغرفة غير موجودة أو انتهت صلاحيتها!' :'Room does not exist or expired!');
         setOnlineActionLoading(false);
         return;
       }
 
       const data = snap.data();
-      if (data.status !== 'LOBBY') {
-        alert(languageState === 'Arabic' ? 'بدأت اللعبة بالفعل داخل هذه الغرفة!' : 'Game already started in this room!');
+      if (!initialRoomCode && !roomMatchesMode(data.maxPlayers || 4, gameModeLock)) {
+        setNotice(languageState === 'Arabic' ? 'هذه الغرفة لنمط لعب مختلف. اختر اللعبة المناسبة من البوابة.' : 'This room uses a different game mode. Choose that game from the hub.');
+        return;
+      }
+      if (data.status !=='LOBBY') {
+        setNotice(languageState ==='Arabic' ?'بدأت اللعبة بالفعل داخل هذه الغرفة!' :'Game already started in this room!');
         setOnlineActionLoading(false);
         return;
       }
-      if (data.players.length >= data.maxPlayers) {
-        alert(languageState === 'Arabic' ? 'الغرفة ممتلئة بالفعل!' : 'Room is already full!');
+      if (data.players.length >= (data.maxPlayers || 4)) {
+        setNotice(languageState ==='Arabic' ?'الغرفة ممتلئة بالفعل!' :'Room is already full!');
         setOnlineActionLoading(false);
         return;
       }
@@ -1274,16 +2254,16 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       setLocalPlayerId(pid);
       setRoomId(code);
 
-      const updatedPlayers = [...data.players, { id: pid, name: currentPlayerName, score: 0, role: 'NORMAL', assignedWordId: '' }];
+      const updatedPlayers = [...data.players, { id: pid, name: currentPlayerName.trim(), score: 0, role:'NORMAL', assignedWordId:'' }];
       await updateDoc(roomRef, { players: updatedPlayers });
 
       listenToRoom(code, pid);
       setPhase('ONLINE_LOBBY');
     } catch (error: any) {
       console.error("Firestore join room error:", error);
-      alert(languageState === 'Arabic' 
-        ? `عذراً، فشل الانضمام للغرفة. التفاصيل: ${error.message || error}` 
-        : `Failed to join room. Details: ${error.message || error}`);
+      setNotice(languageState ==='Arabic' 
+        ? `عذراً، فشل الانضمام للغرفة. ` 
+        : `Failed to join room. `);
     } finally {
       setOnlineActionLoading(false);
     }
@@ -1291,29 +2271,38 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
   const startOnlineMatch = async () => {
     if (!onlineRoomState) return;
+    if (onlineRoomState.players.length < minimumRoomPlayers(onlineRoomState.maxPlayers)) {
+      setNotice(languageState === 'Arabic' ? 'انتظر اكتمال عدد اللاعبين المطلوب.' : 'Wait for the required players to join.');
+      return;
+    }
 
     const filtered = medicalWords.filter(w => {
+      // 0. Image Only Mode Filter
+      if (onlineRoomState.imageOnlyMode && !WORD_IMAGES[w.id]) return false;
       // 1. Specialty Filter (Advanced or Simple)
       if (onlineRoomState.advancedFilter && onlineRoomState.advancedFilter.enabled) {
         const adv = onlineRoomState.advancedFilter;
         if (!checkAdvancedFilterWord(w, adv)) return false;
-      } else if (onlineRoomState.specialty !== 'All') {
+      } else if (onlineRoomState.specialty !=='All') {
         const hasSpec = w.subjects.includes(onlineRoomState.specialty) || w.type === onlineRoomState.specialty;
         if (!hasSpec) return false;
       }
       // 2. Difficulty Filter
-      if (onlineRoomState.difficulty && onlineRoomState.difficulty !== 'All') {
+      if (onlineRoomState.difficulty && onlineRoomState.difficulty !=='All') {
         if (w.difficulty !== Number(onlineRoomState.difficulty)) return false;
       }
       // 3. Guessing Difficulty Filter
-      if (onlineRoomState.guessingDifficulty && onlineRoomState.guessingDifficulty !== 'All') {
+      if (onlineRoomState.guessingDifficulty && onlineRoomState.guessingDifficulty !=='All') {
         if (w.guessingDifficulty !== Number(onlineRoomState.guessingDifficulty)) return false;
       }
       return true;
     });
+    const wordsWithImages = medicalWords.filter(w => !!WORD_IMAGES[w.id]);
     const chosenWord = filtered.length > 0
       ? filtered[Math.floor(Math.random() * filtered.length)]
-      : medicalWords[Math.floor(Math.random() * medicalWords.length)];
+      : (onlineRoomState.imageOnlyMode && wordsWithImages.length > 0
+          ? wordsWithImages[Math.floor(Math.random() * wordsWithImages.length)]
+          : medicalWords[Math.floor(Math.random() * medicalWords.length)]);
     const secondaryWord = getRelatedWord(chosenWord);
 
     const members = [...onlineRoomState.players];
@@ -1321,9 +2310,9 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     if (nPlayers === 2) {
       members[0].assignedWordId = chosenWord.id;
-      members[0].role = 'NORMAL';
+      members[0].role ='NORMAL';
       members[1].assignedWordId = secondaryWord.id;
-      members[1].role = 'NORMAL';
+      members[1].role ='NORMAL';
     } else {
       const targetImposterCount = (nPlayers >= 5 && onlineRoomState.imposterCount === 2) ? 2 : 1;
       
@@ -1349,20 +2338,20 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       // This guarantees players with lower imposter counts are selected first.
       shuffled.sort((a, b) => a.count - b.count);
 
-      // Select the first 'targetImposterCount' members
+      // Select the first'targetImposterCount' members
       const chosenImposters = shuffled.slice(0, targetImposterCount);
 
       // Reset all members to NORMAL/chosenWord
       members.forEach((m: any) => {
-        m.role = 'NORMAL';
+        m.role ='NORMAL';
         m.assignedWordId = chosenWord.id;
       });
 
       // Assign IMPOSTER to selected members
       chosenImposters.forEach(item => {
         const idx = item.index;
-        members[idx].role = 'IMPOSTER';
-        members[idx].assignedWordId = onlineRoomState.imposterRevealsMode === 'RELATED_WORD' ? secondaryWord.id : 'IMPOSTER';
+        members[idx].role ='IMPOSTER';
+        members[idx].assignedWordId = onlineRoomState.imposterRevealsMode ==='RELATED_WORD' ? secondaryWord.id :'IMPOSTER';
       });
 
       // Increment counts in history
@@ -1383,34 +2372,107 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
         }
       }
 
-      const roomRef = doc(db, 'rooms', roomId);
+      const initialInquiry = {
+        stage: 1,
+        turnPlayerId: members[0].id,
+        targetPlayerId: members[1]?.id || '',
+        activeQuestion: null,
+        activeAnswer: null,
+        turnsInStage: 0,
+        history: [],
+        resolvedBranches: {}
+      };
+
+      // Generate question cycle for 3+ players online
+      const cyclePlayers = [...members];
+      for (let i = cyclePlayers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = cyclePlayers[i];
+        cyclePlayers[i] = cyclePlayers[j];
+        cyclePlayers[j] = temp;
+      }
+
+      const qPerPlayer = onlineRoomState?.questionsPerPlayer !== undefined ? onlineRoomState.questionsPerPlayer : questionsPerPlayer;
+      const qTimeLimit = onlineRoomState?.questionTimeLimit !== undefined ? onlineRoomState.questionTimeLimit : questionTimeLimit;
+
+      const cycle = [];
+      const numRounds = qPerPlayer === 0 ? 0 : qPerPlayer;
+      for (let r = 0; r < numRounds; r++) {
+        const offset = r + 1;
+        for (let i = 0; i < cyclePlayers.length; i++) {
+          const asker = cyclePlayers[i];
+          const target = cyclePlayers[(i + offset) % cyclePlayers.length];
+          cycle.push({
+            askerId: asker.id,
+            askerName: asker.name,
+            askerAvatarId: asker.avatarId,
+            targetId: target.id,
+            targetName: target.name,
+            targetAvatarId: target.avatarId,
+            roundNum: r + 1,
+            completed: false
+          });
+        }
+      }
+
+      setQuestioningCycle(cycle);
+      setCurrentCycleIdx(0);
+      setTurnTimeRemaining(qTimeLimit || 45);
+
+      const roomRef = doc(db,'rooms', roomId);
       await updateDoc(roomRef, {
-        status: 'PLAYING',
+        status:'PLAYING',
         players: members,
         secretWord: chosenWord,
         imposterAssignedWord: secondaryWord,
         imposterHistory: nextHistory,
         votes: {},
         imposterGuessedWordId: null,
-        twoPlayersGuessMatched: {}
+        twoPlayersGuessMatched: {},
+        inquiry: initialInquiry,
+        questioningCycle: cycle,
+        currentCycleIdx: 0,
+        questionsPerPlayer: qPerPlayer,
+        questionTimeLimit: qTimeLimit
       });
       return;
     }
 
-    const roomRef = doc(db, 'rooms', roomId);
+    const initialInquiry = {
+      stage: 1,
+      turnPlayerId: members[0].id,
+      targetPlayerId: members[1].id,
+      activeQuestion: null,
+      activeAnswer: null,
+      turnsInStage: 0,
+      history: [],
+      resolvedBranches: {
+        [members[0].id]: getWordBranch(chosenWord),
+        [members[1].id]: getWordBranch(secondaryWord)
+      }
+    };
+
+    const roomRef = doc(db,'rooms', roomId);
     await updateDoc(roomRef, {
-      status: 'PLAYING',
+      status:'PLAYING',
       players: members,
       secretWord: chosenWord,
       imposterAssignedWord: secondaryWord,
       votes: {},
       imposterGuessedWordId: null,
-      twoPlayersGuessMatched: {}
+      twoPlayersGuessMatched: {},
+      inquiry: initialInquiry
     });
   };
 
   const listenToRoom = (code: string, pid: string) => {
-    const roomRef = doc(db, 'rooms', code);
+    // Unsubscribe from any previous room listener before attaching a new one
+    if (roomUnsubscribeRef.current) {
+      roomUnsubscribeRef.current();
+      roomUnsubscribeRef.current = null;
+    }
+
+    const roomRef = doc(db,'rooms', code);
     const unsub = onSnapshot(roomRef, (snapshot) => {
       if (!snapshot.exists()) return;
       const data = snapshot.data();
@@ -1418,6 +2480,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
       if (data.players) {
         setActivePlayers(data.players);
+        setPlayerCount(data.players.length);
       }
       if (data.secretWord) {
         setSecretWord(data.secretWord);
@@ -1425,31 +2488,60 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       if (data.imposterAssignedWord) {
         setImposterAssignedWord(data.imposterAssignedWord);
       }
+      if (data.questioningCycle) {
+        setQuestioningCycle(data.questioningCycle);
+      }
+      if (data.currentCycleIdx !== undefined) {
+        setCurrentCycleIdx(prev => {
+          if (prev !== data.currentCycleIdx) {
+            setTurnTimeRemaining(data.questionTimeLimit || 45);
+          }
+          return data.currentCycleIdx;
+        });
+      }
+      if (data.questionsPerPlayer !== undefined) {
+        setQuestionsPerPlayer(data.questionsPerPlayer);
+      }
+      if (data.questionTimeLimit !== undefined) {
+        setQuestionTimeLimit(data.questionTimeLimit);
+      }
 
-      if (data.status === 'PLAYING') {
+      if (data.status ==='LOBBY') {
+        setPhase('ONLINE_LOBBY');
+      } else if (data.status ==='PLAYING') {
         setPhase('ROLES_REVEAL');
-      } else if (data.status === 'PLAYING_DISCUSSION') {
+      } else if (data.status ==='PLAYING_DISCUSSION') {
         setPhase('PLAY_DISCUSSION');
-      } else if (data.status === 'VOTING') {
+      } else if (data.status ==='VOTING') {
         setPhase('VOTING_PHASE');
-      } else if (data.status === 'REVEALED') {
+      } else if (data.status ==='REVEALED') {
         setPhase('REVEAL_IMPOSTER');
-      } else if (data.status === 'GUESSING') {
+      } else if (data.status ==='GUESSING') {
         setPhase('IMPOSTER_GUESS');
-      } else if (data.status === 'SCOREBOARD') {
+      } else if (data.status ==='SCOREBOARD') {
         setPhase('ROUND_RESULT');
-      } else if (data.status === 'TWO_PLAYERS_GUESS') {
+      } else if (data.status ==='TWO_PLAYERS_GUESS') {
         setPhase('TWO_PLAYERS_DISCUSSION_GUESS');
       }
+    }, (error) => {
+      console.warn("⚠️ Room real-time subscription error:", error);
     });
 
-    return () => unsub();
+    roomUnsubscribeRef.current = unsub;
+    return () => {
+      unsub();
+      if (roomUnsubscribeRef.current === unsub) {
+        roomUnsubscribeRef.current = null;
+      }
+    };
   };
 
   const handleOnlineVote = async (votedId: string) => {
-    if (!onlineRoomState) return;
+    if (!onlineRoomState || onlineVoteSaving || onlineRoomState.votes[localPlayerId]) return;
+    setOnlineVoteSaving(true);
+    try {
     const currentVotes = { ...onlineRoomState.votes, [localPlayerId]: votedId };
-    const roomRef = doc(db, 'rooms', roomId);
+    const roomRef = doc(db,'rooms', roomId);
 
     if (Object.keys(currentVotes).length === onlineRoomState.players.length) {
       const tallies: Record<string, number> = {};
@@ -1457,28 +2549,38 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
         tallies[id] = (tallies[id] || 0) + 1;
       });
       let maxVotes = 0;
-      let votedOutId = '';
       Object.keys(tallies).forEach(id => {
         if (tallies[id] > maxVotes) {
           maxVotes = tallies[id];
-          votedOutId = id;
         }
       });
+      const tiedCandidates = Object.keys(tallies).filter(id => tallies[id] === maxVotes);
+      let votedOutId = '';
+      if (tiedCandidates.length > 0) {
+        votedOutId = tiedCandidates[Math.floor(Math.random() * tiedCandidates.length)];
+      } else if (onlineRoomState.players.length > 0) {
+        votedOutId = onlineRoomState.players[0].id;
+      }
 
       await updateDoc(roomRef, {
         votes: currentVotes,
         votedOutPlayerId: votedOutId,
-        status: 'REVEALED'
+        status:'REVEALED'
       });
     } else {
       await updateDoc(roomRef, { votes: currentVotes });
+    }
+    } catch {
+      setNotice(t('تعذر تسجيل صوتك. حاول مرة أخرى.', 'Could not save your vote. Please try again.'));
+    } finally {
+      setOnlineVoteSaving(false);
     }
   };
 
   const submitOnlineTwoPlayersGuess = async (targetWordId: string) => {
     if (!onlineRoomState) return;
     const guesses = { ...onlineRoomState.twoPlayersGuessMatched, [localPlayerId]: targetWordId };
-    const roomRef = doc(db, 'rooms', roomId);
+    const roomRef = doc(db,'rooms', roomId);
 
     if (Object.keys(guesses).length === 2) {
       const members = [...onlineRoomState.players];
@@ -1494,11 +2596,253 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       await updateDoc(roomRef, {
         twoPlayersGuessMatched: guesses,
         players: members,
-        status: 'SCOREBOARD'
+        status:'SCOREBOARD'
       });
     } else {
       await updateDoc(roomRef, { twoPlayersGuessMatched: guesses });
     }
+  };
+
+  // Online Clinical Inquiry Handlers
+  const submitOnlineInquiryQuestion = async (question: InquiryQuestion) => {
+    if (!onlineRoomState || !roomId) return;
+    const currentInquiry = onlineRoomState.inquiry;
+    if (!currentInquiry) return;
+    if (currentInquiry.turnPlayerId !== localPlayerId) return;
+
+    try {
+      const roomRef = doc(db, 'rooms', roomId);
+      await updateDoc(roomRef, {
+        'inquiry.activeQuestion': question,
+        'inquiry.activeAnswer': null
+      });
+      sfx.click();
+    } catch (err) {
+      console.error('Failed to submit online inquiry question:', err);
+    }
+  };
+
+  const submitOnlineGroupInquiryQuestion = async (targetId: string, question: InquiryQuestion) => {
+    if (!onlineRoomState || !roomId) return;
+    try {
+      const roomRef = doc(db, 'rooms', roomId);
+      await updateDoc(roomRef, {
+        'inquiry.activeQuestion': question,
+        'inquiry.activeAnswer': null,
+        'inquiry.turnPlayerId': localPlayerId,
+        'inquiry.targetPlayerId': targetId
+      });
+      setSelectedInterrogateDoctorId(null);
+      sfx.click();
+    } catch (err) {
+      console.error('Failed to submit group inquiry question:', err);
+    }
+  };
+
+  const submitOnlineInquiryAnswer = async (answer: 'YES' | 'NO' | 'MAYBE') => {
+    if (!onlineRoomState || !roomId) return;
+    const currentInquiry = onlineRoomState.inquiry;
+    if (!currentInquiry || !currentInquiry.activeQuestion) return;
+    if (currentInquiry.targetPlayerId !== localPlayerId) return;
+
+    try {
+      const asker = activePlayers.find(p => p.id === currentInquiry.turnPlayerId);
+      const target = activePlayers.find(p => p.id === currentInquiry.targetPlayerId);
+      const q = currentInquiry.activeQuestion;
+
+      const newHistoryItem = {
+        id: 'inq_' + Date.now(),
+        stage: currentInquiry.stage || 1,
+        askerId: currentInquiry.turnPlayerId,
+        askerName: asker ? asker.name : t('طبيب', 'Doctor'),
+        targetId: currentInquiry.targetPlayerId,
+        targetName: target ? target.name : t('طبيب', 'Doctor'),
+        questionId: q.id,
+        questionAr: q.text.ar,
+        questionEn: q.text.en,
+        answer,
+        timestamp: Date.now()
+      };
+
+      const updatedHistory = [...(currentInquiry.history || []), newHistoryItem];
+      const currentBranches = { ...(currentInquiry.resolvedBranches || {}) };
+
+      // In Stage 1: If answered YES and expectedCategory exists, resolve branch for target
+      if (currentInquiry.stage === 1 && answer === 'YES' && q.expectedCategory) {
+        currentBranches[currentInquiry.targetPlayerId] = q.expectedCategory as ClinicalBranch;
+      }
+
+      // Detect and record confirmed system from Stage 2
+      const detectedSys = detectSystemFromQuestionAndAnswer(q.id, answer);
+      const currentConfirmedSystems = { ...(currentInquiry.confirmedSystems || {}) };
+      if (detectedSys) {
+        currentConfirmedSystems[currentInquiry.targetPlayerId] = detectedSys;
+      }
+
+      // Truth evaluation & anti-cheat recording
+      const targetWord = target ? getWordDetails(target.assignedWordId) : null;
+      const truthEval = evaluateQuestionTruth(q.id, targetWord);
+      let updatedMisleadingLog: MisleadingEntry[] = [...(currentInquiry.misleadingLog || [])];
+
+      const isMisleading =
+        (truthEval.trueAnswer === 'YES' && answer === 'NO') ||
+        (truthEval.trueAnswer === 'NO' && answer === 'YES');
+
+      if (isMisleading && target && targetWord) {
+        updatedMisleadingLog.push({
+          stage: currentInquiry.stage || 1,
+          questionId: q.id,
+          questionAr: q.text.ar,
+          questionEn: q.text.en,
+          doctorName: target.name,
+          doctorId: target.id,
+          cardNameAr: targetWord.word.Arabic,
+          cardNameEn: targetWord.word.English,
+          givenAnswer: answer,
+          trueAnswer: truthEval.trueAnswer,
+          clinicalReasonAr: truthEval.clinicalReasonAr,
+          clinicalReasonEn: truthEval.clinicalReasonEn
+        });
+      }
+
+      // Check turns in stage
+      const currentTurnsInStage = (currentInquiry.turnsInStage || 0) + 1;
+      let nextStage = currentInquiry.stage || 1;
+      let nextTurnsInStage = currentTurnsInStage;
+
+      // Swap asker and target
+      const nextTurnPlayerId = currentInquiry.targetPlayerId;
+      const nextTargetPlayerId = currentInquiry.turnPlayerId;
+
+      if (currentTurnsInStage >= 2) {
+        // Both players had a turn in this stage -> advance stage
+        if (nextStage < 5) {
+          nextStage = (nextStage + 1) as 1 | 2 | 3 | 4 | 5;
+          nextTurnsInStage = 0;
+
+          // Auto-resolve branch for any target if still unresolved
+          activePlayers.forEach(p => {
+            if (!currentBranches[p.id]) {
+              const w = getWordDetails(p.assignedWordId);
+              currentBranches[p.id] = getWordBranch(w);
+            }
+          });
+        }
+      }
+
+      const roomRef = doc(db, 'rooms', roomId);
+      await updateDoc(roomRef, {
+        'inquiry.activeQuestion': null,
+        'inquiry.activeAnswer': null,
+        'inquiry.turnPlayerId': nextTurnPlayerId,
+        'inquiry.targetPlayerId': nextTargetPlayerId,
+        'inquiry.stage': nextStage,
+        'inquiry.turnsInStage': nextTurnsInStage,
+        'inquiry.history': updatedHistory,
+        'inquiry.resolvedBranches': currentBranches,
+        'inquiry.confirmedSystems': currentConfirmedSystems,
+        'inquiry.misleadingLog': updatedMisleadingLog
+      });
+
+      sfx.reveal();
+    } catch (err) {
+      console.error('Failed to submit online inquiry answer:', err);
+    }
+  };
+
+  // Offline Clinical Inquiry Handlers
+  const submitOfflineInquiryQuestion = (question: InquiryQuestion) => {
+    const respondent = activePlayers[offlineInquiryTurnIdx === 0 ? 1 : 0];
+    if (!respondent) return;
+    setOfflineHandoff({ id: respondent.id, name: respondent.name });
+    setOfflineInquiryActiveQ(question);
+    sfx.click();
+  };
+
+  const submitOfflineInquiryAnswer = (answer: 'YES' | 'NO' | 'MAYBE') => {
+    if (!offlineInquiryActiveQ) return;
+    const p1 = activePlayers[offlineInquiryTurnIdx];
+    const p2 = activePlayers[offlineInquiryTurnIdx === 0 ? 1 : 0];
+    if (!p1 || !p2) return;
+
+    const newHistoryItem = {
+      id: 'inq_off_' + Date.now(),
+      stage: offlineInquiryStage,
+      askerId: p1.id,
+      askerName: p1.name,
+      targetId: p2.id,
+      targetName: p2.name,
+      questionId: offlineInquiryActiveQ.id,
+      questionAr: offlineInquiryActiveQ.text.ar,
+      questionEn: offlineInquiryActiveQ.text.en,
+      answer,
+      timestamp: Date.now()
+    };
+
+    const nextHistory = [...offlineInquiryHistory, newHistoryItem];
+    setOfflineInquiryHistory(nextHistory);
+
+    const nextBranches = { ...offlineInquiryBranches };
+    if (offlineInquiryStage === 1 && answer === 'YES' && offlineInquiryActiveQ.expectedCategory) {
+      nextBranches[p2.id] = offlineInquiryActiveQ.expectedCategory as ClinicalBranch;
+    }
+
+    const nextSystems = { ...offlineInquirySystems };
+    const detectedSys = detectSystemFromQuestionAndAnswer(offlineInquiryActiveQ.id, answer);
+    if (detectedSys) {
+      nextSystems[p2.id] = detectedSys;
+    }
+
+    const targetWord = getWordDetails(p2.assignedWordId);
+    const truthEval = evaluateQuestionTruth(offlineInquiryActiveQ.id, targetWord);
+    let nextMisleading: MisleadingEntry[] = [...offlineMisleadingLog];
+
+    const isMisleading =
+      (truthEval.trueAnswer === 'YES' && answer === 'NO') ||
+      (truthEval.trueAnswer === 'NO' && answer === 'YES');
+
+    if (isMisleading && targetWord) {
+      nextMisleading.push({
+        stage: offlineInquiryStage,
+        questionId: offlineInquiryActiveQ.id,
+        questionAr: offlineInquiryActiveQ.text.ar,
+        questionEn: offlineInquiryActiveQ.text.en,
+        doctorName: p2.name,
+        doctorId: p2.id,
+        cardNameAr: targetWord.word.Arabic,
+        cardNameEn: targetWord.word.English,
+        givenAnswer: answer,
+        trueAnswer: truthEval.trueAnswer,
+        clinicalReasonAr: truthEval.clinicalReasonAr,
+        clinicalReasonEn: truthEval.clinicalReasonEn
+      });
+    }
+
+    const currentTurns = offlineInquiryTurnsInStage + 1;
+    let nextStage = offlineInquiryStage;
+    let nextTurnsInStage = currentTurns;
+
+    if (currentTurns >= 2) {
+      if (nextStage < 5) {
+        nextStage = (nextStage + 1) as 1 | 2 | 3 | 4 | 5;
+        nextTurnsInStage = 0;
+        activePlayers.forEach(p => {
+          if (!nextBranches[p.id]) {
+            const w = getWordDetails(p.assignedWordId);
+            nextBranches[p.id] = getWordBranch(w);
+          }
+        });
+      }
+    }
+
+    setOfflineInquiryStage(nextStage);
+    setOfflineInquiryTurnsInStage(nextTurnsInStage);
+    setOfflineInquiryTurnIdx(offlineInquiryTurnIdx === 0 ? 1 : 0);
+    setOfflineInquiryBranches(nextBranches);
+    setOfflineInquirySystems(nextSystems);
+    setOfflineMisleadingLog(nextMisleading);
+    setOfflineInquiryActiveQ(null);
+    sfx.reveal();
   };
 
   const submitOnlineImposterGuess = async (wordId: string) => {
@@ -1510,45 +2854,57 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     const votedId = onlineRoomState.votedOutPlayerId;
     
     members.forEach(p => {
-      if (p.role === 'IMPOSTER') {
+      if (p.role ==='IMPOSTER') {
         if (isCorrect) p.score += 50;
       } else {
         const theirVote = onlineRoomState.votes[p.id];
         const votedForMember = members.find(m => m.id === theirVote);
-        if (votedForMember && votedForMember.role === 'IMPOSTER') {
+        if (votedForMember && votedForMember.role ==='IMPOSTER') {
           p.score += 50;
         }
       }
     });
 
-    const roomRef = doc(db, 'rooms', roomId);
+    const roomRef = doc(db,'rooms', roomId);
     await updateDoc(roomRef, {
       players: members,
       imposterGuessedWordId: wordId,
-      status: 'SCOREBOARD'
+      status:'SCOREBOARD'
     });
   };
 
   const resetOnlineRound = async () => {
     if (!onlineRoomState) return;
-    const roomRef = doc(db, 'rooms', roomId);
+    const roomRef = doc(db,'rooms', roomId);
     await updateDoc(roomRef, {
-      status: 'LOBBY',
+      status:'LOBBY',
+      // Scrub all in-game secrets so the room is safe to browse/list again
+      // while it waits for the next round (rules require secretWord == null
+      // for LOBBY rooms, and it genuinely keeps the lobby state clean).
+      secretWord: null,
+      imposterAssignedWord: null,
+      players: (onlineRoomState.players || []).map((p: any) => ({
+        id: p.id, name: p.name, score: p.score || 0, role:'NORMAL', assignedWordId:''
+      })),
       votes: {},
       votedOutPlayerId: null,
       imposterGuessedWordId: null,
-      twoPlayersGuessMatched: {}
+      twoPlayersGuessMatched: {},
+      inquiry: null
     });
     setPhase('ONLINE_LOBBY');
   };
 
   // Offline Passing / Votes Tally
   const revealNextPlayerOffline = () => {
+    if (isCardHidden) return;
     setIsCardHidden(true);
     if (revealIndex < activePlayers.length - 1) {
       setRevealIndex(prev => prev + 1);
     } else {
       if (playerCount === 2) {
+        const first = activePlayers[0];
+        if (first) setOfflineHandoff({ id: first.id, name: first.name });
         setPhase('TWO_PLAYERS_DISCUSSION_GUESS');
       } else {
         setPhase('PLAY_DISCUSSION');
@@ -1570,16 +2926,23 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       const tallies: Record<string, number> = {};
       Object.keys(updatedVotes).forEach(voterId => {
         const votedId = updatedVotes[voterId];
-        tallies[votedId] = (tallies[votedId] || 0) + 1;
+        if (votedId) {
+          tallies[votedId] = (tallies[votedId] || 0) + 1;
+        }
       });
       let maxVotes = 0;
-      let votedId = '';
       Object.keys(tallies).forEach(id => {
         if (tallies[id] > maxVotes) {
           maxVotes = tallies[id];
-          votedId = id;
         }
       });
+      const tiedCandidates = Object.keys(tallies).filter(id => tallies[id] === maxVotes);
+      let votedId = '';
+      if (tiedCandidates.length > 0) {
+        votedId = tiedCandidates[Math.floor(Math.random() * tiedCandidates.length)];
+      } else if (activePlayers.length > 0) {
+        votedId = activePlayers[0].id;
+      }
 
       setVotedPlayerId(votedId);
       setPhase('REVEAL_IMPOSTER');
@@ -1613,14 +2976,14 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
     const scoredPlayers = activePlayers.map(p => {
       let scoreAdd = 0;
-      if (p.role === 'IMPOSTER') {
+      if (p.role ==='IMPOSTER') {
         if (isImposterCorrect) scoreAdd = 50;
       } else {
         // Find if this player voted for any of the actual imposters in the new localVotingVotes mapping (or fallback offlineVotes)
         const votedSuspectIdsForThisPlayer = localVotingVotes[p.id] || (offlineVotes[p.id] ? [offlineVotes[p.id]] : []);
         const hasVotedForImposter = votedSuspectIdsForThisPlayer.some(votedId => {
           const suspect = activePlayers.find(x => x.id === votedId);
-          return suspect && suspect.role === 'IMPOSTER';
+          return suspect && suspect.role ==='IMPOSTER';
         });
         if (hasVotedForImposter) {
           scoreAdd = 50;
@@ -1636,7 +2999,8 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const startNextRoundOffline = () => {
     setOfflineVotes({});
     setOfflineGuesses({});
-    startOfflineMultiGame();
+    setVotedPlayerId('');
+    startOfflineMultiGame(true);
   };
 
   const currentOfflinePlayer = activePlayers[revealIndex] || null;
@@ -1647,1869 +3011,2400 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   };
 
   return (
-    <div className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto bg-gradient-to-tr from-[#040d1a] via-[#0a1e36] to-[#0f355c] text-white rounded-[2.5rem] p-4 sm:p-6 md:p-8 border border-white/10 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.85)] relative overflow-hidden font-sans select-none">
-      {/* Premium ambient decorative glowing elements */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-gradient-to-tr from-sky-500/10 to-cyan-400/0 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-10 left-10 w-96 h-96 bg-sky-950/15 rounded-full blur-[120px] pointer-events-none" />
-      {/* Cyber Grid Sub-layer with diagonal lines from screenshot */}
-      <div 
-        className="absolute inset-0 opacity-15 pointer-events-none z-0" 
-        style={{
-          backgroundImage: 'repeating-linear-gradient(-60deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 18px)'
-        }}
-      />
-
-      {/* Title Header Area */}
-      {phase !== 'ENTRY' && (
-        <div className="flex items-center justify-between border-b border-zinc-900 pb-2 mb-4">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-            </span>
-            <span className="text-[11px] uppercase font-mono font-bold tracking-widest text-zinc-400">
-              {phase.includes('PLAYING') || phase.includes('REVEAL') || phase.includes('VOTE') || phase.includes('GUESS') ? (
-                languageState === 'Arabic' ? 'الجولة شغال 🩺' : 'Active Round 🩺'
-              ) : (
-                ''
-              )}
-            </span>
-          </div>
-          
-          <button 
-            type="button"
-            onClick={() => setShowExitConfirm(true)} 
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 hover:border-zinc-700 bg-zinc-900/80 text-[11px] font-bold text-zinc-300 hover:text-white hover:bg-zinc-850 transition-all duration-300"
-          >
-            <ArrowLeft size={12} className="opacity-70" />
-            {languageState === 'Arabic' ? 'خروج' : 'Exit'}
-          </button>
-        </div>
-      )}
-
+    <div className="h-full min-h-0 flex flex-col relative select-none" dir={languageState ==='Arabic' ?'rtl' :'ltr'}>
+      <Confetti burst={confettiBurst} />
       <AnimatePresence mode="wait">
-        {/* PHASE: ENTRY */}
-        {phase === 'ENTRY' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="space-y-4 max-w-md mx-auto"
-          >
-            <div className="text-center space-y-1.5 py-1.5">
-              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-sky-300 shadow-inner">
-                {languageState === 'Arabic' ? 'لعبة Imposter الطبية' : 'CLINICAL IMPOSTER GAME'}
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white leading-tight tracking-tight uppercase">
-                {languageState === 'Arabic' ? 'جاهز للتحدي يا دكتور؟' : 'Ready for the Challenge, Doctor?'}
-              </h3>
-              <p className="text-white/80 text-xs leading-relaxed max-w-sm mx-auto">
-                {languageState === 'Arabic' 
-                  ? 'اختبر معلوماتك الطبية لوحدك أو اتحدى زملائك الدكاترة واعرف مين الـ Imposter المستخبي!' 
-                  : 'Test your diagnostic skills either solo or challenge your medical peers to uncover the secret imposter!'}
-              </p>
-            </div>
+        <motion.div
+          key={phase}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.22, ease:'easeOut' }}
+          className="flex-1 min-h-0 flex flex-col"
+        >
+          {/* ================= HOME (ENTRY) ================= */}
+          {phase === 'ENTRY' && <HomeView language={languageState} level={singlePlayerLevel} score={singleScore} onShowHelp={() => onShowHelp?.()} onChoose={action => {
+            if (action === 'solo') setPhase('SINGLE_SETUP');
+            if (action === 'visual') {
+              setMultiImageOnlyMode(true);
+              ensureOfflineRoster();
+              setIsOnline(false);
+              setPhase('MULTI_SETUP_OFFLINE');
+            }
+            if (action === 'offline') {
+              setMultiImageOnlyMode(false);
+              ensureOfflineRoster();
+              setIsOnline(false);
+              setPhase('MULTI_SETUP_OFFLINE');
+            }
+            if (action === 'online') { setIsOnline(true); setPhase('MULTI_SETUP_ONLINE'); }
+            if (action === 'ranking') { fetchLeaderboard(); setShowLeaderboardModal(true); }
+          }} />}
 
-            {/* Players count selector as premium bento container */}
-            <div className="bg-black/30 p-4 sm:p-5 rounded-3xl border border-white/10 backdrop-blur-md space-y-3 shadow-2xl">
-              <label className="text-[11px] uppercase font-bold tracking-widest text-white/70 flex items-center justify-between">
-                <span className="flex items-center gap-1.5">
-                  <Users size={13} className="text-sky-400" />
-                  {languageState === 'Arabic' ? 'اختار عدد اللعيبة' : 'Select Players Count'}
-                </span>
-                <span className="font-mono text-sky-300 text-xs font-bold bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
-                  {playerCount} {languageState === 'Arabic' ? 'دكاترة' : 'Doctors'}
-                </span>
-              </label>
-
-              <div className="grid grid-cols-5 gap-2">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                  <button
-                    key={num}
-                    onClick={() => setPlayerCount(num)}
-                    className={`h-9 rounded-xl font-black transition-all text-center border text-xs flex items-center justify-center ${
-                      playerCount === num 
-                        ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white border-white/30 shadow-[0_4px_12px_rgba(14,165,233,0.3)] scale-[1.05]' 
-                        : 'bg-black/30 text-white/70 border-white/5 hover:border-white/20 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {num}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <button
-              onClick={() => {
-                if (playerCount === 1) {
-                  setPhase('SINGLE_SETUP');
-                } else {
-                  setPhase('MULTI_MODE_SELECT');
+          {/* ================= SOLO SETUP ================= */}
+          {phase ==='SINGLE_SETUP' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={
+                  gameModeLock === 'GUESS'
+                    ? t('إعداد التحدي', 'Solo setup')
+                    : t('إعداد الجولة الفردية', 'Solo Challenge Setup')
                 }
-              }}
-              className="w-full py-4 bg-[#42a851] hover:bg-[#4eb65d] text-white active:scale-[0.98] rounded-2xl font-black text-sm uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
-            >
-              <span>{languageState === 'Arabic' ? 'التالي: تظبيط اللعبة' : 'Next: Set Up Match'}</span>
-              <ChevronRight size={15} />
-            </button>
-          </motion.div>
-        )}
-
-        {/* PHASE: SINGLE_SETUP */}
-        {phase === 'SINGLE_SETUP' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-            className="space-y-4 max-w-md mx-auto"
-          >
-            <div className="text-center space-y-1.5">
-              <div className="mx-auto w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-                <Users size={16} />
-              </div>
-              <h3 className="text-lg font-black text-white">{languageState === 'Arabic' ? 'اللعب لوحدك (فردي)' : 'Single Player mode'}</h3>
-              <p className="text-zinc-400 text-xs leading-relaxed max-w-xs mx-auto">
-                {languageState === 'Arabic' ? 'هتاخد 5 تلميحات بالتدريج عشان تخمن المصطلح الطبي المستخبي.' : 'You will receive 5 progressive clues to guess the mystery medical term.'}
-              </p>
-            </div>
-
-            <div className="space-y-4 bg-zinc-900/30 p-4 sm:p-5 rounded-xl border border-zinc-850/60 backdrop-blur-sm">
-              <div className="space-y-1.5">
-                <div className="flex justify-between items-center">
-                  <label className="text-[11px] uppercase tracking-wider font-bold text-zinc-400">
-                    {languageState === 'Arabic' ? 'التخصص الطبي (إكلينيكال وأكاديمي)' : 'Specialty Filter (Clinical & Academic)'}
-                  </label>
-                  {singleAdvancedFilter.enabled && (
-                    <span className="text-[9px] bg-sky-600/20 text-sky-400 px-2 py-0.5 rounded-full font-bold border border-sky-500/30 animate-pulse">
-                      {languageState === 'Arabic' ? 'فلتر متقدم شغال' : 'Advanced Active'}
-                    </span>
-                  )}
-                </div>
-                <div className="flex gap-1.5">
-                  <div className="relative flex-1">
-                    <select
-                      value={singleAdvancedFilter.enabled ? "Advanced" : singleSpecialty}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        if (val === 'Advanced') {
-                          setEditingFilterType('single');
-                          setTempAdvancedFilter({...singleAdvancedFilter});
-                          setIsAdvancedModalOpen(true);
-                        } else {
-                          setSingleSpecialty(val);
-                          setSingleAdvancedFilter(prev => ({ ...prev, enabled: false }));
-                        }
-                      }}
-                      className="w-full appearance-none bg-zinc-900 border border-zinc-800 rounded-lg pl-3 pr-10 py-2.5 text-xs font-semibold text-white outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/50 transition-all cursor-pointer"
-                    >
-                      {singleAdvancedFilter.enabled && (
-                        <option value="Advanced">
-                          {languageState === 'Arabic' 
-                            ? `فلتر مخصص (${singleAdvancedFilter.subjects.length} تخصص)` 
-                            : `Custom Filter (${singleAdvancedFilter.subjects.length} specs)`}
-                        </option>
-                      )}
-                      <option value="All">{languageState === 'Arabic' ? 'كل الفروع والعلوم الأساسية' : 'All Medicine & Basic Sciences'}</option>
-                      <optgroup label={languageState === 'Arabic' ? 'تخصصات إكلينيكية (Clinical)' : 'Clinical Specialties'}>
-                        {clinicalSpecialties.map(spec => (
-                          <option key={spec.id} value={spec.id}>
-                            {spec.nameEn}
-                          </option>
-                        ))}
-                      </optgroup>
-                      <optgroup label={languageState === 'Arabic' ? 'تخصصات أكاديمية (Academic)' : 'Academic Specialties'}>
-                        {academicSpecialties.map(spec => (
-                          <option key={spec.id} value={spec.id}>
-                            {spec.nameEn}
-                          </option>
-                        ))}
-                      </optgroup>
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-zinc-400">
-                      <ChevronDown className="w-3.5 h-3.5" />
+                onBack={() => {
+                  if (gameModeLock) {
+                    onGoBack();
+                  } else {
+                    setPhase('ENTRY');
+                  }
+                }}
+                backLabel={t('رجوع', 'Back')}
+                right={<StatPill tone="gold" icon={<Flame size={15} />} value={`${singleScore}`} />}
+              >
+                <div className="space-y-3 px-3.5 sm:px-4 max-w-md mx-auto w-full pt-1">
+                  {/* Compact Medical Rank and Streak Pill */}
+                  <div className="panel px-3.5 py-2 flex items-center justify-between gap-2.5">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="text-xl shrink-0">{getMedicalRank(singleStreak).icon}</span>
+                      <div className="min-w-0">
+                        <span className="text-xs font-semibold text-white/70 block leading-tight">
+                          {t('الرتبة الحالية', 'Current Rank')}
+                        </span>
+                        <span className={`font-display font-black text-xs sm:text-base break-words block ${getMedicalRank(singleStreak).color}`}>
+                          {languageState === 'Arabic' ? getMedicalRank(singleStreak).titleAr : getMedicalRank(singleStreak).titleEn}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-end shrink-0">
+                      <span className="text-xs font-semibold text-white/70 block leading-tight">
+                        {t('أطول سلسلة', 'Best Streak')}
+                      </span>
+                      <span className="font-display font-black text-xs sm:text-sm text-gold flex items-center gap-1 justify-end">
+                        <Flame size={13} /> {highestStreak}
+                      </span>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEditingFilterType('single');
-                      setTempAdvancedFilter({...singleAdvancedFilter});
-                      setIsAdvancedModalOpen(true);
-                    }}
-                    className={`px-2.5 rounded-lg border transition-all flex items-center justify-center ${
-                      singleAdvancedFilter.enabled 
-                        ? 'bg-sky-600/20 border-sky-500 text-sky-400 hover:bg-sky-600/30' 
-                        : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700'
-                    }`}
-                    title={languageState === 'Arabic' ? 'الإعدادات المتقدمة للتخصصات' : 'Advanced Specialty Settings'}
-                  >
-                    <Settings className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
 
-              {/* Difficulty Select */}
-              <div className="space-y-1.5">
-                <label className="text-[11px] uppercase tracking-wider font-bold text-zinc-400">
-                  {languageState === 'Arabic' ? 'صعوبة الكلمة الطبية' : 'Clinical/Scientific Difficulty'}
-                </label>
-                <div className="grid grid-cols-4 gap-1.5">
-                  {[
-                    { id: 'All', labelEn: 'All', labelAr: 'الكل' },
-                    { id: '1', labelEn: 'Easy', labelAr: 'سهل' },
-                    { id: '2', labelEn: 'Medium', labelAr: 'متوسط' },
-                    { id: '3', labelEn: 'Hard', labelAr: 'صعب' }
-                  ].map((level) => (
+                  {/* Primary Option 1: Specialty Picker */}
+                  <div className="space-y-1.5">
+                    <Label icon={<Target size={14} className="text-mint" />}>{t('التخصص الطبي', 'Medical Specialty')}</Label>
                     <button
-                      key={level.id}
                       type="button"
-                      onClick={() => setSingleDifficulty(level.id)}
-                      className={`py-1.5 rounded-lg border text-[11px] font-bold transition-all ${
-                        singleDifficulty === level.id 
-                          ? 'border-sky-600 bg-sky-600/10 text-white shadow-[0_0_15px_rgba(14,165,233,0.2)]' 
-                          : 'border-zinc-800 text-zinc-400 hover:border-zinc-700 bg-zinc-900/40'
-                      }`}
+                      onClick={() => { setSpecSheet('single'); setSpecSearch(''); }}
+                      className="w-full min-h-[50px] px-4 rounded-2xl bg-ink-2/90 border border-white/10 hover:border-mint/40 flex items-center justify-between active:scale-[0.98] transition-all focus-visible:ring-2 focus-visible:ring-mint focus-visible:outline-none"
                     >
-                      {languageState === 'Arabic' ? level.labelAr : level.labelEn}
+                      <span className="font-display font-bold text-white text-base break-words">
+                        {singleAdvancedFilter.enabled
+                          ? t(`فلتر مخصص (${singleAdvancedFilter.subjects.length})`, `Custom (${singleAdvancedFilter.subjects.length})`)
+                          : specialtyLabel(singleSpecialty, languageState)}
+                      </span>
+                      <span className="text-white/70 text-base">▾</span>
                     </button>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[11px] uppercase tracking-wider font-bold text-zinc-400">
-                  {languageState === 'Arabic' ? 'صعوبة تخمين الـ Imposter' : 'Guessing Difficulty (for Imposters)'}
-                </label>
-                <div className="grid grid-cols-4 gap-1.5">
-                  {[
-                    { id: 'All', labelEn: 'All', labelAr: 'الكل' },
-                    { id: '1', labelEn: 'Easy', labelAr: 'سهل' },
-                    { id: '2', labelEn: 'Medium', labelAr: 'متوسط' },
-                    { id: '3', labelEn: 'Hard', labelAr: 'صعب' }
-                  ].map((level) => (
-                    <button
-                      key={level.id}
-                      type="button"
-                      onClick={() => setSingleGuessingDifficulty(level.id)}
-                      className={`py-1.5 rounded-lg border text-[11px] font-bold transition-all ${
-                        singleGuessingDifficulty === level.id 
-                          ? 'border-teal-600 bg-teal-600/10 text-white shadow-[0_0_15px_rgba(20,184,166,0.2)]' 
-                          : 'border-zinc-800 text-zinc-400 hover:border-zinc-700 bg-zinc-900/40'
-                      }`}
-                    >
-                      {languageState === 'Arabic' ? level.labelAr : level.labelEn}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+                  </div>
 
-            <button
-              onClick={startSingleGame}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-lg text-xs tracking-wider uppercase transition-all shadow-lg hover:shadow-emerald-900/20 flex items-center justify-center gap-1.5"
-            >
-              <Play size={15} />
-              {languageState === 'Arabic' ? 'العب دلوقتي' : 'Start Solo Round'}
-            </button>
-          </motion.div>
-        )}
-
-        {/* PHASE: SINGLE_PLAYING */}
-        {phase === 'SINGLE_PLAYING' && singleWord && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }}
-            className="space-y-3 max-w-md mx-auto text-center"
-          >
-            <div className="flex justify-between items-center bg-zinc-900/50 p-2.5 rounded-xl border border-zinc-800">
-              <div className="text-left">
-                <p className="text-zinc-500 text-[9px] font-bold uppercase">{languageState === 'Arabic' ? 'اللاعب' : 'PLAYER'}</p>
-                <p className="text-white font-black text-xs">{singleName}</p>
-              </div>
-              <div className="text-right">
-                <p className="text-zinc-500 text-[9px] font-bold uppercase">{languageState === 'Arabic' ? 'مجموع النقاط' : 'SCORE'}</p>
-                <p className="text-sky-400 font-extrabold text-sm">{singleScore}</p>
-              </div>
-            </div>
-
-            <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl space-y-3">
-              <span className="px-2.5 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-full text-[10px] font-bold uppercase tracking-wider block w-max mx-auto">
-                {languageState === 'Arabic' ? `التلميحات (${unlockedHints} من 5)` : `Clues unlocked (${unlockedHints} of 5)`}
-              </span>
-
-              {/* Display clues */}
-              <div className="space-y-2 text-left py-2">
-                {getCluesForWord(singleWord.id, singleWord, 'English').slice(0, unlockedHints).map((clue, idx) => (
-                  <motion.div 
-                    initial={{ opacity: 0, x: -10 }} 
-                    animate={{ opacity: 1, x: 0 }} 
-                    key={idx} 
-                    className="p-2.5 bg-zinc-950 border-l-4 border-sky-500 rounded-lg text-xs font-semibold text-zinc-100 flex items-start gap-2.5 shadow-md"
-                  >
-                    <span className="font-extrabold text-sky-400 self-start mt-0.5">{idx + 1}.</span>
-                    <div className="flex-1 leading-relaxed">{renderClueText(clue, 'xs')}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {!singleGameEnded && unlockedHints < 5 && (
-                <button
-                  onClick={() => setUnlockedHints(prev => prev + 1)}
-                  className="px-3 py-1.5 bg-zinc-950 hover:bg-zinc-800 border border-zinc-800 text-[10px] font-bold text-zinc-300 rounded-lg transition-all"
-                >
-                  {languageState === 'Arabic' ? 'افتح تلميح كمان' : 'Unlock Next Clue'}
-                </button>
-              )}
-            </div>
-
-            {/* Guess section */}
-            {!singleGameEnded ? (
-              <div className="space-y-3">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase text-zinc-500 font-bold block text-left">
-                    {languageState === 'Arabic' ? 'ابحث عشان تخمن الكلمة الطبية' : 'Search to Guess the Medical Term'}
-                  </label>
-                  <div className="relative">
-                    <Search className="absolute left-3.5 top-2.5 text-zinc-650" size={15} />
-                    <input
-                      type="text"
-                      placeholder={languageState === 'Arabic' ? 'اكتب اسم المرض أو العضو هنا...' : 'Type name of condition...'}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-zinc-900 border border-zinc-800 focus:border-sky-600 rounded-lg pl-9 pr-3 py-2 placeholder:text-zinc-700 text-xs outline-none transition-all font-bold"
+                  {/* Primary Option 2: Difficulty */}
+                  <div className="space-y-1.5">
+                    <Label icon={<Flame size={14} className="text-coral" />}>{t('مستوى الصعوبة', 'Difficulty Level')}</Label>
+                    <SegOptions
+                      value={singleDifficulty}
+                      onChange={setSingleDifficulty}
+                      options={[
+                        { id: 'All', label: t('الكل', 'All') },
+                        { id: '1', label: t('سهل', 'Easy') },
+                        { id: '2', label: t('متوسط', 'Med') },
+                        { id: '3', label: t('صعب', 'Hard') },
+                      ]}
                     />
                   </div>
 
-                  {/* Suggestions */}
-                  {searchQuery && (
-                    <div className="space-y-0.5 bg-zinc-950/80 border border-zinc-800 rounded-lg overflow-hidden max-h-[140px] overflow-y-auto custom-scrollbar">
-                      {filteredSearchWords.map((word) => (
-                        <button
-                          key={word.id}
-                          onClick={() => submitSingleGuess(word)}
-                          className="w-full text-left px-3 py-2 hover:bg-sky-600/15 border-b border-zinc-900 text-xs font-bold flex items-center justify-between text-white"
-                        >
-                          <span>{word.word.English}</span>
-                          <span className="text-[9px] text-zinc-600 uppercase font-mono">{word.type}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <button
-                  onClick={() => {
-                    setSingleGameOverMsg(
-                      languageState === 'Arabic' 
-                        ? `كشفت المصطلح! الحل هو: "${singleWord.word.English}".` 
-                        : `Revealed! The term was: "${singleWord.word.English}".`
-                    );
-                    setSingleGameEnded(true);
-                  }}
-                  className="text-[11px] text-rose-500 hover:underline font-bold"
-                >
-                  {languageState === 'Arabic' ? 'استسلام واعرف الحل' : 'Give up & reveal answer'}
-                </button>
-              </div>
-            ) : (
-              <motion.div 
-                initial={{ scale: 0.95 }} 
-                animate={{ scale: 1 }} 
-                className="p-4 bg-zinc-900/60 border border-sky-500/20 rounded-xl text-center space-y-3"
-              >
-                <div className="w-10 h-10 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center mx-auto text-sky-400">
-                  <Trophy size={20} />
-                </div>
-                <p className="text-xs font-bold text-zinc-200 leading-relaxed">{singleGameOverMsg}</p>
-                
-                <div className="flex gap-3 max-w-xs mx-auto pt-1">
-                  <button
-                    onClick={startSingleGame}
-                    className="flex-1 py-2 bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-black rounded-lg uppercase tracking-widest transition-all"
-                  >
-                    {languageState === 'Arabic' ? 'العب تاني' : 'Another Round'}
-                  </button>
-                  <button
-                    onClick={() => setPhase('ENTRY')}
-                    className="flex-1 py-2 bg-zinc-800 hover:bg-zinc-750 text-white text-[11px] font-black rounded-lg uppercase tracking-widest transition-all"
-                  >
-                    {languageState === 'Arabic' ? 'الرئيسية' : 'Lobby'}
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
-        )}
-
-        {/* PHASE: MULTI_MODE_SELECT */}
-        {phase === 'MULTI_MODE_SELECT' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="space-y-4 max-w-md mx-auto text-center"
-          >
-            <div className="text-center space-y-1.5">
-              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-[9px] font-mono font-bold uppercase tracking-widest text-sky-300">
-                {languageState === 'Arabic' ? `${playerCount} دكاترة مستنيين` : `${playerCount} DOCTORS IN LOBBY`}
-              </span>
-              <h3 className="text-xl font-extrabold text-white leading-tight tracking-tight uppercase">
-                {languageState === 'Arabic' ? 'عايز تلعب إزاي؟' : 'How do you want to play?'}
-              </h3>
-              <p className="text-white/80 text-xs max-w-xs mx-auto leading-relaxed">
-                {languageState === 'Arabic' 
-                  ? 'اختار طريقة اللعب المناسبة ليك ولصحابك عشان تبدأوا.' 
-                  : 'Choose the ideal mode for your session to begin the diagnostic challenge.'}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-3 pt-1">
-              <button
-                onClick={() => {
-                  setIsOnline(false);
-                  
-                  // Initialize names with existing state or cached names, matching playerCount size
-                  const initialNames = Array(playerCount).fill('');
-                  let savedNames: string[] = [];
-                  try {
-                    const saved = localStorage.getItem('medical_cup_offline_player_names');
-                    if (saved) {
-                      const parsed = JSON.parse(saved);
-                      if (Array.isArray(parsed)) {
-                        savedNames = parsed;
-                      }
-                    }
-                  } catch (e) {
-                    console.error('Error loading saved offline names:', e);
-                  }
-
-                  // Use offlinePlayerNames state first, fallback to savedNames, fallback to empty
-                  for (let i = 0; i < playerCount; i++) {
-                    if (offlinePlayerNames[i]) {
-                      initialNames[i] = offlinePlayerNames[i];
-                    } else if (savedNames[i]) {
-                      initialNames[i] = savedNames[i];
-                    }
-                  }
-
-                  // Initialize avatars with existing state or cached avatars, matching playerCount size
-                  const initialAvatars = Array(playerCount).fill(0).map((_, idx) => idx % 10);
-                  let savedAvatars: number[] = [];
-                  try {
-                    const saved = localStorage.getItem('medical_cup_offline_player_avatars');
-                    if (saved) {
-                      const parsed = JSON.parse(saved);
-                      if (Array.isArray(parsed)) {
-                        savedAvatars = parsed;
-                      }
-                    }
-                  } catch (e) {
-                    console.error('Error loading saved offline avatars:', e);
-                  }
-
-                  for (let i = 0; i < playerCount; i++) {
-                    if (offlinePlayerAvatars[i] !== undefined) {
-                      initialAvatars[i] = offlinePlayerAvatars[i];
-                    } else if (savedAvatars[i] !== undefined) {
-                      initialAvatars[i] = savedAvatars[i];
-                    }
-                  }
-                  
-                  setOfflinePlayerNames(initialNames);
-                  setOfflinePlayerAvatars(initialAvatars);
-                  setPhase('MULTI_SETUP_OFFLINE');
-                }}
-                className="group p-5 bg-black/30 hover:bg-black/45 border border-white/10 hover:border-white/30 rounded-2xl transition-all duration-300 shadow-2xl flex items-center justify-between backdrop-blur-md"
-              >
-                <div className="space-y-1 flex-1 text-start">
-                  <h4 className="text-base font-black text-white group-hover:text-sky-300 transition-colors duration-200">
-                    {languageState === 'Arabic' ? 'أوفلاين (جهاز واحد بالتناوب)' : 'Offline (One phone / Pass & Play)'}
-                  </h4>
-                  <p className="text-xs text-white/70 leading-relaxed">
-                    {languageState === 'Arabic' 
-                      ? 'العبوا مع بعض على نفس الجهاز بالتناوب.' 
-                      : 'Play together sharing one device by taking turns.'}
-                  </p>
-                </div>
-                <div className="w-11 h-11 rounded-xl bg-white/10 group-hover:bg-white/20 text-sky-400 flex items-center justify-center transition-all duration-300 ml-3 shadow-md">
-                  <Users size={20} />
-                </div>
-              </button>
-
-              <div className="relative">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={() => {
-                    setIsOnline(true);
-                    setPhase('MULTI_SETUP_ONLINE');
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setIsOnline(true);
-                      setPhase('MULTI_SETUP_ONLINE');
-                    }
-                  }}
-                  className="w-full cursor-pointer group p-5 bg-black/30 hover:bg-black/45 border border-white/10 hover:border-white/30 rounded-2xl transition-all duration-300 shadow-2xl flex items-center justify-between backdrop-blur-md text-start"
-                >
-                  <div className="space-y-1 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <h4 className="text-base font-black text-white group-hover:text-sky-300 transition-colors duration-200">
-                        {languageState === 'Arabic' ? 'أونلاين (كل واحد من موبايله)' : 'Online (Separate Phones)'}
-                      </h4>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowOnlineModeHelp(prev => !prev);
-                        }}
-                        className="p-1 rounded-md hover:bg-white/15 text-sky-300 hover:text-sky-200 transition-colors active:scale-90"
-                        title={languageState === 'Arabic' ? 'شرح الأونلاين' : 'Online Mode Help'}
-                      >
-                        <HelpCircle size={14} />
-                      </button>
-                    </div>
-                    <p className="text-xs text-white/70 leading-relaxed">
-                      {languageState === 'Arabic' 
-                        ? 'كل واحد يلعب من موبايله في نفس الوقت على النت.' 
-                        : 'Play using separate devices in real-time.'}
-                    </p>
-                  </div>
-                  <div className="w-11 h-11 rounded-xl bg-white/10 group-hover:bg-white/20 text-sky-400 flex items-center justify-center transition-all duration-300 ml-3 shrink-0 shadow-md">
-                    <Landmark size={20} />
-                  </div>
-                </div>
-
-                <AnimatePresence>
-                  {showOnlineModeHelp && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                      animate={{ opacity: 1, height: 'auto', marginTop: 8 }}
-                      exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                      transition={{ duration: 0.2, ease: 'easeOut' }}
-                      className="overflow-hidden text-start"
+                  {/* Expandable Section: خيارات إضافية (Additional Options) */}
+                  <div className="panel overflow-hidden border border-white/10 transition-all">
+                    <button
+                      type="button"
+                      onClick={() => setShowSoloAdvancedOptions(prev => !prev)}
+                      className="w-full min-h-[52px] px-3.5 py-3 flex items-center justify-between gap-2 text-start bg-ink-3/40 hover:bg-ink-3/70 active:scale-[0.99] transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-mint focus-visible:outline-none"
+                      aria-expanded={showSoloAdvancedOptions}
                     >
-                      <div className="p-3 bg-white/5 border border-white/10 rounded-xl text-sky-300 text-[10px] sm:text-[11px] leading-relaxed space-y-1 shadow-inner">
-                        <span className="font-bold block text-sky-200">
-                          {languageState === 'Arabic' ? '💡 عن طريقة اللعب أونلاين:' : '💡 About Online Mode:'}
+                      <div className="flex items-center gap-2 min-w-0">
+                        <SlidersHorizontal size={16} className="text-white/70 shrink-0" />
+                        <span className="font-display font-bold text-sm sm:text-base text-white/95">
+                          {t('خيارات إضافية', 'Additional Options')}
                         </span>
-                        <p>
-                          {languageState === 'Arabic' 
-                            ? 'الاونلاين يمنحك اللعب بأجهزة متعددة (جهازين فأكثر)، ولكن يجب أن يكون هناك وسيلة محادثة (مثل اتصال صوتي أو جلوس في نفس المكان) مع بقية اللاعبين.' 
-                            : 'Online mode allows you to play using separate devices (two or more), but there must be a way of communication (such as voice call or sitting in the same place) with the other players.'}
-                        </p>
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </motion.div>
-        )}
-        {/* PHASE: MULTI_SETUP_OFFLINE */}
-        {phase === 'MULTI_SETUP_OFFLINE' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="space-y-4 max-w-md mx-auto relative z-10"
-          >
-            {/* Header section matching screenshot */}
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              {/* Left Button (Settings gear in Arabic, back arrow in English) */}
-              {languageState === 'Arabic' ? (
-                <button
-                  type="button"
-                  onClick={() => setPhase('MULTI_SETUP_OFFLINE_CONFIG')}
-                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0"
-                  title="الإعدادات المتقدمة"
-                >
-                  <Settings size={18} className="animate-spin-slow" />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setPhase('ENTRY')}
-                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0"
-                  title="Back"
-                >
-                  <ArrowLeft size={16} />
-                </button>
-              )}
 
-              {/* Title Header */}
-              <h3 className="text-2xl font-black text-white tracking-tight uppercase select-none">
-                {languageState === 'Arabic' ? 'اللاعبين' : 'Players'}
-              </h3>
-
-              {/* Right Button (Back arrow in Arabic, Settings gear in English) */}
-              {languageState === 'Arabic' ? (
-                <button
-                  type="button"
-                  onClick={() => setPhase('ENTRY')}
-                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0"
-                  title="رجوع"
-                >
-                  <ArrowLeft size={16} />
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setPhase('MULTI_SETUP_OFFLINE_CONFIG')}
-                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center shrink-0"
-                  title="Advanced Settings"
-                >
-                  <Settings size={18} className="animate-spin-slow" />
-                </button>
-              )}
-            </div>
-
-            {/* List of Player cards */}
-            <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1 relative z-10 custom-scrollbar">
-              {offlinePlayerNames.map((name, idx) => {
-                const currentAvId = offlinePlayerAvatars[idx] !== undefined ? offlinePlayerAvatars[idx] : (idx % 10);
-                const isPickerOpen = activeAvatarPickerIdx === idx;
-                
-                // Color palette mimicking screenshot's vibrant hues
-                const cardColors = [
-                  'bg-[#df4f97] hover:bg-[#eb5d9f] shadow-[0_4px_12px_rgba(223,79,151,0.2)]', // Rose Pink
-                  'bg-[#2ba5df] hover:bg-[#3db3eb] shadow-[0_4px_12px_rgba(43,165,223,0.2)]', // Sky Blue
-                  'bg-[#674575] hover:bg-[#785486] shadow-[0_4px_12px_rgba(103,69,117,0.2)]', // Plum Purple
-                  'bg-emerald-600 hover:bg-emerald-500 shadow-[0_4px_12px_rgba(16,185,129,0.2)]',
-                  'bg-amber-600 hover:bg-amber-500 shadow-[0_4px_12px_rgba(245,158,11,0.2)]',
-                  'bg-sky-600 hover:bg-sky-500 shadow-[0_4px_12px_rgba(14,165,233,0.2)]',
-                  'bg-teal-600 hover:bg-teal-500 shadow-[0_4px_12px_rgba(13,148,136,0.2)]',
-                ];
-                const cardBg = cardColors[idx % cardColors.length];
-
-                const deletePlayer = (idxToDelete: number) => {
-                  if (offlinePlayerNames.length <= 2) {
-                    alert(
-                      languageState === 'Arabic' 
-                        ? 'يجب أن يكون هناك طبيبان اثنين على الأقل لبدء الجولة!' 
-                        : 'At least 2 doctors are required to play!'
-                    );
-                    return;
-                  }
-                  const newNames = offlinePlayerNames.filter((_, i) => i !== idxToDelete);
-                  const newAvatars = offlinePlayerAvatars.filter((_, i) => i !== idxToDelete);
-                  setOfflinePlayerNames(newNames);
-                  setOfflinePlayerAvatars(newAvatars);
-                  setPlayerCount(newNames.length);
-                };
-
-                return (
-                  <div key={idx} className="space-y-2">
-                    <div className={`flex items-center justify-between p-3.5 rounded-[1.5rem] transition-all duration-300 ${cardBg}`}>
-                      {/* Left Side: X (Arabic) or Avatar (English) */}
-                      {languageState === 'Arabic' ? (
-                        <button
-                          type="button"
-                          onClick={() => deletePlayer(idx)}
-                          className="w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-                          title="حذف"
-                        >
-                          <X size={20} strokeWidth={2.5} />
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => setActiveAvatarPickerIdx(isPickerOpen ? null : idx)}
-                          className="w-12 h-12 rounded-full border-2 border-white/95 bg-white/10 hover:scale-105 active:scale-95 shadow-md flex items-center justify-center overflow-hidden shrink-0 transition-all"
-                          title="Change Avatar"
-                        >
-                          <AnimalDoctorAvatar avatarId={currentAvId} size={42} />
-                        </button>
-                      )}
-
-                      {/* Middle Side: Dynamic Text Input */}
-                      <div className="flex-1 px-3">
-                        <input
-                          type="text"
-                          required
-                          value={name}
-                          onChange={(e) => {
-                            const updated = [...offlinePlayerNames];
-                            updated[idx] = e.target.value;
-                            setOfflinePlayerNames(updated);
-                          }}
-                          placeholder={languageState === 'Arabic' ? 'اسم اللاعب' : 'Player Name'}
-                          className={`w-full bg-transparent border-none text-white font-black text-base sm:text-lg outline-none placeholder-white/50 transition-all ${
-                            languageState === 'Arabic' ? 'text-right' : 'text-left'
-                          }`}
+                      <div className="flex items-center gap-1.5 shrink-0 flex-wrap justify-end max-w-[55%]">
+                        {/* Status Summary Chips (always visible even when collapsed) */}
+                        {singleTimerEnabled && (
+                          <span className="text-[0.8125rem] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-mint/15 text-mint border border-mint/30 flex items-center gap-1 shrink-0">
+                            <Timer size={12} />
+                            <span>{t('45 ث', '45s')}</span>
+                          </span>
+                        )}
+                        {reviewFromMistakes && missedCaseCount > 0 && (
+                          <span className="text-[0.8125rem] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-coral/15 text-coral border border-coral/30 flex items-center gap-1 shrink-0">
+                            <Target size={12} />
+                            <span>{t(`مراجعة (${missedCaseCount})`, `Review (${missedCaseCount})`)}</span>
+                          </span>
+                        )}
+                        <ChevronDown
+                          size={16}
+                          className={`text-white/60 transition-transform duration-200 shrink-0 ${showSoloAdvancedOptions ? 'rotate-180' : ''}`}
                         />
                       </div>
+                    </button>
 
-                      {/* Right Side: Avatar (Arabic) or X (English) */}
-                      {languageState === 'Arabic' ? (
-                        <button
-                          type="button"
-                          onClick={() => setActiveAvatarPickerIdx(isPickerOpen ? null : idx)}
-                          className="w-12 h-12 rounded-full border-2 border-white/95 bg-white/10 hover:scale-105 active:scale-95 shadow-md flex items-center justify-center overflow-hidden shrink-0 transition-all"
-                          title="اضغط لتغيير الأفاتار"
-                        >
-                          <AnimalDoctorAvatar avatarId={currentAvId} size={42} />
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => deletePlayer(idx)}
-                          className="w-10 h-10 rounded-full flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-                          title="Delete"
-                        >
-                          <X size={20} strokeWidth={2.5} />
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Cute Avatar Grid Picker inside the colored gradient box */}
-                    <AnimatePresence>
-                      {isPickerOpen && (
+                    <AnimatePresence initial={false}>
+                      {showSoloAdvancedOptions && (
                         <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="overflow-hidden"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="px-3.5 pb-3.5 pt-2 space-y-3 border-t border-white/5"
                         >
-                          <div className="bg-black/45 border border-white/10 p-3 rounded-2xl space-y-2 mt-1 shadow-2xl backdrop-blur-md">
-                            <p className="text-[9px] font-bold text-white/60 uppercase tracking-widest text-center">
-                              {languageState === 'Arabic' ? 'اختر رمز طبيب الحيوان الكيوت الخاص بك' : 'SELECT CUTE ANIMAL DOCTOR'}
-                            </p>
-                            <div className="grid grid-cols-5 gap-2">
-                              {AVATAR_TEMPLATES.map((avatar) => (
-                                <button
-                                  key={avatar.id}
-                                  type="button"
-                                  onClick={() => {
-                                    const updated = [...offlinePlayerAvatars];
-                                    updated[idx] = avatar.id;
-                                    setOfflinePlayerAvatars(updated);
-                                    setActiveAvatarPickerIdx(null);
-                                  }}
-                                  className={`p-1.5 rounded-xl border transition-all flex flex-col items-center justify-center gap-1 ${
-                                    currentAvId === avatar.id 
-                                      ? 'bg-white/20 border-white scale-105' 
-                                      : 'bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/10'
-                                  }`}
-                                >
-                                  <div className="w-8 h-8 flex items-center justify-center">
-                                    {avatar.svg}
-                                  </div>
-                                  <span className="text-[8px] font-black text-white/70 capitalize">
-                                    {avatar.name}
-                                  </span>
-                                </button>
-                              ))}
+                          {/* Emergency Rush Timer Toggle (Entire row clickable, role="switch", >= 44x44 target) */}
+                          <button
+                            type="button"
+                            role="switch"
+                            aria-checked={singleTimerEnabled}
+                            aria-label={t('عداد الطوارئ (45 ثانية)', 'Emergency Rush Timer (45s)')}
+                            onClick={() => setSingleTimerEnabled(prev => !prev)}
+                            className={`w-full min-h-[56px] flex items-center justify-between p-3 sm:p-3.5 rounded-xl border text-start transition-all cursor-pointer select-none active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-mint focus-visible:outline-none ${
+                              singleTimerEnabled
+                                ? 'bg-mint/[0.08] border-mint/35 shadow-[0_2px_12px_rgba(47,230,167,0.06)]'
+                                : 'bg-ink/60 border-white/10 hover:border-white/20'
+                            }`}
+                          >
+                            <div className="space-y-1 min-w-0 pr-2">
+                              <span className="flex items-center gap-2 font-display font-bold text-sm sm:text-base text-white">
+                                <Timer size={17} className={singleTimerEnabled ? 'text-mint' : 'text-white/70'} />
+                                <span>{t('عداد الطوارئ (45 ثانية)', 'Emergency Rush Timer (45s)')}</span>
+                              </span>
+                              <span className="text-[0.8125rem] sm:text-[0.8125rem] font-medium text-white/70 block leading-snug">
+                                {t('مكافأة سرعة (+10 ن)', 'Speed bonus (+10 pts)')}
+                              </span>
                             </div>
+
+                            <div className="shrink-0 flex items-center justify-center w-11 h-11 pointer-events-none">
+                              <div className={`w-11 h-6 rounded-full relative transition-colors ${singleTimerEnabled ? 'bg-mint' : 'bg-white/20'}`}>
+                                <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-all ${singleTimerEnabled ? 'start-5.5' : 'start-0.5'}`} />
+                              </div>
+                            </div>
+                          </button>
+
+                          {/* From-your-mistakes review mode (Entire row clickable switch + separate clear button) */}
+                          <div className="space-y-1.5">
+                            <button
+                              type="button"
+                              role="switch"
+                              disabled={missedCaseCount === 0}
+                              aria-checked={reviewFromMistakes}
+                              aria-label={t(`مراجعة أخطائك السابقة (${missedCaseCount} حالة)`, `Review previous misses (${missedCaseCount} cases)`)}
+                              onClick={() => setReviewFromMistakes(prev => !prev)}
+                              className={`w-full min-h-[56px] flex items-center justify-between p-3 sm:p-3.5 rounded-xl border text-start transition-all select-none ${
+                                missedCaseCount === 0
+                                  ? 'opacity-60 bg-ink/40 border-white/5 cursor-not-allowed'
+                                  : reviewFromMistakes
+                                    ? 'cursor-pointer bg-coral/[0.09] border-coral/40 shadow-[0_2px_12px_rgba(255,84,112,0.08)] active:scale-[0.99]'
+                                    : 'cursor-pointer bg-ink/60 border-white/10 hover:border-white/20 active:scale-[0.99]'
+                              } focus-visible:ring-2 focus-visible:ring-coral focus-visible:outline-none`}
+                            >
+                              <div className="space-y-1 min-w-0 pr-2">
+                                <span className={`flex items-center gap-2 font-display font-bold text-sm sm:text-base ${reviewFromMistakes ? 'text-coral' : 'text-white'}`}>
+                                  <Target size={17} className={reviewFromMistakes ? 'text-coral' : 'text-white/70'} />
+                                  <span className="truncate">{t(`مراجعة أخطائك السابقة (${missedCaseCount})`, `Review previous misses (${missedCaseCount})`)}</span>
+                                </span>
+                                <span className="text-[0.8125rem] sm:text-[0.8125rem] font-medium text-white/70 block leading-snug">
+                                  {missedCaseCount > 0
+                                    ? t('تصحيح أخطائك السابقة', 'Review and correct previous misses')
+                                    : t('لا توجد حالات خاطئة مسجلة', 'No misdiagnosed cases recorded')}
+                                </span>
+                              </div>
+
+                              <div className="shrink-0 flex items-center justify-center w-11 h-11 pointer-events-none">
+                                <div className={`w-11 h-6 rounded-full relative transition-colors ${
+                                  missedCaseCount === 0 ? 'bg-white/10' : reviewFromMistakes ? 'bg-coral' : 'bg-white/20'
+                                }`}>
+                                  <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-all ${reviewFromMistakes ? 'start-5.5' : 'start-0.5'}`} />
+                                </div>
+                              </div>
+                            </button>
+
+                            {/* Clear Missed Cases Bank Button (independent element, >=44px touch height, no overlap) */}
+                            {missedCaseCount > 0 && (
+                              <div className="flex justify-end pt-0.5">
+                                <button
+                                  type="button"
+                                  onClick={clearMissedBank}
+                                  className="min-h-[48px] px-3 py-2 flex items-center gap-1.5 text-xs font-bold text-coral/85 hover:text-coral hover:bg-coral/10 rounded-lg active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-coral focus-visible:outline-none"
+                                >
+                                  <Trash2 size={14} />
+                                  <span>{t('مسح سجل الأخطاء', 'Clear missed cases bank')}</span>
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                );
-              })}
-
-              {/* "Add New Player" (لاعب جديد) Card matching screenshot */}
-              <div 
-                onClick={() => {
-                  if (offlinePlayerNames.length >= 10) {
-                    alert(
-                      languageState === 'Arabic' 
-                        ? 'الحد الأقصى هو 10 أطباء!' 
-                        : 'Maximum of 10 doctors reached!'
-                    );
-                    return;
-                  }
-                  const nextIdx = offlinePlayerNames.length;
-                  const newNames = [...offlinePlayerNames, ''];
-                  const newAvatars = [...offlinePlayerAvatars, nextIdx % 10];
-                  setOfflinePlayerNames(newNames);
-                  setOfflinePlayerAvatars(newAvatars);
-                  setPlayerCount(newNames.length);
-                }}
-                className="border-2 border-dashed border-white/20 hover:border-white/45 bg-black/30 hover:bg-black/40 rounded-[1.5rem] p-3.5 cursor-pointer transition-all flex items-center justify-between shadow-inner"
-              >
-                {/* Left side: Plus Green button (Arabic) or Placeholder (English) */}
-                {languageState === 'Arabic' ? (
-                  <div className="w-10 h-10 rounded-xl bg-[#42a851] hover:bg-[#4fb85e] flex items-center justify-center text-white shadow-md active:scale-95 transition-all">
-                    <Plus size={22} strokeWidth={3} />
-                  </div>
-                ) : (
-                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-white/20 bg-white/5 shrink-0" />
-                )}
-
-                {/* Center text */}
-                <div className={`flex-1 px-3 ${languageState === 'Arabic' ? 'text-right' : 'text-left'}`}>
-                  <span className="text-white font-black text-base sm:text-lg tracking-wide">
-                    {languageState === 'Arabic' ? 'لاعب جديد' : 'New Player'}
-                  </span>
                 </div>
+              </Screen>
 
-                {/* Right side: Placeholder (Arabic) or Plus Green button (English) */}
-                {languageState === 'Arabic' ? (
-                  <div className="w-12 h-12 rounded-full border-2 border-dashed border-white/20 bg-white/5 shrink-0" />
-                ) : (
-                  <div className="w-10 h-10 rounded-xl bg-[#42a851] hover:bg-[#4fb85e] flex items-center justify-center text-white shadow-md active:scale-95 transition-all">
-                    <Plus size={22} strokeWidth={3} />
-                  </div>
-                )}
+              {/* Docked Start Round Button */}
+              <div className="shrink-0 px-3.5 sm:px-4 pt-2 pb-safe border-t border-white/[0.06] bg-ink/95 backdrop-blur-md">
+                <div className="max-w-md mx-auto w-full">
+                  <BigBtn onClick={startSingleGame}>
+                    <Play size={20} />
+                    {reviewFromMistakes && missedCaseCount > 0
+                      ? t('ابدأ المراجعة', 'Start Review')
+                      : t('ابدأ الجولة', 'Start Round')}
+                  </BigBtn>
+                </div>
               </div>
             </div>
+          )}
 
-            {/* "يلا بينا" Bottom Button from the screenshot */}
-            <button
-              type="button"
-              onClick={() => {
-                const emptyIdx = offlinePlayerNames.findIndex(n => !n.trim());
-                if (emptyIdx !== -1) {
-                  alert(
-                    languageState === 'Arabic' 
-                      ? `يرجى إدخال اسم اللاعب المساعد ${emptyIdx + 1} للمتابعة!` 
-                      : `Please enter a name for Doctor ${emptyIdx + 1} to proceed!`
-                  );
-                  return;
-                }
-                if (offlinePlayerNames.length < 2) {
-                  alert(
-                    languageState === 'Arabic'
-                      ? 'يجب أن يكون هناك لاعبين اثنين على الأقل لبدء اللعبة!'
-                      : 'At least 2 players are required to start the game!'
-                  );
-                  return;
-                }
-                setPhase('MULTI_SETUP_OFFLINE_CONFIG');
-              }}
-              className="w-full py-4 bg-[#42a851] hover:bg-[#4eb65d] text-white font-black rounded-2xl text-base shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2 relative z-10"
-            >
-              <span>{languageState === 'Arabic' ? 'يلا بينا' : "Let's Go!"}</span>
-            </button>
-          </motion.div>
-        )}
+          {/* ================= SOLO PLAYING ================= */}
+          {phase ==='SINGLE_PLAYING' && singleWord && (() => {
+            const soloClues = getSoloProgressiveHints(singleWord, languageState);
+            const currentReward = unlockedHints === 1 ? 50 : unlockedHints === 2 ? 30 : 15;
+            const currentRank = getMedicalRank(singleStreak);
 
-        {/* PHASE: MULTI_SETUP_OFFLINE_CONFIG */}
-        {phase === 'MULTI_SETUP_OFFLINE_CONFIG' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="space-y-4 max-w-md mx-auto"
-          >
-            <div className="flex items-center justify-between border-b border-zinc-850 pb-3">
-              <button
-                type="button"
-                onClick={() => setPhase('MULTI_SETUP_OFFLINE')}
-                className="p-2 bg-zinc-900/80 hover:bg-zinc-850 text-zinc-400 hover:text-white rounded-lg transition-colors flex items-center gap-1.5 text-xs font-bold"
-              >
-                <ArrowLeft size={14} />
-                <span>{languageState === 'Arabic' ? 'رجوع لتعديل الأسماء' : 'Back to Names'}</span>
-              </button>
-              <div className="text-right">
-                <span className="text-[10px] bg-sky-600/15 border border-sky-500/20 text-sky-400 px-2 py-0.5 rounded-full font-black uppercase tracking-wider">
-                  {languageState === 'Arabic' ? 'الخطوة 2 من 2' : 'Step 2 of 2'}
-                </span>
-              </div>
-            </div>
-
-            <div className="text-center space-y-1">
-              <h3 className="text-2xl font-black text-white italic tracking-tight">
-                {languageState === 'Arabic' ? 'التخصص الطبي ومستوى اللعبة' : 'Medical Settings'}
-              </h3>
-              <p className="text-xs text-zinc-500">
-                {languageState === 'Arabic' ? 'اختر تخصص المصطلحات وصعوبة الكلمات اللغوية.' : 'Configure case specialties and integrated term difficulty levels.'}
-              </p>
-            </div>
-
-            <div className="space-y-3.5 bg-zinc-900/40 p-4 border border-zinc-850 rounded-2xl">
-              {/* Clinical/Academic Specialty Selector */}
-              <div className="space-y-1.5">
-                <div className="flex justify-between items-center">
-                  <label className="text-[10px] uppercase font-black tracking-wider text-sky-400">
-                    {languageState === 'Arabic' ? 'التخصص الطبي للمصطلحات' : 'Clinical Specialties Range'}
-                  </label>
-                  {multiAdvancedFilter.enabled && (
-                    <span className="text-[9px] bg-sky-600/15 text-sky-400 px-2 py-0.5 rounded-full font-bold border border-sky-500/20">
-                      {languageState === 'Arabic' ? 'فلتر مخصص نشط' : 'Custom Active'}
-                    </span>
-                  )}
-                </div>
-                <div className="flex gap-1.5">
-                  <div className="relative flex-1">
-                    <select
-                      value={multiAdvancedFilter.enabled ? "Advanced" : multiSpecialty}
-                      onChange={(e) => {
-                        const val = e.target.value;
-                        if (val === 'Advanced') {
-                          setEditingFilterType('multi');
-                          setTempAdvancedFilter({...multiAdvancedFilter});
-                          setIsAdvancedModalOpen(true);
-                        } else {
-                          setMultiSpecialty(val);
-                          setMultiAdvancedFilter(prev => ({ ...prev, enabled: false }));
-                        }
-                      }}
-                      className="w-full appearance-none bg-zinc-950 border border-zinc-850 rounded-xl pl-3 pr-10 py-2.5 text-xs font-bold text-white outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/50 transition-all cursor-pointer"
-                    >
-                      {multiAdvancedFilter.enabled && (
-                        <option value="Advanced">
-                          {languageState === 'Arabic' 
-                            ? `فلتر مخصص (${multiAdvancedFilter.subjects.length} تخصص)` 
-                            : `Custom Filter (${multiAdvancedFilter.subjects.length} specs)`}
-                        </option>
-                      )}
-                      <option value="All">{languageState === 'Arabic' ? 'كل الفروع والعلوم الأساسية' : 'All Medicine (Skip Limit)'}</option>
-                      <optgroup label={languageState === 'Arabic' ? 'تخصصات إكلينيكية (Clinical)' : 'Clinical Specialties'}>
-                        {clinicalSpecialties.map(spec => (
-                          <option key={spec.id} value={spec.id}>
-                            {spec.nameEn}
-                          </option>
-                        ))}
-                      </optgroup>
-                      <optgroup label={languageState === 'Arabic' ? 'تخصصات أكاديمية (Academic)' : 'Academic Specialties'}>
-                        {academicSpecialties.map(spec => (
-                          <option key={spec.id} value={spec.id}>
-                            {spec.nameEn}
-                          </option>
-                        ))}
-                      </optgroup>
-                    </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-zinc-400">
-                      <ChevronDown className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEditingFilterType('multi');
-                      setTempAdvancedFilter({...multiAdvancedFilter});
-                      setIsAdvancedModalOpen(true);
-                    }}
-                    className={`px-3 rounded-xl border transition-all flex items-center justify-center ${
-                      multiAdvancedFilter.enabled 
-                        ? 'bg-sky-600/20 border-sky-500 text-sky-400 hover:bg-sky-600/30' 
-                        : 'bg-zinc-950 border-zinc-850 text-zinc-400 hover:text-white hover:border-zinc-700'
-                    }`}
-                    title={languageState === 'Arabic' ? 'الإعدادات المتقدمة للتخصصات' : 'Advanced Specialty Settings'}
-                  >
-                    <Settings className="w-4 h-4" />
+            return (
+              <div className="flex-1 min-h-0 flex flex-col">
+                {/* top stats */}
+                <div className="shrink-0 px-4 pt-3 pb-1 flex items-center gap-2">
+                  <button type="button" aria-label={t('خروج','Exit game')} onClick={() => setShowExitConfirm(true)} className="h-10 w-10 rounded-xl bg-ink-3 border border-ink-4 flex items-center justify-center active:scale-90 transition-transform shrink-0">
+                    <X size={18} className="text-white/70" />
                   </button>
-                </div>
-              </div>
 
-              {/* Unified Single Difficulty Slider/Bar */}
-              <div className="space-y-1.5 pt-1.5 border-t border-zinc-850/60">
-                <label className="text-[10px] uppercase font-black tracking-wider text-sky-400">
-                  {languageState === 'Arabic' ? 'مستوى صعوبة الكلمة والتحليل' : 'Unified Diagnosis Difficulty'}
-                </label>
-                <div className="grid grid-cols-4 gap-1.5 bg-zinc-950 p-1.5 rounded-xl border border-zinc-850">
-                  {[
-                    { id: 'All', labelEn: 'All', labelAr: 'الكل' },
-                    { id: '1', labelEn: 'Easy', labelAr: 'سهل' },
-                    { id: '2', labelEn: 'Medium', labelAr: 'متوسط' },
-                    { id: '3', labelEn: 'Hard', labelAr: 'صعب' }
-                  ].map((level) => {
-                    const isSelected = multiDifficulty === level.id;
-                    return (
-                      <button
-                        key={level.id}
-                        type="button"
-                        onClick={() => {
-                          setMultiDifficulty(level.id);
-                          // Keep guessing difficulty synchronized behind the scenes as well for fair algorithm
-                          setMultiGuessingDifficulty(level.id);
-                        }}
-                        className={`py-2 rounded-lg text-xs font-black transition-all ${
-                          isSelected 
-                            ? 'bg-sky-600/20 border-2 border-sky-500 text-white shadow-sm' 
-                            : 'border border-transparent text-zinc-500 hover:text-zinc-300'
-                        }`}
-                      >
-                        {languageState === 'Arabic' ? level.labelAr : level.labelEn}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+                  <div className="flex-1 flex items-center justify-center gap-1.5 min-w-0">
+                    {/* Total Score Pill */}
+                    <StatPill label={t('رصيد النقاط', 'Total score')} tone="gold" icon={<Star size={14} />} value={singleScore} />
 
-            {playerCount >= 3 && (
-              <div className="space-y-3.5 bg-zinc-900/40 p-4 border border-zinc-850 rounded-2xl">
-                {playerCount >= 5 && (
-                  <div className="space-y-1.5">
-                    <label className="text-[10px] uppercase font-black tracking-wider text-sky-400">
-                      {languageState === 'Arabic' ? 'عدد الـ Imposters' : 'Imposter Count'}
-                    </label>
-                    <div className="flex gap-1.5 bg-zinc-950 p-1 rounded-xl border border-zinc-850">
-                      {[1, 2].map((num) => (
-                         <button
-                           key={num}
-                           type="button"
-                           onClick={() => setImposterCount(num)}
-                           className={`flex-1 py-1.5 text-xs font-black rounded-lg transition-all ${
-                             imposterCount === num 
-                               ? 'bg-sky-600 border border-sky-500 text-white' 
-                               : 'bg-transparent text-zinc-500 hover:text-zinc-300'
-                           }`}
-                         >
-                          {num} {languageState === 'Arabic' ? 'Imposter' : 'Imposters'}
-                         </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase font-black tracking-wider text-sky-400">
-                    {languageState === 'Arabic' ? 'ماذا يظهر في بطاقة الـ Imposter؟' : 'What is shown to Imposter?'}
-                  </label>
-                  <div className="flex gap-1.5 bg-zinc-950 p-1 rounded-xl border border-zinc-850">
-                    <button
-                      type="button"
-                      onClick={() => setImposterRevealsMode('IMPOSTER')}
-                      className={`flex-1 py-1.5 text-xs font-black rounded-lg transition-all ${
-                        imposterRevealsMode === 'IMPOSTER' 
-                          ? 'bg-sky-600/20 border border-sky-500 text-white' 
-                          : 'bg-transparent text-zinc-500 hover:text-zinc-300'
-                      }`}
-                    >
-                      {languageState === 'Arabic' ? 'كلمة "Imposter" فقط' : 'Word "Imposter" Only'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setImposterRevealsMode('RELATED_WORD')}
-                      className={`flex-1 py-1.5 text-xs font-black rounded-lg transition-all ${
-                        imposterRevealsMode === 'RELATED_WORD' 
-                          ? 'bg-sky-600/20 border border-sky-500 text-white' 
-                          : 'bg-transparent text-zinc-500 hover:text-zinc-300'
-                      }`}
-                    >
-                      {languageState === 'Arabic' ? 'مرض مضلل وقريب (صعب)' : 'Similar Clinical Term'}
-                    </button>
-                  </div>
-                  <span className="text-[10px] text-zinc-500 block leading-normal mt-1 pl-1">
-                    {languageState === 'Arabic' 
-                      ? 'تمويه المرض القريب يعطي اللاعب المنبّس فكرة تقريبية عن الكيس السريري ليندمج كطبيب خبير دون كشف صوته!' 
-                      : 'Similar term provides the spy doctor with parallel context to disguise scientific analysis safely.'}
-                  </span>
-                </div>
-              </div>
-            )}
-
-            <button
-              onClick={startOfflineMultiGame}
-              className="w-full py-4 bg-sky-600 hover:bg-sky-500 text-white font-black rounded-xl text-xs uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-2"
-            >
-              <Play size={14} className="fill-white" />
-              <span>{languageState === 'Arabic' ? 'وزع كروت الجولة السرية وابدأ' : 'Distribute Secrets & Play'}</span>
-            </button>
-          </motion.div>
-        )}
-
-        {/* PHASE: MULTI_SETUP_ONLINE */}
-        {phase === 'MULTI_SETUP_ONLINE' && (
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="space-y-6 max-w-lg mx-auto"
-          >
-            <div className="text-center space-y-2">
-              <h3 className="text-2xl font-extrabold">{languageState === 'Arabic' ? 'غرفة الألعاب الأونلاين' : 'Online Real-time Match'}</h3>
-            </div>
-
-            <div className="space-y-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-bold text-sky-400">
-                  {languageState === 'Arabic' ? 'اسمك الشخصي' : 'Your Username'}
-                </label>
-                <input
-                  type="text"
-                  value={currentPlayerName}
-                  onChange={(e) => setCurrentPlayerName(e.target.value)}
-                  placeholder={languageState === 'Arabic' ? 'د. هاني' : 'Doctor Name'}
-                  className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm font-bold text-white outline-none"
-                />
-              </div>
-
-              {isCreatingRoom === null ? (
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                  <button
-                    onClick={() => setIsCreatingRoom(true)}
-                    className="p-5 bg-zinc-900 border-2 border-zinc-800 hover:border-sky-600 rounded-2xl text-center font-black text-sm uppercase tracking-wider transition-all hover:scale-102"
-                  >
-                    {languageState === 'Arabic' ? 'إنشاء غـرفـة' : 'Create Room'}
-                  </button>
-                  <button
-                    onClick={() => setIsCreatingRoom(false)}
-                    className="p-5 bg-zinc-900 border-2 border-zinc-800 hover:border-sky-600 rounded-2xl text-center font-black text-sm uppercase tracking-wider transition-all hover:scale-102"
-                  >
-                    {languageState === 'Arabic' ? 'انضمام لغرفة' : 'Join Room'}
-                  </button>
-                </div>
-              ) : isCreatingRoom ? (
-                <div className="space-y-4 animate-fadeIn">
-                  <div className="space-y-1.5">
-                    <div className="flex justify-between items-center">
-                      <label className="text-xs uppercase font-extrabold text-sky-400">
-                        {languageState === 'Arabic' ? 'التخصص الطبي (إكلينيكي وأكاديمي)' : 'Medical Specialty Filter'}
-                      </label>
-                      {multiAdvancedFilter.enabled && (
-                        <span className="text-[10px] bg-sky-600/20 text-sky-400 px-2.5 py-0.5 rounded-full font-bold border border-sky-500/30 animate-pulse">
-                          {languageState === 'Arabic' ? 'متقدم نشط' : 'Advanced Active'}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex gap-2">
-                      <div className="relative flex-1">
-                        <select
-                          value={multiAdvancedFilter.enabled ? "Advanced" : multiSpecialty}
-                          onChange={(e) => {
-                            const val = e.target.value;
-                            if (val === 'Advanced') {
-                              setEditingFilterType('multi');
-                              setTempAdvancedFilter({...multiAdvancedFilter});
-                              setIsAdvancedModalOpen(true);
-                            } else {
-                              setMultiSpecialty(val);
-                              setMultiAdvancedFilter(prev => ({ ...prev, enabled: false }));
-                            }
-                          }}
-                          className="w-full appearance-none bg-zinc-900 border border-zinc-800 rounded-xl pl-4 pr-10 py-3 text-sm font-semibold text-white outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/50 transition-all cursor-pointer"
-                        >
-                          {multiAdvancedFilter.enabled && (
-                            <option value="Advanced">
-                              {languageState === 'Arabic' 
-                                ? `فلتر مخصص (${multiAdvancedFilter.subjects.length} تخصص)` 
-                                : `Custom Filter (${multiAdvancedFilter.subjects.length} specs)`}
-                            </option>
-                          )}
-                          <option value="All">{languageState === 'Arabic' ? 'كل الطب (تخطي)' : 'All Medicine'}</option>
-                          <optgroup label={languageState === 'Arabic' ? 'تخصصات إكلينيكية (Clinical)' : 'Clinical Specialties'}>
-                            {clinicalSpecialties.map(spec => (
-                              <option key={spec.id} value={spec.id}>
-                                {spec.nameEn}
-                              </option>
-                            ))}
-                          </optgroup>
-                          <optgroup label={languageState === 'Arabic' ? 'تخصصات أكاديمية (Academic)' : 'Academic Specialties'}>
-                            {academicSpecialties.map(spec => (
-                              <option key={spec.id} value={spec.id}>
-                                {spec.nameEn}
-                              </option>
-                            ))}
-                          </optgroup>
-                        </select>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-3.5 pointer-events-none text-zinc-400">
-                          <ChevronDown className="w-4 h-4" />
-                        </div>
+                    {/* Emergency Timer Pill */}
+                    {singleTimerEnabled && !singleGameEnded && (
+                      <div className={`h-9 px-2.5 rounded-xl border flex items-center gap-1 font-display font-black text-xs shrink-0 transition-all ${
+                        timeLeft <= 10
+                          ? 'bg-coral/25 border-coral text-coral animate-pulse'
+                          : timeLeft <= 20
+                          ? 'bg-gold/15 border-gold/40 text-gold'
+                          : 'bg-mint/10 border-mint/30 text-mint'
+                      }`}>
+                        <Timer size={13} className={timeLeft <= 10 ? 'animate-spin' : ''} />
+                        <span>{timeLeft}s</span>
+                        {timeLeft >= 30 && <span className="hidden xs:inline text-[0.8125rem] text-gold">⚡+10</span>}
                       </div>
+                    )}
+                  </div>
+
+
+                  {!singleGameEnded && <IconBtn onClick={() => setShowSoloLifelines(true)} label={t('وسائل المساعدة', 'Lifelines')}><Lightbulb size={20} className="text-mint" /></IconBtn>}
+                </div>
+
+                {singleGameEnded ? (
+                  /* ================= CLEAN, ULTRA-FOCUSED RESULT HERO SCREEN ================= */
+                  <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar px-4 py-3 flex flex-col max-w-md mx-auto w-full space-y-4 select-none">
+                    {/* 1. Quick Status Pill */}
+                    <div className="text-center">
+                      <span className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs sm:text-sm font-display font-black border ${
+                        singleGuessSuccess
+                          ? 'bg-mint/15 border-mint/40 text-mint shadow-[0_0_20px_rgba(47,230,167,0.25)]'
+                          : 'bg-coral/15 border-coral/40 text-coral shadow-[0_0_20px_rgba(255,84,112,0.25)]'
+                      }`}>
+                        {singleGuessSuccess ? (
+                          <>
+                            <Trophy size={16} />
+                            <span>{t(`تشخيص صحيح (+${roundDelta})`, `Correct diagnosis (+${roundDelta})`)}</span>
+                          </>
+                        ) : (
+                          <>
+                            <AlertCircle size={16} />
+                            <span>{`${roundReason === 'timeout' ? t('انتهى الوقت', 'Time expired') : roundReason === 'giveup' ? t('استسلام', 'Gave up') : t('تشخيص غير صحيح', 'Incorrect diagnosis')} (${roundDelta})`}</span>
+                          </>
+                        )}
+                      </span>
+                    </div>
+
+                    {/* 2. THE HERO: Huge, unmissable diagnosis name (اسم الحالة مباشر وضخم جداً وفي الواجهة) */}
+                    <motion.div
+                      initial={{ scale: 0.94, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="text-center py-4 px-4 bg-gradient-to-b from-ink-2 to-ink-3 border-2 border-mint/50 rounded-3xl shadow-xl space-y-1.5 relative overflow-hidden"
+                    >
+                      <span className="text-[0.8125rem] font-black text-mint uppercase tracking-widest block">
+                        {t('التشخيص الصحيح', 'Correct Diagnosis')}
+                      </span>
+                      <h2 className="font-display font-black text-3xl sm:text-4xl text-white tracking-wide leading-tight">
+                        {singleWord.word.English}
+                      </h2>
+                      {singleWord.word.Arabic && (
+                        <p className="font-display font-bold text-xl sm:text-2xl text-mint mt-0.5">
+                          {singleWord.word.Arabic}
+                        </p>
+                      )}
+                      <div className="pt-2">
+                        <span className="inline-block px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-bold text-white/60">
+                          {singleWord.subjects[0] || (languageState === 'Arabic' ? 'طبي' : 'Clinical')}
+                        </span>
+                      </div>
+                    </motion.div>
+
+                    {/* 3. THE BIG DOMINANT BUTTON (الزرار الكبير اللي بيجبره على الخطوة الجاية) */}
+                    <div className="pt-1">
+                      <BigBtn
+                        onClick={startSingleGame}
+                        className="w-full min-h-[58px] text-lg font-display font-extrabold bg-gradient-to-r from-mint to-emerald-400 text-ink-1 shadow-lg shadow-mint/25 active:scale-95 transition-all flex items-center justify-center gap-2"
+                      >
+                        <Play size={22} className="fill-current" />
+                        <span>{t('الحالة التالية ➔', 'Next Case ➔')}</span>
+                      </BigBtn>
+                    </div>
+
+                    {/* 4. Secondary actions (compact row, below the big button) */}
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <button
+                        type="button"
+                        onClick={() => setShowFlashcardModal(true)}
+                        className="min-h-[48px] rounded-2xl bg-ink-3/80 hover:bg-ink-3 border border-ink-4 text-xs font-display font-bold text-white/80 flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+                      >
+                        <Stethoscope size={15} className="text-mint" />
+                        <span>{t('بطاقة الحالة', 'Case Flashcard')}</span>
+                      </button>
+
                       <button
                         type="button"
                         onClick={() => {
-                          setEditingFilterType('multi');
-                          setTempAdvancedFilter({...multiAdvancedFilter});
-                          setIsAdvancedModalOpen(true);
+                          if (gameModeLock) onGoBack();
+                          else setPhase('ENTRY');
                         }}
-                        className={`px-3 rounded-xl border transition-all flex items-center justify-center ${
-                          multiAdvancedFilter.enabled 
-                            ? 'bg-sky-600/20 border-sky-500 text-sky-400 hover:bg-sky-600/30' 
-                            : 'bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700'
-                        }`}
-                        title={languageState === 'Arabic' ? 'الإعدادات المتقدمة للتخصصات' : 'Advanced Specialty Settings'}
+                        className="min-h-[48px] rounded-2xl bg-ink-3/80 hover:bg-ink-3 border border-ink-4 text-xs font-display font-bold text-white/60 hover:text-white flex items-center justify-center gap-1.5 active:scale-95 transition-all"
                       >
-                        <Settings className="w-5 h-5" />
+                        <Home size={15} />
+                        <span>{t('الرئيسية', 'Home')}</span>
                       </button>
                     </div>
-                  </div>
 
-                  {/* Difficulty Selector */}
-                  <div className="space-y-1.5">
-                    <label className="text-xs uppercase font-extrabold text-sky-400">
-                      {languageState === 'Arabic' ? 'صعوبة المصطلح العلمي' : 'Clinical/Scientific Difficulty'}
-                    </label>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[
-                        { id: 'All', labelEn: 'All', labelAr: 'الكل' },
-                        { id: '1', labelEn: 'Easy', labelAr: 'سهل' },
-                        { id: '2', labelEn: 'Medium', labelAr: 'متوسط' },
-                        { id: '3', labelEn: 'Hard', labelAr: 'صعب' }
-                      ].map((level) => (
-                        <button
-                          key={level.id}
-                          type="button"
-                          onClick={() => setMultiDifficulty(level.id)}
-                          className={`py-2 px-1 rounded-xl border text-xs font-bold transition-all ${
-                            multiDifficulty === level.id 
-                              ? 'bg-sky-600 border-sky-500 text-white' 
-                              : 'bg-transparent border-zinc-800 text-zinc-500 hover:border-zinc-700'
-                          }`}
-                        >
-                          {languageState === 'Arabic' ? level.labelAr : level.labelEn}
-                        </button>
-                      ))}
-                    </div>
+                    {/* 5. Short Pearl (if exists) */}
+                    {soloClues.pearl && (
+                      <div className="p-3 rounded-2xl bg-gold/10 border border-gold/25 text-start flex items-center gap-2.5 text-xs text-white/80">
+                        <Info size={15} className="text-gold shrink-0" />
+                        <p className="line-clamp-2 leading-relaxed">
+                          <strong className="text-gold">{t('معلومة سريرية: ', 'Clinical Note: ')}</strong>
+                          {soloClues.pearl}
+                        </p>
+                      </div>
+                    )}
                   </div>
+                ) : (
+                  <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar px-3 sm:px-4 pt-1 pb-safe pb-4 space-y-2.5">
+                    <SoloClues hints={[soloClues.hint1, soloClues.hint2, soloClues.hint3]} unlocked={unlockedHints}
+                      reward={currentReward} arabic={languageState === 'Arabic'} onUnlock={() => { sfx.pop(); setUnlockedHints(v => v + 1); }} />
 
-                  {playerCount >= 3 && (
-                    <div className="space-y-4 bg-zinc-900/40 p-4 border border-zinc-850 rounded-xl">
-                      {playerCount >= 5 && (
+                    <div className="space-y-2.5">
+                      {/* Clinical Lifelines: Mobile Compact Bar */}
+                      <Sheet open={showSoloLifelines} onClose={() => setShowSoloLifelines(false)} title={t('وسائل المساعدة', 'Lifelines')} dir={languageState === 'Arabic' ? 'rtl' : 'ltr'}>
+                        <div className="grid grid-cols-2 gap-2 flex-1">
+                          {/* 50:50 Lifeline Button */}
+                          <button
+                            type="button"
+                            disabled={usedFiftyFifty}
+                            onClick={() => {
+                              sfx.haptic([10, 30, 10]);
+                              handleFiftyFifty(); setShowSoloLifelines(false);
+                            }}
+                            className={`min-h-[48px] px-3 rounded-xl border flex items-center gap-1.5 text-xs font-display font-bold transition-all active:scale-95 ${
+                              usedFiftyFifty
+                                ? 'bg-ink-3/40 border-ink-4 text-white/70 cursor-not-allowed'
+                                : 'bg-mint/10 border-mint/40 text-mint hover:bg-mint/20 cursor-pointer'
+                            }`}
+                          >
+                            <span>{usedFiftyFifty ? t('مستخدم', 'Used') : t('استبعاد خيارين', 'Eliminate 2')}</span>
+                          </button>
+
+                          {/* Consultant Lab Clue Button */}
+                          <button
+                            type="button"
+                            disabled={usedConsultantHint || unlockedHints >= 3}
+                            onClick={() => {
+                              sfx.haptic([10, 30, 10]);
+                              handleConsultantHint(); setShowSoloLifelines(false);
+                            }}
+                            className={`min-h-[48px] px-3 rounded-xl border flex items-center gap-1.5 text-xs font-display font-bold transition-all active:scale-95 ${
+                              usedConsultantHint || unlockedHints >= 3
+                                ? 'bg-ink-3/40 border-ink-4 text-white/70 cursor-not-allowed'
+                                : 'bg-sky-400/10 border-sky-400/40 text-sky-400 hover:bg-sky-400/20 cursor-pointer'
+                            }`}
+                          >
+                            <Lightbulb size={14} />
+                            <span>{usedConsultantHint || unlockedHints >= 3 ? t('مستخدم', 'Used') : t('فحص استشاري', 'Consultant')}</span>
+                          </button>
+                        </div>
+                      </Sheet>
+
+                      {/* 5 options choice section */}
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between px-1">
+                          <Label icon={<Brain size={14} className="text-mint" />}>
+                            {t('التشخيص التفريقي:','Differential Diagnosis:')}
+                          </Label>
+
+                        </div>
+
                         <div className="space-y-1.5">
-                          <label className="text-xs font-black text-sky-400">{languageState === 'Arabic' ? 'عدد الجواسيس' : 'Imposters count'}</label>
-                          <div className="flex gap-2">
-                            {[1, 2].map(n => (
-                              <button
-                                key={n}
-                                onClick={() => setImposterCount(n)}
-                                className={`flex-1 py-1.5 text-xs font-bold rounded-lg border ${
-                                  imposterCount === n ? 'bg-sky-600 border-sky-500' : 'bg-transparent border-zinc-800'
+                          {singleOptions.map((opt, idx) => {
+                            const letter = ['A', 'B', 'C', 'D', 'E'][idx] || String(idx + 1);
+                            const isEliminated = eliminatedOptionIds.includes(opt.id);
+
+                            return (
+                              <motion.button
+                                key={opt.id}
+                                type="button"
+                                disabled={isEliminated}
+                                onClick={() => {
+                                  sfx.haptic(10);
+                                  submitSingleGuess(opt);
+                                }}
+                                whileTap={!isEliminated ? { scale: 0.98 } : undefined}
+                                className={`w-full min-h-[50px] sm:min-h-[56px] px-3 py-2 sm:p-3 rounded-xl sm:rounded-2xl border flex items-center justify-between gap-2.5 text-start transition-all group ${
+                                  isEliminated
+                                    ? 'bg-ink-3/20 border-coral/20 opacity-30 cursor-not-allowed line-through'
+                                    : 'bg-ink-3 border-ink-4 hover:border-mint/60 active:bg-mint/10'
                                 }`}
                               >
-                                {n}
+                                <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                                  <span className={`w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl border font-display font-black text-[0.8125rem] sm:text-xs flex items-center justify-center shrink-0 transition-colors ${
+                                    isEliminated
+                                      ? 'bg-coral/10 border-coral/30 text-coral'
+                                      : 'bg-ink-2 border-ink-4 text-white/70 group-hover:border-mint group-hover:text-mint'
+                                  }`}>
+                                    {letter}
+                                  </span>
+                                  <div className="min-w-0 flex-1">
+                                    <span className="block font-display font-bold text-white text-base leading-snug break-words">
+                                      {opt.word.English}
+                                    </span>
+                                    {languageState === 'Arabic' && <span className="block text-sm text-white/75 font-medium break-words mt-0.5">
+                                      {opt.word.Arabic}
+                                    </span>}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-1.5 shrink-0">
+                                  {isEliminated ? (
+                                    <span className="text-[0.8125rem] sm:text-xs font-bold text-coral bg-coral/15 border border-coral/30 px-2 py-0.5 rounded-full">
+                                      {t('مستبعد', 'Ruled out')}
+                                    </span>
+                                  ) : null}
+                                </div>
+                              </motion.button>
+                            );
+                          })}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const penalty = 20;
+                            const newScore = Math.max(0, singleScore - penalty);
+                            setRoundDelta(newScore - singleScore);
+                            setRoundReason('giveup');
+                            setSingleScore(newScore);
+                            setSingleStreak(0);
+                            if (onUpdateScore) onUpdateScore(newScore);
+                            persistScore(newScore);
+                            recordMissedCase(singleWord.id);
+                            setSingleGuessSuccess(false);
+                            setSinglePlayerLevel(1);
+                            setSingleGameOverMsg(
+                              languageState === 'Arabic'
+                                ? `استسلمت! تم خصم ${penalty} نقطة وانكسرت السلسلة. التشخيص الصحيح كان "${singleWord.word.Arabic} (${singleWord.word.English})".`
+                                : `You gave up! -${penalty} pts; streak lost. The correct diagnosis was "${singleWord.word.English} (${singleWord.word.Arabic})".`
+                            );
+                            setSingleGameEnded(true);
+                          }}
+                          className="w-full min-h-[48px] rounded-xl text-coral font-bold text-xs active:scale-95 transition-transform"
+                        >
+                          {t('استسلام (-20 نقطة)','Give up (-20 pts)')}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* ================= VISUAL MYSTERY CARD CHALLENGE ================= */}
+          {phase === 'VISUAL_PLAYING' && visualPool[visualCurrentIdx] && (() => {
+            const currentWord = visualPool[visualCurrentIdx];
+            const imgUrl = getWordImage(currentWord.id);
+            const rawClues = getCluesForWord(currentWord.id, currentWord, languageState);
+            const clues = rawClues.slice(0, 3);
+            const isCorrect = visualSelectedIdx !== null && visualOptions[visualSelectedIdx]?.id === currentWord.id;
+            const progressPercent = Math.round(((visualCurrentIdx + 1) / visualPool.length) * 100);
+
+            return (
+              <div className="flex-1 min-h-0 flex flex-col">
+                {/* Top Header */}
+                <div className="shrink-0 px-4 pt-3 pb-1 flex items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setPhase('ENTRY')}
+                    className="h-10 w-10 rounded-xl bg-ink-3 border border-ink-4 flex items-center justify-center active:scale-90 transition-transform shrink-0"
+                  >
+                    <X size={18} className="text-white/70" />
+                  </button>
+
+                  <div className="flex-1 flex items-center justify-center gap-1.5 min-w-0">
+                    {/* Case Counter */}
+                    <div className="h-9 px-3 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 flex items-center gap-1.5 font-display font-bold text-xs">
+                      <Camera size={14} />
+                      <span>{visualCurrentIdx + 1} / {visualPool.length}</span>
+                    </div>
+
+                    {/* Streak Combo Pill */}
+                    {visualStreak > 1 && (
+                      <div className="h-9 px-2.5 rounded-xl bg-pop/15 border border-pop/40 text-pop flex items-center gap-1 font-display font-black text-xs shrink-0 animate-pulse">
+                        <Flame size={14} />
+                        <span>{visualStreak}x</span>
+                      </div>
+                    )}
+
+                    {/* Total Score Pill */}
+                    <StatPill tone="gold" icon={<Star size={14} />} value={<CountUp to={visualScore} />} />
+                  </div>
+                </div>
+
+                {/* Progress Line */}
+                <div className="h-1 w-full bg-ink-4 overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-cyan-500 to-mint transition-all duration-300"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+
+                {/* Scrollable Content */}
+                <div className="flex-1 min-h-0 overflow-y-auto no-scrollbar px-3 sm:px-4 pt-3 pb-safe pb-4 space-y-3">
+                  
+                  {/* The Visual Mystery Image Card */}
+                  <div className="relative rounded-3xl overflow-hidden border-2 border-cyan-500/40 bg-ink/80 shadow-2xl shadow-cyan-500/10 group">
+                    {imgUrl ? (
+                      <button type="button" ref={inspectTriggerRef} aria-label={t('تكبير الصورة', 'Inspect image')} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 relative w-full aspect-video sm:aspect-[16/10] max-h-[320px] bg-black/40 overflow-hidden cursor-pointer" onClick={() => setVisualIsInspecting(true)}>
+                        <img
+                          src={imgUrl}
+                          alt="Visual Mystery"
+                          className="w-full h-full object-contain object-center"
+                        />
+                        <span className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-black/30 pointer-events-none" />
+
+                        {/* Category Pill */}
+                        <span className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 flex items-center gap-1.5 bg-black/75 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg">
+                          <Sparkles size={13} className="text-cyan-400" />
+                          <span>{currentWord.type}</span>
+                        </span>
+
+                        {/* Zoom In Hint */}
+                        <span className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 flex items-center gap-1.5 bg-cyan-500/80 hover:bg-cyan-400 text-ink-1 px-3 py-1 rounded-full text-xs font-black shadow-lg transition-all active:scale-95">
+                          <Maximize2 size={13} />
+                          <span>{t('فحص مكبر', 'Inspect Zoom')}</span>
+                        </span>
+                      </button>
+                    ) : (
+                      <div className="w-full h-48 flex items-center justify-center text-white/70">
+                        <Camera size={32} />
+                      </div>
+                    )}
+
+                    <div className="p-3 bg-ink-2/90 border-t border-white/5 flex items-center justify-between text-xs text-white/60">
+                      <span className="font-bold flex items-center gap-1.5 text-cyan-300">
+                        <Eye size={14} />
+                        {t('انقر على الصورة للفحص والتكبير', 'Tap to inspect image')}
+                      </span>
+                      <span className="text-[0.8125rem] font-mono text-white/70">{currentWord.subjects[0] || 'Medical'}</span>
+                    </div>
+                  </div>
+
+                  {/* Clinical Hints Helper (Optional consultation) */}
+                  {!visualAnswered && (
+                    <div className="space-y-2">
+                      {visualCluesUnlocked > 0 && (
+                        <div className="panel p-3 bg-ink-3/70 border border-gold/25 rounded-2xl space-y-2">
+                          <div className="flex items-center gap-1.5 text-gold font-bold text-xs">
+                            <Lightbulb size={14} />
+                            <span>{t('تلميحات مساعدة:', 'Helper Clues:')}</span>
+                          </div>
+                          {clues.slice(0, visualCluesUnlocked).map((clue, idx) => (
+                            <p key={idx} className="text-xs text-white/80 leading-relaxed bg-black/30 p-2 rounded-xl">
+                              {renderClueText(clue, 'xs', languageState)}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+
+                      {visualCluesUnlocked < clues.length && (
+                        <button
+                          type="button"
+                          onClick={() => setVisualCluesUnlocked(prev => Math.min(prev + 1, clues.length))}
+                          className="w-full py-2 px-3 rounded-xl bg-ink-3/60 hover:bg-ink-3 border border-dashed border-white/20 text-white/70 hover:text-white text-xs font-bold flex items-center justify-center gap-2 transition-all active:scale-98"
+                        >
+                          <Lightbulb size={14} className="text-gold" />
+                          <span>
+                            {visualCluesUnlocked === 0
+                              ? t('طلب تلميح (-30 نقطة)', 'Request Clue (-30 pts)')
+                              : t(`طلب تلميح إضافي (${visualCluesUnlocked}/${clues.length})`, `Next Clue (${visualCluesUnlocked}/${clues.length})`)}
+                          </span>
+                        </button>
+                      )}
+                    </div>
+                  )}
+
+                  {/* 4 Diagnostic Choices (Options Grid) */}
+                  <div className="space-y-2 pt-1">
+                    <p className="text-xs font-bold text-white/70 px-1">
+                      {t('اختر التشخيص:', 'Select Diagnosis:')}
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {visualOptions.map((opt, idx) => {
+                        const isSelected = visualSelectedIdx === idx;
+                        const isTargetWord = opt.id === currentWord.id;
+
+                        let btnStyle = "bg-ink-3/80 border-ink-4 text-white hover:border-cyan-500/50";
+                        let iconElement = null;
+
+                        if (visualAnswered) {
+                          if (isTargetWord) {
+                            btnStyle = "bg-mint/20 border-mint text-mint font-bold shadow-lg shadow-mint/10 scale-[1.02]";
+                            iconElement = <CheckCircle2 size={18} className="text-mint shrink-0" />;
+                          } else if (isSelected) {
+                            btnStyle = "bg-coral/20 border-coral text-coral font-bold animate-shake";
+                            iconElement = <XCircle size={18} className="text-coral shrink-0" />;
+                          } else {
+                            btnStyle = "bg-ink-3/40 border-ink-4 text-white/70";
+                          }
+                        }
+
+                        return (
+                          <button
+                            key={opt.id}
+                            type="button"
+                            disabled={visualAnswered}
+                            onClick={() => handleVisualAnswer(opt, idx)}
+                            className={`min-h-[58px] p-3 rounded-2xl border flex items-center justify-between text-start transition-all active:scale-98 ${btnStyle}`}
+                          >
+                            <div className="min-w-0 pr-2">
+                              <p className="font-display font-bold text-base break-words">
+                                {opt.word.English}
+                              </p>
+                              <p className="text-[0.8125rem] text-white/70 truncate">
+                                {opt.word.Arabic}
+                              </p>
+                            </div>
+                            {iconElement}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Post-Answer Feedback & Clinical Pearl */}
+                  {visualAnswered && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`p-4 rounded-3xl border-2 ${
+                        isCorrect ? 'bg-mint/10 border-mint/50' : 'bg-coral/10 border-coral/50'
+                      } space-y-3.5 select-none`}
+                    >
+                      {/* 1. Status Pill */}
+                      <div className="flex items-center justify-between">
+                        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-display font-black border ${
+                          isCorrect ? 'bg-mint/20 border-mint/40 text-mint' : 'bg-coral/20 border-coral/40 text-coral'
+                        }`}>
+                          {isCorrect ? (
+                            <>
+                              <CheckCircle2 size={15} />
+                              <span>{t('تشخيص صحيح (+100)', 'Correct Diagnosis (+100)')}</span>
+                            </>
+                          ) : (
+                            <>
+                              <XCircle size={15} />
+                              <span>{t('تشخيص غير صحيح', 'Incorrect Diagnosis')}</span>
+                            </>
+                          )}
+                        </span>
+                        <span className="text-[0.8125rem] font-bold text-white/70 px-2 py-0.5 rounded-md bg-white/5">
+                          {currentWord.subjects[0] || 'Clinical'}
+                        </span>
+                      </div>
+
+                      {/* 2. THE HERO: Huge unmissable diagnosis name */}
+                      <div className="text-center py-2 bg-ink/60 border border-white/10 rounded-2xl space-y-1">
+                        <span className="text-[0.8125rem] font-black uppercase tracking-wider text-cyan-400 block">
+                          {t('التشخيص الصحيح', 'Correct Diagnosis')}
+                        </span>
+                        <h3 className="font-display font-black text-2xl sm:text-3xl text-white tracking-wide">
+                          {currentWord.word.English}
+                        </h3>
+                        {currentWord.word.Arabic && (
+                          <p className="font-display font-bold text-base sm:text-lg text-cyan-300">
+                            {currentWord.word.Arabic}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 3. High-yield Pearl (if available) */}
+                      {rawClues[0] && (
+                        <div className="bg-black/40 p-2.5 rounded-2xl border border-white/5 text-xs text-white/80 leading-relaxed text-start flex items-start gap-2">
+                          <Info size={14} className="text-gold shrink-0 mt-0.5" />
+                          <p className="line-clamp-2">
+                            <strong className="text-cyan-300">{t('معلومة سريرية: ', 'Clinical Note: ')}</strong>
+                            {renderClueText(rawClues[0], 'xs', languageState)}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* 4. THE BIG DOMINANT BUTTON */}
+                      <div className="pt-1">
+                        <BigBtn
+                          onClick={nextVisualCase}
+                          className="w-full min-h-[54px] text-base font-display font-extrabold bg-gradient-to-r from-cyan-500 to-mint text-ink-1 shadow-lg shadow-cyan-500/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+                        >
+                          <Play size={20} className="fill-current" />
+                          <span>{visualCurrentIdx + 1 < visualPool.length ? t('الحالة التالية ➔', 'Next Case ➔') : t('إنهاء التحدي ➔', 'Finish Challenge ➔')}</span>
+                        </BigBtn>
+                      </div>
+                    </motion.div>
+                  )}
+
+                </div>
+
+                {/* Fullscreen Inspect Lightbox Modal */}
+                {visualIsInspecting && imgUrl && (
+                  <div 
+                    role="dialog" aria-modal="true" aria-label={t('فحص الصورة', 'Image inspection')}
+                    className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4"
+                    onClick={() => setVisualIsInspecting(false)}
+                  >
+                    <button
+                      type="button" ref={inspectCloseRef} aria-label={t('إغلاق', 'Close')}
+                      onClick={() => setVisualIsInspecting(false)}
+                      className="absolute top-6 right-6 h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center z-50 active:scale-90 transition-transform"
+                    >
+                      <X size={24} />
+                    </button>
+
+                    <div className="max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden border border-cyan-500/40 shadow-2xl shadow-cyan-500/20" onClick={e => e.stopPropagation()}>
+                      <img src={imgUrl} alt="Inspection" className="w-full h-full object-contain max-h-[80vh]" />
+                      <div className="p-3 bg-ink-2/95 text-center border-t border-white/10 text-xs text-cyan-300 font-bold">
+                        {visualAnswered ? `${currentWord.word.English} · ${currentWord.word.Arabic}` : t('افحص الصورة ثم اختر التشخيص', 'Inspect the image, then choose a diagnosis')}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Finished Summary Modal */}
+                {visualGameFinished && (
+                  <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+                    <div className="max-w-md w-full bg-ink-2 border border-cyan-500/40 rounded-3xl p-6 text-center space-y-4 shadow-2xl shadow-cyan-500/20">
+                      <Trophy size={48} className="text-gold mx-auto animate-bounce" />
+                      <h3 className="font-display font-black text-2xl text-white">
+                        {t('أنهيت جولة التحدي البصري!', 'Visual Mystery Completed!')}
+                      </h3>
+                      <p className="text-sm text-white/60">
+                        {t(`أتممت فحص وتشخيص ${visualPool.length} حالة سريرية بنجاح!`, `Successfully inspected and diagnosed ${visualPool.length} clinical cases!`)}
+                      </p>
+
+                      <div className="py-3 px-4 rounded-2xl bg-ink-3 border border-white/10 flex justify-around items-center">
+                        <div>
+                          <p className="text-[0.8125rem] text-white/70 uppercase font-black">{t('النقاط', 'Score')}</p>
+                          <p className="text-2xl font-black text-gold">{visualScore}</p>
+                        </div>
+                        <div className="w-px h-8 bg-white/10" />
+                        <div>
+                          <p className="text-[0.8125rem] text-white/70 uppercase font-black">{t('أعلى سلسلة', 'Max Streak')}</p>
+                          <p className="text-2xl font-black text-pop">{visualStreak}x</p>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2.5 pt-2">
+                        <BigBtn onClick={startVisualChallenge} className="flex-1">
+                          {t('إعادة التحدي', 'Play Again')}
+                        </BigBtn>
+                        <BigBtn variant="dark" onClick={() => setPhase('ENTRY')} className="flex-1">
+                          {t('الرئيسية', 'Home')}
+                        </BigBtn>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            );
+          })()}
+
+          {/* ================= OFFLINE PLAYERS SETUP ================= */}
+          {phase ==='MULTI_SETUP_OFFLINE' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={
+                  gameModeLock === 'BATTLE_1V1'
+                    ? t('اللاعبان', 'Players')
+                    : gameModeLock === 'DR_IMPOSTER'
+                    ? t('اللاعبون', 'Players')
+                    : t('اللاعبين', 'Players')
+                }
+                onBack={() => {
+                  if (gameModeLock) {
+                    onGoBack();
+                  } else {
+                    setPhase('ENTRY');
+                  }
+                }}
+                backLabel={t('رجوع','Back')}
+                right={
+                  <IconBtn onClick={() => setPhase('MULTI_SETUP_OFFLINE_CONFIG')} label={t('الإعدادات','Settings')}>
+                    <Settings size={18} className="text-mint" />
+                  </IconBtn>
+                }
+              >
+                <div className="space-y-2.5 px-4">
+                  {offlinePlayerNames.map((name, idx) => {
+                    const currentAvId = offlinePlayerAvatars[idx] !== undefined ? offlinePlayerAvatars[idx] : (idx % 10);
+                    const isPickerOpen = activeAvatarPickerIdx === idx;
+                    const cardColors = [
+'from-[#FF5470] to-[#D93757]','from-[#38BDF8] to-[#0E9FDB]','from-[#A78BFA] to-[#8B5CF6]',
+'from-[#2FE6A7] to-[#12B981]','from-[#FFC53D] to-[#F5A524]','from-[#F472B6] to-[#DB2777]',
+'from-[#60A5FA] to-[#3B82F6]','from-[#34D399] to-[#10B981]','from-[#F97316] to-[#EA580C]','from-[#E879F9] to-[#C026D3]',
+                    ];
+                    const deletePlayer = (idxToDelete: number) => {
+                      const minAllowed = gameModeLock === 'DR_IMPOSTER' ? 3 : 2;
+                      if (offlinePlayerNames.length <= minAllowed) {
+                        setNotice(languageState ==='Arabic' 
+                          ? (gameModeLock === 'DR_IMPOSTER' ? 'لعبة Dr. Imposter تحتاج 3 لاعبين على الأقل!' : 'لازم لاعبين اثنين على الأقل!') 
+                          : (gameModeLock === 'DR_IMPOSTER' ? 'At least 3 players required for Dr. Imposter!' : 'At least 2 players required!'));
+                        return;
+                      }
+                      setOfflinePlayerNames(offlinePlayerNames.filter((_, i) => i !== idxToDelete));
+                      setOfflinePlayerAvatars(offlinePlayerAvatars.filter((_, i) => i !== idxToDelete));
+                      setPlayerCount(offlinePlayerNames.length - 1);
+                    };
+
+                    return (
+                      <div key={idx} className="space-y-2">
+                        <motion.div
+                          layout
+                          className="flex items-center gap-2.5 p-2.5 rounded-3xl bg-ink-2 border border-ink-4"
+                        >
+                          <button
+                            type="button"
+                            aria-label={`${t('تغيير صورة', 'Change avatar for')} ${name || `${t('لاعب', 'Player')} ${idx + 1}`}`} aria-expanded={isPickerOpen}
+                            onClick={() => setActiveAvatarPickerIdx(isPickerOpen ? null : idx)}
+                            className="h-12 w-12 rounded-2xl bg-white/20 border-2 border-white/70 flex items-center justify-center overflow-hidden shrink-0 active:scale-90 transition-transform"
+                          >
+                            <AnimalDoctorAvatar avatarId={currentAvId} size={44} />
+                          </button>
+                          <input
+                            type="text"
+                            aria-label={`${t('اسم اللاعب', 'Player name')} ${idx + 1}`}
+                            value={name}
+                            onChange={(e) => {
+                              const updated = [...offlinePlayerNames];
+                              updated[idx] = e.target.value;
+                              setOfflinePlayerNames(updated);
+                            }}
+                            placeholder={`${t('لاعب','Player')} ${idx + 1}`}
+                            maxLength={14}
+                            className="flex-1 min-w-0 bg-transparent outline-none text-white font-display font-bold text-lg placeholder-white/60"
+                          />
+                          {gameModeLock !== 'BATTLE_1V1' && offlinePlayerNames.length > (gameModeLock === 'DR_IMPOSTER' ? 3 : 2) && <button
+                            type="button"
+                            aria-label={`${t('حذف', 'Remove')} ${name || `${t('لاعب', 'Player')} ${idx + 1}`}`}
+                            onClick={() => deletePlayer(idx)}
+                            className="h-11 w-11 rounded-xl bg-black/20 flex items-center justify-center text-white/80 shrink-0 active:scale-90 transition-transform"
+                          >
+                            <X size={18} strokeWidth={2.5} />
+                          </button>}
+                        </motion.div>
+
+                        <AnimatePresence>
+                          {isPickerOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height:'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="bg-ink-2 border border-ink-4 p-3 rounded-2xl">
+                                <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
+                                  {AVATAR_TEMPLATES.map((avatar) => (
+                                    <button
+                                      key={avatar.id}
+                                      aria-label={`${t('صورة', 'Avatar')} ${avatar.id + 1}`} aria-pressed={currentAvId === avatar.id}
+                                      type="button"
+                                      onClick={() => {
+                                        const updated = [...offlinePlayerAvatars];
+                                        updated[idx] = avatar.id;
+                                        setOfflinePlayerAvatars(updated);
+                                        setActiveAvatarPickerIdx(null);
+                                      }}
+                                      className={`min-h-[48px] min-w-[48px] aspect-square rounded-2xl border flex items-center justify-center transition-all active:scale-90 ${
+                                        currentAvId === avatar.id
+                                          ?'bg-mint/15 border-mint scale-105'
+                                          :'bg-ink-3/60 border-ink-4'
+                                      }`}
+                                    >
+                                      {React.cloneElement(avatar.svg as React.ReactElement, { className:'w-9 h-9' })}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+
+                  {/* add player */}
+                  {gameModeLock !== 'BATTLE_1V1' && offlinePlayerNames.length < 10 && <button
+                    type="button"
+                    onClick={() => {
+                      if (gameModeLock === 'BATTLE_1V1') {
+                        setNotice(languageState === 'Arabic' ? 'مبارزة 1 vs 1 Battle مخصصة للاعبين اثنين فقط!' : '1 vs 1 Battle is for 2 players only!');
+                        return;
+                      }
+                      if (offlinePlayerNames.length >= 10) {
+                        setNotice(languageState ==='Arabic' ?'الحد الأقصى 10 لاعبين!' :'Max 10 players!');
+                        return;
+                      }
+                      const nextIdx = offlinePlayerNames.length;
+                      setOfflinePlayerNames([...offlinePlayerNames,'']);
+                      setOfflinePlayerAvatars([...offlinePlayerAvatars, nextIdx % 10]);
+                      setPlayerCount(offlinePlayerNames.length + 1);
+                    }}
+                    className="w-full min-h-[56px] rounded-3xl border-2 border-dashed border-white/15 bg-white/[0.03] font-display font-bold text-white/70 flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                  >
+                    <span className="w-7 h-7 rounded-full bg-mint text-emerald-950 flex items-center justify-center"><Plus size={18} strokeWidth={3} /></span>
+                    {t('ضيف لاعب','Add player')}
+                  </button>}
+                </div>
+              </Screen>
+              <div className="shrink-0 px-4 pt-2 pb-safe">
+                <BigBtn
+                  onClick={() => {
+                    const emptyIdx = offlinePlayerNames.findIndex(n => !n.trim());
+                    if (emptyIdx !== -1) {
+                      setNotice(languageState ==='Arabic' ? `اكتب اسم اللاعب رقم ${emptyIdx + 1}!` : `Enter a name for player ${emptyIdx + 1}!`);
+                      return;
+                    }
+                    if (offlinePlayerNames.length < 2) {
+                      setNotice(languageState ==='Arabic' ?'لازم لاعبين اثنين على الأقل!' :'At least 2 players required!');
+                      return;
+                    }
+                    setPhase('MULTI_SETUP_OFFLINE_CONFIG');
+                  }}
+                >
+                  {t('يلا بينا',"Let's go")}
+                </BigBtn>
+              </div>
+            </div>
+          )}
+
+          {/* ================= OFFLINE CONFIG ================= */}
+          {phase ==='MULTI_SETUP_OFFLINE_CONFIG' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={t('إعدادات الجولة','Round Setup')}
+                onBack={() => setPhase('MULTI_SETUP_OFFLINE')}
+                backLabel={t('رجوع للاعبين','Back')}
+              >
+                <div className="space-y-4 px-4">
+                  <div className="space-y-2">
+                    <Label icon={<Target size={14} className="text-mint" />}>{t('التخصص الطبي','Specialty')}</Label>
+                    <button
+                      type="button"
+                      onClick={() => { setSpecSheet('multi'); setSpecSearch(''); }}
+                      className="w-full min-h-[60px] px-4 rounded-2xl bg-ink-3 border border-ink-4 flex items-center justify-between active:scale-[0.98] transition-transform"
+                    >
+                      <span className="font-display font-bold text-white text-base break-words">
+                        {multiAdvancedFilter.enabled
+                          ? t(`فلتر مخصص (${multiAdvancedFilter.subjects.length})`, `Custom (${multiAdvancedFilter.subjects.length})`)
+                          : specialtyLabel(multiSpecialty, languageState)}
+                      </span>
+                      <span className="text-white/70 text-lg">▾</span>
+                    </button>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label icon={<Flame size={14} className="text-coral" />}>{t('الصعوبة','Difficulty')}</Label>
+                    <SegOptions
+                      value={multiDifficulty}
+                      onChange={(v) => { setMultiDifficulty(v); setMultiGuessingDifficulty(v); }}
+                      options={[
+                        { id:'All', label: t('الكل','All') },
+                        { id:'1', label: t('سهل','Easy') },
+                        { id:'2', label: t('متوسط','Med') },
+                        { id:'3', label: t('صعب','Hard') },
+                      ]}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label icon={<Camera size={14} className="text-cyan-400" />}>{t('نوع التحدي','Challenge Mode')}</Label>
+                    <SegOptions
+                      value={multiImageOnlyMode ? 'IMAGE' : 'ALL'}
+                      onChange={(v) => setMultiImageOnlyMode(v === 'IMAGE')}
+                      cols={2}
+                      options={[
+                        { id:'ALL', label: t('كل المصطلحات','All Terms') },
+                        { id:'IMAGE', label: t('تحدي الصور (41)','Images (41)') },
+                      ]}
+                    />
+                    {multiImageOnlyMode && (
+                      <p className="text-[0.8125rem] text-cyan-300 font-bold px-1 leading-snug">
+                        {t('الأطباء يرون صورة الحالة، والمنتحل لا يراها.', 'Doctors see the specimen image; the Imposter does not.')}
+                      </p>
+                    )}
+                  </div>
+
+                  {playerCount >= 3 && <Disclosure title={t('إعدادات متقدمة', 'Advanced settings')}
+                    summary={questionsPerPlayer === 0 ? t('نقاش حر', 'Free discussion') : `${questionsPerPlayer} · ${questionTimeLimit ? questionTimeLimit + 's' : t('بدون وقت', 'Untimed')}`}>
+                  {playerCount >= 3 && (
+                    <div className="panel p-4 space-y-4">
+                      <div className="flex items-center gap-2">
+                        <ShieldAlert size={22} className="text-coral" />
+                        <span className="font-display font-bold text-white">{t('إعدادات المنتحل','Imposter options')}</span>
+                      </div>
+
+                      {playerCount >= 5 && (
+                        <div className="space-y-2">
+                          <Label>{t('عدد المنتحلين','Imposter count')}</Label>
+                          <SegOptions
+                            value={imposterCount}
+                            onChange={setImposterCount}
+                            cols={2}
+                            options={[
+                              { id: 1 as const, label: t('منتحل واحد','1 Imposter'), emoji:'' },
+                              { id: 2 as const, label: t('منتحلان','2 Imposters'), emoji:'' },
+                            ]}
+                          />
+                        </div>
+                      )}
+
+                      <div className="space-y-2">
+                        <Label>{t('كرت المنتحل يظهر','Imposter card shows')}</Label>
+                        <div className="grid grid-cols-1 gap-2">
+                          {([
+                            { id:'IMPOSTER' as const, ar:'هوية المنتحل فقط', en:'Just the word"Imposter"', hint: t('الأصعب','Hardest') },
+                            { id:'RELATED_WORD' as const, ar:'كلمة طبية مشابهة', en:'A similar medical term', hint: t('تخفّي أكتر','Better disguise') },
+                          ]).map(o => (
+                            <button
+                              key={o.id}
+                              type="button"
+                              aria-pressed={imposterRevealsMode === o.id} onClick={() => setImposterRevealsMode(o.id)}
+                              className={`min-h-[56px] px-4 rounded-2xl border flex items-center gap-3 text-start transition-all active:scale-[0.98] ${
+                                imposterRevealsMode === o.id
+                                  ?'bg-coral/10 border-coral/50'
+                                  :'bg-ink-3/60 border-ink-4'
+                              }`}
+                            >
+                              <span className="flex-1 min-w-0">
+                                <span className={`block font-display font-bold text-base ${imposterRevealsMode === o.id ?'text-coral' :'text-white/70'}`}>{languageState ==='Arabic' ? o.ar : o.en}</span>
+                                <span className="block text-xs text-white/70 font-bold">{o.hint}</span>
+                              </span>
+                              {imposterRevealsMode === o.id && <Check size={18} className="text-coral shrink-0" />}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {playerCount >= 3 && (
+                    <div className="panel p-4 space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Timer size={22} className="text-gold" />
+                        <span className="font-display font-bold text-white">{t('تنظيم أدوار الأسئلة في النقاش','Structured Interrogation Turns')}</span>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label>{t('عدد الأسئلة لكل طبيب (يسأل ويُسأل)','Questions per doctor (Asks & is asked)')}</Label>
+                        <SegOptions
+                          value={String(questionsPerPlayer)}
+                          onChange={(v) => setQuestionsPerPlayer(Number(v))}
+                          cols={3}
+                          options={[
+                            { id: '1', label: t('1 سؤال (سريع)','1 Question (Fast)') },
+                            { id: '2', label: t('2 سؤال (مكثف)','2 Questions (Deep)') },
+                            { id: '0', label: t('حر (مفتوح)','Free / Open') },
+                          ]}
+                        />
+                      </div>
+
+                      {questionsPerPlayer > 0 && (
+                        <div className="space-y-2">
+                          <Label>{t('وقت كل دور سؤال','Time per question turn')}</Label>
+                          <SegOptions
+                            value={String(questionTimeLimit)}
+                            onChange={(v) => setQuestionTimeLimit(Number(v))}
+                            cols={4}
+                            options={[
+                              { id: '30', label: '30s' },
+                              { id: '45', label: '45s' },
+                              { id: '60', label: '60s' },
+                              { id: '0', label: t('بدون','None') },
+                            ]}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  </Disclosure>}
+                </div>
+              </Screen>
+              <div className="shrink-0 px-4 pt-2 pb-safe">
+                <BigBtn onClick={startOfflineMultiGame}>
+                  {t('وزّع الكروت','Deal the cards')}
+                </BigBtn>
+              </div>
+            </div>
+          )}
+
+          {/* ================= ONLINE SETUP ================= */}
+          {phase ==='MULTI_SETUP_ONLINE' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={t('أونلاين','Online')}
+                onBack={() => { if (isCreatingRoom !== null) setIsCreatingRoom(null); else if (gameModeLock) onGoBack(); else setPhase('ENTRY'); }}
+                backLabel={t('رجوع','Back')}
+              >
+                <div className="space-y-4 px-4">
+                  {/* Doctor Name */}
+                  <div className="space-y-2">
+                    <Label>{t('اسمك (لقب الطبيب)','Your Doctor Name')}</Label>
+                    <input
+                      type="text"
+                      value={currentPlayerName}
+                      onChange={(e) => setCurrentPlayerName(e.target.value)}
+                      aria-label={t('اسمك', 'Your name')} autoComplete="nickname" placeholder={t('د. أحمد','Dr. Ahmed')}
+                      maxLength={16}
+                      className="w-full min-h-[56px] bg-ink-3 border border-ink-4 focus:border-lilac/60 rounded-2xl px-4 text-lg font-display font-bold text-white placeholder-white/60 outline-none"
+                    />
+                  </div>
+
+                  {isCreatingRoom === null ? (
+                    <div className="space-y-4 pt-1">
+                      {/* Create / Join Cards */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setIsCreatingRoom(true)}
+                          className="min-h-[120px] rounded-3xl bg-gradient-to-br from-mint/25 to-mint/5 border border-mint/40 flex flex-col items-center justify-center gap-2 active:scale-95 transition-transform"
+                        >
+                          <span className="w-14 h-14 rounded-2xl bg-mint/15 border border-mint/40 flex items-center justify-center">
+                            <Plus size={30} className="text-mint" />
+                          </span>
+                          <span className="font-display font-bold text-mint text-lg">{t('أنشئ غرفة','Create')}</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsCreatingRoom(false)}
+                          className="min-h-[120px] rounded-3xl bg-gradient-to-br from-lilac/25 to-lilac/5 border border-lilac/40 flex flex-col items-center justify-center gap-2 active:scale-95 transition-transform"
+                        >
+                          <span className="w-14 h-14 rounded-2xl bg-lilac/15 border border-lilac/40 flex items-center justify-center">
+                            <LogIn size={30} className="text-lilac" />
+                          </span>
+                          <span className="font-display font-bold text-lilac text-lg">{t('انضم بكود','Join Code')}</span>
+                        </button>
+                      </div>
+
+                      {/* Public Active Rooms for solo students at home */}
+                      <div className="panel p-4 space-y-3">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-mint animate-pulse" />
+                            <span className="font-display font-bold text-sm text-white">{t('غرف أطباء مفتوحة للعب الآن','Active Open Rooms')}</span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={fetchPublicRooms}
+                            disabled={loadingPublicRooms}
+                            className="text-xs text-mint font-bold flex items-center gap-1 active:scale-95 transition-transform px-2 py-1 rounded-lg bg-mint/10 border border-mint/20"
+                          >
+                            <RefreshCcw size={12} className={loadingPublicRooms ?'animate-spin' :''} />
+                            {t('تحديث','Refresh')}
+                          </button>
+                        </div>
+
+                        {loadingPublicRooms ? (
+                          <div className="py-6 text-center text-white/70 text-xs font-display">
+                            {t('جاري البحث عن غرف نشطة...','Scanning for active rooms...')}
+                          </div>
+                        ) : publicRooms.length === 0 ? (
+                          <div className="py-5 text-center text-white/70 text-xs font-display space-y-1">
+                            <p>{roomsError ? t('تعذر تحميل الغرف. حاول التحديث.', 'Could not load rooms. Try refreshing.') : t('لا توجد غرف مفتوحة حالياً','No open rooms at this moment')}</p>
+                            <p className="text-[0.8125rem] text-white/70">{t('أنشئ غرفة الآن وشارك الرابط مع زملائك على واتساب!','Create one and share the invite link on WhatsApp!')}</p>
+                          </div>
+                        ) : (
+                          <div className="space-y-2 max-h-[220px] overflow-y-auto custom-scrollbar pr-0.5">
+                            {publicRooms.map(room => (
+                              <div
+                                key={room.id}
+                                className="p-3 rounded-2xl bg-ink-3/80 border border-ink-4 flex items-center justify-between hover:border-mint/40 transition-colors"
+                              >
+                                <div className="space-y-0.5 min-w-0 flex-1 pr-2">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-display font-black text-white text-base tracking-widest">{room.id}</span>
+                                    <span className="text-[0.8125rem] px-2 py-0.5 rounded-full bg-mint/10 text-mint border border-mint/20 font-bold truncate max-w-[120px]">
+                                      {specialtyLabel(room.specialty ||'All', languageState)}
+                                    </span>
+                                  </div>
+                                  <p className="text-[0.8125rem] text-white/70 font-bold">
+                                    {t(
+                                      `${room.players?.length || 1} من ${room.maxPlayers || 4} أطباء ${room.players?.length === 1 ?'· بانتظار لاعب' :''}`,
+                                      `${room.players?.length || 1} of ${room.maxPlayers || 4} docs`
+                                    )}
+                                  </p>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setRoomCodeInput(room.id);
+                                    joinOnlineRoom(room.id);
+                                  }}
+                                  className="shrink-0 px-3.5 py-2 rounded-xl bg-mint text-ink font-display font-black text-xs active:scale-95 transition-transform flex items-center gap-1"
+                                >
+                                  <span>{t('انضمام ➔','Join ➔')}</span>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ) : isCreatingRoom ? (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label>{t('عدد اللاعبين', 'Players')}</Label>
+                        {gameModeLock === 'BATTLE_1V1' ? <p className="text-base font-bold text-gold">{t('لاعبان', '2 players')}</p> :
+                          <div className="flex items-center gap-3">
+                            <button type="button" aria-label={t('تقليل اللاعبين', 'Decrease players')} disabled={onlineMaxPlayers <= (gameModeLock === 'DR_IMPOSTER' ? 3 : 2)}
+                              onClick={() => { const next=onlineMaxPlayers-1; setOnlineMaxPlayers(next); setPlayerCount(next); }} className="w-12 h-12 rounded-2xl bg-ink-3 border border-ink-4 disabled:opacity-40"><span aria-hidden>−</span></button>
+                            <output aria-live="polite" className="flex-1 text-center font-display text-2xl font-bold">{onlineMaxPlayers}</output>
+                            <button type="button" aria-label={t('زيادة اللاعبين', 'Increase players')} disabled={onlineMaxPlayers >= 10}
+                              onClick={() => { const next=onlineMaxPlayers+1; setOnlineMaxPlayers(next); setPlayerCount(next); }} className="w-12 h-12 rounded-2xl bg-ink-3 border border-ink-4 disabled:opacity-40"><span aria-hidden>+</span></button>
+                          </div>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label>{t('التخصص','Specialty')}</Label>
+                        <button
+                          type="button"
+                          onClick={() => { setSpecSheet('multi'); setSpecSearch(''); }}
+                          className="w-full min-h-[56px] px-4 rounded-2xl bg-ink-3 border border-ink-4 flex items-center justify-between active:scale-[0.98] transition-transform"
+                        >
+                          <span className="font-display font-bold text-white text-base break-words">
+                            {multiAdvancedFilter.enabled
+                              ? t(`فلتر مخصص (${multiAdvancedFilter.subjects.length})`, `Custom (${multiAdvancedFilter.subjects.length})`)
+                              : specialtyLabel(multiSpecialty, languageState)}
+                          </span>
+                          <span className="text-white/70 text-lg">▾</span>
+                        </button>
+                      </div>
+
+                      {/* Difficulty Picker */}
+                      <div className="space-y-2">
+                        <Label>{t('الصعوبة','Difficulty')}</Label>
+                        <SegOptions
+                          value={multiDifficulty}
+                          onChange={(v) => { setMultiDifficulty(v); setMultiGuessingDifficulty(v); }}
+                          options={[
+                            { id:'All', label: t('الكل','All'), emoji:'' },
+                            { id:'1', label: t('سهل','Easy'), emoji:'' },
+                            { id:'2', label: t('متوسط','Med'), emoji:'' },
+                            { id:'3', label: t('صعب','Hard'), emoji:'' },
+                          ]}
+                        />
+                      </div>
+
+                      {/* Challenge Mode: All vs Images */}
+                      <div className="space-y-2">
+                        <Label icon={<Camera size={14} className="text-cyan-400" />}>{t('نوع التحدي','Challenge Mode')}</Label>
+                        <SegOptions
+                          value={multiImageOnlyMode ? 'IMAGE' : 'ALL'}
+                          onChange={(v) => setMultiImageOnlyMode(v === 'IMAGE')}
+                          cols={2}
+                          options={[
+                            { id:'ALL', label: t('كل المصطلحات','All Terms') },
+                            { id:'IMAGE', label: t('تحدي الصور (41)','Images (41)') },
+                          ]}
+                        />
+                        {multiImageOnlyMode && (
+                          <p className="text-[0.8125rem] text-cyan-300 font-bold px-1 leading-snug">
+                            {t('الأطباء يرون صورة الحالة، والمنتحل لا يراها.', 'Doctors see the specimen image; the Imposter does not.')}
+                          </p>
+                        )}
+                      </div>
+
+                      {/* 5+ Doctors: Imposter Count */}
+                      {onlineMaxPlayers >= 3 && <Disclosure title={t('إعدادات متقدمة', 'Advanced settings')}>
+                      {onlineMaxPlayers >= 5 && (
+                        <div className="space-y-2">
+                          <Label>{t('عدد المنتحلين (Imposters)','Number of Imposters')}</Label>
+                          <SegOptions
+                            value={String(imposterCount)}
+                            onChange={(v) => setImposterCount(Number(v))}
+                            options={[
+                              { id:'1', label: t('منتحل واحد (1)','1 Imposter'), emoji:'' },
+                              { id:'2', label: t('منتحلان (2)','2 Imposters'), emoji:'' },
+                            ]}
+                          />
+                        </div>
+                      )}
+
+                      {/* 3+ Doctors: Imposter Card Appearance */}
+                      {onlineMaxPlayers >= 3 && (
+                        <div className="panel p-4 space-y-3">
+                          <div className="flex items-center gap-2">
+                            <ShieldAlert size={20} className="text-coral" />
+                            <span className="font-display font-bold text-white">{t('كرت المنتحل يظهر','Imposter card shows')}</span>
+                          </div>
+                          <div className="grid grid-cols-1 gap-2">
+                            {([
+                              { id:'IMPOSTER' as const, ar:'هوية المنتحل فقط', en:'Just the word"Imposter"' },
+                              { id:'RELATED_WORD' as const, ar:'تشخيص طبي مقارب (تخفي أقوى)', en:'A related medical diagnosis' },
+                            ]).map(o => (
+                              <button
+                                key={o.id}
+                                type="button"
+                                aria-pressed={imposterRevealsMode === o.id} onClick={() => setImposterRevealsMode(o.id)}
+                                className={`min-h-[52px] px-4 rounded-2xl border flex items-center gap-3 text-start active:scale-[0.98] transition-transform ${
+                                  imposterRevealsMode === o.id ?'bg-coral/10 border-coral/50' :'bg-ink-3/60 border-ink-4'
+                                }`}
+                              >
+                                <span className={`flex-1 font-display font-bold text-sm ${imposterRevealsMode === o.id ?'text-coral' :'text-white/70'}`}>
+                                  {languageState ==='Arabic' ? o.ar : o.en}
+                                </span>
+                                {imposterRevealsMode === o.id && <Check size={16} className="text-coral shrink-0" />}
                               </button>
                             ))}
                           </div>
                         </div>
                       )}
 
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-black text-sky-400">{languageState === 'Arabic' ? 'ماذا يُعرض للجاسوس؟' : 'Stealth option'}</label>
-                        <div className="flex gap-2">
+                      {onlineMaxPlayers >= 3 && (
+                        <div className="panel p-4 space-y-3">
+                          <div className="flex items-center gap-2">
+                            <Timer size={20} className="text-gold" />
+                            <span className="font-display font-bold text-white">{t('تنظيم أدوار الأسئلة في النقاش','Structured Interrogation Turns')}</span>
+                          </div>
+                          <div className="space-y-2">
+                            <Label>{t('عدد الأسئلة لكل طبيب','Questions per doctor')}</Label>
+                            <SegOptions
+                              value={String(questionsPerPlayer)}
+                              onChange={(v) => setQuestionsPerPlayer(Number(v))}
+                              cols={3}
+                              options={[
+                                { id: '1', label: t('1 سؤال (سريع)','1 Question (Fast)') },
+                                { id: '2', label: t('2 سؤال (مكثف)','2 Questions (Deep)') },
+                                { id: '0', label: t('حر (مفتوح)','Free / Open') },
+                              ]}
+                            />
+                          </div>
+                          {questionsPerPlayer > 0 && (
+                            <div className="space-y-2">
+                              <Label>{t('وقت كل دور سؤال','Time per question turn')}</Label>
+                              <SegOptions
+                                value={String(questionTimeLimit)}
+                                onChange={(v) => setQuestionTimeLimit(Number(v))}
+                                cols={4}
+                                options={[
+                                  { id: '30', label: '30s' },
+                                  { id: '45', label: '45s' },
+                                  { id: '60', label: '60s' },
+                                  { id: '0', label: t('بدون','None') },
+                                ]}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      </Disclosure>}
+
+                      <div className="flex gap-2.5 pt-1">
+                        <BigBtn disabled={onlineActionLoading || !currentPlayerName.trim()} onClick={createOnlineRoom} className="flex-1">
+                          {onlineActionLoading ?'...' : t('إنشاء الغرفة ➔','Create Room ➔')}
+                        </BigBtn>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label>{t('كود الغرفة (6 رموز)','Room code (6 chars)')}</Label>
+                        <input
+                          type="text"
+                          maxLength={6}
+                          disabled={onlineActionLoading}
+                          value={roomCodeInput}
+                          onChange={(e) => setRoomCodeInput(e.target.value.toUpperCase())}
+                          aria-label={t('كود الغرفة', 'Room code')} autoCapitalize="characters" autoComplete="off" spellCheck={false} dir="ltr" placeholder="DRIMPZ"
+                          className="room-code-input w-full min-h-[68px] bg-ink-3 border-2 border-ink-4 focus:border-lilac/60 rounded-2xl px-4 text-center font-display font-bold text-white placeholder-white/60 outline-none uppercase"
+                        />
+                      </div>
+                      <div className="flex gap-2.5">
+                        <BigBtn disabled={onlineActionLoading || !currentPlayerName.trim()} onClick={() => joinOnlineRoom()} className="flex-1">
+                          {onlineActionLoading ?'...' : t('الانضمام للغرفة ➔','Join Room ➔')}
+                        </BigBtn>
+                      </div>
+
+                      {/* Public Rooms also shown below join code */}
+                      <div className="panel p-4 space-y-3 mt-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-mint animate-pulse" />
+                            <span className="font-display font-bold text-sm text-white">{t('أو انضم إلى غرفة متاحة الآن','Or join an open room')}</span>
+                          </div>
                           <button
-                            onClick={() => setImposterRevealsMode('IMPOSTER')}
-                            className={`flex-1 py-1.5 text-xs font-bold rounded-lg border ${
-                              imposterRevealsMode === 'IMPOSTER' ? 'bg-sky-600/20 border-sky-500 text-white' : 'bg-transparent border-zinc-800'
-                            }`}
+                            type="button"
+                            onClick={fetchPublicRooms}
+                            disabled={loadingPublicRooms}
+                            className="text-xs text-mint font-bold flex items-center gap-1 active:scale-95 transition-transform px-2 py-1 rounded-lg bg-mint/10 border border-mint/20"
                           >
-                            {languageState === 'Arabic' ? 'كلمة Imposter' : 'Word Imposter'}
-                          </button>
-                          <button
-                            onClick={() => setImposterRevealsMode('RELATED_WORD')}
-                            className={`flex-1 py-1.5 text-xs font-bold rounded-lg border ${
-                              imposterRevealsMode === 'RELATED_WORD' ? 'bg-sky-600/20 border-sky-500 text-white' : 'bg-transparent border-zinc-800'
-                            }`}
-                          >
-                            {languageState === 'Arabic' ? 'مرض مضلل' : 'Similar disease'}
+                            <RefreshCcw size={12} className={loadingPublicRooms ?'animate-spin' :''} />
+                            {t('تحديث','Refresh')}
                           </button>
                         </div>
+
+                        {loadingPublicRooms ? (
+                          <div className="py-4 text-center text-white/70 text-xs font-display">
+                            {t('جاري التحميل...','Loading...')}
+                          </div>
+                        ) : publicRooms.length === 0 ? (
+                          <div className="py-4 text-center text-white/70 text-xs font-display">
+                            {roomsError ? t('تعذر تحميل الغرف. حاول التحديث.', 'Could not load rooms. Try refreshing.') : t('اطلب كود الغرفة من زميلك.', 'Ask your friend for their room code.')}
+                          </div>
+                        ) : (
+                          <div className="space-y-2 max-h-[160px] overflow-y-auto custom-scrollbar pr-0.5">
+                            {publicRooms.map(room => (
+                              <div
+                                key={room.id}
+                                className="p-3 rounded-2xl bg-ink-3/80 border border-ink-4 flex items-center justify-between"
+                              >
+                                <div className="space-y-0.5 min-w-0 flex-1 pr-2">
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-display font-black text-white text-base tracking-widest">{room.id}</span>
+                                    <span className="text-[0.8125rem] px-2 py-0.5 rounded-full bg-mint/10 text-mint border border-mint/20 font-bold truncate max-w-[110px]">
+                                      {specialtyLabel(room.specialty ||'All', languageState)}
+                                    </span>
+                                  </div>
+                                  <p className="text-[0.8125rem] text-white/70 font-bold">
+                                    {t(`${room.players?.length || 1} من ${room.maxPlayers || 4} أطباء`, `${room.players?.length || 1} of ${room.maxPlayers || 4} docs`)}
+                                  </p>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setRoomCodeInput(room.id);
+                                    joinOnlineRoom(room.id);
+                                  }}
+                                  className="shrink-0 px-3.5 py-1.5 rounded-xl bg-mint text-ink font-display font-black text-xs active:scale-95 transition-transform"
+                                >
+                                  {t('انضمام','Join')}
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    </div>
+                    </motion.div>
                   )}
+                </div>
+              </Screen>
+            </div>
+          )}
 
-                  <div className="flex gap-2 pt-2">
-                    <button
-                      type="button"
-                      disabled={onlineActionLoading}
-                      onClick={() => setIsCreatingRoom(null)}
-                      className="px-4 py-3 border border-zinc-800 rounded-xl hover:bg-zinc-900 text-zinc-400 disabled:opacity-40"
-                    >
-                      {languageState === 'Arabic' ? 'رجوع' : 'Back'}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={onlineActionLoading}
-                      onClick={createOnlineRoom}
-                      className="flex-1 py-3 bg-sky-600 hover:bg-sky-500 font-extrabold text-sm rounded-xl disabled:opacity-50 flex items-center justify-center gap-2"
-                    >
-                      {onlineActionLoading ? (
-                        <>
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                          {languageState === 'Arabic' ? 'جاري إنشاء الغرفة...' : 'Creating Room...'}
-                        </>
-                      ) : (
-                        languageState === 'Arabic' ? 'إنشاء وتوليد الرمز 🔑' : 'Generate Room 🔑'
+          {/* ================= ONLINE LOBBY ================= */}
+          {phase ==='ONLINE_LOBBY' && onlineRoomState && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={t('غرفة اللعب','Game Room')}
+                onBack={() => {
+                  if (roomUnsubscribeRef.current) {
+                    roomUnsubscribeRef.current();
+                    roomUnsubscribeRef.current = null;
+                  }
+                  if (onlineRoomState && roomId) {
+                    try {
+                      const roomRef = doc(db, 'rooms', roomId);
+                      const remaining = (onlineRoomState.players || []).filter((p: any) => p.id !== localPlayerId);
+                      if (remaining.length > 0) {
+                        updateDoc(roomRef, { players: remaining }).catch(() => {});
+                      }
+                    } catch {}
+                  }
+                  setOnlineRoomState(null);
+                  setRoomId('');
+                  setPhase('MULTI_SETUP_ONLINE');
+                }}
+                backLabel={t('مغادرة','Leave')}
+              >
+                <div className="space-y-4 px-4">
+                  <RoomInvite code={roomId} language={languageState} onError={setNotice} />
+
+                  {/* players list */}
+                  <div className="space-y-2">
+                    <Label>
+                      {t(
+                        `${onlineRoomState.players.length} من ${onlineRoomState.maxPlayers} أطباء منضمين`,
+                        `${onlineRoomState.players.length} of ${onlineRoomState.maxPlayers} doctors joined`
                       )}
-                    </button>
+                    </Label>
+                    <div className="space-y-2 max-h-[220px] overflow-y-auto custom-scrollbar pr-0.5">
+                      {onlineRoomState.players.map((p: any, index: number) => (
+                        <div key={p.id} className="min-h-[56px] px-4 rounded-2xl bg-ink-3/70 border border-ink-4 flex items-center justify-between">
+                          <span className="font-display font-bold text-white flex items-center gap-3 flex-1 min-w-0">
+                            <span className="w-8 h-8 rounded-xl bg-pop/15 border border-pop/30 text-pop text-sm font-black flex items-center justify-center">{index + 1}</span>
+                            <span className="break-words min-w-0 flex-1">{p.name}</span>
+                          </span>
+                          {p.id === onlineRoomState.hostId ? (
+                            <span className="text-xs font-black text-gold bg-gold/10 border border-gold/30 rounded-full px-2.5 py-1 flex items-center gap-1 shrink-0 ms-2">
+                              {t('المضيف','Host')}
+                            </span>
+                          ) : (
+                            <span className="text-xs font-bold text-mint bg-mint/10 border border-mint/20 rounded-full px-2.5 py-1 flex items-center gap-1 shrink-0 ms-2">
+                              {t('طبيب','Doctor')}
+                            </span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
+              </Screen>
 
-              ) : (
-                <div className="space-y-4 animate-fadeIn">
+              {/* Host Start / Guest Waiting Bottom Action */}
+              <div className="shrink-0 px-4 pt-2 pb-safe">
+                {onlineRoomState.hostId === localPlayerId ? (
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-sky-400">
-                      {languageState === 'Arabic' ? 'أدخل كود الغرفة المكون من 6 حروف' : 'Enter 6-char Room Code'}
-                    </label>
-                    <input
-                      type="text"
-                      maxLength={6}
-                      disabled={onlineActionLoading}
-                      value={roomCodeInput}
-                      onChange={(e) => setRoomCodeInput(e.target.value.toUpperCase())}
-                      placeholder="EX: ROOMX1"
-                      className="w-full bg-zinc-900 border-2 border-zinc-800 rounded-xl px-4 py-3 placeholder:text-zinc-650 text-lg font-black text-white text-center outline-none tracking-widest disabled:opacity-50"
-                    />
-                  </div>
-
-                  <div className="flex gap-2 pt-2">
-                    <button
-                      type="button"
-                      disabled={onlineActionLoading}
-                      onClick={() => setIsCreatingRoom(null)}
-                      className="px-4 py-3 border border-zinc-800 rounded-xl hover:bg-zinc-900 text-zinc-400 disabled:opacity-40"
+                    <BigBtn
+                      disabled={onlineRoomState.players.length < minimumRoomPlayers(onlineRoomState.maxPlayers)}
+                      onClick={startOnlineMatch}
                     >
-                      {languageState === 'Arabic' ? 'رجوع' : 'Back'}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={onlineActionLoading}
-                      onClick={joinOnlineRoom}
-                      className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-500 font-extrabold text-sm rounded-xl disabled:opacity-50 flex items-center justify-center gap-2"
-                    >
-                      {onlineActionLoading ? (
-                        <>
-                          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                          {languageState === 'Arabic' ? 'جاري الانضمام...' : 'Joining...'}
-                        </>
-                      ) : (
-                        languageState === 'Arabic' ? 'انضمام الآن' : 'Join Match'
-                      )}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        )}
-
-        {/* PHASE: ONLINE_LOBBY */}
-        {phase === 'ONLINE_LOBBY' && onlineRoomState && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            <div className="space-y-2">
-              <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-[10px] font-black uppercase text-amber-400">
-                {languageState === 'Arabic' ? 'كود الغرفة للمشاركة' : 'ROOM CODE KEY'}
-              </span>
-              <h3 className="text-4xl font-black text-sky-400 tracking-widest leading-none mt-1">{roomId}</h3>
-              
-              <div className="flex justify-center gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={() => {
-                    navigator.clipboard.writeText(roomId);
-                    setCopySuccess(true);
-                    setTimeout(() => setCopySuccess(false), 2000);
-                  }}
-                  className="flex items-center gap-1 bg-zinc-900 hover:bg-zinc-800 text-xs text-zinc-400 px-3 py-1.5 rounded-lg border border-zinc-800 transition-all font-bold min-w-[100px] justify-center"
-                >
-                  <Copy size={12} className={copySuccess ? "text-emerald-400" : "text-zinc-400"} />
-                  {copySuccess 
-                    ? (languageState === 'Arabic' ? 'تم النسخ!' : 'Copied!')
-                    : (languageState === 'Arabic' ? 'نسخ الكود' : 'Copy Key')}
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-zinc-900/40 p-5 rounded-2xl border border-zinc-800 space-y-3 text-left">
-              <span className="text-[10px] font-black text-sky-400 uppercase tracking-widest block mb-1">
-                {languageState === 'Arabic' ? `انضم اللاعبين (${onlineRoomState.players.length} من ${onlineRoomState.maxPlayers})` : `Clinical members joined (${onlineRoomState.players.length} of ${onlineRoomState.maxPlayers})`}
-              </span>
-
-              <div className="space-y-2">
-                {onlineRoomState.players.map((p: any, index: number) => (
-                  <div key={p.id} className="flex items-center justify-between p-3 bg-zinc-900/60 rounded-xl border border-zinc-850">
-                    <span className="font-bold text-white flex items-center gap-2 text-sm">
-                      <span className="w-5 h-5 rounded-md bg-sky-600/20 text-sky-400 flex items-center justify-center text-[10px] font-black">
-                        {index + 1}
-                      </span>
-                      {p.name}
-                    </span>
-                    {p.id === onlineRoomState.hostId && (
-                      <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded px-1.5 py-0.5 text-[8px] font-bold uppercase">
-                        HOST
-                      </span>
+                      {onlineRoomState.players.length < minimumRoomPlayers(onlineRoomState.maxPlayers)
+                        ? t(`بانتظار لاعبين: ${minimumRoomPlayers(onlineRoomState.maxPlayers) - onlineRoomState.players.length}`, `Waiting for ${minimumRoomPlayers(onlineRoomState.maxPlayers) - onlineRoomState.players.length} more`)
+                        : onlineRoomState.players.length === 2
+                          ? t('بدء المبارزة (طبيبان) ➔','Start 1v1 Duel ➔')
+                          : t(`بدء اللعبة (${onlineRoomState.players.length} أطباء) ➔`, `Start Match (${onlineRoomState.players.length} Doctors) ➔`)}
+                    </BigBtn>
+                    {onlineRoomState.players.length < onlineRoomState.maxPlayers && onlineRoomState.players.length >= minimumRoomPlayers(onlineRoomState.maxPlayers) && (
+                      <p className="text-[0.8125rem] text-center text-white/70 font-bold">
+                        {t(
+                          `الغرفة تتسع لـ ${onlineRoomState.maxPlayers} أطباء. يمكنك البدء الآن أو انتظار بقية الزملاء.`,
+                          `Room fits up to ${onlineRoomState.maxPlayers} doctors. You can start now or wait for more.`
+                        )}
+                      </p>
                     )}
                   </div>
-                ))}
+                ) : (
+                  <div className="panel py-4 text-center space-y-1">
+                    <p className="font-display font-bold text-white/80 animate-pulse">
+                      {t('بانتظار المضيف لبدء اللعبة...','Waiting for host to start the game...')}
+                    </p>
+                    <p className="text-[0.8125rem] text-white/70">
+                      {onlineRoomState.maxPlayers === 2 ? t('استعد لاكتشاف كرت خصمك.', 'Get ready to deduce your opponent’s card.') : t('استعد لاكتشاف المنتحل.', 'Get ready to find the imposter.')}
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
+          )}
 
-            {onlineRoomState.hostId === localPlayerId ? (
-              <button
-                disabled={onlineRoomState.players.length < onlineRoomState.maxPlayers}
-                onClick={startOnlineMatch}
-                className="w-full py-4 bg-sky-600 hover:bg-sky-500 disabled:opacity-30 disabled:cursor-not-allowed font-black rounded-xl text-xs uppercase tracking-widest transition-all"
+          {/* ================= ROLES REVEAL ================= */}
+          {phase ==='ROLES_REVEAL' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen
+                title={t('كرتك السري','Your secret card')}
+                right={
+                  !isOnline ? (
+                    <span className="text-xs font-black text-white/70 bg-ink-3 border border-ink-4 rounded-full px-3 h-9 flex items-center">
+                      {revealIndex + 1}/{activePlayers.length}
+                    </span>
+                  ) : undefined
+                }
               >
-                {languageState === 'Arabic' ? 'انطلاق الجولة للـجميع' : 'Start Clinical Round'}
-              </button>
-            ) : (
-              <p className="text-zinc-600 text-xs italic">
-                {languageState === 'Arabic' ? 'انتظار المضيف لبدء الحصة...' : 'Waiting for host to kick-off...'}
-              </p>
-            )}
-          </motion.div>
-        )}
+                <div className="px-4 space-y-4">
+                  {/* offline privacy gate */}
+                  {!isOnline && isCardHidden && currentOfflinePlayer && (
+                    <motion.div
+                      initial={{ scale: 0.95 }}
+                      animate={{ scale: 1 }}
+                      className="mt-4 p-7 bg-ink-2 border-2 border-dashed border-white/15 rounded-[2rem] flex flex-col items-center justify-center gap-5 text-center"
+                    >
+                      <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-mint/50 shadow-[0_0_30px_rgba(47,230,167,0.2)]">
+                        <AnimalDoctorAvatar avatarId={currentOfflinePlayer.avatarId} size={92} />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-xs font-black text-white/70 uppercase tracking-widest">{t('مرر الموبايل لـ','Pass the phone to')}</p>
+                        <p className="font-display font-bold text-3xl text-white">{currentOfflinePlayer.name}</p>
+                      </div>
+                      <BigBtn onClick={() => setIsCardHidden(false)}>
+                        {t('اعرض كرتي','Reveal my card')}
+                      </BigBtn>
+                    </motion.div>
+                  )}
 
-        {/* PHASE: ROLES_REVEAL */}
-        {phase === 'ROLES_REVEAL' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-sm mx-auto text-center py-6"
-          >
-            <div className="space-y-1">
-              <label className="text-[10px] font-black text-sky-400 uppercase tracking-widest block">
-                {languageState === 'Arabic' ? 'شاشة كشف الأدوار السرية' : 'ROLE DISTRIBUTION SCREEN'}
-              </label>
-              <h3 className="text-3xl font-black text-white italic">
-                {isOnline ? currentPlayerName : currentOfflinePlayer.name}
-              </h3>
-            </div>
+                  {(isOnline || (!isCardHidden && currentOfflinePlayer)) && (() => {
+                    const player = isOnline
+                      ? activePlayers.find(m => m.id === localPlayerId)
+                      : currentOfflinePlayer;
+                    if (!player) return null;
+                    const wordObj = getWordDetails(player.assignedWordId);
+                    const isPlainImposter = player.assignedWordId ==='IMPOSTER';
+                    const isImposter = player.role ==='IMPOSTER';
 
-            {!isOnline && isCardHidden && (
-              <div className="p-8 bg-zinc-900 border-2 border-dashed border-zinc-800 rounded-[2.5rem] flex flex-col items-center justify-center gap-4 py-12">
-                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-sky-500/40 bg-zinc-950 flex items-center justify-center shrink-0 shadow-lg">
-                  <AnimalDoctorAvatar avatarId={currentOfflinePlayer?.avatarId} size={76} />
-                </div>
-                <p className="text-sm font-extrabold text-zinc-300 leading-relaxed text-center">
-                  {languageState === 'Arabic' 
-                    ? `يرجى تسليم الموبايل لـ [ ${currentOfflinePlayer.name} ]، واجعل الشاشة مخفية ثم اضغط زر الكشف أدناه.` 
-                    : `Please pass the device to [ ${currentOfflinePlayer.name} ] in private. Press reveal below.`}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setIsCardHidden(false)}
-                  className="px-6 py-3 bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs rounded-xl"
-                >
-                  {languageState === 'Arabic' ? 'كشف الكلمة السرية' : 'Reveal Secret Word'}
-                </button>
-              </div>
-            )}
-
-            {(isOnline || !isCardHidden) && (
-              <motion.div 
-                initial={{ scale: 0.9, opacity: 0 }} 
-                animate={{ scale: 1, opacity: 1 }}
-                className="bg-zinc-900 border-2 border-sky-500/20 p-6 rounded-[2.5rem] text-center space-y-6"
-              >
-                {(() => {
-                  const player = isOnline 
-                    ? activePlayers.find(m => m.id === localPlayerId) 
-                    : currentOfflinePlayer;
-
-                  if (!player) return null;
-
-                  const wordObj = getWordDetails(player.assignedWordId);
-                  const isNormalImposter = player.assignedWordId === 'IMPOSTER';
-
-                  if (player.role === 'IMPOSTER' && isNormalImposter) {
                     return (
-                      <>
-                        <div className="w-16 h-16 bg-rose-500/10 border border-rose-500/30 rounded-full flex items-center justify-center mx-auto text-rose-500 animate-pulse">
-                          <ShieldAlert size={36} />
-                        </div>
-                        <div className="space-y-1">
-                          <h4 className="text-2xl font-black text-rose-500 uppercase tracking-tighter">
-                            {languageState === 'Arabic' ? 'أنت المُنبّس!' : 'YOU ARE IMPOSTER!'}
+                      <motion.div
+                        initial={{ rotateY: 90, opacity: 0 }}
+                        animate={{ rotateY: 0, opacity: 1 }}
+                        transition={{ type:'spring', damping: 20, stiffness: 200 }}
+                        className={`rounded-[2rem] border-2 p-6 space-y-5 text-center ${
+                          isImposter
+                            ?'bg-gradient-to-b from-coral/15 to-ink-2 border-coral/50 shadow-[0_0_50px_rgba(255,84,112,0.15)]'
+                            :'bg-gradient-to-b from-mint/12 to-ink-2 border-mint/40 shadow-[0_0_50px_rgba(47,230,167,0.12)]'
+                        }`}
+                      >
+                        <div className="space-y-1.5">
+                          <span className="text-5xl block">{isImposter ?'' :''}</span>
+                          <h4 className={`font-display font-bold text-3xl ${isImposter ?'text-coral' :'text-mint'}`}>
+                            {isImposter ? t('أنت المنتحل!','YOU ARE THE IMPOSTER!') : t('أنت طبيب حقيقي','You are a real Doctor')}
                           </h4>
-                          <p className="text-zinc-500 text-xs">
-                            {languageState === 'Arabic' ? 'لا توضح ذلك، تخفّى وحاول مراوغة زملائك بالصنف والـ System!' : 'Blend in stealthily and guess the collective medical answer.'}
+                          <p className="text-white/70 text-sm font-bold">
+                            {player.name} · {isImposter
+                              ? t('تظاهر بالمعرفة وتجنب الشبهات','Blend in & avoid suspicion')
+                              : t('حافظ على سرية الكلمة','Keep the word secret')}
                           </p>
                         </div>
 
-                        {isNormalImposter ? (
-                          <div className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl">
-                             <p className="text-[10px] text-zinc-500 font-bold uppercase">{languageState === 'Arabic' ? 'المحتوى المُسلم' : 'CARD SECRET INFO'}</p>
-                            <p className="text-xl font-extrabold text-rose-400 tracking-wider">IMPOSTER</p>
+                        {/* word box */}
+                        {isImposter && isPlainImposter && (
+                          <div className="bg-ink/70 border border-coral/30 rounded-2xl p-4 space-y-2">
+                            <p className="text-[0.8125rem] font-black text-white/70 uppercase">{t('كرتك','Your card')}</p>
+                            <p className="font-display font-bold text-3xl text-coral tracking-widest">IMPOSTER</p>
+                            <p className="text-xs text-coral font-bold leading-relaxed">
+                              {t('الأطباء يعرفون الكلمة والصورة السريرية. استمع لأسئلتهم وتظاهر بالمعرفة.', 'Real doctors know the word and clinical image. Listen carefully and blend in.')}
+                            </p>
                           </div>
-                        ) : wordObj ? (
-                          <div className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl text-left space-y-2">
-                            <span className="px-2 py-0.5 bg-rose-500/15 border border-rose-500/30 text-rose-405 text-[10px] font-bold rounded">
-                              {languageState === 'Arabic' ? 'تم تسليمك مرض مضلل وقريب لمراوغة الطب' : 'Stealth clinical system term'}
-                            </span>
-                            <div className="pt-1">
-                              <p className="text-zinc-500 text-[10px] font-mono leading-none">{languageState === 'Arabic' ? 'المصطلح المضلل لديك' : 'Your stealth term'}</p>
-                              <p className="text-lg font-black text-white">{wordObj.word.English}</p>
-                            </div>
-                            <div className="space-y-2 border-t border-zinc-900 pt-3 text-[11px] text-zinc-400 leading-normal text-left">
-                              {getCluesForWord(wordObj.id, wordObj, 'English').slice(0, showMoreClues ? 10 : 5).map((cl, i) => (
-                                <div key={i} className="py-1 border-b border-zinc-900/50 last:border-0">
-                                  {renderClueText(cl, 'xs')}
-                                </div>
-                              ))}
-                              {!showMoreClues && (
-                                <button
-                                  type="button"
-                                  onClick={() => setShowMoreClues(true)}
-                                  className="mt-2 text-xs font-bold text-sky-400 hover:text-sky-350 transition-all flex items-center gap-1 bg-sky-600/10 hover:bg-sky-600/20 border border-sky-500/20 px-2.5 py-1.5 rounded-lg w-full justify-center"
-                                >
-                                  {languageState === 'Arabic' ? 'عرض معلومات أخرى (أكثر)' : 'Show more info'}
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        ) : null}
-                      </>
-                    );
-                  } else {
-                    return (
-                      <>
-                        <div className="w-16 h-16 bg-sky-500/10 border border-sky-500/30 rounded-full flex items-center justify-center mx-auto text-sky-400">
-                          <Stethoscope size={36} />
-                        </div>
-                        <div className="space-y-1">
-                          <h4 className="text-2xl font-black text-white uppercase tracking-tighter">
-                            {languageState === 'Arabic' ? 'المصطلح الطبي المخصص لك' : 'YOUR CLINICAL TERM'}
-                          </h4>
-                          <p className="text-zinc-500 text-xs">
-                            {languageState === 'Arabic' ? 'تذكر مصطلحك والقرائن جيداً لنقاش الحالات والتشخيص المتبادل!' : 'Keep your clinical term and clues in mind for diagnostic discussion!'}
-                          </p>
-                        </div>
+                        )}
 
                         {wordObj && (
-                          <div className="p-4 bg-zinc-950 border border-zinc-800 rounded-2xl text-left space-y-2">
-                            <span className="text-[10px] text-zinc-500 font-bold uppercase block">{languageState === 'Arabic' ? 'المصطلح الطبي المخصص لك' : 'YOUR CLINICAL TERM'}</span>
-                            <p className="text-xl font-extrabold text-sky-400">
-                              {languageState === 'Arabic' ? wordObj.word.Arabic : wordObj.word.English}
-                            </p>
-                            <p className="text-xs text-zinc-400 font-semibold italic">
-                              {languageState === 'Arabic' ? `(${wordObj.word.English}) - تصنيف: ${wordObj.type}` : `Category: ${wordObj.type}`}
-                            </p>
-                            <div className="space-y-2 border-t border-zinc-900 pt-3 text-[11px] text-zinc-400 leading-normal text-left">
-                              {getCluesForWord(wordObj.id, wordObj, languageState).slice(0, showMoreClues ? 10 : 5).map((cl, i) => (
-                                <div key={i} className="py-1 border-b border-zinc-900/50 last:border-0">
-                                  {renderClueText(cl, 'xs')}
+                          <div className="bg-ink/70 border border-white/10 rounded-2xl p-4 space-y-3">
+                            <div className="text-center py-2">
+                              <span className={`text-[0.8125rem] font-black uppercase tracking-widest block mb-1 ${isImposter ? 'text-coral' : 'text-mint'}`}>
+                                {isImposter ? t('كلمتك المضللة للتمويه (بدون صورة)', 'Disguised Word (No image)') : t('الكلمة السرية للأطباء', 'Secret Doctor Word')}
+                              </span>
+                              <h2 className={`font-display font-black text-3xl sm:text-4xl tracking-wide ${isImposter ? 'text-coral' : 'text-white'}`}>
+                                {wordObj.word.English}
+                              </h2>
+                              {wordObj.word.Arabic && (
+                                <p className={`font-display font-bold text-xl mt-1 ${isImposter ? 'text-coral' : 'text-mint'}`}>
+                                  {wordObj.word.Arabic}
+                                </p>
+                              )}
+                            </div>
+
+                            {/* Crucial: ONLY real doctors (!isImposter) see the clinical specimen image! */}
+                            {!isImposter && getWordImage(wordObj.id) && (
+                              <div className="space-y-1.5 my-2">
+                                <div className="relative rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20 max-h-52 bg-black/60">
+                                  <img src={getWordImage(wordObj.id)!} alt={wordObj.word.English} className="w-full h-44 object-contain bg-ink" />
+                                  <span className="absolute bottom-2 right-2 bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-xl text-[0.8125rem] text-cyan-300 font-bold border border-cyan-500/40 flex items-center gap-1.5 shadow-md">
+                                    <Camera size={13} className="text-cyan-400" /> {t('صورة الحالة السريرية (للأطباء فقط)', 'Clinical image (Doctors only)')}
+                                  </span>
                                 </div>
-                              ))}
-                              {!showMoreClues && (
+                              </div>
+                            )}
+
+                            {isImposter && (
+                              <div className="p-2.5 rounded-xl bg-coral/10 border border-coral/30 space-y-1 text-center">
+                                <p className="text-xs font-bold text-coral flex items-center justify-center gap-1.5">
+                                  <ShieldAlert size={14} />
+                                  {t('أنت المنتحل!', 'You are the Imposter!')}
+                                </p>
+                                <p className="text-[0.8125rem] text-white/80 font-medium leading-relaxed">
+                                  {t(
+                                    'لا تملك صورة الحالة السريرية. تجنب لفت الأنظار.',
+                                    'You have no case image. Bluff carefully.'
+                                  )}
+                                </p>
+                              </div>
+                            )}
+
+                            {/* Compact Clues helper (Optional accordion, doesn't push CTA off screen) */}
+                            <div className="border-t border-white/5 pt-2">
+                              {showMoreClues ? (
+                                <div className="space-y-1 text-start">
+                                  {getCluesForWord(wordObj.id, wordObj, languageState).slice(0, 3).map((cl, i) => (
+                                    <div key={i} className="text-xs text-white/70 leading-relaxed">
+                                      {renderClueText(cl, 'xs', languageState)}
+                                    </div>
+                                  ))}
+                                  <button
+                                    type="button"
+                                    onClick={() => setShowMoreClues(false)}
+                                    className="text-pop text-xs font-bold pt-1 hover:underline block"
+                                  >
+                                    {t('إخفاء التفاصيل ▲', 'Hide details ▲')}
+                                  </button>
+                                </div>
+                              ) : (
                                 <button
                                   type="button"
                                   onClick={() => setShowMoreClues(true)}
-                                  className="mt-2 text-xs font-bold text-sky-400 hover:text-sky-350 transition-all flex items-center gap-1 bg-sky-600/10 hover:bg-sky-600/20 border border-sky-500/20 px-2.5 py-1.5 rounded-lg w-full justify-center"
+                                  className="w-full py-1.5 text-xs font-bold text-white/70 hover:text-white/80 flex items-center justify-center gap-1 transition-colors"
                                 >
-                                  {languageState === 'Arabic' ? 'عرض معلومات أخرى (أكثر)' : 'Show more info'}
+                                  <Lightbulb size={13} className="text-gold" />
+                                  <span>{t('عرض تلميحات إضافية للحالة ▼', 'View clinical hints ▼')}</span>
                                 </button>
                               )}
                             </div>
                           </div>
                         )}
-                      </>
+                      </motion.div>
                     );
-                  }
-                })()}
-
+                  })()}
+                </div>
+              </Screen>
+              <div className="shrink-0 px-4 pt-2 pb-safe">
                 {isOnline ? (
-                  <div className="pt-2">
-                    {onlineRoomState.hostId === localPlayerId ? (
+                  onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
+                    <BigBtn
+                      onClick={async () => {
+                        const roomRef = doc(db,'rooms', roomId);
+                        const targetStatus = onlineRoomState.players.length === 2 ?'TWO_PLAYERS_GUESS' :'PLAYING_DISCUSSION';
+                        await updateDoc(roomRef, { status: targetStatus });
+                      }}
+                    >
+                      {t('بدء النقاش ➔','Start discussion ➔')}
+                    </BigBtn>
+                  ) : (
+                    <div className="panel py-4 text-center">
+                      <p className="font-display font-bold text-white/60 animate-pulse">{t('بانتظار المضيف لبدء النقاش...','Waiting for host...')}</p>
+                    </div>
+                  )
+                ) : (
+                  <BigBtn onClick={revealNextPlayerOffline} disabled={isCardHidden}>
+                    {revealIndex < activePlayers.length - 1
+                      ? t('أخفِ الكرت ومرر الهاتف', 'Hide card & pass phone')
+                      : t('بدء النقاش ➔', 'Start Discussion ➔')}
+                  </BigBtn>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* ================= GROUP DISCUSSION ================= */}
+          {phase ==='PLAY_DISCUSSION' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen title={isLocalVotingActive ? t('التصويت السري', 'Secret vote') : t('وقت النقاش','Discussion')}>
+                {!isLocalVotingActive ? (
+                  <div className="space-y-3 px-4">
+                    {/* Structured Interrogation Turn Card (Offline & Online) */}
+                    {questioningCycle.length > 0 && (
+                      <div className="space-y-3">
+                        {currentCycleIdx < questioningCycle.length ? (() => {
+                          const currentMatch = questioningCycle[currentCycleIdx];
+                          const isLastTurn = currentCycleIdx + 1 === questioningCycle.length;
+
+                          return (
+                            <motion.div
+                              key={currentCycleIdx}
+                              initial={{ opacity: 0, scale: 0.96 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ duration: 0.2 }}
+                              className="p-4 rounded-3xl bg-gradient-to-b from-ink-2 via-ink-3 to-ink-2 border-2 border-pop/50 shadow-xl space-y-3.5 relative overflow-hidden"
+                            >
+                              {/* Header & Stepper */}
+                              <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                                <div className="flex items-center gap-2">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-pop animate-ping" />
+                                  <span className="text-xs font-black uppercase text-pop tracking-wider">
+                                    {t(`السؤال ${currentCycleIdx + 1} من ${questioningCycle.length}`, `Turn ${currentCycleIdx + 1} of ${questioningCycle.length}`)}
+                                  </span>
+                                  {currentMatch.roundNum && questionsPerPlayer > 1 && (
+                                    <span className="text-[0.8125rem] px-2 py-0.5 rounded-full bg-white/10 text-white/70 font-bold">
+                                      {t(`الجولة ${currentMatch.roundNum}`, `Round ${currentMatch.roundNum}`)}
+                                    </span>
+                                  )}
+                                </div>
+
+                                {questionTimeLimit > 0 && (
+                                  <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border font-mono font-black text-xs ${
+                                    turnTimeRemaining <= 10
+                                      ? 'bg-coral/25 text-coral border-coral/50 animate-pulse shadow-[0_0_12px_rgba(255,84,112,0.4)]'
+                                      : 'bg-ink border-white/15 text-gold'
+                                  }`}>
+                                    <Timer size={13} className={turnTimeRemaining <= 10 ? 'animate-spin' : ''} />
+                                    <span>{turnTimeRemaining}s</span>
+                                  </div>
+                                )}
+                              </div>
+
+                              {/* Asker ➔ Target Matchup */}
+                              <div className="flex items-center justify-between gap-2 py-1">
+                                {/* The Asker */}
+                                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0 text-center">
+                                  <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-pop/60 shadow-lg bg-ink flex items-center justify-center relative">
+                                    <AnimalDoctorAvatar avatarId={currentMatch.askerAvatarId ?? 0} size={46} />
+                                    <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-pop text-white text-[0.8125rem] font-black flex items-center justify-center shadow">
+                                      ?
+                                    </span>
+                                  </div>
+                                  <span className="text-[0.8125rem] font-black uppercase text-pop tracking-wider">
+                                    {t('يسأل الآن', 'Asker')}
+                                  </span>
+                                  <span className="font-display font-bold text-sm text-white truncate max-w-full">
+                                    {currentMatch.askerName}
+                                  </span>
+                                </div>
+
+                                {/* Dynamic Arrow & VS */}
+                                <div className="flex flex-col items-center gap-1 shrink-0 px-2">
+                                  <span className="text-[0.8125rem] font-black text-white/70 uppercase tracking-widest">{t('يستجوب', 'Inquires')}</span>
+                                  <div className="w-8 h-8 rounded-full bg-pop/15 border border-pop/30 flex items-center justify-center text-pop text-sm font-bold">
+                                    ➔
+                                  </div>
+                                </div>
+
+                                {/* The Target */}
+                                <div className="flex flex-col items-center gap-1.5 flex-1 min-w-0 text-center">
+                                  <div className="w-14 h-14 rounded-2xl overflow-hidden border-2 border-cyan-400/60 shadow-lg bg-ink flex items-center justify-center relative">
+                                    <AnimalDoctorAvatar avatarId={currentMatch.targetAvatarId ?? 1} size={46} />
+                                    <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-cyan-500 text-black text-[0.8125rem] font-black flex items-center justify-center shadow">
+                                      !
+                                    </span>
+                                  </div>
+                                  <span className="text-[0.8125rem] font-black uppercase text-cyan-400 tracking-wider">
+                                    {t('المُستجوب', 'Target')}
+                                  </span>
+                                  <span className="font-display font-bold text-sm text-white truncate max-w-full">
+                                    {currentMatch.targetName}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Clear Guidance */}
+                              <div className="bg-black/30 border border-white/5 rounded-2xl p-2.5 text-center space-y-1">
+                                <p className="text-xs text-white/90 font-bold leading-relaxed">
+                                  {t(
+                                    `${currentMatch.askerName} يوجّه سؤاله لـ ${currentMatch.targetName} دون كشف الكلمة!`,
+                                    `${currentMatch.askerName} asks ${currentMatch.targetName} without revealing the word!`
+                                  )}
+                                </p>
+                                {turnTimeRemaining <= 0 && questionTimeLimit > 0 && (
+                                  <p className="text-[0.8125rem] text-coral font-bold animate-pulse">
+                                    {t('⏰ انتهى الوقت المقترح للسؤال! انتقل للدور التالي.', '⏰ Time is up! Move to the next turn.')}
+                                  </p>
+                                )}
+                              </div>
+
+                              {/* Advance Button (Dominant Big Button) */}
+                              {(!isOnline || onlineRoomState?.hostId === localPlayerId || currentMatch.askerId === localPlayerId) ? (
+                                <button
+                                  type="button"
+                                  onClick={handleNextQuestionTurn}
+                                  className="w-full min-h-[54px] rounded-2xl bg-gradient-to-r from-mint to-emerald-400 text-ink-1 font-display font-black text-base flex items-center justify-center gap-2 active:scale-98 transition-all shadow-lg shadow-mint/20 cursor-pointer"
+                                >
+                                  <Check size={20} strokeWidth={3} />
+                                  <span>
+                                    {isLastTurn
+                                      ? t('إنهاء الأسئلة وبدء التصويت ➔', 'Finish questions & vote ➔')
+                                      : t('السؤال التالي ➔', 'Next question ➔')}
+                                  </span>
+                                </button>
+                              ) : (
+                                <div className="py-2.5 px-4 rounded-xl bg-ink/60 border border-white/10 text-center">
+                                  <p className="text-xs text-white/60 font-bold animate-pulse">
+                                    {t(`بانتظار ${currentMatch.askerName} أو المضيف لإنهاء السؤال...`, `Waiting for ${currentMatch.askerName} or host to advance...`)}
+                                  </p>
+                                </div>
+                              )}
+                            </motion.div>
+                          );
+                        })() : (
+                          /* All Questions in cycle completed! */
+                          <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="p-5 rounded-3xl bg-mint/15 border-2 border-mint/50 text-center space-y-3 shadow-[0_0_30px_rgba(47,230,167,0.2)]"
+                          >
+                            <h4 className="font-display font-bold text-xl text-mint leading-tight">
+                              {t('اكتملت جولة الأسئلة', 'All questions completed')}
+                            </h4>
+                            <p className="text-xs text-white/80 font-medium leading-relaxed">
+                              {t(
+                                'حان وقت التصويت لتحديد المنتحل.',
+                                'Time to vote and find the Imposter.'
+                              )}
+                            </p>
+                            {isOnline ? (
+                              onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
+                                <BigBtn
+                                  variant="coral"
+                                  onClick={async () => {
+                                    const roomRef = doc(db, 'rooms', roomId);
+                                    await updateDoc(roomRef, { status: 'VOTING' });
+                                  }}
+                                >
+                                  {t('بدء التصويت ➔', 'Start voting ➔')}
+                                </BigBtn>
+                              ) : (
+                                <div className="panel py-3 text-center">
+                                  <p className="font-display font-bold text-white/60 animate-pulse text-xs">
+                                    {t('بانتظار المضيف لبدء التصويت...', 'Waiting for host to start voting...')}
+                                  </p>
+                                </div>
+                              )
+                            ) : (
+                              <BigBtn
+                                variant="coral"
+                                onClick={() => {
+                                  setIsLocalVotingActive(true);
+                                  setLocalVoterId(null);
+                                  setCompletedVoters([]);
+                                  setLocalVotingVotes({});
+                                  setShowLocalVoterTargetSelection(false);
+                                  setVotedSuspectIds([]);
+                                }}
+                              >
+                                {t('بدء التصويت ➔', 'Start voting ➔')}
+                              </BigBtn>
+                            )}
+                          </motion.div>
+                        )}
+
+                        {/* Collapsible Question Cycle Sequence Stepper */}
+                        <div className="space-y-1.5">
+                          <button
+                            type="button"
+                            onClick={() => setShowAllQuestionsList(!showAllQuestionsList)}
+                            className="w-full min-h-[48px] px-3.5 rounded-xl bg-ink-2/80 border border-ink-4 flex items-center justify-between text-xs font-bold text-white/70 active:scale-98 transition-all"
+                          >
+                            <span className="flex items-center gap-1.5">
+                              <RefreshCcw size={14} className="text-mint" />
+                              <span>
+                                {t('جدول أدوار الأسئلة بالكامل', 'Full Turn Schedule')}
+                                {' · '}
+                                {questioningCycle.filter(c => c.completed).length}/{questioningCycle.length}
+                              </span>
+                            </span>
+                            <span className="text-white/70">{showAllQuestionsList ? '▲' : '▼'}</span>
+                          </button>
+
+                          <AnimatePresence>
+                            {showAllQuestionsList && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="p-2.5 rounded-2xl bg-ink-2 border border-ink-4 space-y-1.5 max-h-[180px] overflow-y-auto custom-scrollbar">
+                                  {questioningCycle.map((match, idx) => {
+                                    const isCurrent = idx === currentCycleIdx;
+                                    const isDone = match.completed || idx < currentCycleIdx;
+                                    return (
+                                      <div
+                                        key={idx}
+                                        className={`px-3 py-2 rounded-xl border flex items-center justify-between text-xs font-bold transition-all ${
+                                          isCurrent
+                                            ? 'bg-pop/15 border-pop/50 text-white ring-1 ring-pop/40'
+                                            : isDone
+                                            ? 'bg-mint/5 border-mint/20 text-white/70'
+                                            : 'bg-ink/50 border-ink-4 text-white/70'
+                                        }`}
+                                      >
+                                        <div className="flex items-center gap-2 truncate">
+                                          <span className="text-[0.8125rem] text-white/70 font-mono">#{idx + 1}</span>
+                                          <span className={isCurrent ? 'text-pop font-black' : 'text-white'}>{match.askerName}</span>
+                                          <span className="text-white/70">➔</span>
+                                          <span className={isCurrent ? 'text-cyan-300 font-black' : 'text-white'}>{match.targetName}</span>
+                                        </div>
+                                        <span className="shrink-0 text-[0.8125rem]">
+                                          {isCurrent ? (
+                                            <span className="text-pop font-black animate-pulse">⏳ {t('جاري الآن', 'Active')}</span>
+                                          ) : isDone ? (
+                                            <span className="text-mint font-bold">✓ {t('تم', 'Done')}</span>
+                                          ) : (
+                                            <span className="text-white/70 font-medium">{t('قادم', 'Upcoming')}</span>
+                                          )}
+                                        </span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Real-time group interrogation banner if YOU are being interrogated */}
+                    {isOnline && onlineRoomState?.inquiry?.targetPlayerId === localPlayerId && onlineRoomState?.inquiry?.activeQuestion && (
+                      <motion.div
+                        initial={{ scale: 0.95, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="panel p-5 rounded-3xl border-2 border-pop/60 bg-pop/10 space-y-4 shadow-[0_0_30px_rgba(255,107,107,0.2)]"
+                      >
+                        <div className="flex items-center gap-2 text-pop">
+                          <span className="w-9 h-9 rounded-xl bg-pop/20 border border-pop/40 flex items-center justify-center shrink-0 animate-bounce">
+                            <AlertCircle size={20} />
+                          </span>
+                          <div>
+                            <p className="text-[0.8125rem] font-black uppercase tracking-wider text-pop">
+                              {t('استجواب سريري موجه إليك الآن!', 'Live Clinical Interrogation!')}
+                            </p>
+                            <p className="font-display font-bold text-sm text-white">
+                              {(() => {
+                                const asker = activePlayers.find(p => p.id === onlineRoomState.inquiry.turnPlayerId);
+                                return t(`${asker?.name || 'زميلك'} يستجوبك أمام الجميع:`, `${asker?.name || 'Doctor'} interrogates you:`);
+                              })()}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="p-3.5 rounded-2xl bg-ink-2/90 border border-ink-4 space-y-1">
+                          <p className="font-display font-bold text-base text-white leading-relaxed">
+                            {onlineRoomState.inquiry.activeQuestion.text[languageState === 'Arabic' ? 'ar' : 'en']}
+                          </p>
+                          {languageState === 'Arabic' && (
+                            <p className="text-xs text-white/70 font-medium">
+                              {onlineRoomState.inquiry.activeQuestion.text.en}
+                            </p>
+                          )}
+                        </div>
+
+                        {(() => {
+                          const myWordId = activePlayers.find(p => p.id === localPlayerId)?.assignedWordId;
+                          const myWord = myWordId ? getWordDetails(myWordId) : null;
+                          const truthEval = evaluateQuestionTruth(onlineRoomState.inquiry.activeQuestion.id, myWord);
+
+                          return (
+                            <div className="space-y-2.5">
+                              <p className="text-[0.8125rem] font-bold text-white/60 text-center">
+                                {t('أجب فوراً دون كتابة (Zero Typing):', 'Answer instantly (Zero Typing):')}
+                              </p>
+                              <div className="grid grid-cols-1 gap-2">
+                                {INQUIRY_ANSWER_OPTIONS.map((opt) => {
+                                  const isMedicallyTrue = truthEval.trueAnswer === opt.id;
+                                  return (
+                                    <button
+                                      key={opt.id}
+                                      type="button"
+                                      onClick={() => submitOnlineInquiryAnswer(opt.id)}
+                                      className={`w-full min-h-[52px] px-4 rounded-2xl border-2 font-display font-bold text-sm flex items-center justify-between gap-2 active:scale-98 transition-all ${opt.color} ${
+                                        isMedicallyTrue ? 'ring-2 ring-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.25)]' : ''
+                                      }`}
+                                    >
+                                      <span>{languageState === 'Arabic' ? opt.labelAr : opt.labelEn}</span>
+                                      {isMedicallyTrue && (
+                                        <span className="px-2 py-0.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[0.8125rem] font-black flex items-center gap-1">
+                                          <span>⭐</span>
+                                          <span>{t('الحقيقة السريرية لكرتك', 'True for your card')}</span>
+                                        </span>
+                                      )}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+
+                              {truthEval && truthEval.clinicalReasonAr && (
+                                <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-1 text-start">
+                                  <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
+                                    <Sparkles size={14} />
+                                    <span>{t('همسة المستشار السريري (مرئية لك فقط):', 'Clinical Advisor Whisper (Only you see this):')}</span>
+                                  </div>
+                                  <p className="text-[0.8125rem] text-white/85 leading-relaxed font-medium">
+                                    {languageState === 'Arabic' ? truthEval.clinicalReasonAr : truthEval.clinicalReasonEn}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })()}
+                      </motion.div>
+                    )}
+
+                    {/* Interactive 5-Stage Clinical Inquiry Tree Drawer / Sheet */}
+                    <div className="space-y-2">
                       <button
                         type="button"
-                        onClick={async () => {
-                          const roomRef = doc(db, 'rooms', roomId);
-                          const targetStatus = onlineRoomState.players.length === 2 ? 'TWO_PLAYERS_GUESS' : 'PLAYING_DISCUSSION';
-                          await updateDoc(roomRef, {
-                            status: targetStatus
-                          });
-                        }}
-                        className="w-full py-3 bg-sky-600 hover:bg-sky-500 font-extrabold text-xs uppercase text-white rounded-xl tracking-wider block mt-2"
+                        onClick={() => setShowGroupInquirySheet(!showGroupInquirySheet)}
+                        className="w-full min-h-[52px] px-4 rounded-2xl bg-ink-3/70 hover:bg-ink-3 border border-ink-4 flex items-center justify-between active:scale-[0.98] transition-all"
                       >
-                        {languageState === 'Arabic' ? 'بـدء الـنـقـاش' : 'Activate Discussion Phase'}
+                        <span className="flex items-center gap-2 font-display font-bold text-pop text-sm">
+                          <Stethoscope size={18} />
+                          {t('شجرة الاستجواب السريري (5 مراحل)', '5-Stage Clinical Inquiry Tree')}
+                        </span>
+                        <span className="text-white/70 text-sm">{showGroupInquirySheet ? '▲' : '▼'}</span>
                       </button>
-                    ) : (
-                      <p className="text-xs text-zinc-600 italic">
-                        {languageState === 'Arabic' ? 'انتظار الكابتن لتفعيل لوحة النقاش...' : 'Waiting for host to launch discussion...'}
-                      </p>
-                    )}
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={revealNextPlayerOffline}
-                    className="w-full py-3 bg-zinc-800 hover:bg-zinc-700 text-white font-extrabold text-xs rounded-xl mt-4"
-                  >
-                    {revealIndex < activePlayers.length - 1 ? (languageState === 'Arabic' ? 'إخفاء وتمرير الهاتف للتالي' : 'Hide & Hand Over Phone') : (languageState === 'Arabic' ? 'إنهاء التوزيع وبدء النقاش' : 'Distribution Finish & Play')}
-                  </button>
-                )}
-              </motion.div>
-            )}
-          </motion.div>
-        )}
 
-        {/* PHASE: PLAY_DISCUSSION */}
-        {phase === 'PLAY_DISCUSSION' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto"
-          >
-            {!isLocalVotingActive ? (
-              <>
-                <div className="text-center space-y-2 py-4">
-                  <span className="px-3.5 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 rounded-full text-xs font-black uppercase tracking-widest inline-block">
-                    {languageState === 'Arabic' ? 'جولة النقاش المفتوح والملاحظات' : 'TEAM DISCUSSION ROUND'}
-                  </span>
-                  <h3 className="text-3xl font-black text-white italic">
-                    {languageState === 'Arabic' ? 'اطرحوا الأسئلة الطبية واستثنوا الـ Imposter!' : 'Investigate clinical cases!'}
-                  </h3>
-                  <p className="text-zinc-500 text-xs text-center">
-                    {languageState === 'Arabic' 
-                      ? 'يجب توجيه الأسئلة بحذر لا يؤدي لكشف اللفظ الحقيقي للـ Imposter، واختبروا زملائكم في الأمراض!' 
-                      : 'Doctors must diagnostic-question each other without revealing the explicit terminology directly.'}
-                  </p>
-                </div>
+                      <AnimatePresence>
+                        {showGroupInquirySheet && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="bg-ink-2 border border-ink-4 rounded-3xl p-3.5 space-y-3">
+                              {/* Stage Navigation Tabs */}
+                              <div className="grid grid-cols-5 gap-1 bg-ink/60 p-1 rounded-2xl border border-white/5">
+                                {STAGE_META.map((meta) => {
+                                  const isSelected = groupInquiryStageTab === meta.stage;
+                                  return (
+                                    <button
+                                      key={meta.stage}
+                                      type="button"
+                                      onClick={() => setGroupInquiryStageTab(meta.stage)}
+                                      className={`py-2 px-1 rounded-xl text-center flex flex-col items-center gap-0.5 transition-all ${
+                                        isSelected
+                                          ? 'bg-pop text-white font-black shadow-sm'
+                                          : 'text-white/70 hover:text-white/70'
+                                      }`}
+                                    >
+                                      <span className="text-[0.8125rem] font-mono">{meta.stage}</span>
+                                      <span className="text-[0.8125rem] font-bold truncate max-w-full">
+                                        {languageState === 'Arabic' ? meta.shortAr : meta.shortEn}
+                                      </span>
+                                    </button>
+                                  );
+                                })}
+                              </div>
 
-                <div className="space-y-2.5">
-                  <button
-                    onClick={() => setShowQuestionExamples(!showQuestionExamples)}
-                    className="w-full flex items-center justify-between p-4 bg-zinc-900 hover:bg-zinc-850 rounded-2xl border border-zinc-800 transition-all font-semibold"
-                  >
-                    <span className="flex items-center gap-2 text-sm text-teal-400">
-                      <HelpCircle size={16} />
-                      {languageState === 'Arabic' ? 'أنواع وأمثلة على الأسئلة الطبية المتاحة' : 'Clinical Diagnostic questions models'}
-                    </span>
-                    <span className="text-xs text-zinc-550">{showQuestionExamples ? '▼' : '▲'}</span>
-                  </button>
+                              {/* Stage Header */}
+                              {(() => {
+                                const currentMeta = STAGE_META[groupInquiryStageTab - 1];
+                                const questions = getBranchQuestionsForStage(groupInquiryStageTab, 'Disease');
+                                return (
+                                  <div className="space-y-2">
+                                    <div className="flex items-center justify-between px-1">
+                                      <span className="text-xs font-bold text-white/80">
+                                        {languageState === 'Arabic' ? currentMeta.titleAr : currentMeta.titleEn}
+                                      </span>
+                                      <span className="text-[0.8125rem] text-white/70 font-mono">
+                                        5 {t('أسئلة سريرية', 'questions')}
+                                      </span>
+                                    </div>
 
-                  {showQuestionExamples && (
-                    <div className="bg-zinc-950 p-4 border border-zinc-900 rounded-2xl space-y-3">
-                      {exampleQuestions.map((q, i) => (
-                        <div key={i} className="p-3 bg-zinc-900/50 rounded-xl border border-zinc-850 flex gap-2.5 items-start">
-                          <span className="w-5 h-5 rounded-full bg-teal-600/10 border border-teal-500/30 text-[10px] text-teal-400 flex items-center justify-center font-bold">
-                            {i + 1}
-                          </span>
-                          <div className="space-y-0.5 text-xs text-left">
-                            <p className="font-extrabold text-zinc-200 leading-normal">{q.ar}</p>
-                            <p className="text-zinc-500 font-medium italic">{q.en}</p>
-                          </div>
-                        </div>
-                      ))}
+                                    {/* Questions List */}
+                                    <div className="space-y-2 max-h-[280px] overflow-y-auto custom-scrollbar pe-1">
+                                      {questions.map((q, idx) => (
+                                        <div
+                                          key={q.id || idx}
+                                          className="p-3 rounded-2xl bg-ink-3/70 border border-ink-4 space-y-2"
+                                        >
+                                          <div className="flex items-start gap-2.5">
+                                            <span className="w-5 h-5 rounded-lg bg-pop/10 text-pop text-[0.8125rem] font-black flex items-center justify-center shrink-0 mt-0.5">
+                                              {idx + 1}
+                                            </span>
+                                            <div className="flex-1 min-w-0">
+                                              <p className="text-xs font-bold text-white/90 leading-snug">
+                                                {languageState === 'Arabic' ? q.text.ar : q.text.en}
+                                              </p>
+                                              {languageState === 'Arabic' && (
+                                                <p className="text-[0.8125rem] text-white/70 truncate">
+                                                  {q.text.en}
+                                                </p>
+                                              )}
+                                            </div>
+                                          </div>
+
+                                          {/* Online Action: Direct this question to a specific doctor */}
+                                          {isOnline && (
+                                            <div className="border-t border-white/5 pt-2 flex flex-wrap items-center gap-1.5">
+                                              <span className="text-[0.8125rem] font-bold text-white/70">
+                                                {t('وجّه السؤال إلى:', 'Ask:')}
+                                              </span>
+                                              {activePlayers
+                                                .filter(p => p.id !== localPlayerId)
+                                                .map(targetP => (
+                                                  <button
+                                                    key={targetP.id}
+                                                    type="button"
+                                                    onClick={() => submitOnlineGroupInquiryQuestion(targetP.id, q)}
+                                                    className="px-2.5 py-1 rounded-xl bg-ink border border-ink-4 hover:border-pop/40 text-[0.8125rem] font-bold text-white/80 hover:text-white flex items-center gap-1.5 active:scale-95 transition-all"
+                                                  >
+                                                    <span className="w-4 h-4 rounded-full overflow-hidden shrink-0 flex items-center justify-center">
+                                                      <AnimalDoctorAvatar avatarId={targetP.avatarId} size={16} />
+                                                    </span>
+                                                    <span>{targetP.name}</span>
+                                                  </button>
+                                                ))}
+                                            </div>
+                                          )}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                );
+                              })()}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-                  )}
-                </div>
 
-                {/* BALANCED QUESTIONING ROUNDS FOR LOCAL PLAY */}
-                {playerCount >= 3 && !isOnline && questioningCycle.length > 0 && (
-                  <div className="p-5 bg-zinc-900/80 border border-zinc-800 rounded-2xl space-y-4 text-right">
-                    <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-                      <span className="text-[10px] text-zinc-500 font-mono">
-                        {questioningCycle.filter(c => c.completed).length} / {questioningCycle.length}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-sm font-black text-sky-400">
-                          {languageState === 'Arabic' ? 'توجيه الأسئلة المتوازن' : 'Balanced Questioning Order'}
-                        </h4>
-                        <HelpCircle size={16} className="text-sky-400" />
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-zinc-400 leading-relaxed">
-                      {languageState === 'Arabic' 
-                        ? 'لضمان العدالة وتساوي الفرص، يقوم كل لاعب بطرح سؤال واحد فقط على زميله المحدد أدناه. لا أحد يسأل أو يُسأل أكثر من الآخرين!'
-                        : 'To ensure fairness, each player asks exactly one clinical question to their assigned peer. No one is left out!'}
-                    </p>
-                    <div className="space-y-2.5">
-                      {questioningCycle.map((match, idx) => (
-                        <div 
-                          key={idx} 
-                          onClick={() => {
-                            const updated = [...questioningCycle];
-                            updated[idx].completed = !updated[idx].completed;
-                            setQuestioningCycle(updated);
-                          }}
-                          className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 text-right ${
-                            match.completed 
-                              ? 'bg-sky-950/20 border-sky-900/50 opacity-55' 
-                              : 'bg-zinc-950 border-zinc-850 hover:border-sky-500/30'
-                          }`}
+                    {/* Shared Consultation History in 3+ Players */}
+                    {isOnline && onlineRoomState?.inquiry?.history?.length > 0 && (
+                      <div className="space-y-2">
+                        <button
+                          type="button"
+                          onClick={() => setShowInquiryHistory(!showInquiryHistory)}
+                          className="w-full min-h-[48px] px-4 rounded-2xl bg-ink-3/70 border border-ink-4 flex items-center justify-between active:scale-[0.98] transition-transform"
                         >
-                          <div className="flex items-center gap-2">
-                            {match.completed ? (
-                              <span className="w-5 h-5 rounded-full bg-sky-500/20 border border-sky-500/40 flex items-center justify-center text-sky-300">
-                                <Check size={12} />
-                              </span>
-                            ) : (
-                              <span className="w-5 h-5 rounded-full border border-zinc-700 flex items-center justify-center" />
-                            )}
-                          </div>
-                          <div className="flex-1 text-right">
-                            {languageState === 'Arabic' ? (
-                              <p className="text-xs font-bold text-zinc-200">
-                                <span className="text-sky-300 font-extrabold">{match.askerName}</span> يوجّه سؤالاً لـ <span className="text-white font-extrabold">{match.targetName}</span>
-                              </p>
-                            ) : (
-                              <p className="text-xs font-bold text-zinc-200">
-                                <span className="text-sky-300 font-extrabold">{match.askerName}</span> questions <span className="text-white font-extrabold">{match.targetName}</span>
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                          <span className="flex items-center gap-2 font-display font-bold text-white/80 text-xs">
+                            <FileText size={15} className="text-gold" />
+                            {t(`سجل الاستجوابات بالجلسة (${onlineRoomState.inquiry.history.length})`, `Live Investigation Log (${onlineRoomState.inquiry.history.length})`)}
+                          </span>
+                          <span className="text-white/70 text-xs">{showInquiryHistory ? '▲' : '▼'}</span>
+                        </button>
 
-                {isOnline && (
-                  <div className="bg-zinc-900/55 p-4 border border-zinc-800 rounded-2xl space-y-2.5 text-left">
-                    <span className="text-[10px] font-black text-teal-400 uppercase tracking-widest flex items-center gap-1.5 justify-center">
-                      {languageState === 'Arabic' ? 'مراجع كرتك السري للإجابة' : 'Your secret case specifications for answering'}
-                    </span>
-                    {(() => {
+                        <AnimatePresence>
+                          {showInquiryHistory && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="bg-ink-2 border border-ink-4 rounded-2xl p-3 space-y-2 max-h-[220px] overflow-y-auto custom-scrollbar divide-y divide-white/5">
+                                {onlineRoomState.inquiry.history.map((item: any, i: number) => {
+                                  const ansMeta = INQUIRY_ANSWER_OPTIONS.find(o => o.id === item.answer);
+                                  return (
+                                    <div key={item.id || i} className="pt-2 first:pt-0 space-y-1">
+                                      <div className="flex items-center justify-between gap-2">
+                                        <span className="text-[0.8125rem] font-bold text-white/70">
+                                          <span className="text-pop">{item.askerName}</span> ← <span className="text-sky-400">{item.targetName}</span>
+                                        </span>
+                                        <span className={`text-[0.8125rem] font-black px-2 py-0.5 rounded-full border ${ansMeta?.color || 'bg-white/10 text-white'}`}>
+                                          {languageState === 'Arabic' ? ansMeta?.labelAr : ansMeta?.labelEn}
+                                        </span>
+                                      </div>
+                                      <p className="text-xs font-bold text-white/85 leading-relaxed">
+                                        {languageState === 'Arabic' ? item.questionAr : item.questionEn}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )}
+
+
+                    {/* online: my card */}
+                    {isOnline && (() => {
                       const local = activePlayers.find(m => m.id === localPlayerId);
                       if (!local) return null;
                       const word = getWordDetails(local.assignedWordId);
-                      if (!word) {
-                        return (
-                          <p className="text-xs text-rose-400 font-extrabold text-center">
-                            {languageState === 'Arabic' ? 'أنت الـ Imposter (جاسوس)! لا تمتلك مرجعاً للكرت.' : 'You are the Imposter! No details.'}
-                          </p>
-                        );
-                      }
                       return (
-                        <div className="space-y-1 bg-zinc-950/80 p-3.5 border border-zinc-800 rounded-xl">
-                          <p className="text-sm font-extrabold text-white">{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</p>
-                          <div className="space-y-2 text-[11px] text-zinc-405 pt-2 border-t border-zinc-900 leading-normal">
-                            {getCluesForWord(word.id, word, languageState).slice(0, showMoreClues ? 10 : 5).map((cl, i) => (
-                              <div key={i} className="py-1 border-b border-zinc-900/50 last:border-0">
-                                {renderClueText(cl, 'xs')}
+                        <div className="panel p-4 space-y-2.5">
+                          <Label>{t('كرتك السري','Your secret card')}</Label>
+                          {!word ? (
+                            <p className="text-coral font-display font-bold text-sm text-center py-2">
+                               {t('أنت المنتحل — لا تملك كرت!',"You're the Imposter — no card!")}
+                            </p>
+                          ) : (
+                            <div className="bg-ink/60 border border-ink-4 rounded-2xl p-3.5 space-y-2">
+                              <p className="font-display font-bold text-lg text-white">
+                                {word.word.English}
+                                {word.word.Arabic && (
+                                  <span className="text-[0.8125rem] text-white/70 font-bold"> ({word.word.Arabic})</span>
+                                )}
+                              </p>
+                              <div className="border-t border-white/5 pt-2 space-y-1.5">
+                                {getCluesForWord(word.id, word, languageState).slice(0, showMoreClues ? 10 : 3).map((cl, i) => (
+                                  <div key={i} className="text-[0.8125rem] text-white/60 leading-relaxed">{renderClueText(cl, 'xs', languageState)}</div>
+                                ))}
+                                {!showMoreClues && (
+                                  <button
+                                    type="button"
+                                    onClick={() => setShowMoreClues(true)}
+                                    className="text-pop text-xs font-display font-bold pt-1"
+                                  >
+                                    {t('معلومات أكتر','More info')}
+                                  </button>
+                                )}
                               </div>
-                            ))}
-                            {!showMoreClues && (
-                              <button
-                                type="button"
-                                onClick={() => setShowMoreClues(true)}
-                                className="mt-2 text-xs font-bold text-sky-400 hover:text-sky-350 transition-all flex items-center gap-1 bg-sky-600/10 hover:bg-sky-600/20 border border-sky-500/20 px-2 py-1 rounded w-full justify-center"
-                              >
-                                {languageState === 'Arabic' ? 'عرض معلومات أخرى (أكثر)' : 'Show more info'}
-                              </button>
-                            )}
-                          </div>
+                            </div>
+                          )}
                         </div>
                       );
                     })()}
                   </div>
-                )}
-
-                {isOnline ? (
-                  <div className="pt-2 text-center">
-                    {onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
-                      <button
-                        onClick={async () => {
-                          const roomRef = doc(db, 'rooms', roomId);
-                          const targetStatus = onlineRoomState.players.length === 2 ? 'TWO_PLAYERS_GUESS' : 'VOTING';
-                          await updateDoc(roomRef, { status: targetStatus });
-                        }}
-                        className="w-full py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-sm uppercase rounded-2xl tracking-widest transition-all"
-                      >
-                        {onlineRoomState.players.length === 2 ? (
-                          languageState === 'Arabic' ? 'الانتقال للتخمين المتبادل المزدوج' : 'Proceed to Mutual Guessing'
-                        ) : (
-                          languageState === 'Arabic' ? 'الانتقال للتصويت السري المشترك' : 'Open Common Voting'
-                        )}
-                      </button>
-                    ) : (
-                      <p className="text-xs text-zinc-600 italic">
-                        {onlineRoomState && onlineRoomState.players.length === 2 ? (
-                          languageState === 'Arabic' ? 'بانتظار انتقال الغرفة للتخمين من الكابتن...' : 'Waiting for host to load guessing...'
-                        ) : (
-                          languageState === 'Arabic' ? 'بانتظار انتقال الغرفة للتصويت من الكابتن...' : 'Waiting for host to load voting...'
-                        )}
-                      </p>
-                    )}
-                  </div>
                 ) : (
-                  <button
-                    onClick={() => {
-                      setIsLocalVotingActive(true);
-                      setLocalVoterId(null);
-                      setCompletedVoters([]);
-                      setLocalVotingVotes({});
-                      setShowLocalVoterTargetSelection(false);
-                      setVotedSuspectIds([]);
-                    }}
-                    className="w-full py-4.5 bg-rose-600 hover:bg-rose-500 text-white font-black rounded-2xl tracking-widest uppercase transition-all shadow-xl"
-                  >
-                    {languageState === 'Arabic' ? 'صوت الآن' : 'Vote Now'}
-                  </button>
-                )}
-              </>
-            ) : (
-              /* INTERACTIVE PASS-AND-PLAY LOCAL VOTING */
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                className="space-y-6 max-w-lg mx-auto"
-              >
-                <div className="text-center space-y-2 py-4">
-                  <span className="px-3.5 py-1 bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-full text-xs font-black uppercase tracking-widest inline-block">
-                    {languageState === 'Arabic' ? 'صندوق الاقتراع الطبي السري' : 'SECRET CLINICAL POLL'}
-                  </span>
-                  <h3 className="text-2xl font-black text-white">
-                    {languageState === 'Arabic' ? 'صوّت الآن ضد الـ Imposter' : 'Expose the clinical spy!'}
-                  </h3>
-                  <p className="text-zinc-550 text-xs text-center">
-                    {languageState === 'Arabic' 
-                      ? 'كل لاعب يختار اسمه بسرية، ثم يصوّت ضد من يشك فيه ويمرر الهاتف لزميله.' 
-                      : 'Each player selects their name in privacy, submits their vote, then hands the phone to the next colleague.'}
-                  </p>
-                </div>
+                  /* ---- local pass-and-play voting ---- */
+                  <div className="space-y-4 px-4">
+                    {(() => {
+                      const remainingVoters = activePlayers.filter(p => !completedVoters.includes(p.id));
+                      const numImposters = activePlayers.filter(p => p.role ==='IMPOSTER').length;
 
-                {(() => {
-                  const remainingVoters = activePlayers.filter(p => !completedVoters.includes(p.id));
-                  const numImposters = activePlayers.filter(p => p.role === 'IMPOSTER').length;
-
-                  if (remainingVoters.length > 0) {
-                    if (localVoterId === null) {
-                      return (
-                        <div className="space-y-4 bg-zinc-900/60 p-6 border border-zinc-800 rounded-2xl text-center">
-                          <h4 className="text-sm font-black text-zinc-300 mb-3">
-                            {languageState === 'Arabic' ? 'اختر اسمك للبدء بالتصويت السري:' : 'Select your name to begin secret voting:'}
-                          </h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {remainingVoters.map(p => (
-                              <button
-                                key={p.id}
-                                onClick={() => {
-                                  setLocalVoterId(p.id);
-                                  setShowLocalVoterTargetSelection(false);
-                                  setVotedSuspectIds([]);
-                                }}
-                                className="p-4 bg-zinc-950 border border-zinc-850 hover:border-sky-500 text-white font-extrabold italic rounded-xl text-sm transition-all hover:scale-[1.02]"
-                              >
-                                {p.name}
-                              </button>
-                            ))}
-                          </div>
-                          <div className="pt-4 border-t border-zinc-850 flex justify-between text-[11px] text-zinc-500 font-mono">
-                            <span>
-                              {languageState === 'Arabic' ? 'الأصوات المكتملة:' : 'Votes submitted:'} {completedVoters.length} / {activePlayers.length}
-                            </span>
-                            <button
-                              onClick={() => setIsLocalVotingActive(false)}
-                              className="text-sky-400 hover:underline font-bold"
-                            >
-                              {languageState === 'Arabic' ? 'الرجوع للنقاش' : 'Back to discussion'}
-                            </button>
-                          </div>
-                        </div>
-                      );
-                    } else {
-                      const localVoter = activePlayers.find(p => p.id === localVoterId);
-                      if (!localVoter) return null;
-
-                      if (!showLocalVoterTargetSelection) {
+                      if (remainingVoters.length > 0 && localVoterId === null) {
                         return (
-                          <div className="space-y-6 bg-zinc-950 p-8 border-2 border-sky-500/30 rounded-[2rem] text-center max-w-sm mx-auto">
-                            <Lock size={32} className="mx-auto text-zinc-400 animate-pulse" />
-                            <div className="space-y-1.5">
-                              <h4 className="text-xs font-bold text-zinc-405 uppercase tracking-wider">
-                                {languageState === 'Arabic' ? 'حركة خصوصية التصويت' : 'PRIVACY TRANSFER'}
-                              </h4>
-                              <p className="text-2xl font-black text-white italic">
-                                {languageState === 'Arabic' ? `مرر الهاتف إلى: ${localVoter.name}` : `Pass the device to: ${localVoter.name}`}
-                              </p>
+                          <div className="space-y-3">
+                            <div className="panel p-4 text-center space-y-1">
+                              <span className="text-3xl block"></span>
+                              <h4 className="font-display font-bold text-xl text-white">{t('مين بصوّت دلوقتي؟','Who is voting now?')}</h4>
+                              <p className="text-[0.8125rem] text-white/70 font-bold">{completedVoters.length}/{activePlayers.length} {t('صوّتوا','voted')}</p>
                             </div>
-                            <p className="text-xs text-zinc-550 leading-normal">
-                              {languageState === 'Arabic' 
-                                ? 'الرجاء التأكد من عدم رؤية الآخرين للشاشة لضمان سرية التصويت!' 
-                                : 'Ensure other players are looking away to guarantee absolute vote secrecy!'}
-                            </p>
+                            <div className="grid grid-cols-2 gap-2.5">
+                              {remainingVoters.map(p => (
+                                <button
+                                  key={p.id}
+                                  type="button"
+                                  onClick={() => { setLocalVoterId(p.id); setShowLocalVoterTargetSelection(false); setVotedSuspectIds([]); }}
+                                  className="min-h-[64px] rounded-2xl bg-ink-3 border border-ink-4 font-display font-bold text-white flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                                >
+                                  <span className="w-9 h-9 rounded-full overflow-hidden bg-ink border border-white/15 shrink-0 flex items-center justify-center"><AnimalDoctorAvatar avatarId={p.avatarId} size={30} /></span>
+                                  <span className="truncate max-w-[100px]">{p.name}</span>
+                                </button>
+                              ))}
+                            </div>
                             <button
-                              onClick={() => setShowLocalVoterTargetSelection(true)}
-                              className="w-full py-3.5 bg-sky-600 hover:bg-sky-500 text-white font-black text-sm uppercase rounded-xl transition-all"
+                              type="button"
+                              onClick={() => setIsLocalVotingActive(false)}
+                              className="w-full min-h-[48px] text-pop font-bold text-sm"
                             >
-                              {languageState === 'Arabic' ? `أنا ${localVoter.name}، ابدأ التصويت` : `I am ${localVoter.name}, start voting`}
+                              {t('رجوع للنقاش','Back to discussion')}
                             </button>
                           </div>
                         );
-                      } else {
+                      }
+
+                      if (localVoterId !== null) {
+                        const localVoter = activePlayers.find(p => p.id === localVoterId);
+                        if (!localVoter) return null;
+
+                        if (!showLocalVoterTargetSelection) {
+                          return (
+                            <div className="panel p-7 rounded-[2rem] text-center space-y-5 border-2 border-pop/30">
+                              <span className="text-5xl block animate-pulse"></span>
+                              <div className="space-y-1">
+                                <p className="text-xs font-black text-white/70 uppercase tracking-widest">{t('مرر الموبايل لـ','Pass the phone to')}</p>
+                                <p className="font-display font-bold text-3xl text-white">{localVoter.name}</p>
+                              </div>
+                              <BigBtn onClick={() => setShowLocalVoterTargetSelection(true)}>
+                                {t('أنا','I am')} {localVoter.name} — {t('صوّت','vote')}
+                              </BigBtn>
+                            </div>
+                          );
+                        }
+
                         const candidates = activePlayers.filter(p => p.id !== localVoterId);
                         const toggleSuspect = (id: string) => {
                           if (votedSuspectIds.includes(id)) {
@@ -3522,1092 +5417,1684 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
                             }
                           }
                         };
-
                         const isVoteFormValid = votedSuspectIds.length === numImposters;
 
                         return (
-                          <div className="space-y-6 bg-zinc-900/80 p-6 border border-zinc-800 rounded-2xl text-right">
-                            <div className="text-center space-y-1">
-                              <span className="text-[10px] text-sky-400 font-bold tracking-widest uppercase">
-                                {languageState === 'Arabic' ? 'تصويت سري نشط' : 'ACTIVE SECRET BALLOT'}
-                              </span>
-                              <p className="text-xl font-black text-white">
-                                {languageState === 'Arabic' ? `اللاعب: ${localVoter.name}` : `Player: ${localVoter.name}`}
+                          <div className="space-y-4">
+                            <div className="panel p-4 text-center space-y-1">
+                              <span className="text-[0.8125rem] font-black text-coral uppercase tracking-widest">{t('تصويت سري','Secret ballot')}</span>
+                              <p className="font-display font-bold text-2xl text-white">{localVoter.name}</p>
+                              <p className="text-[0.8125rem] text-white/70 font-bold">
+                                {t('اختر','Pick')} {numImposters} {t('متشك فيهم','suspect(s)')} · {votedSuspectIds.length}/{numImposters}
                               </p>
                             </div>
-
-                            <div className="space-y-3">
-                              <p className="text-xs font-bold text-zinc-405 text-center leading-normal">
-                                {numImposters === 2 ? (
-                                  languageState === 'Arabic' 
-                                    ? 'اختر لاعبين اثنين (2) تشك بوجود الـ Imposter بينهما:' 
-                                    : 'Choose exactly two (2) players you suspect of being the spy:'
-                                ) : (
-                                  languageState === 'Arabic' 
-                                    ? 'اختر اللاعب (1) الذي تشك في كونه الـ Imposter:' 
-                                    : 'Choose exactly one (1) player you suspect of being the spy:'
-                                )}
-                              </p>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                                {candidates.map(p => {
-                                  const isSelected = votedSuspectIds.includes(p.id);
-                                  return (
-                                    <button
-                                      key={p.id}
-                                      onClick={() => toggleSuspect(p.id)}
-                                      className={`p-4 rounded-xl font-black italic text-sm border transition-all flex items-center justify-center ${
-                                        isSelected 
-                                          ? 'bg-rose-500/15 border-rose-500 text-rose-400 scale-[1.02]' 
-                                          : 'bg-zinc-950 border-zinc-850 text-zinc-300 hover:border-zinc-700'
-                                      }`}
-                                    >
-                                      {p.name}
-                                    </button>
-                                  );
-                                })}
-                              </div>
+                            <div className="grid grid-cols-2 gap-2.5">
+                              {candidates.map(p => {
+                                const isSelected = votedSuspectIds.includes(p.id);
+                                return (
+                                  <button
+                                    key={p.id}
+                                    type="button"
+                                    onClick={() => toggleSuspect(p.id)}
+                                    className={`min-h-[64px] rounded-2xl border font-display font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform ${
+                                      isSelected
+                                        ?'bg-coral/15 border-coral text-coral'
+                                        :'bg-ink-3 border-ink-4 text-white/70'
+                                    }`}
+                                  >
+                                    <span className="w-9 h-9 rounded-full overflow-hidden bg-ink border border-white/15 shrink-0 flex items-center justify-center"><AnimalDoctorAvatar avatarId={p.avatarId} size={30} /></span>
+                                    <span className="truncate max-w-[100px]">{p.name}</span>
+                                  </button>
+                                );
+                              })}
                             </div>
-
-                            <div className="pt-4 border-t border-zinc-850 text-center">
-                              <button
-                                disabled={!isVoteFormValid}
-                                onClick={() => {
-                                  const updatedVotes = { ...localVotingVotes, [localVoterId]: votedSuspectIds };
-                                  setLocalVotingVotes(updatedVotes);
-                                  setCompletedVoters([...completedVoters, localVoterId]);
-                                  setLocalVoterId(null);
-                                  setShowLocalVoterTargetSelection(false);
-                                  setVotedSuspectIds([]);
-                                }}
-                                className={`w-full py-4 rounded-xl text-white font-black text-sm uppercase transition-all tracking-wide ${
-                                  isVoteFormValid 
-                                    ? 'bg-sky-600 hover:bg-sky-500' 
-                                    : 'bg-zinc-800 text-zinc-500 cursor-not-allowed opacity-50'
-                                }`}
-                              >
-                                {languageState === 'Arabic' ? 'تأكيد صوّتي وتمرير الهاتف' : 'Confirm vote and pass phone'}
-                              </button>
-                            </div>
+                            <BigBtn
+                              variant="coral"
+                              disabled={!isVoteFormValid}
+                              onClick={() => {
+                                const updatedVotes = { ...localVotingVotes, [localVoterId]: votedSuspectIds };
+                                setLocalVotingVotes(updatedVotes);
+                                setCompletedVoters([...completedVoters, localVoterId]);
+                                setLocalVoterId(null);
+                                setShowLocalVoterTargetSelection(false);
+                                setVotedSuspectIds([]);
+                              }}
+                            >
+                              {t('أكد صوتي','Confirm vote')}
+                            </BigBtn>
                           </div>
                         );
                       }
-                    }
-                  } else {
-                    const actualImposters = activePlayers.filter(p => p.role === 'IMPOSTER');
-                    
-                    return (
-                      <div className="space-y-6 bg-zinc-900/90 p-6 border border-zinc-800 rounded-2xl text-center">
-                        <span className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center mx-auto">
-                          🚨
-                        </span>
-                        <div className="space-y-1">
-                          <span className="text-[10px] text-rose-400 font-bold uppercase tracking-widest block">
-                            {languageState === 'Arabic' ? 'تم اكتمال الاقتراع وإعلان الحقيقة' : 'CLINICAL POLL CLOSED'}
-                          </span>
-                          <h3 className="text-2xl font-black text-white">
-                            {languageState === 'Arabic' ? 'الـ Imposter (جاسوس) الحقيقي هو:' : 'The True Spy is:'}
-                          </h3>
-                        </div>
 
-                        <div className="p-5 bg-zinc-950 border border-zinc-850 rounded-2xl space-y-3">
-                          {actualImposters.map(imp => (
-                            <div key={imp.id} className="flex items-center justify-center gap-3 text-xl font-black text-rose-400 bg-rose-500/5 py-3 border border-rose-500/10 rounded-xl">
-                              <span>🩺</span>
-                              <span>{imp.name}</span>
-                              <span className="text-xs bg-rose-500/10 text-rose-450 border border-rose-500/25 px-2 py-0.5 rounded uppercase font-mono">
-                                {languageState === 'Arabic' ? 'Imposter' : 'Spy'}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="text-right space-y-2.5 pt-2 border-t border-zinc-850 mt-4">
-                          <h4 className="text-xs font-black text-zinc-400 border-b border-zinc-850 pb-1.5 flex items-center justify-between">
-                            <span>📋</span>
-                            <span>{languageState === 'Arabic' ? 'توزيع الأصوات والتوجيهات:' : 'Vote Distribution:'}</span>
-                          </h4>
-                          <div className="space-y-1.5 max-h-[160px] overflow-y-auto custom-scrollbar pr-1">
-                            {activePlayers.map(p => {
-                              const votes = localVotingVotes[p.id] || [];
-                              const votesNames = votes.map(vid => activePlayers.find(x => x.id === vid)?.name || '').filter(Boolean).join('، ');
-                              return (
-                                <div key={p.id} className="text-xs flex justify-between bg-zinc-950/60 p-2 rounded-lg border border-zinc-900">
-                                  <span className="text-zinc-400">{votesNames || (languageState === 'Arabic' ? 'لا يوجد' : 'None')}</span>
-                                  <span className="font-extrabold text-white">{p.name} {languageState === 'Arabic' ? 'صوّت لـ:' : 'voted:'}</span>
+                      /* all votes in */
+                      const actualImposters = activePlayers.filter(p => p.role ==='IMPOSTER');
+                      return (
+                        <div className="space-y-4">
+                          <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="panel p-6 rounded-[2rem] text-center space-y-4 border-2 border-coral/50"
+                          >
+                            <span className="w-16 h-16 rounded-full bg-coral/15 border border-coral/30 flex items-center justify-center mx-auto text-coral">
+                              <ShieldAlert size={32} />
+                            </span>
+                            <h3 className="font-display font-bold text-2xl text-white">{t('المنتحل الحقيقي هو...','The real Imposter is...')}</h3>
+                            <div className="space-y-2">
+                              {actualImposters.map(imp => (
+                                <div key={imp.id} className="min-h-[56px] px-4 rounded-2xl bg-coral/10 border border-coral/40 flex items-center justify-center gap-2.5">
+                                  <span className="w-9 h-9 rounded-full bg-coral/10 border border-coral/25 flex items-center justify-center text-coral shrink-0">
+                                    <UserX size={18} />
+                                  </span>
+                                  <span className="font-display font-bold text-2xl text-coral">{imp.name}</span>
                                 </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-
-                        <button
-                          onClick={() => {
+                              ))}
+                            </div>
+                          </motion.div>
+                          <BigBtn onClick={() => {
                             const tallies: Record<string, number> = {};
                             Object.values(localVotingVotes).forEach((val) => {
-                              const arr = (val || []) as string[];
-                              arr.forEach(vid => {
-                                tallies[vid] = (tallies[vid] || 0) + 1;
-                              });
+                              ((val || []) as string[]).forEach(vid => { tallies[vid] = (tallies[vid] || 0) + 1; });
                             });
-
                             let maxVotes = 0;
-                            let votedId = '';
+                            let votedId ='';
                             Object.keys(tallies).forEach(id => {
-                              if (tallies[id] > maxVotes) {
-                                maxVotes = tallies[id];
-                                votedId = id;
-                              }
+                              if (tallies[id] > maxVotes) { maxVotes = tallies[id]; votedId = id; }
                             });
-
-                            if (!votedId && actualImposters.length > 0) {
-                              votedId = actualImposters[0].id;
-                            }
+                            if (!votedId && actualImposters.length > 0) votedId = actualImposters[0].id;
                             setVotedPlayerId(votedId);
                             setOfflineVotes(
                               Object.entries(localVotingVotes).reduce((acc, [k, v]) => {
-                                acc[k] = v[0] || '';
+                                acc[k] = (v as string[])[0] ||'';
                                 return acc;
                               }, {} as Record<string, string>)
                             );
-
                             setIsLocalVotingActive(false);
                             setPhase('IMPOSTER_GUESS');
-                          }}
-                          className="w-full py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-sm uppercase rounded-2xl tracking-widest transition-all"
-                        >
-                          {languageState === 'Arabic' ? 'الانتقال لتخمين المصطلح من الـ Imposter' : 'Proceed to Spy Word Guessing'}
-                        </button>
-                      </div>
-                    );
-                  }
-                })()}
-              </motion.div>
-            )}
-          </motion.div>
-        )}
-
-        {/* PHASE: VOTING_PHASE */}
-        {phase === 'VOTING_PHASE' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            <div className="space-y-2">
-              <span className="px-3 py-1 bg-rose-600/10 border border-rose-500/30 text-rose-450 rounded-full text-[10px] font-black uppercase tracking-widest inline-block">
-                {languageState === 'Arabic' ? 'لوحة تسجيل التصويت والشهادة' : 'CLINICAL SUSPECT POLL'}
-              </span>
-              <h3 className="text-2xl font-black text-white">
-                {languageState === 'Arabic' ? 'صوّت ضد من تشك به!' : 'Expose the spy doctor!'}
-              </h3>
-            </div>
-
-            {!isOnline ? (
-              <div className="space-y-4 text-center">
-                <div className="bg-zinc-900 border border-zinc-800 p-5 rounded-2xl">
-                  <p className="text-xs font-semibold text-zinc-500 uppercase mb-1">{languageState === 'Arabic' ? 'اللاعب الذي يدلي بصوته الآن' : 'CURRENT VOTER'}</p>
-                  <p className="text-2xl font-black text-sky-400 italic leading-tight">{currentVoter?.name}</p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {activePlayers.map((p) => (
-                    <button
-                      key={p.id}
-                      disabled={p.id === currentVoter?.id}
-                      onClick={() => submitOfflineVote(p.id)}
-                      className={`p-3.5 rounded-2xl text-base font-black border transition-all text-start flex items-center gap-3.5 ${
-                        p.id === currentVoter?.id 
-                          ? 'opacity-25 cursor-not-allowed border-zinc-800 text-zinc-700 bg-zinc-950/20' 
-                          : 'bg-zinc-900 border-zinc-850 text-white hover:border-rose-500 hover:bg-rose-500/10'
-                      }`}
-                    >
-                      <div className="w-10 h-10 rounded-full overflow-hidden bg-zinc-950 border border-zinc-800 shrink-0 flex items-center justify-center shadow-inner">
-                        <AnimalDoctorAvatar avatarId={p.avatarId} size={38} />
-                      </div>
-                      <span className="truncate">{p.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-6">
-                {onlineRoomState && onlineRoomState.votes[localPlayerId] ? (
-                  <div className="p-8 bg-zinc-900/60 border border-zinc-800 rounded-2xl space-y-4">
-                    <span className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
-                      <Check size={20} />
-                    </span>
-                    <p className="text-sm font-bold text-zinc-300">
-                      {languageState === 'Arabic' ? 'تم تسجيل صوتك بنجاح! بانتظار إتمام الأعضاء...' : 'Vote registered successfully! Waiting for other peers...'}
-                    </p>
-                    <div className="text-xs text-zinc-550 italic">
-                      {Object.keys(onlineRoomState.votes).length} / {onlineRoomState.players.length} {languageState === 'Arabic' ? 'أصوات مسجلة' : 'votes cast'}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {activePlayers.map((p) => (
-                      <button
-                        key={p.id}
-                        disabled={p.id === localPlayerId}
-                        onClick={() => handleOnlineVote(p.id)}
-                        className={`p-5 rounded-2xl text-base font-black italic border transition-all text-center flex items-center justify-center ${
-                          p.id === localPlayerId 
-                            ? 'opacity-20 cursor-not-allowed border-zinc-850 text-zinc-750' 
-                            : 'bg-zinc-900 border-zinc-805 text-white hover:border-rose-500 hover:bg-rose-500/10'
-                        }`}
-                      >
-                        {p.name}
-                      </button>
-                    ))}
+                          }}>
+                            {t('فرصة المنتحل الأخيرة','Imposter final guess')}
+                          </BigBtn>
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        {/* PHASE: REVEAL_IMPOSTER */}
-        {phase === 'REVEAL_IMPOSTER' && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            {(() => {
-              const votedId = isOnline ? onlineRoomState.votedOutPlayerId : votedPlayerId;
-              const votedPlayer = activePlayers.find(m => m.id === votedId);
-              if (!votedPlayer) return null;
-
-              const isImposterCorrect = votedPlayer.role === 'IMPOSTER';
-
-              return (
-                <div className="space-y-6 py-6">
-                  <div className="space-y-1 text-center">
-                    <span className="px-3 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] font-black uppercase tracking-widest inline-block">
-                      {languageState === 'Arabic' ? 'صاحب أعلى تصويت في الغرفة' : 'MOST SUSPECTED INDIVIDUAL'}
-                    </span>
-                    <h3 className="text-4xl font-extrabold text-white mt-1">
-                      {votedPlayer.name}
-                    </h3>
-                  </div>
-
-                  <div className={`p-6 rounded-[2rem] border-2 max-w-sm mx-auto text-center space-y-4 ${
-                    isImposterCorrect 
-                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.15)]' 
-                      : 'bg-rose-500/10 border-rose-500/40 text-rose-450 shadow-[0_0_20px_rgba(239,68,68,0.15)]'
-                  }`}>
-                    {isImposterCorrect ? (
-                      <>
-                        <CheckCircle2 size={48} className="mx-auto" />
-                        <h4 className="text-2xl font-black italic">
-                          {languageState === 'Arabic' ? 'لقد عثرتم على الـ Imposter الفعلي!' : 'EXPOSED THE IMPOSTER!'}
-                        </h4>
-                        <p className="text-xs opacity-80 leading-normal">
-                          {languageState === 'Arabic' 
-                            ? 'أحسنت، تم كشف الجاسوس بنجاح. والآن يحصل على فرصة حاسمة لتخمين المصطلح لتعديل نقاط التحدي لصالحه!' 
-                            : 'Perfect! You tracked the spy. However, they get an ultimate guess turn to steal the win.'}
-                        </p>
-                      </>
-                    ) : (
-                      <>
-                        <ShieldAlert size={48} className="mx-auto" />
-                        <h4 className="text-2xl font-black italic">
-                          {languageState === 'Arabic' ? 'بريـئ تـم نـفـيه!' : 'WAS COMPLETELY INNOCENT'}
-                        </h4>
-                        <p className="text-xs opacity-80 leading-normal">
-                          {languageState === 'Arabic' 
-                            ? 'لقد نفيتم زميلاً بريئاً! مع ذلك، يحصل الـ Imposter السري على فرصته الذهبية لتخمين المصطلح الحقيقي.' 
-                            : 'An innocent professional was cast out! The true imposter gets a gold chance to bypass your standings.'}
-                        </p>
-                      </>
-                    )}
-                  </div>
-
-                  <div className="pt-4 text-center">
-                    {isOnline ? (
-                      onlineRoomState.hostId === localPlayerId ? (
-                        <button
-                          onClick={async () => {
-                            const roomRef = doc(db, 'rooms', roomId);
-                            await updateDoc(roomRef, { status: 'GUESSING' });
-                          }}
-                          className="w-full max-w-xs py-4 bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs uppercase tracking-widest rounded-xl transition-all"
-                        >
-                          {languageState === 'Arabic' ? 'التالي: فرصة التخمين للـ Imposter' : 'Allow Imposter Guess Turning'}
-                        </button>
-                      ) : (
-                        <p className="text-xs text-zinc-550 italic">
-                          {languageState === 'Arabic' ? 'بانتظار تفعيل لوحة التخمين السري للـ Imposter من كابتن الغرفة...' : 'Waiting for host to launch guess turn...'}
-                        </p>
-                      )
-                    ) : (
-                      <button
-                        onClick={() => setPhase('IMPOSTER_GUESS')}
-                        className="w-full max-w-xs py-4 bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs uppercase tracking-widest rounded-xl transition-all"
+              </Screen>
+              {!isLocalVotingActive && (
+                <div className="shrink-0 px-4 pt-2 pb-safe">
+                  {isOnline ? (
+                    onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
+                      <BigBtn
+                        onClick={async () => {
+                          const roomRef = doc(db,'rooms', roomId);
+                          const targetStatus = onlineRoomState.players.length === 2 ?'TWO_PLAYERS_GUESS' :'VOTING';
+                          await updateDoc(roomRef, { status: targetStatus });
+                        }}
                       >
-                        {languageState === 'Arabic' ? 'الانتقال للـتخمين السري للـ Imposter' : 'Proceed to Guess Mode'}
-                      </button>
-                    )}
-                  </div>
-                </div>
-              );
-            })()}
-          </motion.div>
-        )}
-
-        {/* PHASE: IMPOSTER_GUESS */}
-        {phase === 'IMPOSTER_GUESS' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            <div className="space-y-2">
-              <span className="px-3 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 rounded-full text-[10px] font-black uppercase tracking-widest inline-block">
-                {languageState === 'Arabic' ? 'فرصة التعادل وكسب 50 نقطة' : 'IMPOSTER COMEBACK GUESS'}
-              </span>
-              <h3 className="text-3xl font-extrabold text-white">
-                {languageState === 'Arabic' ? 'ما هو المصطلح الطبي المشترك؟' : 'Estimate the Secret Medical Term'}
-              </h3>
-            </div>
-
-            {isOnline ? (
-              (() => {
-                const local = activePlayers.find(m => m.id === localPlayerId);
-                const isImposter = local?.role === 'IMPOSTER';
-
-                if (!isImposter) {
-                  return (
-                    <div className="p-8 bg-zinc-900 border border-zinc-800 rounded-2xl text-zinc-400 text-sm">
-                      {languageState === 'Arabic' ? 'الـ Imposter السري يقوم بالتخمين الآن على شاشته... بانتظاره.' : 'The spy is submitting their diagnostic guess on their device... Please wait.'}
-                    </div>
-                  );
-                }
-
-                return (
-                  <div className="space-y-4">
-                    <label className="text-xs uppercase text-zinc-555 block text-left">
-                      {languageState === 'Arabic' ? 'ابحث لتحديد وتأكيد تخمينك' : 'Search to cast your guess'}
-                    </label>
-                    <div className="relative">
-                      <Search className="absolute left-4 top-4 text-zinc-650" size={18} />
-                      <input
-                        type="text"
-                        placeholder={languageState === 'Arabic' ? 'ابحث بالاسم العربي أو الإنجليزي...' : 'Search clinical term...'}
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-zinc-900 border-2 border-zinc-800 focus:border-sky-600 rounded-xl pl-12 pr-4 py-3 placeholder:text-zinc-700 text-sm outline-none font-bold text-white"
-                      />
-                    </div>
-                    <div className="space-y-1 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden max-h-[220px] overflow-y-auto custom-scrollbar">
-                      {filteredSearchWords.map((word) => (
-                        <button
-                          key={word.id}
-                          onClick={() => submitOnlineImposterGuess(word.id)}
-                          className="w-full text-left px-4 py-3.5 hover:bg-sky-600/15 border-b border-zinc-900 text-xs font-bold flex items-center justify-between text-white"
-                        >
-                          <span>{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</span>
-                          <span className="text-[10px] text-zinc-500 font-mono">{word.type}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })()
-            ) : (
-              <div className="space-y-6">
-                <div className="p-5 bg-zinc-900 border border-zinc-800 rounded-2xl">
-                  <p className="text-xs font-bold text-zinc-400 leading-normal text-center">
-                    {languageState === 'Arabic' ? 'أعط الهاتف لـلشهود كشخص Imposter وأدخل التخمين غيابيًا:' : 'Hand over phone to the spy player to guess:'}
-                  </p>
-                </div>
-
-                <div className="space-y-4 text-left">
-                  <div className="relative">
-                    <Search className="absolute left-4 top-4 text-zinc-650" size={18} />
-                    <input
-                      type="text"
-                      placeholder={languageState === 'Arabic' ? 'ابحث بالاسم العربي أو الإنجليزي...' : 'Search term...'}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-zinc-900 border-2 border-zinc-800 focus:border-sky-600 rounded-xl pl-12 pr-4 py-3 text-sm outline-none font-bold text-white"
-                    />
-                  </div>
-                  <div className="space-y-1 bg-zinc-950 border border-zinc-805 rounded-xl overflow-hidden max-h-[200px] overflow-y-auto custom-scrollbar">
-                    {filteredSearchWords.map((word) => (
-                      <button
-                        key={word.id}
-                        onClick={() => submitOfflineImposterGuess(word.id)}
-                        className="w-full text-left px-4 py-3.5 hover:bg-indigo-600/15 border-b border-zinc-900 text-xs font-bold flex items-center justify-between text-white"
-                      >
-                        <span>{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</span>
-                        <span className="text-[10px] text-zinc-500 font-mono">{word.type}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        {/* PHASE: TWO_PLAYERS_DISCUSSION_GUESS */}
-        {phase === 'TWO_PLAYERS_DISCUSSION_GUESS' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            <div className="space-y-2 py-4">
-              <span className="px-3.5 py-1 bg-sky-500/10 border border-sky-500/20 text-sky-400 rounded-full text-xs font-black uppercase tracking-widest inline-block">
-                {languageState === 'Arabic' ? 'جولة التخمين المتبادل المزدوج' : 'COOPERATIVE GUESS GAME (2 PLAYERS)'}
-              </span>
-              <p className="text-zinc-500 text-xs">
-                {languageState === 'Arabic' 
-                  ? 'يمتلك كل لاعب منكما مصطلحاً مختلفاً، تبادلوا الأسئلة بحذر ثم خمنوا الكلمة الأخرى للحصول على 50 نقطة صريحة!' 
-                  : 'You hold opposite secret concept cards. Question wisely and locate the peer word!'}
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <button
-                onClick={() => setShowQuestionExamples(!showQuestionExamples)}
-                className="w-full flex items-center justify-between p-3.5 bg-zinc-900 hover:bg-zinc-850 rounded-xl border border-zinc-800 transition-all font-semibold"
-              >
-                <span className="flex items-center gap-2 text-xs text-sky-400">
-                  <HelpCircle size={14} />
-                  {languageState === 'Arabic' ? 'أمثلة ونماذج على نوعية الأسئلة الطبية' : 'Diagnostics guidelines questions'}
-                </span>
-                <span className="text-xs text-zinc-500">{showQuestionExamples ? '▼' : '▲'}</span>
-              </button>
-
-              {showQuestionExamples && (
-                <div className="bg-zinc-950 p-4 border border-zinc-900 rounded-xl text-left space-y-2 max-h-[180px] overflow-y-auto custom-scrollbar">
-                  {exampleQuestions.map((q, i) => (
-                    <p key={i} className="text-xs text-zinc-400 leading-relaxed">- {q.ar}</p>
-                  ))}
+                        {onlineRoomState && onlineRoomState.players.length === 2
+                          ? t('الانتقال للتخمين ➔','Proceed to guess ➔')
+                          : t('بدء التصويت ➔','Start voting ➔')}
+                      </BigBtn>
+                    ) : (
+                      <div className="panel py-4 text-center">
+                        <p className="font-display font-bold text-white/60 animate-pulse">{t('بانتظار المضيف...','Waiting for host...')}</p>
+                      </div>
+                    )
+                  ) : (
+                    <BigBtn variant="coral" onClick={() => {
+                      setIsLocalVotingActive(true);
+                      setLocalVoterId(null);
+                      setCompletedVoters([]);
+                      setLocalVotingVotes({});
+                      setShowLocalVoterTargetSelection(false);
+                      setVotedSuspectIds([]);
+                    }}>
+                      {t('بدء التصويت ➔','Start voting ➔')}
+                    </BigBtn>
+                  )}
                 </div>
               )}
             </div>
+          )}
 
-            {!isOnline ? (
-              <div className="space-y-6 pt-4">
-                {activePlayers.map((p) => {
-                  const hasGuessed = offlineGuesses[p.id];
-                  const otherPlayer = activePlayers.find(o => o.id !== p.id);
-
-                  return (
-                    <div key={p.id} className="p-5 bg-zinc-900 border border-zinc-800 rounded-3xl space-y-3.5 text-left">
-                      <div className="flex justify-between items-center">
-                        <p className="text-sm font-black text-white italic">{p.name}</p>
-                        {hasGuessed ? (
-                          <span className="bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded">
-                            {languageState === 'Arabic' ? 'تم تقديم التخمين ✓' : 'Guess Submitted ✓'}
-                          </span>
-                        ) : (
-                          <span className="text-[10px] text-zinc-500 font-bold uppercase">
-                            {languageState === 'Arabic' ? `يخمن كارت: [ ${otherPlayer?.name} ]` : `Guess other phone card: [ ${otherPlayer?.name} ]`}
-                          </span>
-                        )}
+          {/* ================= ONLINE VOTING ================= */}
+          {phase ==='VOTING_PHASE' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen title={t('صوّتوا!','Vote!')}>
+                <div className="px-4 space-y-4">
+                  {isOnline ? (
+                    onlineRoomState && onlineRoomState.votes[localPlayerId] ? (
+                      <div role="status" className="panel p-8 text-center space-y-3">
+                        <p className="font-display font-bold text-xl text-white">{t('صوتك اتسجل!','Vote registered!')}</p>
+                        <p className="text-sm font-bold text-white/70">
+                          {t(`بانتظار ${onlineRoomState.players.length - Object.keys(onlineRoomState.votes).length} أصوات`, `Waiting for ${onlineRoomState.players.length - Object.keys(onlineRoomState.votes).length} more votes`)}
+                        </p>
                       </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <p className="text-center text-[0.8125rem] font-bold text-white/70">{t('مين المنتحل في رأيك؟','Who is the Imposter?')}</p>
+                        <div className="grid grid-cols-2 gap-2.5">
+                          {activePlayers.map(p => (
+                            <button
+                              key={p.id}
+                              type="button"
+                              disabled={p.id === localPlayerId || onlineVoteSaving}
+                              onClick={() => { sfx.tick(); handleOnlineVote(p.id); }}
+                              className={`min-h-[64px] rounded-2xl border font-display font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform ${
+                                p.id === localPlayerId
+                                  ?'opacity-25 border-ink-4 text-white/70'
+                                  :'bg-ink-3 border-ink-4 text-white hover:border-coral/50'
+                              }`}
+                            >
+                              <span className="w-9 h-9 rounded-full overflow-hidden bg-ink border border-white/15 shrink-0 flex items-center justify-center"><AnimalDoctorAvatar avatarId={p.avatarId} size={30} /></span>
+                              <span className="min-w-0 break-words">{p.name}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="panel p-4 text-center">
+                        <p className="text-xs font-black text-white/70 uppercase tracking-widest">{t('الدور على','Now voting')}</p>
+                        <p className="font-display font-bold text-2xl text-white">{currentVoter?.name}</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2.5">
+                        {activePlayers.map(p => (
+                          <button
+                            key={p.id}
+                            type="button"
+                            disabled={p.id === currentVoter?.id}
+                            onClick={() => { sfx.tick(); submitOfflineVote(p.id); }}
+                            className={`min-h-[64px] rounded-2xl border font-display font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform ${
+                              p.id === currentVoter?.id
+                                ?'opacity-25 border-ink-4 text-white/70'
+                                :'bg-ink-3 border-ink-4 text-white'
+                            }`}
+                          >
+                            <span className="w-9 h-9 rounded-full overflow-hidden bg-ink border border-white/15 shrink-0 flex items-center justify-center"><AnimalDoctorAvatar avatarId={p.avatarId} size={30} /></span>
+                            <span className="truncate max-w-[100px]">{p.name}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Screen>
+            </div>
+          )}
 
-                      {!hasGuessed && (
-                        <div className="space-y-2">
-                          <div className="relative">
-                            <Search className="absolute left-3 top-3 text-zinc-650" size={14} />
-                            <input
-                              type="text"
-                              placeholder={languageState === 'Arabic' ? 'ابحث لتأكيد تخمينك...' : 'Search term...'}
-                              onChange={(e) => setSearchQuery(e.target.value)}
-                              className="w-full bg-zinc-950 border border-zinc-850 rounded-lg pl-9 pr-3 py-2 text-xs outline-none text-white font-semibold"
-                            />
-                          </div>
-                          {searchQuery && (
-                            <div className="bg-zinc-950 rounded-lg overflow-hidden border border-zinc-850">
-                              {filteredSearchWords.map((word) => (
-                                <button
-                                  key={word.id}
-                                  onClick={() => {
-                                    submitOfflineTwoPlayersGuess(p.id, word.id);
-                                    setSearchQuery('');
-                                  }}
-                                  className="w-full text-left px-3 py-2 hover:bg-sky-600/15 border-b border-zinc-900 text-[11px] font-bold text-white flex justify-between"
-                                >
-                                  <span>{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</span>
-                                  <span className="text-[9px] text-zinc-550">{word.type}</span>
-                                </button>
-                              ))}
+          {/* ================= REVEAL IMPOSTER ================= */}
+          {phase ==='REVEAL_IMPOSTER' && (() => {
+            const votedId = isOnline ? onlineRoomState?.votedOutPlayerId : votedPlayerId;
+            const votedPlayer = activePlayers.find(m => m.id === votedId);
+            if (!votedPlayer) {
+              return (
+                <div className="flex-1 min-h-0 flex flex-col justify-center items-center p-6 text-center space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold mx-auto">
+                    <Users size={32} />
+                  </div>
+                  <h3 className="font-display font-bold text-2xl text-white">
+                    {t('تعادل في الأصوات أو لم يُحدد مشتبه به', 'Vote Tie / No Suspect Identified')}
+                  </h3>
+                  <p className="text-white/60 text-sm max-w-xs leading-relaxed">
+                    {t('لم يحصل أي لاعب على أغلبية الأصوات، نجا المنتحل من الكشف.', 'No majority consensus reached; the Imposter was not identified.')}
+                  </p>
+                  <div className="w-full max-w-xs pt-4">
+                    <BigBtn onClick={() => setPhase('ROUND_RESULT')}>
+                      {t('عرض النتائج ➔', 'View Results ➔')}
+                    </BigBtn>
+                  </div>
+                </div>
+              );
+            }
+            const isImposterCorrect = votedPlayer.role ==='IMPOSTER';
+
+            return (
+              <div className="flex-1 min-h-0 flex flex-col">
+                <Screen title={t('نتيجة التصويت','Vote Result')}>
+                  <div className="px-4 space-y-4">
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="panel p-6 rounded-[2rem] text-center space-y-4"
+                    >
+                      <p className="text-xs font-black text-white/70 uppercase tracking-widest">{t('المشتبه به الأول','Most suspected')}</p>
+                      <p className="font-display font-bold text-4xl text-white">{votedPlayer.name}</p>
+                      <motion.div
+                        initial={{ scale: 0.4 }}
+                        animate={{ scale: [0.4, 1.15, 1] }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto border-2 ${isImposterCorrect
+                          ? 'bg-mint/15 text-mint border-mint/40'
+                          : 'bg-coral/15 text-coral border-coral/40'}`}
+                      >
+                        {isImposterCorrect ? <CheckCircle2 size={44} /> : <UserX size={44} />}
+                      </motion.div>
+                      <h4 className={`font-display font-bold text-3xl ${isImposterCorrect ?'text-mint' :'text-coral'}`}>
+                        {isImposterCorrect ? t('تم كشف المنتحل!','Imposter Exposed!') : t('طبيب بريء','Innocent Doctor')}
+                      </h4>
+                      <p className="text-[0.8125rem] font-bold text-white/70 leading-relaxed">
+                        {isImposterCorrect
+                          ? t('أمامه فرصة أخيرة لتخمين الكلمة.','One final guess to name the secret word.')
+                          : t('المنتحل الحقيقي ما زال مختبئاً.','The real Imposter is still hidden.')}
+                      </p>
+                    </motion.div>
+                  </div>
+                </Screen>
+                <div className="shrink-0 px-4 pt-2 pb-safe">
+                  {isOnline ? (
+                    onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
+                      <BigBtn
+                        onClick={async () => {
+                          const roomRef = doc(db,'rooms', roomId);
+                          await updateDoc(roomRef, { status:'GUESSING' });
+                        }}
+                      >
+                        {t('فرصة التخمين ➔','Guessing phase ➔')}
+                      </BigBtn>
+                    ) : (
+                      <div className="panel py-4 text-center">
+                        <p className="font-display font-bold text-white/60 animate-pulse">{t('بانتظار المضيف...','Waiting for host...')}</p>
+                      </div>
+                    )
+                  ) : (
+                    <BigBtn onClick={() => setPhase('IMPOSTER_GUESS')}>
+                      {t('فرصة التخمين ➔','Guessing phase ➔')}
+                    </BigBtn>
+                  )}
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* ================= IMPOSTER GUESS ================= */}
+          {phase ==='IMPOSTER_GUESS' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen title={t('فرصة أخيرة','Last chance')}>
+                <div className="px-4 space-y-4">
+                  <div className="panel p-4 flex items-center gap-3">
+                    <span className="w-11 h-11 rounded-2xl bg-coral/15 border border-coral/30 flex items-center justify-center shrink-0">
+                      <UserX size={22} className="text-coral" />
+                    </span>
+                    <p className="text-sm font-bold text-white/70 leading-relaxed">
+                      {t('لو خمّن الكلمة السرية صح.. يسرق الفوز بـ 50 نقطة!','Guess the secret word & steal 50 pts!')}
+                    </p>
+                  </div>
+
+                  {isOnline ? (() => {
+                    const local = activePlayers.find(m => m.id === localPlayerId);
+                    if (local?.role !=='IMPOSTER') {
+                      return (
+                        <div className="panel p-8 text-center">
+                          <p className="font-display font-bold text-white/60 animate-pulse">
+                            {t('المنتحل بيخمّن دلوقتي...','The Imposter is guessing...')}
+                          </p>
+                        </div>
+                      );
+                    }
+                    return (
+                      <div className="space-y-2">
+                        <div className="relative">
+                          <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 text-white/70" size={18} />
+                          <input
+                            type="text"
+                            aria-label={t('ابحث عن التشخيص', 'Search diagnoses')} placeholder={t('ابحث عن الكلمة...','Search the term...')}
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full min-h-[52px] bg-ink-3 border border-ink-4 focus:border-coral/60 rounded-2xl ps-10 pe-4 text-base font-bold text-white placeholder-white/60 outline-none"
+                          />
+                        </div>
+                        <div className="rounded-2xl overflow-hidden border border-ink-4 divide-y divide-white/5 bg-ink-2 max-h-[300px] overflow-y-auto custom-scrollbar">
+                          {filteredSearchWords.map((word) => (
+                            <button
+                              key={word.id}
+                              type="button"
+                              onClick={() => submitOnlineImposterGuess(word.id)}
+                              className="w-full min-h-[52px] px-4 flex items-center justify-between gap-3 text-start active:bg-coral/10"
+                            >
+                              <div className="flex flex-col min-w-0 flex-1">
+                                <span className="font-display font-bold text-white text-base break-words">{word.word.English}</span>
+                                {word.word.Arabic && <span className="text-[0.8125rem] text-white/70 truncate">{word.word.Arabic}</span>}
+                              </div>
+                              <span className="text-[0.8125rem] font-black text-coral bg-coral/10 border border-coral/20 px-2 py-0.5 rounded-full shrink-0">{word.type}</span>
+                            </button>
+                          ))}
+                        </div>
+                        <div className="pt-1.5">
+                          <button
+                            type="button"
+                            onClick={() => submitOnlineImposterGuess('')}
+                            className="w-full min-h-[48px] rounded-2xl bg-ink-3 border border-ink-4 text-white/70 hover:text-white/80 font-display font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                          >
+                            {t('تخطي (لا أعرف الكلمة) ➔', "Skip (Don't know the word) ➔")}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })() : (
+                    <div className="space-y-2">
+                      <p className="text-center text-xs font-bold text-white/70">{t('حاول يخمّن في سرية','Guess in private')}</p>
+                      <div className="relative">
+                        <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 text-white/70" size={18} />
+                        <input
+                          type="text"
+                          aria-label={t('ابحث عن التشخيص', 'Search diagnoses')} placeholder={t('ابحث عن الكلمة...','Search the term...')}
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="w-full min-h-[52px] bg-ink-3 border border-ink-4 focus:border-coral/60 rounded-2xl ps-10 pe-4 text-base font-bold text-white placeholder-white/60 outline-none"
+                        />
+                      </div>
+                      <div className="rounded-2xl overflow-hidden border border-ink-4 divide-y divide-white/5 bg-ink-2 max-h-[300px] overflow-y-auto custom-scrollbar">
+                        {filteredSearchWords.map((word) => (
+                          <button
+                            key={word.id}
+                            type="button"
+                            onClick={() => submitOfflineImposterGuess(word.id)}
+                            className="w-full min-h-[52px] px-4 flex items-center justify-between gap-3 text-start active:bg-coral/10"
+                          >
+                            <div className="flex flex-col min-w-0 flex-1">
+                              <span className="font-display font-bold text-white text-base break-words">{word.word.English}</span>
+                              {word.word.Arabic && <span className="text-[0.8125rem] text-white/70 truncate">{word.word.Arabic}</span>}
+                            </div>
+                            <span className="text-[0.8125rem] font-black text-coral bg-coral/10 border border-coral/20 px-2 py-0.5 rounded-full shrink-0">{word.type}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <div className="pt-1.5">
+                        <button
+                          type="button"
+                          onClick={() => submitOfflineImposterGuess('')}
+                          className="w-full min-h-[48px] rounded-2xl bg-ink-3 border border-ink-4 text-white/70 hover:text-white/80 font-display font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-transform"
+                        >
+                          {t('تخطي (لا أعرف الكلمة) ➔', "Skip (Don't know the word) ➔")}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </Screen>
+            </div>
+          )}
+
+          {/* ================= 2P CLINICAL DUEL & PROGRESSIVE INQUIRY ================= */}
+          {phase === 'TWO_PLAYERS_DISCUSSION_GUESS' && (() => {
+            if (!isOnline && offlineHandoff) {
+              return <div className="h-full flex flex-col px-4 py-6 gap-6">
+                <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center">
+                  <Users size={40} className="text-gold" />
+                  <p className="text-base text-white/80">{t('مرّر الهاتف إلى', 'Pass the phone to')}</p>
+                  <h2 className="font-display font-bold text-3xl">{offlineHandoff.name}</h2>
+                </div>
+                <BigBtn onClick={() => setOfflineHandoff(null)}>{t(`أنا ${offlineHandoff.name} · متابعة`, `I am ${offlineHandoff.name} · Continue`)}</BigBtn>
+              </div>;
+            }
+            if (!isOnline && offlineFinalGuessNextIdx != null) {
+              const nextName = activePlayers[offlineFinalGuessNextIdx]?.name || 'Player';
+              return (
+                <div className="flex-1 min-h-0 flex flex-col">
+                  <div className="w-full max-w-sm mx-auto px-4 pt-10 space-y-4 text-center">
+                    <p className="text-[0.8125rem] text-white/70">{t('مرّر الهاتف', 'Pass the phone')}</p>
+                    <div className="w-full max-w-sm mx-auto px-4 pt-10 space-y-4 flex items-center justify-center">
+                      <span className="inline-flex items-center justify-center rounded-2xl bg-white/10 p-3">
+                        <Users className="w-6 h-6 text-white" />
+                      </span>
+                    </div>
+                    <h2 className="font-display text-2xl font-bold text-white text-center break-words">{nextName}</h2>
+                    <BigBtn className="w-full" onClick={() => {
+                      setOfflineInquiryTurnIdx(offlineFinalGuessNextIdx);
+                      setOfflineFinalGuessNextIdx(null);
+                      setOfflineInquiryActiveQ(null);
+                      setShowFinalGuessBox(true);
+                      setSearchQuery('');
+                      setShowMoreClues(false);
+                    }}>{t('أنا', 'I am')} {nextName}</BigBtn>
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-[0.8125rem] text-white/70">
+                      <p>{t('اضغط للكشف عن دورك', 'Tap to reveal your turn')}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            const currentStage = (isOnline
+              ? (onlineRoomState?.inquiry?.stage || 1)
+              : offlineInquiryStage) as 1 | 2 | 3 | 4 | 5;
+
+            const activeMeta = STAGE_META[currentStage - 1] || STAGE_META[0];
+            const StageIcon = activeMeta.icon;
+
+            const local = isOnline
+              ? activePlayers.find(m => m.id === localPlayerId)
+              : activePlayers[offlineInquiryTurnIdx];
+            const other = isOnline
+              ? activePlayers.find(m => m.id !== localPlayerId)
+              : activePlayers[offlineInquiryTurnIdx === 0 ? 1 : 0];
+
+            const onlineInq = onlineRoomState?.inquiry;
+
+            // Online inquiry flags
+            const isMyTurnToAsk = Boolean(
+              isOnline && onlineInq && onlineInq.turnPlayerId === localPlayerId && !onlineInq.activeQuestion
+            );
+            const isMyTurnToAnswer = Boolean(
+              isOnline && onlineInq && onlineInq.targetPlayerId === localPlayerId && onlineInq.activeQuestion
+            );
+            const isWaitingForAnswer = Boolean(
+              isOnline && onlineInq && onlineInq.turnPlayerId === localPlayerId && onlineInq.activeQuestion
+            );
+            const isWaitingForQuestion = Boolean(
+              isOnline && onlineInq && onlineInq.turnPlayerId !== localPlayerId && !onlineInq.activeQuestion
+            );
+
+            // Target branch resolution
+            const targetBranch: ClinicalBranch = isOnline
+              ? (onlineInq?.resolvedBranches?.[other?.id || ''] || 'Disease')
+              : (offlineInquiryBranches[other?.id || ''] || 'Disease');
+
+            const otherWord = other ? getWordDetails(other.assignedWordId) : null;
+            const targetConfirmedSystem = isOnline
+              ? (onlineInq?.confirmedSystems?.[other?.id || ''] || getTrueCardSystem(otherWord) || undefined)
+              : (offlineInquirySystems[other?.id || ''] || getTrueCardSystem(otherWord) || undefined);
+
+            const currentStageQuestions = getAdaptiveQuestionsForStage(currentStage, targetBranch, targetConfirmedSystem);
+
+            const inquiryHistoryList = isOnline
+              ? (onlineInq?.history || [])
+              : offlineInquiryHistory;
+
+            const hasLocalGuessed = isOnline
+              ? Boolean(onlineRoomState?.twoPlayersGuessMatched?.[localPlayerId])
+              : Boolean(local && offlineGuesses[local.id]);
+
+            return (
+              <div className="flex-1 min-h-0 flex flex-col">
+                <Screen title={t('المبارزة السريرية', 'Clinical duel')} footer={!hasLocalGuessed && !showFinalGuessBox && (isOnline ? !isMyTurnToAnswer : !offlineInquiryActiveQ) ?
+                  <div className="px-4"><BigBtn variant="dark" onClick={() => { setSearchQuery(''); setShowFinalGuessBox(true); }}>
+                    <Target size={20} />{t('خَمّن كرت الخصم', 'Guess their card')}
+                  </BigBtn></div> : undefined}>
+                  <div className="px-4 space-y-3.5 pb-8">
+                    
+                    <div className="flex items-center gap-3 rounded-2xl border border-ink-4 bg-ink-2 px-3 py-2">
+                      <StageIcon size={22} className="text-pop shrink-0" />
+                      <h3 className="font-display font-bold text-base flex-1 min-w-0">{languageState === 'Arabic' ? activeMeta.titleAr : activeMeta.titleEn}</h3>
+                      <span className="font-bold text-pop" aria-label={t('المرحلة', 'Stage')}>{currentStage}/5</span>
+                    </div>
+
+                    {local && (() => {
+                      const viewer = !isOnline && offlineInquiryActiveQ ? other : local;
+                      const word = viewer && getWordDetails(viewer.assignedWordId);
+                      return word ? <div key={`${viewer.id}-${currentStage}`}><Disclosure title={t('راجع كرتك السري', 'Review your secret card')}>
+                        <p className="font-display font-bold text-xl"><bdi>{word.word.English}</bdi></p>
+                        {word.word.Arabic && <p className="text-base text-mint">{word.word.Arabic}</p>}
+                        {getCluesForWord(word.id, word, languageState).map((clue, index) => <div key={index} className="text-base leading-relaxed text-white/85">{renderClueText(clue, 'sm', languageState)}</div>)}
+                      </Disclosure></div> : null;
+                    })()}
+
+                    {/* 3. Main Cross-Examination Arena */}
+                    <div className="space-y-3">
+                      {isOnline ? (
+                        <>
+                          {/* Online State: YOU MUST ANSWER */}
+                          {isMyTurnToAnswer && onlineInq?.activeQuestion && (() => {
+                            const localWord = local ? getWordDetails(local.assignedWordId) : null;
+                            const localTruth = evaluateQuestionTruth(onlineInq.activeQuestion.id, localWord);
+
+                            return (
+                              <motion.div
+                                initial={{ scale: 0.95, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                className="panel p-5 rounded-3xl border-2 border-pop/60 bg-pop/10 space-y-4 shadow-[0_0_30px_rgba(255,107,107,0.2)]"
+                              >
+                                <div className="flex items-center gap-2 text-pop">
+                                  <span className="w-9 h-9 rounded-xl bg-pop/20 border border-pop/40 flex items-center justify-center shrink-0 animate-bounce">
+                                    <AlertCircle size={20} />
+                                  </span>
+                                  <div>
+                                    <p className="text-[0.8125rem] font-black uppercase tracking-wider text-pop">
+                                      {t('سؤال سريري موجه إليك!', 'Clinical Question For You!')}
+                                    </p>
+                                    <p className="font-display font-bold text-sm text-white">
+                                      {t(`${other?.name || 'زميلك'} يسألك:`, `${other?.name || 'Opponent'} asks you:`)}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="p-3.5 rounded-2xl bg-ink-2/90 border border-ink-4 space-y-1">
+                                  <p className="font-display font-bold text-base text-white leading-relaxed">
+                                    {onlineInq.activeQuestion.text[languageState === 'Arabic' ? 'ar' : 'en']}
+                                  </p>
+                                  {languageState === 'Arabic' && (
+                                    <p className="text-xs text-white/70 font-medium">
+                                      {onlineInq.activeQuestion.text.en}
+                                    </p>
+                                  )}
+                                </div>
+
+                                <div className="space-y-2.5">
+                                  <p className="text-[0.8125rem] font-bold text-white/60 text-center">
+                                    {t('اختر إجابتك:', 'Pick your answer:')}
+                                  </p>
+                                  <div className="grid grid-cols-1 gap-2">
+                                    {INQUIRY_ANSWER_OPTIONS.map((opt) => {
+                                      const isMedicallyTrue = localTruth.trueAnswer === opt.id;
+                                      return (
+                                        <button
+                                          key={opt.id}
+                                          type="button"
+                                          onClick={() => submitOnlineInquiryAnswer(opt.id)}
+                                          className={`w-full min-h-[54px] px-4 rounded-2xl border-2 font-display font-bold text-sm flex items-center justify-between gap-2 active:scale-98 transition-all ${opt.color} ${
+                                            isMedicallyTrue ? 'ring-2 ring-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.25)]' : ''
+                                          }`}
+                                        >
+                                          <span>{languageState === 'Arabic' ? opt.labelAr : opt.labelEn}</span>
+                                          {isMedicallyTrue && (
+                                            <span className="px-2 py-0.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[0.8125rem] font-black flex items-center gap-1">
+                                              <Check size={12} strokeWidth={3} />
+                                              <span>{t('مطابق لبطاقتك', 'Matches your card')}</span>
+                                            </span>
+                                          )}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+
+                                  {/* Clinical Advisor Whisper for Respondent */}
+                                  {localTruth && localTruth.clinicalReasonAr && (
+                                    <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-1 text-start">
+                                      <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
+                                        <Info size={14} />
+                                        <span>{t('توضيح سريري (خاص بك):', 'Clinical Note (Private):')}</span>
+                                      </div>
+                                      <p className="text-[0.8125rem] text-white/85 leading-relaxed font-medium">
+                                        {languageState === 'Arabic' ? localTruth.clinicalReasonAr : localTruth.clinicalReasonEn}
+                                      </p>
+                                    </div>
+                                  )}
+                                </div>
+                              </motion.div>
+                            );
+                          })()}
+
+                          {/* Online State: WAITING FOR OPPONENT TO ANSWER */}
+                          {isWaitingForAnswer && onlineInq?.activeQuestion && (
+                            <div className="panel p-5 rounded-3xl border border-sky-500/30 bg-sky-500/5 space-y-3 text-center">
+                              <div className="w-12 h-12 rounded-full bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mx-auto text-sky-400 animate-pulse">
+                                <Timer size={24} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-display font-bold text-base text-white">
+                                  {t(`في انتظار إجابة ${other?.name || 'الخصم'}...`, `Waiting for ${other?.name || 'Opponent'} to answer...`)}
+                                </h4>
+                                <p className="text-xs text-white/70">
+                                  {t('يفحص كرتَه السريري لتأكيد الإجابة', 'Reviewing their card to verify the diagnosis')}
+                                </p>
+                              </div>
+                              <div className="p-3 rounded-2xl bg-ink-2/80 border border-ink-4 text-start">
+                                <span className="text-[0.8125rem] font-bold text-sky-400 block mb-1">
+                                  {t('سؤالك المطروح:', 'Your question:')}
+                                </span>
+                                <p className="text-xs font-bold text-white/80">
+                                  {onlineInq.activeQuestion.text[languageState === 'Arabic' ? 'ar' : 'en']}
+                                </p>
+                              </div>
                             </div>
                           )}
-                        </div>
+
+                          {/* Online State: YOUR TURN TO ASK */}
+                          {isMyTurnToAsk && (
+                            <div className="space-y-3">
+                              <div className="panel p-4 rounded-3xl border border-pop/30 bg-ink-2 space-y-1">
+                                <div className="flex items-center gap-2 text-pop">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-pop animate-ping" />
+                                  <h4 className="font-display font-bold text-sm text-white">
+                                    {t(`دورك يا دكتور! وجّه سؤالاً لـ ${other?.name || 'الخصم'}:`, `Your turn! Question ${other?.name || 'Opponent'}:`)}
+                                  </h4>
+                                </div>
+                                <p className="text-xs text-white/70">
+                                  {t('اختر سؤالاً واحداً من أسئلة هذه المرحلة لحصر كرت خصمك:', 'Pick one question from this stage to narrow down their card:')}
+                                </p>
+                              </div>
+
+                              <div className="space-y-2">
+                                {currentStageQuestions.map((q, idx) => (
+                                  <button
+                                    key={q.id}
+                                    type="button"
+                                    onClick={() => submitOnlineInquiryQuestion(q)}
+                                    className="w-full min-h-[58px] p-3.5 rounded-2xl bg-ink-3/80 hover:bg-ink-3 border border-ink-4 hover:border-pop/40 text-start flex items-start gap-3 active:scale-[0.98] transition-all group"
+                                  >
+                                    <span className="w-6 h-6 rounded-xl bg-pop/10 border border-pop/25 text-pop font-mono text-xs font-black flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-pop group-hover:text-white transition-colors">
+                                      {idx + 1}
+                                    </span>
+                                    <div className="flex-1 min-w-0 space-y-0.5">
+                                      <p className="text-base font-bold text-white/95 leading-relaxed group-hover:text-white">
+                                        {languageState === 'Arabic' ? q.text.ar : q.text.en}
+                                      </p>
+                                    </div>
+                                    <ChevronRight size={16} className="text-white/70 group-hover:text-pop shrink-0 mt-1" />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Online State: OPPONENT CHOOSING QUESTION */}
+                          {isWaitingForQuestion && (
+                            <div className="panel p-5 rounded-3xl border border-white/10 text-center space-y-3">
+                              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-white/70 animate-pulse">
+                                <HelpCircle size={20} />
+                              </div>
+                              <div className="space-y-1">
+                                <h4 className="font-display font-bold text-sm text-white">
+                                  {t(`دور ${other?.name || 'الخصم'} لاختيار السؤال...`, `${other?.name || 'Opponent'} is picking a question...`)}
+                                </h4>
+                                <p className="text-xs text-white/70 animate-pulse">
+                                  {t('يرجى الانتظار، سيظهر السؤال على شاشتك فور اختياره', 'Please wait, the question will appear on your screen once chosen')}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        /* OFFLINE PASS & PLAY INQUIRY */
+                        <>
+                          {offlineInquiryActiveQ ? (() => {
+                            const p2Word = other ? getWordDetails(other.assignedWordId) : null;
+                            const offlineTruth = evaluateQuestionTruth(offlineInquiryActiveQ.id, p2Word);
+
+                            return (
+                              <motion.div
+                                initial={{ scale: 0.95, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                className="panel p-5 rounded-3xl border-2 border-pop/60 bg-pop/10 space-y-4 shadow-[0_0_30px_rgba(255,107,107,0.2)]"
+                              >
+                                <div className="flex items-center gap-2 text-pop">
+                                  <span className="w-9 h-9 rounded-xl bg-pop/20 border border-pop/40 flex items-center justify-center shrink-0">
+                                    <AlertCircle size={20} />
+                                  </span>
+                                  <div>
+                                    <p className="text-[0.8125rem] font-black uppercase tracking-wider text-pop">
+                                      {t('مرر الموبايل لـ:', 'Pass Phone To:')}
+                                    </p>
+                                    <p className="font-display font-bold text-sm text-white">
+                                      {other?.name} {t('للإجابة عن كرتها/كرته', 'to answer')}
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="p-3.5 rounded-2xl bg-ink-2/90 border border-ink-4 space-y-1">
+                                  <p className="font-display font-bold text-base text-white leading-relaxed">
+                                    {offlineInquiryActiveQ.text[languageState === 'Arabic' ? 'ar' : 'en']}
+                                  </p>
+                                  {languageState === 'Arabic' && (
+                                    <p className="text-xs text-white/70 font-medium">
+                                      {offlineInquiryActiveQ.text.en}
+                                    </p>
+                                  )}
+                                </div>
+
+                                <div className="space-y-2.5">
+                                  <p className="text-[0.8125rem] font-bold text-white/60 text-center">
+                                    {t('اختر الإجابة فوراً دون كتابة:', 'Choose answer instantly:')}
+                                  </p>
+                                  <div className="grid grid-cols-1 gap-2">
+                                    {INQUIRY_ANSWER_OPTIONS.map((opt) => {
+                                      const isMedicallyTrue = offlineTruth.trueAnswer === opt.id;
+                                      return (
+                                        <button
+                                          key={opt.id}
+                                          type="button"
+                                          onClick={() => submitOfflineInquiryAnswer(opt.id)}
+                                          className={`w-full min-h-[54px] px-4 rounded-2xl border-2 font-display font-bold text-sm flex items-center justify-between gap-2 active:scale-98 transition-all ${opt.color} ${
+                                            isMedicallyTrue ? 'ring-2 ring-emerald-500/60 shadow-[0_0_15px_rgba(16,185,129,0.25)]' : ''
+                                          }`}
+                                        >
+                                          <span>{languageState === 'Arabic' ? opt.labelAr : opt.labelEn}</span>
+                                          {isMedicallyTrue && (
+                                            <span className="px-2 py-0.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[0.8125rem] font-black flex items-center gap-1">
+                                              <span>⭐</span>
+                                              <span>{t('الحقيقة السريرية لكرتك', 'True for your card')}</span>
+                                            </span>
+                                          )}
+                                        </button>
+                                      );
+                                    })}
+                                  </div>
+
+                                  {/* Clinical Advisor Whisper for Respondent */}
+                                  {offlineTruth && offlineTruth.clinicalReasonAr && (
+                                    <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-1 text-start">
+                                      <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
+                                        <Sparkles size={14} />
+                                        <span>{t('همسة المستشار السريري (مرئية لك وحدك):', 'Clinical Advisor Whisper (Only you see this):')}</span>
+                                      </div>
+                                      <p className="text-[0.8125rem] text-white/85 leading-relaxed font-medium">
+                                        {languageState === 'Arabic' ? offlineTruth.clinicalReasonAr : offlineTruth.clinicalReasonEn}
+                                      </p>
+                                    </div>
+                                  )}
+                                </div>
+                              </motion.div>
+                            );
+                          })() : (
+                            <div className="space-y-3">
+                              <div className="panel p-4 rounded-3xl border border-pop/30 bg-ink-2 space-y-1">
+                                <div className="flex items-center gap-2 text-pop">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-pop animate-ping" />
+                                  <h4 className="font-display font-bold text-sm text-white">
+                                    {t(`دور ${local?.name}: وجّه سؤالاً لـ ${other?.name}`, `${local?.name}'s turn: Ask ${other?.name}`)}
+                                  </h4>
+                                </div>
+                                <p className="text-xs text-white/70">
+                                  {t('اختر سؤالاً من الأسئلة الطبية التالية:', 'Pick one question to ask:')}
+                                </p>
+                              </div>
+
+                              <div className="space-y-2">
+                                {currentStageQuestions.map((q, idx) => (
+                                  <button
+                                    key={q.id}
+                                    type="button"
+                                    onClick={() => submitOfflineInquiryQuestion(q)}
+                                    className="w-full min-h-[58px] p-3.5 rounded-2xl bg-ink-3/80 hover:bg-ink-3 border border-ink-4 hover:border-pop/40 text-start flex items-start gap-3 active:scale-[0.98] transition-all group"
+                                  >
+                                    <span className="w-6 h-6 rounded-xl bg-pop/10 border border-pop/25 text-pop font-mono text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
+                                      {idx + 1}
+                                    </span>
+                                    <div className="flex-1 min-w-0 space-y-0.5">
+                                      <p className="text-base font-bold text-white/95 leading-relaxed group-hover:text-white">
+                                        {languageState === 'Arabic' ? q.text.ar : q.text.en}
+                                      </p>
+                                    </div>
+                                    <ChevronRight size={16} className="text-white/70 group-hover:text-pop shrink-0 mt-1" />
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="space-y-6 pt-4 text-left">
-                {(() => {
-                  const local = activePlayers.find(m => m.id === localPlayerId);
-                  const other = activePlayers.find(m => m.id !== localPlayerId);
-                  if (!local || !other || !onlineRoomState) return null;
 
-                  const hasLocalGuessed = onlineRoomState.twoPlayersGuessMatched[localPlayerId];
-
-                  return (
-                    <div className="space-y-4">
-                      {(() => {
-                        const word = getWordDetails(local.assignedWordId);
-                        if (!word) return null;
-                        return (
-                          <div className="bg-zinc-900/60 p-4 border border-zinc-800 rounded-2xl space-y-1.5">
-                            <span className="text-[10px] text-zinc-500 font-bold block uppercase">{languageState === 'Arabic' ? 'مراجع محتوى كرتك السري للإجابة' : 'Your secret card reference'}</span>
-                            <p className="text-base font-black text-white">{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</p>
-                            <div className="space-y-2 text-[11px] text-zinc-400 border-t border-zinc-900 pt-3 leading-relaxed">
-                              {getCluesForWord(word.id, word, languageState).slice(0, showMoreClues ? 10 : 5).map((cl, i) => (
-                                <div key={i} className="py-1 border-b border-zinc-900/50 last:border-0">
-                                  {renderClueText(cl, 'xs')}
-                                </div>
-                              ))}
-                              {!showMoreClues && (
-                                <button
-                                  type="button"
-                                  onClick={() => setShowMoreClues(true)}
-                                  className="mt-2 text-xs font-bold text-sky-400 hover:text-sky-350 transition-all flex items-center gap-1 bg-sky-600/10 hover:bg-sky-600/20 border border-sky-500/20 px-2 py-1 rounded w-full justify-center"
-                                >
-                                  ✨ {languageState === 'Arabic' ? 'عرض معلومات أخرى (أكثر)' : 'Show more info'}
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })()}
-
-                      <div className="bg-zinc-900 p-5 rounded-3xl border border-zinc-800 space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-xs font-bold text-sky-400 uppercase">
-                            {languageState === 'Arabic' ? `خمّن كرت زميلك: ${other.name}` : `Guess card of peer: ${other.name}`}
+                    {/* 4. Investigation History Record (سجل الاستجواب السريري) */}
+                    {inquiryHistoryList.length > 0 && (
+                      <div className="space-y-2 pt-1">
+                        <button
+                          type="button"
+                          onClick={() => setShowInquiryHistory(!showInquiryHistory)}
+                          className="w-full min-h-[48px] px-4 rounded-2xl bg-ink-3/70 border border-ink-4 flex items-center justify-between active:scale-[0.98] transition-transform"
+                        >
+                          <span className="flex items-center gap-2 font-display font-bold text-white/80 text-xs">
+                            <FileText size={15} className="text-gold" />
+                            {t(`سجل الملاحظات والاستجوابات (${inquiryHistoryList.length})`, `Investigation Notes (${inquiryHistoryList.length})`)}
                           </span>
-                        </div>
+                          <span className="text-white/70 text-xs">{showInquiryHistory ? '▲' : '▼'}</span>
+                        </button>
 
-                        {hasLocalGuessed ? (
-                          <div className="p-4 bg-zinc-950 rounded-xl border border-zinc-850 text-center text-xs font-bold text-emerald-400">
-                            {languageState === 'Arabic' ? 'تم تدوين تخمينك! بانتظار اللاعب الآخر...' : 'Your guess is saved! Waiting for companion...'}
+                        <AnimatePresence>
+                          {showInquiryHistory && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="bg-ink-2 border border-ink-4 rounded-2xl p-3 space-y-2 max-h-[260px] overflow-y-auto custom-scrollbar divide-y divide-white/5">
+                                {inquiryHistoryList.map((item, i) => {
+                                  const ansMeta = INQUIRY_ANSWER_OPTIONS.find(o => o.id === item.answer);
+                                  return (
+                                    <div key={item.id || i} className="pt-2 first:pt-0 space-y-1">
+                                      <div className="flex items-center justify-between gap-2">
+                                        <span className="text-[0.8125rem] font-bold text-white/70">
+                                          {t(`المرحلة ${item.stage}`, `Stage ${item.stage}`)} · <span className="text-pop">{item.askerName}</span> ← <span className="text-sky-400">{item.targetName}</span>
+                                        </span>
+                                        <span className={`text-[0.8125rem] font-black px-2 py-0.5 rounded-full border ${ansMeta?.color || 'bg-white/10 text-white'}`}>
+                                          {languageState === 'Arabic' ? ansMeta?.labelAr : ansMeta?.labelEn}
+                                        </span>
+                                      </div>
+                                      <p className="text-xs font-bold text-white/85 leading-relaxed">
+                                        {languageState === 'Arabic' ? item.questionAr : item.questionEn}
+                                      </p>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )}
+
+                    {/* 5. Final Diagnosis Guessing Section */}
+                    <div className="pt-2 space-y-3">
+                      {hasLocalGuessed ? (
+                        isOnline ? (
+                          <div className="panel p-4 rounded-2xl bg-mint/10 border border-mint/30 flex items-center justify-center gap-2.5 text-mint font-display font-bold text-sm animate-pulse text-center">
+                            <CheckCircle2 size={20} />
+                            {t('تم تسجيل تشخيصك بنجاح! في انتظار تشخيص خصمك...', 'Your diagnosis is locked in! Waiting for opponent...')}
+                          </div>
+                        ) : (local && other && !offlineGuesses[other.id]) ? (
+                          <div className="panel p-4 rounded-2xl bg-ink-2 border border-white/10 space-y-2.5">
+                            <p className="text-[0.8125rem] font-bold text-white/70 text-center">
+                              {t('تم قفل تشخيصك. مرّر الدور لخصمك ليقوم بتشخيصك.', 'Your diagnosis is locked in. Pass the turn so your opponent can diagnose you.')}
+                            </p>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const nextIdx = offlineInquiryTurnIdx === 0 ? 1 : 0;
+                                setOfflineFinalGuessNextIdx(nextIdx);
+                              }}
+                              className="w-full min-h-[54px] rounded-2xl bg-gradient-to-r from-pop/20 to-gold/20 hover:from-pop/30 hover:to-gold/30 border-2 border-pop/50 text-white font-display font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,107,107,0.15)]"
+                            >
+                              <Target size={18} className="text-pop" />
+                              <span>{t(`اخفِ ومرر إلى ${other.name}`, `Hide & pass to ${other.name}`)}</span>
+                            </button>
                           </div>
                         ) : (
+                          <div className="panel p-4 rounded-2xl bg-mint/10 border border-mint/30 flex items-center justify-center gap-2.5 text-mint font-display font-bold text-sm animate-pulse text-center">
+                            <CheckCircle2 size={20} />
+                            {t('تم تسجيل تشخيصك بنجاح! في انتظار تشخيص خصمك...', 'Your diagnosis is locked in! Waiting for opponent...')}
+                          </div>
+                        )
+                      ) : showFinalGuessBox ? (
+                        <Sheet open={showFinalGuessBox} onClose={() => setShowFinalGuessBox(false)} title={t('خَمّن كرت الخصم', 'Guess their card')} dir={languageState === 'Arabic' ? 'rtl' : 'ltr'}>
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between">
+                            <Label>{t(`خمّن كرت ${other?.name || 'الخصم'} (50 نقطة)`, `Guess ${other?.name || 'Opponent'}'s card (50 pts)`)}</Label>
+                            {currentStage < 5 && (
+                              <button
+                                type="button"
+                                onClick={() => setShowFinalGuessBox(false)}
+                                className="text-[0.8125rem] text-white/70 font-bold hover:text-white"
+                              >
+                                {t('إغلاق ✕', 'Close ✕')}
+                              </button>
+                            )}
+                          </div>
+
                           <div className="space-y-2">
                             <div className="relative">
-                              <Search className="absolute left-3 top-3 text-zinc-650" size={14} />
+                              <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 text-white/70" size={16} />
                               <input
                                 type="text"
-                                placeholder={languageState === 'Arabic' ? 'ابحث لتخمين الحالة...' : 'Search term...'}
+                                aria-label={t('بحث التشخيص النهائي', 'Search final diagnosis')} placeholder={t('ابحث عن التشخيص…', 'Search diagnosis…')}
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-zinc-950 border border-zinc-850 rounded-lg pl-9 pr-3 py-2 text-xs text-white"
+                                className="w-full min-h-[50px] bg-ink/70 border border-ink-4 focus:border-pop/60 rounded-2xl ps-10 pe-4 text-sm font-bold text-white placeholder-white/60 outline-none"
                               />
                             </div>
+
                             {searchQuery && (
-                              <div className="bg-zinc-950 border border-zinc-850 rounded-lg overflow-hidden">
+                              <div className="rounded-2xl overflow-hidden border border-ink-4 divide-y divide-white/5 bg-ink max-h-[220px] overflow-y-auto custom-scrollbar">
                                 {filteredSearchWords.map((word) => (
                                   <button
                                     key={word.id}
+                                    type="button"
                                     onClick={() => {
-                                      submitOnlineTwoPlayersGuess(word.id);
+                                      if (isOnline) {
+                                        submitOnlineTwoPlayersGuess(word.id);
+                                      } else if (local) {
+                                        submitOfflineTwoPlayersGuess(local.id, word.id);
+                                      }
                                       setSearchQuery('');
                                     }}
-                                    className="w-full text-left px-3 py-2 hover:bg-sky-600/15 border-b border-zinc-900 text-[11px] font-bold text-white flex justify-between"
+                                    className="w-full min-h-[48px] px-3.5 flex items-center justify-between text-start active:bg-pop/10 hover:bg-white/5 transition-colors"
                                   >
-                                    <span>{languageState === 'Arabic' ? word.word.Arabic : word.word.English}</span>
-                                    <span className="text-[9px] text-zinc-500">{word.type}</span>
+                                    <div className="flex flex-col">
+                                      <span className="font-bold text-white text-base break-words">{word.word.English}</span>
+                                      {word.word.Arabic && (
+                                        <span className="text-[0.8125rem] text-white/70">{word.word.Arabic}</span>
+                                      )}
+                                    </div>
+                                    <span className="text-[0.8125rem] font-black text-white/70 uppercase px-1.5 py-0.5 rounded bg-white/5">
+                                      {word.type}
+                                    </span>
                                   </button>
                                 ))}
                               </div>
                             )}
                           </div>
+                        </div>
+                        </Sheet>
+                      ) : null}
+                    </div>
+
+                  </div>
+                </Screen>
+              </div>
+            );
+          })()}
+
+          {/* ================= ROUND RESULT ================= */}
+          {phase ==='ROUND_RESULT' && (
+            <div className="flex-1 min-h-0 flex flex-col">
+              <Screen title={t('النتائج','Results')}>
+                <div className="px-4 space-y-4">
+                  <RoundOutcome players={activePlayers} initialScores={roundStartScores.current} duel={playerCount === 2} language={languageState} />
+                  {secretWord && playerCount >= 2 && (
+                    <div className="panel p-5 space-y-1.5 text-center bg-gradient-to-b from-ink-2 to-ink-3 border-2 border-mint/40 rounded-3xl shadow-xl select-none">
+                      <span className="text-[0.8125rem] font-black text-mint uppercase tracking-widest block">
+                        {playerCount === 2 ? t(`كرت ${activePlayers[0]?.name || 'اللاعب الأول'}`, `${activePlayers[0]?.name || 'Player 1'}’s card`) : t('الكلمة السرية للجولة', 'Target Secret Diagnosis')}
+                      </span>
+                      {wordRevealedAfterAd ? (
+                        <>
+                          <motion.h2
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="font-display font-black text-3xl sm:text-4xl text-white tracking-wide"
+                          >
+                            {secretWord.word.English}
+                          </motion.h2>
+                          {secretWord.word.Arabic && (
+                            <p className="font-display font-bold text-xl sm:text-2xl text-mint mt-0.5">
+                              {secretWord.word.Arabic}
+                            </p>
+                          )}
+                          {imposterAssignedWord && playerCount >= 3 && (
+                            <div className="pt-2">
+                              <span className="inline-block px-3 py-1 rounded-xl bg-coral/10 border border-coral/30 text-xs font-bold text-coral">
+                                {playerCount === 2 ? t(`كرت ${activePlayers[1]?.name || 'اللاعب الثاني'}: `, `${activePlayers[1]?.name || 'Player 2'}’s card: `) : t('كلمة المنتحل: ', 'Imposter word: ')}
+                                <strong>{imposterAssignedWord.word.English}</strong>
+                                {imposterAssignedWord.word.Arabic && ` (${imposterAssignedWord.word.Arabic})`}
+                              </span>
+                            </div>
+                          )}
+                          {getWordImage(secretWord.id) && (
+                            <div className="relative rounded-2xl overflow-hidden border border-cyan-500/40 shadow-lg max-h-48 my-2.5 bg-black/60 max-w-xs mx-auto">
+                              <img src={getWordImage(secretWord.id)!} alt={secretWord.word.English} className="w-full h-40 object-contain bg-ink" />
+                              <span className="absolute bottom-2 right-2 bg-black/85 backdrop-blur-md px-2 py-0.5 rounded-lg text-[0.8125rem] text-cyan-300 font-bold border border-cyan-500/40 flex items-center gap-1">
+                                <Camera size={11} /> {t('صورة الحالة السرية', 'Secret Case Specimen')}
+                              </span>
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        <div
+                          onClick={() => triggerPreRevealWordAd(`click_reveal_${Date.now()}`)}
+                          className="py-5 px-3 rounded-2xl bg-gradient-to-r from-gold/15 via-amber-500/10 to-gold/15 border border-gold/40 cursor-pointer active:scale-95 transition-all text-center space-y-1.5 shadow-md"
+                        >
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/20 text-gold text-xs font-bold font-display border border-gold/40">
+                            <Lock size={13} />
+                            {t('الكلمة السرية برعاية', 'Sponsored Word')}
+                          </span>
+                          <p className="font-display font-bold text-lg text-white">
+                            {t('اضغط لكشف الكلمة السرية ➔', 'Tap to reveal secret word ➔')}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  <div className="space-y-2">
+                    {[...activePlayers].sort((a, b) => b.score - a.score).map((p, idx) => {
+                      const medals = ['','',''];
+                      const isImp = p.role ==='IMPOSTER';
+                      return (
+                        <motion.div
+                          key={p.id}
+                          initial={{ opacity: 0, x: arLangBool ? 20 : -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: idx * 0.08 }}
+                          className={`min-h-[68px] px-4 rounded-2xl border flex items-center gap-3 ${
+                            idx === 0 ?'bg-gold/[0.07] border-gold/40' :'bg-ink-3/60 border-ink-4'
+                          }`}
+                        >
+                          <span className="text-2xl w-8 text-center shrink-0">{medals[idx] || <span className="text-white/70 font-display font-bold text-base">#{idx + 1}</span>}</span>
+                          <div className="w-10 h-10 rounded-full overflow-hidden bg-ink border border-white/10 shrink-0 flex items-center justify-center">
+                            <AnimalDoctorAvatar avatarId={p.avatarId} size={38} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-display font-bold text-white truncate">{p.name}</p>
+                            {playerCount > 2 && <p className={`text-[0.8125rem] font-black ${isImp ?'text-coral' :'text-mint'}`}>
+                              {isImp ? t('منتحل','Imposter') : t('طبيب','Doctor')}
+                            </p>}
+                          </div>
+                          <span className="font-display font-bold text-2xl text-gold shrink-0">{p.score}</span>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+
+                  {/* ================= CLINICAL INTEGRITY & LIE DETECTOR REPORT ================= */}
+                  {(() => {
+                    const misleadingList: MisleadingEntry[] = isOnline
+                      ? (onlineRoomState?.inquiry?.misleadingLog || [])
+                      : offlineMisleadingLog;
+
+                    const inquiryHist = isOnline
+                      ? (onlineRoomState?.inquiry?.history || [])
+                      : offlineInquiryHistory;
+
+                    if (inquiryHist.length === 0) return null;
+
+                    return (
+                      <div className="panel p-3.5 sm:p-4 rounded-3xl border border-white/10 bg-ink-2 space-y-2.5">
+                        <button
+                          type="button"
+                          onClick={() => setShowIntegrityReport(prev => !prev)}
+                          className="w-full flex items-center justify-between text-start cursor-pointer active:scale-[0.99] transition-transform"
+                        >
+                          <div className="flex items-center gap-2 min-w-0">
+                            <span className="w-8 h-8 rounded-xl bg-coral/10 border border-coral/30 flex items-center justify-center text-coral shrink-0">
+                              <ShieldAlert size={18} />
+                            </span>
+                            <div className="min-w-0">
+                              <h4 className="font-display font-bold text-sm text-white truncate">
+                                {t('تقرير النزاهة السريرية', 'Clinical Integrity Report')}
+                              </h4>
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className={`text-[0.8125rem] font-bold px-2.5 py-0.5 rounded-full border ${
+                              misleadingList.length > 0
+                                ? 'bg-rose-500/15 border-rose-500/40 text-rose-400 font-black animate-pulse'
+                                : 'bg-emerald-500/15 border-emerald-500/40 text-emerald-400 font-black'
+                            }`}>
+                              {misleadingList.length > 0
+                                ? t(`${misleadingList.length} إجابة غير دقيقة`, `${misleadingList.length} Inaccurate answers`)
+                                : t('إجابات مطابقة 100%', '100% Consistent')}
+                            </span>
+                            <ChevronDown size={16} className={`text-white/70 transition-transform ${showIntegrityReport ? 'rotate-180' : ''}`} />
+                          </div>
+                        </button>
+
+                        {showIntegrityReport && (
+                          <div className="pt-2 border-t border-white/5 space-y-2.5">
+                            {misleadingList.length > 0 ? (
+                              <div className="space-y-2.5 pt-1">
+                                {misleadingList.map((entry, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/30 space-y-2 text-start"
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <span className="text-xs font-black text-rose-400 flex items-center gap-1">
+                                        <ShieldAlert size={14} />
+                                        <span>{t(`إجابة ${entry.doctorName} غير مطابقة للبطاقة`, `${entry.doctorName}'s answer contradicted card`)}</span>
+                                      </span>
+                                      <span className="text-[0.8125rem] px-2 py-0.5 rounded-md bg-white/5 text-white/70 font-mono">
+                                        {t(`المرحلة ${entry.stage}`, `Stage ${entry.stage}`)}
+                                      </span>
+                                    </div>
+
+                                    <div className="p-2 rounded-xl bg-ink/70 border border-white/5 space-y-1">
+                                      <p className="text-xs text-white/90 font-bold">
+                                        {languageState === 'Arabic' ? entry.questionAr : entry.questionEn}
+                                      </p>
+                                      <div className="flex items-center gap-3 text-[0.8125rem] pt-1 border-t border-white/5">
+                                        <span className="text-white/70">
+                                          {t('أجاب:', 'Answered:')}{' '}
+                                          <strong className="text-rose-300 font-bold">
+                                            {entry.givenAnswer === 'YES' ? t('نعم', 'YES') : entry.givenAnswer === 'NO' ? t('لا', 'NO') : t('غير دقيق', 'MAYBE')}
+                                          </strong>
+                                        </span>
+                                        <span className="text-white/70">
+                                          {t('الحقيقة لكرته:', 'Card truth:')}{' '}
+                                          <strong className="text-emerald-300 font-bold">
+                                            {entry.trueAnswer === 'YES' ? t('نعم', 'YES') : t('لا', 'NO')} ({entry.cardNameAr || entry.cardNameEn})
+                                          </strong>
+                                        </span>
+                                      </div>
+                                    </div>
+
+                                    <p className="text-[0.8125rem] text-white/80 leading-relaxed font-medium bg-white/5 p-2 rounded-xl border border-white/5">
+                                      <span className="font-bold text-mint">{t('التفسير السريري: ', 'Clinical rationale: ')}</span>
+                                      {languageState === 'Arabic' ? entry.clinicalReasonAr : entry.clinicalReasonEn}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-1">
+                                <h5 className="font-display font-bold text-sm text-emerald-400">
+                                  {t('الإجابات مطابقة للبطاقات 100%', '100% Card Consistency')}
+                                </h5>
+                                <p className="text-xs text-white/70 leading-relaxed max-w-sm mx-auto">
+                                  {t(
+                                    'كانت جميع الإجابات مطابقة للحقائق الطبية لبطاقات اللاعبين.',
+                                    'All answers matched the clinical facts of the cards.'
+                                  )}
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         )}
                       </div>
+                    );
+                  })()}
+                </div>
+              </Screen>
+              <div className="shrink-0 px-4 pt-2 pb-safe">
+                {isOnline ? (
+                  onlineRoomState && onlineRoomState.hostId === localPlayerId ? (
+                    <BigBtn onClick={resetOnlineRound}>{t('جولة جديدة ➔','Next round ➔')}</BigBtn>
+                  ) : (
+                    <div className="panel py-4 text-center">
+                      <p className="font-display font-bold text-white/60 animate-pulse">{t('بانتظار المضيف لبدء جولة جديدة...','Waiting for host...')}</p>
                     </div>
-                  );
-                })()}
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        {/* PHASE: ROUND_RESULT */}
-        {phase === 'ROUND_RESULT' && (
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="space-y-6 max-w-lg mx-auto text-center"
-          >
-            <div className="space-y-4">
-              <div className="w-20 h-20 bg-yellow-400/20 border-2 border-yellow-400/50 rounded-[2rem] flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(250,204,21,0.15)] text-yellow-400">
-                <Trophy size={40} />
-              </div>
-              <h3 className="text-4xl font-extrabold tracking-tight italic">
-                {languageState === 'Arabic' ? 'لوحة النتائج الإجمالية' : 'CLINICAL STANDINGS'}
-              </h3>
-            </div>
-
-            {secretWord && playerCount >= 2 && (
-              <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl max-w-sm mx-auto text-left space-y-1">
-                <span className="text-[9px] text-zinc-500 font-bold block uppercase">{languageState === 'Arabic' ? 'المصطلح السري الصحيح في الجلسة كان' : 'SECRET TERM WAS'}</span>
-                <p className="text-base font-extrabold text-sky-400">
-                  {languageState === 'Arabic' ? secretWord.word.Arabic : secretWord.word.English} 
-                  <span className="text-xs text-zinc-450 font-semibold italic ml-1">({secretWord.word.English})</span>
-                </p>
-                {imposterAssignedWord && playerCount >= 3 && (
-                  <p className="text-[11px] text-zinc-400">
-                    <span className="font-bold">{languageState === 'Arabic' ? 'المرض القريب المضلل: ' : 'Stealth assigned term: '}</span>
-                    {languageState === 'Arabic' ? imposterAssignedWord.word.Arabic : imposterAssignedWord.word.English}
-                  </p>
+                  )
+                ) : (
+                  <div className="space-y-2">
+                    <BigBtn onClick={startNextRoundOffline} className="w-full">
+                      <RefreshCcw size={18} />
+                      <span>{t('جولة جديدة ➔', 'Next Round ➔')}</span>
+                    </BigBtn>
+                    <button
+                      type="button"
+                      onClick={() => { 
+                        if (gameModeLock) {
+                          onGoBack();
+                        } else {
+                          setPhase('ENTRY'); 
+                        }
+                        setOfflineVotes({}); 
+                        setOfflineGuesses({}); 
+                      }}
+                      className="w-full min-h-[48px] rounded-xl bg-ink-3/70 hover:bg-ink-3 border border-ink-4 text-xs font-display font-bold text-white/60 hover:text-white flex items-center justify-center gap-1.5 active:scale-95 transition-all"
+                    >
+                      <Home size={14} />
+                      <span>{t('العودة للرئيسية', 'Back to Home')}</span>
+                    </button>
+                  </div>
                 )}
               </div>
-            )}
-
-            <div className="space-y-2 pt-2">
-              {activePlayers.map((p, idx) => (
-                <div key={p.id} className="flex items-center justify-between bg-zinc-900/60 p-4.5 rounded-2xl border border-zinc-850">
-                  <div className="flex items-center gap-3">
-                    <span className="w-6 h-6 rounded-lg bg-zinc-950 text-xs font-black text-zinc-400 flex items-center justify-center">
-                      {idx + 1}
-                    </span>
-                    <div className="w-10 h-10 rounded-full overflow-hidden bg-zinc-950 border border-zinc-850 flex items-center justify-center shrink-0">
-                      <AnimalDoctorAvatar avatarId={p.avatarId} size={38} />
-                    </div>
-                    <div className="text-left">
-                      <p className="text-sm font-black text-white">{p.name}</p>
-                      <p className="text-[9px] font-bold uppercase tracking-wider text-zinc-500">
-                        {p.role === 'IMPOSTER' ? (languageState === 'Arabic' ? 'Imposter' : 'Imposter') : (languageState === 'Arabic' ? 'بريء' : 'Innocent')}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-lg font-black text-sky-400">{p.score}</span>
-                    <span className="text-[9px] font-bold text-zinc-650 ml-1 uppercase">PTS</span>
-                  </div>
-                </div>
-              ))}
             </div>
-
-            <div className="flex gap-4 pt-4">
-              {isOnline ? (
-                onlineRoomState.hostId === localPlayerId ? (
-                  <button
-                    onClick={resetOnlineRound}
-                    className="flex-1 py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-xs uppercase rounded-xl tracking-widest transition-all"
-                  >
-                    {languageState === 'Arabic' ? 'بدء جولة جديدة للكل' : 'Next Round for All'}
-                  </button>
-                ) : (
-                  <p className="w-full text-xs text-zinc-550 italic block">
-                    {languageState === 'Arabic' ? 'بانتظار تفعيل الجولة الجديدة من كابتن الغرفة...' : 'Waiting for host to activate next round...'}
-                  </p>
-                )
-              ) : (
-                <>
-                  <button
-                    onClick={startNextRoundOffline}
-                    className="flex-1 py-4 bg-sky-600 hover:bg-sky-500 text-white font-black text-xs uppercase rounded-xl tracking-widest transition-all"
-                  >
-                    {languageState === 'Arabic' ? 'جولة أخرى تالية' : 'Next Round Session'}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPhase('ENTRY');
-                      setOfflineVotes({});
-                      setOfflineGuesses({});
-                    }}
-                    className="flex-1 py-4 bg-zinc-800 hover:bg-zinc-700 text-white font-black text-xs uppercase rounded-xl tracking-widest transition-all"
-                  >
-                    {languageState === 'Arabic' ? 'الخروج للرئيسية' : 'Exit to lobby'}
-                  </button>
-                </>
-              )}
-            </div>
-          </motion.div>
-        )}
+          )}
+        </motion.div>
       </AnimatePresence>
 
-      {/* Advanced Specialty Selection Modal */}
-      <AnimatePresence>
-        {isAdvancedModalOpen && (
-          <div className="fixed inset-0 bg-zinc-950/85 backdrop-blur-md z-[150] flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-lg p-5 relative shadow-2xl flex flex-col max-h-[92vh] overflow-hidden"
+      {/* ================= SPECIALTY PICKER SHEET ================= */}
+      <Sheet
+        open={specSheet !== null}
+        onClose={() => setSpecSheet(null)}
+        title={t('اختار التخصص','Pick a specialty')}
+        dir={languageState ==='Arabic' ?'rtl' :'ltr'}
+        footer={
+          <div className="py-3">
+            <BigBtn onClick={() => setSpecSheet(null)}>{t('تم','Done')}</BigBtn>
+          </div>
+        }
+      >
+        {(() => {
+          const isSingle = specSheet ==='single';
+          const activeFilter = isSingle ? singleAdvancedFilter : multiAdvancedFilter;
+          const activeVal = activeFilter.enabled ?'Advanced' : (isSingle ? singleSpecialty : multiSpecialty);
+          const q = specSearch.trim().toLowerCase();
+          const clin = clinicalSpecialties.filter(s => !q || s.nameEn.toLowerCase().includes(q) || s.nameAr.includes(specSearch));
+          const acad = academicSpecialties.filter(s => !q || s.nameEn.toLowerCase().includes(q) || s.nameAr.includes(specSearch));
+
+          const pick = (id: string) => {
+            if (isSingle) {
+              setSingleSpecialty(id);
+              setSingleAdvancedFilter(prev => ({ ...prev, enabled: false }));
+            } else {
+              setMultiSpecialty(id);
+              setMultiAdvancedFilter(prev => ({ ...prev, enabled: false }));
+            }
+            setSpecSheet(null);
+          };
+
+          const Row: React.FC<{ id: string; label: string; sub?: string }> = ({ id, label, sub }) => (
+            <button
+              type="button"
+              onClick={() => pick(id)}
+              className={`w-full min-h-[52px] px-4 rounded-2xl border flex items-center justify-between gap-3 text-start transition-all active:scale-[0.98] ${
+                activeVal === id ?'bg-mint/10 border-mint/60' :'bg-ink-3/60 border-ink-4'
+              }`}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4 shrink-0">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-                    <Settings size={16} />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-black text-white">
-                      {languageState === 'Arabic' ? 'الفلترة الطبية المتقدمة' : 'Advanced Specialty Filters'}
-                    </h3>
+              <span className="min-w-0">
+                <span className={`block font-display font-bold text-base break-words ${activeVal === id ?'text-mint' :'text-white/85'}`}>{label}</span>
+                {sub && <span className="block text-[0.8125rem] text-white/70 font-bold">{sub}</span>}
+              </span>
+              {activeVal === id && <Check size={18} className="text-mint shrink-0" />}
+            </button>
+          );
+
+          return (
+            <div className="space-y-3">
+              <div className="relative">
+                <Search className="absolute start-3.5 top-1/2 -translate-y-1/2 text-white/70" size={16} />
+                <input
+                  type="text"
+                  value={specSearch}
+                  onChange={(e) => setSpecSearch(e.target.value)}
+                  aria-label={t('بحث التخصصات', 'Search specialties')} placeholder={t('دوّر على تخصص...','Search specialties...')}
+                  className="w-full min-h-[48px] bg-ink-3 border border-ink-4 rounded-2xl ps-10 pe-4 text-sm font-bold text-white placeholder-white/60 outline-none focus:border-mint/50"
+                />
+              </div>
+
+              {!q && <Row id="All" label={t('كل التخصصات','All specialties')} sub={t('طب + علوم أساسية','Medicine + basic sciences')} />}
+              {!q && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingFilterType(isSingle ?'single' :'multi');
+                    setTempAdvancedFilter({ ...activeFilter });
+                    setIsAdvancedModalOpen(true);
+                    setSpecSheet(null);
+                  }}
+                  className="w-full min-h-[52px] px-4 rounded-2xl border border-pop/40 bg-pop/5 flex items-center gap-3 text-start active:scale-[0.98] transition-transform"
+                >
+                  <Settings size={18} className="text-pop shrink-0" />
+                  <span className="min-w-0">
+                    <span className="block font-display font-bold text-base text-pop">{t('فلتر متقدم (تخصصات مخصصة)','Advanced custom filter')}</span>
+                    <span className="block text-[0.8125rem] text-white/70 font-bold">{t('اختار أكتر من تخصص + موديولات','Multi-select + modules')}</span>
+                  </span>
+                </button>
+              )}
+
+              {clin.length > 0 && (
+                <div className="space-y-2 pt-1">
+                  <Label>{t('تخصصات إكلينيكية','Clinical')}</Label>
+                  <div className="space-y-1.5">
+                    {clin.map(s => <Row key={s.id} id={s.id} label={languageState ==='Arabic' ? s.nameAr : s.nameEn} sub={languageState ==='Arabic' ? s.nameEn : s.nameAr} />)}
                   </div>
                 </div>
+              )}
+
+              {acad.length > 0 && (
+                <div className="space-y-2 pt-1">
+                  <Label>{t('تخصصات أكاديمية','Academic')}</Label>
+                  <div className="space-y-1.5">
+                    {acad.map(s => <Row key={s.id} id={s.id} label={languageState ==='Arabic' ? s.nameAr : s.nameEn} sub={languageState ==='Arabic' ? s.nameEn : s.nameAr} />)}
+                  </div>
+                </div>
+              )}
+
+              {clin.length === 0 && acad.length === 0 && (
+                <p className="text-center text-white/70 text-sm font-bold py-6">{t('مفيش نتائج','No matches')}</p>
+              )}
+            </div>
+          );
+        })()}
+      </Sheet>
+
+      <Sheet open={!!notice} onClose={() => setNotice('')} title={t('تنبيه', 'Notice')} dir={languageState === 'Arabic' ? 'rtl' : 'ltr'}
+        footer={<BigBtn onClick={() => setNotice('')}>{t('حسنًا', 'OK')}</BigBtn>}><p role="alert" className="text-base leading-relaxed">{notice}</p></Sheet>
+
+      {/* ================= LEADERBOARD SHEET ================= */}
+      <Sheet
+        open={showLeaderboardModal}
+        onClose={() => setShowLeaderboardModal(false)}
+        title={t('لوحة الصدارة','Leaderboard')}
+        dir={languageState ==='Arabic' ?'rtl' :'ltr'}
+      >
+        <div className="space-y-3">
+          <div className="grid grid-cols-2 gap-2">
+            {([
+              { id:'global' as const, label: t(' عالمي',' Global') },
+              { id:'local' as const, label: t('حول ترتيبك','Around your rank') },
+            ]).map(tb => (
+              <button
+                key={tb.id}
+                type="button"
+                onClick={() => setActiveLeaderboardTab(tb.id)}
+                className={`min-h-[48px] rounded-2xl border font-display font-bold transition-all active:scale-95 ${
+                  activeLeaderboardTab === tb.id ?'bg-gold/15 border-gold/50 text-gold' :'bg-ink-3/60 border-ink-4 text-white/70'
+                }`}
+              >
+                {tb.label}
+              </button>
+            ))}
+          </div>
+
+          {leaderboardError ? <div role="alert" className="py-6 text-center space-y-4">
+            <p>{t('تعذر تحميل الترتيب. تحقق من اتصالك.', 'Could not load rankings. Check your connection.')}</p>
+            <BigBtn onClick={fetchLeaderboard}>{t('إعادة المحاولة', 'Retry')}</BigBtn>
+          </div> : !loadingLeaderboard && (activeLeaderboardTab === 'global' ? globalLeaderboard : localLeaderboard).length === 0 ?
+            <p role="status" className="py-6 text-center text-white/75">{activeLeaderboardTab === 'local' ? (!appUser ? t('سجّل الدخول لعرض ترتيبك.', 'Sign in to view your rank.') : t('ترتيبك غير متاح ضمن أفضل 100 لاعب.', 'Your rank is not available in the top 100.')) : t('لا توجد نتائج بعد.', 'No scores yet.')}</p> : loadingLeaderboard ? (
+            <div className="py-12 flex justify-center">
+              <span className="w-9 h-9 border-[3px] border-mint/30 border-t-mint rounded-full animate-spin" />
+            </div>
+          ) : (
+            <div className="space-y-1.5 pb-2">
+              {(activeLeaderboardTab ==='global' ? globalLeaderboard : localLeaderboard).map((p: any, idx: number) => {
+                const medals = ['','',''];
+                const isMe = appUser && p.id === appUser.id;
+                return (
+                  <div
+                    key={p.id}
+                    className={`min-h-[56px] px-3.5 rounded-2xl border flex items-center gap-3 ${
+                      isMe ?'bg-mint/10 border-mint/40' :'bg-ink-3/50 border-ink-4'
+                    }`}
+                  >
+                    <span className="w-9 text-center text-xl shrink-0">
+                      {medals[idx] || <span className="text-white/70 font-display font-bold text-sm">#{p.rank || idx + 1}</span>}
+                    </span>
+                    <span className={`flex-1 min-w-0 font-display font-bold truncate ${isMe ?'text-mint' :'text-white/85'}`}>
+                      {p.displayName}{isMe ? ` ${t('(أنت)','(You)')}` :''}
+                    </span>
+                    <span className="font-display font-bold text-lg text-gold shrink-0">{p.detectiveScore}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </Sheet>
+
+      {/* ================= ADVANCED FILTER SHEET ================= */}
+      <AnimatePresence>
+        {isAdvancedModalOpen && (
+          <ModalFrame open={isAdvancedModalOpen} onClose={() => setIsAdvancedModalOpen(false)} title={t('فلتر متقدم', 'Advanced filter')} dir={languageState === 'Arabic' ? 'rtl' : 'ltr'} className="fixed inset-0 bg-black/75 backdrop-blur-sm z-[200] flex items-end sm:items-center justify-center">
+            <motion.div
+              initial={{ y:'100%', opacity: 0.5 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y:'100%', opacity: 0.5 }}
+              transition={{ type:'spring', damping: 30, stiffness: 320 }}
+              className="bg-ink-2 border-t sm:border border-ink-4 sm:rounded-[2rem] rounded-t-[2rem] w-full sm:max-w-lg max-h-[90dvh] flex flex-col"
+              dir={languageState ==='Arabic' ?'rtl' :'ltr'}
+            >
+              <div className="shrink-0 flex items-center justify-between px-5 pt-4 pb-3 border-b border-white/5">
+                <h3 className="font-display font-bold text-xl text-white">{t('فلتر متقدم','Advanced filter')}</h3>
                 <button
-                  onClick={() => setIsAdvancedModalOpen(false)}
-                  className="text-zinc-500 hover:text-white font-extrabold text-sm p-1 hover:bg-zinc-800 rounded-lg transition-colors"
+                  type="button"
+                  aria-label={t('إغلاق', 'Close')} onClick={() => setIsAdvancedModalOpen(false)}
+                  className="h-10 w-10 rounded-xl bg-ink-3 border border-ink-4 flex items-center justify-center text-white/60 active:scale-90 transition-transform"
                 >
-                  ✕
+                  <X size={18} />
                 </button>
               </div>
 
-              {/* Main Selection Area */}
-              <div className="space-y-5 flex-1 overflow-y-auto pr-1 scrollbar-thin">
-                
-                {/* Pre-sets / Quick Selection Controls */}
-                <div className="space-y-1.5">
-                  <div className="flex flex-wrap gap-1.5">
+              <div className="flex-1 min-h-0 overflow-y-auto px-5 py-4 space-y-4 custom-scrollbar">
+                {/* presets */}
+                <div className="flex flex-wrap gap-2">
+                  {([
+                    { ar:'كل الإكلينيكية', en:'All clinical', ids: clinicalSpecialties.map(s => s.id), style:'bg-pop/10 border-pop/40 text-pop' },
+                    { ar:'كل الأكاديمية', en:'All academic', ids: academicSpecialties.map(s => s.id), style:'bg-lilac/10 border-lilac/40 text-lilac' },
+                    { ar:'الطب الشرعي والسموم', en:'Forensic & Toxicology', ids: ['Forensic Medicine', 'Clinical Toxicology'], style:'bg-emerald-500/15 border-emerald-500/40 text-emerald-400' },
+                    { ar:'دمج متوازن', en:'Balanced mix', ids: ['Anatomy','Pathology','Histology','Cardiology','Gastroenterology'], style:'bg-mint/10 border-mint/40 text-mint' },
+                    { ar:'مسح الكل', en:'Clear all', ids: [], style:'bg-coral/10 border-coral/40 text-coral' },
+                  ]).map(p => (
                     <button
+                      key={p.en}
                       type="button"
-                      onClick={() => {
-                        setTempAdvancedFilter(prev => ({
-                          ...prev,
-                          subjects: Array.from(new Set([...prev.subjects, ...clinicalSpecialties.map(s => s.id)]))
-                        }));
-                      }}
-                      className="px-2.5 py-1 bg-zinc-850 hover:bg-zinc-800 text-zinc-300 rounded-lg text-[10px] font-bold border border-zinc-800/80 transition-colors"
+                      onClick={() => setTempAdvancedFilter(prev => ({ ...prev, subjects: [...p.ids] }))}
+                      className={`min-h-[48px] px-4 rounded-2xl border font-display font-bold text-sm active:scale-95 transition-transform ${p.style}`}
                     >
-                      {languageState === 'Arabic' ? 'كل الإكلينيكي' : 'All Clinical'}
+                      {languageState ==='Arabic' ? p.ar : p.en}
                     </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setTempAdvancedFilter(prev => ({
-                          ...prev,
-                          subjects: Array.from(new Set([...prev.subjects, ...academicSpecialties.map(s => s.id)]))
-                        }));
-                      }}
-                      className="px-2.5 py-1 bg-zinc-850 hover:bg-zinc-800 text-zinc-300 rounded-lg text-[10px] font-bold border border-zinc-800/80 transition-colors"
-                    >
-                      {languageState === 'Arabic' ? 'كل الأكاديمي' : 'All Academic'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setTempAdvancedFilter(prev => ({
-                          ...prev,
-                          subjects: ['Anatomy', 'Pathology', 'Histology', 'Cardiology', 'Gastroenterology']
-                        }));
-                      }}
-                      className="px-2.5 py-1 bg-sky-600/10 border border-sky-500/20 hover:bg-sky-600/20 text-sky-400 rounded-lg text-[10px] font-bold transition-colors"
-                    >
-                      {languageState === 'Arabic' ? 'دمج موازن' : 'Balanced Mix'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setTempAdvancedFilter(prev => ({
-                          ...prev,
-                          subjects: []
-                        }));
-                      }}
-                      className="px-2.5 py-1 bg-zinc-950 text-rose-500 border border-zinc-800 hover:bg-rose-500/10 rounded-lg text-[10px] font-bold transition-colors ml-auto"
-                    >
-                      {languageState === 'Arabic' ? 'مسح الكل' : 'Clear'}
-                    </button>
-                  </div>
+                  ))}
                 </div>
 
-                {/* Clinical Specialties - HORIZONTAL */}
-                <div className="space-y-1.5">
-                  <span className="text-[10px] font-black uppercase text-zinc-500 tracking-wider block">
-                    {languageState === 'Arabic' ? 'تخصصات كلينيكال (إكلينيكية)' : 'Clinical Specialties'}
-                  </span>
-                  <div className="flex gap-1.5 overflow-x-auto pb-2 snap-x scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                    {clinicalSpecialties.map(spec => {
-                      const isSelected = tempAdvancedFilter.subjects.includes(spec.id);
-                      return (
-                        <button
-                          key={spec.id}
-                          type="button"
-                          onClick={() => {
-                            setTempAdvancedFilter(prev => {
-                              const subjects = prev.subjects.includes(spec.id)
-                                ? prev.subjects.filter(s => s !== spec.id)
-                                : [...prev.subjects, spec.id];
-                              return { ...prev, subjects };
-                            });
-                          }}
-                          className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
-                            isSelected 
-                              ? 'bg-teal-500/10 border-teal-500 text-teal-400' 
-                              : 'bg-zinc-950 border-zinc-850 text-zinc-400 hover:text-zinc-200'
-                          }`}
-                        >
-                          {languageState === 'Arabic' ? spec.nameAr : spec.nameEn}
-                        </button>
-                      );
-                    })}
+                {([
+                  { title: t('إكلينيكية','Clinical'), list: clinicalSpecialties },
+                  { title: t('أكاديمية','Academic'), list: academicSpecialties },
+                ]).map(group => (
+                  <div key={group.title} className="space-y-2">
+                    <Label>{group.title}</Label>
+                    <div className="flex flex-wrap gap-2">
+                      {group.list.map(spec => {
+                        const isSelected = tempAdvancedFilter.subjects.includes(spec.id);
+                        return (
+                          <button
+                            key={spec.id}
+                            type="button"
+                            onClick={() => {
+                              setTempAdvancedFilter(prev => {
+                                const subjects = prev.subjects.includes(spec.id)
+                                  ? prev.subjects.filter(s => s !== spec.id)
+                                  : [...prev.subjects, spec.id];
+                                return { ...prev, subjects };
+                              });
+                            }}
+                            className={`min-h-[48px] px-3.5 rounded-2xl border font-bold text-sm transition-all active:scale-95 ${
+                              isSelected
+                                ?'bg-mint/15 border-mint text-mint'
+                                :'bg-ink-3/60 border-ink-4 text-white/75'
+                            }`}
+                          >
+                            {languageState ==='Arabic' ? spec.nameAr : spec.nameEn}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
+                ))}
 
-                {/* Academic Specialties - HORIZONTAL */}
-                <div className="space-y-1.5">
-                  <span className="text-[10px] font-black uppercase text-zinc-500 tracking-wider block">
-                    {languageState === 'Arabic' ? 'تخصصات أكاديمية (أساسية)' : 'Academic Specialties'}
-                  </span>
-                  <div className="flex gap-1.5 overflow-x-auto pb-2 snap-x scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
-                    {academicSpecialties.map(spec => {
-                      const isSelected = tempAdvancedFilter.subjects.includes(spec.id);
-                      return (
-                        <button
-                          key={spec.id}
-                          type="button"
-                          onClick={() => {
-                            setTempAdvancedFilter(prev => {
-                              const subjects = prev.subjects.includes(spec.id)
-                                ? prev.subjects.filter(s => s !== spec.id)
-                                : [...prev.subjects, spec.id];
-                              return { ...prev, subjects };
-                            });
-                          }}
-                          className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border ${
-                            isSelected 
-                              ? 'bg-sky-500/10 border-sky-500 text-sky-400' 
-                              : 'bg-zinc-950 border-zinc-850 text-zinc-400 hover:text-zinc-200'
-                          }`}
-                        >
-                          {languageState === 'Arabic' ? spec.nameAr : spec.nameEn}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Custom Modules for Selected Specialties */}
+                {/* per-subject modules */}
                 {tempAdvancedFilter.subjects.length > 0 && (
-                  <div className="space-y-2 border-t border-zinc-800/60 pt-3">
-                    <span className="text-[9px] font-black uppercase text-zinc-500 tracking-wider block">
-                      {languageState === 'Arabic' ? 'تحديد موديول التخصصات المختارة (اختياري)' : 'Custom Modules for Selected Specialties (Optional)'}
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-36 overflow-y-auto pr-1">
+                  <div className="space-y-2 border-t border-white/5 pt-3">
+                    <Label>{t('موديول لكل تخصص (اختياري)','Module per specialty (optional)')}</Label>
+                    <div className="space-y-1.5">
                       {tempAdvancedFilter.subjects.map(subId => {
                         const spec = [...clinicalSpecialties, ...academicSpecialties].find(s => s.id === subId);
                         if (!spec) return null;
                         return (
-                          <div key={subId} className="flex items-center justify-between p-1.5 bg-zinc-950 border border-zinc-850/60 rounded-xl">
-                            <span className="text-[10px] font-bold text-zinc-300 truncate max-w-[120px]">
-                              {languageState === 'Arabic' ? spec.nameAr : spec.nameEn}
+                          <div key={subId} className="flex items-center justify-between gap-2 p-2 bg-ink-3/60 border border-ink-4 rounded-2xl">
+                            <span className="text-sm font-bold text-white/80 break-words min-w-0 flex-1">
+                              {languageState ==='Arabic' ? spec.nameAr : spec.nameEn}
                             </span>
-                            <div className="relative">
-                              <select
-                                value={tempAdvancedFilter.subjectModules?.[subId] || 'All'}
-                                onChange={(e) => {
-                                  const mId = e.target.value;
-                                  setTempAdvancedFilter(prev => ({
-                                    ...prev,
-                                    subjectModules: {
-                                      ...(prev.subjectModules || {}),
-                                      [subId]: mId
-                                    }
-                                  }));
-                                }}
-                                className="appearance-none bg-zinc-900 border border-zinc-800 text-[9px] font-black text-white rounded pl-2 pr-6 py-0.5 outline-none focus:border-sky-500 transition-all cursor-pointer"
-                              >
-                                <option value="All">{languageState === 'Arabic' ? 'الكل' : 'All'}</option>
-                                {Object.entries(MODULE_MAPPINGS).map(([id, m]) => (
-                                  <option key={id} value={id}>
-                                    {languageState === 'Arabic' ? m.nameAr : m.nameEn}
-                                  </option>
-                                ))}
-                              </select>
-                              <div className="absolute inset-y-0 right-0 flex items-center pr-1.5 pointer-events-none text-zinc-400">
-                                <ChevronDown className="w-2.5 h-2.5" />
-                              </div>
-                            </div>
+                            <select
+                              aria-label={t(`موديول ${spec.nameAr}`, `${spec.nameEn} module`)}
+                              value={tempAdvancedFilter.subjectModules?.[subId] ||'All'}
+                              onChange={(e) => {
+                                const mId = e.target.value;
+                                setTempAdvancedFilter(prev => ({
+                                  ...prev,
+                                  subjectModules: { ...(prev.subjectModules || {}), [subId]: mId }
+                                }));
+                              }}
+                              className="w-1/2 min-w-0 min-h-12 bg-ink border border-ink-4 text-sm font-bold text-white rounded-xl px-2.5 py-2 outline-none focus:border-mint"
+                            >
+                              <option value="All">{t('الكل','All')}</option>
+                              {Object.entries(MODULE_MAPPINGS).map(([id, m]) => (
+                                <option key={id} value={id}>{languageState ==='Arabic' ? m.nameAr : m.nameEn}</option>
+                              ))}
+                            </select>
                           </div>
                         );
                       })}
                     </div>
                   </div>
                 )}
-
-                {/* Module-specific general filter configuration */}
-                <div className="border-t border-zinc-800/60 pt-3 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-xs font-bold text-white block">
-                        {languageState === 'Arabic' ? 'تصفية المواد بموديول عام' : 'Filter by General Module'}
-                      </span>
-                    </div>
-                    <label className="relative inline-flex items-center cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={tempAdvancedFilter.moduleFilterEnabled}
-                        onChange={(e) => setTempAdvancedFilter(prev => ({
-                          ...prev,
-                          moduleFilterEnabled: e.target.checked
-                        }))}
-                        className="sr-only peer"
-                      />
-                      <div className="w-8 h-4 bg-zinc-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-zinc-400 after:border-zinc-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-sky-600 peer-checked:after:bg-white"></div>
-                    </label>
-                  </div>
-
-                  {tempAdvancedFilter.moduleFilterEnabled && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="flex gap-1.5 overflow-x-auto pb-1.5 scrollbar-none"
-                    >
-                      {Object.entries(MODULE_MAPPINGS).map(([id, item]) => (
-                        <button
-                          type="button"
-                          key={id}
-                          onClick={() => setTempAdvancedFilter(prev => ({ ...prev, selectedModule: id }))}
-                          className={`shrink-0 px-2.5 py-1 rounded-lg border text-[10px] font-bold transition-all text-center ${
-                            tempAdvancedFilter.selectedModule === id
-                              ? 'bg-sky-600/10 border-sky-500 text-sky-400'
-                              : 'bg-zinc-900 border-zinc-850 text-zinc-400 hover:text-white'
-                          }`}
-                        >
-                          {languageState === 'Arabic' ? item.nameAr : item.nameEn}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </div>
-
               </div>
 
-              {/* Action Buttons */}
-              <div className="border-t border-zinc-800 pt-3 mt-4 flex gap-2 shrink-0">
+              <div className="shrink-0 px-5 py-3 pb-safe border-t border-white/5 flex gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const disabledFilter = { enabled: false, subjects: [], moduleFilterEnabled: false, selectedModule:'GIT', subjectModules: {} };
+                    if (editingFilterType ==='single') { setSingleAdvancedFilter(disabledFilter); setSingleSpecialty('All'); }
+                    else { setMultiAdvancedFilter(disabledFilter); setMultiSpecialty('All'); }
+                    setIsAdvancedModalOpen(false);
+                  }}
+                  className="min-h-[52px] px-5 rounded-2xl bg-ink-3 border border-ink-4 text-white/60 font-display font-bold active:scale-95 transition-transform"
+                >
+                  {t('إلغاء','Disable')}
+                </button>
                 <button
                   type="button"
                   onClick={() => {
                     const finalFilter = {
                       enabled: true,
-                      subjects: tempAdvancedFilter.subjects.length === 0 
-                        ? [...clinicalSpecialties.map(s => s.id), ...academicSpecialties.map(s => s.id)] 
+                      subjects: tempAdvancedFilter.subjects.length === 0
+                        ? [...clinicalSpecialties.map(s => s.id), ...academicSpecialties.map(s => s.id)]
                         : tempAdvancedFilter.subjects,
                       moduleFilterEnabled: tempAdvancedFilter.moduleFilterEnabled,
                       selectedModule: tempAdvancedFilter.selectedModule,
                       subjectModules: tempAdvancedFilter.subjectModules || {}
                     };
-                    if (editingFilterType === 'single') {
-                      setSingleAdvancedFilter(finalFilter);
-                    } else {
-                      setMultiAdvancedFilter(finalFilter);
-                    }
+                    if (editingFilterType ==='single') setSingleAdvancedFilter(finalFilter);
+                    else setMultiAdvancedFilter(finalFilter);
                     setIsAdvancedModalOpen(false);
                   }}
-                  className="flex-1 py-2.5 bg-sky-600 hover:bg-sky-500 text-white rounded-xl text-xs font-black transition-colors shadow-lg"
+                  className="flex-1 min-h-[52px] rounded-2xl bg-pop text-ink font-display font-bold active:scale-95 transition-transform shadow-[0_4px_0_0_#0369A1]"
                 >
-                  {languageState === 'Arabic' ? 'تفعيل الفلتر المتقدم' : 'Apply Advanced Filter'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    const disabledFilter = {
-                      enabled: false,
-                      subjects: [],
-                      moduleFilterEnabled: false,
-                      selectedModule: 'GIT',
-                      subjectModules: {}
-                    };
-                    if (editingFilterType === 'single') {
-                      setSingleAdvancedFilter(disabledFilter);
-                      setSingleSpecialty('All');
-                    } else {
-                      setMultiAdvancedFilter(disabledFilter);
-                      setMultiSpecialty('All');
-                    }
-                    setIsAdvancedModalOpen(false);
-                  }}
-                  className="py-2.5 px-3 bg-zinc-850 hover:bg-zinc-800 text-zinc-400 hover:text-white rounded-xl text-xs font-bold transition-colors"
-                >
-                  {languageState === 'Arabic' ? 'تعطيل وإعادة ضبط' : 'Disable'}
+                  {t('تفعيل الفلتر','Apply filter')}
                 </button>
               </div>
             </motion.div>
-          </div>
+          </ModalFrame>
         )}
       </AnimatePresence>
 
-      {/* Exit Confirmation Modal */}
-      <AnimatePresence>
-        {showExitConfirm && (
-          <div className="fixed inset-0 bg-zinc-950/85 backdrop-blur-md z-[150] flex items-center justify-center p-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
-              className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-md p-6 relative shadow-2xl flex flex-col my-auto"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-red-600/10 border border-red-500/30 rounded-full flex items-center justify-center text-red-400">
-                  <AlertCircle size={20} />
-                </div>
-                <div>
-                  <h3 className="text-lg font-black text-white">
-                    {languageState === 'Arabic' ? 'تأكيد الخروج' : 'Confirm Exit'}
+      {/* ================= CASE DEBRIEF FLASHCARD SHEET ================= */}
+      <Sheet
+        open={showFlashcardModal}
+        onClose={() => setShowFlashcardModal(false)}
+        title={t('مراجعة الحالة', 'Case review')}
+        dir={languageState === 'Arabic' ? 'rtl' : 'ltr'}
+        footer={
+          <div className="flex gap-2 py-2">
+            <BigBtn onClick={() => setShowFlashcardModal(false)} variant="dark" className="flex-1">
+              {t('إغلاق', 'Close')}
+            </BigBtn>
+            <BigBtn onClick={() => { setShowFlashcardModal(false); startSingleGame(); }} className="flex-1">
+              {t('الحالة التالية', 'Next Case')}
+            </BigBtn>
+          </div>
+        }
+      >
+        {singleWord && (() => {
+          const flashcard = getSoloFlashcard(singleWord, singleOptions, languageState);
+          const soloClues = getSoloProgressiveHints(singleWord, languageState);
+
+          return (
+            <div className="space-y-3.5 pb-2">
+              {/* Case Header Card */}
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-ink-3 to-ink-2 border border-mint/30 flex flex-col items-start gap-2">
+                <div className="min-w-0">
+                  <span className="text-xs font-bold text-mint uppercase tracking-wider block">
+                    {t('الحالة المشخصة', 'CONFIRMED DIAGNOSIS')}
+                  </span>
+                  <h3 className="font-display font-bold text-xl text-white break-words">
+                    {singleWord.word.English}
                   </h3>
-                  <p className="text-xs text-zinc-550 font-semibold">
-                    {languageState === 'Arabic' ? 'تنبيه: سيتم إنهاء اللعبة الحالية' : 'Warning: Current game will be terminated'}
+                  <p className="text-sm font-semibold text-white/75 break-words">
+                    {singleWord.word.Arabic}
                   </p>
                 </div>
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-mint/10 text-mint border border-mint/25 shrink-0">
+                  {singleWord.subjects[0] || (languageState === 'Arabic' ? 'سريري' : 'Clinical')}
+                </span>
               </div>
 
-              <p className="text-sm text-zinc-300 leading-relaxed mb-6 font-medium">
-                {languageState === 'Arabic' 
-                  ? 'هل أنت متأكد من رغبتك بالرجوع للقائمة والبدء من جديد؟ سيؤدي هذا إلى مسح التقدم الحالي.' 
-                  : 'Are you sure you want to quit and return to the main menu? Your current game progress will be lost.'}
-              </p>
+              {/* 1. Etiology Card */}
+              <div className="p-3.5 rounded-2xl bg-ink-3/70 border border-ink-4 space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-display font-black text-sky-400">
+                  <Activity size={15} />
+                  <span>{t('المسبب والآلية', 'Primary Etiology & Pathophysiology')}</span>
+                </div>
+                <p className="text-[0.84375rem] sm:text-sm font-medium text-white/95 leading-relaxed text-start">
+                  {flashcard.etiology}
+                </p>
+              </div>
 
-              <div className="flex gap-3">
+              {/* 2. Gold Standard Dx Card */}
+              <div className="p-3.5 rounded-2xl bg-ink-3/70 border border-ink-4 space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-display font-black text-gold">
+                  <Target size={15} />
+                  <span>{t('الفحص التأكيدي', 'Gold Standard Diagnostic Test')}</span>
+                </div>
+                <p className="text-[0.84375rem] sm:text-sm font-medium text-white/95 leading-relaxed text-start">
+                  {flashcard.goldStandard}
+                </p>
+              </div>
+
+              {/* 3. First-line Management Card */}
+              <div className="p-3.5 rounded-2xl bg-ink-3/70 border border-ink-4 space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-display font-black text-mint">
+                  <Pill size={15} />
+                  <span>{t('العلاج الأولي', 'First-line Clinical Management')}</span>
+                </div>
+                <p className="text-[0.84375rem] sm:text-sm font-medium text-white/95 leading-relaxed text-start">
+                  {flashcard.firstLineRx}
+                </p>
+              </div>
+
+              {/* 4. Differential Diagnostic Key Card */}
+              <div className="p-3.5 rounded-2xl bg-ink-3/70 border border-purple-500/30 space-y-1.5">
+                <div className="flex items-center gap-2 text-xs font-display font-black text-purple-300">
+                  <FileText size={15} />
+                  <span>{t('سبب استبعاد البدائل', 'How We Ruled Out The Other 4 Options')}</span>
+                </div>
+                <p className="text-[0.84375rem] sm:text-sm font-medium text-white/95 leading-relaxed text-start">
+                  {flashcard.diffKey}
+                </p>
+              </div>
+
+              {/* 5. Clinical Pearl Card */}
+              {soloClues.pearl && (
+                <div className="p-3 rounded-2xl bg-gold/10 border border-gold/25 flex items-start gap-2.5">
+                  <Sparkles size={16} className="text-gold shrink-0 mt-0.5" />
+                  <div className="space-y-0.5 text-start">
+                    <span className="text-xs font-bold text-gold block">
+                      {t('معلومة سريرية', 'High-Yield Clinical Pearl')}
+                    </span>
+                    <p className="text-xs sm:text-[0.8125rem] text-white/90 font-medium leading-relaxed">
+                      {soloClues.pearl}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })()}
+      </Sheet>
+
+      {/* ================= EXIT CONFIRM ================= */}
+      <AnimatePresence>
+        {showExitConfirm && (
+          <ModalFrame open={showExitConfirm} onClose={() => setShowExitConfirm(false)} title={t('تخرج من اللعبة؟', 'Quit the game?')} dir={languageState === 'Arabic' ? 'rtl' : 'ltr'} className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[210] flex items-center justify-center p-6">
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-ink-2 border border-ink-4 rounded-3xl w-full max-w-xs p-6 text-center space-y-4"
+              dir={languageState ==='Arabic' ?'rtl' :'ltr'}
+            >
+              <span className="w-16 h-16 rounded-full bg-coral/15 border border-coral/30 flex items-center justify-center mx-auto text-coral">
+                <DoorOpen size={30} />
+              </span>
+              <div className="space-y-1">
+                <h3 className="font-display font-bold text-xl text-white">{t('تخرج من اللعبة؟','Quit the game?')}</h3>
+                <p className="text-sm font-bold text-white/70">{t('التقدم الحالي هيتلغي','Current progress will be lost')}</p>
+              </div>
+              <div className="flex gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setShowExitConfirm(false)}
+                  className="flex-1 min-h-[48px] rounded-2xl bg-ink-3 border border-ink-4 text-white/70 font-display font-bold active:scale-95 transition-transform"
+                >
+                  {t('كمل','Stay')}
+                </button>
                 <button
                   type="button"
                   onClick={() => {
-                    setPhase('ENTRY');
+                    if (roomUnsubscribeRef.current) {
+                      roomUnsubscribeRef.current();
+                      roomUnsubscribeRef.current = null;
+                    }
+                    if (gameModeLock) onGoBack(); else setPhase('ENTRY');
                     setRoomId('');
                     setOnlineRoomState(null);
                     setOfflineVotes({});
                     setOfflineGuesses({});
                     setShowExitConfirm(false);
                   }}
-                  className="flex-1 py-3 bg-red-600 hover:bg-red-500 text-white rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 shadow-lg transform active:scale-[0.98]"
+                  className="flex-1 min-h-[48px] rounded-2xl bg-coral-deep text-white font-display font-bold active:scale-95 transition-transform"
                 >
-                  {languageState === 'Arabic' ? 'نعم، خروج' : 'Yes, Exit'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setShowExitConfirm(false)}
-                  className="flex-1 py-3 bg-zinc-800 hover:bg-zinc-750 text-zinc-300 rounded-xl text-xs font-bold transition-all duration-300"
-                >
-                  {languageState === 'Arabic' ? 'إلغاء' : 'Cancel'}
+                  {t('خروج','Quit')}
                 </button>
               </div>
             </motion.div>
-          </div>
+          </ModalFrame>
         )}
       </AnimatePresence>
 
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 5px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 12px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(14, 165, 233, 0.35);
-          border-radius: 12px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(14, 165, 233, 0.6);
-        }
-      `}</style>
+      {/* ================= SPONSORED AD MODAL (PRE-ROUND & PRE-REVEAL) ================= */}
+      <InterstitialAdModal
+        language={languageState}
+        ad={activeAd}
+        isOpen={adModalOpen}
+        headerTitle={adHeaderTitle}
+        skipButtonText={adSkipButtonText}
+        onClose={() => {
+          setAdModalOpen(false);
+          setActiveAd(null);
+          setWordRevealedAfterAd(true);
+        }}
+      />
     </div>
   );
 };

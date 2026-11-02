@@ -5,3 +5,14 @@ coverage/
 *.log
 .env*
 !.env.example
+serviceAccountKey.json
+*.key.json
+.shots/
+
+# Binaries & Android build outputs
+*.apk
+*.aab
+
+# Local reports & temp dumps
+medical_words_report.html
+extracted_forensic_toxicology_images/

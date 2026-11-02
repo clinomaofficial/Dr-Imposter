@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { 
   initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
   collection, 
   addDoc, 
   getDocs, 
@@ -16,6 +18,7 @@ import {
 } from 'firebase/firestore';
 import firebaseConfig from '../firebase-applet-config.json';
 import { AppUser } from './types';
+import { isOwnerEmail } from './lib/ownerAdminIdentity';
 
 const getEnvVar = (key: string, fallback: string) => {
   const value = import.meta.env[key];
@@ -28,11 +31,13 @@ const getEnvVar = (key: string, fallback: string) => {
 const firebaseConfigFromEnv = {
   apiKey: getEnvVar('VITE_FIREBASE_API_KEY', firebaseConfig.apiKey),
   authDomain: getEnvVar('VITE_FIREBASE_AUTH_DOMAIN', firebaseConfig.authDomain),
+  databaseURL: getEnvVar('VITE_FIREBASE_DATABASE_URL', (firebaseConfig as any).databaseURL || "https://dr-imposter-default-rtdb.europe-west1.firebasedatabase.app"),
   projectId: getEnvVar('VITE_FIREBASE_PROJECT_ID', firebaseConfig.projectId),
   storageBucket: getEnvVar('VITE_FIREBASE_STORAGE_BUCKET', firebaseConfig.storageBucket),
   messagingSenderId: getEnvVar('VITE_FIREBASE_MESSAGING_SENDER_ID', firebaseConfig.messagingSenderId),
   appId: getEnvVar('VITE_FIREBASE_APP_ID', firebaseConfig.appId),
-  firestoreDatabaseId: getEnvVar('VITE_FIREBASE_FIRESTORE_DATABASE_ID', firebaseConfig.firestoreDatabaseId),
+  measurementId: getEnvVar('VITE_FIREBASE_MEASUREMENT_ID', (firebaseConfig as any).measurementId || "G-SNEQXTRRJD"),
+  firestoreDatabaseId: getEnvVar('VITE_FIREBASE_FIRESTORE_DATABASE_ID', (firebaseConfig as any).firestoreDatabaseId || ""),
 };
 
 // CRITICAL DEBUG: Log where each variable is coming from (Sanitized)
@@ -42,13 +47,11 @@ const logSource = (key: string, envKey: string) => {
   return hasEnv ? `ENV (${envKey})` : 'JSON (fallback)';
 };
 
-// CRITICAL: Ensure we use the exact database ID string.
-// If the environment variable is 'default' or '(default)', but the JSON config has a specific ID (ai-studio-...),
-// we MUST use the specific ID because AI Studio projects often don't have a 'default' database.
+// Ensure we use (default) for standard production databases and never fall into stale AI Studio sandboxes
 const rawDbId = firebaseConfigFromEnv.firestoreDatabaseId;
-const dbId = (rawDbId && rawDbId !== 'default' && rawDbId !== '(default)')
+const dbId = (rawDbId && rawDbId !== 'default' && rawDbId !== '(default)' && !rawDbId.startsWith('ai-studio-'))
   ? rawDbId
-  : (firebaseConfig.firestoreDatabaseId && firebaseConfig.firestoreDatabaseId !== 'default' ? firebaseConfig.firestoreDatabaseId : undefined);
+  : undefined;
 
 const maskKey = (key: string) => key ? `${key.substring(0, 6)}...${key.substring(Math.max(0, key.length - 4))}` : 'MISSING';
 
@@ -62,12 +65,19 @@ console.log("🔥 Firebase Init Diagnostics:", {
 const app = initializeApp(firebaseConfigFromEnv);
 export const auth = getAuth(app);
 
-// Use initializeFirestore. We'll toggle experimentalForceLongPolling to see if it fixes the 'offline' issue.
-const firestoreSettings = {
-  // We keep this enabled by default as it's usually required in AI Studio, 
-  // but if it fails, the user might need to check their network.
-  experimentalForceLongPolling: true,
-};
+// Production-grade Firestore settings with bounded cache (50MB) to prevent memory leaks and app freezes
+let firestoreSettings: any = {};
+try {
+  firestoreSettings = {
+    localCache: persistentLocalCache({
+      tabManager: persistentMultipleTabManager(),
+      cacheSizeBytes: 50 * 1024 * 1024, // 50MB bound prevents unbounded SQLite/IndexedDB growth
+    })
+  };
+} catch {
+  // Graceful fallback if persistent storage is unavailable in certain restricted environments
+  firestoreSettings = {};
+}
 
 // Explicitly handle the undefined case for the 3rd argument
 export const db = dbId 
@@ -82,7 +92,7 @@ export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
   const userRef = doc(db, 'users', user.uid);
   try {
     const userSnap = await getDoc(userRef);
-    const isManager = user.email === 'salahsalman4455@gmail.com';
+    const isManager = isOwnerEmail(user.email);
     
     if (userSnap.exists()) {
       const userData = userSnap.data() as AppUser;
@@ -121,10 +131,10 @@ export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
           medicalDetective: true,
           tikTeb: true
         },
-        subscriptionActive: isManager, 
-        totalAttempts: isManager ? 99999 : (isAdmin ? 10 : 3),
-        remainingAttempts: isManager ? 99999 : (isAdmin ? 10 : 3),
-        remainingDetectiveAttempts: isManager ? 99999 : (isAdmin ? 10 : 1),
+        subscriptionActive: true, // Free & open play by default
+        totalAttempts: 99999,     // Unlimited free gameplay
+        remainingAttempts: 99999,
+        remainingDetectiveAttempts: 99999,
         lastLogin: Date.now(),
         detectiveScore: 0
       };
@@ -133,7 +143,7 @@ export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
     }
   } catch (error: any) {
     console.warn("⚠️ Firestore is offline or unprovisioned. Falling back to local/offline user state:", error);
-    const isManager = user.email === 'salahsalman4455@gmail.com';
+    const isManager = isOwnerEmail(user.email);
     const fallbackUser: AppUser = {
       id: user.uid,
       email: user.email || 'offline_user@dr-imposter.com',
@@ -146,10 +156,10 @@ export const syncUserDoc = async (user: any): Promise<AppUser | null> => {
         medicalDetective: true,
         tikTeb: true
       },
-      subscriptionActive: isManager, 
-      totalAttempts: isManager ? 99999 : 3,
-      remainingAttempts: isManager ? 99999 : 3,
-      remainingDetectiveAttempts: isManager ? 99999 : 1,
+      subscriptionActive: true,
+      totalAttempts: 99999,
+      remainingAttempts: 99999,
+      remainingDetectiveAttempts: 99999,
       lastLogin: Date.now(),
       detectiveScore: 0,
       isOfflineFallback: true

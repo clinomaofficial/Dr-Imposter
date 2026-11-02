@@ -189,6 +189,9 @@ export interface AppUser {
   pseudonym?: string;
   detectiveScore: number;
   isOfflineFallback?: boolean;
+  academicLevel?: string;
+  academicYear?: string;
+  university?: string;
 }
 
 export interface DetectiveRank {

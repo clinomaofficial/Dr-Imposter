@@ -6,56 +6,56 @@ export interface HintSet {
 export const HINTS_DICTIONARY: Record<string, HintSet> = {
   "w1": {
     "Arabic": [
-      "عضو عضلي ينبض باستمرار دون توقف طوال حياتك ومحمي بالقفص الصدري.",
-      "يقع في المنتصف الأيسر للصدر، ويحتوي على أربع حجرات رئيسية وصمامات.",
-      "أمراضه تشمل الذبحة الصدرية واحتشاء العضلة القلبية وتسارع النبض.",
-      "يضخ الدم الغني بالأكسجين لجميع أنحاء الجسم عبر الشريان الأورطي.",
-      "تسمع أصواته (لب-دب) نتيجة انغلاق الصمامات الأذينية والبطينية.",
-      "حجمه يقارب حجم قبضة يدك المغلقة ويزن حوالي 300 جرام.",
-      "كهرباء هذا العضو تبدأ من العقدة الجيبية الأذينية (SA Node).",
-      "يتغذى بالأكسجين عن طريق الشرايين التاجية (Coronary Arteries).",
-      "في حالة توقفه المفاجئ، نلجأ فوراً لعملية الإنعاش القلبي الرئوي (CPR).",
-      "زيادة سمك جدرانه قد تدل على ضغط دم مرتفع مزمن لم يتم علاجه."
+        "عضو عضلي ينبض باستمرار بمعدل 60-100 دقة بالدقيقة في المنصف الأوسط للصدر، وتعتمد كفاءته الانقباضية على قانون فرانك-ستارلينغ وتوازن أيونات الكالسيوم.",
+        "يمتد محوره الكهربائي من القاعدة إلى القمة (Apex) عند الفضاء الوربي الخامس الأيسر، ويتعرض لقصور كفاءة الضخ بنوعيه (HFrEF بانخفاض الكسر القذفي أو HFpEF بالحفاظ عليه).",
+        "احتشاء عضلته (STEMI) يظهر بارتفاع إنزيمات التروبونين وتغيرات ST بتخطيط كهربية العضلة (ECG)، ويتطلب تدخلاً بالقسطرة (PCI) في نافذة ذهبية خلال 90 دقيقة لتجنب تمزق جداره.",
+        "يضخ نحو 5 لترات من الدم كل دقيقة عبر الصمام الأورطي، وهبوط نتاجه يسبب صدمة قلبية (Cardiogenic shock) تتطلب أدوية مقوية لانقباضه كالدوبوتامين والنورأدرينالين.",
+        "تسمع أصواته بالسماعة الطبية (S1 و S2)، وظهور الصوت الثالث (S3 Gallop) يعد علامة صريحة على فرط الحمل الحجمي، بينما الصوت الرابع (S4) يدل على تيبس جدار البطين.",
+        "تضخمه الشديد يتجاوز وزنه الطبيعي (300 جم) ليحدث ما يعرف بالتضخم البقري العضلي (Cor bovinum) نتيجة اعتلال عضلي توسعي أو ارتفاع ضغط دم مهمل، مما يهدد بالرجفان البطيني.",
+        "تنظيمه الكهربائي يبدأ من عقدة كيث-فلاك الجيبية (SA Node)، واضطراب دائرته يسبب الرجفان الأذيني (AFib) المهدد بجلطات المخ السائبة، مما يستدعي مضادات التخثر.",
+        "ترويته الدموية تعتمد على الشرايين المغذية لعضلة القلب التي تمتلئ حصرياً أثناء الانبساط (Diastole)؛ وانسداد الشريان التاجي الأيسر النازل (LAD) يعرف بلقب صانع الأرامل لخطورته.",
+        "توقفه المفاجئ (Cardiac arrest) يستوجب بروتوكول دعم الحياة المتقدم (ACLS) بإعطاء صدمات كهربائية للرجفان البطيني وحقن الإبينفرين والأميودارون الوريدي لإنقاذ الدماغ.",
+        "تضخم جدار بطينه الأيسر (LVH) يرافقه خطر اعتلال النسيج العضلي التضخمي الانسدادي (HOCM) والوفاة المفاجئة للرياضيين، ويعالج بمحصرات بيتا مع تجنب موسعات الأوعية."
     ],
     "English": [
-      "A muscular organ that beats continuously throughout your entire life without stopping.",
-      "Located in the middle-left of the chest, containing four main chambers and valves.",
-      "Conditions include myocardial infarction, angina pectoris, and arrhythmia.",
-      "Pumps oxygenated blood to the entire body via the aorta.",
-      "Produces 'lub-dub' sounds primarily from the closing of heart valves.",
-      "Roughly the size of a closed fist and weighs about 300 grams.",
-      "Electrical impulses originate in the sinoatrial (SA) node.",
-      "Supplied with oxygen by the coronary arteries.",
-      "Sudden cessation requires immediate cardiopulmonary resuscitation (CPR).",
-      "Hypertrophy of its walls often results from chronic untreated hypertension."
+        "A muscular organ beating continuously at 60-100 bpm in the middle mediastinum, whose contractility is governed by the Frank-Starling mechanism and calcium-induced calcium release.",
+        "Its electrical axis points toward the apex in the 5th left intercostal space; prone to pump failure categorized as reduced (HFrEF) or preserved (HFpEF) ejection fraction.",
+        "Myocardial infarction (STEMI) manifests with elevated high-sensitivity troponin and ST elevations on ECG, requiring emergent PCI within a 90-minute door-to-balloon window.",
+        "Pumps a physiological cardiac output of 5 L/min across the aortic valve; severe pump failure precipitates cardiogenic shock necessitating inotropic support (dobutamine, norepinephrine).",
+        "Auscultation reveals physiological S1 and S2 sounds; an audible S3 gallop indicates elevated ventricular filling pressures, whereas S4 reflects impaired diastolic compliance.",
+        "Extreme cardiomegaly exceeding normal weight (300 g) produces 'cor bovinum' in dilated cardiomyopathy or end-stage hypertension, predisposing to malignant ventricular arrhythmias.",
+        "Intrinsic electrical pacing originates in the sinoatrial (SA) node; micro-reentry causes atrial fibrillation (AFib) carrying high thromboembolic stroke risk requiring anticoagulation.",
+        "Coronary perfusion occurs predominantly during ventricular diastole; acute occlusion of the left anterior descending (LAD) branch carries the ominous moniker 'widow-maker'.",
+        "Sudden cardiac arrest mandates advanced cardiovascular life support (ACLS) defibrillation for shockable rhythms (VF/pVT) and rapid epinephrine/amiodarone administration.",
+        "Left ventricular hypertrophy is tied to hypertrophic obstructive cardiomyopathy (HOCM), a leading cause of sudden cardiac death in young athletes managed with beta-blockers."
     ]
-  },
+},
   "w2": {
     "Arabic": [
-      "أكبر غدة وعضو داخلي صلب في جسم الإنسان ويقع في الجزء العلوي الأيمن من البطن.",
-      "يلعب دوراً رئيسياً في تصفية السموم وتجميع المغذيات وصناعة الصفراء.",
-      "يصاب بالتليف نتيجة الالتهابات الفيروسية المزمنة أو الدهون المتراكمة.",
-      "يخزن الجلوكوز على شكل جليكوچين ويحرره عند حاجة الجسم للطاقة.",
-      "هو العضو الوحيد في الجسم القادر على إعادة تجديد أنسجته المفقودة.",
-      "ينتج بروتينات الدم الهامة مثل الألبومين وعوامل التجلط.",
-      "عند فشله، يتحول لون الجلد والعين إلى الأصفر (الصفراء أو اليرقان).",
-      "يتكون من فصين رئيسيين (أيمن وأيسر) ويفصل بينهما الرباط المنجلي.",
-      "يحصل على معظم ترويته الدموية عبر الوريد البابي الكبدي.",
-      "مخزن رئيسي للفيتامينات مثل A و D و B12 والمعادن مثل الحديد."
+        "أكبر غدة وعضو مصمت داخل تجويف البطن يزن 1.5 كجم، ويحتوي على الفصيصات الحشوية سداسية الأضلاع وخلايا كوبفر المناعية، ويصاب باحتقان الدم الحاد في متلازمة باد خياري (Budd-Chiari).",
+        "يقوم بتصفية سموم الجسم واستقلاب الأدوية عبر إنزيمات السيتوكروم P450، وتسممه بالباراسيتامول يسبب نخراً خلوياً حاداً يُعالج بمضاد الترياق ن-أسيتيل سيستئين (NAC).",
+        "يتعرض للتليف الكبدي (Cirrhosis) نتيجة التهاب فيروسي مزمن أو داء التشحم الحشوي (NASH) مما يرفع الضغط البابي ويسبب دوالي المريء النازفة التي تعالج بالربط وحقن الأوكتريوتيد.",
+        "يتحكم في توازن الجلوكوز عبر تصنيع الجليكوجين واستحداث السكر (Gluconeogenesis)، وفشله الحاد يسبب هبوطاً مهدداً للحياة في مستوى سكر الدم وحماضاً لاكتياً حاداً.",
+        "هو العضو البشري الداخلي الوحيد القادر على تجديد أنسجته ذاتياً عبر تكاثر خلاياه المتخصصة، وتراكم النحاس بداخله يسبب داء ويلسون مع حلقات كايزر-فلايشر بقرنية العين.",
+        "المصنع الوحيد للألبومين وعوامل التجلط (1972 المعتمدة على فيتامين K)، وتدهوره يرفع زمن البروثرومبين (INR) ونقص الصفائح نتيجة تضخم الطحال الاحتقاني.",
+        "عجزه عن إفراز البيليروبين يسبب اليرقان الخلوي الداخلي (Jaundice)، وفشله في تحويل الأمونيا إلى يوريا يسبب اعتلال الدماغ الأيضي بالتسمم الأموني (Encephalopathy) التي تعالج باللاكتولوز والريفاميكسين.",
+        "يقسمه الرباط المنجلي لفصين، ويقيّم مرضاة تليفه المتأخر بمقياس تشايلد-بو (Child-Pugh) ومقياس MELD لحجز أولوية زراعة هذا العضو الحيوي.",
+        "يتلقى 75% من ترويته من الوريد البابي المحمل بمغذيات الأمعاء، وارتفاع ضغطه يسبب الاستسقاء البطني والتهاب الصفاق الجرثومي العفوي (SBP) المعالج بالسيفوتاكسيم.",
+        "مخزن رئيسي للحديد والفيتامينات (B12, A, D)، والفرط المزمن في ترسيب الحديد يسبب داء ترسب الأصبغة الدموية (Hemochromatosis) والسكري البرونزي والسرطان الخلوي الأولي HCC."
     ],
     "English": [
-      "The largest solid internal organ and gland in the body, located in the upper right abdomen.",
-      "Plays a pivotal role in detoxification, nutrient processing, and bile synthesis.",
-      "Prone to cirrhosis under chronic viral inflammation or fatty accumulation.",
-      "Stores glucose as glycogen and releases it when energy is needed.",
-      "The only internal organ capable of natural regeneration of lost tissue.",
-      "Synthesizes crucial plasma proteins like albumin and clotting factors.",
-      "Failure results in jaundice, a yellowing of the skin and sclera.",
-      "Divided into two main lobes (right and left) by the falciform ligament.",
-      "Receives most of its blood supply via the hepatic portal vein.",
-      "Acts as a major storage site for vitamins A, D, B12, and iron."
+        "The largest internal solid organ and metabolic gland weighing 1.5 kg, structured into hexagonal lobules with Kupffer cells; acute venous outflow obstruction defines Budd-Chiari syndrome.",
+        "Executes hepatic biotransformation via cytochrome P450 enzymes; acute acetaminophen hepatotoxicity causes centrilobular necrosis antidote-managed with N-acetylcysteine (NAC).",
+        "Undergoes cirrhosis under chronic hepatitis B/C or NASH, culminating in portal hypertension and bleeding esophageal varices treated with endoscopic band ligation and octreotide.",
+        "Regulates systemic glucose via glycogen storage and de novo gluconeogenesis; fulminant acute hepatic failure triggers lethal refractory hypoglycemia and lactic acidosis.",
+        "The solitary human internal organ capable of full cellular regeneration; abnormal copper accumulation within it produces Wilson disease with Kayser-Fleischer corneal rings.",
+        "Synthesizes circulating albumin and vitamin K-dependent clotting factors (II, VII, IX, X); hepatic synthetic decompensation prolongs prothrombin time/INR.",
+        "Failure of bilirubin glucuronidation causes hepatic jaundice; impaired ammonia clearance causes hepatic encephalopathy manifesting with asterixis, managed with lactulose.",
+        "Anatomically partitioned by the falciform ligament; end-stage cirrhosis severity is classified by Child-Pugh and MELD scores to prioritize orthotopic liver transplantation.",
+        "Derives 75% of dual vascular inflow from the nutrient-rich portal vein; portal hypertension generates ascites susceptible to spontaneous bacterial peritonitis (SBP).",
+        "Acts as primary reservoir for iron, vitamins A, D, and B12; hereditary hemochromatosis causes iron overload, bronze diabetes, and high risk of hepatocellular carcinoma (HCC)."
     ]
-  },
+},
   "w3": {
     "Arabic": [
       "عضلة هيكلية بارزة في الجزء الأمامي من الذراع وتتكون من رأسين.",
@@ -116,7 +116,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "يتم قياسه مخبرياً عبر اختبار السكر التراكمي (HbA1c).",
       "في النوع الأول، يهاجم الجهاز المناعي خلايا بيتا في البنكرياس.",
       "في النوع الثاني، تظهر مقاومة من خلايا الجسم لتأثير هرمون الإنسولين.",
-      "قد يؤدي إلى حالة طارئة تسمى التحمض الكيتوني السكري (DKA).",
+      "قد يؤدي إلى حالة طارئة تسمى التحمض الكيتوني الأيضي الحاد (DKA).",
       "يعتبر المسبب الأول للفشل الكلوي وبتر الأطراف غير الحادث في الكبار.",
       "يُنصح المصابون به بممارسة الرياضة واتباع حمية منخفضة الكربوهيدرات.",
       "يتم علاجه إما بالأدوية الفموية أو بحقن الإنسولين تحت الجلد."
@@ -136,23 +136,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w231": {
     "Arabic": [
-      "مرض مداري شهير تسببه بروتوزوا وحيدة الخلية تنتقل عبر البعوض.",
-      "أبرز أعراضه نوبات الحمى الدورية الشديدة، الرعشة، والتعرق الغزير.",
-      "ينتقل عن طريق لدغة أنثى بعوضة الأنوفيلة (Anopheles).",
-      "يستهدف كرات الدم الحمراء ويسبب انفجارها الدوري (التحلل الدموي).",
-      "يسبب تضخماً كبيراً في الطحال وقر دم حاد (أنيميا).",
-      "العلاج الذهبي له هو مشتقات الأرتيميسينين (ACTs) أو الكوينين.",
-      "المسؤول عن أكثر من نصف مليون حالة وفاة سنوياً خاصة في أفريقيا."
-    ],
+        "طفيلي أولي مسوط ينتقل عبر الاتصال الجنسي ولا يمتلك طوراً كيسياً في دورة حياته.",
+        "يسبب إفرازات مهبلية رغوية مخضرة ذات رائحة كريهة وحكة مهبلية شديدة.",
+        "الفحص العياني لعنق الرحم بالمنظار يظهر احتقاناً حبيبياً نقطياً كالفراولة (Strawberry cervix).",
+        "الفحص المجهري المباشر للقطرة الرطبة (Wet mount) يكشف عن كائنات كمثرية سريعة الحركة متلوية.",
+        "علاجه النوعي هو الميترونيدازول الفموي بجرعة وحيدة مع ضرورة علاج الشريك الجنسي بالتزامن."
+  ],
     "English": [
-      "A famous tropical disease caused by a protozoan parasite transmitted by mosquitoes.",
-      "Characterized by classic periodic fevers, chills, and profuse sweating.",
-      "Transmitted to humans through the bite of an infected female Anopheles mosquito.",
-      "Invades and replicates inside red blood cells, causing periodic hemolysis.",
-      "Leads to severe hemolytic anemia and significant splenomegaly.",
-      "The gold standard treatment is Artemisinin-based combination therapies (ACTs).",
-      "Causes over half a million deaths annually, particularly in Sub-Saharan Africa."
-    ]
+        "A flagellated urogenital protozoan parasite lacking a cystic stage, transmitted exclusively through sexual contact.",
+        "Causes profuse, malodorous, frothy yellow-green vaginal discharge, vulvar pruritus, and dysuria.",
+        "Colposcopic examination classically reveals punctate mucosal hemorrhages termed the 'strawberry cervix'.",
+        "Direct saline wet mount microscopy demonstrates motile, pear-shaped flagellates exhibiting jerky corkscrew motility.",
+        "Treated definitively with a single oral dose of metronidazole, mandating concurrent therapy for sexual partners."
+  ]
   },
   "w232": {
     "Arabic": [
@@ -289,7 +285,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "يعالج بفاعلية كبيرة بدهان الجسم بالكامل من الرقبة للأسفل بكريم البيرميثرين 5% وتركه لـ 8-14 ساعة.",
       "يجب علاج جميع المخالطين والمقيمين في نفس المنزل في وقت واحد لمنع انتقال العدوى مجدداً.",
       "يجب غسل جميع ملابس وأغطية وأسرة المصاب بالماء الساخن وتجفيفها بالحرارة العالية لقتل السوس.",
-      "تستمر الحكة لعدة أسابيع بعد العلاج الناجح بسبب بقايا الطفيل الميتة بالجلد (حساسية الجرب)."
+      "تستمر الحكة لعدة أسابيع بعد العلاج الناجح بسبب بقايا الطفيل الميتة بالجلد (فرط التحسس للطفيل)."
     ],
     "English": [
       "A highly contagious parasitic skin infestation caused by the microscopic itch mite.",
@@ -360,7 +356,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
     "Arabic": [
       "طفيلي خارجي صغير مفلطح خالي من الأجنحة يعيش على شعر الرأس ويتغذى على دماء فروة الرأس.",
       "ينتشر بشكل هائل وبسرعة فائقة بين أطفال المدارس والرياض بسبب الملاصقة المباشرة أثناء اللعب.",
-      "تضع أنثى القمل بويضات بيضاء صغيرة تلتصق بقوة بجذور الشعر تسمى الصيبان (Nits).",
+      "تضع أنثى الطفيل بويضات بيضاء صغيرة تلتصق بقوة بجذور الشعر تسمى الصيبان (Nits).",
       "تفرز الدودة لعاباً مهيجاً أثناء مص الدم مما يسبب حكة شديدة ومستمرة في فروة الرأس وخلف الأذنين.",
       "يعالج باستخدام مستحضرات غسول الشامبو المحتوية على البيرميثرين وتمشيط الشعر بمشط ضيق خاص.",
       "لا يستطيع القمل الطيران أو القفز، بل ينتقل فقط عن طريق الزحف المباشر من شعر لشعر.",
@@ -388,7 +384,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "تنقل اليرقات المعدية للإنسان عبر لدغات أنواع معينة من البعوض الحامل للمرض.",
       "تستقر الديدان البالغة وتعيش داخل الأوعية اللمفاوية مسببة انسداداً ميكانيكياً وتليفات.",
       "يؤدي الانسداد اللمفاوي المزمن إلى تضخم هائل وتشوه في الأطراف وكيس الصفن (وذمة لمفية).",
-      "تطلق الإناث البالغة يرقات نشطة ومغلفة تسمى الميكروفيلاريا (Microfilariae) في مجرى الدم.",
+      "تطلق الإناث البالغة يرقات نشطة ومغلفة تسمى اليرقات الدقيقة الطفيلية (Microfilariae) في مجرى الدم.",
       "تتميز الميكروفيلاريا بظاهرة الدورية الليلية، حيث تنشط بالدم الطرفي بين الساعة 10 مساءً و 2 صباحاً.",
       "سحب عينات الدم لتشخيص المرض يجب أن يتم ليلاً لالتقاط اليرقات النشطة أثناء دورانها.",
       "يمكن أن تسبب متلازمة تسمى فرط الخلايا الحمضية الرئوي المداري تظهر بسعال ليلي يشبه الربو.",
@@ -419,7 +415,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "يعالج جراحياً بحذر شديد لتجنب انسكاب السائل، أو بطريقة السحب والحقن وإعادة السحب (PAIR) مع إعطاء الألبيندازول."
     ],
     "English": [
-      "The medical name for the slow-growing cystic larval stage causing Hydatid disease.",
+      "The medical name for the slow-growing cystic larval stage causing Echinococcal disease.",
       "Canines (dogs) are the definitive hosts, while humans serve as accidental intermediate hosts.",
       "Cysts in the liver or lung develop after accidental ingestion of eggs shed in dog feces.",
       "Rupture of the hydatid cyst can trigger lethal anaphylactic shock due to foreign fluid release.",
@@ -501,7 +497,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w251": {
     "Arabic": [
-      "تقنية إسعافية طارئة ومنقذة للحياة تسمى الإنعاش القلبي الرئوي.",
+      "تقنية إسعافية طارئة ومنقذة للحياة تعتمد على توالي الضغط الصدري مع التنفس الإنقاذي.",
       "تجرى يدوياً فوراً عند توقف النبض والتنفس المفاجئ للمريض في أي مكان.",
       "تتكون من ضغطات صدرية قوية وسريعة للمحافظة على تدفق الدم للدماغ والأعضاء.",
       "المعدل الصحيح لضغطات الصدر هو 100 إلى 120 ضغطة في الدقيقة الواحدة.",
@@ -553,29 +549,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w253": {
     "Arabic": [
-      "جهاز طبي طارئ منقذ للحياة يصدر صدمة كهربائية قوية لعضلة القلب.",
-      "يستعمل لإلغاء الاضطرابات الكهربائية الفتاكة مثل الرجفان البطيني (VF).",
-      "يعمل على تصفير كهرباء القلب العشوائية للسماح للعقدة الطبيعية باستعادة القيادة.",
-      "يحتوي على وسادات لاصقة (Pads) توضع على جدار صدر المريض لقراءة وتوصيل الصدمة.",
-      "النوع الآلي منه (AED) مخصص لغير المتخصصين بالشارع ويوجه المنقذ صوتياً خطوة بخطوة.",
-      "النوع اليدوي يستعمله الأطباء ويسمح بتحديد كمية الطاقة بالجول ومراقبة رسم القلب المباشر.",
-      "لا يجب إعطاء صدمة كهربائية في حالة توقف القلب التام المسطح (Asystole).",
-      "الصدمة الكهربائية مخصصة فقط للإيقاعات القابلة للصدم (Shockable rhythms: VF & pulseless VT).",
-      "يجب التأكد من ابتعاد الجميع عن المريض وعدم ملامسة السرير أثناء تفريغ الصدمة.",
-      "يعتبر توفيره في الأماكن العامة والمطارات ركيزة لتقليل الوفيات بالسكته القلبية المفاجئة."
-    ],
+        "أداة يدوية إسعافية محمولة لتوفير تهوية بالضغط الإيجابي للمرضى الذين يعانون من توقف التنفس.",
+        "تتكون من كيس ذاتي الامتلاء وصمام أحادي الاتجاه وقناع وجهي شفاف مع كيس خزان للأكسجين.",
+        "تتطلب تقنية الإحكام الشهيرة (E-C clamp technique) بيد واحدة أو باليدين لضمان عدم تسرب الهواء حول القناع.",
+        "تتصل بمصدر أكسجين عالي التدفق (15 لتر/دقيقة) لتوصيل تركيز أكسجين يقارب 100%.",
+        "تعتبر وسيلة الإنقاذ الهوائي الأولى قبل أو أثناء التحضير للتنبيب الرغامي السريع."
+  ],
     "English": [
-      "A life-saving medical device that delivers a controlled therapeutic electric shock to the heart.",
-      "Used to terminate lethal cardiac arrhythmias, specifically Ventricular Fibrillation (VF).",
-      "Depolarizes the entire myocardium simultaneously, allowing the natural pacemaker to resume.",
-      "Employs adhesive electrodes or paddles placed on the chest to monitor and shock.",
-      "Automated External Defibrillators (AEDs) guide lay rescuers through vocal prompts.",
-      "Manual defibrillators allow clinicians to select energy levels (Joules) and interpret ECGs.",
-      "Should never deliver a shock to a flatline rhythm (asystole), where CPR is required.",
-      "The shock is strictly reserved for shockable rhythms: VF and pulseless Ventricular Tachycardia.",
-      "Ensuring all personnel are 'clear' of the patient before discharging the shock is mandatory.",
-      "Commonly stationed in public spaces, airports, and malls to combat sudden cardiac arrest."
-    ]
+        "A handheld device used to provide positive pressure ventilation to patients with inadequate respiration or apnea.",
+        "Comprises a self-inflating resilient bag, a non-rebreathing one-way valve, a clear facemask, and an oxygen reservoir bag.",
+        "Requires the standard 'E-C clamp' grip technique to maintain an airtight seal against the patient's facial contour.",
+        "Connected to high-flow supplemental oxygen (15 L/min) to achieve an inspired oxygen fraction approaching 100%.",
+        "The primary non-invasive rescue ventilation modality employed prior to definitive endotracheal intubation."
+  ]
   },
   "w254": {
     "Arabic": [
@@ -605,29 +591,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w255": {
     "Arabic": [
-      "أداة قياس طبية شهيرة ومألوفة تستعمل لتحديد ضغط الدم الشرياني.",
-      "يتكون الجهاز الكلاسيكي من كف من القماش قابل للنفخ، مضخة هوائية، ومقياس زئبقي مدرج.",
-      "يستعمل الطبيب مع هذا الجهاز سماعة طبية للاستماع لأصوات تدفق الدم بالدوران.",
-      "الأصوات المسموعة أثناء تفريغ الهواء تسمى أصوات كوروتكوف (Korotkoff sounds).",
-      "القراءة الأعلى تمثل الضغط الانقباضي (Systolic) عند بداية سماع أصوات النبض.",
-      "القراءة الأقل تمثل الضغط الانبساطي (Diastolic) عند اختفاء أصوات النبض تماماً.",
-      "يجب وضع الكف حول العضد بمستوى القلب تماماً للحصول على قراءة دقيقة.",
-      "يتوفر حالياً بنسخ إلكترونية رقمية سهلة الاستخدام المنزلي دون الحاجة لسماعة.",
-      "تعتبر القراءة 120/80 ملم زئبق هي المعدل الطبيعي المثالي للبالغين السليمين.",
-      "أداة فحص أساسية وتاريخية لا يخلو منها أي عيادة طبية أو قسم طوارئ بالعالم."
-    ],
+        "جهاز فيزيولوجي يقيس بدقة حجم وسرعة تدفق الهواء الداخل والخارج من الرئتين كدالة على الوقت.",
+        "يستخدم للتفريق الحاسم بين الأمراض الرئوية الانسدادية (Obstructive) والأمراض الحاصرة (Restrictive).",
+        "يقيس السعة الحيوية القسرية (FVC) والحجم الزفيري القسري في الثانية الأولى (FEV1).",
+        "نسبة FEV1/FVC الأقل من 0.70 تعتبر المعيار الذهبي لتشخيص السدة الرئوية المزمنة.",
+        "يجرى اختبار التحدي بالموسعات القصبية لقياس مدى عكوسية انسداد المجرى الهوائي في الربو."
+  ],
     "English": [
-      "A clinical instrument utilized to measure systemic arterial blood pressure.",
-      "The classic manual unit consists of an inflatable cloth cuff, a bulb pump, and a mercury manometer.",
-      "Clinicians use it in conjunction with a stethoscope to listen to arterial blood flow.",
-      "The sounds heard through the stethoscope during cuff deflation are called Korotkoff sounds.",
-      "The first tapping sound heard denotes the higher systolic pressure reading.",
-      "The point where the tapping sounds completely disappear denotes the lower diastolic pressure.",
-      "The cuff must be wrapped snug around the upper arm, aligned at the level of the heart.",
-      "Also available as automated digital oscillometric devices for simplified home use.",
-      "A standard reading of 120/80 mmHg is universally considered optimal for healthy adults.",
-      "One of the most fundamental, historic diagnostic tools found in every clinical setting."
-    ]
+        "A physiological diagnostic instrument measuring airflow volume and rate of mobilization as a function of time.",
+        "The fundamental gold-standard tool to differentiate obstructive from restrictive pulmonary disorders.",
+        "Records the forced expiratory volume in one second (FEV1) and forced vital capacity (FVC).",
+        "A post-bronchodilator FEV1/FVC ratio below 0.70 confirms persistent expiratory airflow limitation in COPD.",
+        "Utilized in bronchodilator reversibility testing to quantify airway reactivity in bronchial asthma."
+  ]
   },
   "w256": {
     "Arabic": [
@@ -683,29 +659,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w258": {
     "Arabic": [
-      "عضيات خلوية حيوية محاطة بغشاء مزدوج وتعرف بـ (مصانع الطاقة في الخلية).",
-      "وظيفتها الرئيسية هي إنتاج جزيئات الـ ATP الغنية بالطاقة عبر التنفس الخلوي.",
-      "الغشاء الداخلي لها ملتف ومثني لصنع طيات تسمى الأعراف (Cristae) لزيادة مساحة العمل.",
-      "تمتلك حمضاً نووياً خاصاً بها (mtDNA) منفصلاً عن حمض النواة، وتورث بالكامل من الأم فقط.",
-      "تحتوي على الإنزيمات الخاصة بدورة كريبس (Krebs cycle) وسلسلة نقل الإلكترونات.",
-      "توجد بكثرة هائلة في الخلايا ذات النشاط العالي مثل خلايا العضلات والقلب والكبد.",
-      "تلعب دوراً رئيسياً في تنظيم عملية الموت الخلوي المبرمج (Apoptosis) بإفراز السيتوكروم ج.",
-      "الفراغ بين الغشائين يحتوي على تركيز عالٍ من بروتونات الهيدروجين لصنع فرق جهد كهربائي.",
-      "تستطيع الانقسام والتكاثر ذاتياً داخل الخلية لتلبية الاحتياجات المتزايدة للطاقة.",
-      "تلفها أو حدوث طفرات في جيناتها يسبب متلازمات اعتلال الأعصاب والعضلات الوراثية."
-    ],
+        "معقد بروتيني نووي ريبوزي معقد مسؤول عن ترجمة شفرة mRNA الوراثية إلى سلاسل ببتيدية متعددة.",
+        "يتألف في حقيقيات النوى من وحدتين فرعيتين 60S و 40S تتكاملان معاً لتشكلا الجسيم 80S.",
+        "يحتوي على ثلاثة مواقع وظيفية رئيسية لحمض tRNA الناقل: الموقع الأميني (A)، الببتيدي (P)، والمخرج (E).",
+        "يوجد حراً سابحاً في السيتوبلازم لصنع بروتينات الخلية، أو مرتبطاً بسطح الشبكة الإندوبلازمية الخشنة.",
+        "الوحدة الفرعية 50S و 30S في بدائيات النوى هي الهدف الانتخابي للمضادات الحيوية كالأمينوغليكوزيدات والماكروليدات."
+  ],
     "English": [
-      "Double-membrane-bound organelles universally known as the powerhouses of the cell.",
-      "Primary physiological role is generating adenosine triphosphate (ATP) via oxidative phosphorylation.",
-      "The inner membrane is highly folded into cristae to maximize surface area for respiratory chains.",
-      "Possess their own circular genome (mtDNA) and are inherited exclusively through maternal lineage.",
-      "Inhabit the enzymes for the citric acid (Krebs) cycle and electron transport chain complexes.",
-      "Abundantly present in highly metabolic cells like cardiomyocytes, skeletal myocytes, and hepatocytes.",
-      "Key regulator of programmed cell death (apoptosis) by releasing cytochrome c into cytosol.",
-      "The intermembrane space acts as a proton reservoir generating an electrochemical gradient.",
-      "Capable of replicating independently within cells through binary-like fission.",
-      "Dysfunctions or mutations in mtDNA lead to complex metabolic disorders called mitochondrial myopathies."
-    ]
+        "A universal ribonucleoprotein macromolecular machine responsible for translating mRNA transcripts into polypeptide chains.",
+        "In eukaryotic organisms, composed of 60S and 40S subunits assembling into a functional 80S translation complex.",
+        "Harbors three designated tRNA functional binding niches: the aminoacyl (A), peptidyl (P), and exit (E) sites.",
+        "Localized freely in cytosol for internal protein production, or membrane-bound to the rough endoplasmic reticulum.",
+        "Prokaryotic 70S components (50S and 30S subunits) represent the selective target for aminoglycosides and macrolides."
+  ]
   },
   "w259": {
     "Arabic": [
@@ -787,29 +753,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w262": {
     "Arabic": [
-      "عضلة هيكلية رئيسية عريضة مقببة الشكل تفصل تجويف الصدر عن تجويف البطن.",
-      "تعتبر المحرك والعضلة الأساسية لعملية التنفس (الشهيق والزفير).",
-      "عند انقباضها، تتحرك لأسفل لتزيد من حجم الصدر وتسحب الهواء للداخل.",
-      "يغذيها عصبياً العصب الحجابي (Phrenic nerve) الناشئ من فقرات الرقبة C3-C5.",
-      "تحتوي على ثلاث فتحات رئيسية لمرور المريء، الوريد الأجوف السفلي، والشريان الأورطي.",
-      "التهيج المفاجئ وغير المنتظم لهذه العضلة يسبب الزغطة أو الفواق (Hiccups).",
-      "انزلاق جزء من المعدة عبر فتحتها المريئية إلى الصدر يسمى فتق الحجاب الحاجز.",
-      "تتألف من جزء عضلي محيطي ومركز وتري قوي أبيض في المنتصف.",
-      "إصابة العصب الحجابي في جانب واحد يسبب شللاً وحركة عكسية لذلك الجانب من العضلة.",
-      "تلعب دوراً مساعداً هاماً في عمليات القيء، التبرز، والولادة بزيادة ضغط البطن."
-    ],
+        "عضلة عنقية بارزة ثنائية الرأس تقسم جانب العنق تشريحياً إلى مثلث أمامي ومثلث خلفي.",
+        "تنشأ برأسين من قبضة القص والثلث الأنسي للترقوة وتنغرز في الناتئ الخشائي للعظم الصدغي.",
+        "تتلقى تعصيبها الحركي الرئيسي من العصب القحفي الحادي عشر (العصب الشوكي الإضافي XI).",
+        "انقباضها أحادي الجانب يدير الوجه والذقن إلى الجانب المعاكس مع إمالة الرأس لنفس جهة العضلة.",
+        "التشنج أو التليف الموضعي فيها لدى الأطفال حديثي الولادة يسبب حالة الصعل أو ميلان العنق (Torticollis)."
+  ],
     "English": [
-      "A dome-shaped skeletal muscle sheet separating the thoracic cavity from the abdominal cavity.",
-      "Serves as the primary, indispensable muscle of inspiration and overall respiration.",
-      "During contraction, it flattens and moves caudally, increasing thoracic volume and drawing air in.",
-      "Innervated by the bilateral phrenic nerves, arising from cervical spinal roots C3-C5.",
-      "Pierced by three major apertures: the caval opening, esophageal hiatus, and aortic hiatus.",
-      "Spasmodic, involuntary contractions of this muscle result in diaphragmatic flutters (hiccups).",
-      "Herniation of stomach contents through its esophageal hiatus into the thorax is a hiatal hernia.",
-      "Constructed of peripheral muscular fibers converging into a central aponeurotic tendon.",
-      "Unilateral phrenic nerve injury leads to hemidiaphragm paralysis, showing paradoxical motion on X-ray.",
-      "Aids in expulsive actions like vomiting, defecation, and parturition by increasing intra-abdominal pressure."
-    ]
+        "A prominent paired cervical muscular landmark demarcating the anterior and posterior triangles of the neck.",
+        "Arises by two heads from the manubrium sterni and medial clavicle, inserting into the mastoid process.",
+        "Receives somatic motor innervation from the spinal accessory nerve (cranial nerve XI).",
+        "Unilateral contraction rotates the head toward the contralateral side and tilts the chin upward.",
+        "Congenital fibrosis or intrapartum injury to this muscle produces pediatric torticollis (wry neck)."
+  ]
   },
   "w6": {
     "Arabic": [
@@ -1229,30 +1185,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w22": {
     "Arabic": [
-      "يقع بين الأذين الأيسر والبطين الأيسر في القلب.",
-      "يسمح بمرور الدم في اتجاه واحد أثناء الانقباض والانبساط.",
-      "يتم تثبيته في مكانه بواسطة الحبال الوترية والعضلات الحليمية.",
-      "يحتوي على وريقتين فقط تفتحان وتغلقان استجابة لضغط الحجرات.",
-      "يعاني أحياناً من هبوط يؤدي إلى سماع نفخة انقباضية.",
-      "قد يحدث تضيق فيه نتيجة للحمى الروماتيزمية.",
-      "يعد العضو الأكثر عرضة للإصابة في مرض القلب الروماتيزمي.",
-      "يؤدي فشل انغلاقه إلى ارتجاع الدم من البطين إلى الأذين.",
-      "يتم تقييمه بشكل دقيق باستخدام تخطيط صدى القلب عبر المريء.",
-      "قد يتطلب جراحة استبدال أو ترميم في حالات القصور الشديد."
+        "يقع بين الأذين الأيسر والبطين الأيسر، ويتعرض للتكلس والتضيق الروماتيزمي (Mitral Stenosis) مسبباً لغطاً انبساطياً مع طقطقة الفتح (Opening snap) وتضخم الأذين الأيسر.",
+        "يسمح بمرور الدم المؤكسج في اتجاه واحد من الأذين إلى البطين أثناء الانبساط، وتضيق فتحته يرفع ضغط الأوردة الرئوية ويسبب وذمة الرئة الحبيسة ونفث الدم.",
+        "يتم تثبيته بحبال وترية (Chordae tendineae) وعضلات حليمية، وتمزق العضلة الحليمية بعد احتشاء عضل القلب السفلي يسبب ارتجاعاً حاداً كارثياً وصدمة قلبية.",
+        "يحتوي على وريقتين (أمامية وخلفية)، وانسداله (Mitral Valve Prolapse) هو أكثر اعتلالات الصمامات شيوعاً ويظهر بنقرة منتصف الانقباض (Mid-systolic click).",
+        "ارتجاعه المزمن (MR) يظهر بنفخة شاملة للانقباض (Holosystolic murmur) تسمع عند القمة وتشع للإبط الأيسر وتزداد بضغط قبضة اليد (Handgrip).",
+        "يعد الصمام الأكثر استهدافاً وتدميراً في مرض القلب الروماتيزمي المزمن بعد الحمى الروماتيزمية، مما يؤدي إلى التحام حواف الوريقات كفم السمكة (Fish-mouth).",
+        "تضخم الأذين الأيسر الناجم عن أمراضه يضغط على العصب الحنجري الراجع مسبباً بحة في الصوت تعرف بمتلازمة أورتنر (Ortner's syndrome).",
+        "تكون نبتات بكتيرية عليه في التهاب الشغاف العدوائي (Infective Endocarditis) يهدد بحدوث جلطات دماغية إنتانية ونزيف تحت الأظافر وعقد أوسلر.",
+        "فحص الإيكو عبر المريء (TEE) يقيس مساحة فوهته (الطبيعية 4-6 سم مربع)، ويعتبر التضيق شديداً وحرجاً إذا قلت المساحة عن 1.5 سم مربع.",
+        "العلاج التدخلي يشمل التوسيع بالبالون عبر القسطرة (Percutaneous balloon commissurotomy) أو الترميم بمشبك ميتراكليب (MitraClip) أو الاستبدال بصمام ميكانيكي."
     ],
     "English": [
-      "Situated between the left atrium and the left ventricle.",
-      "Facilitates unidirectional blood flow during cardiac contraction and relaxation cycles.",
-      "Anchored in position by chordae tendineae and papillary muscles.",
-      "Consists of two leaflets that move in response to intra-cardiac pressures.",
-      "Prone to prolapse, which often results in a characteristic systolic murmur.",
-      "Stenosis may occur as a chronic sequela of rheumatic fever.",
-      "Represents the most frequently affected structure in rheumatic heart disease.",
-      "Failure of complete closure results in retrograde blood flow into the left atrium.",
-      "Evaluated with high precision using transesophageal echocardiography.",
-      "Severe regurgitation may necessitate surgical intervention for repair or replacement."
+        "Guards the left atrioventricular orifice, susceptible to rheumatic mitral stenosis characterized by a low-pitched diastolic rumble with an opening snap.",
+        "Directs forward oxygenated blood transit during ventricular diastole; critical stenosis drives left atrial hypertension, pulmonary venous congestion, and hemoptysis.",
+        "Anchored by fibrous chordae tendineae and papillary muscles; acute posteromedial papillary muscle rupture post-inferior MI causes catastrophic acute regurgitation.",
+        "Features anterior and posterior leaflets; bicuspid atrioventricular leaflet prolapse (myxomatous degeneration) is the commonest valvular disorder, featuring a mid-systolic click.",
+        "Chronic mitral regurgitation yields a high-pitched holosystolic blowing murmur at the cardiac apex radiating to the left axilla, accentuated by handgrip.",
+        "The undisputed foremost target in chronic rheumatic carditis; post-inflammatory commissural fusion generates a pathognomonic 'fish-mouth' or 'buttonhole' orifice.",
+        "Massive left atrial dilatation secondary to its stenosis compresses the recurrent laryngeal nerve, producing Ortner's cardiovocal hoarseness syndrome.",
+        "Valvular vegetations in subacute infective endocarditis (Streptococcus viridans) carry a dreaded propensity for systemic cardioembolic cerebral infarction.",
+        "Transesophageal echocardiography (TEE) precisely calculates its functional orifice area (normal 4-6 cm2), diagnosing critical stenosis when area falls below 1.5 cm2.",
+        "Definitive interventions encompass percutaneous balloon mitral commissurotomy, transcatheter edge-to-edge repair (MitraClip), or mechanical/bioprosthetic replacement."
     ]
-  },
+},
   "w23": {
     "Arabic": [
       "اضطراب عصبي نفسي يتميز بظهور حركات لا إرادية متكررة.",
@@ -1515,56 +1471,56 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w33": {
     "Arabic": [
-      "يمثل المركز الرئيسي للتحكم في جميع وظائف الجسم الحيوية والعمليات المعرفية.",
-      "يتكون من مادة رمادية في الخارج ومادة بيضاء في الداخل.",
-      "يتم حمايته داخل الجمجمة ومحاط بثلاث طبقات من السحايا.",
-      "ينقسم تشريحياً إلى فصوص مسؤولة عن الحركة، الإحساس، والرؤية.",
-      "يتم إنتاج السائل النخاعي داخل بطيناته لضمان حماية الأنسجة وتغذيتها.",
-      "تعتمد وظيفته الأيضية بشكل شبه كامل على استهلاك الجلوكوز والأكسجين من الدم.",
-      "يتم فصل نصفي الكرة الأرضية فيه بواسطة شق طولي عميق ومرتبط بجسر من الألياف العصبية.",
-      "يحتوي على مناطق متخصصة مثل منطقة بروكا المسؤولة عن إنتاج اللغة.",
-      "تتواصل أجزاؤه مع باقي الجسم عبر الحبل الشوكي والأعصاب القحفية.",
-      "تعد السكتة الدماغية ناتجة عن انقطاع تدفق الدم عن أحد أجزائه الحيوية."
+        "العضو المركزي المتحكم في الجهاز العصبي ويستهلك 20% من أكسجين وجلوكوز الجسم، وتوقف ترويته لأكثر من 4-5 دقائق يسبب موتاً دماغياً ونخراً غير قابل للعلاج.",
+        "السكتة الإقفارية الوعائية (Ischemic Stroke) ناتجة عن انسداد شرياني خثاري وتتطلب إذابة الجلطة بحقن tPA خلال نافذة 4.5 ساعات أو الاستئصال الميكانيكي للخثرة.",
+        "النزيف الدماغي الداخلي (Intracerebral Hemorrhage) ينجم غالباً عن تمزق أم دم شاركو-بوشار الدقيقة نتيجة ارتفاع ضغط الدم المزمن غير المنضبط.",
+        "محاط بالحاجز الدموي الدماغي (BBB) المكون من خلايا بطانية ذات وصلات محكمة وأقدام الخلايا النجمية (Astrocytes) التي تمنع دخول السموم ومعظم المضادات الحيوية.",
+        "ارتفاع الضغط داخل الجمجمة (ICP >20 mmHg) يهدد بفتق دماغي قاتل (Herniation) ويظهر بثالوث كوشينغ (ارتفاع ضغط، بطء نبض، واضطراب تنفس) ويعالج بالمانيتول.",
+        "يفرز السائل النخاعي (CSF) من الضفائر المشيمية بمعدل 500 مل/يوم، وانسداد تصريفه يسبب استسقاء الدماغ (Hydrocephalus) الذي يعالج جراحياً بتركيب صمام تحويلة VP shunt.",
+        "التنكس العصبي في قشرته الصدغية والجدارية مع تراكم صفائح بيتا أميلويد وتشابكات تاو يسبب مرض الزهايمر (Alzheimer's) مع فقدان الذاكرة قصيرة المدى والتوهان.",
+        "موت خلايا الدوبامين في المادة السوداء (Substantia Nigra) بجذعه يسبب مرض باركنسون (الشلل الرعاش) مع بطء الحركة وتصلب العضلات ورعاش الراحة ويُعالج بالليفودوبا.",
+        "نوبات الصرع (Epilepsy) تنشأ عن شحنات كهربائية قشرية مفرطة متزامنة، والحالة الصرعية المستمرة (Status Epilepticus) طارئة تعالج بالبنزوديازيبينات واللوبرازولام.",
+        "الورم الأرومي الدبقي (Glioblastoma Multiforme) هو أخبث وأشرس أورام خلاياه الدبقية، ويتميز بعبور الجسم الثفني كشكل الفراشة ومقاومته الشديدة للعلاج."
     ],
     "English": [
-      "This organ serves as the primary control center for all vital bodily functions and cognitive processes.",
-      "It consists of an outer layer of gray matter and an underlying core of white matter.",
-      "It is protected within the cranium and encased by three layers of meninges.",
-      "It is anatomically divided into lobes responsible for motor function, sensation, and vision.",
-      "Cerebrospinal fluid is produced within its ventricles to provide buoyancy and nutrient exchange.",
-      "Its metabolic activity is heavily dependent on constant glucose and oxygen supply from the bloodstream.",
-      "The two hemispheres are separated by a deep longitudinal fissure and connected by a dense bridge of nerve fibers.",
-      "It contains highly specialized functional regions such as Broca's area for speech production.",
-      "It communicates with the rest of the body through the spinal cord and cranial nerves.",
-      "Cerebrovascular accidents result from interrupted blood flow to any of its vital structures."
+        "The central coordinator of the nervous system consuming 20% of baseline glucose and oxygen; complete vascular arrest exceeding 4-5 minutes triggers irreversible ischemic necrosis.",
+        "Acute ischemic stroke secondary to thromboembolism requires IV tissue plasminogen activator (tPA) within 4.5 hours or emergency endovascular mechanical thrombectomy.",
+        "Hypertensive intracerebral hemorrhage typically originates from rupture of Charcot-Bouchard microaneurysms within deep basal ganglia perforating lenticulostriate vessels.",
+        "Shielded by the restrictive blood-brain barrier (BBB) configured by continuous capillary tight junctions, pericytes, and astrocyte end-feet footplates.",
+        "Critical elevation of intracranial pressure (ICP >20 mmHg) heralds fatal tentorial herniation and Cushing's triad (hypertension, bradycardia, irregular respirations), managed with IV mannitol.",
+        "Ependymal choroid plexuses synthesize 500 mL/day of cerebrospinal fluid (CSF); impaired outflow resorption precipitates hydrocephalus requiring ventriculoperitoneal (VP) shunting.",
+        "Cortical neurodegeneration marked by extracellular beta-amyloid plaques and hyperphosphorylated tau neurofibrillary tangles drives Alzheimer's dementia.",
+        "Selective dopaminergic neuronal death in the midbrain substantia nigra pars compacta underlies Parkinson's disease, managed with oral levodopa-carbidopa.",
+        "Hyperexcitable cortical neuronal synchrony triggers epileptic seizures; status epilepticus is a medical emergency halted with IV lorazepam and levetiracetam.",
+        "Glioblastoma multiforme (WHO Grade IV) represents the most malignant primary astrocytoma, characteristically crossing the corpus callosum as a 'butterfly glioma'."
     ]
-  },
+},
   "w34": {
     "Arabic": [
-      "يعد العضو الرئيسي المسؤول عن ترشيح الدم وتخليص الجسم من السموم.",
-      "يتكون من وحدات وظيفية دقيقة تسمى النيفرون.",
-      "يساهم بشكل مباشر في تنظيم ضغط الدم من خلال إفراز إنزيم الرينين.",
-      "يعمل على موازنة مستويات الشوارد وتوازن الأحماض والقواعد في البلازما.",
-      "يتم تصنيع هرمون الإريثروبويتين فيه لتحفيز إنتاج كريات الدم الحمراء.",
-      "تتأثر وظيفته بشكل حاد عند حدوث تروية دموية منخفضة أو إصابة سمية.",
-      "يتم قياس كفاءته سريرياً عبر معدل الترشيح الكبيبي ومستوى الكرياتينين.",
-      "يفرز البول الذي ينتقل عبر الحالبين ليتم تخزينه في المثانة.",
-      "تعاني هذه البنية من مشاكل مزمنة في حال الإصابة غير المنضبطة بمرض السكري.",
-      "يؤدي انسداد تدفق البول إلى حدوث استسقاء وتلف في النسيج المكتنز للعضو."
+        "عضو إخراجي يقع خلف الصفاق على جانبي العمود الفقري (T12-L3)، ويحتوي على مليون نيفرون وظيفي، وتلفه المناعي السريع يسبب التهاب كبيبات الكلى سريع الترقي (RPGN).",
+        "تقوم بفلترة 180 لتراً من بلازما الدم يومياً وتفرز هرمون الإريثروبويتين (EPO) لتحفيز النخاع على إنتاج كرات الدم الحمراء، ونقصه في الفشل المزمن يسبب أنيميا مقاومة.",
+        "تفرز إنزيم الرينين من الجهاز المجاور للكبيبات (JGA) لتفعيل نظام RAAS الذي يتحكم في ضغط الدم، وتضيق شريانها يسبب ارتفاع ضغط الدم الوعائي الكلوي القابل للعلاج بالدعامة.",
+        "القصور الكلوي الحاد ينقسم إلى قبل كلوي (Prerenal) وكلوي حقيقي (Intrinsic) وبعد كلوي (Postrenal)، ويشخص بنسبة نيتروجين اليوريا إلى الكرياتينين (BUN/Cr ratio).",
+        "الاعتلال الكلوي السكري (Diabetic Nephropathy) يتميز بتصلب كبيبي عقدي (Kimmelstiel-Wilson) وزلال دقيق بالبول، ويُبطأ تطوره باستخدام مثبطات ACE ومثبطات SGLT2.",
+        "مرض الكلى متعدد الكيسات الصبغي الجسدي السائد (ADPKD) يسببه طفرة جينات PKD1/PKD2، ويتميز بتضخم الكليتين وظهور أكياس كبدية وتمدد أوعية دموية في قاع المخ.",
+        "تنشط فيتامين D بتحويله إلى شكله الفعال 1,25-dihydroxycholecalciferol، وقصورها يسبب الحثل العظمي الكلوي (Renal Osteodystrophy) وفرط نشاط الجار درقية الثانوي.",
+        "المتلازمة الكلوية (Nephrotic Syndrome) تتميز بفقدان بروتين البول >3.5 جم/يوم واستسقاء شديد وفرط دهون، وأشهر أسبابها في الأطفال داء التبدل الطفيف (Minimal change).",
+        "المتلازمة النفرينية (Nephritic Syndrome) تتميز ببول دموي بلون الشاي وارتفاع الضغط وأسطوانات كرات دم حمراء، كما في التهاب كبيبات الكلى بعد المكورات العقدية (PSGN).",
+        "الفشل الكلوي النهائي يستدعي الغسيل الدموي الدوري أو الغسيل البريتوني، ومؤشر البوتاسيوم >6.5 مع تغيرات رسم القلب يمثل طارئة مهددة للحياة تعالج بجلوكونات الكالسيوم وإنسولين مع جلوكوز."
     ],
     "English": [
-      "This organ is the primary site for blood filtration and the excretion of metabolic waste products.",
-      "It is composed of millions of functional units known as nephrons.",
-      "It plays a central role in systemic blood pressure regulation through the secretion of renin.",
-      "It maintains homeostasis of electrolytes and acid-base balance within the plasma.",
-      "It produces the hormone erythropoietin, which is essential for stimulating red blood cell production.",
-      "Its functional integrity is highly sensitive to decreased perfusion or nephrotoxic injury.",
-      "Clinical assessment of its performance is typically measured via glomerular filtration rate and serum creatinine levels.",
-      "It produces urine which drains through the ureters to the urinary bladder.",
-      "Chronic damage to this structure is a common complication of uncontrolled diabetes mellitus.",
-      "Obstruction to urinary outflow results in hydronephrosis and secondary parenchymal damage."
+        "A paired retroperitoneal bean-shaped excretory organ at T12-L3 housing 1 million functional nephrons; acute anti-GBM disease produces rapidly progressive glomerulonephritis (RPGN).",
+        "Filters approximately 180 liters of plasma daily and synthesizes erythropoietin (EPO); failure causes normocytic normochromic anemia refractory to simple iron supplementation.",
+        "The juxtaglomerular apparatus secretes renin to catalyze the RAAS cascade regulating blood pressure; renal artery stenosis precipitates renovascular hypertension.",
+        "Acute renal impairment (AKI) is etiologically triaged into prerenal, intrinsic, and postrenal categories applying fractional excretion of sodium (FeNa) and BUN/Creatinine ratios.",
+        "Diabetic nephropathy is stamped by diffuse mesangial expansion and Kimmelstiel-Wilson nodular glomerulosclerosis, mitigated clinically by ACE inhibitors and SGLT2 inhibitors.",
+        "Autosomal dominant polycystic kidney disease (ADPKD, mutations in PKD1/PKD2) produces massive bilateral renal enlargement, hepatic cysts, and intracranial berry aneurysms.",
+        "1-alpha-hydroxylase converts calcidiol to active 1,25-dihydroxycholecalciferol; failure prompts secondary hyperparathyroidism and renal osteodystrophy.",
+        "Nephrotic syndrome is marked by massive proteinuria (>3.5 g/24hr), hypoalbuminemia, and severe pitting edema, driven predominantly in children by minimal change disease.",
+        "Nephritic syndrome manifests with tea-colored hematuria, hypertension, oliguria, and diagnostic red blood cell casts (e.g., in poststreptococcal glomerulonephritis).",
+        "End-stage renal disease mandates dialysis or transplantation; hyperkalemia (>6.5 mEq/L with ECG peaked T-waves) is an emergency stabilized with intravenous calcium gluconate and insulin."
     ]
-  },
+},
   "w35": {
     "Arabic": [
       "اضطراب تنفسي مزمن يتميز بالتهاب وتضيق في المسالك الهوائية.",
@@ -1723,30 +1679,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w41": {
     "Arabic": [
-      "غدة صماء تقع في الرقبة وتؤثر على عمليات التمثيل الغذائي.",
-      "تنتج هرمونات أساسية تنظم معدل استخدام الطاقة في الجسم.",
-      "تلعب دوراً محورياً في نمو وتطور الأنسجة لدى الأطفال.",
-      "تتميز بوجود فصين جانبيين يربط بينهما برزخ يقع أمام الرغامي.",
-      "تتكون من جريبات مجهرية تحتوي على مادة غروية غنية بالبروتينات.",
-      "تستمد ترويتها الدموية بشكل رئيسي من الشرايين السباتية وتحت الترقوة.",
-      "تعتمد في تصنيع هرموناتها بشكل أساسي على عنصر كيميائي يتم الحصول عليه من الغذاء.",
-      "تفرز الهرمون الأكثر نشاطاً الذي يتم تحويله في الأنسجة المحيطية.",
-      "تخضع لتنظيم دقيق من خلال محور دماغي هرموني يتمحور حول الهرمون المحفز لها.",
-      "ترتبط بظاهرة تضخم النسيج في حالات عوز اليود أو الاضطرابات المناعية الذاتية."
+        "غدة صماء فراشية الشكل تقع في مقدمة الرقبة أسفل الحنجرة، وتتكون من فصين يربطهما البرزخ (Isthmus) فوق حلقات القصبة الهوائية الثانية والثالثة.",
+        "تفرز هرموني الثيروكسين (T4) وثلاثي يود الثيرونين (T3) اللذين يتحكمان في معدل الأيض الأساسي وحرارة الجسم واستهلاك الأكسجين في كافة أنسجة الجسم.",
+        "داء غريفز (Graves' Disease) هو السبب الأكثر شيوعاً لفرط نشاطها وينتج عن أجسام مضادة محفزة لمستقبلات TSH (TSI)، ويتميز بجحوظ العينين والوذمة أمام القصبة وتضخم الغدة.",
+        "فرط نشاطها يظهر بخفقان سريع، فقدان وزن رغم فرط الشهية، عدم تحمل الحرارة، ورعشة باليدين، والعاصفة التسممية الدرقية الحادة (Thyroid Storm) طارئة حرجة تعالج بالبروبيل ثيويوراسيل ومحصرات بيتا.",
+        "التهاب هاشيموتو (Hashimoto's Thyroiditis) هو السبب المناعي الأكثر شيوعاً لقصورها، ويتميز بأجسام مضادة لإنزيم TPO والثيروجلوبولين، مع زيادة الوزن والخمول وجفاف الجلد وبطء النبض.",
+        "الوذمة المخاطية الشديدة (Myxedema Coma) تمثل المضاعفة القاتلة لقصورها المهمل وتظهر بهبوط حاد في الحرارة والضغط والوعي وتستدعي حقن ليفوثيروكسين وريدياً وكورتيزون.",
+        "خلايا C المجاورة للجريبات في نسيجها تفرز هرمون الكالسيتونين الذي يخفض الكالسيوم، وأورامها تسمى سرطان الغدة الدرقية النخاعي (Medullary) المرتبط بمتلازمة MEN-2.",
+        "سرطان الغدة الدرقية الحليمي (Papillary Thyroid Carcinoma) هو الورم الخبيث الأكثر شيوعاً، ويتميز بخلايا نووية فارغة كعيون آني اليتيمة (Orphan Annie eyes) وأجسام بساموما الرملية.",
+        "تقييم العقد الدرقية يعتمد على تصنيف الأشعة التلفزيونية (TIRADS) وأخذ عينة بالإبرة الدقيقة (FNA) بتوجيه السونار لتحديد مسار الجراحة أو المتابعة.",
+        "جراحة استئصالها الكلي تستلزم الحذر الشديد للحفاظ على العصب الحنجري الراجع لمنع بحة الصوت، وحماية الغدد الجار درقية الأربعة لمنع هبوط الكالسيوم الحاد والتشنجات."
     ],
     "English": [
-      "An endocrine organ situated in the neck that influences metabolic processes.",
-      "Produces hormones essential for regulating the body's energy expenditure rate.",
-      "Plays a pivotal role in the growth and development of tissues in children.",
-      "Characterized by two lateral lobes connected by an isthmus located anterior to the trachea.",
-      "Composed of microscopic follicles containing a colloid substance rich in proteins.",
-      "Receives its primary blood supply from branches of the carotid and subclavian vessels.",
-      "Depends fundamentally on an essential dietary trace element for hormone synthesis.",
-      "Secretes the most potent metabolic hormone which undergoes peripheral conversion.",
-      "Regulated by a precise hypothalamic-pituitary axis involving a specific stimulating hormone.",
-      "Associated with tissue enlargement in states of dietary iodine deficiency or autoimmune dysfunction."
+        "A vascular butterfly-shaped endocrine gland wrapping the anterior trachea (C5-T1), with dual lateral lobes bridged across the 2nd-4th tracheal rings by the central isthmus.",
+        "Follicular thyrocytes synthesize and secrete tetraiodothyronine (T4) and triiodothyronine (T3), the master regulators of systemic basal metabolic rate and thermogenesis.",
+        "Graves' thyrotoxicosis is driven by stimulating thyroid-stimulating immunoglobulin (TSI) autoantibodies, producing exophthalmos, pretibial myxedema, and diffuse toxic goiter.",
+        "Hyperthyroidism manifests with palpitations, heat intolerance, diaphoresis, and fine tremors; thyroid storm is a critical hypermetabolic crisis treated with PTU, beta-blockers, and iodine.",
+        "Hashimoto's thyroiditis is the primary autoimmune cause of hypothyroidism, hallmarked by anti-TPO and anti-thyroglobulin antibodies, cold intolerance, fatigue, and bradycardia.",
+        "Myxedema coma represents the fatal extreme of decompensated hypothyroidism, marked by hypothermia, hypoventilation, and obtundation treated with IV levothyroxine and hydrocortisone.",
+        "Parafollicular C-cells secrete calcitonin; neuroendocrine medullary thyroid carcinoma arises from them, frequently associated with inherited RET proto-oncogene MEN-2 syndromes.",
+        "Papillary thyroid carcinoma is the commonest malignant neoplasm, identifiable histologically by ground-glass 'Orphan Annie eye' nuclear inclusions and psammoma bodies.",
+        "Thyroid nodules are triaged via high-resolution ultrasound (TI-RADS scoring) and ultrasound-guided fine-needle aspiration (FNA) cytology applying Bethesda criteria.",
+        "Total thyroidectomy warrants meticulous preservation of the recurrent laryngeal nerve to avert vocal fold palsy and salvage of parathyroids to avoid hypocalcemic tetany."
     ]
-  },
+},
   "w42": {
     "Arabic": [
       "اضطراب التهابي مزمن يؤثر بشكل أساسي على المفاصل.",
@@ -1827,30 +1783,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w45": {
     "Arabic": [
-      "عضو عضلي يقع في الجزء العلوي من البطن ويستقبل الطعام.",
-      "يفرز عصارات هضمية حامضية تساعد في تفتيت البروتينات.",
-      "يتصل بالمريء من الأعلى وبالأمعاء الدقيقة من الأسفل.",
-      "يتميز بوجود طيات مخاطية تزيد من مساحة سطحه الداخلية.",
-      "يحتوي على خلايا متخصصة تفرز العامل الداخلي اللازم لامتصاص فيتامين معين.",
-      "يتم التحكم في خروج محتوياته عبر صمام عضلي في نهايته.",
-      "تتعرض بطانته لخطر التقرح نتيجة اختلال التوازن بين الحمض والمخاط.",
-      "تتكون جدرانه من طبقات عضلية ملساء تسمح بعملية الخلط والهرس.",
-      "يتم تنظيم إفرازه الحمضي عبر أعصاب ومواد كيميائية محلية.",
-      "قد يتأثر بوجود بكتيريا معينة تسبب التهابات مزمنة وأوراماً."
+        "عضو عضلي على شكل حرف J يقع في الربع العلوي الأيسر من البطن ويمثل محطة الهضم الميكانيكي والكيميائي الأولى للبروتينات والخلط الحمضي.",
+        "خلاياها الجدارية (Parietal cells) تفرز حمض الهيدروكلوريك (HCl) لتنشيط إنزيم الببسين، وتفرز العامل الداخلي (Intrinsic Factor) الضروري لامتصاص فيتامين B12 في اللفائفي.",
+        "تدمير الخلايا الجدارية بالأجسام المضادة الذاتية يسبب التهاب بطانة التجويف الهضمي الضموري وفقر الدم الخبيث (Pernicious Anemia) مع تلف عصبي ونقص B12.",
+        "جرثومة المعدة الحلزونية (Helicobacter pylori) تستعمر غشاءها المخاطي وتفرز اليورياز، وهي المسبب الأول لقرح المعدة وسرطان المعدة ولمفوما MALT.",
+        "قرحة المعدة (Gastric ulcer) تتميز بألم حارق في الشرسوف يزداد سوءاً بعد تناول الطعام مباشرة مما يسبب فقدان الوزن والخوف من الأكل، وتتطلب فحصاً بالمنظار لاستبعاد الخباثة.",
+        "نزيف القرحة المعدية الحاد يظهر بقيء دموي يشبه تفل القهوة (Coffee-ground vomiting) وبراز أسود قطران كريه الرائحة (Melena).",
+        "متلازمة مالوري فايس (Mallory-Weiss tear) تمزق طولي في الغشاء المخاطي عند اتصالها بالمريء نتيجة قيء عنيف متكرر لدى مدمني الكحول.",
+        "سرطان المعدة الغدي يظهر في المراحل المتأخرة بعقدة لمفاوية فوق الترقوة اليسرى (عقدة فيرشو Virchow) أو كتلة بالمبيضين (ورم كروكنبرغ Krukenberg).",
+        "متلازمة زولينجر-إليسون تنشأ عن ورم مفرز للجاسترين يسبب إفرازاً حمضياً معدياً هائلاً وقرحاً هضمية متعددة عنيدة وإسهالاً مائياً.",
+        "تضيق بواب المعدة الضخامي (Pyloric Stenosis) يصيب الرضع في الأسابيع الأولى ويتميز بقيء قذفي غير صفراوي مع وجود كتلة تشبه حبة الزيتون في البطن ويعالج بـ Pyloromyotomy."
     ],
     "English": [
-      "A muscular organ located in the upper abdomen that receives ingested food.",
-      "Secretes acidic digestive juices that facilitate the breakdown of proteins.",
-      "Connects to the esophagus superiorly and the small intestine inferiorly.",
-      "Characterized by internal mucosal folds that increase the surface area.",
-      "Contains specialized cells that produce intrinsic factor for specific vitamin absorption.",
-      "Regulates the emptying of its contents via a distal muscular sphincter.",
-      "Its lining is susceptible to ulceration due to an imbalance between acid and mucus.",
-      "Walls consist of smooth muscle layers allowing for mechanical mixing and grinding.",
-      "Acid secretion is regulated by local nerves and paracrine signaling molecules.",
-      "May be affected by specific bacteria linked to chronic inflammation and malignancy."
+        "A muscular J-shaped intraperitoneal digestive reservoir in the left upper quadrant responsible for mechanical churning and acidic protein proteolysis.",
+        "Parietal (oxyntic) cells secrete hydrochloric acid via H+/K+ ATPase pumps and intrinsic factor, mandatory for downstream ileal vitamin B12 absorption.",
+        "Autoimmune destruction of parietal cells causes chronic type A atrophic gastritis and pernicious anemia, featuring macrocytic megaloblastic anemia and dorsal column ataxia.",
+        "Helicobacter pylori colonization in the antral mucosa drives chronic type B gastritis, peptic ulcer disease, gastric adenocarcinoma, and gastric MALT lymphoma.",
+        "Gastric ulcers characteristically manifest with epigastric burning pain aggravated immediately by food intake, prompting endoscopically directed biopsies to exclude malignancy.",
+        "Acute upper gastrointestinal ulcer hemorrhage manifests with hematemesis ('coffee-ground' emesis) and jet-black, foul-smelling melena.",
+        "Repeated forceful retching in acute alcohol intoxication precipitates non-transmural linear mucosal tears at the gastroesophageal junction (Mallory-Weiss syndrome).",
+        "Advanced diffuse gastric adenocarcinoma (linitis plastica) metastasizes to the left supraclavicular node (Virchow's node) or bilaterally to ovaries (Krukenberg tumor).",
+        "Gastrin-secreting neuroendocrine tumors (Zollinger-Ellison syndrome) drive massive gastric acid hypersecretion and refractory post-bulbar jejunal peptic ulcerations.",
+        "Infantile hypertrophic pyloric stenosis features non-bilious projectile vomiting at 3-6 weeks of life and a palpable 'olive-like' mass, corrected via Ramstedt pyloromyotomy."
     ]
-  },
+},
   "w46": {
     "Arabic": [
       "يتحكم في معظم تعبيرات الوجه العضلية.",
@@ -2061,30 +2017,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w54": {
     "Arabic": [
-      "تقع تشريحياً فوق القطب العلوي للكلية.",
-      "تتكون من قشرة خارجية ولب داخلي يعملان كغدد صماء منفصلة.",
-      "تفرز القشرة هرمونات ستيرويدية تنظم ضغط الدم والتمثيل الغذائي.",
-      "ينظم الهرمون الموجه لهذه الغدد عمل القشرة تحت إشراف النخامية.",
-      "يفرز اللب الكاتيكولامينات المسؤولة عن استجابة الكر والفر.",
-      "تنتج القشرة المينرالوكورتيكويدات التي توازن الصوديوم والبوتاسيوم.",
-      "يؤدي نقص إفراز الهرمونات إلى حالة إعياء مزمن واضطراب في الشوارد.",
-      "يسبب فرط الإفراز أعراضاً تشمل زيادة الوزن وارتفاع الضغط وتغيرات جلدية.",
-      "تُشتق هرمونات القشرة كيميائياً من الكوليسترول في عملية حيوية دقيقة.",
-      "تعد أورام هذه المنطقة سبباً نادراً ولكن مهماً لارتفاع الضغط الثانوي."
+        "غدة صماء هرمية الشكل تستقر فوق القطب العلوي لكل كلية وتتكون وظيفياً وتشريحياً من قشرة خارجية ونخاع داخلي بأصول جنينية مختلفة.",
+        "قشرتها تنقسم لثلاث طبقات (GFR): الكبيبية تفرز الألدوستيرون، الحزمية تفرز الكورتيزول، والشبكية تفرز الأندروجينات الجنسية.",
+        "نخاعها يفرز الكاتيكولامينات (الأدرينالين والنورأدرينالين) استجابة لتحفيز الجهاز السمبثاوي في مواقف الكر والفر والضغط الحاد.",
+        "ورم القواتم (Pheochromocytoma) ينشأ من خلايا الكرومافين بنخاعها ويفرز أدرينالين مفرطاً مسبباً الثالوث الكلاسيكي: صداع نصفي عنيف، خفقان، وتعرق مع ارتفاع ضغط انتباذي شديد.",
+        "متلازمة كوشينغ (Cushing's Syndrome) تنتج عن فرط الكورتيزول المزمن وتتميز بوجه قمري مدور، سنام الجاموس، خطوط بنفسجية على البطن، وهشاشة عظام وارتفاع السكر.",
+        "داء أديسون (Addison's Disease) هو قصور أولي مزمن في قشرتها نتيجة هجوم مناعي ذاتي أو درن، ويتميز بهبوط ضغط، تصبغ داكن للجلد واللثة، ونقص صوديوم مع فرط بوتاسيوم.",
+        "الأزمة الكظرية الحادة (Addisonian Crisis) طارئة قاتلة تحدث بعد ضغط جراحي أو عدوى حادة، وتظهر بانهيار وعائي وصدمة حادة وتعالج فوراً بحقن هيدروكورتيزون وريدي ومحاليل.",
+        "ألدوستيرونية أولية (متلازمة كون Conn's Syndrome) تنجم عن ورم قشري حميد يفرز ألدوستيروناً مفرطاً يسبب ارتفاع ضغط مع هبوط حاد في بوتاسيوم الدم وقلاء أيضي.",
+        "متلازمة ووترهاوس-فريدريكسن (Waterhouse-Friderichsen) نزيف وتدمير نخر صاعق في كلا الغدتين ينتج عن عدوى إنتانية صاعقة بالمكورات السحائية في الأطفال.",
+        "تضخم الكظر الخلقي (CAH) ينجم عن نقص وراثي في إنزيم 21-هيدروكسيلاز، ويؤدي إلى فقدان أملاح خطير واضطراب وتذكير في الأعضاء التناسلية للمواليد الإناث."
     ],
     "English": [
-      "Anatomically situated superior to the upper pole of the kidney.",
-      "Composed of an outer cortex and inner medulla functioning as distinct endocrine units.",
-      "The cortex secretes steroid hormones that regulate blood pressure and metabolic homeostasis.",
-      "The pituitary-derived trophic hormone regulates the cortical secretory pathways.",
-      "The medulla releases catecholamines mediating the physiologic fight-or-flight response.",
-      "Cortical zones produce mineralocorticoids essential for sodium and potassium balance.",
-      "Deficiency in hormonal output leads to chronic fatigue and significant electrolyte disturbances.",
-      "Hypersecretion manifests as weight gain, hypertension, and characteristic cutaneous changes.",
-      "Cortical hormones are synthesized via biochemical pathways starting from cholesterol precursors.",
-      "Neoplasms in this region constitute a rare but critical etiology for secondary hypertension."
+        "A paired retroperitoneal endocrine organ perched atop the superior pole of each kidney, comprising an outer mesodermal cortex and an inner neural crest medulla.",
+        "The cortex is zonally divided (GFR): zona glomerulosa (mineralocorticoid aldosterone), zona fasciculata (glucocorticoid cortisol), and zona reticularis (androgens).",
+        "The chromaffin-rich adrenal medulla synthesizes and discharges catecholamines (epinephrine, norepinephrine) under preganglionic sympathetic splanchnic stimulation.",
+        "Pheochromocytoma arising from chromaffin tissue provokes paroxysmal hypertensive surges accompanied by the classic triad: pounding headache, palpitations, and diaphoresis.",
+        "Hypercortisolemia (Cushing's syndrome) manifests through plethoric moon facies, dorsocervical buffalo hump, violaceous abdominal striae, osteoporosis, and hyperglycemia.",
+        "Primary chronic adrenocortical insufficiency (Addison's disease) is characterized by hyperpigmentation (elevated ACTH/MSH), hypotension, hyponatremia, and hyperkalemia.",
+        "Acute adrenal crisis is a life-threatening shock state precipitated by stress in an untreated Addisonian patient, rescued urgently with intravenous hydrocortisone and saline.",
+        "Primary hyperaldosteronism (Conn's syndrome, solitary cortical adenoma) drives volume expansion hypertension with profound refractory hypokalemia and metabolic alkalosis.",
+        "Waterhouse-Friderichsen syndrome features catastrophic bilateral hemorrhagic necrosis of both glands precipitated by fulminant Neisseria meningitidis septicemia.",
+        "Congenital adrenal hyperplasia (CAH), predominantly caused by 21-hydroxylase deficiency, prompts cortisol deficiency, salt wasting, and virilization of female genitalia."
     ]
-  },
+},
   "w55": {
     "Arabic": [
       "تتضمن التهاباً أو تهيجاً في الغشاء المبطن للجزء العلوي من الجهاز الهضمي.",
@@ -2399,30 +2355,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w67": {
     "Arabic": [
-      "تغذي عضلة القلب بالدم الغني بالأكسجين.",
-      "تنشأ مباشرة من قاعدة الأبهر بالقرب من الصمام.",
-      "أي انسداد فيها يسبب ألم الصدر المعروف بالذبحة.",
-      "تتفرع إلى مسارات رئيسية مثل المسار الأيسر النازل والمسار الأيمن.",
-      "تعتبر الجزء الأكثر حيوية في الدورة الدموية القلبية.",
-      "يؤدي انقطاع تدفق الدم فيها إلى موت خلايا العضلة القلبية.",
-      "تخضع لعمليات توسيع أو تجاوز جراحي عند حدوث ضيق شديد.",
-      "تظهر بوضوح في تقنية التصوير التبايني للوعاء الدموي.",
-      "يتحكم في جريان الدم خلالها نظام تنظيمي معقد يعتمد على الاحتياج الاستقلابي.",
-      "تتعرض للتضيق نتيجة تراكم اللويحات في الطبقة الداخلية."
+        "شرايين حيوية تنشأ من جيوب فالسالفا في قاعدة الشريان الأورطي فوق الصمام الأورطي مباشرة لتغذية العضلة القلبية بالدم المؤكسج.",
+        "التروية الدموية وتدفق الدم خلالها يحدث بشكل أساسي وفريد أثناء انبساط القلب (Diastole) وليس أثناء الانقباض.",
+        "الجذع الشرياني الرئيسي المغذي للقلب يتفرع للشريان النازل الأمامي (LAD) والشريان المنعطف (LCx)، وانسداد LAD يسمى صانع الأرامل لخطورته الفتاكة.",
+        "تصلب الشرايين (Atherosclerosis) وترسب صفائح الكوليسترول بداخلها يسبب تضيقها وحدوث الذبحة الصدرية المستقرة مع المجهود.",
+        "تمزق صفيحة التصلب وتكون خثرة دموية حادة فوقها هو الآلية المباشرة لحدوث متلازمة الشريان التاجي الحادة واحتشاء القلب (MI).",
+        "تخطيط كهربية القلب (ECG) يحدد موقع انسداد الشريان؛ فانسداد LAD يظهر بارتفاع ST في الاتجاهات V1-V4، بينما الشريان الأيمن يظهر في II, III, aVF.",
+        "قسطرة الشرايين التاجية (Coronary Angiography) هي الفحص الذهبي لتصوير التضيقات وتوسيعها وتركيب الدعامات الدوائية (DES).",
+        "عملية ترقيع الشرايين التاجية (CABG / جراحة القلب المفتوح) تستخدم الشريان الثديي الداخلي (LIMA) ووريد السافينوس لتجاوز الانسدادات المتعددة.",
+        "الشريان التاجي الأيمن (RCA) يغذي العقدة الجيبية (SA) والعقدة الأذينية البطينية (AV)، وانسداده يسبب إحصار القلب وبطء النبض الحاد.",
+        "تشنج الشريان التاجي المفاجئ يسبب ذبحة برنزميتال (Prinzmetal's angina) التي تحدث أثناء الراحة ليلاً وتعالج بحاصرات قنوات الكالسيوم والنترات."
     ],
     "English": [
-      "Supply the myocardium with oxygenated blood.",
-      "Originate directly from the base of the aorta near the valves.",
-      "Obstruction within these vessels causes classic chest discomfort.",
-      "Branch into primary pathways such as the left anterior descending and right segments.",
-      "Considered the most critical components of cardiac circulation.",
-      "Interruption of blood flow leads to necrosis of heart muscle fibers.",
-      "Frequently undergo dilation or surgical bypass when severe stenosis occurs.",
-      "Visualized in high detail via contrast-enhanced invasive imaging.",
-      "Blood flow regulation is dictated by complex metabolic demands.",
-      "Subject to narrowing due to plaque deposition within the tunica intima."
+        "Vital epicardial arteries originating from the right and left aortic sinuses of Valsalva immediately above the aortic valve leaflets.",
+        "Myocardial perfusion across their capillary bed takes place uniquely and almost entirely during ventricular diastole, when compressive intramyocardial wall tension abates.",
+        "The left main coronary artery bifurcates into the left anterior descending (LAD) and circumflex (LCx); acute proximal LAD occlusion is designated the 'widow-maker'.",
+        "Subendothelial atheromatous plaque accumulation restricts luminal flow, precipitating classic exertional angina pectoris relieved by rest or sublingual nitroglycerin.",
+        "Atheromatous plaque fissuring with acute superimposed occlusive thrombosis constitutes the pathophysiology of acute coronary syndromes (NSTEMI / STEMI).",
+        "12-lead ECG localizes regional coronary obstruction: anterior wall ischemia (LAD) produces V1-V4 ST elevations; inferior ischemia (RCA) displays ST elevations in II, III, and aVF.",
+        "Selective coronary angiography serves as the diagnostic gold standard, permitting immediate percutaneous coronary intervention (PCI) and drug-eluting stent deployment.",
+        "Coronary artery bypass grafting (CABG) utilizes the left internal mammary artery (LIMA) and saphenous vein conduits to revascularize multivessel disease.",
+        "The right coronary artery (RCA) typically supplies the SA and AV nodes; RCA occlusion commonly provokes high-grade atrioventricular heart blocks and severe bradycardia.",
+        "Transient focal vasospasm of epicardial vessels drives Prinzmetal's variant angina, manifesting with nocturnal resting chest pain and transient ST-segment elevation, treated with CCBs."
     ]
-  },
+},
   "w68": {
     "Arabic": [
       "جهاز طبي يستخدم لعلاج اضطرابات نظم القلب القاتلة.",
@@ -2581,56 +2537,56 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w89": {
     "Arabic": [
-      "عضو تنفسي زوجي يقع ضمن التجويف الصدري.",
-      "يتم فيه تبادل الغازات بين الهواء الخارجي والدم في الأسناخ.",
-      "يُحاط العضو بغشاء مزدوج الطبقات يُسمى الجنب.",
-      "يتكون الجانب الأيمن من ثلاثة فصوص بينما يتكون الأيسر من اثنين.",
-      "يدخل الهواء عبر القصبات الهوائية وصولاً إلى الشعيبات.",
-      "تُظهر فحوصات التصوير وجود أوعية دموية وقنوات هوائية متفرعة.",
-      "يُعد الحجاب الحاجز العضلة الرئيسية المسؤولة عن تحريك هذا العضو.",
-      "يتم فحص وظائف العضو سريرياً عبر قياسات التنفس.",
-      "تتأثر هذه البنية بشدة بمرض الانسداد المزمن.",
-      "يعتمد تبادل الأكسجين وثاني أكسيد الكربون على مساحة سطح واسعة وغشاء رقيق."
+        "عضو التنفس الأساسي في الصدر وتتكون اليمنى من ثلاثة فصوص واليسرى من فصين لإفساح المجال للقلب، وتستقبل كامل النتاج القلبي من البطين الأيمن عبر الشريان الرئوي.",
+        "الانسداد الرئوي الحاد (Pulmonary Embolism) ينشأ عن انتقال جلطة من أوردة الساق العميقة (DVT)، ويظهر بألم صدري مفاجئ وتسرع تنفس وانخفاض أكسجين ويشخص بـ CT-PA.",
+        "مرض السدة الرئوية المزمنة (COPD) الناجم عن التدخين يجمع بين التهاب القصبات المزمن والنفاخ الرئوي (Emphysema) مع احتباس الهواء وانخفاض نسبة FEV1/FVC بالسبيرومتري.",
+        "الربو الشعبي (Bronchial Asthma) يتميز بفرط استجابة والتهاب مجاري الهواء التحسسي مع تزييق وزفير طويل، ويعالج بموسعات الشعب قصيرة المدى (SABA) والكورتيزون الاستنشاقي.",
+        "التهابها الجرثومي (Pneumonia) يسببه بكتيريا المكورات الرئوية، ويتميز بكحة وبلغم صديدي ودموي وتكثف رئوي (Consolidation) مع لغط شعري ولغط قصبي بالسماعة.",
+        "أورام هذا العضو التنفسي نوعان رئيسيان: الخلايا غير الصغيرة (NSCLC) والخلايا الصغيرة (SCLC) الأشرس المرتبط بمتلازمات الإفراز الهرموني الشاذ (SIADH ومتلازمة كوشينغ).",
+        "متلازمة الضائقة التنفسية الحادة (ARDS) تحدث بعد إنتان دموي حاد أو صدمة وتتميز بنفاذية شعيرية واسعة ونقص أكسجة حاد مع رشح ثنائي الجانب بالرئتين (بياض كامل بالأشعة).",
+        "التليف الرئوي مجهول السبب (IPF) يظهر بصوت خشخشة ناعمة كالفيلكرو (Velcro crackles) عند الشهيق وتصلب النسيج الخلالي ونمط خلية النحل (Honeycomb) في CT الصدر.",
+        "احتباس السوائل بداخلها في وذمة الرئة الحبيسة (Cardiogenic Pulmonary Edema) ناتج عن فشل البطين الأيسر ويعالج بمدرات البول العروية الوريدية (Furosemide) والنيتروجليسرين.",
+        "تتعرض لاسترواح الصدر (Pneumothorax) عند تمزق حويصلات هوائية طرفية مما يؤدي لانهيار الرئة واختفاء أصوات التنفس وأصمية رنانة، وتستدعي تركيب أنبوب صدري فوري."
     ],
     "English": [
-      "A paired respiratory organ located within the thoracic cavity.",
-      "It facilitates gas exchange between atmospheric air and blood within the alveoli.",
-      "The organ is encased in a double-layered membrane known as the pleura.",
-      "The right anatomical side consists of three lobes while the left contains two.",
-      "Air enters through bronchial passages that terminate in smaller bronchioles.",
-      "Imaging studies reveal a dense network of branching vessels and airways.",
-      "The diaphragm serves as the primary muscle responsible for ventilatory mechanics.",
-      "Functional assessment is typically performed via pulmonary function testing.",
-      "This structure is severely compromised in chronic obstructive pathologies.",
-      "Oxygen and carbon dioxide diffusion relies on an extensive surface area and a thin barrier."
+        "The primary respiratory organ; the right lung comprises three lobes while the left possesses two and a cardiac notch, receiving the entire right ventricular stroke volume.",
+        "Acute pulmonary embolism (PE) commonly dislodges from deep vein thrombosis (DVT), provoking sudden dyspnea, pleuritic pain, tachypnea, confirmed by CT pulmonary angiography.",
+        "Chronic obstructive pulmonary disease (COPD) combines chronic bronchitis and emphysematous alveolar destruction, characterized by an obstructive FEV1/FVC ratio <0.70.",
+        "Bronchial asthma is reversible airway hyperreactivity and chronic eosinophilic inflammation, manifesting with expiratory wheezing, managed with inhaled bronchodilators and corticosteroids.",
+        "Bacterial community-acquired pneumonia (Streptococcus pneumoniae) features fever, productive rust-colored sputum, and lobar consolidation with bronchial breath sounds and crackles.",
+        "Small cell lung carcinoma (SCLC) is a neuroendocrine malignancy strongly tied to smoking, notoriously driving paraneoplastic syndromes like SIADH and ectopic Cushing's.",
+        "Acute respiratory distress syndrome (ARDS) involves diffuse alveolar-capillary endothelial injury, non-cardiogenic pulmonary edema, and refractory PaO2/FiO2 hypoxemia.",
+        "Idiopathic pulmonary fibrosis (IPF) features restrictive bibasilar end-inspiratory 'Velcro' crackles and characteristic subpleural honeycombing on high-resolution chest CT.",
+        "Cardiogenic pulmonary edema secondary to acute left heart failure produces pink frothy sputum, orthopnea, and bilateral interstitial Kerley B lines on chest radiography.",
+        "Spontaneous pneumothorax results from apical subpleural bleb rupture, precipitating sudden ipsilateral pleuritic pain, hyperresonance, and diminished breath sounds."
     ]
-  },
+},
   "w90": {
     "Arabic": [
-      "غدة مختلطة الإفراز تقع خلف المعدة في الجزء العلوي من البطن.",
-      "تنتج إنزيمات هاضمة تُصب في العفج للمساعدة في تحطيم المغذيات.",
-      "تفرز هرمونات حيوية لتنظيم مستويات السكر في الدم.",
-      "يتكون الجزء الصماوي من مجموعات خلوية تُعرف بجزر لانجرهانز.",
-      "تُعد الالتهابات الحادة في هذا العضو حالة طبية طارئة.",
-      "تفرز خلايا بيتا هرمون الأنسولين داخل هذه البنية.",
-      "تتضمن وظيفتها الهضمية إفراز الأميليز والليباز.",
-      "يؤدي انسداد القناة الرئيسية إلى تراكم الإنزيمات وتلف النسيج.",
-      "يرتبط قصور هذا العضو غالباً بسوء امتصاص الدهون والسكري.",
-      "يُستخدم التصوير الطبقي المحوري لتقييم سلامة وتوضع هذا العضو."
+        "غدة مختلطة مزدوجة (صماء وقنوية) تقع خلف المعدة في الفضاء خلف الصفاق، ورأسها محاط بحلقة الاثني عشر وذيلها يلامس سرة الطحال.",
+        "الالتهاب البطني الحاد لهذه الغدة المزدوجة (Pancreatitis) سببه الرئيسي حصوات المرارة أو إدمان الكحول، ويظهر بألم طاعن في فم المعدة يسمع كالطوق في الظهر ويخف بالانحناء للأمام.",
+        "تشخيص التهابه الحاد يؤكد بارتفاع إنزيمات الليباز (Lipase) والأميلاز لأكثر من ثلاثة أضعاف المعدل الطبيعي، مع خطورة نخر النسيج وظهور علامتي كولن وغراي تيرنر النزفيتين.",
+        "جزر لانجرهانس تمثل قسمه الصمي؛ خلايا بيتا تفرز الأنسولين، وخلايا ألفا تفرز الجلوكاجون، وتدمير خلايا بيتا المناعي يسبب داء السكري من النوع الأول (Type 1 DM).",
+        "الحماض الكيتوني السكري (DKA) طارئة غدية حادة ناتجة عن انعدام الأنسولين، وتظهر بجفاف وتنفس كوسماول السريع ورائحة الأسيتون بالفم وتعالج بمحاليل ملحية وإنسولين وريدي.",
+        "سرطان غدد البنكرياس (Pancreatic Adenocarcinoma) من أشرس الأورام ويصيب الرأس غالباً ويسبب يرقاناً انسدادياً غير مؤلم مع مرارة متضخمة محسوسة (قانون كورفوازييه).",
+        "أورام الغدد الصماء البنكرياسية النادرة تشمل ورم الإنسولينوما (Insulinoma) بنقص سكر حاد، وورم الجاسترينوما (Zollinger-Ellison) بقرح هضمية عنيدة ومتعددة.",
+        "إفرازاته الهاضمة تحتوي على إنزيمات التريبسينوجين والكيموتريبسين والليباز غير النشطة لمنع الهضم الذاتي، ومحلول البيكربونات القلوي المفرز بتأثير السيكريتين.",
+        "التهاب البنكرياس المزمن يؤدي إلى تكلسات واضحة بالأشعة وقصور هضمي بظهور إسهال دهني طافي (Steatorrhea) وسوء امتصاص الفيتامينات الذائبة في الدهون.",
+        "عملية ويبل (Whipple procedure / Pancreaticoduodenectomy) هي الجراحة الكبرى المعقدة لاستئصال رأسه والاثني عشر في حالات الأورام القابلة للاستئصال."
     ],
     "English": [
-      "A mixed-gland structure situated posterior to the stomach in the upper abdomen.",
-      "It produces digestive enzymes secreted into the duodenum to aid nutrient breakdown.",
-      "The organ releases vital hormones to regulate blood glucose homeostasis.",
-      "The endocrine portion consists of cellular clusters known as the islets of Langerhans.",
-      "Acute inflammation of this organ constitutes a medical emergency.",
-      "Beta cells within this structure are responsible for the secretion of insulin.",
-      "Digestive functionality includes the production of amylase and lipase.",
-      "Obstruction of the main duct leads to enzyme accumulation and auto-digestion.",
-      "Insufficiency of this structure is often associated with fat malabsorption and glycemic dysregulation.",
-      "Computed tomography is the diagnostic gold standard for evaluating its integrity and position."
+        "A dual retroperitoneal exocrine and endocrine gland nestled in the C-loop of the duodenum with its tail extending to the splenic hilum.",
+        "Acute pancreatitis is primarily triggered by gallstone impaction or alcohol abuse, classically presenting with severe epigastric pain radiating band-like to the back.",
+        "Serum lipase elevation exceeding three times the upper limit of normal is the most sensitive and specific biochemical diagnostic test for acute pancreatitis.",
+        "Islets of Langerhans constitute the endocrine component; autoimmune destruction of insulin-secreting beta cells drives type 1 diabetes mellitus.",
+        "Diabetic ketoacidosis (DKA) is an acute metabolic crisis caused by absolute insulin deficiency, characterized by hyperglycemia, ketonemia, and Kussmaul hyperventilation.",
+        "Pancreatic ductal adenocarcinoma typically arises in the head, manifesting with painless obstructive jaundice and a palpable, non-tender gallbladder (Courvoisier's law).",
+        "Functional neuroendocrine tumors include insulinoma (hypoglycemia, Whipple triad) and gastrinoma (severe recurrent peptic ulcers in Zollinger-Ellison syndrome).",
+        "Acinar cells synthesize inactive digestive zymogens (trypsinogen, chymotrypsinogen) and lipase; ductal cells secrete bicarbonate stimulated by duodenal secretin.",
+        "Chronic pancreatitis leads to irreversible parenchymal fibrosis, calcifications, exocrine insufficiency with steatorrhea, and secondary pancreatogenic diabetes.",
+        "The Whipple procedure (pancreaticoduodenectomy) is the standard surgical resection for resectable neoplasms confined to the head and periampullary region."
     ]
-  },
+},
   "w76": {
     "Arabic": [
       "تعد هذه الخلايا المكون الرئيسي للجهاز المناعي التكيفي في الجسم.",
@@ -2659,30 +2615,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w77": {
     "Arabic": [
-      "تعتبر الغدة الرئيسية التي تتحكم في معظم الوظائف الغددية في الجسم.",
-      "تقع في تجويف عظمي في قاعدة الجمجمة يُعرف بالسرج التركي.",
-      "تتصل بالمهاد عبر ساق عصبية ووعائية دقيقة.",
-      "تتكون من فصين رئيسيين يختلفان في المنشأ الجنيني والوظيفة الإفرازية.",
-      "تخضع للتنظيم المباشر من قبل تحت المهاد عبر إشارات عصبية وهرمونية.",
-      "تفرز هرمونات تؤثر على النمو والتمثيل الغذائي وتوازن السوائل.",
-      "يؤدي قصورها الوظيفي إلى اضطرابات متعددة في الغدد التابعة لها.",
-      "يتأثر نشاطها بحلقات التغذية الراجعة السلبية من الهرمونات الطرفية.",
-      "قد تتعرض لأورام حميدة تسبب ضغطاً على التصالب البصري مسببة فقدان الرؤية الجانبية.",
-      "تفرز الهرمون الموجه لقشرة الكظر الذي ينظم إنتاج الجلوكوكورتيكويدات."
+        "سيدة الغدد الصماء بحجم حبة الحمص، تستقر بأمان داخل انخفاض عظمي في قاع الجمجمة يسمى السرج التركي (Sella Turcica) أسفل التصالب البصري مباشرة.",
+        "الورم الغدي الصماوي في السرج التركي (Adenoma) عندما ينمو ويضغط على التصالب البصري يسبب عمى شقي نصفي ثنائي الصدغين (Bitemporal hemianopsia).",
+        "فصها الأمامي يفرز ستة هرمونات رئيسية: هرمون النمو (GH)، موجه القشرة (ACTH)، موجه الدرقية (TSH)، البرولاكتين، وهرموني الخصوبة (FSH & LH).",
+        "الورم المفرز للبرولاكتين (Prolactinoma) هو الأكثر شيوعاً ويسبب انقطاع الطمث وثر اللبن (Galactorrhea) عند النساء وضعف الرغبة عند الرجال ويعالج بدواء الكابيرجولين.",
+        "فرط إفراز هرمون النمو بعد سن البلوغ يسبب داء ضخامة النهايات (Acromegaly) مع كبر الفك والأصابع وملامح الوجه وتضخم القلب، بينما قبل البلوغ يسبب العملقة.",
+        "مرض كوشينغ (Cushing's Disease) ينجم عن ورم نخامي مفرز لـ ACTH يحفز الكظر لإنتاج كورتيزول مفرط، ويشخص باختبار تثبيط الديكساميثازون.",
+        "فصها الخلفي يفرز هرمون الأوكسيتوسين المقلص للرحم، والهرمون المانع لإدرار البول (ADH / Vasopressin) الحافظ لماء الجسم في الكلى.",
+        "متلازمة شيهان (Sheehan's Syndrome) نخر إقفاري حاد في الغدة يصيب الأمهات بعد نزيف ما بعد الولادة الشديد ويؤدي لقصور شامل وفشل إدرار الحليب.",
+        "السكتة النخامية (Pituitary Apoplexy) طارئة حرجة ناتجة عن نزيف أو احتشاء مفاجئ داخل ورم الغدة وتظهر بصداع رعدي حاد وعمى وهبوط كظري مفاجئ.",
+        "الاستئصال الجراحي لأورامها يتم عادة عبر مدخل جراحي دقيق عبر الجيب الوتدي والأنف بالمنظار (Transsphenoidal surgery)."
     ],
     "English": [
-      "The master gland that controls the majority of glandular functions in the body.",
-      "Located within a bony cavity at the base of the skull known as the sella turcica.",
-      "Connected to the hypothalamus via a delicate neural and vascular stalk.",
-      "Consists of two major lobes that differ in embryological origin and secretory function.",
-      "Undergoes direct regulation by the hypothalamus through neural and hormonal signals.",
-      "Secretes hormones affecting growth, metabolism, and fluid balance.",
-      "Hypofunction results in multisystem disorders affecting dependent target glands.",
-      "Its activity is governed by negative feedback loops from peripheral hormones.",
-      "Adenomas may compress the optic chiasm, leading to bitemporal hemianopsia.",
-      "Secretes the hormone responsible for regulating adrenocortical glucocorticoid production."
+        "The master endocrine gland resting safely in the sphenoid sella turcica, directly inferior to the optic chiasm and bridged to the hypothalamus by the infundibulum.",
+        "Macroadenomas expanding superiorly compress the decussating fibers of the optic chiasm, producing classic pathognomonic bitemporal hemianopsia.",
+        "The anterior adenohypophysis secretes six trophic hormones: GH, ACTH, TSH, prolactin, and the gonadotropins FSH and LH.",
+        "Prolactinoma is the most prevalent functional adenoma, provoking galactorrhea, amenorrhea, and infertility in women, treated medically with dopamine agonists (cabergoline).",
+        "Excessive post-pubertal growth hormone hypersecretion triggers acromegaly, marked by acral enlargement, prognathism, coarse facial features, and secondary cardiomyopathy.",
+        "Cushing's disease stems from an ACTH-secreting pituitary microadenoma driving secondary adrenal hypercortisolemia, confirmed via high-dose dexamethasone suppression testing.",
+        "The posterior neurohypophysis releases oxytocin and antidiuretic hormone (ADH/vasopressin), synthesized in hypothalamic supraoptic/paraventricular nuclei.",
+        "Sheehan's syndrome is postpartum ischemic necrosis of the hypertrophied pituitary secondary to severe obstetrical hemorrhage, presenting with failure of lactation.",
+        "Pituitary apoplexy is an acute neurosurgical emergency secondary to sudden hemorrhagic infarction of an adenoma, presenting with thunderclap headache and visual collapse.",
+        "Endoscopic endonasal transsphenoidal hypophysectomy represents the premier minimally invasive surgical approach for resecting pituitary adenomas."
     ]
-  },
+},
   "w78": {
     "Arabic": [
       "عقار يستخدم بشكل شائع كمنقذ في حالات ضيق التنفس الحاد.",
@@ -2945,30 +2901,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w73": {
     "Arabic": [
-      "حزمة عصبية رئيسية تمتد داخل القناة الفقرية.",
-      "تعمل كحلقة وصل بين الدماغ وبقية أعضاء الجسم.",
-      "تخرج منها الجذور العصبية لتغذية الأطراف والجذع.",
-      "تتكون من مادة رمادية مركزية ومادة بيضاء محيطية.",
-      "تعالج ردود الفعل الانعكاسية دون تدخل الدماغ.",
-      "محمية بالسائل الدماغي الشوكي والأغشية السحائية.",
-      "إصابتها قد تؤدي إلى فقدان الإحساس أو الشلل.",
-      "تحتوي على مسارات صاعدة وأخرى هابطة للإشارات.",
-      "تتأثر بضغط الانزلاقات الغضروفية في العمود الفقري.",
-      "يتم فحص وظيفتها عبر اختبارات المنعكسات الوترية."
+        "الحبل العصبي الرئيسي الممتد من الثقبة العظمى حتى مستوى الفقرة القطنية الأولى أو الثانية (L1/L2) لينتهي عند المخروط النخاعي (Conus medullaris).",
+        "تخرج منه 31 زوجاً من الأعصاب الشوكية، وذيول الأعصاب الممتدة أسفله تسمى ذيل الفرس (Cauda Equina).",
+        "متلازمة ذيل الفرس (Cauda Equina Syndrome) طارئة جراحية تنتج عن انضغاط ديسك ضخم وتظهر بخدر منطقة السرج وسلس بول وضعف بالأطراف.",
+        "المادة الرمادية بمركزه تتخذ شكل الفراشة (قرون أمامية حركية وقرون خلفية حسية)، والمادة البيضاء المحيطة تضم المسارات الصاعدة والنازلة.",
+        "قطع الحبل الشوكي التام يسبب شللاً رباعياً (إذا كان عنقياً) أو شللاً نصفي سفلياً مع فقدان كامل للإحساس والتحكم الإرادي في البول والبراز.",
+        "متلازمة براون-سيكارد (Brown-Séquard) تنتج عن قطع نصفي للنخاع وتتميز بفقدان الحركة واللمس في نفس الجانب وفقدان ألم وحرارة في الجانب المقابل.",
+        "البذل القطني لأخذ عينة من السائل النخاعي يجرى بأمان تحت مستوى الفقرة L3 (بين L3-L4 أو L4-L5) لتجنب إصابة الحبل العصبي المركزي.",
+        "السبيل الهرمي القشري الشوكي (Corticospinal tract) ينقل الأوامر الحركية الإرادية، وتلفه يسبب علامات العصبون الحركي العلوي وعلامة بابينسكي الإيجابية.",
+        "تكهف النخاع الشوكي (Syringomyelia) كيس سوائل بمركزه يضغط على تصالب الألياف ويسبب فقداناً شبيهاً بالجاكت لإحساس الألم والحرارة بالأطراف العلوية.",
+        "صدمة النخاع الشوكي (Spinal Shock) تظهر بعد الإصابات الحادة بفقدان فوري وشامل لجميع المنعكسات والتوتر العضلي أسفل مستوى الإصابة."
     ],
     "English": [
-      "A primary neural bundle extending within the vertebral canal.",
-      "Serves as the main conduit between the brain and the body.",
-      "Nerve roots emerge from it to innervate limbs and trunk.",
-      "Composed of central gray matter and peripheral white matter.",
-      "Processes reflex arcs independently of the brain.",
-      "Protected by cerebrospinal fluid and meningeal layers.",
-      "Injury may result in sensory loss or paralysis.",
-      "Contains both ascending and descending signaling pathways.",
-      "Vulnerable to compression from vertebral disc herniations.",
-      "Function is clinically evaluated via deep tendon reflex testing."
+        "The primary neurological conduit extending from the foramen magnum to the L1/L2 intervertebral level, terminating as the conus medullaris.",
+        "Gives rise to 31 pairs of segmental spinal nerves; the lumbosacral nerve roots trailing inferiorly form the cauda equina ('horse's tail').",
+        "Cauda equina syndrome secondary to massive central disc herniation manifests with saddle anesthesia, urinary retention/incontinence, and leg weakness.",
+        "Histologically features an H-shaped central gray matter butterfly (anterior motor horns, posterior sensory horns) encircled by myelinated white columns.",
+        "Complete traumatic cord transection produces paraplegia or quadriplegia with total bilateral loss of somatic sensation and autonomic bowel/bladder control.",
+        "Hemicord lesion produces Brown-Séquard syndrome: ipsilateral spastic motor paralysis and proprioception loss, with contralateral pain and temperature loss.",
+        "Diagnostic lumbar puncture safely penetrates the subarachnoid space below the L3 level (typically L3/L4 or L4/L5) to prevent direct mechanical cord trauma.",
+        "The lateral corticospinal tract mediates voluntary motor control; upper motor neuron injury produces hyperreflexia, spasticity, and a positive Babinski sign.",
+        "Syringomyelia (fluid-filled central cavitation within the cervical spinal canal) compresses the anterior white commissure, producing a 'cape-like' loss of pain and temperature.",
+        "Acute traumatic spinal shock provokes transient flaccid paralysis, areflexia, and loss of autonomic tone below the level of the acute structural lesion."
     ]
-  },
+},
   "w74": {
     "Arabic": [
       "عظمة طويلة تقع بشكل أفقي في الجزء العلوي من الصدر.",
@@ -3153,30 +3109,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w91": {
     "Arabic": [
-      "عضو لمفاوي يقع في الربع العلوي الأيسر من البطن.",
-      "يعمل كمصفاة للدم ويساهم في استجابة الجهاز المناعي.",
-      "يشارك في تدمير خلايا الدم الحمراء القديمة.",
-      "يتلقى إمداده الدموي الرئيسي عبر شريان ينشأ من الجذع البطني.",
-      "يحتوي على مناطق تعرف باللب الأبيض واللب الأحمر.",
-      "يخزن جزءاً كبيراً من الصفائح الدموية في الدورة الدموية.",
-      "قد يتعرض للتضخم نتيجة للعديد من الاضطرابات التكاثرية الدموية.",
-      "يخلو من القنوات اللمفاوية الواردة ويستقبل الدم مباشرة.",
-      "يؤدي غيابه إلى زيادة التعرض للعدوى بالجراثيم المغلفة.",
-      "يحتوي على أغماد حول الشرايين من الخلايا اللمفاوية التائية في اللب الأبيض."
+        "أكبر عضو لمفاوي في الجسم ويقع في الربع العلوي الأيسر من البطن تحت الضلوع 9 و 10 و 11، ويحاط بمحفظة ليفية رقيقة تجعله سريع التمزق في حوادث الصدمات البطنية.",
+        "تمزق المحفظة اللمفاوية المراقية اليسرى (Rupture) يسبب نزيفاً داخلياً غزيراً وصدمة نزفية مع ألم ممتد للكتف الأيسر (علامة كيهر Kehr's sign) ويستدعي استئصالاً جراحياً إسعافياً أو قسطرة سداسية.",
+        "اللب الأحمر (Red pulp) يعمل كمقبرة وفلتر لكرات الدم الحمراء العجوزة والمشوهة والصفائح، وتضخمه المفرط يسبب فرط الطحالية (Hypersplenism) ونقص مكونات الدم.",
+        "اللب الأبيض (White pulp) يحتوي على جريبات لمفاوية غنية بخلايا B و T وينتج الأجسام المضادة وخاصة IgM ضد البكتيريا ذات الكبسولة المحفظية.",
+        "الاستئصال الجراحي للطحال يترك المريض عرضة للإنتان الدموي الكاسح المهدد للحياة (OPSI) بالبكتيريا ذات المحفظة (المكورات الرئوية، السحائية، والهيموفيلس).",
+        "مرضى استئصال الطحال يجب تطعيمهم ضد البكتيريا المحفظية وإعطاؤهم بنسلين وقائي وتثقيفهم بطلب مضادات حيوية فورية عند أي ارتفاع في درجة الحرارة.",
+        "فحص لطاخة الدم بعد استئصاله يظهر أجسام هاول-جولي (Howell-Jolly bodies) وأجسام بابنهايمر وخلايا الهدف (Target cells) التي كان ينقيها الطحال طبيعياً.",
+        "تضخم الطحال الضخم (Massive Splenomegaly) يمتد لأسفل السرة نحو الحفرة الحرقفية اليمنى ويحدث في اللوكيميا النخاعية المزمنة (CML) والليشمانيا الحشوية والملاريا.",
+        "احتقان الطحال المزمن وتضخمه ينتج عن ارتفاع ضغط الوريد البابي في مرضى تليف الكبد، ويؤدي إلى هبوط حاد في الصفائح وزيادة الميل للنزيف.",
+        "احتشاء الطحال (Splenic Infarction) يظهر بألم حاد في الجانب الأيسر وصوت احتكاك بالسماعة، ويحدث بكثرة لدى مرضى أنيميا الخلايا المنجلية والتهاب الشغاف الجرثومي."
     ],
     "English": [
-      "A lymphoid organ located in the left upper quadrant of the abdomen.",
-      "Functions as a blood filter and contributes to immune system responses.",
-      "Participates in the degradation of aged red blood cells.",
-      "Receives its main blood supply via an artery originating from the celiac trunk.",
-      "Consists of regions known as white pulp and red pulp.",
-      "Stores a significant portion of circulating platelets.",
-      "Often undergoes enlargement secondary to various hematological proliferative disorders.",
-      "Lacks afferent lymphatic vessels and receives blood directly.",
-      "Its absence increases susceptibility to infections by encapsulated bacteria.",
-      "Contains periarteriolar lymphoid sheaths composed of T lymphocytes within the white pulp."
+        "The largest secondary lymphoid organ situated in the left hypochondrium protected beneath ribs 9 to 11, encased by a delicate, highly vascularized capsule.",
+        "Blunt abdominal trauma can cause splenic rupture, presenting with hemoperitoneum, hemorrhagic shock, and left shoulder pain (Kehr's sign).",
+        "The red pulp acts as a mechanical filter and graveyard clearing senescent, damaged erythrocytes and opsonized platelets from systemic circulation.",
+        "The white pulp contains lymphoid follicles (B-cells) and periarteriolar lymphoid sheaths (T-cells), synthesizing IgM crucial for fighting encapsulated pathogens.",
+        "Splenectomy creates a lifelong risk of overwhelming post-splenectomy infection (OPSI), primarily driven by encapsulated bacteria (S. pneumoniae, N. meningitidis, H. influenzae).",
+        "Asplenic patients require prophylactic immunization against encapsulated bacteria, prophylactic penicillin, and prompt empiric antibiotics for febrile illness.",
+        "Peripheral blood smear following splenectomy reveals persistence of Howell-Jolly bodies, Pappenheimer bodies, Heinz bodies, and target cells.",
+        "Massive splenomegaly (extending past the umbilicus into the right iliac fossa) occurs in chronic myeloid leukemia (CML), visceral leishmaniasis, and myelofibrosis.",
+        "Congestive splenomegaly secondary to cirrhosis-induced portal hypertension causes hypersplenism with marked thrombocytopenia and leukopenia.",
+        "Splenic infarction presents with acute left upper quadrant pain and a friction rub, commonly seen in sickle cell disease and infective endocarditis."
     ]
-  },
+},
   "w92": {
     "Arabic": [
       "إجراء جراحي يتضمن استئصال الغدة الموجودة في مقدمة العنق.",
@@ -3803,30 +3759,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w126": {
     "Arabic": [
-      "جزء من الجهاز الهضمي يقع في الحوض.",
-      "يعمل كمستودع للفضلات الصلبة قبل خروجها.",
-      "يرتبط بالقولون السيني من الأعلى.",
-      "يحيط به عضلات عاصرة تتحكم في الإخراج.",
-      "تتكون جدرانه من طبقات عضلية ملساء وتغطى جزئياً بالصفاق.",
-      "يتم ترويته دموياً عبر الشريان الـ... العلوي والأوسط والسفلي.",
-      "يحتوي على ثنيات مخاطية تُعرف بصمامات هوسنر.",
-      "يعمل كموقع لامتصاص بعض الأدوية في حالات الطوارئ.",
-      "تعتمد التصريف الوريدي له على مسارين، أحدهما بوابة والآخر جهازي.",
-      "تنشأ معظم الأورام الخبيثة فيه من الخلايا الظهارية الغدية."
+        "الجزء النهائي الثابت من الأمعاء الغليظة بطول 12 إلى 15 سم، ويمتد من نهاية القولون السيني حتى القناة الشرجية.",
+        "يعمل كمستودع نهائي لتجميع وتخزين البراز قبل التبرز، وتمدد جدرانه يحفز منعكس التبرز العصبي عبر مستقبلات الشد.",
+        "يتميز بثلاث ثنيات مخاطية عرضية بارزة تسمى صمامات هيوستن (Valves of Houston) تدعم وزن كتلة البراز.",
+        "الفحص الشرجي الإصبعي (DRE) هو فحص سريري إلزامي لتقييم البروستاتا عند الرجال، الكتل والأورام، وفحص قوة العضلة العاصرة.",
+        "الورم الغدي الخبيث للحوض السفلي (Rectal Cancer) يظهر بنزيف شرجي مدمم، تغير في عادات الإخراج، شعور دائم بعدم الإفراغ التام (Tenesmus)، وبراز شريطي رفيع.",
+        "تصريفه الوريدي عبر الأوردة الباسورية السفلية والمتوسطة يصب في الوريد الأجوف مباشرة، مما يجعله موقعاً ممتازاً لامتصاص التحاميل دون المرور بالكبد.",
+        "هبوط المستقيم (Rectal Prolapse) يظهر ببروز بطانته بالكامل خارج فتحة الشرج نتيجة ضعف شديد في عضلات قاع الحوض لدى كبار السن.",
+        "الجيب الدوغلاسي (Pouch of Douglas) يقع أمامه ويفصله عن الرحم أو المثانة، وهو أعمق نقطة بالبطن تتجمع فيها الصديد وسوائل النزيف.",
+        "تنظير المستقيم والقولون السيني (Rigid/Flexible Sigmoidoscopy) فحص تشخيصي مباشر لفحص بطانته وأخذ عينات من القرح والأورام.",
+        "الناسور الشرجي والمستقيمي ينشأ غالباً بعد خراج حاد في الغدد الشرجية المحيطة، ويتطلب علاجاً جراحياً دقيقاً للحفاظ على التحكم البرازي."
     ],
     "English": [
-      "A distal portion of the gastrointestinal tract located within the pelvic cavity.",
-      "Serves as a temporary storage reservoir for solid waste prior to defecation.",
-      "Continuously connects with the sigmoid colon at the pelvic brim.",
-      "Surrounded by internal and external sphincter muscles to control continence.",
-      "The wall consists of smooth muscle layers and is partially invested by peritoneum.",
-      "Blood supply is derived from superior, middle, and inferior branches of the iliac and mesenteric systems.",
-      "Contains permanent transverse mucosal folds known as valves of Houston.",
-      "Utilized as a site for systemic drug administration in patients with compromised oral intake.",
-      "Venous drainage involves both portal and systemic circulations, often forming portosystemic anastomoses.",
-      "Common malignant neoplasms in this region arise primarily from glandular epithelium."
+        "The continuous terminal 12-15 cm segment of the large intestine, extending from the rectosigmoid junction (S3) to the anal canal.",
+        "Functions as a compliant fecal reservoir; rectal distension triggers the defecation reflex via parasympathetic pelvic splanchnic activation.",
+        "Features three permanent transverse mucosal folds known as the valves of Houston, supporting the weight of the fecal column.",
+        "Digital rectal examination (DRE) is an essential clinical exam evaluating the prostate, sphincter tone, and palpable masses.",
+        "Rectal adenocarcinoma presents with hematochezia, altered bowel habits, ribbon-like stools, and persistent distressing tenesmus.",
+        "Venous drainage via middle and inferior rectal veins bypasses the portal system into the IVC, providing ideal systemic suppository bioavailability.",
+        "Full-thickness rectal prolapse (procidentia) involves intussusception of rectal tissue through the anal sphincter, common in frail elderly patients.",
+        "The rectouterine pouch (pouch of Douglas) is the most dependent peritoneal space in females, vulnerable to fluid and pus accumulation.",
+        "Rigid and flexible sigmoidoscopy permit direct endoscopic mucosal visualization and biopsy of distal colorectal pathologies.",
+        "Anorectal fistula typically arises from an infected cryptoglandular anal abscess, demanding precise surgical management to preserve fecal continence."
     ]
-  },
+},
   "w127": {
     "Arabic": [
       "جهاز طبي يُستخدم لتحويل السائل إلى رذاذ دقيق.",
@@ -4011,30 +3967,30 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w124": {
     "Arabic": [
-      "وعاء دموي رئيسي يمر عبر الرقبة لتغذية الرأس والدماغ.",
-      "يتفرع إلى قسمين داخلي وخارجي عند مستوى الغضروف الدرقي.",
-      "يحتوي على مستشعرات حساسة للضغط في منطقة التفرع.",
-      "يمكن استخدامه لقياس النبض في حالات الطوارئ الطبية.",
-      "يؤدي انسداد هذا الوعاء إلى نقص تدفق الدم للدماغ.",
-      "يخضع لعمليات جراحية لفتح الانسدادات الناتجة عن التصلب العصيدي.",
-      "يتم فحص تدفق الدم فيه عبر التصوير فوق الصوتي.",
-      "يتواجد داخل غمد يتضمن وريداً وعصباً حائراً.",
-      "يمكن أن تتكون فيه لويحات دهنية تزيد من خطر الإصابة بالسكتة الدماغية.",
-      "تتطلب إصابته تدخلاً جراحياً فورياً للسيطرة على النزيف."
+        "الشريان الرئيسي الناقل للدم المؤكسج إلى الرأس والرقبة والدماغ، وينقسم في مثلث الرقبة عند مستوى الغضروف الدرقي (C4) لسباتي داخلي وخارجي.",
+        "الوعاء الشرياني العنقي الرئيسي يدخل الجمجمة دون إعطاء أي فروع في الرقبة ويشكل المصدر الأمامي لدائرة ويليس الدماغية عبر الشريان الدماغي الأوسط.",
+        "الشريان السباتي الخارجي يعطي ثمانية فروع لتغذية الوجه والفكين وفروة الرأس والغدة الدرقية السطحية.",
+        "الجيب السباتي (Carotid Sinus) عند نقطة التفرع يحتوي على مستقبلات ضغط (Baroreceptors) تستشعر ضغط الدم الشرياني وتضبطه عصبياً عبر العصب التاسع.",
+        "تدليك الجيب السباتي (Carotid sinus massage) إجراء طبي علاجي لتحفيز العصب الحائر وإبطاء تسارع ضربات القلب الفوق بطيني (SVT).",
+        "الجسم السباتي (Carotid Body) مستقبل كيميائي يستشعر نقص الأكسجين وحموضة الدم لتحفيز زيادة عمق ومعدل التنفس في الرئتين.",
+        "تصلب الشريان وتضيقه بصفائح الكوليسترول يسبب نوبات نقص التروية العابرة (TIA) والعمى المؤقت في عين واحدة (Amaurosis fugax كستارة سوداء).",
+        "الفحص بالسماعة على الرقبة يكشف لغطاً شريانياً نفاثاً (Carotid bruit) يدل على وجود تضيق خطير بتدفق الدم يستدعي فحص الدوبلر.",
+        "عملية استئصال بطانة الشريان السباتي (Carotid Endarterectomy) تجرى جراحياً لتنظيف الشريان من الدهون ومنع السكتات الدماغية الكبرى.",
+        "يُعتمد على نبضه في الرقبة كأهم وأسرع موقع لتقييم وجود الدورة الدموية والنبض أثناء الإنعاش القلبي الرئوي (BLS/CPR) في البالغين."
     ],
     "English": [
-      "A major blood vessel passing through the neck to supply the head and brain.",
-      "Bifurcates into internal and external branches at the level of the thyroid cartilage.",
-      "Contains baroreceptors sensitive to pressure changes at the bifurcation site.",
-      "Commonly used to palpate the pulse in emergency medical scenarios.",
-      "Occlusion of this vessel leads to reduced cerebral blood flow.",
-      "Undergoes surgical intervention to clear blockages caused by atherosclerosis.",
-      "Blood flow velocity is routinely monitored via ultrasonography.",
-      "Located within a sheath that includes a major vein and the vagus nerve.",
-      "Development of atherosclerotic plaques significantly increases stroke risk.",
-      "Injury requires immediate surgical management to control hemorrhage."
+        "The major arterial trunk supplying the head and brain, bifurcating at the superior border of the thyroid cartilage (C4) into internal and external branches.",
+        "The internal carotid artery ascends into the cranial vault without cervical branching, forming the anterior cerebral circulation of the circle of Willis.",
+        "The external carotid artery supplies extracranial structures through eight major branches, including the facial, maxillary, and superficial temporal arteries.",
+        "The carotid sinus at the bifurcation contains baroreceptors innervated by the glossopharyngeal nerve (CN IX), regulating systemic blood pressure.",
+        "Unilateral carotid sinus massage can clinically terminate paroxysmal supraventricular tachycardia (PSVT) by augmenting vagal parasympathetic tone.",
+        "The carotid body is a specialized chemoreceptor sensitive to hypoxemia, hypercapnia, and acidosis, driving compensatory hyperventilation.",
+        "Atherosclerotic plaque stenosis predisposes to transient ischemic attacks (TIAs) and amaurosis fugax (monocular transient vision loss).",
+        "Auscultation over the carotid bifurcation often reveals a systolic carotid bruit, indicating turbulent flow from significant arterial stenosis.",
+        "Carotid endarterectomy (CEA) or carotid artery stenting (CAS) is indicated in symptomatic severe stenosis (70-99%) to reduce stroke recurrence.",
+        "The carotid artery pulse is the primary and most reliable anatomical site for pulse check during cardiopulmonary resuscitation (CPR) in adult BLS."
     ]
-  },
+},
   "w125": {
     "Arabic": [
       "العصب القحفي الخامس المسؤول عن الإحساس في الوجه.",
@@ -5389,29 +5345,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w182": {
     "Arabic": [
-      "عامل مضاد للتخثر يعمل عن طريق تعزيز تأثير مضاد الثرومبين الثالث.",
-      "يستخدم للوقاية من وعلاج الجلطات الوريدية العميقة والانصمام الرئوي.",
-      "يتم إعطاؤه عادةً عن طريق الحقن الوريدي أو تحت الجلد.",
-      "يتطلب مراقبة زمن الثرومبوبلاستين الجزئي المنشط عند استخدامه بجرعات علاجية.",
-      "يعد البروتامين كبريتات الترياق النوعي لعكس تأثيره في حالات النزيف.",
-      "يمكن أن يسبب نقصاً في الصفائح الدموية كأثر جانبي مناعي خطير.",
-      "لا يعبر المشيمة لذا يعتبر آمناً للاستخدام أثناء الحمل.",
-      "يمنع تحويل الفيبرينوجين إلى فيبرين عبر تثبيط عوامل التخثر المعتمدة على الثرومبين.",
-      "تتطلب مراقبة مستمرة للوحات التخثر لتجنب مخاطر التسمم النزفي.",
-      "يستخدم كجسر انتقالي قبل البدء بمضادات التخثر الفموية طويلة الأمد."
-    ],
+        "دواء طليعي فموي مضاد لتكدس الصفائح الدموية يتطلب تفعيلاً كبدياً بواسطة إنزيم CYP2C19.",
+        "يثبط بشكل غير عكوس مستقبلات P2Y12 للأدينوزين ثنائي الفوسفات (ADP) على سطح الصفيحات الدموية.",
+        "يشكل ركناً أساسياً في العلاج المزدوج المضاد للصفيحات (DAPT) بعد تركيب الدعامات التاجية لمدة 12 شهراً.",
+        "يستخدم كبديل أول للمرضى الذين يعانون من فرط الحساسية للأسبرين للوقاية الثانوية من الحوادث الدماغية الوعائية.",
+        "يتداخل دوائياً مع مثبطات مضخة البروتون كالأوميبرازول التي تقلل من تحوله إلى شكله الفعال."
+  ],
     "English": [
-      "Anticoagulant agent that acts by enhancing the effect of antithrombin III.",
-      "Used for the prophylaxis and treatment of deep vein thrombosis and pulmonary embolism.",
-      "Usually administered via intravenous or subcutaneous injection.",
-      "Requires monitoring of the activated partial thromboplastin time when used in therapeutic doses.",
-      "Protamine sulfate serves as the specific antidote to reverse its effect in cases of hemorrhage.",
-      "Can cause thrombocytopenia as a serious immune-mediated adverse reaction.",
-      "Does not cross the placenta, making it safe for use during pregnancy.",
-      "Prevents the conversion of fibrinogen to fibrin by inhibiting thrombin-dependent clotting factors.",
-      "Requires continuous monitoring of coagulation panels to avoid the risk of hemorrhagic toxicity.",
-      "Used as a bridging agent prior to initiating long-term oral anticoagulants."
-    ]
+        "An oral thienopyridine prodrug that irreversibly blocks the P2Y12 ADP receptor on platelet membranes.",
+        "Requires hepatic two-step bioactivation predominantly mediated by the cytochrome P450 CYP2C19 isoenzyme.",
+        "A cornerstone component of dual antiplatelet therapy (DAPT) following acute coronary syndromes and stent placement.",
+        "Serves as the preferred alternative for secondary ischemic stroke prevention in aspirin-allergic patients.",
+        "Concomitant use with omeprazole significantly blunts its antiplatelet efficacy through competitive enzymatic inhibition."
+  ]
   },
   "w183": {
     "Arabic": [
@@ -5597,108 +5543,108 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w190": {
     "Arabic": [
-      "عضو صغير يقع تحت الكبد مباشرة.",
-      "يعمل كمخزن للعصارة الهضمية التي ينتجها الكبد.",
-      "تتركز فيه العصارة لزيادة كفاءة هضم الدهون.",
-      "يؤدي وجود حصوات فيه إلى ألم مغصي شديد بعد تناول وجبات دسمة.",
-      "يتصل بالاثني عشر عن طريق قناة خاصة.",
-      "يتم استئصاله جراحياً في حالات الالتهاب الحاد أو الحصوات.",
-      "يظهر الألم المرتبط به عادة في الربع العلوي الأيمن من البطن.",
-      "يتم تشخيصه غالباً بواسطة التصوير فوق الصوتي.",
-      "يعتبر الالتهاب الحاد فيه حالة طبية طارئة تتطلب تدخلاً جراحياً أحياناً.",
-      "يساعد في تفتيت الدهون المعقدة ليسهل امتصاصها في الأمعاء."
+        "كيس كمثري الشكل يقع تحت الفص الأيمن للكبد ويخزن ويركز العصارة الصفراوية بما يصل إلى 10 أضعاف حجمها الأصلي.",
+        "تنقبض وتفرغ محتواها الصفراوي في القناة المشتركة تحت تأثير هرمون الكوليسيستوكينين (CCK) المفرز من الاثني عشر عند وصول وجبة دسمة غنية بالدهون.",
+        "حصوات المرارة (Cholelithiasis) تصيب النساء في سن الأربعين مع السمنة والولادات المتكررة وتتكون غالباً من كوليسترول متصلب أو صبغات البيليروبين.",
+        "التهاب المرارة الحاد (Acute Cholecystitis) ينشأ عن انحباس حصوة في القناة المرارية ويتميز بألم حاد مستمر في الربع العلوي الأيمن وحمى وغثيان.",
+        "علامة ميرفي (Murphy's sign) الإيجابية؛ حيث يتوقف المريض فجأة عن إكمال الشهيق العميق من شدة الألم عند ضغط يد الطبيب تحت حافة الكبد اليمنى.",
+        "الموجات فوق الصوتية للبطن (Abdominal Ultrasound) هي الفحص الذهبي لتشخيص الحصوات وتظهر زيادة سمك جدارها لأكثر من 3 ملم ووجود سائل حولها.",
+        "استئصال المرارة بالمنظار (Laparoscopic Cholecystectomy) هو العلاج القياسي والذهبي لالتهابها الحاد وحصواتها المصحوبة بأعراض مغص صفراوي متكرر.",
+        "انفجار المرارة أو تثقبها يسبب التهاب صفاق حاد وخراجاً تحت الكبد، وقد تهاجر حصوة ضخمة عبر ناسور للأمعاء مسببة انسداداً معوياً بحصوة المرارة (Gallstone ileus).",
+        "المرارة الخزفية (Porcelain Gallbladder) تكلس جداري شامل ناتج عن التهاب مزمن ويرتبط بنسبة عالية جداً بخطر التحول إلى سرطان المرارة الغدي.",
+        "التهاب المرارة اللاحصوي (Acalculous Cholecystitis) شكل نادر وشديد الخطورة يصيب المرضى الحرجين في العناية المركزة نتيجة الركود الصفراوي ونقص التروية."
     ],
     "English": [
-      "A small organ located directly beneath the liver.",
-      "Acts as a storage reservoir for digestive secretions produced by the liver.",
-      "Concentrates bile to increase the efficiency of lipid digestion.",
-      "Presence of calculi leads to severe colicky pain after consuming fatty meals.",
-      "Connects to the duodenum via a specialized ductal system.",
-      "Often surgically removed in cases of acute inflammation or stones.",
-      "Associated pain typically presents in the right upper quadrant of the abdomen.",
-      "Diagnosed frequently using ultrasonography.",
-      "Acute inflammation of this structure is a clinical emergency requiring potential surgery.",
-      "Facilitates the emulsification of complex lipids for absorption in the intestines."
+        "A pear-shaped digestive sac nestled on the visceral surface of the right hepatic lobe, concentrating and storing hepatic bile up to tenfold.",
+        "Contracts and expels bile into the duodenum under cholecystokinin (CCK) stimulation triggered by fatty chyme in the upper digestive tract.",
+        "Gallstones (cholelithiasis) predominantly affect the classic '4 Fs' (female, fat, fertile, forty), composed of cholesterol or pigment polymers.",
+        "Acute calculous cholecystitis stems from cystic duct obstruction, manifesting with steady right upper quadrant pain, fever, and leukocytosis.",
+        "A positive Murphy's sign—inspiratory arrest upon deep palpation of the right subcostal margin—is clinically pathognomonic for acute inflammation.",
+        "Right upper quadrant ultrasound is the gold standard investigation, demonstrating gallstones, gallbladder wall thickening (>3 mm), and pericholecystic fluid.",
+        "Laparoscopic cholecystectomy is the surgical definitive management for acute cholecystitis and symptomatic recurrent biliary colic.",
+        "Gallbladder perforation can lead to biliary peritonitis; fistula formation into the duodenum allows stone migration causing gallstone ileus.",
+        "Porcelain gallbladder represents intramural calcification from chronic inflammation, carrying a high risk of developing gallbladder adenocarcinoma.",
+        "Acute acalculous cholecystitis is an ischemic necrosis variant seen in critically ill ICU patients, demanding emergency percutaneous cholecystostomy."
     ]
-  },
+},
   "w191": {
     "Arabic": [
-      "عضو لمفاوي أولي يقع في المنصف الأمامي العلوي.",
-      "يصل إلى أقصى حجم وظيفي له خلال مرحلة الطفولة.",
-      "موقع رئيسي لتطور ونضج الخلايا اللمفاوية التائية.",
-      "يخضع لعملية ضمور واستبدال دهني تدريجي مع تقدم العمر.",
-      "يحتوي على خلايا ظهارية شبكية تفرز هرمونات منظمة للمناعة.",
-      "يتكون من فصين رئيسيين يتجزآن إلى فصيصات ذات قشرة ونخاع.",
-      "يعد المركز المسؤول عن الانتقاء الإيجابي والسلب للخلايا المناعية.",
-      "يُظهر وجود جسيمات هاسال كميزة نسيجية في المنطقة النخاعية.",
-      "يرتبط سريرياً بمتلازمات العوز المناعي الناتجة عن غيابه الخلقي.",
-      "غالبًا ما تتضخم هذه الغدة في حالات اضطرابات المناعة الذاتية مثل الوهن العضلي الشديد."
+        "العضو اللمفاوي الأولي الرئيسي لنضوج وتدريب الخلايا اللمفاوية التائية (T-cells)، وتقع في المنصف الأمامي للصدر خلف عظمة القص وأمام القلب.",
+        "تخضع الخلايا التائية داخلها لعمليتي الانتقاء الإيجابي والسلبي لتعليمها تمييز مستضدات الذات ومنع مهاجمة أنسجة الجسم وتجنب أمراض المناعة الذاتية.",
+        "تكون في قمة نشاطها وحجمها النسبي أثناء الطفولة وتضمر تدريجياً بعد البلوغ وتستبدل بنسيج دهني ليفي غير نشط في البالغين.",
+        "ترتبط بقوة بمرض الوهن العضلي الوبيل (Myasthenia Gravis)؛ حيث يعاني 75% من المرضى من فرط تنسجها، و15% لديهم ورم ثيموما (Thymoma).",
+        "استئصالها جراحياً (Thymectomy) بالصدر هو خطوة علاجية رئيسية تخفف الأعراض وتحقق هجوعاً سريرياً لمرضى الوهن العضلي الوبيل.",
+        "متلازمة دي جورج (DiGeorge Syndrome) ناتجة عن عيب في الجيوب البلعومية الثالثة والرابعة يسبب غيابها التام مع نقص مناعة تائية حاد وهبوط كالسيوم وعيوب قلبية.",
+        "تحتوي في لبها على جسيمات هاسال (Hassall's corpuscles) المميزة نسيجياً المكونة من خلايا طلائية متقرنة متحدة المركز.",
+        "أورامها (Thymoma) تظهر ككتلة في المنصف الأمامي بالأشعة المقطعية، وترتبط بمتلازمات مناعية كغياب كرات الدم الحمراء الصرف (Pure red cell aplasia).",
+        "تفرز هرمونات الثيموسين والثيموبويتين التي تحفز تميز الخلايا المناعية التائية وتطور كفاءتها المناعية العامة.",
+        "سرطان الغدة الزعترية (Thymic carcinoma) ورم خبيث نادر شديد العدوانية يغزو الأوعية الدموية الكبرى والتأمور بالصدر."
     ],
     "English": [
-      "A primary lymphoid organ located in the superior anterior mediastinum.",
-      "Reaches its peak functional size during childhood.",
-      "The primary site for the development and maturation of T-lymphocytes.",
-      "Undergoes gradual atrophy and fatty replacement with increasing age.",
-      "Contains reticular epithelial cells that secrete immune-modulating hormones.",
-      "Consists of two main lobes divided into lobules with cortex and medulla.",
-      "Acts as the center for positive and negative selection of immune cells.",
-      "Features Hassall's corpuscles as a diagnostic histological marker in the medulla.",
-      "Clinically associated with immune deficiency syndromes resulting from congenital absence.",
-      "Frequently undergoes hyperplasia in autoimmune conditions like myasthenia gravis."
+        "The primary lymphoid organ dedicated to T-lymphocyte maturation and self-tolerance education, located in the anterior mediastinum.",
+        "Immature thymocytes undergo positive and negative selection in the cortex and medulla to eliminate self-reactive clones and avert autoimmunity.",
+        "Reaches maximal relative size during childhood and undergoes progressive physiological involution after puberty, replaced by adipose tissue.",
+        "Intimately associated with myasthenia gravis; 75% of patients exhibit follicular thymic hyperplasia and 15% harbor a thymoma.",
+        "Surgical thymectomy is an established therapeutic intervention improving symptoms and achieving remission in generalized myasthenia gravis.",
+        "DiGeorge syndrome (22q11.2 deletion) causes complete thymic aplasia, profound T-cell immunodeficiency, hypocalcemia, and conotruncal heart defects.",
+        "The thymic medulla is histologically characterized by eosinophilic Hassall's corpuscles composed of concentric rings of epithelial cells.",
+        "Thymoma presents as an anterior mediastinal mass on CT and is associated with paraneoplastic syndromes like pure red cell aplasia and hypogammaglobulinemia.",
+        "Secretes humoral factors such as thymopoietin and thymosins that promote peripheral T-lymphocyte immunocompetence.",
+        "Thymic carcinoma is an aggressive malignant epithelial neoplasm showing high propensity for local invasion into the pericardium and great vessels."
     ]
-  },
+},
   "w192": {
     "Arabic": [
-      "بنية دماغية مزدوجة تقع في الفص الصدغي الإنسي.",
-      "تلعب دورًا محوريًا في تكوين الذكريات طويلة المدى.",
-      "تعد واحدة من المناطق القليلة في الدماغ التي تظهر تكوين خلايا عصبية جديدة.",
-      "تساهم في عمليات الملاحة المكانية والذاكرة التوجيهية.",
-      "تتلقى مدخلات حسية متنوعة عبر القشرة المخية الشمية الداخلية.",
-      "تُشفر المعلومات المكانية باستخدام خلايا متخصصة تسمى خلايا المكان.",
-      "تعتبر من أولى المناطق التي تتأثر في حالات الاضطرابات التنكسية العصبية المرتبطة بالخرف.",
-      "يرتبط حجمها بوضوح بالقدرة على استرجاع المعلومات والتعلم الارتباطي.",
-      "ترتبط بمسار الحصين الحلمي المسؤول عن نقل المعلومات للذاكرة.",
-      "تؤدي الآفات الثنائية في هذا الجزء إلى فقدان الذاكرة التقدمي الحاد."
+        "تركيب عصبي حلزوني يشبه فرس البحر يقع في عمق الفص الصدغي الإنسي للدماغ كجزء رئيسي من الجهاز الحافي (Limbic system).",
+        "المقر الرئيسي لتحويل وتثبيت الذاكرة من قصيرة المدى إلى ذاكرة طويلة المدى (Memory Consolidation) والتعلم الملاحي والمكاني.",
+        "أول منطقة دماغية تدمر وتضمر في مرض الزهايمر (Alzheimer's Disease)، مما يفسر فقدان المريض للذاكرة القريبة ونسيان الأحداث اليومية الحديثة.",
+        "خلاياه العصبية هرمية الشكل (CA1 pyramidal neurons) شديدة الحساسية لنقص الأكسجين، وتتلف سريعاً في حالات توقف القلب أو الغرق أو التسمم بأول أكسيد الكربون.",
+        "التصلب الصدغي الإنسي (Mesial Temporal Sclerosis) هو تليف وتصلب في نسيجه يمثل السبب الأكثر شيوعاً لصرع الفص الصدغي البؤري المقاوم للأدوية.",
+        "نوباته الصرعية تبدأ غالباً بإحساس صاعد في فم المعدة، وهلاوس شمية غريبة (كرائحة كاوتش محترق)، وشعور وهمي بالألفة المسبقة (Déjà vu).",
+        "يحتوي على خلايا المكان (Place cells) التي تشكل نظام الخريطة الداخلية ونظام الملاحة GPS في الدماغ لمساعدة الكائن على توجيه نفسه في البيئة.",
+        "يعتبر من المناطق النادرة في الدماغ البالغ التي تحتفظ بخاصية توليد الخلايا العصبية الجديدة (Neurogenesis) في التلفيف المسنن.",
+        "الاستئصال الجراحي الثنائي له (كما في المريض الشهير H.M.) يسبب فقدان ذاكرة تقدمي دائم (Anterograde amnesia) يعجز فيه عن تكوين أي ذكريات جديدة.",
+        "يرتبط ارتباطاً وثيقاً باللوزة الدماغية (Amygdala) لربط الذكريات بالاستجابات العاطفية القوية ومشاعر الخوف والقلق."
     ],
     "English": [
-      "A paired brain structure located in the medial temporal lobe.",
-      "Plays a pivotal role in the formation of long-term memories.",
-      "One of the few brain regions that exhibits adult neurogenesis.",
-      "Contributes significantly to spatial navigation and orientation memory.",
-      "Receives diverse sensory inputs via the entorhinal cortex.",
-      "Encodes spatial information using specialized neurons called place cells.",
-      "One of the earliest regions affected in neurodegenerative disorders associated with dementia.",
-      "Its volume is strongly correlated with information retrieval and associative learning capacity.",
-      "Linked to the fornix pathway responsible for memory consolidation.",
-      "Bilateral lesions in this area result in severe anterograde amnesia."
+        "A seahorse-shaped cortical structure in the medial temporal lobe, forming a key constituent of the limbic system and Papez circuit.",
+        "Plays a pivotal role in the consolidation of information from short-term memory to long-term memory, and spatial cognitive navigation.",
+        "The earliest brain region exhibiting severe atrophy and neurofibrillary tangles in Alzheimer's disease, explaining initial anterograde memory loss.",
+        "CA1 pyramidal neurons (Sommer's sector) are exceptionally vulnerable to ischemic hypoxia during cardiac arrest or carbon monoxide poisoning.",
+        "Mesial temporal sclerosis (hippocampal sclerosis) is the most frequent histopathological etiology underlying drug-resistant temporal lobe epilepsy.",
+        "Temporal seizures originating here present with an epigastric rising aura, olfactory hallucinations (burning rubber), and déjà vu phenomena.",
+        "Contains specialized 'place cells' that map the external environment, functioning as an internal biological GPS navigation system.",
+        "One of the exceedingly few adult mammalian brain regions exhibiting ongoing adult neurogenesis within the subgranular zone of the dentate gyrus.",
+        "Bilateral surgical excision (classic patient H.M.) provokes dense, irreversible anterograde amnesia while sparing remote retrograde memories.",
+        "Connects via the fornix to the mammillary bodies, bridging memory consolidation directly to emotional processing within the amygdala."
     ]
-  },
+},
   "w193": {
     "Arabic": [
-      "جزء من الجهاز العصبي المركزي يقع خلف جذع الدماغ.",
-      "مسؤول عن تنسيق الحركات الإرادية وتوازن الجسم.",
-      "يلعب دورًا في التعلم الحركي وضبط توقيت الأفعال العضلية.",
-      "يتكون من نصفي كرة متصلين بواسطة دودة مركزية.",
-      "يستقبل مدخلات حسية من الأذن الداخلية والحبل الشوكي.",
-      "تؤدي اضطرابات هذا الجزء إلى ترنح أو خلل في التناسق الحركي.",
-      "يحتوي على خلايا بوركينجي التي تعد المكون الأساسي للطبقة العصبية.",
-      "يساعد في تصحيح الأخطاء أثناء الحركة لضمان الدقة.",
-      "يظهر مرضى آفاته رنحاً مخيخياً عند محاولة لمس إصبعهم للأنف.",
-      "يرتبط بالوظائف المعرفية العليا بالإضافة إلى التحكم الحركي الدقيق."
+        "مركز التنسيق الحركي والتوازن ودقة الحركة، ويقع في الحفرة القحفية الخلفية خلف جذع الدماغ وأسفل خيمة المخيخ.",
+        "تلفه يسبب متلازمة الرنح المخيخي (Cerebellar Ataxia) مع مشية رنحة متمايلة كالسكران، وعجز عن الحفاظ على خط مستقيم أثناء المشي.",
+        "يظهر فيه رعاش الحركة أو القصد (Intention tremor) حيث تزداد رجفة اليد وتتفاقم كلما اقترب الإصبع من هدفه أثناء فحص (إصبع-أنف).",
+        "خلل قياس المسافات (Dysmetria) وتجاوز الهدف عند محاولة الإمساك بالأشياء علامة كلاسيكية لفحص وظائفه الحركية.",
+        "خلل تناوب الحركات السريعة (Dysdiadochokinesia) يظهر بعجز المريض عن أداء حركات الكب والبطح المتتالية السريعة ببطن وظهر اليد على الفخذ.",
+        "يسبب رتة مخيخية وتلعثماً في الكلام يسمى الكلام التقطيعي (Scanning / Staccato speech) حيث تقطع الكلمات لمقاطع صوتية متباعدة بانفجارات غير منتظمة.",
+        "يظهر فحص العين رأرأة مخيخية مستمرة (Nystagmus) تزداد شدتها عند النظر في اتجاه الفص المخيخي المتضرر.",
+        "دودة المخيخ (Vermis) في المنتصف تتحكم في عضلات الجذع والمشية والموقف، وتلفها الشائع في مدمني الكحول يسبب ترنح الجذع والوقوف.",
+        "فصوصه الجانبية (Hemispheres) تنسق حركات الأطراف الدقيقة في نفس الجانب (Ipsilateral)، فالإصابة في النصف الأيمن تظهر أعراضاً في الجانب الأيمن للجسم.",
+        "تشوه خياري (Chiari malformation) يمثل هبوطاً وفتقاً للوزتي المخيخ عبر الثقبة العظمى لداخل القناة الشوكية مما يضغط على جذع المخ ويسبب تكهف النخاع (Syringomyelia)."
     ],
     "English": [
-      "Part of the central nervous system located posterior to the brainstem.",
-      "Responsible for the coordination of voluntary movements and body balance.",
-      "Plays a role in motor learning and the timing of muscular actions.",
-      "Consists of two hemispheres connected by a central vermis.",
-      "Receives sensory input from the inner ear and the spinal cord.",
-      "Disorders of this part lead to ataxia or dysmetria.",
-      "Contains Purkinje cells, which are the fundamental component of its neuronal layer.",
-      "Helps correct errors during movement to ensure precision.",
-      "Patients with lesions show cerebellar ataxia during finger-to-nose testing.",
-      "Linked to higher cognitive functions in addition to fine motor control."
+        "The motor control coordinator situated in the posterior cranial fossa beneath the tentorium cerebelli, behind the pons and medulla.",
+        "Damage provokes cerebellar ataxia hallmarked by a wide-based, unsteady, drunken-like gait with inability to perform tandem walking.",
+        "Features characteristic intention tremor: oscillating hand tremors that intensify as the finger nears the target in the finger-to-nose test.",
+        "Dysmetria (inability to gauge distance leading to past-pointing) and kinetic decomposition of movement are cardinal signs.",
+        "Dysdiadochokinesia—impaired ability to execute rapid alternating movements (pronation-supination)—is a hallmark physical finding.",
+        "Dysarthria takes the form of 'scanning' or staccato speech, where words are broken into syllables with irregular explosive stress.",
+        "Cerebellar ocular dysmetria produces persistent coarse nystagmus, most prominent when looking toward the side of the lesion.",
+        "The midline vermis controls axial equilibrium and trunk posture; chronic alcoholic vermal degeneration causes severe truncal ataxia.",
+        "Hemispheric cerebellar lesions produce ipsilateral motor deficits (limb ataxia, hypotonia) because output tracts cross twice.",
+        "Arnold-Chiari malformation type I features caudal herniation of cerebellar tonsils through the foramen magnum, associated with syringomyelia."
     ]
-  },
+},
   "w194": {
     "Arabic": [
       "وحدات مجهرية تشكل المكان الرئيسي لتبادل الغازات.",
@@ -6481,56 +6427,56 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w219": {
     "Arabic": [
-      "زوج من الغدد الملحقة الموجودة في منطقة العجان.",
-      "تفتح قنواتها في الدهليز أسفل الشفرين الصغيرين.",
-      "وظيفتها الأساسية هي إفراز مخاط يعمل كمزلق أثناء الإثارة.",
-      "غالباً ما تتعرض للانسداد مما يؤدي إلى تشكل خراجات مؤلمة.",
-      "يتم توجيه القنوات الإخراجية لهذه الغدد نحو فتحة المهبل.",
-      "تمثل نظيراً تشريحياً للغدد البصلية الإحليلية لدى الذكور.",
-      "يتم تشخيص تضخمها عادة من خلال الفحص السريري الموضعي.",
-      "تعتبر الإصابة بالتهاب في هذه المنطقة سبباً شائعاً للألم عند الجلوس.",
-      "تفرز سائلاً قلوياً يساعد في حماية المهبل من الحموضة.",
-      "نادراً ما تصاب بأورام خبيثة ولكنها تتطلب استئصالاً جراحياً إذا تكررت الخراجات."
+        "غدتان بحجم حبة البازلاء تقعان على جانبي فتحة المهبل في الثلث السفلي للشفرين الصغيرين داخل الحجاب البولي التناسلي.",
+        "تفرزان مخاطاً لزجاً شفافاً عبر قناة قصيرة طولها 2 سم لترطيب وتزليق الفرج والمهبل أثناء الاستثارة الجنسية.",
+        "انسداد قناتها يسبب تجمع السائل وتكون كيس بارثولين (Bartholin Cyst) ككتلة غير مؤلمة ومنتفخة في أسفل فتحة المهبل.",
+        "عدوى الكيس بالبكتيريا يسبب خراج بارثولين الحاد (Bartholin Abscess) بألم نبضي شديد واحمرار وصعوبة بالغة في المشي أو الجلوس.",
+        "الخراج الحاد يتطلب شقاً جراحياً وتفريغاً مع تركيب قسطرة وورد (Word catheter) لعدة أسابيع لضمان تشكل ناسور تصريف مفتوح دائم.",
+        "عملية التجييب (Marsupialization) هي فتح الكيس وخياطة حوافه بالجلد الخارجي كجيب مفتوح لمنع تكرار تجمع الصديد والانسداد.",
+        "البكتيريا المسببة للخراج تشمل الميكروبات اللاهوائية وبكتيريا القولون، وقد ترتبط ببكتيريا النيسرية البنية (السيلان Gonorrhea) والكلاميديا.",
+        "ظهور كتلة صلبة أو غير منتظمة في موضع هذه الغدة لدى النساء فوق سن الأربعين يستدعي أخذ خزعة حاسمة لاستبعاد سرطان الغدة الخبيث.",
+        "لا يمكن جس الغدة السليمة طبيعياً بالفحص اليدوي لصغر حجمها، وتصبح محسوسة فقط عند انسدادها أو التهابها.",
+        "المغاطس الدافئة المتكررة (Sitz baths) واستخدام المضادات الحيوية المناسبة ومسكنات الألم تعتبر خطوات علاجية مبدئية مساعدة."
     ],
     "English": [
-      "A pair of accessory glands located in the perineal region.",
-      "Their ducts open into the vestibule, inferior to the labia minora.",
-      "Primary function is the secretion of mucus for lubrication during arousal.",
-      "Prone to ductal obstruction, leading to the formation of painful cysts.",
-      "Excretory ducts are directed towards the vaginal orifice.",
-      "Represents the anatomical homologue to the bulbourethral glands in males.",
-      "Enlargement is typically diagnosed through local clinical examination.",
-      "Inflammation in this area is a common cause of pain during sitting.",
-      "Secretes an alkaline fluid that helps protect the vagina from acidity.",
-      "Malignancies are rare, but recurrent abscesses may necessitate surgical excision."
+        "Paired pea-sized vestibular glands located bilaterally posterolateral to the vaginal orifice within the superficial perineal pouch.",
+        "Secrete clear, lubricating mucus through a 2-cm duct to moisten the vestibular mucosa during sexual arousal.",
+        "Ductal obstruction leads to retention of secretions, forming a painless, fluctuant Bartholin duct cyst at the 4 or 8 o'clock position.",
+        "Bacterial superinfection produces an acute Bartholin abscess, presenting with severe throbbing vulvar pain, erythema, and impaired ambulation.",
+        "Incision and drainage with placement of a Word catheter for 4 weeks ensures continuous drainage and epithelialized tract formation.",
+        "Marsupialization (deroofing the cyst and suturing the edges to adjacent skin) is the preferred definitive intervention for recurrent cysts.",
+        "Abscess pathogens are polymicrobial, predominantly enteric coliforms and anaerobes, but sexually transmitted Neisseria gonorrhoeae must be screened.",
+        "A solid, painless vulvar mass in women older than 40 mandates a diagnostic biopsy to rule out rare Bartholin gland adenocarcinoma.",
+        "Non-inflamed physiological glands are impalpable during routine pelvic examination, becoming palpable only when diseased.",
+        "Conservative management with warm sitz baths and analgesia may suffice for small asymptomatic cysts, but abscesses mandate drainage."
     ]
-  },
+},
   "w220": {
     "Arabic": [
-      "تعتبر الموقع الطبيعي للإخصاب بين النطاف والبويضة.",
-      "تمتد من زوايا الرحم باتجاه المبيضين.",
-      "تتكون من أربعة أجزاء تشريحية تشمل القمع والأنبوبة والبرزخ والجزء الرحمي.",
-      "تستخدم الأهداب المبطنة لها لدفع البويضة الملقحة نحو الرحم.",
-      "تعد مكاناً شائعاً لغرس الجنين في حالات الحمل خارج الرحم.",
-      "يمكن أن تتعرض للانسداد نتيجة الالتهابات الحوضية المزمنة.",
-      "تعتمد حركتها على انقباضات العضلات الملساء المبطنة لجدارها.",
-      "ترتبط بنهايتها المبيضية بنتوءات أصبعية تساعد في التقاط البويضة.",
-      "يتم إجراء عمليات ربط لها كوسيلة دائمة لمنع الحمل.",
-      "تؤثر التغيرات الهرمونية خلال الدورة الشهرية على كفاءة نقل البويضة عبرها."
+        "أنبوبان عضليان بطول 10 إلى 12 سم يمتدان من قرني الرحم نحو المبيضين لنقل البويضات وتوفير بيئة الإخصاب.",
+        "تتكون تشريحياً من أربعة أجزاء: الجزء الخلالي، البرزخ (Isthmus)، الأمبولة المتسعة (Ampulla)، والقمع المنتهي بالأهداب (Fimbriae).",
+        "الأمبولة (Ampulla) هي الموقع البيولوجي الطبيعي الذي يحدث فيه إخصاب البويضة بالحيوان المنوي لتكوين الزيجوت.",
+        "الحمل خارج الرحم (Ectopic Pregnancy) ينغرس بنسبة تفوق 95% داخل هذه القناة، وخاصة في الأمبولة، مما يهدد بانفجارها ونزيف داخلي حاد.",
+        "انفجار القناة بالحمل المنتبذ يسبب ألماً حاداً ومفاجئاً في أسفل البطن ونزيفاً مهبلياً وصدمة هبوط ضغط تستدعي جراحة عاجلة واستئصال القناة (Salpingectomy).",
+        "التهاب الحوض الحاد (PID) الناجم عن الكلاميديا أو السيلان يسبب التهاب القناة (Salpingitis) وانسدادها والتصاقها بالأنسجة المحيطة.",
+        "انسدادها وتجمع السوائل بداخلها يعرف باستسقاء القناة (Hydrosalpinx) ويعد سبباً رئيسياً للعقم الميكانيكي لدى النساء وعلاجه أطفال الأنابيب (IVF).",
+        "مبطنة بظهارة أسطوانية مهدبة تضرب بحركات تمعجية متناغمة نحو تجويف الرحم لنقل الجنين في أيامه الأولى.",
+        "ربط القناتين جراحياً (Tubal Ligation) هو وسيلة دائمة ونهائية لمنع الحمل عبر قطع مسار التقاء الحيوان المنوي بالبويضة.",
+        "أورام المبيض المصلية الخبيثة عالية الدرجة ثبت حديثاً أن معظمها ينشأ في الأصل من الخلايا الطلائية لأهداب هذه القناة."
     ],
     "English": [
-      "Considered the primary site of fertilization between sperm and ovum.",
-      "Extends from the lateral angles of the uterus toward the ovaries.",
-      "Consists of four anatomical segments: infundibulum, ampulla, isthmus, and uterine part.",
-      "Lined with cilia that facilitate the transport of the zygote toward the uterus.",
-      "Common site for implantation in cases of ectopic pregnancy.",
-      "Susceptible to blockage as a result of chronic pelvic inflammatory diseases.",
-      "Mobility and transport depend on the contractions of the smooth muscle lining.",
-      "Its ovarian end features finger-like projections that capture the released oocyte.",
-      "Undergoes ligation procedures as a permanent method of contraception.",
-      "Hormonal fluctuations during the menstrual cycle influence the efficiency of oocyte transport."
+        "Paired muscular conduits measuring 10-12 cm extending laterally from the uterine cornu to the ovaries within the mesosalpinx of the broad ligament.",
+        "Anatomically divided into four sequential regions: intramural (interstitial), narrow isthmus, expanded ampulla, and the distal fimbriated infundibulum.",
+        "The ampulla serves as the physiological fertilization site where the ovum meets spermatozoa to form the zygote.",
+        "Over 95% of ectopic pregnancies implant within its lumen, predominantly localized to the ampullary segment.",
+        "Ruptured tubal ectopic pregnancy causes acute peritonitis, hemoperitoneum, and hemorrhagic shock, treated with laparoscopic salpingectomy.",
+        "Pelvic inflammatory disease (PID) from Chlamydia trachomatis or Neisseria gonorrhoeae produces acute salpingitis and tubal scaring.",
+        "Chronic tubal occlusion and fluid accumulation (hydrosalpinx) is a leading cause of mechanical tubal factor infertility, managed with IVF.",
+        "Lined by ciliated simple columnar epithelium that beats synchronously toward the uterine cavity to transport the pre-implantation blastocyst.",
+        "Bilateral tubal ligation or clipping provides reliable, permanent female surgical contraception by barring gamete transit.",
+        "High-grade serous ovarian carcinoma (HGSOC) is now recognized to originate from precursor serous tubal intraepithelial carcinoma (STIC) lesions."
     ]
-  },
+},
   "w226": {
     "Arabic": [
       "مستقبلات حسية تتواجد في جدران الشرايين الكبيرة لقياس التغيرات في الضغط.",
@@ -8145,29 +8091,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w325": {
     "Arabic": [
-      "عدوى طفيلية تصيب الجلد وتسبب حكة شديدة.",
-      "تزداد حدة الأعراض الحكوية في أوقات الليل.",
-      "ينتقل المسبب عن طريق التلامس الجلدي المباشر والمطول.",
-      "تنشأ الآفات الجلدية نتيجة استجابة مناعية تجاه الطفيلي وفضلاته.",
-      "تظهر جحور دقيقة وخطية على الجلد في أماكن محددة.",
-      "تتوزع الآفات غالباً في المساحات بين الأصابع وثنيات الجلد.",
-      "يُستخدم مجهر الجلد للبحث عن الطفيلي أو بيوضه أو فضلاته.",
-      "يمكن أن تؤدي الحكة المزمنة إلى حدوث عدوى بكتيرية ثانوية.",
-      "تعتبر الإصابة الجماعية في الأسرة الواحدة مؤشراً قوياً للتشخيص.",
-      "يتم العلاج باستخدام كريم موضعي يحتوي على مادة قاتلة للطفيليات."
-    ],
+        "عدوى فطرية سطحية مزمنة تصيب الطبقة القرنية للجلد ناجمة عن فرط نمو خمائر الملاسيزية (Malassezia).",
+        "تظهر على هيئة بقع ناقصة أو مفرطة التصبغ ذات قشور ناعمة تتوضع غالباً على أعلى الصدر والظهر والكتفين.",
+        "يثبط حمض الأزيلائيك الذي يفرزه الفطر إنزيم التيروزيناز مما يمنع تصنيع صبغة الميلانين ويسبب التبقع الفاتح.",
+        "الفحص المجهري المباشر بكشاطة هيدروكسيد البوتاسيوم (KOH) يظهر المظهر النمطي لكريات اللحم والسباغيتي.",
+        "تعالج موضعياً بشامبو كبريتيد السيلينيوم أو كريم الكيتوكونازول مع استمرار نقص التصبغ لأسابيع بعد القضاء على الفطر."
+  ],
     "English": [
-      "A parasitic infestation that affects the skin and causes intense itching.",
-      "Symptoms of pruritus typically worsen during nighttime.",
-      "The causative agent is transmitted via direct and prolonged skin-to-skin contact.",
-      "Skin lesions arise due to an immune response to the parasite and its waste products.",
-      "Tiny, linear burrows appear on the skin in specific anatomical locations.",
-      "Lesions are frequently distributed in interdigital spaces and skin folds.",
-      "Dermoscopy is utilized to search for the parasite, its eggs, or feces.",
-      "Chronic scratching can lead to secondary bacterial infections.",
-      "Clustering of cases within a single household is a strong diagnostic indicator.",
-      "Treatment involves the application of a topical cream containing a pediculicide or similar agent."
-    ]
+        "A chronic superficial cutaneous mycosis of the stratum corneum caused by dimorphic Malassezia yeasts.",
+        "Manifests as hyper- or hypopigmented macules with fine collarette scale predilecting the upper trunk and shoulders.",
+        "Fungal production of azelaic acid competitively inhibits tyrosinase, impairing melanogenesis and yielding pale patches.",
+        "Potassium hydroxide (KOH) examination of skin scrapings reveals the classic 'spaghetti and meatballs' pattern.",
+        "Treated effectively with topical selenium sulfide or ketoconazole, though pigmentary alterations may linger for months."
+  ]
   },
   "w326": {
     "Arabic": [
@@ -8452,7 +8388,7 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "Histological examination often reveals characteristic Homer-Wright rosettes.",
       "Periorbital ecchymosis is a frequent sign of metastatic orbital involvement.",
       "Gene amplification of N-MYC is a major marker of aggressive behavior and poor prognosis.",
-      "Staging is determined by the International Neuroblastoma Staging System."
+      "Staging is determined by the International Pediatric Neuro-oncology Staging System (INSS)."
     ]
   },
   "w332": {
@@ -8847,29 +8783,19 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
   },
   "w342": {
     "Arabic": [
-      "عدوى طفيلية تنتقل عبر ملامسة المياه العذبة الملوثة.",
-      "تسببها ديدان مسطحة تخترق الجلد وتنتقل عبر الدورة الدموية.",
-      "تتراوح الأعراض من تهيج جلدي أولي إلى مضاعفات مزمنة في الأعضاء.",
-      "تستقر البويضات في الأنسجة مسببة تفاعلاً التهابياً مزمناً.",
-      "تشمل الأعراض المزمنة وجود دم في البول أو اضطرابات معوية.",
-      "يؤدي التليف الكبدي أو المثاني إلى أضرار دائمة في الأعضاء.",
-      "يتم التشخيص من خلال الكشف عن بويضات الطفيل في البراز أو البول.",
-      "تتطلب الحالة علاجاً باستخدام أدوية مضادة للديدان تعمل على شل حركتها.",
-      "يمكن أن يؤدي انسداد الأوعية الدموية إلى ارتفاع ضغط الدم البابي.",
-      "يعتمد دورة حياة الطفيل على وجود قواقع مائية كعائل وسيط."
-    ],
+        "داء طفيلي حيواني المنشأ ينجم عن ابتلاع بيوض الدودة الشريطية المشوكة الحبيبية (Echinococcus granulosus).",
+        "تعتبر الكلاب المضيف النهائي للدودة، بينما تشكل الأغنام والإنسان مضيفين متوسطين تتشكل في أحشائهم الأكياس.",
+        "يتوضع الكيس المائي في الكبد بنسبة 70% يليه الرئتان، ويتميز بجدار ثلاثي الطبقات ورمل عداري (Hydatid sand).",
+        "تمزق الكيس العفوي أو أثناء العمل الجراحي يسبب صدمة تآقية (Anaphylactic shock) مهددة للحياة وبذر يرقات جديدة.",
+        "يظهر بالسونار علامة زنبق الماء (Water-lily sign) الناتجة عن انفصال الغشاء المفرخ الداخلي داخل التجويف."
+  ],
     "English": [
-      "A parasitic infection contracted through exposure to contaminated freshwater.",
-      "Caused by trematode flatworms that penetrate the skin.",
-      "Symptoms range from initial dermal irritation to chronic organ damage.",
-      "Eggs deposited in tissues incite a chronic granulomatous inflammatory response.",
-      "Clinical manifestations include hematuria or various intestinal disturbances.",
-      "Chronic infestation can lead to liver fibrosis or bladder wall thickening.",
-      "Diagnosis is confirmed by microscopic detection of eggs in stool or urine.",
-      "Management involves anti-helminthic therapy that paralyzes the parasites.",
-      "Vascular complications can result in portal hypertension and splenomegaly.",
-      "The parasite life cycle requires freshwater snails as intermediate hosts."
-    ]
+        "A zoonotic parasitic infection acquired through ingestion of eggs shed by Echinococcus granulosus tapeworms.",
+        "Canines serve as definitive hosts, whereas sheep and humans act as intermediate hosts developing larval hydatid cysts.",
+        "Predominantly affects the liver (70%) and lungs, featuring a three-layered cystic wall enclosing protoscolices and hydatid sand.",
+        "Accidental intraoperative puncture or spontaneous rupture precipitates severe life-threatening anaphylactic shock.",
+        "Ultrasound and CT imaging classically depict internal floating membranes termed the pathognomonic 'water-lily sign'."
+  ]
   },
   "w348": {
     "Arabic": [
@@ -9261,9 +9187,5280 @@ export const HINTS_DICTIONARY: Record<string, HintSet> = {
       "The condition occurs seasonally and spreads rapidly in childcare settings."
     ]
   }
+,
+  "w237": {
+    "Arabic": [
+        "دودة أسطوانية معوية عملاقة شائعة جداً في المناطق الحارة وتنتقل عبر ابتلاع البويضات في الخضار الملوث.",
+        "أثناء هجرة يرقاتها عبر الرئتين، تسبب سعالاً مصحوباً ببلغم دموي مع فرط الحمضات (متلازمة لوفلر Löffler).",
+        "في الأطفال الصغار، قد تتشابك كرات كبيرة من هذه الديدان وتسبب انسداداً معوياً ميكانيكياً حاداً.",
+        "فحص عينة البراز مجهرياً يظهر بويضات مميزة بنية سميكة ذات سطح خارجي خشن متعرج.",
+        "تتغذى على محتويات الأمعاء الدقيقة وتنافس الطفل على العناصر الغذائية مما يسبب سوء تغذية وضعف نمو.",
+        "قد تضل إحدى الديدان البالغة طريقها وتخترق القناة المرارية مسببة مغصاً صفراوياً أو التهاب بنكرياس.",
+        "العلاج الدوائي المفضل والقاطع لها هو جرعة ألبيندازول (Albendazole) أو ميبيندازول (Mebendazole).",
+        "طول الأنثى البالغة قد يتجاوز 30 سم وهي ذات شكل أسطواني يشبه دودة الأرض.",
+        "الوقاية الأساسية تعتمد على غسل الأيدي والخضروات جيداً وتوفير شبكات صرف صحي ومياه شرب نظيفة.",
+        "في حالات الانسداد المعوي الشديد، قد يُستخدم دواء البيبرازين لشل الديدان أو اللجوء للجراحة العاجلة."
+    ],
+    "English": [
+        "A giant intestinal roundworm prevalent in tropical regions transmitted via ingestion of contaminated soil or food.",
+        "Larval pulmonary migration induces cough, dyspnea, hemoptysis, and marked eosinophilia (Löffler syndrome).",
+        "Massive worm burdens in children can aggregate into boluses causing acute mechanical intestinal obstruction.",
+        "Stool microscopy reveals characteristic bile-stained, golden-brown eggs with a thick, mammillated albuminous coat.",
+        "Adult worms inhabit the lumen of the jejunum and compete for nutrients, contributing to child growth impairment.",
+        "Wandering adult worms can migrate into the biliary tract, precipitating acute ascending cholangitis or pancreatitis.",
+        "First-line antihelminthic management relies on oral albendazole or mebendazole as a single dose.",
+        "Adult females can measure up to 35 cm in length, making it the largest intestinal nematode infecting humans.",
+        "Public health control depends upon hygienic food preparation, clean drinking water, and mass deworming.",
+        "In acute obstruction, piperazine was historically used to paralyze worms prior to surgical consideration."
+    ]
+},
+  "w238": {
+    "Arabic": [
+        "دودة خطافية معوية تثبت نفسها بقوة في الغشاء المخاطي للصائم والاثني عشر بواسطة أسنان أو صفائح قاطعة.",
+        "تخترق يرقاتها المعدية الجلد السليم (غالباً عند المشي حافي القدمين على تربة رطبة ملوثة) مسببة حكة شديدة.",
+        "تتغذى على امتصاص دم العائل وتفرز إنزيمات مضادة للتجلط، مما يسبب نزيفاً دموياً معوياً مستمراً.",
+        "تعتبر سبباً رئيسياً لفقر الدم الشديد بنقص الحديد ونقص البروتينات في البلدان النامية.",
+        "تهاجر اليرقات من الجلد عبر الأوردة إلى القلب والرئتين ثم تصعد للقصبة وتبتلع لتستقر في الأمعاء.",
+        "يشتكي المريض من شحوب شديد، تعب مزمن، سرعة نبضات القلب، وضيق تنفس عند بذل أقل مجهود.",
+        "التشخيص المؤكد يتم بفحص البراز مجهرياً لرؤية البويضات البيضاوية الرقيقة ذات الخلايا المنقسمة بالداخل.",
+        "العلاج الحاسم يتمثل في جرعات ألبيندازول (Albendazole) مع إعطاء حبوب الحديد عن طريق الفم لعلاج الأنيميا.",
+        "الوقاية العامة تستلزم ارتداء الأحذية وتجنب استخدام السماد البشري غير المعالج في الزراعة.",
+        "العدوى الشديدة في الحوامل قد تسبب ولادة مبكرة ونقص وزن المولود نتيجة فقر الدم الأمومي الحاد."
+    ],
+    "English": [
+        "An intestinal hookworm that anchors firmly to duodenal and jejunal mucosa using specialized cutting teeth.",
+        "Filariform larvae penetrate intact bare skin from contaminated moist soil, causing local allergic 'ground itch'.",
+        "Worms continuously feed on host blood and secrete anticoagulants, resulting in significant occult gastrointestinal bleeding.",
+        "A leading cause of severe microcytic hypochromic iron deficiency anemia and hypoproteinemia in endemic regions.",
+        "Larvae undergo vascular transit through lungs and trachea before being swallowed to mature in the small intestine.",
+        "Clinical presentation includes marked pallor, fatigue, exertional dyspnea, tachycardia, and peripheral edema.",
+        "Stool examination reveals typical thin-shelled, transparent, oval ova containing segmented morulae.",
+        "Definitive therapy requires oral albendazole or mebendazole alongside therapeutic iron replacement therapy.",
+        "Prevention focuses on wearing protective footwear and sanitation infrastructure to disrupt soil contamination.",
+        "Severe maternal infestation poses significant risks of preterm labor and low birth weight infants."
+    ]
+},
+  "w239": {
+    "Arabic": [
+        "دودة خيطية بيضاء دقيقة شائعة جداً بين أطفال المدارس والحضانات وسهلة الانتقال بين أفراد الأسرة.",
+        "تهاجر إناث الدودة ليلاً إلى المنطقة المحيطة بفتحة الشرج لتضع آلاف البويضات في ثنايا الجلد.",
+        "تفرز مادة لزجة تسبب حكة شرجية ليلية شديدة (Pruritus ani) تؤدي إلى الأرق وقلق النوم وتقلب المزاج.",
+        "الهرش المستمر ينقل البويضات الدقيقة تحت أظافر الطفل ويعيد العدوى الذاتية عبر الفم (Fecal-Oral).",
+        "يتم التشخيص صباحاً قبل الاستحمام بوضع شريط لاصق شفاف حول فتحة الشرج وفحصه بالمجهر (Scotch tape test).",
+        "تظهر البويضات تحت المجهر شفافة ومميزة بشكلها غير المتماثل (مسطحة من جانب ومحدبة من الآخر كالـ D).",
+        "العلاج المعياري هو جرعة واحدة من ميبيندازول أو ألبيندازول، ويجب علاج جميع أفراد المنزل في نفس الوقت.",
+        "يجب تكرار الجرعة العلاجية بعد أسبوعين للقضاء على الديدان الجديدة التي فقست بعد الجرعة الأولى.",
+        "غسل أغطية السرير والملابس الداخلية بالماء الساخن وقص الأظافر بدقة خطوات حاسمة لمنع عودة الإصابة.",
+        "في الإناث الصغيرات، قد تضل الدودة طريقها إلى المهبل مسببة حكة وإفرازات مهبلية غير مبررة."
+    ],
+    "English": [
+        "A small white nematode extremely common among school-aged children and clusters readily within households.",
+        "Gravid adult females migrate nocturnally through the anus to oviposit thousands of eggs onto perianal skin folds.",
+        "Perianal oviposition provokes intense nocturnal pruritus ani, leading to restless sleep and behavioral irritability.",
+        "Perianal scratching collects eggs beneath fingernails, facilitating direct oral auto-reinfection and transmission.",
+        "Diagnosis is confirmed in the morning prior to bathing using the cellulose tape test applied to perianal skin.",
+        "Microscopic examination reveals characteristic plano-convex ova flattened on one side with a double-layered shell.",
+        "Therapy requires oral mebendazole, albendazole, or pyrantel pamoate, mandating concurrent treatment of the entire household.",
+        "A second medication dose must be strictly repeated after 14 days to eradicate newly hatched larvae.",
+        "Hygienic measures including hot-water laundering of bed linens and trimming fingernails prevent recurrence.",
+        "In young females, ectopic anterior migration can lead to vulvovaginitis and recurrent pelvic discomfort."
+    ]
+},
+  "w363": {
+    "Arabic": [
+        "عظمة مسطحة مثلثة الشكل تقع في الجزء الخلفي العلوي من القفص الصدري بين مستوى الضلع الثاني والسابع.",
+        "تتمفصل من الأمام مع عظمة الترقوة عند الأخرم، ومن الوحشي مع رأس عظم العضد في التجويف الحقاني.",
+        "يقسم وجهها الخلفي شوكة عظمية بارزة تنتهي ببروز الأخرم (Acromion) الذي يمكن جسه بسهولة فوق الكتف.",
+        "تثبت وترتبط بها عضلات الكفة المدورة الأربعة (SITS) المسؤولة عن تدوير وثبات مفصل الكتف.",
+        "إصابة العصب الصدري الطويل تؤدي إلى شلل العضلة المنشارية الأمامية وبروز العظمة للخلف (الجناحية Winged).",
+        "النتوء الغرابي (Coracoid process) يبرز من حافتها العلوية ويرتبط به وتر الرأس القصير للعضلة البايسبس.",
+        "تتحرك العظمة في تناغم دقيق مع حركة عظم العضد بنسبة 1:2 في ظاهرة الإيقاع الكتفي العضدي.",
+        "كسور هذه العظمة نادرة ولا تحدث إلا نتيجة حوادث اصطدام عنيفة عالية الطاقة في الصدر.",
+        "العضلات الرافعة والمعينية تثبت حافتها الإنسية في الفقرات العنقية والصدرية للمحافظة على وضعية الظهر.",
+        "فحص حركتها يظهر مدى سلامة حركة رفع الذراع فوق مستوى الرأس والدوران الخارجي للكتف."
+    ],
+    "English": [
+        "A flat, triangular bone located on the posterolateral aspect of the thoracic cage between ribs 2 and 7.",
+        "Articulates laterally with the humeral head at the glenoid cavity and anteriorly with the clavicle at the acromion.",
+        "The prominent dorsal spine terminates laterally as the acromion, which forms the bony tip of the shoulder.",
+        "Serves as the vital anchorage for the four rotator cuff muscles (SITS) that stabilize the glenohumeral joint.",
+        "Injury to the long thoracic nerve paralyzes the serratus anterior, resulting in characteristic scapular winging.",
+        "The coracoid process projects anterolaterally and provides attachment for the short head of the biceps brachii.",
+        "Undergoes synchronized motion with humeral abduction in a 1:2 ratio termed the scapulohumeral rhythm.",
+        "Fractures of its body or neck are rare and typically signify severe high-energy blunt thoracic trauma.",
+        "Rhomboid and levator scapulae muscles insert on its medial border to anchor it to the vertebral column.",
+        "Clinical assessment of its gliding movement evaluates thoracic outlet mobility and overhead arm abduction."
+    ]
+},
+  "w364": {
+    "Arabic": [
+        "عظمة مسطحة متينة تقع في منتصف الجدار الأمامي للصدر وتحمي القلب والشرايين الرئيسية من الصدمات.",
+        "تتكون تشريحياً من ثلاثة أجزاء ملتحمة: القبضة (Manubrium)، الجسم (Body)، والنتوء الخنجري (Xiphoid).",
+        "زاوية لويس (Sternal angle) هي بروز أفقي محسوس يحدد مستوى الضلع الثاني وبداية ونهاية قوس الأورطي.",
+        "تتمفصل حوافها الجانبية مع الغضاريف الضلعية للأضلاع السبعة الأولى (الأضلاع الحقيقية) وعظمتي الترقوة.",
+        "تعتبر المدخل الجراحي القياسي لعمليات جراحة القلب المفتوح عبر شقها طولياً (Median Sternotomy).",
+        "تُعد موقعاً ممتازاً وآمناً لأخذ عينات بذل نخاع العظم في البالغين لسهولة الوصول إليها سطحياً.",
+        "الضغط على الجزء السفلي منها أثناء الإنعاش القلبي الرئوي (CPR) يضخ الدم يدوياً من البطينين إلى الدماغ.",
+        "الكسور فيها ناتجة غالباً عن ارتطام عجلة القيادة بالصدر أثناء حوادث السيارات وتستدعي استبعاد كدمة القلب.",
+        "تشوه القفص الصدري الغائر (Pectus excavatum) ينتج عن انخفاض هذه العظمة للداخل نحو المنصف الصدري.",
+        "النتوء الخنجري في أسفلها يمثل علامة تشريحية هامة لمستوى الحجاب الحاجز والوجه العلوي للكبد."
+    ],
+    "English": [
+        "A flat, elongated bone in the anterior midline of the thorax, shielding vital mediastinal structures.",
+        "Composed anatomically of three fused segments: the manubrium, the elongated body, and the inferior xiphoid process.",
+        "The sternal angle of Louis is a landmark palpable ridge marking the level of T4/T5 and the 2nd costal cartilage.",
+        "Its lateral borders articulate directly with the clavicles and the cartilages of the upper seven true ribs.",
+        "Serves as the primary surgical incision access point in cardiothoracic surgery via median sternotomy.",
+        "Frequently utilized in adult clinical hematology for bone marrow aspiration due to its superficial trabecular cavity.",
+        "Chest compressions over its lower half during CPR mechanically compress the heart against thoracic vertebrae.",
+        "Fractures typically result from steering-wheel blunt trauma and prompt screening for underlying myocardial contusion.",
+        "Congenital inward depression of this bone is clinically termed pectus excavatum or sunken funnel chest.",
+        "The xiphisternal joint defines the inferior border of the anterior mediastinum and upper margin of the liver."
+    ]
+},
+  "w365": {
+    "Arabic": [
+        "أكبر عظمة سمسمية في جسم الإنسان، وتوجد مدفونة بالكامل داخل وتر العضلة رباعية الرؤوس الفخذية.",
+        "تقع أمام مفصل الركبة وتعمل كبكرة رافعة تزيد من العزم الميكانيكي لعضلة الفخذ أثناء بسط الساق.",
+        "يتميز وجهها الخلفي بأسمك طبقة غضروف مفصلي في الجسم للتعبير عن قوة الضغط والاحتكاك الواقع عليها.",
+        "تتمفصل خلفياً مع بكرة عظم الفخذ، وانزياحها الوحشي هو الأكثر شيوعاً في إصابات التواء الركبة الحادة.",
+        "تليين وتآكل غضروفها الداخلي يسبب متلازمة ألم الفخذ الرضفي ووجعاً شديداً عند صعود ونزول السلالم.",
+        "اختبار منعكس الركبة (Patellar reflex) بالنقر على وترها يفحص سلامة الجذور العصبية L2, L3, L4.",
+        "كسورها المستعرضة غالباً ما تنتج عن اصطدام الركبة بالأرض أو بانقباض فجائي شديد للعضلة الرباعية.",
+        "يربطها بالقصبة الوتر الأمامي لمفصل الركبة الذي ينغرس في حدبة القصبة الأمامية (Tibial tuberosity).",
+        "علامة كلارك (Clarke's test) بالضغط عليها مع قبض العضلة تثير ألماً شديداً في حالات اعتلال الغضروف.",
+        "حركتها الجانبية والطولية السلسة تفحص سريرياً للتأكد من عدم وجود انسكاب مائي أو دموي في تجويف الركبة."
+    ],
+    "English": [
+        "The largest sesamoid bone in the human skeleton, embedded completely within the quadriceps femoris tendon.",
+        "Sits anterior to the knee joint, acting as a fulcrum to increase quadriceps extensor mechanical leverage.",
+        "Features the thickest articular hyaline cartilage layer in the body to withstand tremendous compressive forces.",
+        "Articulates posteriorly with the femoral trochlea; acute traumatic dislocation occurs predominantly laterally.",
+        "Softening or fibrillation of its posterior cartilage causes patellofemoral pain syndrome, aggravated by descending stairs.",
+        "Tapping its distal ligament elicits the deep tendon patellar reflex, testing the integrity of the L2-L4 nerve roots.",
+        "Transverse fractures typically occur from direct impact onto a flexed knee or violent eccentric quadriceps contraction.",
+        "Anchored distally to the anterior tibial tuberosity via the robust, fibrous patellar tendon/ligament.",
+        "Clarke's sign (patellar grind test) reproduces retro-patellar crepitus and sharp pain in chondromalacia.",
+        "Assessing its mobility and patellar ballottement confirms or excludes intra-articular knee effusion."
+    ]
+},
+  "w366": {
+    "Arabic": [
+        "عظمة الساق الكبرى الإنسية التي تتحمل أكثر من 90% من ثقل الجسم المنقول من الفخذ إلى الكاحل.",
+        "يتمفصل طرفها العلوي العريض بلقمتين مقعرتين مع لقمتي الفخذ وغضاريف الركبة الهلالية.",
+        "حدبتها الأمامية (Tibial tuberosity) ينغرس فيها وتر الرضفة وتصاب بالالتهاب في داء أوسغود شلاتر.",
+        "حافتها الأمامية وسطحها الإنسي يقعان تحت الجلد مباشرة دون غطاء عضلي، مما يجعلها عرضة للكسور المفتوحة.",
+        "طرفها السفلي يشكل الكعب الإنسي البارز في مفصل الكاحل (Medial Malleolus).",
+        "كسور هضبتها العلوية (Tibial plateau) شائعة في حوادث السيارات وتتطلب تثبيتاً جراحياً دقيقاً بشرائح.",
+        "متلازمة الحجرات العضلية (Compartment syndrome) في الساق تحدث بكثرة بعد كسور هذه العظمة.",
+        "تعتبر موقعاً رئيسياً للحقن داخل العظم (Intraosseous infusion) في حالات الطوارئ عند الأطفال عند تعذر الأوردة.",
+        "تتصل بالشظية عبر غشاء متين بين العظمين وتتحرك معها في ثبات تام دون حركة مفصلية مستقلة.",
+        "الضغط على سطحها الإنسي السفلي يستخدم لتقييم تورم القدمين المترسب (Pitting edema) في فشل القلب والكلى."
+    ],
+    "English": [
+        "The major weight-bearing medial bone of the lower leg, transmitting compressive forces from femur to foot.",
+        "The broad proximal plateau features dual medial and lateral condyles articulating with the menisci and femur.",
+        "Its prominent tibial tuberosity anchors the patellar ligament; overuse in adolescents causes Osgood-Schlatter disease.",
+        "The subcutaneous anterior border (shin) lacks muscular cushioning, making it exceptionally prone to open compound fractures.",
+        "Its distal extremity forms the prominent medial malleolus of the ankle mortise joint.",
+        "High-energy tibial plateau fractures frequently compromise articular congruence and require open reduction internal fixation.",
+        "Acute tibial diaphyseal fractures carry a notorious risk of developing limb-threatening acute compartment syndrome.",
+        "The anteromedial proximal surface serves as a primary emergency intraosseous infusion site in pediatric resuscitation.",
+        "Firmly syndesmosed laterally to the fibula via the interosseous membrane to maintain lower leg structural integrity.",
+        "Sustained digital pressure over the medial distal shaft assesses dependent pitting edema in heart and renal failure."
+    ]
+},
+  "w367": {
+    "Arabic": [
+        "عظمة طويلة ونحيفة تقع في الجانب الوحشي (الخارجي) من الساق، ولا تشارك مباشرة في حمل وزن الجسم.",
+        "يشكل طرفها السفلي المنتفخ الكعب الوحشي (Lateral malleolus) الذي يمنع انزياح الكاحل إلى الخارج.",
+        "يلتف العصب الشظوي المشترك (Common peroneal nerve) حول عنقها، وانضغاطه أو كسره يسبب سقوط القدم (Foot drop).",
+        "تعتبر مخزناً ممتازاً للعظام، ويستخدم ثلثها الأوسط بشكل شائع كطعم عظمي وعائي حر في جراحات الفك والوجه.",
+        "ترتبط بالقصبة عبر مفصل ليفي متين (Syndesmosis)، وتمزقه في التواء الكاحل العالي يعرف بالتواء المشط.",
+        "تنشأ منها العضلات الشظوية المسؤولة عن حركة قلب القدم للخارج (Eversion) والمساعدة في الثني الأخمصي.",
+        "كسر عنقها المصاحب لتمزق الرباط الإنسي للكاحل وكسر الكعب الإنسي يعرف بكسر ميزونوف (Maisonneuve).",
+        "طرفها العلوي (رأس الشظية) يتمفصل مع الجزء الخلفي الوحشي للقصبة أسفل مفصل الركبة مباشرة.",
+        "لا يؤثر استئصال جزء من جسمها في منتصف الساق على قدرة المريض على المشي والحركة الطبيعية.",
+        "فحص ثبات الكعب الوحشي أساسي لتقييم تمزق أربطة الكاحل الشظوية الأمامية والخلفية (ATFL/CFL)."
+    ],
+    "English": [
+        "The slender, non-weight-bearing long bone positioned on the posterolateral aspect of the lower leg.",
+        "Its distal end expands into the subcutaneous lateral malleolus, crucial for lateral stability of the ankle mortise.",
+        "The common peroneal (fibular) nerve courses vulnerably around its neck; trauma precipitates foot drop palsy.",
+        "The vascularized middle third of its shaft serves as the gold-standard free bone graft in mandibular reconstructions.",
+        "Bound firmly to the tibia via the distal syndesmosis; disruption characterizes high syndesmotic ankle sprains.",
+        "Provides origin for the fibularis (peroneus) longus and brevis muscles, driving foot eversion and plantarflexion.",
+        "A proximal fibular fracture paired with medial malleolar disruption constitutes a Maisonneuve fracture.",
+        "The proximal head articulates with the lateral tibial condyle below the knee and anchors the LCL.",
+        "Subtotal midshaft resection can be performed safely without compromising basic ambulatory locomotion.",
+        "Palpation along the entire fibular shaft is mandatory in acute twisting ankle injuries to avoid missed proximal fractures."
+    ]
+},
+  "w368": {
+    "Arabic": [
+        "العظمة الوحيدة المتحركة بين عظام الجمجمة، وتتكون من جسم أفقي مقوس وشعبتين عموديتين تلتقيان في زاوية الفك.",
+        "تتمفصل لقمتها العلوية مع التجويف الحقاني للعظم الصدغي لتكوين المفصل الصدغي الفكي (TMJ).",
+        "تحتوي حافتها السنخية العلوية على 16 تجويفاً مخصصاً لغرس جذور الأسنان السفلية الدائمة.",
+        "يدخل العصب السنخي السفلي عبر ثقبة الفك في وجهها الداخلي لتغذية الأسنان وتُحقن عنده إبرة بنج الأسنان.",
+        "كسورها شائعة جداً بعد حوادث الوجه والمشاجرات، وغالباً ما تكون مزدوجة (كسر في موضع الضربة وآخر باللقمة المقابلة).",
+        "العرض السريري الأبرز لكسورها هو عدم تطابق إطباق الأسنان الطبيعي (Malocclusion) وألم شديد عند المضغ.",
+        "تخرج فروع العصب الذقني من الثقبة الذقنية على جانبي الذقن لتغذية الشفة السفلية واللثة حسياً.",
+        "ترتبط بها عضلات المضغ الأربعة الرئيسية: الماضغة، الصدغية، والجناحية الإنسية والوحشية.",
+        "البروز الذقني في منتصفها الأمامي السفلي يحدد ملامح وشكل الذقن المميز في وجه الإنسان.",
+        "انزياح رأس لقمة الفك للأمام أمام الحدبة المفصلية يؤدي لخلع الفك، مما يترك الفم مفتوحاً وغير قادر على الإغلاق."
+    ],
+    "English": [
+        "The largest, strongest, and only movable bone of the human skull, consisting of a horizontal body and dual rami.",
+        "Its superior condylar process articulates with the temporal bone at the temporomandibular joint (TMJ).",
+        "The superior alveolar border houses dental sockets accommodating the sixteen adult mandibular teeth.",
+        "The inferior alveolar nerve traverses the mandibular foramen, targeted in clinical dentistry for regional dental anesthesia.",
+        "Frequently fractured in facial blunt assault; fractures are typically multiple or bilateral (e.g., body and opposite condyle).",
+        "A telltale sign of mandibular fracture is acute dental malocclusion and intense crepitus upon jaw movement.",
+        "The mental nerve emerges from the bilateral mental foramina to provide cutaneous sensation to the lower lip and chin.",
+        "Acts as the essential bony insertion for all four muscles of mastication: masseter, temporalis, and pterygoids.",
+        "The anterior triangular mental protuberance shapes the distinctive anatomic contour of the human chin.",
+        "Anterior dislocation of the mandibular condyle beyond the articular eminence locks the mouth in an open position."
+    ]
+},
+  "w369": {
+    "Arabic": [
+        "هيكل عظمي متين يتكون من 22 عظمة يحمي الدماغ والأعضاء الحسية كالعين والأذن ويبدأ عنده العمود الفقري.",
+        "تنقسم تشريحياً إلى قحف عصبي (Neurocranium) يحيط بالدماغ وقحف حشوي (Viscerocranium) يشكل ملامح الوجه.",
+        "ترتبط عظامها المسطحة بمفاصل ليفية مسننة غير متحركة تسمى الدروز (Sutures) كالسهمي والإكليلي.",
+        "اليافوخات (Fontanelles) هي فراغات غشائية لينة في رأس الوليد تسمح بولادته وتسهل نمو الدماغ وتغلق تدريجياً.",
+        "أكبر ثقبة في قاعدتها هي الثقبة العظمى (Foramen Magnum) التي يمر عبرها جذع المخ ليتصل بالنخاع الشوكي.",
+        "كسر قاع القحف العظمي يتميز بعلامة عيون الراكون (كدمات حول العينين) وعلامة باتل خلف الأذن وخروج سائل نخاعي.",
+        "تحتوي على الجيوب الهوائية الأنفية المبطنة بالأغشية لتقليل وزن الرأس والمساعدة في رنين الصوت.",
+        "عظام القبو الداخلي محفورة بأخاديد عميقة لاستيعاب الشريان السحائي الأوسط والجيوب الوريدية.",
+        "نقطة التيريون (Pterion) هي أضعف منطقة في جانب الرأس، والضربات عليها قد تسبب نزيفاً فوق الجافية.",
+        "ارتفاع الضغط داخلها (ICP) يظهر سريرياً بثالوث كوشينغ: ارتفاع الضغط، بطء النبض، واضطراب التنفس."
+    ],
+    "English": [
+        "The rigid skeletal framework of the head comprising 22 bones, encasing the encephalon and sensory organs.",
+        "Subdivided anatomically into the neurocranium enclosing the brain and the facial viscerocranium forming facial architecture.",
+        "Bones are knit firmly together by interdigitating, immovable fibrous joints termed cranial sutures.",
+        "Unossified membrane gaps termed fontanelles in neonates permit passage through the birth canal and rapid brain expansion.",
+        "The massive foramen magnum in the occipital base permits transit of the brainstem and spinal cord.",
+        "Basilar skull fractures exhibit hallmark clinical Battle's sign, periorbital raccoon eyes, and CSF rhinorrhea/otorrhea.",
+        "Houses the air-filled paranasal sinuses that decrease cranial skeletal weight and provide acoustic vocal resonance.",
+        "Internal cranial fossae floor features groves housing the middle meningeal vessels and dural venous sinuses.",
+        "The pterion on the lateral vault represents the thinnest bone region; fractures tear the middle meningeal artery causing epidural hematoma.",
+        "Pathologic elevation of intracranial pressure manifests through Cushing's triad: hypertension, bradycardia, and irregular respiration."
+    ]
+},
+  "w370": {
+    "Arabic": [
+        "العظمة الوحشية (الخارجية) للساعد في الوضعية التشريحية وتتمفصل مع عظام الرسغ لتكوين مفصل المعصم.",
+        "يتميز رأسها العلوي المستدير بالدوران داخل الرباط الحلقي مما يسمح بحركتي كب وبطح اليد (Pronation / Supination).",
+        "السقوط على اليد المفرودة (FOOSH) يسبب كسراً في طرفها السفلي مع انزياح للخلف يعرف بكسر كوليس (Colles).",
+        "النبض الكعبري (Radial pulse) يُجس بسهولة فائقة على وجهها الأمامي السفلي ويعد الأشهر سريرياً لقياس النبض.",
+        "ينغرس وتر العضلة ذات الرأسين العضدية (Biceps) في حدبتها العلوية للمساعدة في ثني الساعد وبطحه بقوة.",
+        "طرفها السفلي العريض يتمفصل مع عظمتي القارب والهلالي في عظام الرسغ لنقل قوى الضغط من اليد.",
+        "النتوء الإبري الكعبري (Styloid process) يمتد لمستوى أكثر انخفاضاً من نتوء الزند بحوالي 1 سم.",
+        "كسر جسمها مع خلع المفصل الزندي الكعبري السفلي يعرف جراحياً بكسر جاليازي (Galeazzi).",
+        "أوتار العضلات الباسطة للأصابع تمر في أخاديد مدعمة على وجهها الخلفي فوق حدبة ليستر (Lister's tubercle).",
+        "التهاب أوتار الإبهام فوق نتوءها السفلي يسبب متلازمة دي كيرفان مع ألم شديد في اختبار فنكلستين."
+    ],
+    "English": [
+        "The lateral long bone of the forearm in the anatomical position, primarily responsible for wrist articulation.",
+        "Its discoid proximal head rotates within the annular ligament to execute forearm pronation and supination.",
+        "Falling on an outstretched hand (FOOSH) typically produces a distal metaphysis fracture with dorsal tilt (Colles' fracture).",
+        "The radial artery pulse is routinely palpated over its flat anterior distal surface at the wrist.",
+        "The radial tuberosity serves as the insertion site for the biceps brachii, the prime supinator of the flexed forearm.",
+        "Its expanded distal articular surface transmits axial hand loads directly onto the scaphoid and lunate carpal bones.",
+        "Its styloid process projects approximately 1 cm more distally than the ulnar styloid process.",
+        "A fracture of the radial shaft paired with distal radioulnar joint dislocation is eponymously termed a Galeazzi fracture.",
+        "The dorsal tubercle of Lister acts as a mechanical pulley for the extensor pollicis longus tendon.",
+        "Stenosing tenosynovitis of the abductor pollicis longus and extensor pollicis brevis over its styloid defines De Quervain's tenosynovitis."
+    ]
+},
+  "w371": {
+    "Arabic": [
+        "العظمة الإنسية (الداخلية) للساعد في الوضعية التشريحية، وتتميز بنتوء المرفق (Olecranon) الذي يشكل قمة الكوع.",
+        "تتمفصل بكرتها بعمق مع بكرة العضد لتشكل مفصلاً رِزّياً متيناً يسمح بالثني والبسط فقط دون حركة جانبية.",
+        "ينغرس وتر العضلة ثلاثية الرؤوس العضدية (Triceps) في قمة نتوء المرفق لبسط مفصل الكوع بقوة.",
+        "كسر الثلث العلوي لجسمها مصحوباً بخلع رأس الكعبرة يعرف جراحياً بكسر مونتيجيا (Monteggia fracture).",
+        "حافتها الخلفية تمتد تحت الجلد بالكامل من الكوع إلى المعصم ويمكن تحسسها باليد دون وجود عضلات تغطيها.",
+        "الضربة المباشرة على جانب الساعد أثناء الدفاع عن النفس تسبب كسر عصا الشرطة (Nightstick fracture) في جسمها.",
+        "يمر العصب الزندي في أخدود عظمي خلف نتوءها الداخلي ويثير إحساساً كهربائياً شهيراً عند ضرب الكوع.",
+        "طرفها السفلي يتميز برأس صغير ونتوء إبري، ويفصلها قرص غضروفي ليفي مثلث عن عظام الرسغ.",
+        "تعتبر محور الثبات الرئيسي لمفصل الكوع بينما تدور الكعبرة حولها أثناء حركات الكب والبطح.",
+        "التهاب الكيس الزلالي فوق نتوء المرفق يسبب انتفاخاً وتورماً يشبه البيضة فوق الكوع (كوع الطالب)."
+    ],
+    "English": [
+        "The medial stabilizing bone of the forearm, capped proximally by the prominent, hook-like olecranon process.",
+        "Its deep trochlear notch articulates tightly with the humeral trochlea, creating a pure uniaxial hinge joint for flexion-extension.",
+        "The powerful triceps brachii tendon inserts directly onto the proximal superior surface of the olecranon.",
+        "Fracture of the proximal ulnar third accompanied by anterior dislocation of the radial head constitutes a Monteggia fracture.",
+        "Its subcutaneous posterior border is easily palpable along its entire length from elbow to wrist.",
+        "Isolated midshaft fracture resulting from direct shielding against blunt assault is termed a nightstick fracture.",
+        "The ulnar nerve courses directly behind the medial epicondyle close to the olecranon, susceptible to compression in the cubital tunnel.",
+        "Its distal head is separated from the carpal bones by the triangular fibrocartilage complex (TFCC).",
+        "Serves as the fixed, unmoving forearm pivot around which the lateral radius rotates during pronation-supination.",
+        "Aseptic or septic inflammation of the superficial bursa over the olecranon process causes 'student's elbow' bursitis."
+    ]
+},
+  "w372": {
+    "Arabic": [
+        "خمس عظام أسطوانية صغيرة تشكل الهيكل الداخلي لراحة اليد وتربط بين عظام الرسغ وقواعد السلاميات.",
+        "عظم المشط الأول الخاص بالإبهام يتميز بتمفصل سرجي شديد المرونة يتيح حركة المعارضة والإمساك الدقيق.",
+        "كسر عنق عظم المشط الخامس الناتج عن لكمة حائط أو جسم صلب يعرف طبياً بكسر الملاكم (Boxer's fracture).",
+        "رؤوس هذه العظام تشكل البروزات المستديرة البارزة لظهر اليد عند إطباق قبضة اليد (Knuckles).",
+        "تنشأ من بينها العضلات بين العظمية الظهرية (DAB) والراحية (PAD) للتحكم في تقريب وتبعيد الأصابع.",
+        "كسر قاعدة عظم مشط الإبهام مع خلع المفصل الرسغي المشطي يعرف جراحياً بكسر بينيت (Bennett fracture).",
+        "تعتبر عظاماً حيوية لقوة القبضة، والتشوه الدوراني لأي منها أثناء التئام الكسر يمنع تقاطع الأصابع السليم.",
+        "الشرايين المشطية الراحية تتفرع بينها لتغذية الأصابع بالدم عبر القوس الراحي العميق والسطحي.",
+        "تتميز بوجود نهايتين: قاعدة عريضة في الخلف تتمفصل مع الرسغ، ورأس محدب في الأمام يتمفصل مع السلاميات.",
+        "التشخيص الشعاعي للكسور فيها يعتمد على صور الأشعة السينية بوضعية أمامية خلفية ومائلة."
+    ],
+    "English": [
+        "Five cylindrical miniature long bones forming the structural framework of the palm between carpus and phalanges.",
+        "The first metacarpal boasts an extraordinarily mobile saddle joint with the trapezium, driving opposable thumb grasp.",
+        "Transverse neck fracture of the 5th metacarpal following a closed-fist blunt strike is classic Boxer's fracture.",
+        "The rounded distal heads of these bones form the prominent knuckles visible upon clenching a fist.",
+        "Provide anatomical origin for the dorsal (abduction) and palmar (adduction) interosseous intrinsic hand muscles.",
+        "An intra-articular fracture-subluxation at the base of the first metacarpal is eponymously Bennett's fracture.",
+        "Critical for manual grip strength; rotational malalignment during healing causes catastrophic finger overlapping.",
+        "Palmar metacarpal arteries branch between them to provide digital collateral perfusion from the deep palmar arch.",
+        "Structurally composed of a proximal articular base, a longitudinal shaft, and a distal bicondylar head.",
+        "Radiographic trauma evaluation routinely relies upon standard posteroanterior, lateral, and oblique views."
+    ]
+},
+  "w373": {
+    "Arabic": [
+        "خمس عظام أسطوانية تشكل الهيكل العظمي لوسط القدم وتدعم الأقواس الطولية والعرضية للقدم.",
+        "عظم المشط الأول هو الأكثر سماكة وقوة ويتحمل العبء الأكبر لثقل الجسم أثناء مرحلة دفع القدم للأمام.",
+        "قاعدة عظم المشط الخامس معرضة للكسر القلعي (Avulsion) أو كسر الإجهاد الوعائي الشهير بكسر جونز (Jones).",
+        "المشي الطويل أو التدريبات العسكرية الشاقة قد تسبب كسور إجهاد دقيقة في عنق عظام المشط تسمى كسور المسير.",
+        "التهاب أو انضغاط العصب بين رؤوس مشط القدم الثالث والرابع يسبب ورماً عصبياً مؤلماً يعرف بورم مورتون.",
+        "رؤوس هذه العظام ترتبط بالسلاميات وتستند على وسائد دهنية تمتص الصدمات أثناء الركض والقفز.",
+        "انزياح المفصل بين عظام الطرس وعظام المشط يمثل إصابة خطيرة في الأربطة تعرف بإصابة ليسفرانك (Lisfranc).",
+        "انحراف عظم المشط الأول للداخل مع انحراف الإبهام للخارج يسبب بروز تورم إبهام القدم الأفحج (Bunion).",
+        "تحتوي رؤوسها السفلية على عظمتين سمسميتين تحت المشط الأول لتسهيل انزلاق وتر العضلة القابضة.",
+        "تساعد في توزيع ضغط وزن الجسم بالتساوي بين العقب ومقدمة القدم أثناء الوقوف الثابت."
+    ],
+    "English": [
+        "Five tubular bones forming the skeletal framework of the forefoot, maintaining longitudinal and transverse plantar arches.",
+        "The robust 1st metatarsal is the thickest and bears substantial compressive mechanical loads during toe-off.",
+        "The watershed base of the 5th metatarsal is notoriously prone to non-union stress fracture (Jones fracture).",
+        "Repetitive march loading or military training predisposes the 2nd and 3rd metatarsal shafts to march stress fractures.",
+        "Perineural fibrosis of the common digital nerve between the 3rd and 4th metatarsal heads causes Morton's neuroma.",
+        "The distal metatarsal heads articulate with proximal phalanges, cushioned plantarly by protective fibrofatty pads.",
+        "Tarsometatarsal joint complex dislocation represents a devastating midfoot ligamentous injury known as Lisfranc injury.",
+        "Medial deviation of the first metatarsal combined with lateral hallux valgus creates a painful bunion deformity.",
+        "The plantar aspect of the first metatarsal head articulates with dual medial and lateral sesamoid bones.",
+        "Evenly distribute static body weight between the posterior calcaneus and the anterior forefoot tripod."
+    ]
+},
+  "w374": {
+    "Arabic": [
+        "الطرف السفلي النهائي للعمود الفقري ويتكون من اندماج 3 إلى 5 فقرات أثرية صغيرة.",
+        "ترتبط به عضلات قاع الحوض مثل العضلة الرافعة للشرج والأربطة العجزية العصعصية لدعم أحشاء الحوض.",
+        "السقوط المباشر على المؤخرة أو الولادة الطبيعية المتعسرة قد تسبب كدمة أو كسراً مؤلماً يُعرف بـ Coccydynia.",
+        "يزداد الألم العصبي به بشدة عند الجلوس لفترات طويلة على مقاعد صلبة أو أثناء عملية التبرز.",
+        "يتحرك قليلاً للخلف أثناء المرحلة الأخيرة من الولادة الطبيعية لتوسيع مخرج الحوض لمرور رأس الجنين.",
+        "العلاج التحفظي لآلامه يعتمد على استخدام وسادة جلوس مفرغة على شكل حلقة (Donut cushion) ومسكنات.",
+        "في الحالات المزمنة المستعصية، قد يُلجأ لحقن التخدير في العقدة المفردة (Ganglion impar) لتسكين الألم.",
+        "لا يحتوي على قناة شوكية ولا يمر بداخله الحبل الشوكي الذي ينتهي في مستوى الفقرة القطنية الأولى L1.",
+        "الناسور العصعصي (Pilonidal sinus) هو كيس شعر ملتهب شائع الحدوث في الجلد الذي يعلو هذه العظمة.",
+        "الاستئصال الجراحي لهذه العظمة (Coccygectomy) خيار أخير ونادر جداً في الحالات المستعصية وغير المستجيبة."
+    ],
+    "English": [
+        "The terminal inferior vestigial segment of the vertebral column formed by fusion of 3 to 5 small vertebrae.",
+        "Anchors pelvic floor musculature including the levator ani and sacrococcygeal ligaments supporting pelvic viscera.",
+        "Direct fall onto the buttocks or precipitous childbirth induces severe localized pain termed coccydynia.",
+        "Pain is acutely exacerbated by prolonged sitting on firm chairs, rising from seated position, and defecation.",
+        "Exhibits slight backward mobility during late labor to enlarge the pelvic outlet diameter for fetal transit.",
+        "Conservative clinical management utilizes ergonomic donut cushions, NSAIDs, and localized physical therapy.",
+        "Fluoroscopy-guided local block of the ganglion impar provides profound relief in chronic refractory pain syndromes.",
+        "Lacks a vertebral canal and neural tissue, terminating well below the conus medullaris at L1/L2.",
+        "The overlying natal cleft skin is the prime site for suppurative infected pilonidal cyst sinus tracts.",
+        "Complete surgical coccygectomy is reserved as a last-resort intervention for intractable structural instability."
+    ]
+},
+  "w375": {
+    "Arabic": [
+        "الجزء الأول والأقصر من الأمعاء الدقيقة ويتخذ شكل حرف C بطول حوالي 25 سم ويحيط برأس البنكرياس.",
+        "يفرز هرمون السيكريتين والكوليسيستوكينين (CCK) لتنظيم إفرازات الصفراء وعصارة البنكرياس الهاضمة.",
+        "تصب فيه القناة الصفراوية المشتركة وقناة البنكرياس عند حليمة فاتر (Ampulla of Vater) في جزئه الثاني.",
+        "القرحة الاثناعشرية هي النوع الأكثر شيوعاً من القرح وترتبط بقوة بجرثومة المعدة وتتحسن بعد تناول الطعام.",
+        "انفجار القرحة به يسبب بطناً جراحية حادة مع ظهور هواء حر تحت الحجاب الحاجز في الأشعة السينية للصدر.",
+        "الجزء الأول منه هو الأكثر عرضة للتقرحات ويظهر في الأشعة بالصبغة على شكل مثلث يُعرف بالبصلة الهضمية العفجية الأولى.",
+        "تحتوي بطانته على غدد برونر (Brunner's glands) التي تفرز مخاطاً قلوياً غنياً بالبيكربونات لمعادلة حمض المعدة.",
+        "الشريان المعدي الاثناعشري يمر خلف جزئه الأول، وتآكله بالقرحة يسبب نزيفاً دموياً حاداً وقيئاً دموياً.",
+        "التواء أو انضغاط جزئه الثالث بين الشريان المساريقي العلوي والشريان الأورطي يسبب متلازمة الشريان المساريقي.",
+        "يتحول الطعام القادم من المعدة فيه من كيموس حمضي إلى مستحلب مهضوم جزئياً بفضل العصارة الصفراوية."
+    ],
+    "English": [
+        "The initial, shortest segment of the small intestine, curving in a C-loop around the pancreatic head.",
+        "Neuroendocrine mucosal cells secrete secretin and cholecystokinin (CCK) in response to acidic luminal chyme.",
+        "The major duodenal papilla of Vater empties pancreatic digestive juices and common bile into its descending 2nd part.",
+        "Duodenal peptic ulcers represent the commonest ulcer type, strongly driven by Helicobacter pylori and relieved by food.",
+        "Acute anterior ulcer perforation causes sudden peritonitis with free air under the diaphragm on erect chest X-ray.",
+        "Its first portion forms the duodenal bulb, visualized radiographically as a smooth triangular cap on barium meal.",
+        "Distinctive submucosal Brunner's glands secrete alkaline bicarbonate-rich mucus to neutralize gastric hydrochloric acid.",
+        "Posterior ulcer penetration can erode the gastroduodenal artery, precipitating torrential upper GI hemorrhage.",
+        "Compression of its transverse 3rd segment between the SMA and aorta causes superior mesenteric artery syndrome.",
+        "Acts as the essential chemical mixing vat converting acidic gastric chyme into a neutral, digestible emulsion."
+    ]
+},
+  "w376": {
+    "Arabic": [
+        "أنبوب عضلي رفيع مبطن بظهارة بولية انتقالية ينقل البول من حوض الكلى إلى المثانة عبر حركات تمعجية منتظمة.",
+        "يحتوي على ثلاثة تضيقات تشريحية طبيعية تعلق فيها الحصوات البولية (مخرج الكلى، تقاطع الحوض، ومدخل المثانة).",
+        "انحباس حصوة بداخلها يسبب مغصاً كلوياً حاداً مستمراً (Renal colic) يسمع من الخاصرة إلى المنطقة التناسلية.",
+        "المغص يرافقه غثيان وقيء وظهور دم مجهري أو مرئي في البول (Hematuria) نتيجة خدش الحصوة لبطانته.",
+        "فحص الأشعة المقطعية بدون صبغة (Non-contrast CT KUB) هو الفحص الذهبي لتحديد حجم وموقع أي انسداد فيه.",
+        "انسداده التام مع وجود التهاب بكتيري يمثل طارئة طبية تستدعي تركيب دعامة دبل جي (Double-J stent) أو بذل الكلى.",
+        "يدخل جدار المثانة بزاوية مائلة تعمل كصمام طبيعي يمنع ارتداد البول إلى الكلى (Vesicoureteral reflux).",
+        "يبلغ طوله حوالي 25 إلى 30 سم ويقع خلف الغشاء البريتوني (Retroperitoneal) ملاصقاً للعضلة القطنية الكبرى.",
+        "محصرات ألفا (مثل تامسولوسين Tamsulosin) تساعد في ارخاء عضلاته الملساء لتسهيل طرد الحصوات الصغيرة.",
+        "تفتيت الحصوات بالليزر عبر المنظار المرن (URS) هو الإجراء الجراحي الشائع لاستخراج الحصوات العالقة فيه."
+    ],
+    "English": [
+        "A retroperitoneal muscular conduit lined with transitional urothelium conducting urine from renal pelvis to bladder.",
+        "Features three anatomical constrictions where calculi typically lodge: UPJ, iliac vessel crossing, and UVJ.",
+        "Acute luminal obstruction provokes agonizing colicky flank pain radiating along the dermatome to the groin and scrotum/labia.",
+        "Accompanied clinically by autonomic nausea, vomiting, and microscopic or gross hematuria from mucosal abrasion.",
+        "Non-contrast helical computed tomography of the abdomen and pelvis (CT KUB) is the gold standard diagnostic imaging.",
+        "Obstructive pyelonephritis is a urological emergency requiring urgent decompression via double-J stent or nephrostomy.",
+        "Pierces the muscular bladder wall obliquely to create a functional valve mechanism preventing vesicoureteral reflux.",
+        "Measures approximately 25-30 cm in length, running retroperitoneally along the anterior border of the psoas major.",
+        "Medical expulsive therapy with alpha-1 adrenergic blockers (e.g., tamsulosin) relaxes distal smooth muscle to facilitate passage.",
+        "Rigid or flexible ureteroscopy (URS) paired with holmium laser lithotripsy represents the premier surgical retrieval method."
+    ]
+},
+  "w377": {
+    "Arabic": [
+        "أنبوب تنفسي غضروفي يمتد من الحنجرة عند الفقرة C6 حتى تفرعها للشعبتين عند زاوية القص الصدرية T4/T5.",
+        "تدعمها حلقات غضروفية هيالينية غير مكتملة على شكل حرف C تحافظ على المجرى مفتوحاً وتسمح بتمدد المريء خلفها.",
+        "تتفرع عند نقطة الجؤجؤ (Carina) الحساسة جداً لمنعكس السعال إلى شعبة هوائية يمنى وشعبة يسرى.",
+        "الشعبة اليمنى الناتجة عنها أكثر اتساعاً واستقامة وقصراً، مما يجعلها المقر الأسهل لدخول الأجسام الغريبة المستنشقة.",
+        "مبطنة بظهارة تنفسية مهدبة عمادية كاذبة تحتوي خلايا كأسية تفرز المخاط وتطرده للأعلى عبر المصعد الهدبي.",
+        "شق الرغامي (Tracheostomy) هو إجراء جراحي إسعافي يفتح مجرى تنفسي بديل فيها في حالات انسداد الحنجرة.",
+        "انحرافها عن خط المنتصف في فحص الرقبة علامة سريرية حرجة لاسترواح الصدر الضاغط أو الانخماص الرئوي الضخم.",
+        "تتصل خلفياً بعضلة الرغامي الملساء (Trachealis muscle) التي تضيق القصبة أثناء السعال لزيادة سرعة اندفاع الهواء.",
+        "التنبيب الرغامي (Endotracheal intubation) بإدخال أنبوب بداخلها هو الإجراء المنقذ لتأمين مجرى الهواء والتنفس الصناعي.",
+        "التهابها الجرثومي الحاد في الأطفال قد يسبب تضيقاً مهدداً للحياة وبحة وسعالاً نباحياً شديداً."
+    ],
+    "English": [
+        "A cartilaginous and membranous airway extending from the cricoid cartilage (C6) to the mediastinal carina (T4/T5).",
+        "Reinforced by 16 to 20 incomplete C-shaped hyaline rings that maintain patency while allowing esophageal expansion.",
+        "Bifurcates at the highly innervated, cough-sensitive internal ridge known as the carina into primary bronchi.",
+        "The right primary bronchus is wider, shorter, and more vertical, making it the prime target for aspirated foreign bodies.",
+        "Lined with pseudostratified ciliated columnar epithelium with goblet cells powering the protective mucociliary escalator.",
+        "Emergency tracheostomy creates a direct surgical airway through its anterior cervical rings below the larynx.",
+        "Tracheal deviation on physical examination serves as a hallmark clinical sign of tension pneumothorax or atelectasis.",
+        "The posterior gap in the cartilaginous rings is bridged by the smooth trachealis muscle, which contracts during coughing.",
+        "Endotracheal tube intubation through its lumen provides definitive airway management during general anesthesia and critical care.",
+        "Bacterial tracheitis can produce severe subglottic airway narrowing, stridor, and respiratory distress in young children."
+    ]
+},
+  "w378": {
+    "Arabic": [
+        "عضو التصويت وتأمين التنفس يقع في مقدمة الرقبة بين البلعوم والقصبة الهوائية ويمنع دخول الطعام للمجرى التنفسي.",
+        "تتكون من هيكل غضروفي أبرزه الغضروف الدرقي (تفاحة آدم)، الغضروف الحلقي، ولسان المزمار (Epiglottis).",
+        "تحتوي على الحبلين الصوتيين الحقيقيين اللذين يهتزان بفعل هواء الزفير المندفع لإنتاج أصوات الكلام.",
+        "يغذي عضلاتها الداخلية العصب الحنجري الراجع، وإصابته في جراحة الغدة الدرقية يسبب بحة صوت دائمة.",
+        "لسان المزمار يغلق مدخلها تلقائياً أثناء البلع لتوجيه بلعة الطعام بأمان إلى المريء ومنع الشرقة.",
+        "التهاب لسان المزمار الحاد (Epiglottitis) يسببه الهيموفيلس ويؤدي لاختناق مفاجئ وسيلان اللعاب ووضعية الاستناد الثلاثي.",
+        "بحة الصوت (Hoarseness) المستمرة لأكثر من ثلاثة أسابيع تستدعي فحصها بالمنظار لاستبعاد الأورام الخبيثة.",
+        "تشنج الحبال الصوتية فيها قد يحدث في حالات نقص الكالسيوم الحاد (Tetany) ويسبب صريراً واختناقاً.",
+        "تسمع أصوات الصرير التنفسي الحاد (Stridor) أثناء الشهيق عند حدوث أي تورم أو انسداد في مجراها الضيق.",
+        "عضلاتها الحلقية الدرقية يغذيها العصب الحنجري الخارجي وتعمل على شد الأوتار الصوتية لرفع طبقة ونبرة الصوت."
+    ],
+    "English": [
+        "The organ of phonation and airway sphincter located in the anterior neck between C3 and C6.",
+        "Framework comprises key cartilages: the thyroid (Adam's apple), cricoid, epiglottis, and paired arytenoids.",
+        "Houses the true vocal folds that adduct and vibrate in the airstream to generate acoustic vocal resonance.",
+        "Innervated by the recurrent laryngeal nerve; unilateral intraoperative iatrogenic injury causes chronic hoarseness.",
+        "The leaf-shaped epiglottis folds downward over the laryngeal inlet during deglutition to prevent pulmonary aspiration.",
+        "Acute bacterial epiglottitis causes rapid life-threatening airway obstruction, drooling, and the tripod sniffing posture.",
+        "Persistent vocal hoarseness exceeding three weeks mandates direct flexible laryngoscopy to rule out squamous cell carcinoma.",
+        "Laryngospasm can manifest acutely in severe hypocalcemic tetany, producing dramatic inspiratory stridor.",
+        "High-pitched inspiratory stridor signals critical upper airway narrowing at the level of the glottic aperture.",
+        "The cricothyroid muscle, innervated exclusively by the external superior laryngeal nerve, tenses the cords to elevate pitch."
+    ]
+},
+  "w379": {
+    "Arabic": [
+        "ممر عضلي قمعي مشترك للطعام والهواء يمتد من قاعدة الجمجمة حتى بداية المريء عند الفقرة العنقية السادسة C6.",
+        "ينقسم تشريحياً إلى ثلاثة أقسام متتالية: القسم الأنفي (Naso)، القسم الفموي (Oro)، والقسم الحنجري (Laryngo).",
+        "تفتح قناة استاكيوس (نفير أوستاش) في جداره الأنفي لمعادلة الضغط الجوي على جانبي طبلة الأذن وتصريف الإفرازات.",
+        "يحتوي على حلقة فالداير المناعية (Waldeyer's ring) التي تضم اللوزتين الحنكيتين والناميات لحراسة مدخل الجسم.",
+        "التهاب البلعوم واللوزتين (Pharyngitis) تسببه البكتيريا العقدية ويتميز بحمى وصديد وصعوبة مؤلمة في البلع.",
+        "عضلاته العاصرة الثلاث (العلوية والمتوسطة والسفلية) تنقبض بالتتابع في منعكس لاإرادي لدفع بلعة الطعام لأسفل.",
+        "الرتق العضلي في أسفله يسبب رتج زنكر (Zenker diverticulum) حيث تتجمع بقايا الطعام مسببة رائحة فم كريهة وصعوبة بلع.",
+        "العصب البلعومي اللساني (العصب التاسع) ينقل الإحساس العام ومنعكس التقيؤ الحامي (Gag reflex) من جداره الخلفي.",
+        "تضخم اللحمية في قسمه الأنفي عند الأطفال يسبب التنفس المزمن من الفم والشخير وانقطاع النفس النومي.",
+        "أورام البلعوم الأنفي ترتبط بقوة بعدوى فيروس إبشتاين بار (EBV) وتظهر بتضخم عقدي لمفاوي في الرقبة."
+    ],
+    "English": [
+        "A fibromuscular funnel-shaped tube extending from the base of the skull to the lower border of the cricoid (C6).",
+        "Divided topographically into three continuous chambers: nasopharynx, oropharynx, and laryngopharynx.",
+        "The pharyngeal opening of the auditory (Eustachian) tube opens into the lateral nasopharyngeal wall to equilibrate middle ear pressure.",
+        "Houses Waldeyer's lymphatic ring, comprising palatine, lingual, tubal tonsils, and adenoids at the gateway of the respiratory tract.",
+        "Acute bacterial pharyngotonsillitis, typically driven by Group A Streptococcus, features fever, tonsillar exudates, and odynophagia.",
+        "Three paired semicircular constrictor muscles contract sequentially to propel the deglutition food bolus downward.",
+        "Pulsion herniation through Killian's triangle at the pharyngoesophageal junction creates Zenker's diverticulum with halitosis.",
+        "The glossopharyngeal nerve (CN IX) provides somatic afferent sensation and initiates the protective gag reflex.",
+        "Adenoid hypertrophy in children results in chronic mouth-breathing, adenoid facies, and obstructive sleep apnea.",
+        "Nasopharyngeal carcinoma is etiologically linked to Epstein-Barr virus (EBV) and frequently presents with painless cervical adenopathy."
+    ]
+},
+  "w380": {
+    "Arabic": [
+        "مركز القيادة العصبي الهرموني في قاعدة الدماغ، ويتحكم في الاتزان الداخلي للجسم وحرارته وشعور الجوع والعطش.",
+        "يفرز الهرمونات المحررة (GnRH, TRH, CRH, GHRH) التي توجه وتتحكم في جميع إفرازات الغدة النخامية الأمامية.",
+        "ينتج هرموني الأوكسيتوسين والفازوبريسين (ADH) في نواتيه فوق البصرية وجانب البطين ثم يخزنان في النخامية الخلفية.",
+        "يعمل كثرموستات منظم لحرارة الجسم؛ تنشيط جزئه الأمامي يخفض الحرارة، بينما جزئه الخلفي يحفز الرعشة لرفعها.",
+        "مركز الشبع يقع في النواة البطنية الإنسية، بينما مركز الجوع والشهية يقع في المنطقة الوحشية منه.",
+        "تلفه أو أورامه تؤدي إلى داء السكري الكاذب المركزي (Central DI) مع تبول كميات هائلة من البول المخفف وعطش شديد.",
+        "يتحكم في إيقاع الساعة البيولوجية والنوم والاستيقاظ عبر النواة فوق التصالبية (Suprachiasmatic nucleus).",
+        "ينظم نشاط الجهاز العصبي الذاتي (السمبثاوي والباراسمبثاوي) لمواجهة الضغوط وحالات الكر والفر.",
+        "يفرز هرمون السوماتوستاتين (Somatostatin) والدوبامين لتثبيط هرمون النمو والبرولاكتين على التوالي.",
+        "يرتبط بالغدة النخامية عبر السويقة النخامية ويشكل الجدار السفلي وأرضية البطين الثالث للدماغ."
+    ],
+    "English": [
+        "The chief autonomic and neuroendocrine coordination center nestled at the diencephalic base beneath the thalamus.",
+        "Synthesizes hypothalamic releasing and inhibiting factors (GnRH, TRH, CRH, GHRH, somatostatin) governing the anterior pituitary.",
+        "Synthesizes antidiuretic hormone (ADH) and oxytocin within supraoptic and paraventricular nuclei for posterior pituitary storage.",
+        "Operates as the central core body thermostat; the anterior preoptic area controls heat dissipation while the posterior directs conservation.",
+        "Houses hunger and satiety circuits; lateral nuclei drive appetite whereas ventromedial nuclei trigger satiety.",
+        "Structural lesions or craniopharyngiomas prompt central diabetes insipidus, marked by copious dilute polyuria and intense polydipsia.",
+        "The suprachiasmatic nucleus within it serves as the intrinsic pacemaker driving 24-hour circadian rhythms.",
+        "Integrates visceral stress responses by projecting directly into sympathetic and parasympathetic brainstem nuclei.",
+        "Tonically secretes dopamine (prolactin-inhibiting factor) to suppress baseline pituitary prolactin secretion.",
+        "Forms the floor and ventral walls of the third cerebral ventricle, anchored to the hypophysis via the infundibular stalk."
+    ]
+},
+  "w381": {
+    "Arabic": [
+        "غدة صماء صغيرة بحجم حبة الأرز تشبه مخروط الصنوبر وتقع في عمق الدماغ خلف البطين الثالث وفوق الأكيمة العلوية.",
+        "الوظيفة الأساسية لها هي إفراز هرمون الميلاتونين (Melatonin) ليلاً لتنظيم دورة النوم والاستيقاظ واليقظة.",
+        "تتلقى إشارات الضوء والظلام من شبكية العين عبر النواة فوق التصالبية في تحت المهاد لتثبيط أو إطلاق الميلاتونين.",
+        "الضوء الأزرق المنبعث من شاشات الهواتف يثبط إفرازها للميلاتونين، مما يؤدي إلى الأرق واضطراب جودة النوم.",
+        "تترسب فيها أملاح الكالسيوم مع التقدم في العمر مكونة ما يعرف برمل الدماغ (Brain sand) وتظهر بيضاء في الأشعة المقطعية.",
+        "ظهور تكلسها في منتصف الرأس في صور الأشعة السينية والمقطعية يستخدم كعلامة لتقييم انزياح خط منتصف الدماغ.",
+        "الأورام التي تصيبها (Pinealoma) قد تضغط على سقف الدماغ المتوسط مسببة متلازمة بارينود مع شلل في حركة النظر للأعلى.",
+        "الضغط الناجم عن أورامها على مسال سيلفيوس يسبب استسقاء دماغياً انسدادياً حاداً وارتفاع ضغط المخ.",
+        "تساعد في ضبط التوقيت الموسمي للبلوغ، وأورامها المدمرة قد تسبب البلوغ المبكر الحقيقي عند الأطفال.",
+        "تحصل على تروية دموية غزيرة جداً مقارنة بحجمها الضئيل وتعد من التراكيب الدماغية الواقعة خارج الحاجز الدموي الدماغي."
+    ],
+    "English": [
+        "A tiny, pinecone-shaped neuroendocrine gland positioned deep in the epithalamus posterior to the third ventricle.",
+        "Its principal physiological role is rhythmic nocturnal synthesis and secretion of melatonin, the neurohormone of darkness.",
+        "Modulated by photic ambient cues transmitted from the retinohypothalamic tract via sympathetic superior cervical ganglion fibers.",
+        "Exposure to artificial nocturnal blue light strongly suppresses its melatonin output, fragmenting restorative sleep architecture.",
+        "Undergoes progressive physiological calcification forming concentric basophilic calcium concretions termed brain sand (corpora arenacea).",
+        "Its radiopaque calcified midline locus serves as a radiologic landmark to detect pathologic mass-effect midline cerebral shifts.",
+        "Pineal tumors compressing the dorsal midbrain pretectum induce Parinaud syndrome characterized by upward vertical gaze paralysis.",
+        "Anterior compression against the cerebral aqueduct of Sylvius provokes rapid non-communicating obstructive hydrocephalus.",
+        "Historically associated with regulating pubertal timing; destructive tumors can induce precocious puberty.",
+        "Exhibits extraordinarily high capillary perfusion rates, lacking a restrictive blood-brain barrier for hormonal dissemination."
+    ]
+},
+  "w382": {
+    "Arabic": [
+        "أربع غدد صماء صغيرة بحجم حبة العدس تلتصق بالوجه الخلفي لفصي الغدة الدرقية في الرقبة.",
+        "تفرز هرمون الباراثورمون (PTH) الحيوي المسؤول الأول عن رفع مستوى الكالسيوم وخفض الفوسفات في الدم.",
+        "يحفز هرمونها ارتشاف العظام بواسطة الخلايا الآكلة، ويزيد امتصاص الكالسيوم في الكلى وتنشيط فيتامين D.",
+        "الاستئصال العرضي لها أثناء جراحات الغدة الدرقية يسبب هبوطاً حاداً ومفاجئاً في مستوى الكالسيوم بالدم.",
+        "نقص نشاطها يظهر سريرياً بفرط الاستثارة العصبية، التشنجات العضلية (Tetany)، وعلامتي شفوستيك وتروسو.",
+        "ورمها الغدي الحميد (Adenoma) يسبب فرط نشاطها الأولي وظهور ثالوث: حصوات كلى، آلام عظام، وقرح هضمية.",
+        "ارتفاع هرمونها المزمن يسبب ترقق العظام وظهور التكيسات العظمية البنية (Osteitis fibrosa cystica).",
+        "تتحسس تركيز الكالسيوم في الدم لحظياً عبر مستقبلات خاصة (CaSR) على أسطح خلاياها الرئيسية.",
+        "يتم علاج التشنج الحاد الناجم عن قصورها بحقن جلوكونات الكالسيوم الوريدي ببطء شديد تحت مراقبة رسم القلب.",
+        "فرط نشاطها الثانوي يحدث كاستجابة تعويضية شائعة جداً في حالات الفشل الكلوي المزمن ونقص فيتامين D."
+    ],
+    "English": [
+        "Four pea-sized endocrine glands nestled on the posterior capsule of the thyroid lobes in the visceral neck.",
+        "Synthesize and secrete parathyroid hormone (PTH), the chief regulator maintaining systemic extracellular calcium homeostasis.",
+        "PTH acts directly on osteoclasts to mobilize skeletal calcium, stimulates renal calcium reabsorption, and activates vitamin D.",
+        "Inadvertent devascularization or surgical excision during total thyroidectomy precipitates life-threatening postoperative hypocalcemia.",
+        "Acute hypocalcemic insufficiency manifests through neuromuscular irritability, carpopedal spasm (tetany), and Chvostek/Trousseau signs.",
+        "Primary hyperparathyroidism from a solitary benign adenoma manifests as 'stones, bones, groans, and psychiatric overtones'.",
+        "Sustained hyperparathyroid bone resorption causes osteopenia and characteristic cystic subperiosteal osteitis fibrosa cystica.",
+        "Chief cells continuously monitor ionized serum calcium concentrations via surface G-protein-coupled calcium-sensing receptors (CaSR).",
+        "Acute symptomatic tetany requires immediate intravenous calcium gluconate titration under continuous cardiac rhythm monitoring.",
+        "Secondary hyperparathyroidism represents an adaptive compensatory drive driven by chronic renal failure and hyperphosphatemia."
+    ]
+},
+  "w383": {
+    "Arabic": [
+        "أنبوب عضلي سميك ينقل الحيوانات المنوية من ذيل البربخ في كيس الصفن إلى القناة القاذفة في الحوض.",
+        "يصعد عبر القناة الإربية كجزء رئيسي ومحسوس داخل الحبل المنوي (Spermatic cord).",
+        "جدارها العضلي السميك المكون من ثلاث طبقات ينقبض بحركات تمعجية قوية وسريعة أثناء القذف لنقل المني.",
+        "عملية قطع القناة التناسلية الناقلة للمني (Vasectomy) هي وسيلة جراحية بسيطة وفعالة ودائمة لمنع الحمل لدى الرجال.",
+        "غيابها الخلقي في كلا الجانبين (CBAVD) يرتبط بقوة بمرض التليف الكيسي (Cystic Fibrosis) وطفرات جين CFTR.",
+        "تتوسع نهايتها خلف المثانة لتشكل الأمبولة (Ampulla) التي تتحد مع قناة الحويصلة المنوية لتكوين القناة الدافقة.",
+        "يمكن جسه بسهولة عبر جلد كيس الصفن كحبل صلب يشبه السلك أو المعكرونة الإسباغيتي غير المطهية.",
+        "تتغذى دموياً عبر شريان خاص ينشأ من الشريان الحويصلي العلوي أو السفلي.",
+        "التهابها الحاد غالباً ما ينتج عن صعود عدوى بكتيرية من البروستاتا أو المثانة ويسبب ألماً في الحوض والإربية.",
+        "تصل أطوالها لحوالي 45 سم وتبطنها ظهارة أسطوانية كاذبة ذات أهداب استريوسيلية ثابتة تمتص السوائل الزائدة."
+    ],
+    "English": [
+        "A thick-walled fibromuscular duct that conveys mature spermatozoa from the epididymal tail into the ejaculatory duct.",
+        "Traverses the inguinal canal as a firm, palpable constituent of the male spermatic cord entering the pelvis.",
+        "Its robust three-layered smooth muscle wall generates rapid peristaltic propulsion of spermatozoa during male ejaculation.",
+        "Bilateral vasectomy provides a minimally invasive, highly reliable permanent surgical modality for male contraception.",
+        "Congenital bilateral absence of the vas deferens (CBAVD) is strongly pathognomonic for cystic fibrosis transmembrane regulator mutations.",
+        "Its distal terminal segment expands as the ampulla, joining the seminal vesicle duct to configure the ejaculatory duct.",
+        "Distinctively palpable through the scrotal neck skin as a firm, whipcord-like mobile structure.",
+        "Supplied by the dedicated deferential artery originating from the superior or inferior vesical artery branch of the internal iliac.",
+        "Infectious deferentitis typically ascends from untreated chronic bacterial prostatitis, triggering severe deep groin pain.",
+        "Extends approximately 45 cm in length, lined with pseudostratified columnar epithelium bearing absorptive non-motile stereocilia."
+    ]
+},
+  "w385": {
+    "Arabic": [
+        "قناة تنقل العصارة الصفراوية الهاضمة وتتكون من اتحاد القناة الكبدية المشتركة مع القناة الكيسية للمرارة.",
+        "تمر داخل الرباط الكبدي الاثناعشري كجزء من الثالوث البابي وتفتح في الجزء الثاني من الاثني عشر عند حليمة فاتر.",
+        "انسدادها بحصوة مرارية (Choledocholithiasis) يسبب يرقاناً انسدادياً مع بول داكن وبراز فاتح اللون وحكة جلدية.",
+        "التهابها الصاعد الحاد (Ascending Cholangitis) يظهر بثالوث شاركو: حمى وقشعريرة، ألم بالربع العلوي الأيمن، وصفراء.",
+        "ظهور ثالوث شاركو مضافاً إليه انخفاض ضغط الدم وتدهور الوعي يسمى خماسية رينولدز ويمثل طارئة جراحية مهددة للحياة.",
+        "منظار القنوات المرارية والبنكرياس الراجع (ERCP) هو الإجراء الذهبي لتشخيص واستخراج الحصوات العالقة بداخلها.",
+        "أورامها الخبيثة تسمى أورام القنوات الصفراوية (Cholangiocarcinoma) وأشهرها ورم كلاتسكين عند نقطة تفرعها الكبدي.",
+        "تتحكم في مخرجها النهائي العضلة العاصرة لأودي (Sphincter of Oddi) التي تسترخي بتأثير هرمون CCK أثناء هضم الدهون.",
+        "الأشعة التلفزيونية على البطن تظهر اتساع قطرها لأكثر من 6 إلى 8 ملم كدليل قطعي على وجود انسداد سفلي بها.",
+        "التصوير بالرنين المغناطيسي للقنوات الصفراوية (MRCP) فحص غير تداخلي عالي الدقة لتصوير مسارها وحصواتها."
+    ],
+    "English": [
+        "The major extrahepatic ductal conduit formed by union of the common hepatic duct and the gallbladder cystic duct.",
+        "Descends within the hepatoduodenal ligament as part of the portal triad, entering the descending duodenum at the ampulla of Vater.",
+        "Choledocholithiasis obstruction precipitates painless or painful obstructive jaundice, dark tea-colored urine, and acholic pale stools.",
+        "Acute ascending cholangitis presents classically with Charcot's triad: high spiking fever, RUQ abdominal pain, and clinical jaundice.",
+        "Progression to Reynolds' pentad (adding septic hypotension and altered mental status) indicates critical suppurative cholangitis.",
+        "Endoscopic retrograde cholangiopancreatography (ERCP) serves as the diagnostic and therapeutic standard for stone extraction and stenting.",
+        "Cholangiocarcinoma originating at the confluence of the right and left hepatic ducts is eponymously Klatskin's tumor.",
+        "Terminal trans-duodenal flow is regulated by the smooth muscle sphincter of Oddi, which relaxes under CCK stimulation.",
+        "Abdominal ultrasound demonstrating dilation beyond 6-8 mm constitutes definitive sonographic proof of distal mechanical obstruction.",
+        "Magnetic resonance cholangiopancreatography (MRCP) provides non-invasive high-contrast anatomical visualization of the entire biliary tree."
+    ]
+},
+  "w386": {
+    "Arabic": [
+        "ثلاث حلقات عظمية وغشائية دقيقة تقع في الأذن الداخلية وتتعامد على بعضها البعض لاستشعار حركة الرأس في الفراغ.",
+        "الوظيفة الحيوية لها هي استشعار التسارع الزاوي وحركات دوران الرأس ثلاثية الأبعاد للحفاظ على توازن الجسم.",
+        "تنقسم إلى أمامية وخلفية وأفقية (وحشية) وتحتوي بداخلها على سائل اللمف الداخلي وخلايا شعرية حسية.",
+        "تنتهي كل قناة بانتفاخ يسمى القديحة (Ampulla) يحتوي على العرف الصخري والقبيبة التي تتحرك مع حركة السائل.",
+        "انفصال حبيبات كربونات الكالسيوم وسقوطها في القناة الخلفية يسبب دوار الوضعة الانتيابي الحميد (BPPV).",
+        "دوار الوضعة يتميز بنوبات دوار حادة مفاجئة تستمر لثوانٍ عند تحريك الرأس في السرير أو النظر للأعلى.",
+        "مناورة ديكس-هولبايك (Dix-Hallpike) تستخدم لتشخيص إثارة الدوار والرأرأة العينية الناتجة عن اضطرابها.",
+        "مناورة إيبلي (Epley maneuver) هي حركة علاجية فيزيائية تعيد الحبيبات التائهة من القناة إلى القريبة للتخلص من الدوار.",
+        "ترتبط بمسار المنعكس الدهليزي العيني (VOR) لتثبيت صورة الأجسام بوضوح على شبكية العين أثناء حركة الرأس السريعة.",
+        "تتغذى عصبياً عبر العصب الدهليزي (الفرع الدهليزي من العصب القحفي الثامن المسئول عن التوازن)."
+    ],
+    "English": [
+        "Three mutually perpendicular fluid-filled loops housed within the osseous labyrinth of the petrous temporal bone.",
+        "Function as kinetic balance transducers detecting angular rotational head acceleration across all three dimensional planes.",
+        "Oriented as anterior (superior), posterior, and lateral (horizontal) canals containing endolymph and sensory cristae.",
+        "Each canal features an expanded terminal ampulla housing the cupula and specialized mechanoreceptive hair cells.",
+        "Canalithiasis dislodgement of otoconia crystals into the posterior semicircular canal provokes benign paroxysmal positional vertigo (BPPV).",
+        "BPPV manifests through brief, violent paroxysmal vertigo provoked by positional head tilts like rolling over in bed.",
+        "The Dix-Hallpike diagnostic positional maneuver elicits torsional upbeat nystagmus confirms posterior canal canalithiasis.",
+        "The Epley canalith repositioning maneuver sequentially shifts free-floating canaliths back into the utricle for symptom resolution.",
+        "Crucial component of the vestibulo-ocular reflex (VOR), keeping stable visual foveal fixation during rapid head rotation.",
+        "Signals travel via bipolar vestibular ganglion neurons along the vestibular branch of the vestibulocochlear nerve (CN VIII)."
+    ]
+},
+  "w387": {
+    "Arabic": [
+        "الوحدة البنائية والوظيفية الأساسية للجهاز العصبي، وتتميز بقدرتها الفريدة على توليد ونقل الإشارات الكهروكيميائية.",
+        "تتكون تشريحياً من جسم الخلية (Soma)، زوائد شجيرية تستقبل الإشارات، ومحور عصبي طويل ينقل جهد الفعل.",
+        "جهد الفعل (Action Potential) ينشأ عند بداية المحور بفعل التدفق السريع لأيونات الصوديوم لداخل الخلية عبر قنوات خاصة.",
+        "تُغلف محاورها بمادة الميالين الدهنية العازلة لزيادة سرعة التوصيل عبر النقل الوثبي بين عقد رانفييه.",
+        "تتواصل مع الخلايا الأخرى عند نقاط التشابك العصبي (Synapses) بإطلاق النواقل العصبية مثل الأسيتيل كولين والدوبامين.",
+        "خلايا بالغة غير قادرة على الانقسام التكاثري في الجهاز العصبي المركزي، مما يجعل تلفها دائماً وصعب التعويض.",
+        "ضمورها التدريجي في مناطق محددة يسبب أمراضاً تنكسية كفقدان خلايا الدوبامين في شلل الرعاش وخلايا القشرة في الزهايمر.",
+        "الخلايا العصبية الحركية في القرن الأمامي للنخاع الشوكي تدمر في شلل الأطفال والتصلب الجانبي الضموري (ALS).",
+        "تحتاج إمداداً ثابتاً لا ينقطع من الجلوكوز والأكسجين، وموتها السريع يبدأ خلال دقائق عند حدوث السكتة الدماغية.",
+        "أطول محور عصبي في الإنسان يمتد من أسفل النخاع الشوكي حتى أصابع القدم لأكثر من متر كامل."
+    ],
+    "English": [
+        "The excitable structural and functional cellular unit of the nervous system responsible for information transmission.",
+        "Anatomically structured with a soma cell body, receptive arborized dendrites, and a conductive elongated axon.",
+        "Action potentials originate at the axon hillock through rapid voltage-gated sodium channel influx depolarizing the membrane.",
+        "Axons are insulated by discontinuous lipid myelin sheaths driving ultra-fast saltatory conduction across nodes of Ranvier.",
+        "Communicate intercellularly at chemical synaptic junctions via vesicular neurotransmitter release (e.g., acetylcholine, glutamate, dopamine).",
+        "Terminally differentiated post-mitotic cells; permanent loss underlies irreversible neurodegenerative neurological deficits.",
+        "Selective destruction characterizes neurodegenerative disorders: substantia nigra dopamine loss in Parkinson's, cortical loss in Alzheimer's.",
+        "Anterior horn lower motor neurons degenerate in poliomyelitis and amyotrophic lateral sclerosis (ALS).",
+        "Exclusively dependent upon continuous aerobic glucose and oxygen delivery; ischemic necrosis ensues within minutes of cerebral infarction.",
+        "The longest single human motor axon extends from the lumbar spinal cord to the intrinsic muscles of the foot."
+    ]
+},
+  "w388": {
+    "Arabic": [
+        "الخلية الهيكلية العظمية الحية الناضجة والأكثر وفرة في النسيج العظمي البالغ، وتستقر داخل فجوات عظمية دقيقة تسمى الجوبات.",
+        "تنشأ من تمايز الخلايا البانية للعظم (Osteoblasts) بعد أن تحيط نفسها بالمادة العظمية الصلبة المتمعدنة.",
+        "تمتلك زوائد سيتوبلازمية طويلة تتصل بالخلايا المجاورة عبر قنوات مجهرية (Canaliculi) وموصلات فجوية لنقل الغذاء.",
+        "تعمل كمستشعرات ميكانيكية حيوية؛ تقيس قوى الضغط والشد الحركي الواقع على الهيكل العظمي وتوجه إعادة البناء.",
+        "تفرز بروتين السكليروستين (Sclerostin) الذي يثبط تكوين العظم الزائد عند غياب المجهود البدني والرياضة.",
+        "تشارك في الحفاظ على توازن تركيز الكالسيوم والفوسفات في الدم عبر عملية ارتشاف العظم المحيطة بالجوبات.",
+        "تعيش لفترات طويلة جداً تمتد لسنوات أو عقود داخل المادة الصلبة للعظم، وموتها يسرع من تآكل وهشاشة العظم.",
+        "تحتاج للأوعية الدموية في قنوات هافرس لتصلها المغذيات والأكسجين عبر شبكة القنيات الدقيقة.",
+        "موتها الخلوي الموضعي بسبب انقطاع الدم يسبب النخر العظمي اللاوعائي (Avascular Necrosis) في رأس عظم الفخذ.",
+        "تتأثر سلباً بنقص هرمون الإستروجين بعد سن اليأس ونقص الحركة، مما يؤدي لنشاط الخلايا الآكلة وهشاشة العظام."
+    ],
+    "English": [
+        "The mature, most abundant bone cell residing entrapped within microscopic lacunar cavities of mineralized bone matrix.",
+        "Differentiates from bone-forming osteoblasts that become immobilized in their own secreted calcified osteoid.",
+        "Projects long cytoplasmic dendritic extensions through radiating canaliculi, forming a sensory syncytium via gap junctions.",
+        "Acts as primary skeletal mechanosensor, transducing mechanical strain and microdamage into signals directing bone remodeling.",
+        "Synthesizes and secretes sclerostin, a negative regulator of Wnt signaling that curbs osteoblastic bone matrix synthesis.",
+        "Maintains systemic calcium and phosphate homeostasis through localized perilacunar and canalicular osteocytic remodeling.",
+        "Boasts a remarkable lifespan spanning decades within cortical osteons; localized apoptosis recruits targeted osteoclastic remodeling.",
+        "Relies entirely on nutrient and oxygen diffusion percolating through the canalicular network from central Haversian canals.",
+        "Widespread osteocyte necrosis secondary to microvascular compromise precipitates avascular necrosis of the femoral head.",
+        "Estrogen depletion following menopause accelerates osteocyte apoptosis, triggering unrestrained osteoclast bone resorption and osteoporosis."
+    ]
+},
+  "w389": {
+    "Arabic": [
+        "الخلية الوحيدة الموجودة في النسيج الغضروفي السليم، وتفرز وتحافظ على المادة الخلالية الغضروفية المحيطة بها.",
+        "توجد مستقرة داخل فجوات غضروفية في مجموعات متماثلة (Isogenous groups) تنشأ من انقسام خلية أم واحدة.",
+        "تفرز كميات هائلة من الكولاجين من النوع الثاني والبروتيوجليكانات والماء التي تمنح الغضروف مرونته وقدرته على امتصاص الصدمات.",
+        "تعيش في بيئة لاهوائية فقيرة بالأكسجين وتعتمد بالكامل على الانتشار من السائل الزلالي الخارجي لانعدام الأوعية بالغضروف.",
+        "انعدام الأوعية الدموية في الغضروف يجعل قدرتها على الانقسام وإصلاح الإصابات والتآكل ضعيفة وبطيئة للغاية.",
+        "تآكلها واضطراب وظيفتها مع التقدم في العمر والإجهاد الميكانيكي هو الآلية الأساسية لخشونة المفاصل (Osteoarthritis).",
+        "في صفحات النمو العظمي، تترتب في صفوف منتظمة وتتضخم ثم تتكلس لتسمح باستطالة العظام الطويلة في الأطفال.",
+        "تتأثر بالسيتوكينات الالتهابية مثل IL-1 و TNF في التهاب المفاصل الروماتويدي التي تحفزها لإفراز إنزيمات هادمة للغضروف.",
+        "تتحمل قوى ضغط هيدروستاتيكية هائلة داخل المفاصل أثناء المشي والقفز بفضل حبس الماء داخل سلاسل الجليكوزامين.",
+        "تكون المكون الخلوي لغضاريف الجسم الثلاثة: الهياليني (المفصلي)، الليفي (أقراص الظهر)، والمرن (صوان الأذن)."
+    ],
+    "English": [
+        "The specialized resident cell of healthy cartilage responsible for synthesizing and maintaining the extracellular cartilaginous matrix.",
+        "Arranged individually or clustered in clonal isogenous nests within matrix spaces termed cartilage lacunae.",
+        "Secretes high quantities of type II collagen, aggrecan proteoglycans, and hyaluronic acid that confer high compressive stiffness.",
+        "Thrives in a uniquely hypoxic, avascular milieu, relying entirely on passive solute diffusion from synovial fluid.",
+        "Absence of native vascular supply severely limits intrinsic cellular proliferation and limits cartilage repair after injury.",
+        "Cartilage cell senescence and phenotypic catabolic shift drive structural matrix degradation in degenerative osteoarthritis.",
+        "Undergoes stereotypic columnar proliferation, hypertrophy, and calcification within pediatric growth plates driving endochondral ossification.",
+        "Pro-inflammatory cytokines (IL-1, TNF-alpha) induce chondrocytes to synthesize matrix metalloproteinases (MMPs) degrading joint cartilage.",
+        "Withstands extraordinary repetitive hydrostatic compressive loads during movement through fluid pressurization of aggrecans.",
+        "Constitutes the solitary cell type populating hyaline articular cartilage, elastic ear cartilage, and fibrocartilaginous spinal discs."
+    ]
+},
+  "w390": {
+    "Arabic": [
+        "كرية دم حمراء مقعرة الوجهين عديمة النواة تنقل الأكسجين من الرئتين إلى أنسجة الجسم وثاني أكسيد الكربون في العودة.",
+        "شكلها القرصي المقعر يزيد مساحة السطح لتبادل الغازات ويسمح بمرونتها الفائقة للمرور في الشعيرات الدموية الدقيقة.",
+        "تحتوي على بروتين الهيموجلوبين الذي يرتبط بجزيئات الأكسجين ويعطي الدم لونه الأحمر القاني المميز.",
+        "تنتج في نخاع العظم الأحمر تحت تأثير هرمون الإريثروبويتين (EPO) المفرز من الكلى عند نقص الأكسجين.",
+        "يبلغ متوسط عمرها الافتراضي حوالي 120 يوماً وتتحلل بعدها وتلتهم بواسطة البلاعم في الطحال والكبد.",
+        "نقص عددها أو نقص الهيموجلوبين بداخلها يسبب فقر الدم (الأنيميا) مع شحوب وتعب وسرعة ضربات القلب.",
+        "طفرة استبدال حمض الجلوتاميك بالفالين في سلسلة بيتا تسبب تشوهها لشكل منجلي في فقر الدم المنجلي (Sickle cell).",
+        "تكسرها المبكر في مجرى الدم يسبب اليرقان الانحلالي (Hemolytic jaundice) وتضخم الطحال وزيادة البيليروبين.",
+        "تحتوي أسطحها على المستضدات التي تحدد فصائل الدم الرئيسية (ABO) وعامل ريسوس (Rh) لنقل الدم الآمن.",
+        "معدل ترسيبها في أنبوب الاختبار (ESR) يرتفع في حالات الالتهابات الحادة والمزمنة والعدوى والأورام."
+    ],
+    "English": [
+        "An anucleate, biconcave biconcave red blood corpuscle dedicated to oxygen transport from pulmonary alveoli to systemic capillary beds.",
+        "Its flexible biconcave architecture optimizes surface-area-to-volume ratio and permits deformability through microcapillaries.",
+        "Packed with iron-rich hemoglobin tetramers that reversibly bind four oxygen molecules, imparting red vascular coloration.",
+        "Synthesized via erythropoiesis in trabecular bone marrow stimulated by renal erythropoietin (EPO) secreted under hypoxia.",
+        "Possesses a finite circulatory lifespan of approximately 120 days before senescence and splenic macrophage phagocytosis.",
+        "Deficiency in circulating cell mass or hemoglobin defines clinical anemia presenting with pallor, fatigue, and tachycardia.",
+        "Point mutation substituting valine for glutamic acid in beta-globin polymerizes under hypoxia, creating sickle cell deformity.",
+        "Accelerated premature intravascular or extravascular hemolysis causes hemolytic anemia, splenomegaly, and unconjugated hyperbilirubinemia.",
+        "Membrane surface glycoproteins and glycolipids configure the ABO and Rh blood group antigens critical for transfusion safety.",
+        "The erythrocyte sedimentation rate (ESR) serves as a classic indirect hematologic surrogate marker of systemic inflammation."
+    ]
+},
+  "w391": {
+    "Arabic": [
+        "خلية دهنية متخصصة تشكل النسيج الشحمي وتخزن الطاقة الفائضة في الجسم على شكل قطرات دهون ثلاثية.",
+        "الخلية الشحمية البيضاء تحتوي على قطرة دهنية عملاقة واحدة تدفع النواة للطرف لتبدو كشكل خاتم الفص (Signet ring).",
+        "تعمل كغدة صماء حيوية تفرز هرمون اللبتين (Leptin) الذي ينظم الشبع والشهية والتمثيل الغذائي في الدماغ.",
+        "الخلايا الدهنية البنية (Brown adipocytes) تحتوي على ميتوكوندريا غنية ببروتين UCP-1 وتولد الحرارة لحماية المواليد من البرد.",
+        "تفرز مادة الأديبونيكتين (Adiponectin) التي تزيد من حساسية الخلايا للأنسولين، وينخفض إفرازها بشدة في السمنة.",
+        "تفرز سيتوكينات التهابية (مثل TNF-alpha و IL-6) تسبب مقاومة الأنسولين وترفع خطر الإصابة بالسكري النوع الثاني.",
+        "تكون طبقة شحمية عازلة تحت الجلد تمنع فقدان حرارة الجسم وتوفر وسائد واقية حول الأعضاء الحيوية كالكلى.",
+        "الورم الحميد الشائع الذي ينشأ من تكاثرها هو الورم الشحمي (Lipoma) ويظهر ككتلة لينة غير مؤلمة تحت الجلد.",
+        "الورم الخبيث النادر الذي ينشأ منها يسمى الساركوما الشحمية (Liposarcoma) وغالباً ما يصيب الأطراف أو خلف البريتون.",
+        "تخضع لعمليات هدم الدهون (Lipolysis) بفعل هرمونات الأدرينالين والجلوكاجون لتحرير الأحماض الدهنية عند الصيام."
+    ],
+    "English": [
+        "The specialized lipid-storing cell of adipose tissue sequestering surplus systemic calories as neutral triglycerides.",
+        "Unilocular white adipocytes feature a massive single central lipid droplet compressing the flattened nucleus into a signet ring appearance.",
+        "Functions as an active endocrine organ secreting leptin, which signals hypothalamic satiety centers to regulate energy balance.",
+        "Multilocular brown adipocytes contain numerous small droplets and abundant mitochondria expressing UCP-1 (thermogenin) for non-shivering thermogenesis.",
+        "Secretes adiponectin, an insulin-sensitizing adipokine whose circulating levels paradoxical plummet in visceral obesity.",
+        "Hypertrophied adipocytes release pro-inflammatory cytokines (TNF-alpha, IL-6) directly inciting systemic peripheral insulin resistance.",
+        "Forms insulating subcutaneous adipose layers minimizing thermal dissipation and mechanical cushions enveloping kidneys and eyes.",
+        "Common benign encapsulated proliferation of mature adipocytes manifests as a soft, mobile, painless subcutaneous lipoma.",
+        "Malignant liposarcoma typically develops deep within the retroperitoneum or thigh, marked by diagnostic lipoblasts on histology.",
+        "Undergoes active hormone-sensitive lipolysis triggered by catecholamines to liberate free fatty acids during fasting states."
+    ]
+},
+  "w392": {
+    "Arabic": [
+        "أكياس هوائية مجهرية دقيقة تشكل المحطة النهائية للشجرة التنفسية وموقع تبادل الغازات الحيوي بين الهواء والدم.",
+        "تحتوي الرئتان على أكثر من 300 إلى 500 مليون حويصلة تمنح مساحة سطحية هائلة تعادل مساحة ملعب تنس.",
+        "تبطنها خلايا طلائية رقيقة من النوع الأول (Type I pneumocytes) مسؤولة عن انتشار الأكسجين وثاني أكسيد الكربون.",
+        "خلايا النوع الثاني (Type II pneumocytes) تفرز مادة السيرفاكتانت (Surfactant) التي تقلل التوتر السطحي وتمنع انكماشها.",
+        "نقص مادة السيرفاكتانت في الأطفال المبتسرين يسبب متلازمة الضائقة التنفسية الوليدية (NRDS) وانخماص الرئة.",
+        "تمتلئ بالصديد والإفرازات الالتهابية في حالات الالتهاب الرئوي (Pneumonia) مما يسبب كحة وبلغم ونقص الأكسجين.",
+        "تدمير جدرانها وتوسعها الدائم في مرض النفاخ الرئوي (Emphysema) يقلل مساحة التبادل ويسبب ضيق تنفس شديد للمدخنين.",
+        "تمتلئ بسوائل الرشح الدموي في وذمة الرئة الحادة (Pulmonary edema) الناتجة عن فشل البطين الأيسر للقلب.",
+        "تحتوي بداخلها على بلاعم حويصلية تبتلع الأتربة والغبار وخلايا فشل القلب المحملة بصبغة الهيموسيديرين.",
+        "الغازات تنتقل عبر الحاجز الحويصلي الشعيري الرقيق للغاية (أقل من نصف ميكرون) بسرعة فائقة عبر الانتشار البسيط."
+    ],
+    "English": [
+        "Microscopic terminal thin-walled saccular pouches where vital pulmonary gas exchange occurs across alveolar-capillary membranes.",
+        "The adult lungs contain 300 to 500 million alveoli, generating an immense surface area approximating a tennis court.",
+        "Lined predominantly by extremely thin, flattened type I pneumocytes dedicated to passive oxygen and carbon dioxide diffusion.",
+        "Cuboidal type II pneumocytes synthesize pulmonary surfactant, lowering alveolar surface tension to prevent end-expiratory atelectasis.",
+        "Surfactant deficiency in premature neonates causes neonatal respiratory distress syndrome (NRDS) and diffuse micro-atelectasis.",
+        "In bacterial pneumonia, alveolar airspaces fill with purulent exudate, consolidation, producing cough and hypoxemia.",
+        "Irreversible enzymatic destruction and enlargement of their septal walls in pulmonary emphysema reduces elastic recoil and diffusion capacity.",
+        "Hydrostatic alveolar flooding occurs in acute cardiogenic pulmonary edema secondary to left ventricular systolic failure.",
+        "Resident alveolar dust macrophages patrol luminal surfaces phagocytosing particulates and hemosiderin ('heart failure cells').",
+        "Gas diffusion traverses an extraordinarily thin respiratory membrane (<0.5 micrometers) via rapid passive Fickian diffusion."
+    ]
+},
+  "w393": {
+    "Arabic": [
+        "شبكة كروية دقيقة من الشعيرات الدموية الملتفة داخل محفظة بومان في قشرة الكلى وتمثل وحدة الترشيح الأولى للبول.",
+        "يدخلها الدم عبر الشريان الصادر ويخرج عبر الشريان الوارد تحت ضغط هيدروستاتيكي مرتفع يضمن كفاءة الترشيح.",
+        "الحاجز الترشيحي يتكون من بطانة شعيرية مخرمة، غشاء قاعدي كبيبي سميك، وأقدام الخلايا البودوسيتية (Podocytes).",
+        "معدل الترشيح الكبيبي (GFR) هو المقياس الطبي الذهبي لتقييم كفاءة ووظيفة الكلى ومرحلة القصور الكلوي.",
+        "التهابها المناعي (Glomerulonephritis) يسبب المتلازمة النفرينية ببول دموي (Hematuria)، ارتفاع ضغط الدم، وتورم.",
+        "تلف حاجز الترشيح وتسريب كميات ضخمة من البروتين في البول يسبب المتلازمة النيفروتية (Nephrotic Syndrome).",
+        "ظهور أسطوانات كرات الدم الحمراء (RBC casts) في فحص البول هو علامة إكلينيكية مؤكدة على مصدر النزيف الكبيبي.",
+        "تصلبها وتليفها العقدي (Kimmelstiel-Wilson nodules) هو السمة المميزة لاعتلال الكلى السكري الناتج عن إهمال السكر.",
+        "تلتصق بها خلايا ميزانجيال (Mesangial cells) تنقبض لتنظيم مساحة الترشيح وتلتهم البقايا المناعية والبروتينية.",
+        "ترسب المعقدات المناعية بها بعد التهاب الحلق العقدي يسبب التهاب كبيبات الكلى التالي للمكورات العقدية (PSGN)."
+    ],
+    "English": [
+        "A microscopic tuft of fenestrated capillary loops invaginated into Bowman's capsule executing primary plasma ultrafiltration in the renal cortex.",
+        "High hydrostatic filtration pressure is maintained via vascular resistance regulation between afferent and efferent arterioles.",
+        "The selective filtration barrier comprises fenestrated endothelium, the negatively charged glomerular basement membrane, and podocyte slit diaphragms.",
+        "Glomerular filtration rate (GFR) serves as the premier clinical quantitative barometer assessing functional nephron mass and chronic kidney disease stage.",
+        "Glomerulonephritis triggers nephritic syndrome characterized by hematuria, dysmorphic red cells, hypertension, and azotemia.",
+        "Podocyte effacement or barrier breakdown induces massive proteinuria (>3.5g/24hr), hypoalbuminemia, and peripheral edema in nephrotic syndrome.",
+        "The identification of dysmorphic red blood cells and red blood cell casts in urine microscopy pathognomonically confirms glomerular bleeding.",
+        "Nodular glomerulosclerosis (Kimmelstiel-Wilson lesions) represents the definitive histopathologic hallmark of advanced diabetic nephropathy.",
+        "Central mesangial cells provide structural capillary support, contract to modulate filtration area, and clear trapped immune complexes.",
+        "Subepithelial immune complex 'humps' following streptococcal pharyngitis cause acute poststreptococcal glomerulonephritis (PSGN)."
+    ]
+},
+  "w394": {
+    "Arabic": [
+        "الغشاء الأملس المبطن للتجاويف الداخلية لحجرات القلب الأربعة وصماماته ويتكون من طبقة خلايا بطانية رقيقة.",
+        "يوفر سطحاً ناعماً جداً يمنع احتكاك وتجلط صفائح الدم أثناء اندفاعه بسرعة داخل البطينين والأذينين.",
+        "يشكل الهيكل النسيجي المغطي لصمامات القلب الأربعة، والتهابه البكتيري يستهدف الصمامات بشكل أساسي.",
+        "التهاب الشغاف العدوائي (Infective Endocarditis) تسببه بكتيريا المكورات العقدية والمكورات العنقودية الذهبية.",
+        "تتكون عليه نبتات وتكتلات ميكروبية (Vegetations) على حواف الصمامات قد تنفصل وتسبب جلطات انسدادية في المخ.",
+        "يظهر على المريض حمى غير مفسرة، نفخة قلبية جديدة، عقد جينواي غير المؤلمة، وعقد أوسلر المؤلمة بالأصابع.",
+        "الموجات الصوتية على القلب (Echocardiography) عبر الصدر أو المريء هي الفحص الأساسي لرؤية النبتات على سطحه.",
+        "معايير ديوك (Duke criteria) هي الدليل السريري المعتمد لتشخيص التهابه بالاعتماد على مزارع الدم والإيكو.",
+        "مرضى الصمامات الصناعية أو التشوهات الخلقية يحتاجون لمضادات حيوية وقائية قبل خلع الأسنان لحمايته.",
+        "التهابه الروماتيزمي الناتج عن الحمى الروماتيزمية يسبب تليف وتضيق الصمامات خاصة الصمام الميترالي."
+    ],
+    "English": [
+        "The smooth, non-thrombogenic endothelial inner lining carpeting all four cardiac chambers, trabeculae, and valves.",
+        "Presents a frictionless intravascular surface that suppresses platelet adherence and intracardiac thrombus formation.",
+        "Physiologically continuous with valvular leaflets; valvular endothelium represents the prime target of destructive bacteremia.",
+        "Infective endocarditis typically involves colonization by viridans group streptococci, Staphylococcus aureus, or Enterococcus.",
+        "Pathologic friable microbial vegetations adhere to damaged valvular surfaces, carrying a dreaded propensity for systemic septic embolization.",
+        "Classic signs include fever of unknown origin, new or changing murmurs, Janeway lesions, Osler nodes, and splinter hemorrhages.",
+        "Transesophageal echocardiography (TEE) offers exceptional diagnostic sensitivity for detecting subtle valvular vegetations and root abscesses.",
+        "The modified Duke criteria serve as the validated clinical scoring benchmark integrating microbiologic blood cultures and imaging.",
+        "High-risk patients bearing prosthetic valves require antibiotic prophylaxis prior to invasive bacteremia-inducing dental manipulations.",
+        "Chronic rheumatic carditis attacks this tissue, culminating in progressive commissural fusion, calcification, and mitral stenosis."
+    ]
+},
+  "w395": {
+    "Arabic": [
+        "كيس غشائي ليفي مزدوج يحيط بالقلب وجذور الأوعية الدموية الكبرى ويفصل بين طبقتيه سائل مزلق يمنع الاحتكاك.",
+        "يتكون من طبقة ليفية خارجية متينة تثبت القلب بالصدر، وطبقة مصلية داخلية تنقسم إلى جدارية وحشوية (النخاب).",
+        "التهاب هذا الغشاء (Pericarditis) يسبب ألماً حاداً في الصدر يزداد عند الاستلقاء ويتحسن بالجلوس والانحناء للأمام.",
+        "الفحص بالسماعة يظهر صوت احتكاك خشن ومميز يشبه حك الجلد بالجلد يسمى الاحتكاك التأموري (Pericardial rub).",
+        "تخطيط القلب (ECG) يظهر ارتفاعاً مقعراً وممتداً في قطعة ST (Diffuse ST elevation) في معظم الاتجاهات.",
+        "تجمع السوائل الزائدة بين طبقتيه يعرف بالانصباب التأموري (Pericardial effusion) ويظهر بتضخم ظل القلب بالأشعة.",
+        "الانضغاط القلبي (Cardiac Tamponade) طارئة تحدث عند تراكم السائل بضغط عالٍ وتظهر بثالوث بيك الشهير.",
+        "ثالوث بيك يشمل: انخفاض ضغط الدم، خفوت أصوات القلب بالسماعة، وانتفاخ أوردة الرقبة الوداجية.",
+        "النبض التناقضي (Pulsus paradoxus) بانخفاض الضغط الانقباضي أكثر من 10 ملم زئبق أثناء الشهيق علامة كلاسيكية عليه.",
+        "بذل التأمور (Pericardiocentesis) بإدخال إبرة تحت عظمة القص وسحب السائل هو الإجراء الإسعافي المنقذ للحياة."
+    ],
+    "English": [
+        "A dual-layered fibroserous sac encasing the heart and roots of the great vessels, containing 15-50 mL of lubricating fluid.",
+        "Consists of an unyielding outer fibrous layer tethered to the diaphragm and an inner two-ply serous membrane (parietal and visceral epicardium).",
+        "Acute pericarditis causes sharp pleuritic retrosternal chest pain classically relieved by sitting up and leaning forward.",
+        "Auscultation frequently uncovers a pathognomonic, high-pitched scratching pericardial friction rub best heard at the lower left sternal border.",
+        "12-lead ECG demonstrates characteristic diffuse, upwardly concave ST-segment elevation with PR-segment depression across multiple leads.",
+        "Excessive fluid accumulation within the pericardial cavity constitutes a pericardial effusion, expanding the cardiac silhouette ('water-bottle heart').",
+        "Cardiac tamponade arises when elevated intrapericardial pressure impairs diastolic ventricular filling, manifesting through Beck's triad.",
+        "Beck's clinical triad comprises systemic arterial hypotension, distant muffled heart sounds, and elevated jugular venous distension.",
+        "Pulsus paradoxus (an inspiratory drop in systolic arterial pressure >10 mmHg) serves as a hallmark physiologic finding.",
+        "Emergency subxiphoid pericardiocentesis with immediate needle aspiration of effusion fluid provides instantaneous hemodynamic resuscitation."
+    ]
+},
+  "w396": {
+    "Arabic": [
+        "غشاء مصلي مزدوج يغلف الرئتين ويبطن الجدار الداخلي للقفص الصدري ويفصل بينهما تجويف ميكروسكوبي ضيق.",
+        "تتكون من طبقة حشوية تلتصق بنسيج الرئة مباشرة وتدخل في شقوقها، وطبقة جدارية تبطن القفص الصدري من الداخل.",
+        "الضغط السلبي الدائم داخل تجويفها هو القوة الفيزيائية الأساسية التي تحافظ على تمدد الرئتين وتمنع انكماشهما.",
+        "التهابها يسبب ألماً حاداً كالوخز أو الطعن بالسكين يزداد بشدة مع أخذ نفس عميق أو السعال (Pleuritic chest pain).",
+        "تراكم السوائل في تجويفها يعرف بالانصباب الجنبي (Pleural effusion) ويسبب اختفاء أصوات التنفس وأصمية عند النقر.",
+        "بذل الصدر (Thoracentesis) لسحب عينة من السائل وفحصها كيميائياً يميز بين الرشح (Transudate) والنزح (Exudate).",
+        "دخول الهواء لتجويفها يسبب استرواح الصدر (Pneumothorax) مع ضيق تنفس حاد وانكماش فجائي في الرئة المصابة.",
+        "استرواح الصدر الضاغط (Tension pneumothorax) يزيح القصبة الهوائية للجانب المعاكس ويستدعي تفريغاً عاجلاً بإبرة.",
+        "الورم المتوسط الخبيث (Mesothelioma) هو سرطان شرس يصيب هذا الغشاء ويرتبط بقوة باستنشاق غبار مادة الأسبستوس.",
+        "صوت الاحتكاك الجنبي (Pleural friction rub) يسمع بالسماعة في بدايات الالتهاب قبل تراكم السوائل وفصل الطبقتين."
+    ],
+    "English": [
+        "A double-layered serous membrane enveloping each lung and lining the internal thoracic cavity wall.",
+        "Features an inner visceral layer adherent to lung parenchyma and an outer parietal layer coating the rib cage and diaphragm.",
+        "The subatmospheric negative intrapleural pressure generated between layers keeps pulmonary alveoli expanded against surface tension.",
+        "Acute pleuritis elicits sharp, localized, lancinating chest pain exacerbated dramatically by deep inspiration, coughing, or laughing.",
+        "Abnormal fluid collection in the pleural space constitutes a pleural effusion, producing dullness to percussion and diminished breath sounds.",
+        "Diagnostic thoracentesis with biochemical evaluation of pleural fluid applying Light's criteria differentiates transudates from exudates.",
+        "Air ingress into the pleural space destroys negative intrapleural suction, culminating in lung collapse (pneumothorax).",
+        "Tension pneumothorax produces hemodynamic compromise and contralateral tracheal deviation, necessitating immediate needle decompression.",
+        "Malignant mesothelioma is an aggressive primary pleural neoplasm strongly linked to occupational airborne asbestos exposure.",
+        "A grating, leathery pleural friction rub is audible on auscultation during the dry initial phases of fibrinous pleurisy."
+    ]
+},
+  "w397": {
+    "Arabic": [
+        "أكبر غشاء مصلي في جسم الإنسان، يبطن الجدار الداخلي لتجويف البطن والحوض ويحيط بالأحشاء والأعضاء الداخلية.",
+        "ينقسم إلى صفاق جداري يغذي بالأعصاب الحسية الجسدية وصفاق حشوي يغلف الأعضاء ويستشعر ألم التمدد والتشنج فقط.",
+        "الثرب الكبير (Greater omentum) هو جزء معلق منه يشبه المريلة، يهاجر لمواضع الالتهاب ويعرف بشرطي البطن.",
+        "المساريقا (Mesentery) هي ثنية مزدوجة منه تثبت الأمعاء بجدار الظهر وتحمل بداخلها الأوعية الدموية والأعصاب.",
+        "التهابه الحاد (Peritonitis) طارئة جراحية تنتج عن انفجار الزائدة أو القرحة وتظهر ببطن صلبة كاللوح الخشبي (Board-like).",
+        "ألم الارتداد (Rebound tenderness) عند رفع يد الفاحص فجأة عن البطن هو العلامة السريرية المميزة لالتهابه.",
+        "تجمع السوائل في تجويفه يعرف بالاستسقاء البطني (Ascites) ويحدث بكثرة في تليف الكبد وفشل القلب واحتقان الوريد البابي.",
+        "الغسيل الكلوي البريتوني (Peritoneal Dialysis) يستغل مساحة سطحه الهائلة وشعيراته لتصفية السموم عبر قسطرة بالبطن.",
+        "الأعضاء الواقعة خلفه (مثل الكلى والبنكرياس والشريان الأورطي) تصنف تشريحياً كأعضاء خلف الصفاق (Retroperitoneal).",
+        "التصاقات البطن (Peritoneal adhesions) بعد العمليات الجراحية هي السبب الأكثر شيوعاً للانسداد المعوي الميكانيكي."
+    ],
+    "English": [
+        "The expansive, continuous serous membrane lining the abdominopelvic cavity and investing intraperitoneal viscera.",
+        "Divided into somatic sensory-innervated parietal serous layer and autonomically innervated visceral peritoneum sensitive only to stretch.",
+        "The greater omentum hangs apron-like from the stomach, migrating dynamically to seal inflammation as the 'policeman of the abdomen'.",
+        "The mesentery is a broad peritoneal fold anchoring the small intestine to the posterior abdominal wall conveying mesenteric vessels.",
+        "Acute bacterial peritonitis from visceral perforation (e.g., ruptured appendix) manifests through involuntary abdominal wall rigidity ('board-like abdomen').",
+        "Rebound tenderness (Blumberg's sign) upon sudden release of deep abdominal palpation confirms localized peritoneal irritation.",
+        "Pathologic free fluid accumulation within its cavity constitutes ascites, predominantly driven by portal hypertension in hepatic cirrhosis.",
+        "Peritoneal dialysis exploits its extensive microvascularized surface area as a semipermeable biological filter for solute exchange.",
+        "Retroperitoneal organs (kidneys, adrenal glands, pancreas, ascending/descending colon) reside outside its posterior boundary.",
+        "Postoperative peritoneal fibrous adhesions represent the leading worldwide etiology of mechanical small bowel obstruction."
+    ]
+},
+  "w398": {
+    "Arabic": [
+        "الطبقة العضلية الملساء السميكة التي تشكل معظم جدار الرحم وتكون مسؤولة عن الانقباضات القوية أثناء الولادة.",
+        "تتكون من ثلاث طبقات من الألياف العضلية الملساء المتشابكة مع شبكة كثيفة من الأوعية الدموية.",
+        "انقباض أليافها العضلية المتشابكة بعد الولادة يعمل كملاقط حيوية تخنق الأوعية الدموية لمنع النزيف الرحمي القاتل.",
+        "هرمون الأوكسيتوسين (Oxytocin) يثير انقباضاتها الإيقاعية القوية أثناء المخاض لدفع الجنين خارج الرحم.",
+        "الورم العضلي الأملس (Leiomyoma) أو ألياف الرحم هو الورم الحميد الأكثر شيوعاً بها ويسبب نزيفاً طمثياً غزيراً.",
+        "تتضخم وتزداد خلاياها في الحجم والعدد (Hypertrophy & Hyperplasia) بمئات المرات أثناء الحمل تحت تأثير الإستروجين.",
+        "عقار الأوكسيتوسين وميثيل إرجومترين يستخدمان دوائياً بعد الولادة لتحفيز انقباضها وعلاج نزيف ما بعد الولادة.",
+        "انغراس خلايا بطانة الرحم داخل هذه الطبقة العضلية يسمى داء العضال الغدي (Adenomyosis) ويسبب عسر طمث شديد وتضخم الرحم.",
+        "انفجارها أو تمزقها أثناء الولادة (Uterine rupture) طارئة توليدية خطيرة تحدث غالباً في موضع ندبة قيصرية سابقة.",
+        "حقن البروستاجلاندين والتدليك اليدوي للرحم يفرضان عليها الانقباض الفوري عند حدوث ارتخاء الرحم بعد خروج المشيمة."
+    ],
+    "English": [
+        "The robust middle smooth muscular layer constituting the bulk of the uterine wall, driving dynamic expulsion during parturition.",
+        "Constructed from interlacing, cross-hatched whorls of smooth muscle fascicles interspersed with rich vascular networks.",
+        "Postpartum smooth muscle contraction forms functional 'living ligatures' constricting transfixing vessels to avert fatal hemorrhage.",
+        "Pituitary oxytocin acts directly upon G-protein coupled receptors to stimulate rhythmic, high-amplitude myometrial contractions in labor.",
+        "Benign monoclonal smooth muscle neoplasms originating within it are termed uterine leiomyomas (fibroids), causing menorrhagia.",
+        "Undergoes massive cellular hypertrophy and hyperplasia during gestation under the trophic influence of placental estrogens.",
+        "Exogenous uterotonic pharmacotherapy (oxytocin, methylergonovine, carboprost) is administered immediately postpartum to induce tetanic contraction.",
+        "Ectopic ingrowth of endometrial glands and stroma into this muscular layer defines adenomyosis, presenting with dysmenorrhea and diffuse enlargement.",
+        "Uterine rupture is a catastrophic obstetrical emergency most commonly tearing along the scarred incision line of a prior caesarean section.",
+        "Vigorous bimanual uterine fundal massage mechanical stimulates intrinsic myometrial contractility in postpartum uterine atony."
+    ]
+},
+  "w399": {
+    "Arabic": [
+        "ثلاث طبقات غشائية واقية تغلف وتحمي الدماغ والنخاع الشوكي من الصدمات والعدوى.",
+        "تتكون من الخارج للداخل من: الأم الجافية (Dura)، الأم العنكبوتية (Arachnoid)، والأم الحنون (Pia mater).",
+        "السائل النخاعي (CSF) يتدفق في الحيز تحت العنكبوتية ويمتص عبر الحبيبات العنكبوتية إلى الجيوب الوريدية.",
+        "التهابها الحاد (Meningitis) يظهر بالثالوث الكلاسيكي: حمى شديدة، صداع حاد، وتيبس في عضلات الرقبة (Neck stiffness).",
+        "علامة كيرنيغ (Kernig) وبرودزينسكي (Brudzinski) هما فحصان سريريان إيجابيان يؤكدان وجود تهيج سحائي.",
+        "البذل القطني (Lumbar puncture) بين الفقرتين L3-L4 أو L4-L5 هو الفحص الذهبي لتحليل السائل النخاعي وتشخيص نوع الالتهاب.",
+        "النزيف فوق الجافية (Epidural hematoma) ينتج عن تمزق الشريان السحائي الأوسط ويظهر كعدسة محدبة الوجهين بالأشعة المقطعية.",
+        "النزيف تحت الجافية (Subdural hematoma) ينتج عن تمزق الأوردة الجسرية ويظهر كهلال مقعر في كبار السن ومدمني الكحول.",
+        "النزيف تحت العنكبوتية (SAH) ينتج عن انفجار تمدد شرياني مخي ويصفه المريض بأسوأ صداع عاناه في حياته (صداع رعدي).",
+        "الالتهاب السحائي البكتيري بالمكورات السحائية يتطلب مضادات حيوية فورية عبر الوريد وعزلاً وعلاجاً وقائياً للمخالطين."
+    ],
+    "English": [
+        "The three concentric protective membranous coverings encasing the brain and the spinal cord within the neurocranium.",
+        "Arranged from superficial to deep as the pachymeninx dura mater, the web-like arachnoid mater, and the delicate vascular pia mater.",
+        "Cerebrospinal fluid (CSF) circulates in the subarachnoid space between the arachnoid and pia, absorbed into dural venous sinuses.",
+        "Acute infectious meningitis manifests through the classic triad: high spiking fever, intractable headache, and nuchal rigidity.",
+        "Positive Kernig and Brudzinski physical exam signs indicate marked inflammatory irritation of lumbosacral nerve roots and thecal coverings.",
+        "Lumbar puncture typically performed at the L3/L4 or L4/L5 intervertebral space provides definitive CSF opening pressure, cytology, and culture.",
+        "Traumatic tearing of the middle meningeal artery produces an epidural hematoma displaying a biconvex lens shape on head CT.",
+        "Rupture of bridging cortical veins produces a crescent-shaped subdural hematoma, classically following falls in elderly patients.",
+        "Subarachnoid hemorrhage (SAH) typically ensues from rupture of an intracranial berry aneurysm, described as the 'worst headache of life'.",
+        "Meningococcal meningitis requires emergent empirical intravenous third-generation cephalosporins and chemoprophylaxis for close contacts."
+    ]
+},
+  "w400": {
+    "Arabic": [
+        "مرض التهابي مناعي ذاتي جهازي يحدث بعد أسبوعين إلى 4 أسابيع من الإصابة بالتهاب الحلق بالمكورات العقدية (Group A Strep).",
+        "ينتج عن تشابه جزيئي ومحاكاة مناعية بين بروتين M للبكتيريا وأنسجة الجسم، وخاصة صمامات القلب والمفاصل.",
+        "معايير جونز (Jones criteria) هي الدليل السريري للتشخيص وتتطلب وجود علامتين كبريين أو علامة كبرى وعلامتين صغريين.",
+        "العلامات الكبرى الخمسة: التهاب القلب، التهاب المفاصل المتنقل، رقص سدنهام، الحمامي الهامشية، والعقيدات تحت الجلد.",
+        "التهاب المفاصل المتنقل (Migratory polyarthritis) يصيب المفاصل الكبيرة كالكاحل والركبة والكوع ويستجيب بشدة للأسبرين.",
+        "إصابة القلب هي الأكثر خطورة وتؤدي إلى مرض القلب الروماتيزمي المزمن مع تلف وتضيق الصمام الميترالي.",
+        "رقص سدنهام (Sydenham chorea) يتميز بحركات عصبية لاإرادية سريعة غير منتظمة في الأطراف والوجه وتقلبات عاطفية.",
+        "ارتفاع نسبة الأجسام المضادة للستربتوليزين (ASO titer) في الدم يؤكد وجود عدوى سابقة بالبكتيريا العقدية.",
+        "يُعالج الطور الحاد بالبنسلين للقضاء على بقايا البكتيريا والأسبرين بالجرعات العالية أو الكورتيزون لالتهاب القلب.",
+        "يحتاج المريض لحقن بنسلين طويل المفعول شهرياً كوقاية ثانوية مستمرة لسنوات طويلة لحماية الصمامات من نوبات جديدة."
+    ],
+    "English": [
+        "A systemic post-infectious autoimmune inflammatory sequela arising 2 to 4 weeks following untreated Group A streptococcal pharyngitis.",
+        "Pathogenesis is driven by molecular mimicry between bacterial surface M-protein antigens and human cardiac glycoproteins.",
+        "The clinical diagnosis relies upon the revised Jones criteria, requiring evidence of prior streptococcal infection plus major/minor criteria.",
+        "The five major criteria are: carditis, migratory polyarthritis, Sydenham chorea, erythema marginatum, and subcutaneous nodules (JONES).",
+        "Migratory polyarthritis affects large joints (knees, ankles, wrists) in rapid succession, exhibiting dramatic responsiveness to aspirin.",
+        "Carditis is the sole manifestation causing permanent morbidity, leading to chronic rheumatic heart disease and mitral stenosis.",
+        "Sydenham chorea presents with rapid, irregular, involuntary choreiform movements of extremities and facial grimacing.",
+        "Elevated or rising anti-streptolysin O (ASO) and anti-DNase B antibody titers confirm antecedent streptococcal exposure.",
+        "Acute therapy comprises penicillin to eradicate streptococcal carriage alongside high-dose aspirin or corticosteroids for severe carditis.",
+        "Mandates secondary prophylaxis with regular intramuscular benzathine penicillin G injections for years to prevent recurrent carditis."
+    ]
+},
+  "w401": {
+    "Arabic": [
+        "التهاب وعائي جهازي مجهول السبب يصيب الشرايين والأوردة بكافة أحجامها ويرتبط ارتباطاً وثيقاً بـ HLA-B51.",
+        "يتظاهر كلاسيكياً بتقرحات قلاعية فموية مؤلمة وناكسة تحدث ثلاث مرات على الأقل سنوياً.",
+        "تترافق التقرحات الفموية مع تقرحات تناسلية تناسلية عميقة تترك ندبات، والتهاب العنبية الأمامي مع القيح في الحجرة الأمامية (Hypopyon).",
+        "يتميز باختبار باثيرجي إيجابي (Pathergy test) حيث تتشكل بثرة معقمة في موقع وخز الإبرة خلال 24-48 ساعة.",
+        "قد يسبب خثاراً في الأوردة الكبيرة ونوبات التهاب سحايا ودماغ عقيمة وتمددات شريانية رئوية مهددة للحياة."
+  ],
+    "English": [
+        "A multisystem vasculitis affecting vessels of all calibers on both arterial and venous sides, strongly linked to HLA-B51.",
+        "Hallmarked by recurrent, painful aphthous oral mucosal ulcerations occurring at least three times in a 12-month period.",
+        "Features painful scarring genital ulcers and destructive anterior/posterior uveitis with hypopyon.",
+        "Demonstrates skin hyperreactivity with sterile pustule formation following sterile needle prick (positive pathergy test).",
+        "Predisposes to pulmonary artery aneurysms, dural sinus thrombosis, and recurring non-infectious neuro-Behcet meningitis."
+  ]
+  },
+  "w430": {
+    "Arabic": [
+        "أداة جراحية محورية شبيهة بالمقص مزودة بسقاطة قفل مسننة للإغلاق الذاتي والسيطرة الفورية على نزف الأوعية الدموية.",
+        "تمتلك فكين مسننين بأخاديد عرضية مصممة للقبض المحكم على الشرايين والأوردة الممزقة وهرس بطانتها لإيقاف تدفق الدم.",
+        "تُعرف أشكالها المتعددة بأسماء مبتكريها كملقط كيلي (Kelly) وملقط كرايل وملقط البعوضة الدقيق (Mosquito forceps).",
+        "تتيح للجراح تثبيت الوعاء النازف بإحكام لربطه بخيط جراحي أو كيه بالكي الكهربائي (Electrocautery).",
+        "تعد ركيزة أساسية لا غنى عنها في كل صينية جراحية بكافة التخصصات الطبية من الجراحة العامة إلى الطوارئ."
+    ],
+    "English": [
+        "A vital surgical scissor-like instrument equipped with a ratcheted locking mechanism to secure rapid, self-retaining vascular occlusion.",
+        "Features transversally serrated jaws engineered to clamp lacerated arteries firmly and crush endothelium to arrest active hemorrhage.",
+        "Commonly named after surgical pioneers such as Kelly forceps, Crile hemostats, and miniature delicate Halsted mosquito clamps.",
+        "Enables the operating team to control a bleeder while preparing for definitive suture ligation or bipolar electrocoagulation.",
+        "Forms an indispensable foundation of every primary surgical instrument tray across general surgery, trauma, and obstetrics."
+    ]
+  },
+  "w431": {
+    "Arabic": [
+        "أنبوب شبكي معدني دقيق ومرن يُزرع في الشرايين التاجية للقلب لإبقائها مفتوحة بعد إزالة التضيق العصيدي.",
+        "يُدخل عبر قسطرة القلب التداخلية ويُنفخ ببالون دقيق في موضع الانسداد ليعيد تدفق الدم لعضلة القلب في حالات الذبحة والجلطة.",
+        "تطورت من الدعامات المعدنية المجردة (BMS) إلى الدعامات المطلية بالدواء (DES) التي تفرز أدوية مانعة لفرط التكاثر النسيجي.",
+        "تفرز أدوية مثبطة للمناعة وسيروليمس ومشتقاته لمنع عودة تضيق الشريان داخل الدعامة (In-stent restenosis).",
+        "تستلزم التزام المريض الصارم بالعلاج المضاد للصفيحات المزدوج (DAPT) كالأسبرين والكلوبيدوجريل لمنع تكون الجلطات الحادة بداخلها."
+    ],
+    "English": [
+        "A miniature, expandable metallic mesh tube deployed into epicardial coronary arteries to maintain luminal patency after angioplasty.",
+        "Delivered via percutaneous femoral or radial catheterization and expanded using an angioplasty balloon across atherosclerotic lesions.",
+        "Evolved from bare-metal stents into advanced drug-eluting stents (DES) coated with antiproliferative polymer matrices.",
+        "Elutes cell-cycle inhibitors like sirolimus or everolimus to halt neointimal hyperplasia and reduce in-stent restenosis rates.",
+        "Mandates rigorous compliance with dual antiplatelet therapy (aspirin plus clopidogrel or ticagrelor) to prevent acute stent thrombosis."
+    ]
+  },
+  "w432": {
+    "Arabic": [
+        "ظاهرة فيزيائية تحدث في الجسد الميت بعد توقف العمليات الاستقلابية الحيوية وتوليد الطاقة الحرارية.",
+        "تخضع لقانون نيوتن للتبريد بفعل التبادل الحراري المستمر مع الهواء أو السائل المحيط بالجسد.",
+        "تُقاس جنائياً بدقة عبر مقياس حراري خاص يوضع بعمق داخل تجويف المستقيم.",
+        "يفقد الجسد بمعدلها درجة مئوية واحدة تقريباً كل ساعة في ظل الأجواء المناخية المعتدلة.",
+        "تعد المعيار الأولي الأكثر موثوقية لتقدير عدد الساعات المنقضية منذ توقف النبض في اليوم الأول."
+    ],
+    "English": [
+        "A progressive physical phenomenon occurring after death due to complete cessation of metabolic heat synthesis.",
+        "Governed by Newton's law of cooling through conduction, convection, and radiation to the surrounding ambient medium.",
+        "Objectively measured in legal pathology using a deep chemical thermometer inserted into the lower rectum.",
+        "The cadaver characteristically loses approximately one degree Celsius per hour under temperate room conditions.",
+        "Serves as the primary objective parameter for calculating the postmortem interval during the first twenty-four hours."
+    ]
+  },
+  "w433": {
+    "Arabic": [
+        "تغير كيميائي وفيزيائي يصيب ألياف العضلات الإرادية وغير الإرادية بسبب نفاد جزيئات أدينوسين ثلاثي الفوسفات الخلوية.",
+        "يؤدي إلى بقاء رؤوس الميوسين ملتصقة بصورة مستمرة بخيوط الأكتين مسبباً قساوة الأنسجة وثبات المفاصل.",
+        "يتبع قانون نيستن فيبدأ تدريجياً في عضلات الوجه والفكين ثم ينحدر إلى الجذع والأطراف السفلية.",
+        "يستغرق كلاسيكياً اثنتي عشرة ساعة ليكتمل، ويبقى لمثلها، ثم يزول تدريجياً خلال المدة ذاتها بحلول التحلل البكتيري.",
+        "يفرَّق تشريحياً عن التصلب الحراري والتشنج الحركي بغياب التشنجات المسبقة وشموله لكافة المفاصل بالتتابع."
+    ],
+    "English": [
+        "A physicochemical muscular phenomenon resulting from the ultimate exhaustion of intracellular ATP reserves.",
+        "Produces permanent actin and myosin cross-bridge locks leading to firm tissue hardening and joint fixation.",
+        "Follows Nysten's law, commencing in facial muscles and neck before progressing caudally to the lower extremities.",
+        "Classically requires twelve hours to establish, persists for twelve hours, and dissipates over twelve hours with autolysis.",
+        "Forensically differentiated from heat stiffening and freezing by the absence of coagulation and predictable temporal sequence."
+    ]
+  },
+  "w434": {
+    "Arabic": [
+        "تلون جلدي بنفسجي مزرق يظهر في الأجزاء التابعة المنخفضة من الجسد بفعل الجاذبية الأرضية بعد توقف الدورة الدموية.",
+        "ينشأ عن ركود كريات الدم وتجمعها السلبي داخل الشعيرات والأوردة الصغيرة دون خروجها من جدران الأوعية مبدئياً.",
+        "تخلو منه تماماً مناطق التماس الضاغطة الملامسة للأرضيات الصلبة أو أحزمة الملابس المشدودة.",
+        "يتحرك ويتغير موضعه إذا قُلبت الوضعية في الساعات الأولى، لكنه يتثبت نهائياً بعد ثماني إلى عشر ساعات لانحلال الخلايا الدموية.",
+        "يكتسب لوناً وردياً ساطعاً شبيهاً بالكرز في حالات التسمم بغاز أول أكسيد الكربون أو انخفاض الحرارة."
+    ],
+    "English": [
+        "A bluish-purple cutaneous discoloration settling in dependent regions of a cadaver under the influence of gravity.",
+        "Produced by passive intravascular pooling of red blood cells in the microvasculature following arrest of circulation.",
+        "Characteristically spares anatomical contact points compressed against firm surfaces or restrictive clothing bands.",
+        "Remains blanchable and shiftable upon altering body position early on, but fixes permanently after eight to ten hours.",
+        "Displays distinct color variations such as bright cherry-pink in carbon monoxide exposure and dark brown in methemoglobinemia."
+    ]
+  },
+  "w435": {
+    "Arabic": [
+        "انقباض عضلي فوري وشديد يحدث في لحظة الموت مباشرة دون المرور بمرحلة الارتخاء الأولي المعروفة.",
+        "يرتبط بحالات الوفاة العنيفة المسبوقة بإجهاد عضلي هائل أو انفعال نفسي شديد وذعر مباغت.",
+        "يقتصر غالباً على مجموعات عضلية منتقاة في اليدين كالعضلات القابضة للأصابع أثناء تشبثها بالأشياء.",
+        "يقدم دليلاً جنائياً حاسماً لا يقبل التزوير على النشاط الأخير للضحية مثل الإمساك بسلاح أو حشائش القاع أثناء الغرق.",
+        "لا يمكن اصطناعه أو تقليده بعد انقطاع الأنفاس، ويبقى ثابتاً حتى يحل التحلل الرمي للأنسجة."
+    ],
+    "English": [
+        "An intense muscular contracture that occurs instantaneously at the moment of demise without initial postmortem flaccidity.",
+        "Intimately associated with violent deaths accompanied by severe emotional terror, panic, or extreme physical exertion.",
+        "Typically involves isolated muscle groups, classically the flexors of the hand firmly grasping an object.",
+        "Provides indisputable medicolegal evidence of the deceased's final conscious act, such as clutching a weapon or river grass.",
+        "Cannot be simulated after life ceases and persists unchanged until microbial liquefaction dissolves the tissues."
+    ]
+  },
+  "w436": {
+    "Arabic": [
+        "المرحلة التدميرية المتأخرة التي تتلاشى فيها الأنسجة الرخوة بتأثير الإنزيمات الذاتية والبكتيريا اللاهوائية المعوية.",
+        "تلعب بكتيريا المطثية الحاطمة في الأمعاء الغليظة الدور البيولوجي المحوري في توليد الغازات والتحلل.",
+        "تبدأ أولى علاماته الخارجية بظهور بقعة خضراء مميزة فوق جدار الحفرة الحرقفية اليمنى للبطن بعد يوم إلى يومين.",
+        "تؤدي الغازات المتجمعة إلى انتفاخ البطن وجحوظ العينين وبروز اللسان وتشكل شبكة تفرعية وريدية خضراء كالرخام.",
+        "ينتهي بانفجار الفقاعات الجلدية الرمية وخروج السوائل المتفسخة من الفتحات الطبيعية للجسم ثم هيكلة العظام."
+    ],
+    "English": [
+        "The definitive destructive decomposition of soft bodily structures mediated by endogenous autolysis and anaerobic bacteria.",
+        "Gas-forming intestinal bacteria, particularly Clostridium perfringens, act as the primary microbial drivers.",
+        "First manifest externally as a greenish cutaneous spot situated over the right iliac fossa overlying the cecum.",
+        "Progressive bacterial gas synthesis produces generalized abdominal distension, facial bloating, and arborized venous marbling.",
+        "Culminates in epidermal bleb formation, postmortem fluid purging through natural orifices, and eventual skeletonization."
+    ]
+  },
+  "w437": {
+    "Arabic": [
+        "تحول رمي غير شائع يصيب النسيج الدهني تحت الجلد في الجثث المتروكة في بيئة مائية دافئة أو طينية فقيرة بالأكسجين.",
+        "ينتج عن تحلل مائي بكتيري للدهون الثلاثية وتحولها إلى أحماض دهنية مشبعة بواسطة إنزيمات المطثيات اللاهوائية.",
+        "يخلف مادة شمعية بيضاء مصفرة ذات قوام يشبه الصابون أو الجبن المتعفن ورائحة ترابية نفاذة.",
+        "يتميز بمقاومته الفائقة للتحلل حيث يحافظ على الهيئة التشريحية الخارجية للجسم وعلامات الإصابات الجنائية لسنوات طويلة.",
+        "يمنح الأطباء الشرعيين فرصة استثنائية للتعرف على هوية الضحية وفحص طعنات السكاكين وكسور العظام بعد عقود من الدفن."
+    ],
+    "English": [
+        "An unusual postmortem alteration affecting subcutaneous fatty tissue when exposed to warm, moist, unventilated environments.",
+        "Bacterial enzymes hydrolyze and hydrogenate unsaturated body fats into saturated fatty acids, primarily palmitic acid.",
+        "Transforms tissues into a brittle, yellowish-white, soap-like substance known colloquially as grave wax.",
+        "Remarkably retards tissue decay, preserving external bodily contours, facial features, and mechanical injuries for decades.",
+        "Affords vital medicolegal assistance in late identification and forensic trauma reconstruction long after burial."
+    ]
+  },
+  "w438": {
+    "Arabic": [
+        "تغير رمي حافظ يحدث في الأجواء الحارة الجافة جداً والمصحوبة بهبوب مستمر لتيارات هوائية مجففة كالصحاري.",
+        "يعتمد على التبخر السريع والشامل لرطوبة وسوائل الأنسجة قبل أن تتمكن البكتيريا اللاهوائية من بدء عملية التحلل.",
+        "يتحول الجلد إلى طبقة بنية داكنة جافة وصلبة تشبه الورق الرقي أو الجلود المدبوغة ملتصقة بشدة بالهيكل العظمي.",
+        "يؤدي إلى انكماش ملحوظ في الحجم وفقدان هائل في وزن الجسم مع بقاء التفاصيل التشريحية والجروح السطحية مجمدة في مكانها.",
+        "يوقف العمليات التحللية لسنوات طويلة مما يتيح فحص الآثار النارية والجروح الطعنية والبحث عن سموم المعادن الثقيلة."
+    ],
+    "English": [
+        "A natural preservative modification of tissues occurring under arid, hot atmospheric conditions with continuous dry air drafts.",
+        "Driven by rapid dehydration and evaporation of moisture from bodily structures before putrefactive microflora proliferate.",
+        "Transforms the integument into a dry, leathery, dark-brown or parchment-like covering firmly adherent to bone.",
+        "Induces pronounced volumetric shrinkage and weight loss while preserving macroscopic surface injuries and facial contours.",
+        "Halts bacterial decay indefinitely, allowing forensic evaluation of weapon trajectories and metallic poisons centuries later."
+    ]
+  },
+  "w439": {
+    "Arabic": [
+        "موت أسفكسي ميكانيكي عنيف ينجم عن انضغاط العنق برباط مشدود بفعل الوزن الكلي أو الجزئي للجسم المعلق.",
+        "يترك أثراً جلدياً نموذجياً في الثلث العلوي من الرقبة يعلو الغضروف الدرقي.",
+        "يكون الحز الجلدي مائلاً وغير مكتمل الاستدارة ومتقطعاً حيث يصعد باتجاه زاوية الفك نحو موضع عقدة التعليق.",
+        "تتميز قاعدة الحز بأنها جافة، صلبة، باهتة وصفراء تشبه الورق الرقي مع ندرة النزوف الدموية تحت الجلد.",
+        "يمثل الدافع الانتحاري الاحتمال الأكثر تكراراً في الفحص الجنائي ما لم تثبت المعاينة وجود عنف جنائي مصاحب."
+    ],
+    "English": [
+        "A violent mechanical asphyxial death resulting from neck constriction by a ligature tightened by the subject's own suspended weight.",
+        "Produces a characteristic groove located high in the cervical region above the prominence of the thyroid cartilage.",
+        "The cutaneous furrow is classically oblique, inverted V-shaped, and discontinuous where the band ascends toward the suspension point.",
+        "The floor of the groove exhibits a dry, pale, yellowish, hard, parchment-like texture with minimal extravasated blood.",
+        "Suicidal intent predominates in the overwhelming majority of civilian medicolegal postmortem investigations."
+    ]
+  },
+  "w440": {
+    "Arabic": [
+        "انسداد ميكانيكي عنيف للمسالك الهوائية وأوعية الرقبة بواسطة حبل أو رباط يُشد بقوة خارجية دون تعليق الجسم.",
+        "يتوضع الحز الجلدي الناتج في مستوى أفقي منخفض حول منتصف الرقبة عند مستوى الغضروف الدرقي أو أسفله.",
+        "يشكل الحز دائرة متصلة ومستمرة تماماً حول كامل محيط العنق بعكس النمط المائل غير المكتمل في حالات التعليق.",
+        "يترافق مع احتقان وريدي شديد بالوجه وزرقة داكنة وانتشار واسع للنزوف النقطية الدقيقة في ملتحمة العينين.",
+        "يُعد القتل العمد التكييف القانوني والجنائي المرجح في الغالبية الساحقة من الحالات المفحوصة في الطب الشرعي."
+    ],
+    "English": [
+        "Violent mechanical neck compression produced by constricting a ligature through an external force independent of suspended body weight.",
+        "The resulting mark is positioned horizontally lower in the neck at or directly beneath the thyroid cartilage.",
+        "The furrow forms a completely continuous, uniform circular band encircling the entire cervical circumference.",
+        "Characterized by intense congestive facial cyanosis, deep muscular extravasation, and numerous conjunctival petechial hemorrhages.",
+        "Homicide constitutes the primary forensic working diagnosis until rigorous crime scene reconstruction proves otherwise."
+    ]
+  },
+  "w441": {
+    "Arabic": [
+        "وفاة خنقية ميكانيكية تحدث نتيجة عصر وضغط العنق والحنجرة مباشرة بواسطة يد واحدة أو كلتا يدي الجاني.",
+        "تظهر على الجلد سحجات هلالية مقوسة ناتجة عن أظافر أصابع المعتدي تتجاور مع كدمات دائرية متفرقة.",
+        "تكثر في هذا النمط كسور عظام العنق لا سيما القرنين الكبيرين للعظم اللامي وغضاريف الحنجرة.",
+        "تتركز آثار الضغط غالباً على جانبي القصبة الهوائية وتترافق مع نزوف نسيجية غزيرة في عضلات الرقبة العميقة.",
+        "تعتبر جريمة قتل عمدية حتمية يستحيل ارتكابها بصورة انتحارية وتستوجب ملاحقة جنائية فورية."
+    ],
+    "English": [
+        "A fatal form of mechanical asphyxia inflicted by directly squeezing and compressing the victim's neck with one or both hands.",
+        "Diagnostic external hallmarks include curved, crescentic fingernail scratches alongside rounded fingertip bruises.",
+        "Frequently produces anatomical fractures of cervical skeletal structures, notably the greater horns of the hyoid bone.",
+        "Internal neck dissection demonstrates extensive muscular hematomas and contusions flanking the larynx and pharyngeal wall.",
+        "Represents an exclusively homicidal act physically impossible to achieve through self-inflicted suicidal attempts."
+    ]
+  },
+  "w442": {
+    "Arabic": [
+        "وفاة تنفسية حادة تنجم عن استنشاق سائل وانغمار فتحات التنفس مما يعطل تبادل الغازات داخل الحويصلات الهوائية.",
+        "تتميز بظهور زبد رغوي أبيض ناصع وناعم كفرو الفطر حول الفتحات التنفسية يتجدد عند مسحه.",
+        "تتضخم الرئتان وتصبحان رطبتين وثقيلتين جداً وتتلاقيان في منتصف الصدر حاملتين انطباعات الأضلاع العظمية.",
+        "يعد استخلاص كائنات الدياتوم المجهرية السيليكونية من نقي العظام الطويلة المقفلة دليلاً قاطعاً على حدوث الاستنشاق أثناء الحياة.",
+        "تترافق الرئتان مع تمزق بالحويصلات ونزوف بقعية مميزة تحت غشاء الجنب تعرف ببقع بالتوف."
+    ],
+    "English": [
+        "Acute respiratory impairment caused by submersion or immersion in liquid, resulting in airway aspiration and alveolar flooding.",
+        "Presents pathognomonically with persistent, fine, copious whitish froth capping the oral and nasal orifices.",
+        "Autopsy reveals voluminous, heavy, waterlogged lungs (emphysema aquosum) meeting across the midline and bearing rib indentations.",
+        "Recovery of microscopic silica-walled algae from intact closed femur bone marrow confirms antemortem vital water inhalation.",
+        "Intra-alveolar hemorrhage and subpleural tears yield classic patchy hemorrhagic lesions known as Paltauf's spots."
+    ]
+  },
+  "w443": {
+    "Arabic": [
+        "نزوف دقيقة نقطية تحت الأغشية المصلية لا يتجاوز حجم الواحدة منها رأس الدبوس تظهر في الوفيات الأسفكسية العنيفة.",
+        "تحدث نتيجة الارتفاع المفاجئ والشديد في الضغط الوريدي الداخلي وتلف البطانة الشعرية بفعل نقص الأكسجين الحاد.",
+        "تتركز بكثافة تحت ملتحمة الجفون، وغشاء الجنب المغطي للرئتين، والغشاء المحيط بعضلة القلب.",
+        "وُصفت تاريخياً كعلامة رئيسية تدل على الخنق وكتم النفس الجنائي لدى حديثي الولادة والأطفال المعنفين.",
+        "رغم ارتباطها الوثيق بالاختناق الميكانيكي، فإنها تتطلب الحذر لظهورها أحياناً في اعتلالات تخثر الدم الشديدة أو السقوط الرضي."
+    ],
+    "English": [
+        "Pinpoint subserous and submucosal hemorrhages classically encountered during postmortem examinations of mechanical asphyxial deaths.",
+        "Arise from sharp spikes in intravascular venular pressure paired with acute hypoxia-induced capillary endothelial damage.",
+        "Chiefly visualized over ocular conjunctivae, visceral lung pleura, and the epicardial fat covering the cardiac apex.",
+        "Historically cataloged by French forensic pioneer Auguste Tardieu in victims of mechanical suffocation and infanticide.",
+        "While a strong indicator of cervical compression, they must be interpreted cautiously as coagulopathies may simulate them."
+    ]
+  },
+  "w444": {
+    "Arabic": [
+        "إصابة ميكانيكية سطحية كليلة تقتصر على فقدان وتقشر الطبقة الخارجية من البشرة مع بقاء الأدمة العميقة سليمة.",
+        "تنتج عن قوى الاحتكاك والضغط المماسي لجسم صلب خشن يزيل الخلايا الظهارية القرنية.",
+        "تلتئم ذاتياً بشكل مثالي ودون أن تترك أي ندبات ليفية دائمة بفضل التجدد السريع للخلايا القاعدية للجلد.",
+        "تكتسب أهمية فائقة في التحقيقات لأنها قد تطبع النمط الشكلي الهندسي للأداة الضاربة كشبك السيارة أو نعل الحذاء.",
+        "تكشف حواف القشور الجلدية المنفصلة للمحقق الاتجاه الدقيق الذي تحركت فيه القوة الراضة فوق الجسم."
+    ],
+    "English": [
+        "A superficial mechanical injury restricted to the epidermal layers of the skin without disrupting the dermal reticular layer.",
+        "Produced by tangential friction, scraping, or crushing contact against a firm, rough offending surface.",
+        "Undergoes complete regenerative healing without scar formation owing to preserved basal epithelial stem cells.",
+        "Holds extraordinary evidentiary weight when it replicates the geometric design of the striking object as a patterned contact impression.",
+        "Peeled epidermal tags and direction of shredded keratin margins indicate the precise vector of blunt impact."
+    ]
+  },
+  "w445": {
+    "Arabic": [
+        "تسرب ونزف للدم داخل الأنسجة الرخوة تحت الجلد ناتج عن تمزق الشعيرات الدموية برض كليل مع بقاء الجلد متصلاً دون قطع.",
+        "تمر بتغيرات لونية زمنية مميزة تبدأ بالأحمر المائل للزرقة وتتحول إلى البني فالأخضر فالأصفر نتيجة تحلل صبغة الهيموجلوبين.",
+        "تساعد الطبيب الفاحص في تقدير عمر الإصابة التقريبي ومعرفة تاريخ وقوع الاعتداء البدني.",
+        "قد تعكس بوضوح شكل الأداة المستخدمة في الضرب كظهور خطين متوازيين عند الضرب بعصا أسطوانية أو طبعات أصابع اليد.",
+        "تفرَّق عن الرسوب الرمي بإجراء شق مجهري يؤكد تجلط الدم داخل النسيج وثباته عند غسله بالماء."
+    ],
+    "English": [
+        "Infiltration of extravasated blood into subcutaneous tissues caused by rupture of microvessels beneath an intact skin surface.",
+        "Exhibits a chronological spectrum of color degradation from red-blue to purple, green, and yellow due to heme catabolism.",
+        "Provides forensic examiners with an objective means of dating physical assault injuries over a one to two week window.",
+        "Can faithfully preserve the profile of the striking implement, creating tramline bruises when struck with cylindrical canes.",
+        "Differentiated microscopically from postmortem livor by the presence of coagulated, adherent tissue blood that resists water washing."
+    ]
+  },
+  "w446": {
+    "Arabic": [
+        "إصابة حادة ناتجة عن سحب أداة ذات شفرة قاطعة ملساء كالسكين أو شفرة الحلاقة أو الزجاج المنكسر فوق الجلد.",
+        "يتميز بأن طوله الظاهر على السطح يتجاوز بكثير عمقه الداخلي، وتكون حوافه منتظمة ونظيفة وخالية من التكدم.",
+        "تتباعد زواياه بشكل حاد ويخلو تجويفه تماماً من أي جسور نسيجية متبقية من أوعية أو ألياف عصبية في القاع.",
+        "يكون نزيفه الخارجي غزيراً جداً نتيجة القطع المباشر والمستعرض للشرايين دون انكماش جدرانها الممزقة.",
+        "يبدأ عادة عميقاً في نقطة الدخول وينتهي بسحجة سطحية مستدقة تسمى الذيل تكشف اتجاه حركة يد الضارب."
+    ],
+    "English": [
+        "A sharp-force injury caused by drawing a weapon with a keen linear cutting edge across tissue, such as a razor or scalpel.",
+        "Length on the cutaneous surface distinctly exceeds its internal depth, bounded by smooth, unbruised margins.",
+        "Devoid of any connective tissue bridging, severed nerves, or irregular tags across the floor of the laceration-free cavity.",
+        "Prone to massive external hemorrhage due to clean transverse vascular transection that impairs spontaneous physiological vasospasm.",
+        "Often commences deepest at the point of origin, trailing off into a superficial terminal scratch that records blade trajectory."
+    ]
+  },
+  "w447": {
+    "Arabic": [
+        "إصابة حادة نافذة تنتج عن دفع أداة ذات رأس مدبب كالمطواة أو الخنجر عمودياً أو بميل داخل أنسجة الجسد.",
+        "يتميز بأن عمق مساره داخل الأحشاء والتجاويف يفوق بكثير طول فتحته الخارجية الظاهرة على الجلد.",
+        "تكشف زواياه مواصفات نصل السلاح؛ فالشفرة أحادية الحد تترك زاوية حادة في جانب وزاوية كليلة أو مربعة في الجانب المقابل.",
+        "قد يزيد عمق المسار الداخلي عن طول النصل الفعلي نتيجة انضغاط جدار البطن الرخو أثناء الدفع العنيف.",
+        "يشكل سبباً رئيساً للوفيات الجنائية بفعل الصدمة النزفية الحادة أو النزف داخل التامور وتوقف القلب الاندحاسي."
+    ],
+    "English": [
+        "A penetrating sharp-force injury produced by thrusting a pointed instrument into tissues along the long axis of its blade.",
+        "Depth of penetration into internal visceral structures significantly exceeds the external cutaneous surface slit length.",
+        "Wound extremities correspond to blade profile: a single-edged knife produces one sharp acute angle and one blunt or squared back.",
+        "Internal track depth may exceed the actual blade length due to yielding compressibility of anterior body wall soft tissues.",
+        "A leading homicidal sharp-force modality, causing sudden death from internal exsanguination or fatal cardiac tamponade."
+    ]
+  },
+  "w448": {
+    "Arabic": [
+        "تمزق كامل في الأنسجة الجلدية والعميقة يحدث عندما تتجاوز قوى الشد والهرس الكليلة مرونة النسيج الحيوية.",
+        "تكون حوافه مشرشرة، غير منتظمة، ومحاطة بكدمات وسحجات متعددة مع اقتلاع لبصيلات الشعر دون قطعه.",
+        "العلامة الفارقة الفاصلة له عن الجروح الحادة هي وجود جسور نسيجية ليفية وأوعية دموية ممتدة عبر قاع الجرح.",
+        "يشيع فوق المناطق العظمية البارزة القريبة من الجلد كفروة الرأس وحافة الجبين وعظم الساق الأمامي.",
+        "ينجم نموذجياً عن الضرب بالهراوات والحجارة السميكة أو حوادث الاصطدام المروري العنيف ودهس المركبات."
+    ],
+    "English": [
+        "A tearing of skin and deeper soft tissues occurring when blunt compressive or shearing forces overcome biological tissue elasticity.",
+        "Margins are typically ragged, abraded, and bruised, with crushed or avulsed hair shafts retained within the wound borders.",
+        "The definitive diagnostic hallmark distinguishing it from incised wounds is the presence of intact tissue bridges across the cleft.",
+        "Commonly localized over subcutaneous bony prominences such as the cranial calvarium, eyebrows, and tibial crest.",
+        "Frequently inflicted during blunt assaults with heavy bludgeons, stones, or high-impact road traffic accidents."
+    ]
+  },
+  "w449": {
+    "Arabic": [
+        "إصابات قطعية أو رضية يتلقاها المجني عليه في أطرافه أثناء محاولته التلقائية لحماية رأسه وصدره أو انتزاع سلاح الجاني.",
+        "تنقسم إلى جروح نشطة في راحة اليد عند محاولة الإمساك بنصل السكين، وجروح سلبية على الساعدين والكتفين عند رفع الذراعين.",
+        "تثبت جنائياً وبشكل قاطع أن الضحية كان يقظاً ومدركاً وفي حالة حركة ومقاومة جسدية مستمرة لحظة الهجوم.",
+        "غيابها التام في جرائم القتل يشير إلى المباغتة من الخلف أو تعاطي مهدئات أو التقييد البدني أو فقدان الوعي السريع.",
+        "تعتبر دليلاً جوهرياً يعتمد عليه القضاء الجنائي في تأكيد تهمة القتل واستبعاد ادعاءات الانتحار أو الجروح المفتعلة."
+    ],
+    "English": [
+        "Sharp or blunt injuries sustained on a victim's extremities during an instinctive effort to ward off assault or grab a blade.",
+        "Categorized into active shielding incisions on the palmar surface from seizing blades and passive protective lacerations along extensor forearms.",
+        "Conclusively establishes that the victim was conscious, ambulatory, and actively resisting during the physical altercation.",
+        "Their total absence suggests sudden surprise attack from behind, chemical sedation, physical restraint, or immediate incapacitation.",
+        "Forms a cornerstone in forensic trials to authenticate homicidal violence and dismiss staged claims of self-inflicted harm."
+    ]
+  },
+  "w450": {
+    "Arabic": [
+        "مجموعة من الخدوش والجروح السطحية المتوازية التي تتجاور وتسبق الجرح القاطع القاتل الرئيسي.",
+        "تعكس الصراع النفسي الداخلي والخوف من الألم قبل الإقدام على الضربة العميقة المميتة.",
+        "تتمركز في المواقع التشريحية التي تطالها يد المنتحر بسهولة كمقدمة الرسغ غير السائد أو الرقبة.",
+        "تتميز بتوازيها وانتظامها النسبي وتدرجها في العمق حتى تنتهي بالقطع الوعائي الغائر.",
+        "تعد دليلاً تشريحياً فائق القوة على الدافع الانتحاري واستبعاد الشبهة الجنائية لتدخل طرف ثالث."
+    ],
+    "English": [
+        "A cluster of superficial, parallel incisions and scratches grouped in close proximity to a fatal sharp-force wound.",
+        "Reflect tentative trials, pain testing, and profound psychological ambivalence preceding the ultimate lethal stroke.",
+        "Characteristically distributed across anatomical zones readily reachable by the deceased, particularly the contralateral wrist.",
+        "Display striking parallelism and progressive deepening leading directly into the fatal deep vascular transection.",
+        "Serve as a classic postmortem hallmark confirming suicidal self-infliction and discounting third-party homicidal agency."
+    ]
+  },
+  "w451": {
+    "Arabic": [
+        "فقد جلدي اختراقي دائري أو بيضاوي ينشأ عن اصطدام مقذوف السلاح الناري بالجسد ونفاذه إلى الداخل.",
+        "تحاط فتحته بحافة سحج متحدة المركز ناتجة عن احتكاك الرصاصة الدوارة وتعرف بطوق السحج ونظافة السلاح.",
+        "تتجه حواف الجرح دائماً نحو الداخل عاكسة مسار حركة المقذوف عند اختراق الأدمة.",
+        "تتزين بمظاهر إضافية تعتمد على المسافة، كحلقة الاحتراق في الإطلاق التماسي وحبيبات التنميش في المدى القريب.",
+        "تكون مساحتها عادة أصغر وأكثر انتظاماً مقارنة بفتحة الخروج المتهتكة على الجانب المقابل."
+    ],
+    "English": [
+        "A cutaneous puncture defect created by the mechanical impact and perforation of a high-velocity ballistic bullet.",
+        "Circumscribed by a distinct concentric band of abraded, denuded epidermis termed the abrasion and grease collar.",
+        "Wound margins invert inwards into the underlying track, following the entering trajectory of the penetrating projectile.",
+        "Acquires supplementary ballistic features depending on range, showing skin burning in contact shots and powder tattooing in close-range.",
+        "Typically smaller and significantly more uniform than the corresponding irregular, everted exit defect."
+    ]
+  },
+  "w452": {
+    "Arabic": [
+        "حبيبات دقيقة من البارود غير المحترق أو المحترق جزئياً تنغرس داخل طبقة الأدمة الحية حول مدخل العيار الناري.",
+        "تظهر كنقاط بنية أو حمراء ناصعة متناثرة حول الفتحة تستعصي على الإزالة بالغسيل المائي.",
+        "تثبت وقوع إطلاق النار من مسافة قريبة إلى متوسطة تتراوح بين بضعة سنتيمترات إلى قرابة المتر الواحد.",
+        "تختلف جذرياً عن السخام الكربوني السطحي الذي يتوضع فوق البشرة ويزول بمسحة مبللة.",
+        "يساعد قطر دائرة انتشار هذه الحبيبات المحققين في تحديد المسافة الدقيقة بين فوهة السلاح وجسد الضحية."
+    ],
+    "English": [
+        "Microscopic grains of unburnt and partially burned propellant powder particles embedded directly into the living dermis.",
+        "Presents as punctate reddish-brown specks stippled around the bullet hole that cannot be eradicated by water washing.",
+        "Definitively establishes that discharge occurred from an intermediate distance ranging from a few centimeters up to one meter.",
+        "Pathologically distinct from superficial carbonaceous soot smudging which rests loosely on the stratum corneum and wipes away.",
+        "The spatial dispersion pattern of the stippling permits precise calibration of the muzzle-to-target distance."
+    ]
+  },
+  "w453": {
+    "Arabic": [
+        "تجمع دموي شرياني ضاغط يتشكل في الحيز الضيق الكامن بين السطح الداخلي لعظام الجمجمة وغشاء الأم الجافية.",
+        "ينشأ غالباً عن كسر عظم الصدغ عند منطقة التيريون الرقيقة مما يمزق الشريان السحائي الأوسط.",
+        "يترافق كلاسيكياً مع فترة صحو مؤقتة يستعيد فيها المصاب وعيه لساعات قبل أن ينتكس بغيبوبة مباغتة.",
+        "يظهر في التصوير المقطعي للدماغ كتجمع دموي محدب الوجهين شبيهاً بالعدسة لا يتجاوز دروز الجمجمة العظمية.",
+        "يستوجب تفريغاً جراحياً عاجلاً عبر فتح الجمجمة لتفادي انفتاق المخ والضغط القاتل على مراكز التنفس بجذع الدماغ."
+    ],
+    "English": [
+        "An arterial hematoma expanding rapidly within the potential space between the inner cranial vault and the dura mater.",
+        "Triggered chiefly by linear fractures of the thin temporal squama tearing the underlying middle meningeal artery.",
+        "Classically features a lucid interval wherein a transiently concussed patient awakens before precipitously relapsing into deep coma.",
+        "Head CT imaging reveals a hyperdense, biconvex, lenticular collection strictly bounded by cranial suture attachments.",
+        "Represents a neurosurgical emergency demanding immediate burr hole or craniotomy evacuation to prevent fatal uncal herniation."
+    ]
+  },
+  "w454": {
+    "Arabic": [
+        "انصباب دموي وريدي يتجمع في الحيز الحقيقي الكائن بين السطح الداخلي للأم الجافية وغشاء العنكبوتية المخي.",
+        "ينتج عن تمزق الأوردة الجسرية الرابطة بفعل قوى التسارع والتباطؤ الدوراني العنيف للرأس.",
+        "يأخذ في الأشعة المقطعية شكلاً هلالياً مقعر الحافة الداخلية يمتد على طول نصف الكرة المخية متجاوزاً خطوط الدروز.",
+        "يشيع نوعه المزمن عند المسنين ومدمني الكحول لضمور الدماغ وتمدد الأوردة الهشة وسهولة تمزقها برضوض بسيطة.",
+        "يشكل ركناً أساسياً في ثالوث التشخيص الجنائي لمتلازمة هز الرضيع العنيفة."
+    ],
+    "English": [
+        "A venous intracranial hemorrhage expanding within the anatomic space between the inner dura mater and arachnoid membrane.",
+        "Caused by tensile shearing disruption of delicate bridging cerebral veins subjected to rotational acceleration-deceleration forces.",
+        "Computed tomography demonstrates a characteristic crescentic, concave-inner hematoma extending along the hemispheric convexity across sutures.",
+        "Chronic presentations predominate in elderly and alcoholic individuals whose cerebral atrophy places bridging veins under continuous stretch.",
+        "Constitutes the primary intracranial finding in pediatric non-accidental abusive head trauma (shaken baby syndrome)."
+    ]
+  },
+  "w455": {
+    "Arabic": [
+        "علامة جلدية حمراء تفرعية تأخذ شكل ورقة سرخس نباتية أو شجرة متشعبة تظهر على جسد المصاب بصاعقة جوية.",
+        "تنشأ عن مرور تيار الشحنات الكهربائية الخاطفة الضخمة للبرق وتفريغها فوق مقاومة سطح الجلد.",
+        "تحدث نتيجة ارتشاح كريات الدم الحمراء خارج الشعيرات الدموية السطحية المصابة بصدمة التيار.",
+        "تتميز بأنها ليست حرقاً حقيقياً وتتلاشى وتختفي تلقائياً في الناجين خلال يوم إلى يومين.",
+        "تعتبر دليلاً جنائياً وتشريحياً قاطعاً على التعرض المباشر لصاعقة رعدية طبيعية في مسرح الحادث."
+    ],
+    "English": [
+        "An arborescent, fern-like branching erythematous pattern etched across the skin of a victim struck by atmospheric lightning.",
+        "Produced by the ultra-high voltage electrostatic flashover discharging along cutaneous resistance pathways.",
+        "Reflects acute microvascular extravasation of erythrocytes along superficial dermal capillary pathways.",
+        "Represents a transient vascular arborization rather than a true thermal burn, characteristically vanishing within twenty-four to forty-eight hours.",
+        "Serves as an irrefutable pathognomonic forensic marker confirming electrical lightning strike trauma."
+    ]
+  },
+  "w456": {
+    "Arabic": [
+        "صورة بالغة الخطورة من صور العنف الجنائي ضد الأطفال تنجم عن هز الرضيع بعنف ذهاباً وإياباً دون ارتطام مباشر للجمجمة.",
+        "تتميز بالثالوث السريري الكلاسيكي: نزف تحت الجافية، نزوف شبكية بالعينين، واعتلال دماغي حاد غير مفسر.",
+        "تحدث التلفيات العصبية بفعل قوى القصور الذاتي الدورانية التي تؤدي لتمزق الأوردة الجسرية وإصابة المحاور العصبية الدماغية المنتشرة.",
+        "تترافق غالباً مع كسور عظمية خفية في الأضلاع الخلفية أو أطراف العظام الطويلة بأعمار التئام متباينة.",
+        "تعد سبباً رئيساً للوفاة المفاجئة أو الشلل الدماغي الدائم لدى الرضع دون سن السنتين في قضايا إيذاء الأطفال."
+    ],
+    "English": [
+        "A devastating form of non-accidental pediatric physical abuse caused by violent repetitive shaking of an infant without direct impact.",
+        "Defined by the classical diagnostic triad of subdural hematoma, severe retinal hemorrhages, and diffuse hypoxic encephalopathy.",
+        "Rotational acceleration-deceleration shearing forces rupture bridging parasagittal veins and shear cerebral axonal fibers.",
+        "Often accompanied by occult skeletal injuries such as posterior rib fractures and metaphyseal corner fractures of varying ages.",
+        "A leading cause of fatal abusive head trauma and permanent neurological disability in infants under two years of age."
+    ]
+  },
+  "w457": {
+    "Arabic": [
+        "اختبار تشريحي يُجرى على جثث المواليد للتثبت مما إذا كان المولود قد تَنفس ووُلد حياً أم وُلد ميتاً.",
+        "يعتمد على خاصية الطفو الفيزيائي: فالرئة التي تنفست تحتبس الهواء فتطفو فوق الماء، بينما ترسب رئة الجنين الذي لم يتنفس.",
+        "يُنفذ في ثلاث خطوات: فحص الكتلة الصدرية كاملة، فحص كل رئة بمفردها، ثم فحص قطع نسيجية صغيرة بعد ضغطها.",
+        "يجب استبعاد الإيجابية الكاذبة الناتجة عن غازات التحلل الرمي أو محاولات التهوية والإنعاش الاصطناعي.",
+        "يمثل الفيصل القانوني الحاسم في قضايا قتل المواليد الجنائي لتأكيد صفة الحياة المستقلة بعد الانفصال عن الأم."
+    ],
+    "English": [
+        "A postmortem docimasia procedure conducted during neonatal autopsies to determine whether an infant respired post-delivery or was stillborn.",
+        "Operates on buoyancy physics: ventilated lungs retain alveolar air and float in water, whereas atelectatic stillborn lungs sink.",
+        "Executed sequentially by testing the intact cardiopulmonary block, individual whole lungs, and compressed peripheral lobular fragments.",
+        "Requires critical differentiation from false positives caused by decomposition gas formation or active positive-pressure resuscitation.",
+        "Furnishes essential evidence in criminal infanticide trials to legally demonstrate separate antemortem biological existence."
+    ]
+  },
+  "w458": {
+    "Arabic": [
+        "النظام البيومتري الجنائي الأقدم والأكثر وثوقية للتحقق من هوية الأفراد استناداً إلى الخطوط الحلمية البارزة في جلد أطراف الأصابع.",
+        "ترتكز علمياً على قاعدتين ذهبيتين: عدم تطابق بصمتين لشخصين مختلفين أبداً، وثباتها الدائم دون أدنى تغير طوال حياة الفرد.",
+        "تُصنف أنماطها الرئيسية كلاسيكياً إلى أربعة أشكال: الأقواس، الحلقات، الدوامات، والمركبة.",
+        "تُظهر الحواف الحلمية تفاصيل دقيقة فريدة كالتفرعات ونهايات الخطوط والجزر تعرف بنقاط مينوتيا.",
+        "تُكشف البصمات الخفية في مسارح الجرائم باستخدام المساحيق الملونة أو التبخير بمادة السيانوأكريلات أو أشعة الليزر."
+    ],
+    "English": [
+        "The definitive biometric method of personal identification based on the epidermal papillary ridge patterns of the fingertips.",
+        "Founded upon two fundamental forensic tenets: absolute uniqueness between individuals and unalterable permanence throughout lifetime.",
+        "Classified classically into four primary morphological patterns: arches, loops, whorls, and composite configurations.",
+        "Unique microscopic ridge characteristics such as bifurcations, ridge endings, and islands are known as minutiae points.",
+        "Latent impressions left at crime scenes are developed through physical powder dusting, cyanoacrylate fuming, or ninhydrin reagent."
+    ]
+  },
+  "w459": {
+    "Arabic": [
+        "الإجراء الأنثروبولوجي الشرعي الأكثر دقة للتفريق بين الهياكل العظمية للذكور والإناث بدقة تتجاوز 95 بالمئة.",
+        "تتميز عظام الحوض الأنثوي باتساع مدخل الحوض وتجويفه وشكله الدائري الملائم لعملية الحمل والولادة.",
+        "تكون الزاوية تحت العانة عند الإناث منفرجة وعريضة تفوق 90 درجة، بينما تكون حادة وضيقة عند الذكور.",
+        "يظهر الثلم الوركي الكبير اتساعاً ضحلاً مميزاً لدى الإناث مقارنة بضيقه وعمقه الحاد لدى الذكور.",
+        "يعتبر العظم الأكثر قيمة في استعراف الجثث المتفحمة أو مجهولة الهوية بعد اختفاء الأنسجة الرخوة."
+    ],
+    "English": [
+        "The single most reliable skeletal method for differentiating biological sex in human remains, exceeding 95% anatomical accuracy.",
+        "Female pelvic morphology displays a spacious, circular pelvic inlet and shallow cavity adapted for human parturition.",
+        "The subpubic arch angle is broad and obtuse (greater than 90 degrees) in females, compared to acute and V-shaped in males.",
+        "The greater sciatic notch is wide, shallow, and open in females, whereas it appears narrow and deep in male skeletons.",
+        "Constitutes the primary skeletal element examined when analyzing skeletonized, decomposed, or extensively charred human remains."
+    ]
+  },
+  "w460": {
+    "Arabic": [
+        "المعيار الإشعاعي والتشريحي الأساسي المستخدم لتقدير العمر التقريبي للأفراد الأحياء والهياكل العظمية حتى منتصف العشرينيات.",
+        "يعتمد على الاختفاء التدريجي لغضروف النمو الواقع بين رأس العظم وجسمه وتحوله إلى نسيج عظمي صلب.",
+        "يتبع كل مفصل في الجسم جدولاً زمنياً دقيقاً للالتحام؛ فيلتحم الكوع مبكراً بينما تلتحم الترقوة الداخلية متأخرة.",
+        "يعد التحام النهاية الإنسية للترقوة بعد سن 21-25 عاماً العلامة الحاسمة لتوثيق بلوغ سن الرشد الجنائي.",
+        "يُستخدم في المنازعات القضائية لتوثيق أعمار المتهمين بالأحداث وتحديد مسؤوليتهم الجنائية وقضايا الهجرة."
+    ],
+    "English": [
+        "The primary radiological and osteological method used to estimate chronological age in living individuals and skeletal remains up to age 25.",
+        "Based on the progressive mineralization and osseous fusion of growth cartilages linking the epiphysis to the bone shaft.",
+        "Follows an orderly developmental timetable: the elbow complex fuses around puberty, while the medial clavicular epiphysis fuses last.",
+        "Complete fusion of the medial end of the clavicle between 21 and 25 years confirms the legal transition into adult age.",
+        "Widely employed in forensic legal proceedings to verify juvenile versus adult criminal liability and asylum age assessments."
+    ]
+  },
+  "w461": {
+    "Arabic": [
+        "إصابات سطحية يحدثها الشخص في جسده عمداً بادعاء كاذب لاتهام خصم بجريمة اعتداء أو التهرب من واجب عسكري.",
+        "تتميز بكونها سطحية، متوازية، ومنتظمة للغاية، وتتجنب دائماً الأعضاء الحيوية والأوعية الدموية الخطيرة.",
+        "تتمركز في المواقع التشريحية التي يسهل على يد الشخص الوصول إليها كالصدر ومقدمة الفخذين والذراع غير السائدة.",
+        "تكون الملابس المقابلة لموضع الإصابة سليمة تماماً أو ممزقة بأسلوب لا يتطابق مع اتجاه الجروح على الجلد.",
+        "يتحقق الطبيب الشرعي من تزييفها بتناقض عمق الإصابات الطفيف مع جسامة الادعاء الجنائي بالاعتداء العنيف."
+    ],
+    "English": [
+        "Superficial wounds intentionally self-inflicted by an individual to falsely accuse an adversary of violent assault or avoid service.",
+        "Characterized by being remarkably superficial, uniform, parallel, and meticulously avoiding vital structures or dangerous arteries.",
+        "Confined to anatomical areas readily accessible to the subject's own hands, such as the contralateral arm and anterior thighs.",
+        "Overlying garments are frequently intact or demonstrate artificial slits that fail to align with the underlying cutaneous cuts.",
+        "The forensic physician unmasks fabrication by noting the stark disparity between trivial injuries and alleged ferocious assault."
+    ]
+  },
+  "w462": {
+    "Arabic": [
+        "إصابة نارية تنتج عن ضغط فوهة السلاح الناري بإحكام وتماس تام مع سطح الجلد لحظة خروج المقذوف.",
+        "تندفع الغازات الساخنة المتمددة ونواتج الاحتراق مباشرة تحت الجلد مما يسبب تمدداً مفرطاً وتمزقاً نجمياً لحواف الجرح فوق العظام.",
+        "تنطبع الحافة المعدنية الدائرية لفوهة السلاح على الجلد المحيط كعلامة كدمية تسمى طبعة الفوهة.",
+        "تترسب جميع جزيئات السخام والبارود المحترق داخل تجويف مسار المقذوف وفي العظام العميقة دون ظهورها على السطح.",
+        "يشيع هذا النمط بشكل ملحوظ في حوادث الانتحار بالأسلحة النارية في منطقة الصدغ أو داخل الفم."
+    ],
+    "English": [
+        "A ballistic gunshot trauma inflicted when the muzzle of a firearm is pressed firmly in direct contact against the skin surface.",
+        "Expanding propellant gases enter the subgaleal space, rebounding against underlying bone to produce a stellar, ragged entrance tear.",
+        "The mechanical compression of the hot metallic barrel often leaves a distinct circular ring impression known as a muzzle imprint.",
+        "Soot smudging, powder grains, and carbon monoxide deposition are driven entirely into the deep wound track and cranial bone.",
+        "Characteristically observed in suicidal firearm fatalities involving the temporal temple, anterior chest, or intraoral roof."
+    ]
+  },
+  "w463": {
+    "Arabic": [
+        "الجرح الذي يُحدثه مقذوف السلاح الناري عند مغادرته لجسد الضحية بعد اختراق الأحشاء والأنسجة.",
+        "يتميز بحجم أكبر وحواف متهتكة مشرشرة ومقلوبة نحو الخارج بعكس فتحة الدخول المنعكسة للداخل.",
+        "يخلو تماماً من طوق السحج وطوق الشحم وحبيبات البارود غير المحترقة والسخام الكربوني.",
+        "قد يكون مشوهاً وممزقاً بشكل غير منتظم نتيجة تشوه الرصاصة أو دورانها المحوري أو اصطدامها بعظام صلبة في مسارها.",
+        "يساعد الطبيب الشرعي في تحديد خط مسار المقذوف وزاوية إطلاق النار بالربط بين نقطتي الدخول والخروج."
+    ],
+    "English": [
+        "The cutaneous wound created when a ballistic projectile emerges from the body after traversing internal organs and tissues.",
+        "Typically larger, ragged, stellate or slit-like, featuring distinctly everted wound margins pushed outward by the exiting bullet.",
+        "Completely lacks an abrasion collar, soot soiling, burning zone, and powder tattooing particles.",
+        "May be markedly irregular and disproportionately extensive if the projectile tumbled, fragmented, or carried splintered bone chips.",
+        "Enables ballistic path reconstruction by correlating the entry defect with the corresponding exit point in anatomical space."
+    ]
+  },
+  "w464": {
+    "Arabic": [
+        "أخاديد وحواف حلزونية لولبية محفورة بدقة بالغة على السطح الداخلي لماسورة الأسلحة النارية الحديثة.",
+        "تمنح المقذوف الناري حركة دورانية سريعة حول محوره الطولي أثناء انطلاقه لتحقيق ثبات ديناميكي ودقة إصابة عالية.",
+        "تتكون هندسياً من بروزات حلزونية تسمى الأراضي (Lands) وتجاويف غائرة تسمى الأخاديد (Grooves).",
+        "تترك خدوشاً وعلامات مجهرية فريدة على جسم الرصاصة النحاسية لا تتكرر في أي سلاح آخر كالبصمة الفردية.",
+        "يقارنها خبراء الأدلة الجنائية بالمجهر المقارن لتحديد السلاح المحدد الذي أطلق منه المقذوف في مسرح الجريمة."
+    ],
+    "English": [
+        "Helical spiral grooves and ridges machined precisely into the interior bore surface of a rifled firearm barrel.",
+        "Imparts rapid gyroscopic axial spin to the bullet during its passage, ensuring aerodynamic trajectory stabilization in flight.",
+        "Anatomically comprises elevated helical lands and cut depressions known as barrel grooves.",
+        "Engraves microscopic striations onto the softer jacket of the passing bullet, creating a unique ballistic fingerprint.",
+        "Ballistic experts examine these striations under a comparison microscope to match a recovered bullet to a suspect firearm."
+    ]
+  },
+  "w465": {
+    "Arabic": [
+        "طريقة إكلينيكية وتشريحية شهيرة لتقدير النسبة المئوية للمساحة السطحية المتضررة من الحروق في البالغين.",
+        "تقسم الجسم إلى مناطق تشريحية تمثل كل منها 9 بالمئة أو مضاعفاتها من إجمالي مساحة الجلد الكلية.",
+        "يُمنح الرأس والرقبة 9 بالمئة، وكل طرف علوي 9 بالمئة، والصدر والبطن 18 بالمئة، والظهر 18 بالمئة، وكل طرف سفلي 18 بالمئة.",
+        "تُخصص نسبة 1 بالمئة المتبقية للمنطقة التناسلية والعجان وراحة كف المريض لحساب المساحات المبعثرة.",
+        "تعتبر المعيار الإرشادي الفوري لحساب كميات محاليل الإنعاش الوريدي عبر معادلة باركلاند في طب الطوارئ."
+    ],
+    "English": [
+        "A clinical and forensic methodology utilized to rapidly estimate the total body surface area (TBSA) affected by burns in adults.",
+        "Partitions the adult body into distinct anatomical segments representing 9% or multiples of nine of the total cutaneous surface.",
+        "Allocates 9% to the head and neck, 9% to each upper extremity, 18% to anterior trunk, 18% to back, and 18% to each lower limb.",
+        "Assigns the remaining 1% to the perineum and external genitalia, using the patient's palm to approximate isolated 1% patches.",
+        "Guides the calculation of emergency intravenous fluid resuscitation volumes via the Parkland formula in acute burn trauma."
+    ]
+  },
+  "w466": {
+    "Arabic": [
+        "إصابة موضعية مميزة تنجم عن تولد الحرارة بتأثير مرور تيار كهربائي عبر مقاومة الجلد وفق قانون جول.",
+        "تظهر كفوهة دائرية منخفضة الوسط ذات قاع باهت رمادي محاطة بطوق جلدي مرتفع ومحتقن.",
+        "تنشأ عن التبخر السريع للرطوبة وتخثر بروتينات البشرة في نقطة التماس المباشر مع السلك الكهربائي.",
+        "يُظهر الفحص المجهري استطالة واصطفافاً عمودياً حرجياً لخلايا الطبقة القاعدية للبشرة كالسياج الخشبي.",
+        "تعد دليلاً تشريحياً قاطعاً يثبت التعرض للصعق الكهربائي حتى وإن كانت مساحتها السطحية لا تتعدى بضعة مليمترات."
+    ],
+    "English": [
+        "A localized cutaneous lesion produced by ohmic resistance heating as an electrical current traverses skin tissue according to Joule's law.",
+        "Presents as a central, crater-like, pale-grey depressed zone surrounded by a raised, hyperemic, indurated inflammatory ridge.",
+        "Results from instantaneous cellular water vaporization and protein coagulative necrosis at the metallic contact interface.",
+        "Microscopic histopathology demonstrates nuclear streaming with palisading, elongated basal epidermal cells.",
+        "Furnishes conclusive forensic proof of electrocution even when the cutaneous entry mark is diminutive."
+    ]
+  },
+  "w467": {
+    "Arabic": [
+        "حالة طوارئ طبية مهددة للحياة تنجم عن انهيار كامل في آليات التنظيم الحراري للجسم تحت وطأة الحرارة الشديدة.",
+        "تتميز بارتفاع حاد في درجة حرارة الجسم الأساسية لتتجاوز 40 درجة مئوية مترافقة مع اختلال عصبي حاد.",
+        "تتوقف الغدد العرقية عن العمل في النمط الكلاسيكي فيصبح الجلد جافاً وحاراً وقرمزياً ومتوهجاً.",
+        "تؤدي إلى هذيان، تشنجات عصبية، غيبوبة، وانحلال في ألياف العضلات الهيكلية (Rhabdomyolysis) وقصور كلوي حاد.",
+        "تستلزم تبريداً فيزيائياً سريعاً عبر التبخير والماء البارد لتفادي الموت المحقق بتلف خلايا المخ."
+    ],
+    "English": [
+        "A life-threatening medical emergency precipitated by the total failure of physiological thermoregulatory mechanisms during extreme heat.",
+        "Defined by core body temperature soaring above 40 degrees Celsius accompanied by severe central nervous system dysfunction.",
+        "Classic environmental presentations exhibit anhidrosis where sweat glands fail, rendering skin hot, dry, and flushed.",
+        "Complicated by delirium, seizures, coma, systemic inflammatory response, massive rhabdomyolysis, and multiorgan failure.",
+        "Demands immediate aggressive physical cooling via conductive or evaporative methods to halt irreversible cerebral thermal injury."
+    ]
+  },
+  "w468": {
+    "Arabic": [
+        "هبوط حاد في درجة حرارة الجسم الأساسية دون 35 درجة مئوية ينتج عن التعرض للبرد الشديد أو السقوط في المياه المتجمدة.",
+        "تُظهر الجثة خارجياً علامة التجرد التناقضي من الملابس (Paradoxical undressing) بسبب توسع أوعية الجلد المحيطية المفاجئ قبيل الوفاة.",
+        "تتوزع كدمات ولطخات حمراء زاهية فوق المفاصل الكبرى كالركبتين والمرفقين بتأثير البرودة الشديدة.",
+        "يكشف التشريح الداخلي عن تقرحات نزفية سطحية متعددة في بطانة المعدة تعرف ببقع فيشنفسكي (Wischnewsky spots).",
+        "يترافق مع تباطؤ نبض القلب وظهور موجات أوزبورن (Osborne J waves) برسم القلب قبل توقف الدورة الدموية."
+    ],
+    "English": [
+        "A dangerous drop in core body temperature below 35 degrees Celsius resulting from prolonged environmental cold exposure.",
+        "Victims frequently exhibit paradoxical undressing at the scene, stripping clothing due to final cutaneous vasodilation perceived as extreme heat.",
+        "Postmortem inspection reveals bright pinkish-red patches over extensor joint surfaces such as knees and elbows.",
+        "Autopsy reveals multiple superficial hemorrhagic gastric mucosal erosions termed Wischnewsky spots.",
+        "Characterized electrophysiologically by profound bradycardia and pathognomonic Osborn (J) waves on cardiac tracing."
+    ]
+  },
+  "w469": {
+    "Arabic": [
+        "اعتداء بدني متكرر وغير عرضي يمارسه الوالدان أو القائمون على الرعاية ضد طفل صغير لا حول له.",
+        "تتميز بوجود إصابات وكدمات وكسور عظمية متعددة في مراحل التئام مختلفة تدل على تكرار الأذى عبر فترات متباعدة.",
+        "تشيع فيها الحروق النمطية المتعمدة كحروق السلق بالغمر في ماء مغلي (Glove and stocking) وعلامات أعقاب السجائر.",
+        "تظهر الأشعة السينية كسوراً في زوايا العظام الطويلة (Metaphyseal corner fractures) وكسوراً في الأضلاع الخلفية قرب الفقرات.",
+        "تستدعي تدخلاً قانونياً وطبياً فورياً لعزل الطفل وحمايته جنائياً من خطر القتل العمد."
+    ],
+    "English": [
+        "A pattern of repetitive, non-accidental physical trauma inflicted on a vulnerable child by parents or primary caregivers.",
+        "Hallmarked by multiple contusions, soft tissue lesions, and fractures in varying stages of clinical and radiological healing.",
+        "Frequently displays deliberate thermal patterns including immersion scalds with sharp immersion lines and cigarette contact burns.",
+        "Skeletal surveys uncover classical metaphyseal bucket-handle lesions, posterior rib fractures, and periosteal elevation.",
+        "Mandates urgent forensic intervention, legal child protection reporting, and emergency removal to prevent fatal escalation."
+    ]
+  },
+  "w470": {
+    "Arabic": [
+        "كسر عظمي وتدي الشكل يحدث في عظام الساقين عند اصطدام مصد مقدمة السيارة بأحد المشاة العابرين.",
+        "يشير الطرف المدبب للقطعة العظمية المثلثية المنفصلة دائماً إلى اتجاه سير واصطدام المركبة الصادمة.",
+        "يقيس الطبيب الشرعي ارتفاع موضع الكسر عن كعب القدم لتحديد ارتفاع مصد السيارة الصادمة ونوعها في حوادث الفرار.",
+        "إذا كان الارتفاع منخفضاً جداً فإنه يثبت أن السائق استعمل المكابح بشدة قبيل الارتطام مباشرة فهبطت مقدمة السيارة.",
+        "يعتبر الإصابة الرضية الأولية الكلاسيكية في حوادث دهس المشاة في الطب الشرعي."
+    ],
+    "English": [
+        "A wedge-shaped comminuted fracture of the tibia and fibula sustained when a vehicle's front bumper impacts a pedestrian.",
+        "The apex of the triangular bone fragment consistently points in the direction the vehicle was traveling at the moment of impact.",
+        "Forensic measurement of the fracture height from the bottom of the heel identifies the bumper height of the offending vehicle in hit-and-run cases.",
+        "A lower fracture level indicates heavy antemortem braking that caused the vehicle front to dive prior to impact.",
+        "Represents the primary impact mechanical trauma in pedestrian-motor vehicle collision forensic reconstruction."
+    ]
+  },
+  "w471": {
+    "Arabic": [
+        "إصابة تصيب الأربطة وفقرات الرقبة ناتجة عن حركة تسارع وتباطؤ مفاجئة وشديدة تشبه حركة ضربة السوط.",
+        "تحدث نموذجياً عندما تصطدم مركبة بقوة من الخلف بسيارة متوقفة مما يقذف رأس الراكب للخلف ثم يرتد للأمام بعنف.",
+        "تسبب تمدداً وتمزقاً حاداً في الرباط الطولي الأمامي للعمود الفقري وعضلات العنق العميقة وأحياناً انزلاقاً غضروفياً.",
+        "يعاني المصاب من آلام رقبة مبرحة، تيبس في الحركة، صداع قفوي، وتنميل ممتد للأكتاف والذراعين.",
+        "تكتسب أهمية بالغة في تقارير الطب الشرعي الخاصة بتقدير نسب العجز وتعويضات حوادث الطرق والنزاعات التأمينية."
+    ],
+    "English": [
+        "A soft tissue cervical sprain produced by sudden acute hyperextension followed by rapid hyperflexion of the neck mimicking a whip lash.",
+        "Typically sustained by occupants of a stationary vehicle impacted violently from behind in rear-end automotive collisions.",
+        "Causes severe tearing and strain of the anterior longitudinal spinal ligament, prevertebral fascia, and paraspinal muscles.",
+        "Presents clinically with severe neck pain, restricted cervical range of motion, occipital headache, and radiating paresthesias.",
+        "Carries significant medicolegal weight in forensic liability evaluations, disability assessments, and automobile insurance claims."
+    ]
+  },
+  "w472": {
+    "Arabic": [
+        "صورة من صور الموت الأسفكسي العنيف تنجم عن سد الفتحات التنفسية الخارجية (الفم والأنف) ميكانيكياً بقوة.",
+        "تُرتكب غالباً باستخدام وسادة ناعمة أو قماش مبلل أو باطن يد الجاني على وجه الضحية.",
+        "قد تترك سحجات وكدمات طفيفة على الشفتين وباطن الفم ناتجة عن انضغاطها بالأسنان الأمامية للضحية.",
+        "تكاد تنعدم الإصابات الخارجية إذا استُخدمت أغطية ناعمة مما يتطلب فحوصاً نسيجية دقيقة للرئتين بحثاً عن بقع تارديو.",
+        "تشيع كجريمة ضد الأفراد العاجزين عن المقاومة كالرضع، طريحي الفراش، أو فاقدي الوعي والمخدرين."
+    ],
+    "English": [
+        "A violent mechanical asphyxial demise produced by external physical occlusion of the respiratory orifices (mouth and nostrils).",
+        "Typically executed using a soft pillow, cloth, bedding, or the direct palm of an assailant pressed over the face.",
+        "May produce subtle contusions and abrasions on the inner mucosal surface of the lips caused by compression against incisor teeth.",
+        "Can leave virtually no external marks when soft compressible bedding is employed, necessitating microscopic examination for petechiae.",
+        "Frequently perpetrated against physically defenseless individuals such as neonates, the bedridden elderly, or intoxicated adults."
+    ]
+  },
+  "w473": {
+    "Arabic": [
+        "انسداد ميكانيكي حاد في مجرى التنفس الداخلي عند مستوى البلعوم أو الحنجرة أو القصبة الهوائية بجسم غريب.",
+        "يحدث كلاسيكياً أثناء تناول الطعام عند ابتلاع قطع لحم كبيرة غير ممضوغة جيداً تحت تأثير الكحول، فيما يعرف بأزمة مطعم القلب.",
+        "يعجز المصاب تماماً عن الكلام أو التنفس أو السعال ويشير غريزياً إلى رقبته بالعلامة الدولية للغصص.",
+        "تعتبر مناورة هيمليك بالضغط البطني الصاعد الإجراء الإسعافي الفوري المنقذ للحياة لطرد الجسم العالق.",
+        "يؤكده الفحص التشريحي الجنائي بوجود الكتلة الطعامية أو الجسم البلاستيكي محشواً داخل الحبال الصوتية ومدخل الحنجرة."
+    ],
+    "English": [
+        "Acute internal mechanical obstruction of the upper airway passages at the level of the pharynx, larynx, or carina by a foreign body.",
+        "Classically occurs during rapid dining when large, unchewed meat boluses are swallowed, historically termed 'cafe coronary'.",
+        "The victim is completely unable to vocalize, breathe, or cough, instinctively clutching their throat in the universal distress sign.",
+        "Subdiaphragmatic abdominal thrusts (the Heimlich maneuver) represent the urgent frontline lifesaving intervention.",
+        "Autopsy unequivocally identifies the fatal bolus or foreign object impacted tightly within the glottis or tracheal lumen."
+    ]
+  },
+  "w474": {
+    "Arabic": [
+        "تسمم حاد ينجم عن التعرض للمبيدات الحشرية الفوسفورية الزراعية عبر الجلد أو الاستنشاق أو البلع.",
+        "تثبط هذه المواد إنزيم أسيتيل كولين إستراز بصورة غير عكسية مما يسبب تراكماً هائلاً للناقل العصبي في الوصلات العصبية.",
+        "تظهر على المصاب أعراض متلازمة الإفرازات الغزيرة وتشمل سيلان اللعاب والدموع والإسهال والتبول وضيق التنفس (SLUDGEM).",
+        "العلامة العينية الكلاسيكية هي تضيق حدقتي العين بشدة لتصبحا شبيهتين برأس الدبوس (Pinpoint pupils).",
+        "يُعالج فورياً بإعطاء جرعات وريدية متكررة من الأتروبين حتى جفاف الإفرازات الرئوية، مع البراليدوكسيم لإعادة تنشيط الإنزيم."
+    ],
+    "English": [
+        "Acute toxic envenomation caused by cutaneous absorption, inhalation, or ingestion of agricultural organophosphorus pesticides.",
+        "Irreversibly phosphorylates and inactivates the acetylcholinesterase enzyme, causing toxic accumulation of synaptic acetylcholine.",
+        "Precipitates a massive cholinergic crisis manifest by the SLUDGEM acronym (salivation, lacrimation, urination, defecation, GI upset, emesis).",
+        "Constriction of the pupils produces bilateral pinpoint miosis alongside profound bronchorrhea and life-threatening bradycardia.",
+        "Managed aggressively with escalating doses of atropine until bronchial secretions dry, alongside pralidoxime to reactivate the enzyme."
+    ]
+  },
+  "w475": {
+    "Arabic": [
+        "دواء ترياقي نوعي من عائلة الأوكسيمات يُستخدم حصرياً لعلاج التسمم بالمبيدات الحشرية ومثبطات الإنزيمات العصبية.",
+        "يقوم بانتزاع مجموعة الفوسفات المرتبطة بالموقع النشط لإنزيم أسيتيل كولين إستراز فيعيده إلى حالته الوظيفية النشطة.",
+        "يعالج بفاعلية فائقة الأعراض النيكوتينية كضعف العضلات الهيكلية، ارتجافها، وشلل عضلات التنفس.",
+        "يجب إعطاؤه في الساعات الأولى من التسمم قبل حدوث ظاهرة الشيخوخة الإنزيمية (Aging) التي تجعل الارتباط نهائياً.",
+        "يُعطى دائماً بالتزامن مع كبريتات الأتروبين الوريدية لتوفير حماية مشتركة للمستقبلات النيكوتينية والمسكارينية."
+    ],
+    "English": [
+        "A specific oxime antidote indicated exclusively for reversing toxicity induced by organophosphorus acetylcholinesterase inhibitors.",
+        "Nucleophilically attacks the phosphorylated active site of inhibited acetylcholinesterase, regenerating the free active enzyme.",
+        "Particularly effective at counteracting nicotinic neuromuscular signs including profound muscle fasciculations and diaphragmatic paralysis.",
+        "Must be initiated rapidly prior to the biochemical 'aging' process, which renders covalent enzyme-phosphate bonds permanent.",
+        "Co-administered systematically with atropine to secure concurrent blockade of both muscarinic and nicotinic toxic manifestations."
+    ]
+  },
+  "w476": {
+    "Arabic": [
+        "قرص صلب داكن يُستخدم كمركب زراعي لحفظ الحبوب والغلال من الآفات الحشرية، وشديد الخطورة عند بلعه.",
+        "يتفاعل فور ملامسته للرطوبة وحمض الهيدروكلوريك داخل المعدة ليطلق غاز الفوسفين شديد السمية.",
+        "يقوم الغاز المنطلق بتثبيط إنزيم سيتوكروم سي أوكسيداز داخل الميتوكوندريا معطلاً إنتاج الطاقة الخلوية في القلب والأعضاء.",
+        "يؤدي إلى انهيار دوري قلبي صاعق، هبوط شديد ومقاوم في ضغط الدم، واضطرابات نظم بطينية مميتة وحماض أيضي.",
+        "لا يوجد له ترياق نوعي حتى الآن، وتعتمد إدارته على الإنعاش القلبي الحثيث والغسيل بزيت البارافين لتأخير إطلاق الغاز."
+    ],
+    "English": [
+        "A dark grey agricultural pesticide pellet widely employed as a grain fumigant to protect stored crops against insect infestation.",
+        "Upon contact with gastric moisture and hydrochloric acid, it rapidly hydrolyzes to liberate lethal phosphine gas.",
+        "Phosphine gas powerfully inhibits mitochondrial cytochrome c oxidase, precipitating catastrophic cellular bioenergetic collapse.",
+        "Triggers rapid refractory cardiogenic shock, profound peripheral vasodilation, fatal ventricular arrhythmias, and severe lactic acidosis.",
+        "Devoid of any specific antidote; supportive management relies on intensive resuscitation and gastric lavage with paraffin oil."
+    ]
+  },
+  "w477": {
+    "Arabic": [
+        "تسمم حاد ينجم عن بلع مبيد أعشاب زراعي ثنائي البيريديل شديد التآكل والسمية للأنسجة الرئوية.",
+        "يتراكم بشكل انتقائي وتركيز عال داخل خلايا الرئة من النوع الأول والثاني عبر نظام نقل البوليامين النشط.",
+        "يولد كميات هائلة من جذور الأكسجين الحرة المدمرة (Reactive oxygen species) عبر دورات الأكسدة والاختزال المتكررة.",
+        "يؤدي بعد مرحلة التهاب المريء الأولي إلى تليف رئوي صاعق ومدمر (Pulmonary fibrosis) وفشل تنفسي لا رجعة فيه.",
+        "يُحظر تماماً إعطاء الأكسجين الإضافي بتركيزات عالية للمصاب لأنه يزيد من توليد الجذور الحرة ويسرع التدمير الرئوي."
+    ],
+    "English": [
+        "Severe intoxication following ingestion of a highly toxic, corrosive bipyridyl herbicide marketed commercially as Gramoxone.",
+        "Actively concentrated against an enormous gradient inside alveolar pneumocytes via the biological polyamine transport system.",
+        "Drives relentless intracellular redox cycling, generating catastrophic cascades of destructive reactive oxygen species.",
+        "Progresses inexorably from corrosive mucosal sloughing to severe acute intra-alveolar pulmonary fibrosis and fatal respiratory failure.",
+        "Supplemental oxygen therapy is strictly contraindicated in early stages because oxygen accelerates free radical-mediated lung necrosis."
+    ]
+  },
+  "w478": {
+    "Arabic": [
+        "متلازمة سريرية حادة تنشأ عن التحفيز المفرط لمستقبلات الأسيتيل كولين المسكارينية والنيكوتينية في الجهاز العصبي.",
+        "تحدث كلاسيكياً إثر التسمم بالمبيدات الحشرية أو غازات الأعصاب الحربية كالسارين أو أدوية الوهن العضلي الوبيل.",
+        "تتميز بفيضان إفرازات الجسم: تعرق غزير، إفرازات قصبية رغوية، بطء النبض، تقلصات بطنية وإسهال حاد.",
+        "ترافَق نيكوتينياً بنفضات وارتجافات عضلية مستمرة تتلوها شلل رخو وضعف في عضلات الصدر التنفسية.",
+        "تمثل المرجع السريري الأبرز لتحديد التسممات البيئية الفوسفورية في غرف الطوارئ وتستوجب ترياق الأتروبين فوراً."
+    ],
+    "English": [
+        "A clinical toxidrome resulting from excessive stimulation of muscarinic and nicotinic acetylcholine receptors across the nervous system.",
+        "Typically encountered in poisonings with organophosphates, military nerve agents such as sarin, or excessive cholinergic medications.",
+        "Manifests through the DUMBELS mnemonic: diarrhea, urination, miosis, bradycardia, bronchospasm, emesis, lacrimation, and salivation.",
+        "Nicotinic overstimulation produces visible skeletal muscle fasciculations followed by fatigue and flaccid diaphragmatic paralysis.",
+        "Constitutes a hallmark toxidrome recognized in emergency toxicology that immediately mandates high-dose intravenous atropinization."
+    ]
+  },
+  "w479": {
+    "Arabic": [
+        "تسمم معدني تراكمي خطير ينجم عن التعرض المهني أو البيئي لغبار الدهانات القديمة وبطاريات السيارات والمواسير الرصاصية.",
+        "يثبط إنزيمات تصنيع الهيم في نخاع العظم، خاصة إنزيم ألانين ديهايدراتاز وإنزيم فيروتشيلاتاز.",
+        "يسبب أنيميا فقر دم صغيرة الكريات مع تنقيط قاعدي مميز يظهر داخل كريات الدم الحمراء (Basophilic stippling).",
+        "يتظاهر سريرياً بمغص معوي مبرح مقاوم للمسكنات، وضعف في الأعصاب المحيطية يظهر كشلل وارتخاء في عضلات الرسغ.",
+        "يعالج بالأدوية الخالبة للمعادن كالديمركابرول، إيديتات الكالسيوم ثنائية الصوديوم (Ca-EDTA)، أو السكسيمر (DMSA)."
+    ],
+    "English": [
+        "A multisystem cumulative heavy metal toxicity arising from occupational hazards, deteriorating lead paints, or contaminated water pipes.",
+        "Inhibits critical heme biosynthetic enzymes, chiefly delta-aminolevulinic acid dehydratase and mitochondrial ferrochelatase.",
+        "Produces microcytic hypochromic anemia characteristically adorned with coarse basophilic stippling on peripheral blood smear.",
+        "Presents clinically with excruciating colicky abdominal pain, encephalopathy in toddlers, and bilateral peripheral motor wrist drop.",
+        "Treated with systemic chelating regimens such as dimercaprol (BAL), calcium disodium EDTA, or oral succimer (DMSA)."
+    ]
+  },
+  "w480": {
+    "Arabic": [
+        "علامة سريرية فموية كلاسيكية تظهر في حالات التسمم المزمن بأحد المعادن الثقيلة السامة.",
+        "تظهر كخط أزرق رمادي أو بنفسجي داكن دقيق يمتد على طول الحافة الحرة للثة الملاصقة للأسنان.",
+        "تنتج عن تفاعل المعدن الدائر في الدم مع كبريتيد الهيدروجين المنطلق من البكتيريا الفموية في المرضى المهملين لنظافة الفم.",
+        "يؤدي التفاعل الكيميائي إلى ترسب بلورات كبريتيد الرصاص الدقيقة السوداء داخل الشعيرات الدموية اللثوية السطحية.",
+        "تعد علامة تشخيصية ذهبية توجه الطبيب الشرعي على الفور إلى احتمالية التعرض المزمن لمعدن الرصاص."
+    ],
+    "English": [
+        "A classic physical sign observed along the oral gingival margin in patients suffering from chronic heavy metal toxicity.",
+        "Visualized as a thin, distinct bluish-purple or slate-grey line running along the gingival margin adjacent to the teeth.",
+        "Formed by the reaction of circulating absorbed metal with hydrogen sulfide gas produced by resident oral putrefactive bacteria.",
+        "Precipitates insoluble dark metal sulfide granules within the subepithelial capillary walls of chronically inflamed gums.",
+        "Provides pathognomonic clinical evidence alerting forensic pathologists and physicians to chronic lead (plumbism) exposure."
+    ]
+  },
+  "w481": {
+    "Arabic": [
+        "سم معدني جنائي وتاريخي شهير عُرف بلقب سم الملوك لكونه عديم الطعم والرائحة ويسهل دسه في الطعام والشراب.",
+        "يرتبط بقوة بمجموعات السلفهيدريل في الإنزيمات الحيوية ويعطل تحول البيروفات إلى أسيتيل كو-أ ويوقف دورة كريبس.",
+        "يسبب التسمم الحاد إسهالاً غزيراً يشبه ماء الأرز (Rice-water stools) مترافقاً مع رائحة ثوم نفاذة منبعثة من الفم.",
+        "يؤدي التسمم المزمن إلى تصبغ جلدي منقط كجلد المطر (Raindrop pigmentation)، وفرط تقرن الراحتين والأخمصين وخطوط بيضاء بالأظافر.",
+        "يُعالج بحقن الديمركابرول (BAL) كخالب أولي في التسمم الحاد، ويترسب بكثافة في الشعر والأظافر لشهور طويلة."
+    ],
+    "English": [
+        "An infamous homicidal and environmental metalloid poison historically called the 'poison of kings' due to its odorless, tasteless profile.",
+        "Binds avidly to sulfhydryl enzyme moieties, inactivating the pyruvate dehydrogenase complex and halting cellular Krebs cycle metabolism.",
+        "Acute ingestion provokes massive rice-water cholera-like diarrhea, vomiting, dehydration, and an unmistakable garlicky breath odor.",
+        "Chronic exposure induces characteristic raindrop skin hyperpigmentation, palmoplantar hyperkeratosis, and Mees transverse nail bands.",
+        "Managed with dimercaprol (BAL) chelation in acute poisonings; the metalloid persists stored in keratinous hair and nails for months."
+    ]
+  },
+  "w482": {
+    "Arabic": [
+        "علامة تشخيصية تظهر في صفيحة أظافر اليدين والقدمين لدى المصابين بالتسمم ببعض المعادن الثقيلة كالزرنيخ والثاليوم.",
+        "تظهر كأشرطة بيضاء مستعرضة ومتوازية تمتد عبر كامل عرض الظفر دون أن تؤثر على ملمس سطحه الأملس.",
+        "تحدث نتيجة توقف مؤقت وشاذ في عملية تقرن صفيحة الظفر في المصفوفة أثناء نوبات التسمم الحادة المتعاقبة.",
+        "تتحرك هذه الخطوط تدريجياً نحو الحافة الحرة للظفر بمعدل نمو الظفر الطبيعي (نحو 1 مليمتر أسبوعياً).",
+        "يستغلها الطبيب الشرعي لتقدير التاريخ والجدول الزمني للجرعات السمية التي تلقاها المجني عليه في قضايا التسميم الجنائي المتكرر."
+    ],
+    "English": [
+        "A clinical dermatological sign appearing across fingernails and toenails of victims following exposure to heavy metals like arsenic.",
+        "Presents as single or multiple transverse, smooth white bands extending entirely across the width of the nail plate.",
+        "Originates from temporary arrest and disruption of nail matrix keratinization during episodes of acute systemic toxic poisoning.",
+        "Migrates distally toward the free edge as the nail grows naturally at approximately one millimeter per week.",
+        "Enables forensic investigators to estimate the chronological timeline and recurrence of intermittent homicidal poison doses."
+    ]
+  },
+  "w483": {
+    "Arabic": [
+        "تسمم خطير ينجم عن التعرض لأبخرة المعدن الفضي السائل أو تناول مأكولات بحرية ملوثة بالزئبق العضوي.",
+        "يعد ميثيل الزئبق المركب العضوي الأكثر قدرة على عبور الحاجز الدموي الدماغي والمشيمة مسبباً تلفاً عصبياً صاعقاً.",
+        "يسبب اعتلالاً عصبياً كلاسيكياً يظهر في صورة ترنح، ضيق في المجال البصري، ورعاش حركي وتغيرات نفسية وعاطفية.",
+        "ارتبطت كارثته البيئية الشهيرة ببلدة ميناماتا اليابانية حيث ولد أطفال بتشوهات عصبية وشلل دماغي بسبب تلوث الأسماك.",
+        "يسبب في الأطفال الصغار متلازمة الأكرودينيا (Acrodynia) بطفح جلدي وردي مؤلم وتقشر وتورم في الراحتين والأخمصين."
+    ],
+    "English": [
+        "Severe toxicosis resulting from inhalation of elemental mercury vapor or dietary consumption of seafood contaminated with methylmercury.",
+        "Organic methylmercury readily crosses both the blood-brain barrier and placenta, exerting potent neuroteratogenic destruction.",
+        "Presents classically with cerebellar ataxia, progressive tunnel vision constriction, intention tremors, and emotional lability.",
+        "Infamously linked to industrial wastewater contamination in Minamata Bay, Japan, resulting in widespread microcephaly and severe palsy.",
+        "In young pediatric patients, it provokes acrodynia (pink disease) featuring painful, erythematous, desquamating hands and feet."
+    ]
+  },
+  "w484": {
+    "Arabic": [
+        "تسمم حاد يكثر عند الأطفال الصغار عند ابتلاع حبوب مكملات الحديد الملونة الجذابة المخصصة للأمهات.",
+        "يعمل الحديد الحر الفائض كمؤكسد مباشر يسبب تآكلاً ونزفاً شديداً في الغشاء المخاطي للمعدة والأمعاء.",
+        "يتطور عبر مراحل سريرية تبدأ بقيء دموي، تعقبها فترة تحسن ظاهري خادعة، ثم انهيار قلبي وعائي وحماض أيضي شديد.",
+        "يُظهر التصوير الإشعاعي للبطن أقراصاً معتمة وظليلة للأشعة تستقر داخل تجويف المعدة.",
+        "يعالج بالترياق النوعي الخالب الديفيروكسامين الوريدي الذي يحول لون بول المريض إلى اللون الوردي البرتقالي المميز."
+    ],
+    "English": [
+        "A common, dangerous pediatric accidental ingestion of attractive, brightly colored adult prenatal iron supplement tablets.",
+        "Excess free unbuffered iron catalyzes free radical generation, exerting direct corrosive necrotizing action on gastrointestinal mucosa.",
+        "Progresses through distinct clinical phases: acute hemorrhagic gastroenteritis, deceptive clinical quiescence, and multiorgan metabolic collapse.",
+        "Abdominal radiographs characteristically demonstrate radiopaque metallic pills resting within the gastric lumen.",
+        "Treated with the specific parenteral chelator deferoxamine, which binds free iron and colors the urine a classic 'vin rosé' orange."
+    ]
+  },
+  "w485": {
+    "Arabic": [
+        "عامل خالب للمعادن تم تطويره خلال الحرب العالمية الثانية كترياق مضاد لغاز اللويزيت الحربي المحتوي على الزرنيخ.",
+        "يحتوي في تركيبه الكيميائي على مجموعتي سلفهيدريل نشطتين تتنافسان مع إنزيمات الأنسجة وتلتقطان أيونات المعادن السامة.",
+        "يُعطى حصرياً عبر الحقن العضلي العميق في محلول زيتي من زيت الفول السوداني نظراً لعدم ذوبانه في الماء.",
+        "يمثل الخط العلاجي الأول للتسمم الحاد والشديد بالزرنيخ، الذهب، والزئبق غير العضوي.",
+        "يُدمج مع دواء إيديتات الكالسيوم (Ca-EDTA) في بروتوكول علاج التسمم الحاد بالرصاص المصحوب باعتلال دماغي."
+    ],
+    "English": [
+        "A classical dithiol metal chelator developed during World War II as an antidote against the arsenical chemical warfare agent Lewisite.",
+        "Contains two active sulfhydryl (-SH) moieties that competitively bind heavy metallic cations, forming stable heterocyclic excretable rings.",
+        "Administered strictly by deep intramuscular injection formulated in peanut oil due to its poor water solubility and pungent odor.",
+        "Serves as the primary frontline antidote for acute symptomatic intoxication by arsenic, gold, and inorganic mercury salts.",
+        "Combined synergistically with calcium disodium EDTA in emergency protocols managing severe acute lead encephalopathy."
+    ]
+  },
+  "w486": {
+    "Arabic": [
+        "عامل خالب بكتيري يتميز بألفة وانتقائية عالية جداً للارتباط بأيونات الحديد الثلاثي التكافؤ (Ferric iron).",
+        "يُستخدم كعلاج إسعافي منقذ للحياة في حالات التسمم الحاد بمركبات الحديد، وكذلك في علاج فرط الحديد المزمن لدى مرضى الثلاسيميا.",
+        "يرتبط بالحديد الحر في الدم ليكون مركباً ثابتاً غير سام يسمى فيريوكسامين يُطرح بسهولة خارج الجسم عبر الكلى.",
+        "يتحول لون بول المريض أثناء العلاج إلى اللون الوردي البنفسجي المميز الشبيه بلون نبيذ الورد مما يؤكد خروج الحديد.",
+        "يُعطى بالتسريب الوريدي البطيء لتفادي هبوط ضغط الدم وتفاعلات الحساسية وتوسع الأوعية المحيطية."
+    ],
+    "English": [
+        "A bacterial-derived siderophore chelating agent displaying extraordinary, highly selective affinity for binding trivalent ferric iron.",
+        "Indicated for acute iron overdose emergencies and chronic post-transfusion iron overload in patients with thalassemia major.",
+        "Chelates free unbound ferric iron to form ferrioxamine, a stable water-soluble complex readily eliminated via renal filtration.",
+        "Excretion of the ferrioxamine chelate visibly changes urine to an unmistakable reddish-orange 'vin rosé' coloration.",
+        "Administered by controlled continuous intravenous infusion to avert dose-dependent systemic hypotension and anaphylactoid shock."
+    ]
+  },
+  "w487": {
+    "Arabic": [
+        "حمض أميني ومشتق كيميائي ناتج عن تحلل البنسلين يعمل كعامل خالب للمعادن يؤخذ عن طريق الفم.",
+        "يحتوي على مجموعة ثيول حرة ترتبط بالنحاس والرصاص والزئبق لتشكل معقدات ذائبة في الماء يسهل إفرازها في البول.",
+        "يمثل العلاج الدوائي الأساسي طويل الأمد لمرض ويلسون الوراثي لتخليص الكبد والدماغ من التراكم السام للنحاس.",
+        "يُستخدم أيضاً كخالب فموي للمرضى الذين يعانون من التسمم المزمن بالرصاص بعد استقرار حالتهم الحادة.",
+        "يجب مراقبة المريض دورياً أثناء تناوله خوفاً من تثبيط نخاع العظم، نقص الصفائح، والمتلازمة الكلوية بفعل المناعة الذاتية."
+    ],
+    "English": [
+        "An orally active dimethylcysteine derivative of penicillin hydrolysis functioning as a monothiol heavy metal chelator.",
+        "Its active sulfhydryl group avidly coordinates copper, lead, and mercury, forming excretable soluble chelates cleared by the kidneys.",
+        "Serves as the cornerstone lifelong chelating therapy for Wilson disease to deplete pathological toxic copper stores from liver and basal ganglia.",
+        "Employed as an oral follow-up chelator for mild to moderate lead intoxication after initial stabilization.",
+        "Mandates routine hematological and urinalysis surveillance due to risks of bone marrow aplasia and immune-complex nephrotic syndrome."
+    ]
+  },
+  "w488": {
+    "Arabic": [
+        "تسمم كحولي صاعق ينجم عن شرب المشروبات الكحولية المغشوشة أو المذيبات الصناعية ومزيلات الطلاء.",
+        "يتحول داخل الكبد بفعل إنزيم كحول ديهايدروجيناز إلى فورمالدهيد ثم إلى حمض الفورميك شديد السمية.",
+        "يثبط حمض الفورميك إنزيم سيتوكروم أوكسيداز في شبكية العين والعصب البصري مسبباً ضبابية الرؤية وعمى تام كعاصفة ثلجية.",
+        "يؤدي إلى حماض أيضي شديد مع اتساع فجوة الأنيونات وفجوة الأسمولية وتلف تدميري متناظر في النواة المذنبة بالمخ (Putaminal necrosis).",
+        "يُعالج فورياً بترياق الفومبيزول أو الكحول الإيثيلي لتثبيط الإنزيم الاستقلابي، مع الغسيل الكلوي لتصفية السم وحمضه."
+    ],
+    "English": [
+        "Severe toxic alcohol ingestion resulting from consumption of adulterated bootleg liquor, windshield washer fluids, or industrial solvents.",
+        "Metabolized in the liver by alcohol dehydrogenase into formaldehyde, which is oxidized into toxic formic acid.",
+        "Formic acid poisons mitochondrial cytochrome oxidase in the retina and optic nerve, producing classic 'snowstorm' visual loss and blindness.",
+        "Characterized by high anion gap metabolic acidosis, elevated osmolar gap, and bilateral symmetric basal ganglia putaminal necrosis.",
+        "Managed urgently with the competitive enzyme inhibitor fomepizole (or ethanol) and emergent hemodialysis to eliminate formate."
+    ]
+  },
+  "w489": {
+    "Arabic": [
+        "دواء ترياقي نوعي يعمل كمثبط تنافسي فعال وقوي لإنزيم كحول ديهايدروجيناز في الكبد.",
+        "يمتلك ألفة ارتباط بالإنزيم تفوق ألفة الإيثانول بآلاف المرات دون أن يسبب أعراض السكر أو تثبيط الجهاز العصبي.",
+        "يُعد خط العلاج الأول المعتمد لإنقاذ حالات التسمم بالكحول الميثيلي والإيثيلين جلايكول ومنع تشكل نواتجهما السامة.",
+        "يمنع تحول الميثانول إلى حمض الفورميك المسبب للعمى، ويمنع تحول الإيثيلين جلايكول إلى بلورات الأوكزالات المدمرة للكلى.",
+        "يُعطى بجرعة تحميل وريدية تتبعها جرعات دورية منتظمة حتى تنخفض مستويات الكحول السام في الدم دون الحدود الخطرة."
+    ],
+    "English": [
+        "A specific pharmaceutical antidote that acts as a potent synthetic competitive inhibitor of hepatic alcohol dehydrogenase.",
+        "Displays thousands-fold greater binding affinity for alcohol dehydrogenase than ethanol, avoiding intoxication or CNS depression.",
+        "The definitive frontline antidote approved for treating toxic ingestions of both methanol and ethylene glycol.",
+        "Halts the bioactivation of methanol into blinding formic acid, and blocks ethylene glycol transformation into nephrotoxic glycolate and oxalate.",
+        "Administered via an intravenous loading protocol followed by scheduled sustained infusions until serum toxic alcohol levels clear."
+    ]
+  },
+  "w490": {
+    "Arabic": [
+        "تسمم حاد ينجم عن شرب سائل تبريد محركات السيارات ومانع التجمد ذي المذاق الحلو في محاولات الانتحار أو بالخطأ.",
+        "يستقلب في الجسم عبر كحول ديهايدروجيناز لينتج حمض الجليكوليك وحمض الأوكزاليك اللذين يسببان حماضاً أيضياً عنيفاً.",
+        "تتحد الأوكزالات مع الكالسيوم لتشكل بلورات أوكزالات الكالسيوم التي تترسب بكثافة في الأنابيب الكلوية مسببة فشلاً كلوياً حاداً.",
+        "يُظهر فحص البول بالمجهر بلورات مجهرية مميزة تشبه أظرف الخطابات البريدية، ويتوهج البول بالأشعة فوق البنفسجية لوجود الفلورسين.",
+        "يُعالج بالفومبيزول لتثبيط الإنزيم، مع إعطاء الثيامين والبيريدوكسين وحتمية الغسيل الكلوي العاجل لتنقية الدم."
+    ],
+    "English": [
+        "Severe toxic alcohol poisoning caused by accidental or suicidal ingestion of sweet-tasting automotive antifreeze coolant.",
+        "Metabolized sequentially by alcohol dehydrogenase into toxic glycolate, glyoxylate, and ultimately insoluble oxalic acid.",
+        "Oxalate chelates circulating calcium, precipitating calcium oxalate monohydrate crystals that destroy renal tubules, provoking acute kidney injury.",
+        "Microscopic urinalysis reveals pathognomonic envelope-shaped or needle-shaped calcium oxalate crystals, glowing under Wood's UV lamp.",
+        "Managed with fomepizole, thiamine and pyridoxine cofactors, and emergent hemodialysis to clear glycolic acid and prevent anuria."
+    ]
+  },
+  "w491": {
+    "Arabic": [
+        "تسمم هيدروكربوني شائع جداً عند الأطفال الصغار في البيئات الريفية نتيجة حفظ الوقود المنزلي في زجاجات المياه الغازية.",
+        "تكمن خطورته الكبرى في انخفاض لزوجته وسهولة تطايره مما يسهل تشردقه واستنشاقه المباشر داخل الشعب الهوائية للرئتين.",
+        "يسبب التهاباً رئوياً كيميائياً مدمراً (Chemical pneumonitis) نتيجة إذابة مادة السورفاكتانت الرئوية وتخريب بطانة الحويصلات.",
+        "يُمنع منعاً باتاً ومطلقاً إحداث القيء أو إجراء غسيل معدة للمصاب لتفادي دفع السائل إلى القصبة الهوائية والرئتين.",
+        "تُظهر أشعة الصدر ارتشاحات والتهابات خلال الساعات الأولى، ويُراقب المريض تنفسياً لمدة ست ساعات على الأقل قبل تقرير خروجه."
+    ],
+    "English": [
+        "A frequent accidental pediatric hydrocarbon intoxication occurring in domestic settings where fuel is stored in beverage containers.",
+        "Major morbidity stems from low viscosity, low surface tension, and high volatility promoting easy micro-aspiration into the tracheobronchial tree.",
+        "Triggers rapid necrotizing chemical pneumonitis by dissolving endogenous pulmonary surfactant and inducing severe alveolar destruction.",
+        "Induced emesis and gastric lavage are strictly contraindicated due to the extreme danger of secondary aspiration during vomiting.",
+        "Chest radiography exhibits basilar infiltrates within hours; asymptomatic children mandate at least six hours of pulse oximetry monitoring."
+    ]
+  },
+  "w492": {
+    "Arabic": [
+        "مركب كيميائي مطهر أكال ذو رائحة نفاذة مميزة يُستخدم على نطاق واسع في التعقيم المنزلي وتطهير الأرضيات.",
+        "يتميز بخاصية فريدة ومخادعة؛ فهو يخدر النهايات العصبية الحسية موضعياً فلا يشعر المصاب بألم فوري عند سقوطه على جلده.",
+        "يسبب حروقاً وتآكلات نخرية بيضاء شمعية متصلبة على الجلد والأغشية المخاطية للفم تتحول لاحقاً إلى اللون البني الداكن.",
+        "يمتص سريعاً عبر الجلد السليم مسبباً تثبيطاً مركزياً للتنفس، وفشلاً كلوياً حاداً، وتلون البول باللون الأخضر الداكن المسود.",
+        "تُعالج إصاباته الجلدية بالغسيل الفوري الوفير بمحلول البولي إيثيلين جلايكول (PEG) أو الكحول المخفف وليس بالماء المجرد."
+    ],
+    "English": [
+        "A potent corrosive aromatic disinfectant with an unmistakable medicinal odor extensively employed in domestic cleaning and sanitation.",
+        "Exerts a deceptive local anesthetic effect on cutaneous nerve endings, causing extensive chemical injury without immediate pain.",
+        "Produces opaque, necrotic, painless whitish-grey eschars on contact with skin and oral mucous membranes, darkening to brown.",
+        "Rapidly absorbed systemically across intact skin, precipitating respiratory arrest, acute renal necrosis, and dark greenish-black urine.",
+        "Cutaneous contamination demands immediate copius decontamination using polyethylene glycol (PEG 400) or vegetable oil rather than water."
+    ]
+  },
+  "w493": {
+    "Arabic": [
+        "مادة كيميائية قلوية شديدة التآكل تستخدم منزلياً في تنظيف الدهون وتصريف مجاري الصرف الصحي المسدودة.",
+        "تسبب نخر تمييعي عميق وتصبني (Liquefactive necrosis) للبروتينات والدهون مما يتيح للقلوي النفاذ لطبقات جدار المريء العميقة.",
+        "تؤدي إلى تآكل وتقرحات صاعقة في المريء والمعدة قد تنتهي بانثقاب المريء والتهاب المنصف الصدري المميت.",
+        "يُمنع قطعياً إعطاء محاليل حمضية لمعادلته أو إحداث القيء لما يسببه ذلك من تفاعل حراري عنيف وتمزق إضافي للمريء.",
+        "يخضع الناجون لمنظار مريء هضمي خلال 24 ساعة لتحديد درجة التلف، ويعانون لاحقاً من تضيق تليفي شديد بالمريء يستلزم التوسيع."
+    ],
+    "English": [
+        "A strongly alkaline chemical corrosive frequently found in domestic drain openers and heavy-duty grease cleaners.",
+        "Induces deep liquefactive necrosis by saponifying cellular membranes and solubilizing tissue proteins, penetrating through esophageal muscle.",
+        "Produces rapid, transmural ulceration of the esophagus and stomach, carrying grave risks of perforation, mediastinitis, and peritonitis.",
+        "Neutralizing with weak acids and inducing emesis are strictly contraindicated due to exothermic thermal injury and mechanical re-exposure.",
+        "Mandates diagnostic flexible esophagogastroduodenoscopy within 12 to 24 hours to stage mucosal injury and anticipate strictures."
+    ]
+  },
+  "w494": {
+    "Arabic": [
+        "حمض عضوي سام ذو تأثيرين متزامنين: تآكلي موضعي في الجهاز الهضمي وسمي جهازي على وظائف الجسم.",
+        "يتميز بقدرته الفائقة على الارتباط بأيونات الكالسيوم الحر في بلازما الدم مسبباً نقصاً حاداً وصاعقاً في كالسيوم الدم (Hypocalcemia).",
+        "يتعرض المصاب لتشنجات عضلية تكززية عنيفة (Tetany)، وخفقان قلبي خطير، واضطراب في الوعي.",
+        "تترسب بلورات أوكزالات الكالسيوم الناتجة في الأنابيب الكلوية مسببة نخر الأنابيب الحاد وفشلاً كلوياً تدميرياً غير بولي.",
+        "يُعالج بإعطاء جلوكونات الكالسيوم الوريدي لتعويض الكالسيوم المفقود، مع إعطاء أملاح الكالسيوم أو الحليب فموياً لترسيب الحمض في الأمعاء."
+    ],
+    "English": [
+        "A toxic organic dicarboxylic acid exerting dual destructive actions: direct local mucosal corrosiveness and systemic calcium chelation.",
+        "Avidly binds ionized serum calcium, precipitating acute, severe, life-threatening hypocalcemia and metabolic disruption.",
+        "Manifests clinically with carpopedal spasms, acute neuromuscular tetany, cardiac QT prolongation, ventricular arrhythmias, and seizures.",
+        "Insoluble calcium oxalate crystals rapidly precipitate inside renal tubules, triggering mechanical blockage and acute anuric tubular necrosis.",
+        "Treated with emergent intravenous calcium gluconate to correct tetany, alongside oral calcium lactate or milk to bind gastric acid."
+    ]
+  },
+  "w495": {
+    "Arabic": [
+        "تسمم غازي خانق شهير يُلقب بالقاتل الصامت لكونه غازاً عديم اللون والرائحة والطعم ينبعث من الاحتراق غير الكامل للوقود.",
+        "يمتلك ألفة ارتباط بالهيموجلوبين تفوق ألفة الأكسجين بنحو 200 إلى 250 ضعفاً مشكلاً مركب الكربوكسي هيموجلوبين.",
+        "يعطل نقل الأكسجين للأنسجة ويزيح منحنى تفكك الهيموجلوبين نحو اليسار مما يسبب نقص أكسجة خلوي شديد في الدماغ والقلب.",
+        "تكتسب دماء الجثة والجلد والأغشية المخاطية لوناً أحمر قرمزي ناصع شبيهاً بلون الكرز (Cherry-red color).",
+        "يُعالج فورياً بالأكسجين النقي بنسبة 100 بالمئة عبر قناع غير قابل لإعادة التنفس، مع اللجوء لحجرات الأكسجين عالي الضغط في الحالات الشديدة."
+    ],
+    "English": [
+        "A notorious asphyxiant gas toxicity dubbed the 'silent killer' because the gas is completely colorless, odorless, and non-irritating.",
+        "Exhibits an affinity for hemoglobin roughly 200 to 250 times greater than that of oxygen, forming stable carboxyhemoglobin.",
+        "Shifts the oxyhemoglobin dissociation curve to the left, suffocating tissues by impairing oxygen delivery to brain and myocardium.",
+        "Postmortem inspection pathognomonically demonstrates bright cherry-red discoloration of livor mortis, blood, and visceral organs.",
+        "Managed with immediate high-flow 100% normobaric oxygen via a non-rebreather mask, or hyperbaric oxygen therapy (HBOT) in severe toxicity."
+    ]
+  },
+  "w496": {
+    "Arabic": [
+        "مركب بيوكيميائي غير طبيعي ومستقر يتشكل في الدم عند اتحاد غاز أول أكسيد الكربون بذرة الحديد في جزيء الهيموجلوبين.",
+        "يمنع الجزيء المرتبط من حمل جزيئات الأكسجين، كما يمنع بقية الجزيئات الحاملة من التخلي عن أكسجينها للأنسجة المحتاجة.",
+        "تتراوح نسبته الطبيعية في غير المدخنين دون 2-3 بالمئة، بينما قد تصل لدى المدخنين الشرهين إلى 10 بالمئة.",
+        "ظهور أعراض كالصداع والغثيان يبدأ عند تجاوز نسبته 15-20 بالمئة، بينما تهدد النسبة التي تتجاوز 50 بالمئة بالغيبوبة والوفاة.",
+        "يُقاس بدقة في المستشفيات عبر جهاز قياس غازات الدم المتعدد الأطوال الموجية (Co-oximetry) لتقييم شدة التسمم."
+    ],
+    "English": [
+        "A stable, pathological hemoglobin derivative formed when carbon monoxide occupies the oxygen-binding ferrous iron site of heme.",
+        "Inactivates oxygen transport while allosterically locking adjacent subunits into a relaxed state that refuses to unload oxygen to tissues.",
+        "Physiological baseline levels remain below 2-3% in non-smokers, reaching up to 10% in heavy chronic cigarette smokers.",
+        "Clinical symptoms including throbbing headache develop at levels around 15-20%, with levels exceeding 50% producing coma and death.",
+        "Quantified objectively in clinical laboratories using co-oximetry blood gas analyzers to guide hyperbaric therapy triage."
+    ]
+  },
+  "w497": {
+    "Arabic": [
+        "تدخل علاجي متخصص يتنفس فيه المريض أكسجيناً نقياً بنسبة 100 بالمئة تحت ضغط جوي مرتفع يتراوح بين 2.5 إلى 3 ضغوط جوية.",
+        "يقلص عمر النصف للكربوكسي هيموجلوبين في الدم من 320 دقيقة في هواء الغرفة إلى نحو 20 دقيقة فقط داخل الحجرة.",
+        "يذيب كميات فائقة من الأكسجين مباشرة في بلازما الدم متجاوزاً الحاجة إلى كريات الدم الحمراء والهيموجلوبين المعطل.",
+        "يمنع بفاعلية تلف الخلايا العصبية ويقلل من متلازمة الاختلالات العصبية المتأخرة (Delayed neurological sequelae) بعد التسمم.",
+        "يستطب في حالات فقدان الوعي، الحماض الأيضي الحاد، النوبات التشنجية، والحوامل اللاتي تتجاوز نسبتهن السمية 15 بالمئة."
+    ],
+    "English": [
+        "A specialized medical therapy in which a patient breathes 100% pure oxygen within a sealed chamber pressurized up to 2.5 to 3.0 atmospheres.",
+        "Dramatically slashes the biological half-life of carboxyhemoglobin from over 300 minutes on room air down to approximately 20 minutes.",
+        "Physically dissolves vast quantities of free oxygen directly into blood plasma, sustaining tissue respiration independent of hemoglobin.",
+        "Prevents lipid peroxidation in the brain and significantly mitigates the development of delayed post-anoxic neurological sequelae.",
+        "Indicated for coma, transient syncope, severe metabolic acidosis, myocardial ischemia, and gestational women with levels above 15%."
+    ]
+  },
+  "w498": {
+    "Arabic": [
+        "تسمم خلوي صاعق وفائق السرعة ينجم عن استنشاق أدخنة حرائق المنازل أو التعرض للمواد الكيميائية في صناعة الذهب والتعدين.",
+        "يرتبط بقوة بذرة الحديد الثلاثي في إنزيم سيتوكروم سي أوكسيداز بالميتوكوندريا معطلاً الفسفرة التأكسدية بالكامل.",
+        "تعجز الخلايا عن استخدام الأكسجين رغم وفرته في الدم فيما يعرف بالاختناق السام الداخلي للأنسجة (Histotoxic hypoxia).",
+        "يتميز بارتفاع محتوى الأكسجين في الدم الوريدي مقترباً من الدم الشرياني مع حماض لاكتي حاد ورائحة اللوز المر.",
+        "يُعالج إسعافياً بالهيدروكسوكوبالامين أو مجموعة ترياق السيانيد المتضمنة نتريت الصوديوم وثيوكبريتات الصوديوم."
+    ],
+    "English": [
+        "A severe acute, rapidly fatal cellular poison contracted from residential structure fire smoke inhalation or gold electroplating chemicals.",
+        "Binds avidly to the ferric iron (Fe3+) in mitochondrial cytochrome c oxidase, abruptly arresting cellular oxidative phosphorylation.",
+        "Cells become incapable of utilizing oxygen despite rich arterial saturation, precipitating catastrophic histotoxic cellular hypoxia.",
+        "Characterized by arterialization of venous blood (bright pink venous blood), extreme lactic acidosis, and a faint bitter almond scent.",
+        "Treated with the immediate administration of hydroxocobalamin, or the traditional cyanide antidote kit (sodium nitrite and sodium thiosulfate)."
+    ]
+  },
+  "w499": {
+    "Arabic": [
+        "دواء ترياقي وريدي حديث يمثل الخط العلاجي الأول والآمن لإنقاذ ضحايا التسمم بغاز السيانيد الناتج عن حرائق الأماكن المغلقة.",
+        "هو طليعة لفيتامين B12 يحتوي على ذرة كوبالت مركزية ترتبط بأيون السيانيد بقوة تفوق ألفة إنزيمات الميتوكوندريا.",
+        "يتحد مع السيانيد ليشكل مركباً مستقراً غير سام يُعرف باسم السيانوكوبالامين (فيتامين B12 الطبيعي) يُطرح بسهولة في البول.",
+        "يتميز بأمانه الفائق عند ضحايا الحرائق لعدم تسببه في تكوين الميت-هيموجلوبين أو خفض ضغط الدم.",
+        "يسبب أثراً جانبياً مؤقتاً غير ضار يتمثل في تلون الجلد وبول المريض باللون الأحمر القرمزي الداكن لعدة أيام."
+    ],
+    "English": [
+        "A frontline parenteral antidote formulation designated for emergency management of acute cyanide toxicity from enclosed fire smoke.",
+        "A vitamin B12 precursor containing a central cobalt ion that binds cyanide with higher affinity than cytochrome c oxidase.",
+        "Directly coordinates cyanide to synthesize cyanocobalamin (standard non-toxic vitamin B12), which is safely cleared by renal filtration.",
+        "Safe for victims with concurrent carbon monoxide exposure because it does not compromise hemoglobin oxygen carriage or generate methemoglobin.",
+        "Produces a benign, transient, striking deep reddish-purple chromaturia and cutaneous erythema persisting for several days."
+    ]
+  },
+  "w500": {
+    "Arabic": [
+        "غاز سام خانق وخانق للخلايا يشتهر برائحته النفاذة الكريهة الشبيهة برائحة البيض الفاسد في التراكيز المنخفضة.",
+        "ينبعث كلاسيكياً في شبكات الصرف الصحي، حقول النفط، وحفر التخمر العضوي لفضلات الحيوانات.",
+        "يسبب شللاً سريعاً وخادعاً للعصب الشمي عند الارتفاع الطفيف في تركيزه مما يفقد الضحية القدرة على تحسس الخطر.",
+        "يثبط إنزيم سيتوكروم أوكسيداز بالميتوكوندريا بطريقة مماثلة لآلية عمل السيانيد مسبباً اختناقاً خلوياً وانهياراً عصبياً صاعقاً.",
+        "يؤدي إلى سقوط مفاجئ وفقدان فوري للوعي فيما يعرف بظاهرة السقوط الخاطف (Knockdown phenomenon) وموت فوري."
+    ],
+    "English": [
+        "A toxic asphyxiant gas infamously recognizable at low atmospheric concentrations by its pungent odor of rotten eggs.",
+        "Encountered as an occupational hazard in sewage systems, petroleum refineries, manure slurry pits, and volcanic geothermal vents.",
+        "Rapidly induces olfactory fatigue and paralysis at elevated levels, deceptively extinguishing its own warning odor before poisoning victims.",
+        "Arrests mitochondrial aerobic cellular respiration by inhibiting cytochrome c oxidase in a manner analogous to cyanide toxicity.",
+        "Triggers instant loss of consciousness and sudden collapse upon inhalation, known clinically as the 'knockdown' phenomenon."
+    ]
+  },
+  "w501": {
+    "Arabic": [
+        "حالة طوارئ مهددة للحياة تنجم عن التعاطي المفرط للمسكنات الأفيونية أو المخدرات المحظورة كالهيروين والفنتانيل والمورفين.",
+        "تتميز بالثالوث الكلاسيكي للأفيونات: تثبيط الجهاز العصبي والغيبوبة، تضيق حدقتي العين كرأس الدبوس، وتثبيط حاد في التنفس.",
+        "تؤدي إلى هبوط عدد مرات التنفس إلى أقل من 4-6 أنفاس في الدقيقة مسببة زرقة ونقص أكسجة دماغي مميت وتوقف التنفس.",
+        "قد تتعقد الجرعات العالية بتجمع سوائل غير قلبي في الرئتين وتلف دماغي ناقص الأكسجين وانحلال في ألياف العضلات.",
+        "تستجيب بشكل درامي ومدهش لحقن ترياق النالوكسون النوعي الذي يستعيد وعي وتنفس المريض خلال ثوان معدودة."
+    ],
+    "English": [
+        "A life-threatening toxicological emergency caused by excessive consumption of prescription opioids or illicit narcotics such as heroin and fentanyl.",
+        "Defined by the classical narcotic toxidrome triad: profound central nervous system depression, pinpoint miosis, and marked respiratory depression.",
+        "Respiratory frequency plummets below four to six breaths per minute, culminating in severe hypercapnia, cyanosis, and fatal respiratory arrest.",
+        "Severe presentations can develop non-cardiogenic pulmonary edema, diffuse hypoxic encephalopathy, and compartment syndrome.",
+        "Dramatically and promptly reversed by titrated administration of the competitive opioid receptor antagonist naloxone."
+    ]
+  },
+  "w502": {
+    "Arabic": [
+        "دواء ترياقي نوعي منقذ للحياة يعمل كمضاد تنافسي خالص لمستقبلات الأفيونات في الجهاز العصبي خاصة مستقبلات ميو (Mu).",
+        "يستخدم كعلاج طارئ لعكس التثبيط التنفسي والغيبوبة الناجمة عن الجرعات الزائدة من الهيروين أو الفنتانيل أو المورفين.",
+        "يستعيد المريض وعيه وقدرته على التنفس التلقائي خلال دقيقة إلى دقيقتين من حقنه بالوريد أو رشه بالأنف.",
+        "يمتلك عمر نصف قصيراً نسبياً (نحو 30 إلى 90 دقيقة) مما يستوجب مراقبة المريض خوفاً من عودة الغيبوبة مع الأفيونات طويلة المفعول.",
+        "قد يؤدي إعطاؤه بجرعة كبيرة ومباغتة للمدمنين إلى إثارة متلازمة انسحاب أفيوني حادة وصاخبة مع هياج وألم شديد."
+    ],
+    "English": [
+        "A lifesaving specific pharmaceutical antidote that acts as a pure competitive antagonist at central opioid receptors, chiefly mu.",
+        "The frontline emergency therapy for rapidly reversing coma and life-threatening hypoventilation caused by natural and synthetic opioids.",
+        "Restores spontaneous respiratory drive and awakens an obtunded patient within one to two minutes via intravenous, intramuscular, or intranasal routes.",
+        "Has a relatively short elimination half-life (30-90 minutes), predisposing patients to recurrent narcosis when challenged with long-acting opioids.",
+        "Precipitates acute, severe opioid withdrawal symptoms (agitation, vomiting, rhinorrhea, piloerection) if administered too rapidly in dependent users."
+    ]
+  },
+  "w503": {
+    "Arabic": [
+        "تسمم دوائي شائع ينجم عن تناول جرعات مفرطة من الأدوية المنومة والمهدئة كالديازيبام واللورازيبام والألبرازولام.",
+        "تعزز هذه الأدوية التأثير التثبيطي للناقل العصبي غابا (GABA) عبر زيادة تكرار فتح قنوات الكلوريد في الخلايا العصبية.",
+        "تتظاهر سريرياً بنعاس شديد، رتة وصعوبة في نطق الكلام، ترنح واختلال في التوازن، مع استقرار نسبي في العلامات الحيوية بمفردها.",
+        "تتضاعف خطورتها وتتحول إلى تثبيط تنفسي مميت وغيبوبة عميقة إذا تم تعاطيها بالمشاركة مع الكحول أو الأفيونات.",
+        "يُعالج الحالات الانتقائية الشديدة بترياق الفلومازينيل الوريدي مع الحذر التام من إثارة التشنجات العصبية."
+    ],
+    "English": [
+        "A frequent sedative-hypnotic drug overdose resulting from excessive ingestion of anxiolytics such as diazepam, lorazepam, or alprazolam.",
+        "Potentiates the inhibitory action of gamma-aminobutyric acid (GABA) by increasing the opening frequency of neuronal chloride channels.",
+        "Classic presentation includes marked somnolence, slurred speech, cerebellar ataxia, and hyporeflexia with relatively stable vital signs alone.",
+        "Morbidity escalates dramatically into fatal respiratory depression and profound unresponsiveness when co-ingested with ethanol or opioids.",
+        "Reversible in strictly selected non-tolerant presentations using the competitive benzodiazepine receptor antagonist flumazenil."
+    ]
+  },
+  "w504": {
+    "Arabic": [
+        "دواء ترياقي نوعي يعمل كمضاد تنافسي يرتبط بموقع البنزوديازيبين على معقد مستقبلات GABA-A العصبية.",
+        "يستخدم لعكس التخدير والتثبيط العصبي الناجم عن الأدوية المهدئة بعد العمليات الجراحية والتنظيرية.",
+        "يجب استخدامه بحذر شديد جداً في غرف الطوارئ لما يحمله من خطر إثارة تشنجات صرعية مستعصية يصعب علاجها.",
+        "يُمنع منعاً باتاً استخدامه في مرضى الصرع أو في حالات التسمم المختلط المصحوبة بمضادات الاكتئاب ثلاثية الحلقات.",
+        "يمتلك فترة مفعول قصيرة تستوجب مراقبة المريض المستمرة لمنع عودة النوم والتهدئة بعد زوال تأثير الجرعة."
+    ],
+    "English": [
+        "A specific pharmaceutical antagonist that competitively blocks the benzodiazepine binding site on the central GABA-A receptor complex.",
+        "Indicated for the deliberate reversal of conscious sedation induced by therapeutic benzodiazepines following minor surgical or endoscopic procedures.",
+        "Carries a major black box warning in overdose settings due to its high propensity to provoke refractory status epilepticus.",
+        "Strictly contraindicated in epileptic patients, chronic benzodiazepine-dependent users, or co-ingestions involving tricyclic antidepressants.",
+        "Exhibits a very short duration of action, requiring vigilant monitoring for resedation as the antagonist wears off."
+    ]
+  },
+  "w505": {
+    "Arabic": [
+        "تسمم دوائي قلبي وعصبي بالغ الخطورة ينجم عن الجرعات الزائدة من أدوية الاكتئاب الكلاسيكية كالأميتريبتيلين والإميبرامين.",
+        "يحصر قنوات الصوديوم السريعة في عضلة القلب وقنوات البوتاسيوم ومستقبلات الكولين ومستقبلات ألفا الأدرينالية.",
+        "يظهر تخطيط القلب اتساعاً تدريجياً في مركب QRS ليتجاوز 100 إلى 160 مليمتر ثانية وانحراف المحور وانقلاب موجة R في مشتق aVR.",
+        "يؤدي سريعاً إلى ثالوث قاتل من اضطرابات النظم البطينية، هبوط الضغط الانتصابي الصادم، والنوبات التشنجية المتكررة.",
+        "يمثل محلول بيكربونات الصوديوم الوريدي الترياق المنقذ للحياة حيث يعادل حصر قنوات الصوديوم ويعدل حماض الدم."
+    ],
+    "English": [
+        "A notoriously lethal psychotropic drug toxicity resulting from intentional overdose of traditional tricyclic agents like amitriptyline.",
+        "Mechanistically blocks fast myocardial sodium channels, cardiac potassium channels, muscarinic receptors, and peripheral alpha-1 adrenoceptors.",
+        "Classic ECG hallmarks demonstrate progressive QRS prolongation exceeding 100-160 ms, rightward axis shift, and a prominent R wave in lead aVR.",
+        "Leads to a deadly clinical triad of fatal ventricular dysrhythmias, refractory shock from systemic vasodilation, and refractory seizures.",
+        "Intravenous hypertonic sodium bicarbonate serves as the life-saving antidote by overwhelming sodium channel blockade and alkalinizing blood."
+    ]
+  },
+  "w506": {
+    "Arabic": [
+        "محلول قلوي مفرط التوتر يُستخدم في طب السموم والطوارئ لعلاج التسممات القلبية وبعض حالات الحماض الدموي.",
+        "يعمل كترياق نوعي أول لسموم حاصرات قنوات الصوديوم القلبية كأدوية الاكتئاب ثلاثية الحلقات ومضادات اللانظمية.",
+        "يوفر تركيزاً عالياً من أيونات الصوديوم يتغلب على حصار القنوات، ويرفع درجة حموضة الدم مما يقلل ارتباط الدواء بالأنسجة.",
+        "يُستخدم في قلوية البول القسرية (Alkaline diuresis) لتسريع طرح الأدوية الحمضية الضعيفة كالأسبرين والباربيتورات عبر الكلى.",
+        "يُعطى وريدياً مع مراقبة غازات الدم لتعديل درجة الحموضة (pH) لتصل بين 7.45 إلى 7.55 مع الحذر من نقص البوتاسيوم."
+    ],
+    "English": [
+        "A parenteral hypertonic alkalinizing agent employed in emergency toxicology to reverse cardiotoxicity and facilitate renal drug clearance.",
+        "Acts as the definitive antidote for sodium channel-blocking poisonings, notably tricyclic antidepressants, diphenhydramine, and quinidine.",
+        "Provides an extracellular sodium load that displaces drug molecules from cardiac channels while systemic alkalinization neutralizes toxic binding.",
+        "Utilized for urine alkalinization to dramatically accelerate the renal elimination of weak acids including salicylates and phenobarbital.",
+        "Titrated to maintain a systemic arterial pH between 7.45 and 7.55 while closely monitoring and reallocating serum potassium levels."
+    ]
+  },
+  "w507": {
+    "Arabic": [
+        "تسمم دوائي خطير ينجم عن استخدام دواء الليثيوم المثبت للمزاج في علاج الاضطراب ثنائي القطب بسبب ضيق نافذته العلاجية.",
+        "يحدث التسمم المزمن بسهولة عند إصابة المريض بالجفاف أو نقص الصوديوم أو تناول أدوية مدرات البول ومسكنات NSAIDs.",
+        "يتظاهر عصبياً برعاش خشن واسع في اليدين، ترنح في المشي، رتة في الكلام، واختلاجات عضلية قد تتطور لغيبوبة واعتلال مخي.",
+        "يؤدي على المدى الطويل إلى حدوث السكري الكاذب كلوي المنشأ (Nephrogenic diabetes insipidus) مع كثرة التبول والعطش الشديد.",
+        "تعتبر جلسات الغسيل الكلوي الدموي الإسعافية الوسيلة الحاسمة والفعالة لتخليص الجسم من مستوياته السامة المرتفعة."
+    ],
+    "English": [
+        "A serious heavy cation intoxication complicating lithium mood-stabilizer therapy in bipolar disorder due to its very narrow therapeutic index.",
+        "Chronic toxicity commonly precipitates following dehydration, dietary sodium restriction, or concurrent initiation of thiazide diuretics or NSAIDs.",
+        "Presents with progressive neurotoxicity: coarse hand tremors, hyperreflexia, cerebellar ataxia, slurred speech, seizures, and encephalopathy.",
+        "Frequently impairs renal collecting duct responsiveness to vasopressin, manifesting with nephrogenic diabetes insipidus, polyuria, and polydipsia.",
+        "Hemodialysis constitutes the definitive, highly effective extracorporeal removal modality in severe acute-on-chronic poisoning."
+    ]
+  },
+  "w508": {
+    "Arabic": [
+        "تسمم دوائي حاد وشائع ينجم عن الجرعات المفرطة من عقار الأسبرين أو مركبات دهان المفاصل المحتوية على ساليسيلات الميثيل.",
+        "يحفز مركز التنفس في المخ مسبباً فرط تنفس وقلاء تنفسي أولي، يتبعه انفصال أكسدة الميتوكوندريا وحماض أيضي مرتفع الفجوة.",
+        "ينتج عنه اضطراب حمضي قاعدي مركب فريد من نوعه يجمع بين القلاء التنفسي والحماض الأيضي في آن واحد.",
+        "العلامة المبكرة الكلاسيكية للتسمم الخفيف هي طنين الأذن المميز (Tinnitus) مع غثيان ودوخة وتعرق وارتفاع في حرارة الجسم.",
+        "يُعالج بإعطاء بيكربونات الصوديوم الوريدية لإجراء قلوية البول ومنع اختراق الساليسيلات للحاجز الدموي الدماغي، مع اللجوء للغسيل الكلوي."
+    ],
+    "English": [
+        "A common, life-threatening overdose of acetylsalicylic acid (aspirin) or topical methyl salicylate liniments.",
+        "Directly stimulates medullary respiratory centers driving primary respiratory alkalosis, followed by mitochondrial uncoupling and high anion gap metabolic acidosis.",
+        "Yields a pathognomonic, complex mixed acid-base disturbance characterized by simultaneous respiratory alkalosis and metabolic acidosis.",
+        "Early mild toxicity is heralded by prominent bilateral tinnitus, tachypnea, nausea, hyperpyrexia, and diaphoresis.",
+        "Managed with intravenous sodium bicarbonate to achieve urinary alkalinization and trap salicylate ions, reserving hemodialysis for severe poisoning."
+    ]
+  },
+  "w509": {
+    "Arabic": [
+        "تقنية علاجية في طب السموم تستهدف تسريع طرح بعض الأدوية السامة عبر الكلى بالتلاعب بدرجة حموضة البول.",
+        "ترتكز على ظاهرة الحبس الأيوني (Ion trapping)؛ حيث يؤدي رفع قلوية البول إلى تأيين الأحماض الضعيفة ومنع إعادة امتصاصها.",
+        "تتحول جزيئات الدواء في الأنابيب الكلوية القلوية إلى صورة مشحونة مستقطبة تعجز عن عبور خلايا الأنابيب وتُطرد في البول.",
+        "تُعد الإجراء العلاجي الأساسي لتطهير الجسم في حالات التسمم بالأسبرين والباربيتورات ومبيدات الفينوكسي.",
+        "تتطلب إعطاء بيكربونات الصوديوم بالتسريب الوريدي المستمر مع الحفاظ على درجة قلوية البول بين 7.5 إلى 8.5 وتعويض البوتاسيوم."
+    ],
+    "English": [
+        "An elimination-enhancing modality in clinical toxicology designed to accelerate renal excretion of weak acids by manipulating urinary pH.",
+        "Operates on the pharmacological principle of ion trapping: raising urinary pH converts lipid-soluble non-ionized weak acids into charged ions.",
+        "Charged ionized molecules are impermeable to the renal tubular lipid membrane, preventing back-diffusion and trapping the toxin for excretion.",
+        "Standard of care for enhancing the clearance of weak acid intoxicants, classically salicylates, phenobarbital, and chlorpropamide.",
+        "Achieved by continuous infusion of sodium bicarbonate aiming for a target urine pH of 7.5 to 8.5 while aggressively supplementing potassium."
+    ]
+  },
+  "w510": {
+    "Arabic": [
+        "السبب الأكثر شيوعاً على الإطلاق لحدوث الفشل الكبدي الصاعق في غرف الطوارئ نتيجة تناول جرعات زائدة من مسكنات الباراسيتامول.",
+        "تستنفد الجرعة العالية مخزون الجلوتاثيون الكبدي فيتراكم المستقلب السام التفاعلي المعروف باسم نابكي (NAPQI).",
+        "يقوم المستقلب السام بالارتباط التساهمي ببروتينات خلايا الكبد مسبباً نخراً نسيجياً صاعقاً في المنطقة الكبدية المركزية (Centrilobular necrosis).",
+        "تمر الحالة بفترة خادعة من الهدوء المبدئي مدتها 24 ساعة يعقبها ارتفاع هائل في إنزيمات الكبد (AST/ALT) يتجاوز آلاف الوحدات.",
+        "يُعالج فورياً بالترياق النوعي المنقذ للحياة إن-أسيتيل سيستئين (NAC) لاستعادة مخزون الجلوتاثيون وحماية الكبد."
+    ],
+    "English": [
+        "The leading etiology of drug-induced acute severe acute liver failure in emergency departments, triggered by supratherapeutic paracetamol ingestion.",
+        "Excessive doses exhaust hepatic glutathione stores, permitting accumulation of the highly reactive toxic electrophile NAPQI.",
+        "NAPQI binds covalently to hepatic macromolecules, causing devastating centrilobular zone III necrosis and mitochondrial failure.",
+        "Features a notoriously deceptive initial 24-hour quiescent phase before aminotransferase enzymes (ALT and AST) surge into tens of thousands.",
+        "Managed specifically with the lifesaving antidote N-acetylcysteine (NAC) which replenishes glutathione stores and conjugates NAPQI."
+    ]
+  },
+  "w511": {
+    "Arabic": [
+        "دواء ترياقي نوعي حيوي مشتق من الحمض الأميني سيستئين يمثل الترياق المعياري للتسمم بالباراسيتامول.",
+        "يقوم بتعويض وتجديد مخزون الجلوتاثيون (Glutathione) في خلايا الكبد، مما يتيح معادلة المستقلب السام وتطهير الكبد.",
+        "يوفر حماية شبه كاملة بنسبة 100 بالمئة من الفشل الكبدي إذا تم البدء في إعطائه خلال الساعات الثماني الأولى من التسمم.",
+        "يُعطى وريدياً ببروتوكول تسريب محدد على مدى 21 ساعة، أو فموياً برائحة البيض المميزة الكبريتية.",
+        "يمتلك أيضاً خصائص مذيبة للمخاط في أمراض الجهاز التنفسي وخصائص مضادة للأكسدة في اعتلالات الكلى."
+    ],
+    "English": [
+        "A specific amino acid derivative antidote providing the definitive therapy for acetaminophen (paracetamol) hepatotoxicity.",
+        "Acts as a glutathione precursor, supplying cysteine to replenish intracellular hepatic glutathione stores and directly conjugate toxic NAPQI.",
+        "Provides virtually 100% hepatoprotection if initiated within eight hours post-acute paracetamol overdose.",
+        "Administered parenterally through a 21-hour intravenous infusion protocol, or orally through a 72-hour regimen with a distinctive sulfurous odor.",
+        "Possesses additional clinical utility as a mucolytic agent in respiratory disease and a free radical scavenger."
+    ]
+  },
+  "w512": {
+    "Arabic": [
+        "رسم بياني وتخطيطي إكلينيكي معتمد عالمياً لتقييم خطورة التسمم بالباراسيتامول وتحديد الحاجة لإعطاء الترياق النوعي.",
+        "يربط بين تركيز الباراسيتامول في مصل الدم وعدد الساعات المنقضية منذ تناول الجرعة السامة الحادة.",
+        "يُشترط لتطبيقه أن يكون التسمم قد حدث بجرعة واحدة حادة، وأن تكون العينة قد سُحبت بعد مرور أربع ساعات على الأقل من البلع.",
+        "يتضمن خط علاج معتمد يبدأ من تركيز 150 ميكروجرام لكل مليلتر عند الساعة الرابعة؛ وإذا وقعت القراءة فوق الخط يُعطى الترياق فوراً.",
+        "لا يمكن استخدامه في حالات التسمم المزمن التراكمي أو عند تعاطي المستحضرات ممتدة المفعول أو عند جهل وقت التناول."
+    ],
+    "English": [
+        "An internationally established clinical nomogram utilized to assess hepatotoxicity risk and guide antidote administration following paracetamol ingestion.",
+        "Plots serum paracetamol concentrations against the exact time elapsed in hours since a single acute overdose.",
+        "Valid exclusively for single acute ingestions and requires that serum levels be drawn at least four hours post-ingestion to allow absorption.",
+        "Features a standardized treatment line originating at 150 mcg/mL at 4 hours; concentrations plotting on or above the line dictate immediate NAC.",
+        "Cannot be applied to chronic repetitive supratherapeutic ingestions, unknown times of ingestion, or extended-release formulations."
+    ]
+  },
+  "w513": {
+    "Arabic": [
+        "نبات بري سام شهير ينتمي للعائلة الباذنجانية يحتوي على قلويدات طبيعية قوية مضادة للكولين كالأتروبين والسكوبولامين.",
+        "يتميز بثمار كروية سوداء لامعة تشبه الكرز تجذب الأطفال لتناولها فتحدث التسمم الحاد.",
+        "يسبب شللاً في المستقبلات المسكارينية في الجهاز العصبي، فيتوقف إفراز العرق واللعاب وتتسع حدقتا العينين بشدة.",
+        "يترافق مع متلازمة كلاسيكية: سخونة واحمرار بالجلد، جفاف شديد، اتساع الحدقة وازدواج الرؤية، هذيان وهلوسة واهتياج شديد.",
+        "يُعالج في حالات التسمم الشديدة والمصحوبة بهذيان بالدواء الترياقي فوسوستيجمين تحت المراقبة القلبية المستمرة."
+    ],
+    "English": [
+        "An infamous perennial plant belonging to the Solanaceae family rich in potent naturally occurring anticholinergic tropane alkaloids.",
+        "Produces attractive, glossy, sweet-tasting black berries resembling cherries that commonly entice and poison foraging children.",
+        "Competitively blocks central and peripheral muscarinic acetylcholine receptors, abruptly drying all exocrine bodily secretions.",
+        "Induces the classic toxidrome: hot as a hare, dry as a bone, red as a beet, blind as a bat, and mad as a hatter.",
+        "Severe poisoning accompanied by refractory delirium or tachyarrhythmias is managed with the tertiary carbamate antidote physostigmine."
+    ]
+  },
+  "w514": {
+    "Arabic": [
+        "متلازمة سريرية حادة تنشأ عن تثبيط وحصار مستقبلات الأسيتيل كولين المسكارينية بفعل الأدوية أو النباتات السامة.",
+        "تحدث إثر الجرعات المفرطة من الأتروبين، مضادات الهيستامين، مضادات الذهان، الأدوية المضادة للاكتئاب، أو نبات الداتورا.",
+        "تُحفظ كلاسيكياً بالبيت المشهور: أعمى كالخفاش (اتساع الحدقة)، مجنون كصانع القبعات (هذيان)، أحمر كالبنجر، جاف كالعظم، وساخن كالأرنب.",
+        "يتميز الجلد بكونه جافاً ودافئاً ومحمراً مع انعدام كامل لإفراز العرق، مترافقاً مع احتباس حاد للبول وتسارع نبضات القلب.",
+        "يفرَّق عن التسمم المحاكي للسمبثاوي (Sympathomimetic) بجفاف الإبطين والجلد التام مقارنة بالتعرق الغزير في الكوكايين والأمفيتامين."
+    ],
+    "English": [
+        "A common clinical toxidrome precipitated by competitive blockade of muscarinic acetylcholine neurotransmission.",
+        "Frequently triggered by overdoses of atropine, first-generation antihistamines, antiparkinsonian agents, cyclobenzaprine, or Datura plants.",
+        "Remembered by the classical medical mnemonic: blind as a bat, mad as a hatter, red as a beet, hot as a hare, and dry as a bone.",
+        "Physical examination reveals marked mydriasis, absent axillary sweat, dry mucous membranes, acute urinary retention, and tachycardia.",
+        "Crucially differentiated from sympathomimetic toxicity (cocaine, amphetamines) by completely dry skin and absent diaphoresis."
+    ]
+  },
+  "w515": {
+    "Arabic": [
+        "دواء ترياقي نوعي ينتمي لمثبطات إنزيم أسيتيل كولين إستراز القابلة للعكس والمستخلصة من حبوب الكالابار.",
+        "يتميز بكونه أميناً ثالثياً غير مشحون (Tertiary amine) يستطيع عبور الحاجز الدموي الدماغي بفاعلية لعكس الهذيان المركزي.",
+        "يُستخدم كعلاج إسعافي منقذ لعكس الهذيان والتسمم الحاد بمضادات الكولين كجرعات الأتروبين الزائدة ونبات البلادونا.",
+        "يرفع تركيز الأسيتيل كولين في المشابك العصبية ليتغلب تنافسياً على حصر المستقبلات في الجهازين العصبيين المركزي والمحيطي.",
+        "يُحظر استخدامه منعاً باتاً في حالات التسمم بمضادات الاكتئاب ثلاثية الحلقات لتسببه في توقف القلب وانحصار التوصيل الكهربائي."
+    ],
+    "English": [
+        "A specific pharmaceutical carbamate antidote acting as a reversible inhibitor of acetylcholinesterase, historically isolated from Calabar beans.",
+        "Uniquely structured as a lipophilic tertiary amine capable of readily crossing the blood-brain barrier to reverse central anticholinergic delirium.",
+        "The definitive antidote indicated for severe central and peripheral anticholinergic toxicity, such as massive atropine or Datura poisoning.",
+        "Surges endogenous synaptic acetylcholine levels to outcompete muscarinic receptor blockade in both brain and periphery.",
+        "Strictly contraindicated in suspected tricyclic antidepressant overdose due to high risks of fatal asystole, heart block, and seizures."
+    ]
+  },
+  "w516": {
+    "Arabic": [
+        "تسمم قلويدي شديد الخطورة يستخلص من بذور شجرة الجوز القيء ويستخدم تاريخياً كمبيد للقوارض والجرذان.",
+        "يعمل كمضاد تنافسي قوي يحصر مستقبلات الجلايسين التثبيطية في القرن الأمامي للحبل الشوكي وجذع الدماغ.",
+        "يؤدي حصر التثبيط العصبي إلى إطلاق عصبي حركي عنيف غير مقيد مسبباً تشنجات عضلية تكززية مؤلمة للغاية عند أقل محفز حسي.",
+        "يتخذ جسد المصاب وضعية التقوس الظهري الصدمي (Opisthotonos) مع ابتسامة تشنجية لا إرادية ساخرة تعرف باسم الابتسامة السردونية.",
+        "يظل المريض كامل الوعي والإدراك ويتعذب بآلام التشنجات العنيفة حتى يلقى حتفه بالاختناق وتشنج عضلات التنفس."
+    ],
+    "English": [
+        "A lethal alkaloid neurotoxin extracted from the seeds of the Strychnos nux-vomica tree, historically employed as a rodenticide.",
+        "Competitively antagonizes inhibitory glycine receptors located in the anterior horn motor cells of the spinal cord and brainstem.",
+        "Elimination of post-synaptic glycinergic inhibition allows sensory stimuli to trigger massive, uncontrolled, agonizing motor contractions.",
+        "Induces dramatic hyperextension muscle spasms known as opisthotonos alongside a pathognomonic facial grimace termed risus sardonicus.",
+        "The patient remains completely conscious, experiencing excruciating pain during recurrent spasms until dying from asphyxia."
+    ]
+  },
+  "w517": {
+    "Arabic": [
+            "التهاب شائع جداً يصيب الغشاء المخاطي الشفاف المبطن للجفون والمغطي لصلبة العين.",
+            "يظهر باحمرار صريح في بياض العين مع حكة شديدة وإفرازات مائية أو قيحية تلتصق بها الجفون صباحاً.",
+            "النوع الفيروسي منه غالباً ما تسببه الفيروسات الغدية (Adenovirus) ويرتبط بضخامة العقد اللمفاوية أمام الأذن.",
+            "النوع البكتيري يفرز صديداً مائلاً للصفرة ويعالج بقطرات المضادات الحيوية الموضعية مثل التوبراميسين.",
+            "النوع التحسسي يتميز بحكة عينية لا تطاق مع تورم الجفون ويستجيب لمضادات الهيستامين ومثبتات الخلايا البدينة."
+    ],
+    "English": [
+            "Diffuse hyperemia and inflammation involving the transparent mucous membrane lining the inner eyelids and anterior sclera.",
+            "Classically presents with ocular injection, gritty sensation, and morning eyelid crusting with discharge.",
+            "Viral etiologies are frequently driven by adenoviruses, typically featuring preauricular lymphadenopathy.",
+            "Bacterial forms produce thick mucopurulent discharge that clears with topical broad-spectrum fluoroquinolones or aminoglycosides.",
+            "Allergic variants present with intense pruritus, bilateral chemosis, and seasonal exacerbations responsive to topical mast cell stabilizers."
+    ]
+  },
+  "w518": {
+    "Arabic": [
+            "عيب انكساري في العين ناجم عن عدم انتظام انحناء القرنية أو العدسة في المستويات المختلفة.",
+            "بدلاً من تركيز الضوء في نقطة بؤرية دقيقة واحدة على الشبكية، تتشكل نقطتان بؤريتان منفصلتان.",
+            "يشبه شكل القرنية المصابة به كرة الركبي البيضاوية بدلاً من الكرة المستديرة تماماً.",
+            "يعاني المصاب من تشوش الرؤية وازدواجيتها الخفيفة وإجهاد العين والصداع عند التركيز في القراءة.",
+            "يتم تصحيحه طبياً باستخدام عدسات أسطوانية (Cylindrical lenses) أو جراحة الليزك."
+    ],
+    "English": [
+            "A common refractive error caused by an asymmetric or toric curvature of the anterior refracting optical surface.",
+            "Light rays entering the eye in orthogonal meridians fail to converge onto a single focal point upon the sensory retina.",
+            "The corneal geometry resembles the steep-and-flat contours of a rugby ball rather than a spherical dome.",
+            "Clinical manifestations include meridional blurring, ghosting of characters, visual fatigue, and frontal cephalalgia.",
+            "Optically corrected utilizing toric or cylindrical spectacle lenses or customized topography-guided refractive keratectomy."
+    ]
+  },
+  "w519": {
+    "Arabic": [
+            "اضطراب في المحاذاة الحركية بين العينين حيث لا تنظر كلتا المقلتين إلى نفس النقطة في وقت واحد.",
+            "يحدث نتيجة خلل في التوازن بين العضلات خارج المقلة الستة أو إصابة الأعصاب القحفية المغذية لها (III, IV, VI).",
+            "قد يكون الانحراف للداخل (الإنسي Esotropia) أو للخارج (الوحشي Exotropia) أو للأعلى.",
+            "إهمال علاجه في الطفولة المبكرة يؤدي لفقدان دائم في القدرة البصرية يعرف بكسل العين (Amblyopia).",
+            "يقيّم باختبار التغطية والكشف (Cover-uncover test) ويعالج بالنظارات أو تغطية العين السليمة أو الجراحة."
+    ],
+    "English": [
+            "A binocular ocular alignment disorder wherein the visual axes do not intersect simultaneously at the fixation point.",
+            "Results from neuromuscular dysfunction of the six extraocular muscles or cranial nerve palsies (CN III, IV, or VI).",
+            "Subclassified based on deviation vector into convergent, divergent, hypertropic, or hypotropic manifest misalignments.",
+            "Failure to correct the deviation during childhood neurodevelopment leads directly to cortical amblyopia.",
+            "Diagnosed with the prism cover test and Hirschberg corneal light reflex; managed with occlusion patching, prisms, or muscle resection."
+    ]
+  },
+  "w520": {
+    "Arabic": [
+            "حالة طارئة في طب العيون تتمثل في تآكل عميق بنسيج النسيج الطلائي واللحمة الأمامية لسطح العين.",
+            "تنتج عادة عن عدوى بكتيرية كبكتيريا الزائفة الزنجارية (Pseudomonas) المرتبطة بالعدسات اللاصقة.",
+            "يشكو المريض من ألم مبرح، وخوف شديد من الضوء (Photophobia)، وإحساس بوجود جسم غريب ونقص حاد في الرؤية.",
+            "تصبغ بصبغة الفلورسين الصفراء تحت ضوء الكوبالت الأزرق لتظهر كمنطقة مضيئة خضراء متهتكة.",
+            "قد يرافقها تراكم صديد في الغرفة الأمامية للعين (Hypopyon) وتتطلب مضادات حيوية مكثفة لتجنب الانثقاب."
+    ],
+    "English": [
+            "An ophthalmologic emergency characterized by an epithelial defect with underlying stromal infiltration and necrosis.",
+            "Pseudomonas aeruginosa infection secondary to overnight contact lens wear is an aggressive and common pathogen.",
+            "Patients experience severe deep ocular agony, photophobia, foreign body sensation, and rapid vision decline.",
+            "Topical fluorescein application reveals sharply demarcated green luminescence over the stromal defect under cobalt blue filter.",
+            "Complicated by hypopyon in the anterior chamber, requiring immediate fortified topical antibiotic drops to avert globe perforation."
+    ]
+  },
+  "w521": {
+    "Arabic": [
+            "التهاب يصيب الطبقة الوعائية المصطبغة المتوسطة من مقلة العين والتي تشمل القزحية والجسم الهدبي والمشيمية.",
+            "يرتبط ارتباطاً وثيقاً بأمراض المناعة الذاتية وجينات مستضد الكريات البيضاء (HLA-B27) كالتهاب الفقار اللاصق.",
+            "يتميز بوجود احتقان هدبي circumcorneal injection حول حافة القرنية مع ضيق في الحدقة وألم يزداد عند محاولة التركيز.",
+            "الفحص بالمجهر الشقي يكشف خلايا بيضاء طافية وبروتين في الخلط المائي يشبه الدخان في شعاع الضوء (Tyndall flare).",
+            "يعالج بقطرات الكورتيكوستيرويدات الموضعية وقطرات توسيع الحدقة (Mydriatics) لمنع تكون الالتصاقات الخلفية."
+    ],
+    "English": [
+            "Inflammation targeting the vascular pigmented middle tunic of the eye, encompassing the iris, ciliary body, and choroid.",
+            "Frequently associated with systemic autoinflammatory disorders, particularly HLA-B27 spondyloarthropathies and sarcoidosis.",
+            "Exhibits circumcorneal ciliary flush, painful accommodation, photophobia, and a sluggish or miotic pupil.",
+            "Slit-lamp biomicroscopy demonstrates keratic precipitates on the endothelium and inflammatory cells floating like dust in light.",
+            "Primary management hinges on intensive topical corticosteroids paired with cycloplegic drops to prevent posterior synechiae."
+    ]
+  },
+  "w522": {
+    "Arabic": [
+            "أكثر العيوب الانكسارية شيوعاً حيث يرى الشخص الأجسام القريبة بوضوح بينما تبدو الأجسام البعيدة مشوشة وضبابية.",
+            "يحدث نتيجة استطالة المحور الأمامي الخلفي لمقلة العين أو زيادة مفرطة في القوة الكاسرة للقرنية والعدسة.",
+            "تتجمع أشعة الضوء المنكسرة أمام الشبكية بدلاً من التركيز الدقيق على سطحها.",
+            "يقوم المصاب بتضييق جفنيه لا شعورياً لتوليد فتحة صغيرة (Pinhole effect) لتحسين وضوح الرؤية البعيدة.",
+            "يتم تصحيحه باستخدام عدسات كروية مقعرة مفرقة (Concave lenses) ذات قوة سالبة."
+    ],
+    "English": [
+            "A highly prevalent refractive condition wherein proximal objects are resolved sharply while distant targets appear blurred.",
+            "Arises when the anteroposterior axial length of the globe is excessively prolonged relative to optical refractive power.",
+            "Parallel rays of incident light focus into a convergent focal plane anterior to the light-sensitive sensory retina.",
+            "Patients habitually squint their palpebral fissures to exploit the pinhole optical aperture effect and sharpen distant images.",
+            "Optically compensated by employing divergent concave (minus-diopter) lenses or photorefractive keratectomy."
+    ]
+  },
+  "w523": {
+    "Arabic": [
+            "عيب انكساري يستطيع فيه الشخص رؤية الأشياء البعيدة أفضل بكثير من قدرته على تمييز الأشياء القريبة.",
+            "يحدث عندما تكون مقلة العين أقصر من الطبيعي أو عندما تكون قوة انكسار القرنية والعدسة ضعيفة ومسطحة.",
+            "تسقط بؤرة تركيز الأشعة الضوئية في نقطة افتراضية تقع خلف شبكية العين.",
+            "يتطلب من المريض إجهاداً مستمراً في عضلة التكيف الهدبية مما يسبب إرهاق العين والصداع بعد القراءة المطولة.",
+            "يعالج ويصحح باستخدام عدسات كروية محدبة مجمعة (Convex lenses) ذات قوة قياس موجبة."
+    ],
+    "English": [
+            "A refractive disorder characterized by relative clarity of distant objects alongside distinct difficulty focusing on near tasks.",
+            "Mechanistically stems from an abnormally shortened ocular axial length or insufficient corneal-lenticular refractive power.",
+            "The focal point of incoming parallel light waves is positioned virtually behind the anatomic plane of the retina.",
+            "Mandates constant compensatory accommodative tone in younger patients, leading to asthenopia and brow-ache after reading.",
+            "Corrected through the application of convergent convex (plus-diopter) spectacle lenses or surgical refractive correction."
+    ]
+  },
+  "w524": {
+    "Arabic": [
+            "فقدان فسيولوجي تدريجي بقدرة العين على المطابقة والتكيف البصري يظهر طبيعياً بعد سن الأربعين.",
+            "ينتج عن فقدان العدسة البلورية لمرونتها وتصلب نواتها، مع ضعف تدريجي في مرونة الجسم الهدبي.",
+            "يضطر المصاب إلى مد ذراعه وإبعاد الهاتف أو الكتاب لمسافة بعيدة ليتمكن من قراءة الكلمات الدقيقة.",
+            "لا يعتبر مرضاً بل هو تغير فيزيولوجي حتمي مرتبط بعملية التقدم الطبيعي في السن لجميع البشر.",
+            "يحل ببساطة بارتداء نظارات قراءة محدبة مخصصة للمسافات القريبة أو عدسات ثنائية البؤرة (Bifocal)."
+    ],
+    "English": [
+            "A universal physiological decline in ocular accommodative amplitude that typically manifests clinically after age 40.",
+            "Underpinned by age-related loss of crystalline lens elasticity and sclerosis of lens nuclear fibers.",
+            "Individuals characteristically hold reading material and digital devices at arm's length to bring small text into focus.",
+            "Represents a benign universal aging phenomenon rather than a pathological refractive aberration.",
+            "Readily remedied using positive-power reading spectacles, progressive addition lenses, or monovision contact lenses."
+    ]
+  },
+  "w525": {
+    "Arabic": [
+            "التهاب مزمن وشائع جداً يصيب حواف الجفون في منابت الرموش ومخارج غدد ميبوميوس الدهنية.",
+            "ينقسم لنوع أمامي ترتبط به بكتيريا العنقوديات وقشور الرموش، ونوع خلفي ناجم عن انسداد الغدد الدهنية.",
+            "يصاحبه شعور بالحرقة وجفاف العين، وإحساس برمل داخل الجفن، وسقوط الرموش أو تشوه نموها.",
+            "يترافق بكثرة مع أمراض جلدية مزمنة كالوردية (Rosacea) والتهاب الجلد الدهني (Seborrheic dermatitis).",
+            "يعتمد علاجه الأساسي على النظافة الصارمة لحافة الجفن بشامبو أطفال مخفف وكمادات دافئة وتدليك الغدد."
+    ],
+    "English": [
+            "A chronic, recurrent inflammatory disease affecting the eyelid margins, eyelash follicles, and meibomian gland orifices.",
+            "Categorized into anterior variants often colonized by staphylococci and posterior variants tied to meibomian gland dysfunction.",
+            "Elicits burning, ocular grittiness, hyperemic lid collars, dandruff-like flaking along lashes, and secondary dry eye.",
+            "Demonstrates significant clinical overlap with dermatologic conditions including rosacea and seborrheic dermatitis.",
+            "Foundation of treatment consists of dedicated lid hygiene, warm compresses, meibomian expression, and topical azithromycin."
+    ]
+  },
+  "w526": {
+    "Arabic": [
+            "الطبقة الشفافة المقوسة الواقعة في الجزء الأمامي من مقلة العين والتي تسمح بمرور الضوء إلى الداخل.",
+            "تعد أقوى وسط كاسر للضوء في الجهاز البصري حيث تساهم بنحو ثلثي إجمالي القوة الانكسارية للعين (نحو 43 ديوبتر).",
+            "تتكون من خمس طبقات نسيجية رئيسية (الطلائية، بومان، اللحمة، ديسميه، والبطانية)، وتعتبر خالية تماماً من الأوعية الدموية.",
+            "تحصل على الأكسجين والمغذيات مباشرة من الهواء الجوي الخارجي ومن السائل المائي في الغرفة الأمامية.",
+            "تمتلك أعلى كثافة من النهايات العصبية الحسية للألم في جسم الإنسان مما يجعل أي خدش بسيط بها مبرحاً."
+    ],
+    "English": [
+            "The transparent, convex avascular structure forming the anterior one-sixth of the outer fibrous tunic of the globe.",
+            "Accounts for approximately two-thirds of the total refractive power of the human eye (roughly 40 to 44 diopters).",
+            "Histologically organized into five distinct strata: epithelium, Bowman layer, stroma, Descemet membrane, and endothelium.",
+            "Maintains total avascular deturgescence, deriving metabolic oxygen directly from the tear film and anterior chamber aqueous humor.",
+            "Possesses the highest concentration of sensory nerve endings in the entire human body via the ophthalmic division of CN V."
+    ]
+  },
+  "w527": {
+    "Arabic": [
+            "الطبقة العصبية الداخلية المبطنة للجدار الخلفي لمقلة العين والمسؤولة عن تحويل الموجات الضوئية إلى إشارات كهروعصبية.",
+            "تحتوي على نوعين رئيسيين من المستقبلات الضوئية: العصي (Rods) للرؤية الليلية والمخاريط (Cones) للألوان ودقة التفاصيل.",
+            "تتصل بالألياف العصبية التي تلتقي لتشكل العصب القحفي الثاني الذي ينقل الإشارات إلى القشرة البصرية بالمخ.",
+            "تتغذى ترويتها الدموية من الشريان المركزي المتفرع من الشريان العيني عبر فتحة القرص البصري.",
+            "فحصها المباشر بمنظار قاع العين هو النافذة الوحيدة في جسم الإنسان التي تتيح رؤية الأوعية الدموية الدقيقة مباشرة دون جراحة."
+    ],
+    "English": [
+            "The neurosensory internal tunic of the globe that phototransduces incoming photons into electromechanical nerve impulses.",
+            "Houses two specialized photoreceptor classes: rods for scotopic low-light vision and cones for color and high-resolution photopic vision.",
+            "Axons of its ganglion cell layer converge at the optic nerve head, transmitting coded visual information to the occipital cortex.",
+            "Receives vascular supply through the central retinal artery and the underlying choriocapillaris across 10 histogenetic layers.",
+            "Direct ophthalmoscopy of its surface provides the only non-invasive clinical window to directly inspect human microvasculature."
+    ]
+  },
+  "w528": {
+    "Arabic": [
+            "الغشاء الملون الحلقي الواقع بين القرنية والعدسة، والذي يحدد لون عين الشخص بحسب تركيز صبغة الميلانين.",
+            "يحتوي في مركزه على فتحة دائرية قابلة للتغير تعرف بالحدقة (بؤبؤ العين) للتحكم في كمية الضوء الداخلة.",
+            "تضم نوعين من العضلات الملساء: العضلة المضيقّة الحلقية (السمبثاوية) والعضلة الموسعة الشعاعية.",
+            "تفصل بين الغرفة الأمامية والغرفة الخلفية لمقلة العين وتسمح بتدفق السائل المائي عبر ثقبها الأوسط.",
+            "تمتلك بصمة نسيجية فريدة بالغة التعقيد تستخدم في أنظمة التحقق البيومترية كبصمة العين الأمنية."
+    ],
+    "English": [
+            "The circular pigmented contractile diaphragm positioned in the aqueous space between the anterior cornea and crystalline lens.",
+            "Features a variable central aperture (the pupil) that modulates the volume of luminous flux reaching the retina.",
+            "Contains two intrinsic smooth muscle groups: the parasympathetically innervated sphincter pupillae and the sympathetic dilator pupillae.",
+            "Anatomically partitions the anterior and posterior chambers, allowing free trans-pupillary passage of aqueous humor.",
+            "Exhibits a chaotic, highly stable stroma-crypt pattern utilized worldwide as an unalterable biometric identification modality."
+    ]
+  },
+  "w529": {
+    "Arabic": [
+            "كتلة هلامية شفافة تملأ الفراغ الكبير الواقع بين العدسة وشبكية العين في الحجرة الخلفية للمقلة.",
+            "يشكل نحو 80% من الحجم الكلي لكرة العين ويحافظ على شكلها الكروي ويثبت الشبكية في موضعها مقابل المشيمية.",
+            "يتكون من 99% ماء مع شبكة دقيقة من ألياف الكولاجين من النوع الثاني وحمض الهيالورونيك اللزج.",
+            "مع التقدم في السن يخضع لعملية تسييل (Syneresis) قد تؤدي لانفصاله عن الشبكية وظهور خيوط طافية (ذباب طائر).",
+            "في جراحات العيون المعقدة والنزيف يمكن استئصاله واستبداله بغاز طبي أو زيت السيليكون (Vitrectomy)."
+    ],
+    "English": [
+            "An inert, optically clear hydrogel substance filling the posterior four-fifths of the globe between the lens and retinal plane.",
+            "Constitutes roughly 80% of total ocular volume, providing structural support to preserve spherical geometry and retinal apposition.",
+            "Composed predominantly of 99% water scaffolded within an extracellular network of type II collagen fibrils and hyaluronic acid.",
+            "Undergoes age-related liquefaction and collapse (syneresis), often precipitating posterior detachment perceived as entoptic floaters.",
+            "Can be surgically aspirated and replaced with balanced salt solutions, intraocular gas tampanodes, or silicone oil in vitrectomy."
+    ]
+  },
+  "w530": {
+    "Arabic": [
+            "الغلاف الخارجي الليفي الأبيض القوي الذي يغطي الخمسة أسداس الخلفية من مقلة العين.",
+            "تتكون من نسيج ضام كثيف غني بألياف الكولاجين المتشابكة بطريقة عشوائية معتمة تعطيها لونها الأبيض الناصع.",
+            "توفر الحماية الميكانيكية لمحتويات العين الداخلية الدقيقة وتحافظ على ثبات الضغط داخل المقلة.",
+            "تلتصق بسطحها الخارجي أوتار العضلات خارج المقلة الست المسؤولة عن تحريك العين في كافة الاتجاهات.",
+            "يتغير لونها للأصفر الفاقع في حالات اليرقان الخلوي الداخلي (Jaundice) نتيجة ألفة نسيجها الإيلاستيني الشديدة للبيليروبين."
+    ],
+    "English": [
+            "The dense, opaque, tough fibrous outer protective layer covering approximately five-sixths of the posterior eyeball.",
+            "Histologically structured from irregularly woven collagen type I bundles that scatter light, creating its distinct white appearance.",
+            "Maintains ocular mechanical structural integrity, resisting deformational stress and sustaining intraocular pressure.",
+            "Serves as the precise anatomic insertion platform for the tendons of all six voluntary extraocular movement muscles.",
+            "Demonstrates striking yellow discoloration (icterus) during systemic hyperbilirubinemia due to high elastin-bilirubin tropism."
+    ]
+  },
+  "w531": {
+    "Arabic": [
+            "غشاء مخاطي شفاف رقيق يبطن السطح الداخلي للجفون وينعكس ليغطي الجزء الأمامي من صلبة العين.",
+            "ينقسم تشريحياً إلى جزء جفني (Palpebral)، وجزء بصلبي يغطي بياض العين، وقبو واصل بينهما (Fornix).",
+            "يحتوي على خلايا كأسية (Goblet cells) تفرز طبقة الميوسين اللزجة الأساسية لتثبيت الدموع على القرنية.",
+            "غني بالأوعية الدموية الدقيقة والأنسجة اللمفاوية التي تلعب دوراً دفاعياً مناعياً أولياً لحماية المقلة.",
+            "يحدث به احتقان شديد وسيلان في نزلات البرد وحالات التحسس الشائعة ويعرف التهابه بالرمد."
+    ],
+    "English": [
+            "A delicate, vascularized transparent mucous membrane lining the inner eyelids and folding back over the anterior sclera.",
+            "Subdivided anatomically into palpebral, bulbar, and fornix zones ending circumferentially at the corneal limbus.",
+            "Houses mucin-secreting goblet cells essential for fabricating the basal hydrophilic layer of the precorneal tear film.",
+            "Endowed with an extensive microvascular network and mucosal-associated lymphoid tissue mediating ocular surface immunity.",
+            "Exhibits pronounced vasodilation and chemosis in response to pathogens or allergens, a hallmark of pink eye reactions."
+    ]
+  },
+  "w532": {
+    "Arabic": [
+            "عضو كروي ثنائي التحدب ومرن يقع مباشرة خلف القزحية وأمام الجسم الزجاجي في العين.",
+            "مسؤول عن قوة الانكسار المتغيرة في العين من خلال عملية المطابقة (Accommodation) للتركيز على المسافات المختلفة.",
+            "معلق في مكانه بواسطة ألياف دقيقة تسمى خيوط الزونول (Zonules) المتصلة بعضلات الجسم الهدبي.",
+            "خالٍ تماماً من الأوعية الدموية والأعصاب ويعتمد في تغذيته وشفافيته على السائل المائي المحيط به.",
+            "عتامته التدريجية مع التقدم في السن أو السكري تعرف بالمياه البيضاء ويتم استبداله بعدسة صناعية جراحياً."
+    ],
+    "English": [
+            "A transparent, biconvex, flexible, encapsulated intraocular structure suspended directly behind the iris and pupil aperture.",
+            "Enables dynamic optical focus adjustment (accommodation) for proximal objects via ciliary muscle tone modification.",
+            "Tethered circumferentially to the ciliary body by delicate radial suspensory ligaments known as the zonules of Zinn.",
+            "Completely devoid of intrinsic blood vessels and nerve supplies, relying on aqueous humor diffusion to sustain clarity.",
+            "Progressive opacification of its crystalline fibers constitutes cataracts, successfully cured via phacoemulsification."
+    ]
+  },
+  "w533": {
+    "Arabic": [
+            "منطقة مصطبغة صفراء صغيرة شديدة الأهمية تقع بالقرب من مركز شبكية العين مسؤولة عن حدة الإبصار.",
+            "تضم في مركزها النقرة المركزية (Fovea centralis) التي تحتوي على أعلى كثافة للمخاريط البصرية في العين.",
+            "مسؤولة عن الرؤية المركزية الدقيقة المستخدمة في القراءة وتمييز وجوه الأشخاص وقيادة السيارات والمهام الدقيقة.",
+            "تحتوي على صبغات الكاروتينويد (اللوتين والزياكسانثين) التي تحمي الخلايا الحساسة من أضرار الضوء الأزرق.",
+            "تلفها التدريجي لدى كبار السن يسبب فقداناً مأساوياً للرؤية المركزية مع الحفاظ على الرؤية المحيطية."
+    ],
+    "English": [
+            "An oval, yellowish pigmented area located lateral to the optic disc near the geometric posterior pole of the sensory retina.",
+            "Encloses the central fovea, boasting the highest packing density of retinal cone photoreceptors in the human organism.",
+            "Directly governs high-acuity central vision indispensable for fine reading, color appreciation, and facial recognition.",
+            "Richly imbued with xanthophyll carotenoids (lutein and zeaxanthin) filtering phototoxic high-energy blue wavelengths.",
+            "Pathologic degradation in elderly populations impairs central visual fields, hallmark of macular degenerative disorders."
+    ]
+  },
+  "w534": {
+    "Arabic": [
+            "الموقع الدائري على الشبكية الذي تتجمع عنده ألياف العصب القحفي الثاني قبل مغادرتها مقلة العين باتجاه المخ.",
+            "يمثل فسيولوجياً النقطة العمياء (Blind spot) في المجال البصري لعدم احتوائه على أي مستقبلات ضوئية.",
+            "يخرج من مركزه الشريان الشبكي المركزي ويتفرع، بينما يدخل الوريد الشبكي المركزي عائداً للجمجمة.",
+            "تورمه وامتلاء حدوده بسبب ارتفاع ضغط السائل الدماغي الشوكي داخل الجمجمة يعرف بـ (Papilledema).",
+            "اتساع التقعر في وسطه وزيادة نسبة الكأس إلى القرص (Cup-to-disc ratio) يعد علامة كلاسيكية للمياه الزرقاء."
+    ],
+    "English": [
+            "The circular pale pink retinal landmark where ganglion cell unmyelinated axons coalesce to exit the globe.",
+            "Corresponds physiological to the blind spot in visual field topography because it lacks all rods and cone photoreceptors.",
+            "Serves as the conduit through which the central retinal artery enters and the central retinal vein exits the posterior pole.",
+            "Bilateral margin blurring and elevation induced by intracranial hypertension represents life-threatening papilledema.",
+            "Progressive excavation and pathological enlargement of its central cup-to-disc ratio is pathognomonic for glaucoma."
+    ]
+  },
+  "w535": {
+    "Arabic": [
+            "خلل وراثي شائع يتميز بعدم القدرة على التمييز الدقيق بين بعض الألوان، وأشهر أنماطه الخلط بين الأحمر والأخضر.",
+            "ينتقل كصفة وراثية متنحية مرتبطة بالصبغي الجنسي X، ولذلك يصيب الذكور بنسبة أعلى بكثير من الإناث (نحو 8%).",
+            "ينتج عن غياب أو خلل وظيفي في أصباغ أحد أنواع الخلايا المخروطية الحساسة للضوء في شبكية العين.",
+            "يشخص سريرياً بسهولة في العيادات باستخدام ألواح إيشيهارا الشهيرة المكونة من نقاط لونية بداخلها أرقام.",
+            "لا يوجد علاج شافي له حالياً، لكن تتوفر نظارات ذات مرشحات بصرية خاصة تساعد على تعزيز تباين الألوان."
+    ],
+    "English": [
+            "A hereditary condition characterized by an inability or diminished capacity to accurately differentiate specific color hues.",
+            "Transmitted as an X-linked recessive trait, explaining its disproportionately high prevalence in males (approximately 8%).",
+            "Pathophysiologically stems from absent or dysfunctional opsin photopigments within red, green, or blue retinal cone cohorts.",
+            "Routinely detected during clinical testing using pseudoisochromatic Ishihara plates displaying camouflaged numerals.",
+            "Lacks pharmacological cure; managed with lifestyle adaptations and selective spectral filter notch glasses."
+    ]
+  },
+  "w536": {
+    "Arabic": [
+            "شكوى بصرية يرى فيها المريض صورتين متجاورتين أو متراكبتين لشيء واحد في نفس الوقت.",
+            "أهم خطوة تشخيصية هي التفريق بين نوع وحيد العين (يستمر عند إغلاق إحدى العينين) وثنائي العينين (يختفي عند إغلاق أي عين).",
+            "النوع ثنائي العينين ينجم عن خلل في محاذاة المقلتين بسبب شلل بأحد الأعصاب المحركة للعين (III, IV, VI) أو وهن عضلي.",
+            "الظهور المفاجئ له قد يكون علامة إنذار خطيرة على سكتة دماغية، تمدد شرياني دماغي، أو ورم في قاع الجمجمة.",
+            "يتم تقييم حركة العينين في الاتجاهات التسعة، ويستخدم منشور بصري في النظارة للتخفيف من تشويش المريض."
+    ],
+    "English": [
+            "A distressing visual perception wherein a solitary physical object is seen simultaneously as two duplicated images.",
+            "Crucially differentiated by covering one eye: monocular forms persist, whereas binocular misalignment forms resolve instantly.",
+            "Binocular variants arise from extraocular muscle dyssynergy or paresis of ocular motor cranial nerves (CN III, IV, or VI).",
+            "Hyperacute onset mandates emergency neuroimaging to exclude brainstem stroke, expanding intracranial aneurysm, or neoplasm.",
+            "Evaluated with cardinal gaze movement charting; prism spectacles or temporary unilateral occlusion afford functional relief."
+    ]
+  },
+  "w537": {
+    "Arabic": [
+            "عرض سريري يتمثل في عجز غير طبيعي وصعوبة بالغة في الرؤية عند انخفاض الإضاءة أو أثناء الليل.",
+            "يرتبط كلاسيكياً بنقص فيتامين (أ) الضروري لتصنيع صبغة الرودوبسين الحساسة للضوء في خلايا العصي الشبكية.",
+            "يعد العرض الباكر والمميز للمرض الوراثي التنكسي المعروف بالتهاب الشبكية الصباغي (Retinitis Pigmentosa).",
+            "يجد المصاب صعوبة بالغة في التكيف عند الانتقال من غرفة مضيئة إلى غرفة مظلمة ويخشى قيادة السيارة ليلاً.",
+            "إذا كان سببه نقصاً غذائياً فإنه يشفى سريعاً بإعطاء جرعات علاجية تعويضية من فيتامين أ الفموي."
+    ],
+    "English": [
+            "An impairment of visual capacity in dim lighting or scotopic darkness, well beyond physiological thresholds.",
+            "Biochemically classic for vitamin A deficiency, which starves photoreceptors of retinal rhodopsin pigment synthesis.",
+            "Serves as the earliest presenting cardinal complaint in hereditary photoreceptor dystrophies like retinitis pigmentosa.",
+            "Patients experience marked delay in dark adaptation kinetics when transitioning from bright illumination into shadows.",
+            "Promptly reverses when secondary to dietary malabsorption following high-dose therapeutic oral vitamin A supplementation."
+    ]
+  },
+  "w538": {
+    "Arabic": [
+            "إحساس بصري بوجود ومضات أو شرارات أو خيوط مضيئة خاطفة في المجال البصري دون وجود مصدر ضوء خارجي.",
+            "ينتج عن شد ميكانيكي حركي يمارسه الجسم الزجاجي المنكمش على الخلايا العصبية الحساسة لشبكية العين.",
+            "ظهوره المفاجئ والمتزايد بالتزامن مع طفو نقاط سوداء (عائمات) يستوجب فحصاً عاجلاً للشبكية لاستبعاد تمزقها.",
+            "قد يظهر أيضاً كأورة بصرية (Visual aura) مرافقة للصداع النصفي مع خطوط متعرجة متكسرة تدوم دقائق.",
+            "فحص قاع العين بالمصابع الشقي مع توسيع الحدقة إلزامي للتأكد من عدم وجود انقطاع أو انفصال شبكي يستدعي الليزر."
+    ],
+    "English": [
+            "Subjective entoptic visual phenomena characterized by spontaneous flashes, sparks, or flickers of perceived light.",
+            "Triggered by mechanical traction exerted by a collapsing or detaching posterior vitreous gel upon the sensitive neuroretina.",
+            "Sudden escalation, especially when accompanied by a shower of pigmented floaters, signals imminent retinal tear formation.",
+            "May also occur as a scintillating fortification scotoma during the spreading cortical depression of a classical migraine aura.",
+            "Demands immediate indirect ophthalmoscopy with scleral depression to rule out peripheral breaks warranting laser retinopexy."
+    ]
+  },
+  "w539": {
+    "Arabic": [
+            "التهاب يصيب النسيج الطلائي والشفاف لقرنية العين يهدد بحدوث عتامات دائمة ونقص في حدة الإبصار.",
+            "أحد أشهر أسبابه الفيروسية هو فيروس الهربس البسيط (HSV-1) الذي يحدث قرحة مميزة ذات تفرعات شجرية (Dendritic ulcer).",
+            "تسببه طفيليات الأميبا الشائكة (Acanthamoeba) في مرتدي العدسات اللاصقة عند غسلها بماء الصنبور العادي.",
+            "يتظاهر بألم عيني شديد، احمرار حاد، رهاب الضوء، وإحساس رملي حارق لا يهدأ مع زيادة في إفراز الدموع.",
+            "يمنع منعاً باتاً استخدام قطرات الكورتيزون في النوع الهربسي لتجنب انتشار الفيروس الجغرافي وانثقاب العين."
+    ],
+    "English": [
+            "Inflammatory involvement of the corneal epithelium and underlying stroma threatening permanent optical scarring.",
+            "Herpes simplex virus (HSV-1) is a frequent culprit, characteristically etching a terminal-bulb dendritic arborizing ulcer.",
+            "Acanthamoeba protozoal strains provoke excruciating ring-infiltrate forms in contact lens users rinsing cases in tap water.",
+            "Marked by deep lancinating ocular pain, photophobia, intense lacrimation, and marked conjunctival injection.",
+            "Topical corticosteroids are strictly contraindicated during active epithelial herpetic bouts to prevent geographic ulceration."
+    ]
+  },
+  "w540": {
+    "Arabic": [
+            "علامة سريرية شائعة تتميز بتوسع الأوعية الدموية الدقيقة السطحية في بياض العين مما يجعلها تبدو حمراء اللون.",
+            "تنتج عن استجابة وعائية توسعية موضعية نتيجة التعرض للمهيجات، الدخان، قلة النوم، أو التحسس والعدوى.",
+            "تتحرك هذه الأوعية الدموية المحتقنة بحرية مع تحريك غشاء الملتحمة فوق الصلبة البيضاء التحتية.",
+            "تتلاشى وتبيض سريعاً عند وضع قطرة من مضادات الاحتقان القابضة للأوعية مثل الفينيليفرين الموضعي.",
+            "تعد أكثر الشكاوى انتشاراً في عيادات طب العيون والطوارئ وتدل على طيف واسع من الحالات البسيطة إلى المعقدة."
+    ],
+    "English": [
+            "An exceedingly frequent clinical physical sign characterized by active engorgement of the superficial bulbar microvessels.",
+            "Represents local vasodilation driven by histamine, mechanical irritants, environmental pollutants, or dry eye syndrome.",
+            "These tortuous congested vessels move freely with mechanical displacement of the overlying conjunctival tissue.",
+            "Rapidly blanches upon instillation of topical weak vasoconstrictor drops like dilute phenylephrine.",
+            "Ranks as the leading chief ocular complaint presenting to outpatient clinics and urgent care environments."
+    ]
+  },
+  "w541": {
+    "Arabic": [
+            "الشكل الدوائي الصيدلاني الأكثر استخداماً في طب العيون لإيصال المواد الفعالة موضعياً إلى أنسجة مقلة العين.",
+            "تتراوح بين قطرات ترطيب بديلة للدموع، ومضادات حيوية، ومخفضات لضغط العين، وموسعات للحدقة لأغراض الفحص.",
+            "عادة ما يبلغ حجم القطرة الواحدة نحو 50 ميكرولتر بينما لا يتسع كيس الملتحمة لأكثر من 10 إلى 20 ميكرولتر.",
+            "ينصح المريض بالضغط الخفيف على زاوية العين الداخلية (الدمعية) لدقيقة بعد تقطيرها لتقليل امتصاص الدواء في مجرى الدم.",
+            "تحتوي العبوات متعددة الجرعات على مواد حافظة ككلوريد البنزالكونيوم، وتتوفر عبوات أحادية الاستخدام خالية منها."
+    ],
+    "English": [
+            "The primary pharmacological liquid formulation engineered to deliver therapeutics topically to the ocular surface.",
+            "Ranges therapeutically across ocular lubricants, antibiotics, pressure-lowering agents, and diagnostic cycloplegics.",
+            "A commercial dispensed drop delivers approximately 50 microliters, while the conjunctival cul-de-sac holds only 10 to 20.",
+            "Punctal occlusion applied at the medial canthus immediately following instillation minimizes systemic mucosal drug absorption.",
+            "Multi-dose vials contain stabilizing preservatives like benzalkonium chloride, while preservative-free single-unit vials spare ocular epithelium."
+    ]
+  },
+  "w542": {
+    "Arabic": [
+            "تورم عقدي حبيبي غير معدٍ وغير مؤلم يصيب الجفن العلوي أو السفلي نتيجة انسداد إحدى غدد ميبوميوس الدهنية.",
+            "يتشكل كرد فعل التهابي مناعي حبيبومي (Granulomatous) تجاه الدهون المحتبسة داخل صفيحة الجفن الليفية.",
+            "يتميز عن دمل الجفن (Stye) بأنه غير مؤلم عادة عند اللمس ويكون أعمق في نسيج الجفن وأبطأ في التكون.",
+            "قد يضغط على القرنية في حال كان كبيراً مسبباً اللابؤرية وتشوشاً مؤقتاً في الرؤية.",
+            "يبدأ علاجه بالكمادات الدافئة والتدليك، وفي حال استمراره يستأصل جراحياً عبر جفن العين الداخلي دون ترك ندبة."
+    ],
+    "English": [
+            "A chronic, non-infectious, typically painless granulomatous nodular tumefaction embedded within the tarsal plate of the eyelid.",
+            "Develops following sterile lipogranulomatous inflammatory reaction sparked by extravasated meibomian sebum.",
+            "Differentiated from an acute external hordeolum by its indolent, non-tender course and deeper intramural anatomical plane.",
+            "Large central lesions can exert mechanical mass effect upon the cornea, inducing temporary irregular astigmatism.",
+            "Responds to conservative hot moist compresses; chronic refractory lesions undergo incision and curettage from the conjunctival surface."
+    ]
+  },
+  "w543": {
+    "Arabic": [
+            "نمو حميد مثلثي الشكل من النسيج الليفي الوعائي للملتحمة يمتد زاحفاً فوق سطح قرنية العين.",
+            "ينشأ غالباً من الجهة الإنسية (القريبة من الأنف) ويرتبط ارتباطاً وثيقاً بالتعرض المزمن لأشعة الشمس فوق البنفسجية والرياح والغبار.",
+            "يشيع جداً بين الصيادين والمزارعين وراكبي الأمواج وسكان المناطق الاستوائية المشمسة.",
+            "يسبب احمراراً وتهيجاً في العين، وإذا وصل إلى محور الرؤية وحجب حدقة العين فإنه يهدد البصر ويسبب تشوه انكساري.",
+            "يعالج بالقطرات المرطبة، ويستأصل جراحياً مع رقعة ملتحمة ذاتية (Autograft) للحد من فرصة رجوعه المرتفعة."
+    ],
+    "English": [
+            "A triangular or wing-shaped fibrovascular proliferation originating from the bulbar conjunctiva that invades the cornea.",
+            "Arises almost universally from the nasal limbus, strongly driven by chronic actinic UV-B exposure, wind, and arid environmental dust.",
+            "Particularly prevalent among outdoor laborers, agriculturalists, and surfers residing within equatorial latitudes.",
+            "Generates persistent ocular irritation, grittiness, and visually threatening irregular astigmatism as it encroaches onto the central pupil.",
+            "Managed conservatively with lubricants and UV-protective sunglasses; surgically excised with conjunctival autografting to curb recurrence."
+    ]
+  },
+  "w544": {
+    "Arabic": [
+            "مرض تنكسي غير التهابي تصاب فيه قرنية العين بترقق تدريجي وبروز غير منتظم لتتحول من شكل القبة إلى شكل مخروطي.",
+            "يظهر غالباً في مرحلة المراهقة أو بداية العشرينات، ويرتبط بحك العين المتكرر والعنيف لدى مرضى الحساسية.",
+            "يؤدي إلى تشوه انكساري شديد من اللابؤرية غير المنتظمة وقصر النظر السريع التدهور الذي لا يصحح بالنظارات العادية.",
+            "تظهر علامات سريرية خاصة مثل علامة مونسون (Munson sign) حيث ينبعج الجفن السفلي عند النظر للأسفل.",
+            "يعالج في بداياته بتثبيت القرنية بالأشعة فوق البنفسجية والريبوفلافين (Cross-linking)، والعدسات الصلبة، أو زراعة القرنية."
+    ],
+    "English": [
+            "A progressive, non-inflammatory corneal ectasia characterized by structural biomechanical thinning and conical protrusion of the stroma.",
+            "Typically debuts during adolescence or early adulthood, strongly accelerated by vigorous habitual eye rubbing in atopic patients.",
+            "Induces worsening irregular myopic astigmatism, monocular polyopia, and rapid degradation of best-corrected visual acuity.",
+            "Classic physical exam findings include Munson sign (V-shaped lower lid notch on downgaze) and Fleischer iron rings.",
+            "Arrested in early phases via corneal collagen cross-linking (CXL) with riboflavin, optical rigid lenses, or keratoplasty."
+    ]
+  },
+  "w545": {
+    "Arabic": [
+            "إجراء تشخيصي أساسي في عيادات العيون يهدف إلى قياس مقدار الضغط الهيدروستاتيكي للسائل داخل مقلة العين (IOP).",
+            "المعيار الذهبي الكلاسيكي له هو مقياس غولدمان للضغط (Goldmann Applanation Tonometer) المثبت على المصباح الشقي.",
+            "يتطلب استخدام قطرة مخدر موضعي مع صبغة الفلورسين لرؤية نصفي حلقتين متقابلتين تنطبقان معاً عند القياس الدقيق.",
+            "يستخدم في مسوحات العيادات العامة أجهزة غير تلامسية تعتمد على نفخة هواء مفاجئة ترتد من سطح القرنية.",
+            "المستوى الطبيعي يتراوح عادة بين 10 و 21 ملم زئبق، وارتفاعه المستمر يعد أهم عامل خطر للإصابة بالمياه الزرقاء."
+    ],
+    "English": [
+            "A routine diagnostic ophthalmologic procedure employed to determine intraocular pressure (IOP) within the anterior segment.",
+            "The universally accepted clinical gold standard remains the Goldmann applanation method mounted onto the slit lamp.",
+            "Requires instillation of a topical anesthetic and fluorescein dye to align two fluorescent semicircular mires precisely.",
+            "Community screening frequently employs non-contact air-puff devices measuring the time-to-flattening of the central corneal apex.",
+            "Normal physiological readings span 10 to 21 mmHg; elevated sustained measurements constitute the principal risk factor for glaucoma."
+    ]
+  },
+  "w546": {
+    "Arabic": [
+            "فحص سريري يتيح للطبيب النظر مباشرة عبر بؤبؤ العين لفحص الأجزاء الخلفية من المقلة بما في ذلك الشبكية والقرص البصري.",
+            "ينفذ باستخدام منظار العين المباشر المحمول باليد (Direct) أو المنظار غير المباشر المثبت على رأس الطبيب مع عدسة مكبرة.",
+            "يساعد وضع قطرات موسعة للحدقة كقطرة التروبيكاميد على توفير رؤية بانورامية شاملة وواضحة لقاع العين.",
+            "يمكن من خلاله تشخيص مضاعفات الأمراض المزمنة كاعتلال الشبكية السكري واعتلال الشبكية بفرط ضغط الدم.",
+            "يكشف علامات عصبية طارئة مثل وذمة حليمة العصب البصري الناتجة عن ارتفاع ضغط السائل الدماغي داخل الجمجمة."
+    ],
+    "English": [
+            "A clinical examination permitting non-invasive direct optical inspection of the posterior fundus through the pupil.",
+            "Conducted via handheld direct ophthalmoscopes providing high magnification or binocular indirect headbands offering stereoscopic depth.",
+            "Pharmacological pupil dilation with short-acting mydriatics like tropicamide substantially broadens the field of peripheral view.",
+            "Crucial for staging target-organ vascular damage in chronic diseases such as diabetic and hypertensive microangiopathy.",
+            "Provides immediate detection of critical neurosurgical emergencies, notably optic disc edema (papilledema) in intracranial hypertension."
+    ]
+  },
+  "w547": {
+    "Arabic": [
+            "الجهاز التشخيصي المحوري في عيادات طب وجراحة العيون، ويجمع بين مجهر ثنائي العينين ومصدر ضوء عالي الشدة يمكن تضييقه إلى شق.",
+            "يقوم المريض بإسناد ذقنه وجبهته على إطار مخصص بينما يفحص الطبيب الأنسجة الدقيقة للعين بتكبير يصل إلى 40 ضعفاً.",
+            "يتيح الشق الضوئي إحداث مقطع بصري دقيق يوضح عمق الآفات في القرنية والعدسة والغرفة الأمامية ثلاثية الأبعاد.",
+            "يحتوي على فلاتر ضوئية مختلفة مثل فلتر الكوبالت الأزرق المستخدم مع صبغة الفلورسين لإظهار خدوش القرنية.",
+            "تضاف إليه عدسات خاصة كعدسة غولدمان ثلاثية المرايا لفحص زاوية تصريف السائل المائي وأطراف الشبكية."
+    ],
+    "English": [
+            "The cornerstone diagnostic instrument in ophthalmology, integrating a binocular stereoscopic biomicroscope with a high-intensity slit illuminator.",
+            "The patient stabilizes their chin and forehead upon ergonomic rests while the examiner inspects ocular anatomy up to 40x magnification.",
+            "The adjustable focal slit beam cuts an optical cross-section through transparent media, defining the exact depth of corneal and lens pathology.",
+            "Equipped with specialized color filters including a cobalt blue filter to excite fluorescein dye for detecting epithelial erosions.",
+            "Complemented by accessory diagnostic contact lenses (like Goldmann three-mirror lenses) to visualize the trabecular meshwork and retina."
+    ]
+  },
+  "w548": {
+    "Arabic": [
+          "اضطراب وعائي تكاثري يصيب أوعية شبكية العين غير المكتملة لدى الأطفال الخدج منخفضي وزن الولادة.",
+          "ينجم عن تعرض الرضيع الخديج لتركيزات أكسجين عالية غير مضبوطة يتبعها نقص أكسجة نسبي يحفز فرط إفراز VEGF.",
+          "تتوقف الأوعية الدموية الطبيعية عن النمو، لتبدأ أوعية دموية جديدة هشة بالنمو باتجاه الجسم الزجاجي.",
+          "يصنف إلى 5 مراحل سريرية تتدرج من خط ترسيمي باهت وحتى انفصال الشبكية السحبي التام (Tractional retinal detachment).",
+          "تعتبر 'العلامة الزائدة' (Plus disease) دليلاً على الخطورة وتشمل تمدد وتعرج أوعية القطب الخلفي لشبكية العين.",
+          "يتم المسح الدوري للخدج بالمنظار العيني غير المباشر، ويعالج بالتخثير الليزري للشبكية أو حقن مثبطات VEGF داخل الزجاجي."
+    ],
+    "English": [
+          "A vasoproliferative vitreoretinopathy affecting the incompletely vascularized retina of premature, low birth weight neonates.",
+          "Biphasic pathogenesis: initial hyperoxia halts normal vessel progression, followed by relative hypoxia overexpressing VEGF.",
+          "Abnormal neovascularization sprouts across the demarcation line into the vitreous body instead of the peripheral retina.",
+          "Staged from Stage 1 (faint demarcation line) to Stage 5 (complete total tractional retinal detachment and leukocoria).",
+          "The presence of 'plus disease' indicates severe disease activity hallmarked by marked tortuosity and dilation of posterior retinal arterioles.",
+          "Screened via indirect ophthalmoscopy; managed with laser photocoagulation of avascular retina or intravitreal anti-VEGF injections."
+    ]
+  },
+  "w549": {
+    "Arabic": [
+            "تقنية تصوير إشعاعي تعتمد على دوران أنبوب الأشعة السينية حول المريض مع كواشف إلكترونية متطورة.",
+            "تولد مقاطع تشريحية عرضية متتالية ثلاثية الأبعاد للأعضاء الداخلية بدقة مليمترية عالية.",
+            "تقاس كثافة الأنسجة وظلالها من خلالها بمقياس رقمي خاص يعرف بوحدات هونسفيلد (Hounsfield Units).",
+            "تعد الفحص الطارئ الأول الحاسم في حالات نزيف المخ الحاد وكسور الجمجمة ورضوض الصدر والبطن الكبرى.",
+            "يمكن حقن مريضها بصبغة اليود الوريدية لإظهار الأوعية الدموية وتحديد تروية الأورام وأماكن الانسدادات."
+    ],
+    "English": [
+            "A diagnostic medical imaging modality employing a motorized rotating X-ray tube paired with digital detectors.",
+            "Generates detailed cross-sectional tomographic slices through the body reconstructed via computer processing algorithms.",
+            "Tissue attenuation densities across the reconstructed images are quantitatively mapped using Hounsfield Units (HU).",
+            "Serves as the indispensable first-line emergent investigation for acute intracranial hemorrhage and polytrauma evaluation.",
+            "Frequently augmented with intravenous iodinated contrast to assess intravascular pathology and vascular organ lesions."
+    ]
+  },
+  "w550": {
+    "Arabic": [
+            "تقنية تصوير تشخيصية متطورة للغاية تعتمد على مجال مغناطيسي قوي وموجات راديوية دون استخدام أي إشعاع مؤين.",
+            "تعتمد فيزيائياً على تحفيز بروتونات ذرات الهيدروجين في جزيئات الماء داخل أنسجة الجسم ورصد إشارات استرخائها.",
+            "توفر أعلى تباين وتمايز ممكن للأنسجة الرخوة مثل المخ، النخاع الشوكي، الأربطة الصليبية والغضاريف المفصلية.",
+            "يمنع منعاً باتاً دخول المريض إليها إذا كان يحمل أجهزة تنظيم ضربات قلب قديمة أو شظايا معدنية ممغنطة.",
+            "تستخدم صبغة الغادولينيوم (Gadolinium) الوريدية كعامل تباين لتعزيز وضوح الالتهابات وأورام الجهاز العصبي."
+    ],
+    "English": [
+            "A non-invasive diagnostic cross-sectional imaging modality utilizing intense static magnetic fields and radiofrequency pulses.",
+            "Operates at the quantum level by aligning and perturbing hydrogen proton nuclear spins abundant in biological water.",
+            "Provides unmatched soft-tissue contrast resolution, making it the supreme modality for brain, spinal cord, and joint cartilage.",
+            "Absolute contraindications include non-conditional cardiac pacemakers, metallic intraocular foreign bodies, and cochlear implants.",
+            "Enhancement sequences commonly utilize intravenous paramagnetic gadolinium chelates to demarcate neoplasms and active plaque lesions."
+    ]
+  },
+  "w551": {
+    "Arabic": [
+            "أداة تصوير آمنة وفورية وغير باضعة تعتمد على ارتداد موجات صوتية عالية التردد تتجاوز قدرة الأذن البشرية على السمع.",
+            "يستخدم فيها مسبار كهرضغطي (Transducer) يوضع على جلد المريض مع هلام مائي لضمان نقل الموجات بدون هواء.",
+            "الفحص المثالي والآمن تماماً لمتابعة نمو ونبض الجنين وتحديد جنسه أثناء فترات الحمل لعدم احتوائه على أي إشعاع.",
+            "تعد الفحص الأولي الممتاز لتقييم الحصوات المرارية وحصوات الكلى وتضخم البروستاتا وأمراض الغدة الدرقية.",
+            "تعتمد على مبدأ دوبلر لقياس سرعة واتجاه تدفق الدم داخل الشرايين والأوردة في الوقت الفعلي."
+    ],
+    "English": [
+            "A safe, real-time, ionizing-radiation-free imaging technique relying upon high-frequency acoustic waves beyond human audibility.",
+            "Employs a piezoelectric probe transducer placed upon acoustic coupling gel to eliminate air barriers at the skin interface.",
+            "The universally accepted premier imaging modality for obstetric surveillance, evaluating fetal biometry and developmental viability.",
+            "Serves as the initial imaging investigation of choice for acute cholecystitis, gallstones, nephrolithiasis, and thyroid nodules.",
+            "Readily couples with Doppler frequency shift equations to quantify velocity and directionality of intracardiac and vascular flow."
+    ]
+  },
+  "w552": {
+    "Arabic": [
+            "تقنية تصوير بالأشعة السينية الحية المستمرة تظهر حركة الأعضاء الداخلية والمواد الظليلة كفيلم سينمائي في الوقت الحقيقي.",
+            "تستخدم شاشة فسفورية أو مكثف صور لنقل الصور الحركية مباشرة إلى شاشة فيديو أمام الجراح أو الطبيب.",
+            "تعتبر الأساس في دراسات ابتلاع مادة الباريوم لفحص ديناميكية البلع والمريء وحركة الأمعاء.",
+            "تستخدم لتوجيه القساطر القلبية في غرف القسطرة وتثبيت كسور العظام تحت جهاز الـ C-arm في غرف العمليات.",
+            "تتطلب مراقبة صارمة لزمن التعرض الإشعاعي للمريض والفريق الطبي مع ارتداء مآزر الرصاص الواقية."
+    ],
+    "English": [
+            "A dynamic X-ray imaging technology capturing a continuous real-time moving video sequence of internal anatomical structures.",
+            "Utilizes a continuous beam coupled to an image intensifier or flat-panel detector projecting onto surgical video consoles.",
+            "Serves as the indispensable functional backbone for barium swallow and upper gastrointestinal fluoroscopic motility evaluations.",
+            "Provides real-time continuous intraoperative guidance during orthopedic fracture reduction and endovascular catheter navigation.",
+            "Requires active monitoring of cumulative radiation dose area product and strict wearing of lead shielding garments."
+    ]
+  },
+  "w553": {
+    "Arabic": [
+            "مركبات كيميائية تعطى للمريض عن طريق الفم أو الوريد لزيادة تباين وتمايز الأنسجة والأوعية الدموية في الصور الشعاعية.",
+            "المركبات اليودية تستخدم مع الأشعة السينية والمقطعية، بينما كبريتات الباريوم تستخدم لفحص الجهاز الهضمي.",
+            "مركبات الغادولينيوم البارامغناطيسية تستخدم حصرياً في فحوصات التصوير بالرنين المغناطيسي.",
+            "قد تسبب قصوراً كلوياً حاداً (CIN) لدى مرضى اعتلال الكلى لذا يجب فحص معدل الترشيح الكبيبي (eGFR) قبل حقنها.",
+            "قد تثير تفاعلات تحسسية تأقية حادة تتراوح من الطفح الجلدي البسيط إلى الصدمة المهددة للحياة وتستدعي حقن الإبينفرين."
+    ],
+    "English": [
+            "Chemical substances administered internally to augment internal tissue contrast and delineate luminal structures on imaging.",
+            "Water-soluble iodinated compounds predominate in X-ray and CT imaging, while barium sulfate suspensions evaluate the gastrointestinal tract.",
+            "Paramagnetic gadolinium-based macrocyclic chelates are tailored uniquely for magnetic resonance imaging sequences.",
+            "Carry potential risk of contrast-induced nephropathy (CIN), demanding baseline evaluation of estimated glomerular filtration rate.",
+            "Can precipitate idiosyncratic allergic anaphylactoid reactions varying from transient urticaria to life-threatening bronchospasm."
+    ]
+  },
+  "w554": {
+    "Arabic": [
+            "تقنية تصوير نووي متقدمة جداً تقيس النشاط الأيضي والتمثيل الغذائي للخلايا بدلاً من مجرد التركيب التشريحي.",
+            "تعتمد على حقن المريض بنظير مشع مصاحب للجلوكوز يعرف بـ فلوروديوكسي جلوكوز (FDG-18).",
+            "تلتهم الخلايا السرطانية الشرهة للطاقة الجلوكوز المشع بكثافة مما يجعل الأورام وبؤر انتشارها تضيء كنقاط ساخنة.",
+            "تدمج دائماً في الأجهزة الحديثة مع الأشعة المقطعية لتقديم صور مدمجة هجينة تجمع بين الوظيفة الأيضية والتشريح الدقيق.",
+            "تعتبر المعيار الذهبي لتحديد مراحل انتشار السرطان (Staging) ومتابعة استجابة الأورام للعلاج الكيميائي."
+    ],
+    "English": [
+            "An advanced nuclear molecular functional imaging modality evaluating metabolic cellular turnover rather than solely static anatomy.",
+            "Operates through intravenous tracer injection of 18F-fluorodeoxyglucose (FDG), a glucose analogue taken up by active tissue.",
+            "Malignant cells with hyperactive glycolysis avidly internalize the radiotracer via GLUT transporters, lighting up as metabolic hot spots.",
+            "Universally fused with cross-sectional helical computed tomography to correlate metabolic hyperactivity precisely with anatomy.",
+            "Represents the premier clinical modality for initial oncologic staging, restaging, and surveillance following systemic chemotherapy."
+    ]
+  },
+  "w555": {
+    "Arabic": [
+            "فحص شعاعي متخصص يستخدم حزم أشعة سينية منخفضة الطاقة لفحص نسيج الثدي واكتشاف الأورام المبكرة.",
+            "يعد الركيزة الأساسية لبرامج المسح الوطني الشامل للكشف المبكر عن سرطان الثدي لدى النساء فوق سن الأربعين.",
+            "يتم فيه ضغط نسيج الثدي بلطف بين لوحين متوازيين لتقليل سماكته وتقليل تشتت الإشعاع وتحسين وضوح الصورة.",
+            "يكشف بدقة التكلسات الدقيقة (Microcalcifications) التي قد تكون أولى علامات السرطان الموضعي قبل الشعور بأي كتلة.",
+            "تُصنف نتائجه وفق نظام تقرير بي-رادز القياسي الموحد (BI-RADS) من 0 إلى 6 لتحديد الخطوة التالية."
+    ],
+    "English": [
+            "A specialized low-dose X-ray imaging examination engineered explicitly for screening and diagnostic surveillance of breast tissue.",
+            "The undisputed foundation of population-based screening programs targeted at early asymptomatic detection of breast malignancy.",
+            "Involves mechanical compression of the parenchyma between radiolucent paddles to uniformize thickness and maximize focal resolution.",
+            "Uniquely capable of identifying clustered pleomorphic microcalcifications, frequently the sole sign of early ductal carcinoma in situ.",
+            "Results are standardized globally according to the Breast Imaging-Reporting and Data System (BI-RADS) categorical scale."
+    ]
+  },
+  "w556": {
+    "Arabic": [
+            "تقنية تصوير طبي تخصصية تهدف إلى إظهار التجويف الداخلي للأوعية الدموية في الجسم (شرايين وأوردة وغرف القلب).",
+            "تتطلب إدخال قسطرة رفيعة عبر شريان محيطي (كالشريان الفخذي أو الكعبري) وحقن مادة تباين يودية مباشرة داخل الوعاء.",
+            "تتيح الكشف الدقيق عن التضيقات والتصلبات والانسدادات الخثرية وأمهات الدم الشريانية (Aneurysms).",
+            "تتميز بقدرتها على التحول من إجراء تشخيصي إلى إجراء علاجي فوري مثل توسيع الشريان بالبالون وتركيب الدعامات المعدنية.",
+            "يستخدم فيها نظام طرح الصور الرقمي (DSA) لحذف عظام الجسم من خلفية الصورة لإبراز تدفق الدم فقط."
+    ],
+    "English": [
+            "A specialized endovascular fluoroscopic technique visualizing the internal luminal architecture of arterial and venous conduits.",
+            "Involves percutaneous catheter navigation via the femoral or radial artery under aseptic conditions with direct iodinated contrast injection.",
+            "Identifies arterial stenoses, occlusive thromboembolic events, arteriovenous malformations, and vascular aneurysms with unmatched fidelity.",
+            "Uniquely transitions from diagnostic visualization to immediate endovascular therapy via balloon angioplasty or stent deployment.",
+            "Employs digital subtraction technology (DSA) to eliminate background skeletal shadows, isolating pure intravascular blood columns."
+    ]
+  },
+  "w557": {
+    "Arabic": [
+            "أقدم وأبسط أشكال التصوير الطبي وأكثرها انتشاراً، اكتشفها العالم الألماني فيلهلم رونتغن عام 1895.",
+            "تعتمد على حزم كهرومغناطيسية قصيرة الموجة وذات طاقة عالية تخترق أنسجة الجسم بدرجات متفاوتة حسب كثافتها.",
+            "تظهر العظام الكثيفة بيضاء ناصعة لأنها تمتص معظم الفوتونات، بينما تظهر الرئتان المملوءتان بالهواء سوداء بالكامل.",
+            "الخيار التشخيصي الأول والفوري لتأكيد كسور العظام، وخلوع المفاصل، والتهابات الرئة، وانسداد الأمعاء.",
+            "تنتج صورة ثنائية الأبعاد تعتمد على إسقاط الظلال، مما يستوجب غالباً التقاط منظرين متعامدين (أمامي وجانبي)."
+    ],
+    "English": [
+            "The foundational and most widely utilized diagnostic imaging technology, discovered in 1895 by Wilhelm Conrad Röntgen.",
+            "Utilizes ionizing electromagnetic waves penetrating anatomical tissue strata differentially based upon atomic density.",
+            "Mineralized dense cortical bone absorbs high photon fractions appearing bright white, while aerated lung parenchyma appears black.",
+            "Serves as the rapid, accessible frontline triage modality for acute skeletal fractures, joint dislocations, and lobar pneumonia.",
+            "Generates planar two-dimensional projection shadows, necessitating orthogonal views (anteroposterior and lateral) for proper evaluation."
+    ]
+  },
+  "w558": {
+    "Arabic": [
+            "تقنية غير باضعة تجمع بين سرعة الأشعة المقطعية متعددة الكواشف وحقن صبغة سريعة في الوريد المحيطي لرسم الأوعية.",
+            "تعتبر الفحص السريع والمعتمد دولياً كمعيار ذهبي لتأكيد أو استبعاد الانصمام الرئوي الحاد (Pulmonary Embolism).",
+            "تظهر شرايين المخ والشريان الأورطي والشرايين التاجية في نماذج ثلاثية الأبعاد فائقة الدقة دون الحاجة لدخول قسطرة شريانية.",
+            "تكشف بدقة تسلخ الشريان الأورطي القاتل (Aortic Dissection) وتمدد الأوعية الدموية في الطوارئ خلال ثوانٍ معدودة.",
+            "تتطلب وريداً محيطياً واسعاً وحقانة آلية تضخ الصبغة بسرعة تدفق عالية مع توقيت محسوب بدقة للحظة مرور الصبغة بالشريان."
+    ],
+    "English": [
+            "A rapid, minimally invasive imaging method combining multidetector helical scanning with timed peripheral intravenous contrast boluses.",
+            "Stands as the definitive clinical gold standard investigation for diagnosing life-threatening acute pulmonary embolism.",
+            "Reconstructs stereoscopic three-dimensional endoluminal vascular maps of intracranial vessels, the aorta, and coronary trees.",
+            "Routinely deployed in trauma resuscitation to rapidly confirm or exclude acute aortic dissection and vascular laceration within seconds.",
+            "Demands large-bore peripheral venous access and automated dual-barrel power injectors triggered via automated bolus-tracking software."
+    ]
+  },
+  "w559": {
+    "Arabic": [
+            "فحص بالموجات فوق الصوتية مخصص للقلب يتيح تقييم انقباض عضلة القلب وحركة الصمامات والتدفقات الدموية بدقة تامة.",
+            "يقيس بدقة الكسر القذفي للبطين الأيسر (Ejection Fraction) لتقييم كفاءة المضخة وتشخيص قصور القلب.",
+            "يكشف ارتخاء وتضيق وارتجاع الصمامات القلبية الأربعة ووجود خثرات دمجية داخل الأذينين أو ارتشاح في غشاء التامور.",
+            "ينفذ إما عبر وضع المسبار على جدار الصدر (TTE) أو بإدخال منظار دقيق عبر المريء (TEE) للوصول لرؤية لصيقة للقلب.",
+            "يعتمد على الدوبلر الملون لتحديد اتجاه وسرعة الدم عبر الصمامات وكشف أي ثقوب ولادية بين البطينين أو الأذينين."
+    ],
+    "English": [
+            "A dedicated cardiovascular ultrasound modality providing comprehensive real-time anatomical and hemodynamic cardiac assessment.",
+            "Accurately quantifies left ventricular ejection fraction (LVEF), establishing the diagnostic baseline in congestive heart failure.",
+            "Directly visualizes valvular stenosis, regurgitant flow jets, intracardiac mural thrombi, and pericardial effusion tamponade.",
+            "Performed conventionally across the anterior chest wall (transthoracic) or via an endoscopic esophageal probe (transesophageal).",
+            "Harnesses color Doppler mapping to trace transvalvular pressure gradients and congenital intracardiac shunts."
+    ]
+  },
+  "w560": {
+    "Arabic": [
+            "تطبيق فيزيائي للموجات فوق الصوتية يعتمد على تغير تردد الصوت المنعكس من كريات الدم الحمراء المتحركة داخل الأوعية.",
+            "الفحص الحاسم والروتين الأول لتأكيد أو استبعاد تجلط الأوردة العميقة في الساقين (Deep Vein Thrombosis - DVT).",
+            "يقيم تضيق شرايين الرقبة السباتية (Carotid Stenosis) المسؤولة عن تروية الدماغ ومخاطر السكتات الدماغية.",
+            "يمثل تدفق الدم في الشاشات بألوان متعارف عليها دولياً: اللون الأحمر للدم المتدفق نحو المسبار، والأزرق للمبتعد عنه.",
+            "يستخدم أثناء الحمل لتقييم مقاومة تدفق الدم في شرايين الحبل السري وشرايين الرحم لمراقبة تغذية الجنين."
+    ],
+    "English": [
+            "A physiological ultrasound technique exploiting acoustic frequency shifts reflected back from moving erythrocytes inside vascular lumens.",
+            "The paramount first-line diagnostic investigation for ruling in or out lower extremity deep vein thrombosis (DVT).",
+            "Routinely quantifies peak systolic velocities in carotid artery stenosis to stratify transient ischemic attack stroke risks.",
+            "Encodes directional flow vectors chromatically: red typically depicts flow heading toward the probe, and blue moving away.",
+            "Widely applied in high-risk obstetrics to measure umbilical artery and uterine artery pulsatility indices for placental insufficiency."
+    ]
+  },
+  "w561": {
+    "Arabic": [
+            "فحص شعاعي يعتمد على امتصاص الأشعة السينية ثنائية الطاقة لقياس المحتوى المعدني والكثافة النوعية للعظام.",
+            "المعيار الذهبي الدولي المعتمد من منظمة الصحة العالمية لتشخيص هشاشة العظام (Osteoporosis) ومخاطر الكسور.",
+            "يقيس الكثافة في منطقتين رئيسيتين هما: عظام الفقرات القطنية في أسفل الظهر وعنق عظمة الفخذ في الورك.",
+            "تعبر نتائجه عن درجة الانحراف المعياري مقارنة ببالغ شاب سليم وتعرف بـ (T-score)؛ والدرجة أقل من -2.5 تعني هشاشة صريحة.",
+            "يتميز بجرعة إشعاعية ضئيلة للغاية لا تتجاوز جزءاً صغيراً من جرعة أشعة الصدر العادية."
+    ],
+    "English": [
+            "A specialized quantitative radiological examination utilizing dual-energy X-ray absorptiometry to assess bone mineral content.",
+            "The definitive clinical gold standard established by the WHO for diagnosing osteoporosis and predicting osteoporotic fracture vulnerability.",
+            "Targets two sentinel skeletal load-bearing anatomical sites: the lumbar spine (L1-L4) and the femoral neck/total hip.",
+            "Reports skeletal density via the T-score comparing patients to young adult reference peaks; a score of -2.5 or lower defines osteoporosis.",
+            "Incurs an extremely trivial ionizing radiation exposure, significantly lower than a routine conventional chest radiograph."
+    ]
+  },
+  "w562": {
+    "Arabic": [
+            "فحص شعاعي تألقي حركي يطلب من المريض خلاله شرب معلق أبيض ظليل للأشعة لتقييم حركة وتجويف المريء والبلعوم.",
+            "الفحص الكلاسيكي لتشخيص تعذر الارتخاء المريئي (Achalasia) حيث يظهر المريء المتوسع مع تضيق سفلي يشبه منقار الطائر (Bird beak).",
+            "يكشف الرتوق المريئية مثل رتج زنكر (Zenker diverticulum) والتضيقات والفتوق الحجابية وأورام المريء المضيقة.",
+            "يمنع استخدامه ويستبدل بصبغة الغاستروغرافين القابلة للذوبان إذا كان هناك أي اشتباه بوجود ثقب في جدار المريء لتجنب التهاب المنصف.",
+            "يجب تنبيه المريض بأن برازه سيتحول إلى اللون الأبيض الطباشيري لعدة أيام بعد الفحص حتى يتم التخلص من المادة."
+    ],
+    "English": [
+            "A fluoroscopic examination during which the patient ingests a radiopaque chalky suspension to map pharyngeal and esophageal transport.",
+            "Classically identifies the pathognomonic tapered 'bird's-beak' distal esophageal narrowing characteristic of achalasia.",
+            "Delineates mucosal irregularities, strictures, hiatal hernias, and outpouchings such as Zenker diverticula with pristine resolution.",
+            "Strictly avoided and replaced with water-soluble gastrografin if esophageal perforation is suspected, averting lethal barium mediastinitis.",
+            "Patients must be forewarned that their stools will appear chalky white for several days following transit clearance."
+    ]
+  },
+  "w563": {
+    "Arabic": [
+            "تخصص طبي علاجي رائد يستخدم فيه الأطباء تقنيات التصوير المختلفة (سونار، أشعة سينية، مقطعية) لتوجيه أدوات جراحية دقيقة عبر الجلد.",
+            "يعد بديلاً طفيف التوغل عن الجراحات المفتوحة الكبرى، مما يقلل النزيف والآلام وفترة بقاء المريض في المستشفى.",
+            "يشمل سد الأوعية الدموية النازفة (Embolization)، وكي الأورام السرطانية بالحرارة أو التبريد، ووضع دعامات القنوات المرارية.",
+            "يقوم أطباؤه بسحب السوائل المتجمعة والصديد عبر قساطر موجهة، وأخذ الخزعات النسيجية العميقة من الكبد والرئة.",
+            "يمثل طفرة حقيقية في علاج نزيف ما بعد الولادة وتضخم البروستاتا وألياف الرحم دون استئصال جراحي."
+    ],
+    "English": [
+            "A therapeutic medical specialty utilizing imaging guidance (fluoroscopy, CT, ultrasound) to navigate micro-instruments percutaneously.",
+            "Provides minimally invasive alternatives to open surgery, radically reducing tissue trauma, intraoperative blood loss, and recovery times.",
+            "Encompasses selective transcatheter embolization for hemorrhages, percutaneous tumor ablation (radiofrequency/cryo), and biliary stenting.",
+            "Routinely executes targeted deep organ biopsies, drainage of deep abdominopelvic abscesses, and central venous access line insertions.",
+            "Offers groundbreaking uterine artery and prostatic artery embolization therapies to manage symptomatic fibroids and benign hyperplasia."
+    ]
+  },
+  "w564": {
+    "Arabic": [
+            "مرض التهابي مزمن يصيب الجريبات الشعرية الدهنية، ويعد أكثر الحالات الجلدية انتشاراً على الإطلاق بين المراهقين والشباب.",
+            "يشمل إمراضه أربعة عوامل: زيادة إفراز الزهم، فرط التقرن الجريبي، وتكاثر بكتيريا العديات (Cutibacterium acnes)، والالتهاب.",
+            "تظهر الآفات الأساسية غير الالتهابية على هيئة زؤان مغلق (رؤوس بيضاء) أو زؤان مفتوح متأكسد (رؤوس سوداء).",
+            "قد يتطور لآفات التهابية تشمل الحطاطات والبثور، وفي الحالات الشديدة يشكل عقيدات وأكياساً تترك ندبات دائمة مشوهة.",
+            "يبدأ علاجه بالمطهرات ومقشرات الريتينويد الموضعية، وفي الحالات العقدية المستعصية يعالج بعقار الإيزوتريتينوين (Roaccutane) الفموي."
+    ],
+    "English": [
+            "A chronic inflammatory disorder of the pilosebaceous unit, standing as the most ubiquitous dermatologic complaint of adolescence.",
+            "Pathophysiologically driven by follicular hyperkeratinization, excess sebum production, Cutibacterium acnes proliferation, and inflammation.",
+            "Primary non-inflammatory pathognomonic hallmark lesions are open comedones (blackheads) and closed comedones (whiteheads).",
+            "Can escalate to inflammatory papules, pustules, and deep painful nodulocystic lesions prone to causing permanent atrophic scarring.",
+            "Managed stepwise with topical benzoyl peroxide and retinoids; recalcitrant nodulocystic disease responds dramatically to oral isotretinoin."
+    ]
+  },
+  "w565": {
+    "Arabic": [
+            "أكثر أنواع سرطانات الجلد انتشاراً بين البشر على الإطلاق، ويمثل نحو 80% من جميع الأورام الجلدية الخبيثة غير الميلانينية.",
+            "ينشأ من خلايا الطبقة القاعدية في البشرة، ويرتبط ارتباطاً سببياً مباشراً بالتعرض التراكمي لأشعة الشمس فوق البنفسجية.",
+            "يظهر كلاسيكياً على الوجه أو الرقبة كحطاطة أو عقدة لؤلؤية شفافة ذات حواف ملتفة وتوسع في الشعيرات الدموية السطحية (Telangiectasia).",
+            "يتميز بنمو بطيء جداً وتدمير موضعي للأنسجة المحيطة (لذا سمي بالقرحة القارضة Rodent ulcer)، ولكن نادراً جداً ما ينبث أو ينتشر بعيداً.",
+            "العلاج الأمثل له هو الاستئصال الجراحي بتقنية موهز (Mohs Micrographic Surgery) الدقيقة لضمان نظافة الحواف والحفاظ على أنسجة الوجه."
+    ],
+    "English": [
+            "The most prevalent malignancy diagnosed in humans worldwide, representing approximately 80% of all non-melanoma skin cancers.",
+            "Arises from pluripotential germinative cells within the stratum basale, directly induced by cumulative actinic UV radiation exposure.",
+            "Classically manifests on sun-exposed head and neck zones as a pearly translucent papule with rolled borders and prominent arborizing telangiectasias.",
+            "Exhibits indolent local tissue destruction (historically called rodent ulcer), with extraordinarily low propensity for distant metastasis (<0.1%).",
+            "Surgical excision via Mohs micrographic surgery provides the highest cure rate while maximally preserving cosmetically sensitive tissue."
+    ]
+  },
+  "w566": {
+    "Arabic": [
+            "حالة جلدية التهابية شائعة جداً تصيب المناطق الغنية بالغدد الدهنية مثل فروة الرأس والحواجب وثنايا الأنف ووسط الصدر.",
+            "ترتبط باستجابة مناعية غير طبيعية وتكاثر فطريات الملاسيزية (Malassezia yeast) التي تتغذى على دهون الجلد.",
+            "تتظاهر بظهور قشور دهنية صفراء سميكة ومتقشرة مع احمرار خفيف وحكة في فروة الرأس والوجه.",
+            "تصيب الرضع في الأشهر الأولى من حياتهم وتعرف عند الأطفال باسم قبعة المهد (Cradle cap) وتزول تلقائياً.",
+            "تشتد وتكون شديدة المقاومة لدى المصابين بمرض باركنسون ومرضى ضعف المناعة (HIV)، وتعالج بشامبوهات مضادة للفطريات كالكيتوكونازول."
+    ],
+    "English": [
+            "A highly prevalent chronic inflammatory dermatosis selectively targeting sebum-rich zones including the scalp, eyebrows, and nasolabial folds.",
+            "Pathogenesis is tied to an abnormal cutaneous inflammatory response to lipophilic commensal yeasts belonging to the Malassezia species.",
+            "Features greasy, yellowish scales plastered over erythematous plaques, accompanied by mild to moderate pruritus (severe dandruff).",
+            "Affects neonates within the first months of life as greasy scalp adherent crusting affectionately known as cradle cap.",
+            "Exhibits extreme severity in neurological diseases (particularly Parkinson disease) and HIV; responsive to topical ketoconazole and zinc pyrithione."
+    ]
+  },
+  "w567": {
+    "Arabic": [
+        "عدوى جرثومية صاعقة وسريعة الانتشار تصيب الأنسجة تحت الجلد واللفافة العضلية العميقة وتسبب نخراً نسيجياً واسعاً.",
+        "تحدث إما متعددة الميكروبات (النوع الأول) أو أحادية الميكروب ناجمة عن العقدية المقيحة من المجموعة A (النوع الثاني).",
+        "العلامة السريرية المبكرة الأكثر أهمية هي ألم شديد للغاية لا يتناسب إطلاقاً مع المظهر الجلدي الظاهري الأولي.",
+        "تتطور الحالة بسرعة لتشمل بقعاً أرجوانية فقاعية رمادية متموتة مع تفرقع غازي تحت الجلد (Crepitus) وتخدر موضعي.",
+        "تمثل حالة طوارئ جراحية قصوى تستوجب الشق الجراحي والتنضير الفوري المفتوح لكافة الأنسجة الميتة دون أي تأخير.",
+        "تترافق مع صدمة إنتانية حادة وفشل متعدد في الأعضاء وتتطلب تغطية وريدية بالمضادات الحيوية كالميروبينيم والكليندامايسين."
+  ],
+    "English": [
+        "A fulminant, rapidly progressive bacterial infection destroying subcutaneous soft tissues, fat, and deep muscular fascia.",
+        "Classified as Type I (polymicrobial aerobes and anaerobes) or Type II (monomicrobial Group A Streptococcus pyogenes).",
+        "The critical early clinical herald is extreme, agonizing pain out of proportion to seemingly benign physical skin erythema.",
+        "Rapidly progresses to violaceous skin discoloration, bullae filled with murky fluid, crepitus, and cutaneous anesthesia.",
+        "Constitutes an absolute surgical emergency requiring immediate wide aggressive debridement of nonviable necrotic tissue.",
+        "Triggers catastrophic septic shock and multiorgan failure, demanding empiric vancomycin, meropenem, and clindamycin (to halt toxin)."
+  ]
+  },
+  "w568": {
+    "Arabic": [
+            "اندفاع جلدي تحسسي شائع يتميز بظهور لويحات حمراء شاحبة المركز، مرتفعة ومتورمة تسمى انتبارات (Wheals).",
+            "تترافق مع حكة جلدية شديدة لا تطاق، وتتميز الآفة الواحدة بأنها عابرة تختفي تماماً خلال أقل من 24 ساعة دون ترك أثر.",
+            "تنتج عن تحرر فوري للهيستامين من الخلايا البدينة (Mast cells) في الأدمة مما يرفع نفاذية الأوعية الدموية ويحدث ارتشاحاً سائلاً.",
+            "قد تثيرها أطعمة معينة، أو أدوية كالبنسلين، أو لدغات الحشرات، أو محفزات فيزيائية كالبرد والضغط والحرارة.",
+            "إذا ترافقت مع تورم عميق في الشفتين أو اللسان أو الحنجرة وضيق تنفس فإنها تدل على وذمة وعائية وتأق طارئ."
+    ],
+    "English": [
+            "A common cutaneous vascular reaction characterized by transient pruritic, edematous, erythematous plaques termed wheals.",
+            "Accompanied by intense stinging pruritus, with the hallmark biological feature that individual lesions resolve within 24 hours without scarring.",
+            "Pathophysiologically initiated by preformed histamine and prostaglandin degranulation from dermal mast cells increasing capillary permeability.",
+            "Triggered by IgE-mediated food allergies, pharmaceuticals (beta-lactams), viral infections, or physical cold/pressure stimuli.",
+            "Co-occurrence with deep subcutaneous tumefaction of the lips, tongue, or glottis signifies angioedema portending anaphylaxis."
+    ]
+  },
+  "w569": {
+    "Arabic": [
+        "تفاعل جلدي مناعي حاد ينجم عن فرط حساسية خلوية من النوع الرابع (Type IV) يتلو عدوى فيروسية في 90% من الحالات.",
+        "يعتبر فيروس الهربس البسيط (HSV-1 أو HSV-2) المسبب الأكثر شيوعاً بنسبة تفوق 70% من الحالات يليه الميكوبلازما.",
+        "تتميز باندفاعات كلاسيكية مميزة تُعرف بـ 'الآفات الهدفية' أو عين الثور (Target or Iris lesions).",
+        "تتكون الآفة الهدفية النموذجية من ثلاث مناطق متحدة المركز: مركز مدمى أو فقاعي داكن، هالة شاحبة، وحافة حمراء خارجية.",
+        "تتوزع الآفات بشكل متناظر على الأسطح الباسطة للأطراف والراحتين والأخمصين، وتقسم إلى شكل خفيف وآخر كبير يصيب الأغشية المخاطية.",
+        "تشفى ذاتياً خلال عدة أسابيع دون ترك ندبات وتعالج الأعراض بمضادات الهيستامين والأسيكلوفير الفموي للوقاية من النكس."
+  ],
+    "English": [
+        "An acute, immune-mediated type IV hypersensitivity mucocutaneous reaction triggered overwhelmingly by preceding viral infection.",
+        "Herpes simplex virus (HSV-1 and HSV-2) constitutes the principal trigger in over 70% of cases, followed by Mycoplasma pneumoniae.",
+        "Hallmarked pathognomonically by symmetrical 'target' or 'iris' lesions predilecting the distal extensor surfaces.",
+        "A true targetoid lesion exhibits three distinct concentric zones: a dusky central blister/crust, a pale edematous ring, and an erythematous rim.",
+        "Distributes symmetrically on palms, soles, and dorsal aspects of the forearms and knees, classified as EM minor or EM major (with mucosa).",
+        "Self-limiting resolution occurs over 2 to 4 weeks; managed symptomatically, with prophylactic oral Acyclovir for recurrent HSV episodes."
+  ]
+  },
+  "w570": {
+    "Arabic": [
+            "مرض مناعي ذاتي فقاعي تحت البشرة يصيب كبار السن غالباً فوق سن السبعين، ويتميز بظهور فقاعات جلدية متوترة وصلبة.",
+            "تنتجه أجسام مضادة ذاتية موجهة ضد بروتينات الجسيمات نصف الرابطة (Hemidesmosomes) في الغشاء القاعدي (BP180 و BP230).",
+            "تكون الفقاعات تحت البشرة ذات سقف سميك ومتوتر ومقاومة للتمزق، وتظهر فوق جلد محمر أو طبيعي مع حكة شديدة.",
+            "تكون علامة نيكولسكي سلبية (Nikolsky negative) ونادراً جداً ما يصيب الغشاء المخاطي لتجويف الفم بخلاف الفقاع الشائع.",
+            "الفحص النسيجي بالتألق المناعي المباشر يظهر ترسباً خطياً مستمراً للأجسام المضادة والمتمم على طول الغشاء القاعدي."
+    ],
+    "English": [
+            "An autoimmune subepidermal blistering eruption predominantly striking elderly populations over the age of 70.",
+            "Driven by pathogenic IgG autoantibodies targeted against hemidesmosomal adhesion antigens BP180 and BP230 at the dermo-epidermal junction.",
+            "Presents with tense, sturdy, fluid-filled bullae that resist rupture, emerging upon an erythematous urticarial or normal cutaneous base.",
+            "Nikolsky sign is characteristically negative, and mucosal surfaces (such as the oral cavity) are spared in the overwhelming majority.",
+            "Direct immunofluorescence reveals a smooth, unbroken linear band of IgG and C3 deposition along the basement membrane zone."
+    ]
+  },
+  "w571": {
+    "Arabic": [
+            "رد فعل التهابي جلدي يحدث نتيجة ملامسة مادة خارجية معينة لسطح الجلد بصورة مباشرة.",
+            "ينقسم لنوعين: تهيجي ناجم عن مادة كيميائية حارقة كالصابون والمذيبات (80%)، وتحسسي بوساطة الخلايا التائية (Type IV).",
+            "النوع التحسسي يشتهر بحدوثه إثر ملامسة معدن النيكل في الإكسسوارات وساعات اليد، أو العطور، أو نبات اللبلاب السام.",
+            "تتطابق حدود الاحمرار والطفح الجلدي والحويصلات تماماً مع شكل ومساحة المادة الملامسة للجلد (كشكل حزام الساعة).",
+            "يشخص النوع التحسسي باختبار الرقعة الجلدية (Patch test) عبر تثبيت مواد مختلفة على ظهر المريض لـ 48 ساعة."
+    ],
+    "English": [
+            "An acute or chronic cutaneous inflammatory reaction precipitated by direct epicutaneous exposure to an exogenous environmental substance.",
+            "Dichotomized into irritant contact forms from cytotoxic chemical barrier disruption (80%) and cell-mediated Type IV delayed allergic forms.",
+            "Allergic triggers classically include nickel hardware in costume jewelry and belt buckles, neomycin, fragrances, or poison ivy.",
+            "The anatomical distribution of erythema, papules, and microvesicles mirrors the geometric outline of the offending physical item.",
+            "Allergic etiologies are definitively unmasked through standardized epicutaneous patch testing interpreted after 48 and 96 hours."
+    ]
+  },
+  "w572": {
+    "Arabic": [
+            "ثاني أكثر سرطانات الجلد انتشاراً بعد الورم القاعدي، وينشأ من الخلايا الكيراتينية في الطبقة الشائكة للبشرة.",
+            "يرتبط بالتعرض التراكمي الشديد للشمس، وتسبقه عادة بقعة خشنة شبيهة بورق الصنفرة تعرف بالتقران الشعاعي (Actinic Keratosis).",
+            "يظهر كعقدة أو لويحة صلبة متقشرة مفرطة التقرن، غالباً ما تتقرح وتنزف بسهولة في مناطق الوجه والشفتين والأذنين وظهر اليدين.",
+            "يشيع حدوثه في الندبات المزمنة وحروق الجلد القديمة المهملة ويعرف حينها باسم قرحة مارجولين (Marjolin ulcer).",
+            "يمتلك قدرة حقيقية على الانبثاث والانتشار للعقد اللمفاوية المجاورة بنسبة تصل إلى 5% خاصة إذا كان على الشفة أو الأذن."
+    ],
+    "English": [
+            "The second most frequent cutaneous neoplasm, derived from the malignant clonal proliferation of keratinocytes within the stratum spinosum.",
+            "Driven by lifelong actinic solar radiation, frequently evolving from premalignant rough sandpaper-like actinic keratosis precursors.",
+            "Presents as an indurated, firm, hyperkeratotic crusted nodule or ulcerated crater on sun-exposed lips, pinnae, face, or hands.",
+            "Arises notoriously within chronic unhealed burn scars, sinus tracts, or venous ulcers as an aggressive Marjolin ulcer variant.",
+            "Carries an authentic potential for regional lymphatic metastasis (approximately 2% to 5%), significantly escalated when located on the ear or vermilion."
+    ]
+  },
+  "w573": {
+    "Arabic": [
+            "مرض فيروسي مؤلم ينتج عن إعادة تنشيط فيروس الجدري المائي (Varicella-Zoster Virus) الكامن في العقد العصبية الحسية.",
+            "يتميز بظهور طفح حويصلي مؤلم مقتصر بدقة بالغة على قطاع جلدي حسي واحد (Dermatome) دون أن يتجاوز خط منتصف الجسم.",
+            "يسبق ظهور الطفح الجلدي بأيام ألم حارق مبرح أو وخز خدر في المنطقة المصابة قد يشخص خطأً كجلطة قلبية أو مغص كلوي.",
+            "أخطر اختلاطاته المزمنة هو ألم العصب التالي للهربس (Postherpetic Neuralgia) الذي قد يستمر لشهور بعد شفاء الجلد.",
+            "يعالج بمضادات الفيروسات الفموية مثل الفالاسيكلوفير (Valacyclovir) التي يجب بدؤها خلال أول 72 ساعة من الطفح لتكون فعالة."
+    ],
+    "English": [
+            "A distressing neurocutaneous syndrome resulting from the clinical reactivation of latent varicella-zoster virus from dorsal root ganglia.",
+            "Exhibits a classic, highly specific dermatomal eruption of clustered painful grouped vesicles that strictly respects the anatomic midline.",
+            "Preceded by a prodrome of intense radicular burning pain, hyperesthesia, or allodynia that mimics acute cardiac or visceral pathology.",
+            "The leading chronic debilitating sequela is postherpetic neuralgia (PHN), characterized by agonizing neuropathic pain lasting months.",
+            "Treated with prompt initiation of oral antiviral therapy (valacyclovir, famciclovir) administered within 72 hours of rash onset."
+    ]
+  },
+  "w574": {
+    "Arabic": [
+            "كرية دم بيضاء مناعية تنشأ في نخاع العظم وتهاجر لتنضج وتكتسب كفاءتها في الغدة الزعترية (Thymus).",
+            "تعد القائد الميداني للمناعة الخلوية (Cell-mediated immunity) ضد الفيروسات والطفيليات والخلايا السرطانية.",
+            "تنقسم إلى خلايا مساعدة تحمل مستقبل (CD4) وخلايا سامة قاتلة تحمل مستقبل (CD8).",
+            "تتعرف على المستضدات المعالجة فقط عندما تقدم إليها محمولة على جزيئات معقد التوافق النسيجي (MHC).",
+            "يؤدي استهدافها وتدميرها بواسطة فيروس نقص المناعة المكتسب (HIV) إلى انهيار المناعة وحدوث الإيدز."
+    ],
+    "English": [
+            "A principal leukocyte lineage originating in the bone marrow that undergoes critical maturation and education inside the thymus.",
+            "Serves as the central orchestrator of adaptive cell-mediated immunity against intracellular pathogens and neoplasms.",
+            "Dichotomized into helper subpopulations expressing surface marker CD4 and cytotoxic killer effectors expressing CD8.",
+            "Recognizes processed peptide epitopes strictly when presented in the binding cleft of major histocompatibility complex (MHC) molecules.",
+            "Selective progressive depletion of its CD4+ helper subpopulation by retroviral HIV particles precipitates clinical AIDS."
+    ]
+  },
+  "w575": {
+    "Arabic": [
+            "كرية دم بيضاء تنشأ وتنضج بالكامل داخل نخاع العظم البشري، وتمثل حجر الزاوية في المناعة الخلطية (Humoral immunity).",
+            "تحمل على غشائها مستقبلات نوعية (BCR) تتكون أساساً من أجسام مضادة سطحية من طرازي IgM و IgD.",
+            "تتميز بقدرتها على التعرف المباشر على المستضدات الأصلية السائبة دون الحاجة لعرضها مسبقاً على جزيئات MHC.",
+            "عند تنشيطها بالخلايا المساعدة تتكاثر وتتمايز إلى خلايا بلازمية مفرزة للغلوبولينات وخلايا ذاكرة طويلة الأجل.",
+            "غيابها الوراثي الخلقي يسبب داء بروتون حيث يعاني الرضيع من نوبات عدوى بكتيرية متكررة ذات محفظة."
+    ],
+    "English": [
+            "An adaptive immune lineage that undergoes both genesis and developmental maturation within the human bone marrow stroma.",
+            "Constitutes the foundational effector of humoral adaptive immunity via the eventual biosynthesis of circulating immunoglobulins.",
+            "Displays surface antigen-binding receptors (BCR) primarily configured from membrane-bound monomeric IgM and IgD.",
+            "Capable of recognizing native conformational antigens in their free fluid state without mandatory MHC antigen processing.",
+            "Upon antigenic stimulation and T-cell licensing, terminal differentiation yields antibody-factory plasma cells and memory pools."
+    ]
+  },
+  "w576": {
+    "Arabic": [
+            "خلية لمفاوية حبيبية كبيرة تتبع جهاز المناعة الفطرية الطبيعي وتعمل كخط دفاع سريع دون حاجة لتحسس مسبق.",
+            "تتخصص في رصد وتدمير الخلايا المصابة بالفيروسات والخلايا السرطانية التي تحاول الإفلات من الجهاز المناعي.",
+            "تعتمد استراتيجيتها على فرضية الذات المفقودة (Missing-self) حيث تهاجم أي خلية خفضت تعبير جزيئات MHC-I.",
+            "تحتوي حبيباتها السيتوبلازمية على البيرفورين (Perforin) لإحداث ثقوب، والجرانزايم (Granzyme) لتحفيز الموت المبرمج.",
+            "تشارك بفعالية في آلية السمية الخلوية المعتمدة على الأجسام المضادة (ADCC) عبر ارتباطها بمستقبل CD16."
+    ],
+    "English": [
+            "A specialized large granular lymphocyte representing the innate cytotoxic arm, mounting immediate responses without clonal priming.",
+            "Engineered evolutionary to eliminate virus-infected targets and incipient neoplastic cells attempting immune evasion.",
+            "Executes target surveillance via the 'missing-self hypothesis', triggered when cells downregulate surface MHC Class I expression.",
+            "Discharges cytotoxic granules containing perforin to puncture cell membranes and granzymes to initiate caspase-mediated apoptosis.",
+            "Mediates antibody-dependent cellular cytotoxicity (ADCC) by binding the Fc constant domains of IgG through surface CD16 receptors."
+    ]
+  },
+  "w577": {
+    "Arabic": [
+            "خلية مناعية دفاعية كبرى تتمايز من الوحيدات (Monocytes) بعد هجرتها من مجرى الدم واستقرارها في الأنسجة المختلفة.",
+            "تمتلك قدرة بلعمة استثنائية لابتلاع الحطام الخلوي، الميكروبات، وكريات الدم المسنة، وهضمها داخل الجسيمات الحالة.",
+            "تسمى بأسماء خاصة في الأنسجة: خلايا كوبفر في الكبد، الخلايا الدبقية الصغيرة في الدماغ، وخلايا الغبار بالرئة.",
+            "تعمل كخلية عارضة للمستضد (APC) احترافية حيث تقدم الشظايا المهضومة للخلايا التائية عبر جزيئات MHC-II.",
+            "تفرز سيتوكينات التهابية أساسية كعامل نخر الورم وإنترلوكين-1، وتلتحم لتشكيل خلايا عملاقة في الالتهاب الحبيبي كالسل."
+    ],
+    "English": [
+            "A formidable mononuclear phagocyte derived from circulating blood monocytes that extravasate into resident connective tissues.",
+            "Specialized in high-capacity phagocytosis, engulfing apoptotic cellular corpses, foreign particulates, and microbial pathogens.",
+            "Adopts tissue-specific monikers: Kupffer cells in hepatic sinusoids, microglia in neural parenchyma, and alveolar dust cells in lungs.",
+            "Functions as a professional antigen-presenting cell (APC), loading processed peptides onto MHC Class II complexes for CD4+ T cells.",
+            "Fuses into multinucleated Langhans giant cells during chronic granulomatous reactions classically seen in Mycobacterium tuberculosis."
+    ]
+  },
+  "w578": {
+    "Arabic": [
+            "أقوى وأكفأ خلية عارضة للمستضدات (Professional APC) على الإطلاق في جسم الإنسان، وتربط بين المناعة الفطرية والمكتسبة.",
+            "تتميز بامتدادات وتفرعات سيتوبلازمية شجرية تشبه تشعبات الخلايا العصبية ولكنها تتبع الجهاز المناعي.",
+            "تنتشر في الأنسجة المعرضة للبيئة الخارجية كالجلد حيث تعرف باسم خلايا لانغرهانس (Langerhans cells).",
+            "تلتقط المستضد وتهاجر عبر الأوعية اللمفاوية إلى أقرب عقدة لمفاوية لتقديمه وتنشيط الخلايا التائية البكر (Naive).",
+            "تمتلك قدرة نادرة على التقديم المتصالب (Cross-presentation) لتنشيط الخلايا السامة CD8 ضد الفيروسات."
+    ],
+    "English": [
+            "The most potent professional antigen-presenting cell in biological systems, serving as the bridge between innate and adaptive immunity.",
+            "Characterized morphologically by elaborate arborizing cytoplasmic projections reminiscent of neuronal dendrites.",
+            "Stationed sentinel at external environmental interfaces, notably designated as Langerhans cells within the cutaneous epidermis.",
+            "Captures antigens, undergoes maturation, and migrates through afferent lymphatics to regional nodes to prime naive helper T lymphocytes.",
+            "Uniquely endowed with the mechanism of cross-presentation, feeding exogenous antigens into MHC Class I pathways to activate CD8+ T cells."
+    ]
+  },
+  "w579": {
+    "Arabic": [
+            "الجسم المضاد الأكثر وفرة في بلازما الدم حيث يشكل نحو 75% إلى 80% من إجمالي الأجسام المضادة السارية.",
+            "الجسم المضاد الوحيد القادر على عبور المشيمة من الأم إلى الجنين ليمنحه مناعة سلبية تحميه في أشهره الأولى.",
+            "يمثل المكون الرئيسي في الاستجابة المناعية الثانوية اللاحقة، مما يمنح الجسم حماية ومناعة طويلة الأمد بعد اللقاحات.",
+            "يعمل بكفاءة عالية على طهاية البكتيريا (Opsonization) لتسهيل بلعمتها وتفعيل مسار الجهاز المتمم التقليدي.",
+            "يتكون من وحدتين ثقيلتين وسلسلتين خفيفتين متصلتين بروابط ثنائية الكبريتيد على شكل حرف Y الكلاسيكي."
+    ],
+    "English": [
+            "The most abundant circulating immunoglobulin isotype in human plasma, accounting for approximately 75% to 80% of total serum antibodies.",
+            "The solitary antibody isotype capable of crossing the placental syncytiotrophoblast barrier, bestowing passive neonatal humoral immunity.",
+            "Dominates the secondary anamnestic immune response, driving high-affinity memory immunity elicited by successful vaccination regimens.",
+            "Acts as a premier opsonin coating bacterial capsules to facilitate macrophage clearance and triggering the classical complement cascade.",
+            "Possesses a monomeric Y-shaped structural architecture consisting of two identical heavy gamma chains and two identical light chains."
+    ]
+  },
+  "w580": {
+    "Arabic": [
+            "الجسم المضاد الأقل تركيزاً في مصل الدم الطبيعي، لكنه يلعب الدور الرئيسي في تفاعلات الحساسية المفرطة الفورية (Type I).",
+            "يرتبط بقوة بالغة عبر شقته الثابتة بمستقبلات خاصة (Fc-epsilon-RI) عالية الألفة على أسطح الخلايا البدينة والقاعدية.",
+            "عندما يلتقي بمسببات التحسس يسبب ارتباطاً تشابكياً يطلق الهيستامين مسبباً الشرى، الربو، والصدمة التأقية.",
+            "يلعب دوراً تطورياً رئيسياً في حماية الجسم من العدوى بالديدان الطفيلية عبر تجنيد وتنشيط الخلايا الحمضية (Eosinophils).",
+            "يرتفع تركيزه بشكل ملحوظ في الدم لدى المصابين بالأكزيما التأتبية، حمى القش، ومتلازمة فرط هذا الجسم المضاد (Job syndrome)."
+    ],
+    "English": [
+            "The least concentrated immunoglobulin class in normal physiological serum, yet the pivotal mediator of Type I immediate hypersensitivity.",
+            "Binds with extraordinarily high affinity via its Fc region to high-affinity receptors (FcεRI) anchored on mast cells and basophils.",
+            "Cross-linking of surface-bound molecules by bivalent allergens triggers catastrophic degranulation of histamine and leukotrienes.",
+            "Provides primary evolutionary host defense against metazoan helminthic worm parasites by orchestrating eosinophil-mediated cytotoxicity.",
+            "Consistently elevated in atopic conditions (allergic rhinitis, extrinsic asthma) and rare hyper-IgE syndrome (Job syndrome)."
+    ]
+  },
+  "w581": {
+    "Arabic": [
+            "الجسم المضاد الأساسي المسؤول عن مناعة الأغشية المخاطية في الجهاز الهضمي والتنفسي والتناسلي.",
+            "يفرز بكثافة في سوائل الإفرازات الخارجية مثل اللعاب، الدموع، العرق، وحليب اللبأ (Colostrum) لتغذية الرضيع.",
+            "يوجد في الإفرازات على شكل ثنائي الجزيء (Dimer) مرتبط بسلسلة J ومحمي بقطعة إفرازية تمنع هضمه بالإنزيمات.",
+            "يمنع التصاق البكتيريا والفيروسات بالخلايا الطلائية للأمعاء دون أن يحدث تفاعلاً التهابياً مدمراً للأنسجة.",
+            "نقصه الوراثي الانتقائي (Selective deficiency) يعد أشهر عوز مناعي أولي ويزيد عرضة المريض للحساسية والعدوى والإسهال."
+    ],
+    "English": [
+            "The primary antibody isotype providing mucosal surface barrier immunity across the gastrointestinal and respiratory tracts.",
+            "Produced abundantly in external secretions including saliva, tears, colostrum breast milk, and tracheobronchial mucus.",
+            "Exists within mucosal secretions as a dimeric complex joined by a joining (J) chain and stabilized by a protective secretory component.",
+            "Neutralizes viral and bacterial surface adhesins, preventing pathogen mucosal adherence without inciting destructive inflammatory cascades.",
+            "Selective inherited deficiency of this antibody class is the most common primary immunodeficiency, predisposing to mucosal infections."
+    ]
+  },
+  "w582": {
+    "Arabic": [
+            "أول جسم مضاد يتم إنتاجه بواسطة الخلايا البائية أثناء الاستجابة المناعية الأولية عند التعرض لميكروب جديد.",
+            "أكبر الأجسام المضادة حجماً في جسم الإنسان، حيث يتكون في البلازما من خمسة جزيئات متصلة معاً (Pentamer).",
+            "يمتلك 10 مواقع للارتباط بالمستضد مما يجعله فائق الكفاءة في تراص البكتيريا وتفعيل شلال الجهاز المتمم.",
+            "وجوده الإيجابي في دم المريض يدل على وجود عدوى حديثة حادة، بينما يدل وجود غيره على عدوى قديمة أو مناعة سابقة.",
+            "لا يستطيع عبور المشيمة لكبر وزنه الجزيئي، لذا فإن اكتشافه في دم المولود يثبت حدوث عدوى خلقية داخل الرحم."
+    ],
+    "English": [
+            "The earliest immunoglobulin isotype synthesized by B cells in response to initial primary exposure to a novel foreign antigen.",
+            "The largest antibody macromolecule in human circulation, circulating in serum as a massive star-shaped pentameric structure.",
+            "Possesses 10 theoretical antigen-binding Fab domains, conferring unparalleled theoretical avidity for microbial agglutination.",
+            "Presence in serological assays signifies active, primary, or acute infection, contrasting with the convalescent memory profile of others.",
+            "Incapable of traversing the placental barrier due to its bulky pentameric size; its detection in neonates confirms congenital intrauterine infection."
+    ]
+  },
+  "w583": {
+    "Arabic": [
+            "شلال إنزيمي معقد يتألف من أكثر من 30 بروتيناً سارياً في بلازما الدم يصنع معظمها في الكبد بصورة غير نشطة.",
+            "ينشط عبر ثلاثة مسارات رئيسية: المسار التقليدي (بالأجسام المضادة)، والمسار البديل (تلقائي)، ومسار اللكتين.",
+            "تلتقي جميع مساراته عند تنشيط بروتين C3 الذي ينشطر إلى C3a (مسبب للالتهاب) و C3b (طاهٍ ميسر للبلعمة).",
+            "تتجمع مكوناته المتأخرة (C5b إلى C9) لتشكل معقد الهجوم الغشائي (MAC) الذي يثقب جدار الخلية الميكروبية ويفجرها.",
+            "نقص مكوناته الأخيرة (C5-C9) يجعل المصاب عرضة بشكل خاص ومتكرر لعدوى بكتيريا النيسيرية السحائية المسببة لالتهاب السحايا."
+    ],
+    "English": [
+            "A sophisticated biochemical cascade comprising over 30 circulating serum proteins synthesized primarily by the liver as inactive zymogens.",
+            "Triggered through three distinct activation limbs: the classical pathway (immune complexes), the lectin pathway, and the alternative pathway.",
+            "All activating vectors converge on the central cleavage of factor C3 into an anaphylatoxin fragment (C3a) and an opsonin fragment (C3b).",
+            "Terminal components (C5b through C9) assemble into the transmembrane ring-shaped membrane attack complex (MAC), lysing target bacteria.",
+            "Inherited deficiencies of terminal components (C5 to C9) confer extreme selective susceptibility to recurrent Neisseria meningitidis bacteremia."
+    ]
+  },
+  "w584": {
+    "Arabic": [
+            "أمين حيوي فعال ينتج من نزع مجموعة الكربوكسيل من الحمض الأميني هيستيدين، ويخزن داخل حبيبات الخلايا البدينة.",
+            "الوسيط الالتهابي الأساسي المسؤول عن أعراض الحساسية الكلاسيكية: الحكة، سيلان الأنف، العطاس، وتدميع العينين.",
+            "يرتبط بمستقبلات H1 في الأوعية الدموية فيحدث توسعاً وعائياً وزيادة نفاذية الشعيرات، وتضيقاً في القصبات الهوائية.",
+            "يرتبط بمستقبلات H2 في الخلايا الجدارية للمعدة ليحفز إفراز حمض الهيدروكلوريك، وتعالجه أدوية كالفاموتيدين.",
+            "تعاكس تأثيراته التحسسية فئة شهيرة من الأدوية تعرف بمضادات هذا الأمين مثل السيتريزين والديفينهيدرامين."
+    ],
+    "English": [
+            "A biogenic vasoactive amine synthesized via decarboxylation of the amino acid histidine, pre-stored within granules of tissue mast cells.",
+            "The primary fast-acting inflammatory chemical messenger driving allergic rhinorrhea, intense pruritus, sneezing, and watery chemosis.",
+            "Stimulation of its H1 receptor subtype provokes profound arteriolar vasodilation, microvascular hyperpermeability, and bronchoconstriction.",
+            "Binds to parietal cell H2 receptors within the gastric mucosa to stimulate hydrochloric acid output, blocked by famotidine.",
+            "Its physiological downstream effects are antagonized clinically by first- and second-generation competitive H1-receptor antagonists."
+    ]
+  },
+  "w585": {
+    "Arabic": [
+            "عائلة من السيتوكينات السكرية الطبيعية تفرزها خلايا الجسم استجابة لهجوم الفيروسات لتتداخل مع تكاثرها وتمنع انتشارها.",
+            "ينقسم إلى النوع الأول (ألفا وبيتا) المضاد للفيروسات، والنوع الثاني (جاما) الذي تفرزه الخلايا التائية لتنشيط البلاعم.",
+            "يحفز الخلايا المجاورة غير المصابة على إنتاج إنزيمات تحلل الحمض النووي الريبي الفيروسي وتوقف تصنيع البروتينات.",
+            "يستخدم كعلاج دوائي مركب في التهاب الكبد الفيروسي المزمن، وبعض الأورام، والنوع بيتا منه يستخدم لعلاج التصلب المتعدد.",
+            "يسبب إفرازه أثناء العدوى الفيروسية الحادة الأعراض الشبيهة بالإنفلونزا كالحمى والقشعريرة وآلام العضلات والإجهاد."
+    ],
+    "English": [
+            "A multigene family of inducible signaling glycoproteins secreted by host cells in response to viral invasion to interfere with viral replication.",
+            "Classified into Type I (alpha and beta) conferring cell-autonomous antiviral states, and Type II (gamma) secreted by T cells to prime macrophages.",
+            "Binds to uninfected bystander cellular receptors, stimulating protective antiviral stimulated genes (ISGs) that degrade viral mRNA genomes.",
+            "Manufactured pharmacologically as recombinant biologics deployed in chronic viral hepatitis, melanoma, and multiple sclerosis (IFN-beta).",
+            "Endogenous systemic surge during acute viral syndromes accounts directly for classic constitutional symptoms including fever, rigors, and myalgias."
+    ]
+  },
+  "w586": {
+    "Arabic": [
+            "حالة طوارئ طبية مهددة للحياة تتمثل في تفاعل تحسسي جهازي حاد وشامل وسريع الظهور خلال دقائق من التعرض للمحفز.",
+            "ينتج عن تفاعل فرط حساسية سريع من النوع الأول (IgE-mediated) يؤدي لتفريغ هائل وفوري لمحتويات الخلايا البدينة في الدم.",
+            "يتظاهر بانسداد المجرى الهوائي بوذمة الحنجرة، تضيق القصيبات والصرير، هبوط حاد في ضغط الدم، والشرى المعمم.",
+            "أشهر محفزاته: لدغات النحل والدبابير، أدوية كالبنسلين، والمكسرات كالفول السوداني والمأكولات البحرية.",
+            "العلاج المنقذ للحياة الإلزامي الأول هو الحقن العضلي الفوري لعقار الإبينفرين (Epinephrine) في الفخذ دون أدنى تأخير."
+    ],
+    "English": [
+            "A hyperacute, severe, potentially fatal multi-system hypersensitivity reaction erupting within seconds to minutes of allergen exposure.",
+            "Mechanistically driven by explosive IgE-mediated degranulation of tissue mast cells and basophils releasing massive histamine showers.",
+            "Presents with acute stridor from laryngeal edema, wheezing bronchospasm, profound vascular collapse/hypotension, and diffuse urticaria.",
+            "Most frequently triggered by Hymenoptera stings, parenteral beta-lactam antibiotics, tree nuts, peanuts, and shellfish.",
+            "The mandatory, life-saving first-line intervention is emergent intramuscular injection of epinephrine into the anterolateral thigh."
+    ]
+  },
+  "w587": {
+    "Arabic": [
+            "مرض مناعي ذاتي جهازي التهابي مزمن معقد يتميز بإنتاج واسع لأجسام مضادة ذاتية ضد مكونات نواة الخلية.",
+            "يصيب الإناث في سن الإنجاب بنسبة 9 إلى 1 مقارنة بالذكور، ويتبع نمطاً متقلباً من الهجمات والهدوء السريري.",
+            "العلامة الجلدية الكلاسيكية له هي طفح جلدي أحمر فوق الخدين وجسر الأنف يسمى طفح الفراشة (Malar/Butterfly rash).",
+            "يحدث ترسب معقدات مناعية (Type III) في الكبيبات الكلوية مسبباً التهاب الكلية الذئبي والبروتين بالبول.",
+            "فحصه المسحي الأول هو الأجسام المضادة للنواة (ANA)، والفحص التأكيدي عالي النوعية هو الأجسام المضادة لـ (Anti-dsDNA و Anti-Smith)."
+    ],
+    "English": [
+            "A prototypical chronic systemic autoimmune disorder characterized by loss of self-tolerance and polyclonal antinuclear antibody synthesis.",
+            "Strikingly predominates in women of childbearing age with a 9:1 female-to-male ratio, featuring an episodic relapsing-remitting course.",
+            "The classic hallmark cutaneous manifestation is a photosensitive fixed erythema spanning the malar eminences and nasal bridge (butterfly rash).",
+            "Type III immune complex deposition within glomerular basement membranes incites severe proliferative lupus nephritis.",
+            "Screened initially via antinuclear antibodies (ANA), and confirmed through highly disease-specific markers: Anti-dsDNA and Anti-Smith."
+    ]
+  },
+  "w588": {
+    "Arabic": [
+            "متلازمة مناعية نادرة وخطيرة من النوع الثاني تجمع بين نزيف سنخي حاد في الرئتين والتهاب كبيبات الكلى سريع الترقي.",
+            "تنتج عن أجسام مضادة ذاتية نوعية موجهة ضد نطاق الكولاجين من النوع الرابع (سلسلة ألفا 3) في الغشاء القاعدي.",
+            "يتظاهر المريض الكلاسيكي بسعال مدمم (Hemoptysis)، ضيق تنفس حاد، وبول مدمم مع قصور كلوي سريع التدهور.",
+            "خزعة الكلى مع فحص التألق المناعي تظهر نمطاً خطياً أملس ومستمراً لترسب IgG على طول الغشاء القاعدي للكبيبات.",
+            "يشمل علاجها الطارئ فصادة البلازما (Plasmapheresis) لإزالة الأجسام المضادة السارية مع الستيرويدات وسيكلوفوسفاميد."
+    ],
+    "English": [
+            "A fulminant autoimmune pulmonary-renal syndrome characterized by diffuse alveolar hemorrhage coupled with rapidly progressive glomerulonephritis.",
+            "Mediated by pathogenic circulating autoantibodies targeted against the non-collagenous domain of the alpha-3 chain of Type IV collagen.",
+            "Clinical presentation is marked by hemoptysis, bilateral alveolar infiltrates, microscopic hematuria, and rapid azotemic renal failure.",
+            "Renal biopsy evaluated by direct immunofluorescence reveals an unmistakable continuous smooth linear ribbon of IgG along glomerular basements.",
+            "Emergency therapeutic protocol mandates urgent therapeutic plasmapheresis to remove circulating antibodies, paired with cyclophosphamide and steroids."
+    ]
+  },
+  "w589": {
+    "Arabic": [
+            "متلازمة وراثية خلقية تنتج عن حذف صبغي مجهري دقيق في الذراع الطويلة للكروموسوم رقم 22 (22q11.2 deletion).",
+            "تنجم عن فشل تطور الجيبين البلعوميين الثالث والرابع مما يؤدي إلى غياب أو ضمور الغدة الزعترية والغدد جارات الدرقية.",
+            "يعاني الرضيع حديث الولادة من تشنجات عضلية تكززية ناجمة عن هبوط حاد في مستوى الكالسيوم بالدم لنقص هرمون PTH.",
+            "يحدث عوز مناعي خلوي شديد بسبب غياب نضج الخلايا التائية مما يسهل إصابة الطفل بعدوى فطرية وفيروسية متكررة.",
+            "تترافق بعيوب خلقية في القلب كرباعية فالوت وجذع شرياني مشترك، وانشقاق في الحنك، وملامح وجه مميزة."
+    ],
+    "English": [
+            "A congenital neurocristopathy caused by a recurrent microdeletion on the long arm of chromosome 22 at position 22q11.2.",
+            "Stems from embryological dysgenesis of the third and fourth pharyngeal pouches, resulting in aplasia or hypoplasia of the thymus and parathyroids.",
+            "Neonates present with neonatal hypocalcemic tetany and seizures due to severe parathyroid hormone deficiency.",
+            "Profound T-cell immunodeficiency ensues from thymic absence, predisposing infants to recurrent opportunistic fungal and viral infections.",
+            "Universally linked with conotruncal cardiac anomalies (Tetralogy of Fallot, truncus arteriosus), cleft palate, and dysmorphic facies."
+    ]
+  },
+  "w590": {
+    "Arabic": [
+            "عوز مناعي أولي وراثي متنحٍ مرتبط بالصبغي X يصيب الذكور فقط، ويتميز بغياب شبه تام للأجسام المضادة في الدم.",
+            "ينتج عن طفرة في جين إنزيم تيروزين كاينيز (BTK) الضروري لتطور الخلايا البائية السلفية إلى خلايا ناضجة.",
+            "تبدأ الأعراض في الظهور بعد عمر 6 أشهر عندما تبدأ الأجسام المضادة المكتسبة من الأم عبر المشيمة في التلاشي.",
+            "يعاني الطفل من التهابات بكتيرية متكررة وخطيرة في الجهاز التنفسي والجيوب والأذن بواسطة بكتيريا ذات محفظة كالمكورات الرئوية.",
+            "الفحص السريري يظهر غياباً تاماً للوزتين والعقد اللمفاوية المحيطية، ويعالج بإعطاء الغلوبولين المناعي الوريدي (IVIG) شهرياً مدى الحياة."
+    ],
+    "English": [
+            "An inherited primary immunodeficiency transmitted as an X-linked recessive trait, exclusively afflicting male pediatric patients.",
+            "Caused by loss-of-function mutations within the Bruton tyrosine kinase (BTK) gene, blocking pro-B cell progression into pre-B cells.",
+            "Clinical vulnerability surfaces around 6 months of age coincident with the physiological catabolism of maternal transplacental IgG.",
+            "Children endure severe, recurrent sinopulmonary pyogenic infections driven by encapsulated bacteria like Streptococcus pneumoniae.",
+            "Physical examination reveals strikingly hypoplastic or absent palatine tonsils and peripheral lymph nodes; managed with lifelong regular IVIG infusions."
+    ]
+  },
+  "w591": {
+    "Arabic": [
+            "أخطر أشكال العوز المناعي الوراثي الأولي على الإطلاق حيث يتعطل الشقان الخلوي والخلطي للجهاز المناعي تماماً.",
+            "أشهر أسبابه الوراثية طفرة في السلسلة غاما لمستقبلات الإنترلوكين (مرتبط بـ X) أو نقص إنزيم أدينوسين دي أمينيز (ADA).",
+            "يعرف تاريخياً وإعلامياً بمرض طفل الفقاعة لأن الرضيع لا يستطيع العيش إلا في بيئة معقمة ومعزولة كلياً.",
+            "يصاب الرضيع سريعاً بإسهال مزمن مستعصٍ، وفشل نمو حاد، وعدوى انتهازية مميتة بفطريات المتكيسة الرئوية والمبيضات.",
+            "يمثل طوارئ مناعية قصوى تؤدي للوفاة في السنة الأولى إذا لم يتم علاجه بزراعة نخاع العظم (خلايا جذعية) في الأشهر الأولى."
+    ],
+    "English": [
+            "The most devastating primary pediatric immunodeficiency disorder, characterized by a complete absence of both cellular and humoral immunity.",
+            "Most common genetic subtype is X-linked recessive via IL-2 receptor gamma-chain (IL2RG) mutations, alongside autosomal recessive ADA deficiency.",
+            "Historically immortalized as the 'bubble boy disease' because infants were shielded from the microbial world within sterile enclosures.",
+            "Presents in early infancy with intractable diarrhea, severe failure to thrive, candidiasis, and fatal Pneumocystis jirovecii pneumonia.",
+            "Constitutes an absolute medical emergency uniformly fatal within the first year of life unless rescued by allogeneic hematopoietic stem cell transplantation."
+    ]
+  },
+  "w592": {
+    "Arabic": [
+            "معقد بروتيني جيني فائق التباين يقع على الكروموسوم رقم 6، ويمثل بطاقة الهوية البيولوجية المميزة لأنسجة كل إنسان.",
+            "ينقسم إلى الصنف الأول (HLA-A, B, C) الموجود على جميع الخلايا ذات النواة، والصنف الثاني على الخلايا المناعية العارضة فقط.",
+            "المحدد الأساسي لمدى تطابق الأنسجة ونجاح أو رفض عمليات زراعة الأعضاء ونقل نخاع العظم بين المتبرع والمتلقي.",
+            "ترتبط بعض أليلاته بقوة بأمراض مناعية ذاتية شهيرة، مثل ارتباط الأليل (HLA-B27) بالتهاب الفقار المقسط والتهاب القزحية.",
+            "يقدم شظايا الببتيدات المستضدية من داخل وخارج الخلية إلى مستقبلات الخلايا التائية لتحفيز الاستجابة المناعية."
+    ],
+    "English": [
+            "A hyperpolymorphic cluster of cell-surface glycoproteins encoded on chromosome 6 constituting the biological tissue identity of each individual.",
+            "Partitioned into Class I loci (A, B, C) ubiquitous on all nucleated cells and Class II loci (DP, DQ, DR) restricted to professional APCs.",
+            "Serves as the paramount molecular barrier determining immunological histocompatibility or graft rejection in organ and stem cell transplantation.",
+            "Specific alleles demonstrate massive epidemiological links to autoimmune disorders, notably HLA-B27 with ankylosing spondylitis.",
+            "Functions physiologically to cradle degraded intracellular or endocytosed peptide fragments for presentation to circulating T-cell receptors."
+    ]
+  },
+  "w593": {
+    "Arabic": [
+            "اختلاط مناعي خطير يحدث بعد زراعة نخاع العظم أو الخلايا الجذعية الخيفية المنقولة من متبرع إلى مريض سرطاني.",
+            "تهاجم فيه الخلايا اللمفاوية التائية المناعية المزروعة القادمة من المتبرع أنسجة وأعضاء المريض المضيف الضعيف مناعياً.",
+            "يستهدف كلاسيكياً ثلاثة أعضاء رئيسية في الجسم: الجلد (طفح حمامي وتقشر)، الكبد (يرقان وركود صفراوي)، والجهاز الهضمي (إسهال مدمم غزير).",
+            "ينقسم إلى شكل حاد يظهر خلال أول 100 يوم بعد الزراعة، وشكل مزمن يظهر لاحقاً ويشبه مرض تصلب الجلد وجفاف الأغشية.",
+            "تتم الوقاية منه بمطابقة HLA الدقيقة وتثبيط المناعة، ويعالج بالجرعات العالية من الكورتيكوستيرويدات ومضادات الكالسينيورين."
+    ],
+    "English": [
+            "A severe systemic immunological complication occurring after allogeneic hematopoietic stem cell transplantation.",
+            "Driven by donor-derived immunocompetent mature T lymphocytes mounting a cytolytic attack against alloantigens of the immunocompromised host.",
+            "Selectively ravages a canonical triad of target organs: the skin (maculopapular desquamative rash), liver (cholestatic jaundice), and gut (profuse secretory diarrhea).",
+            "Clinically segregated into an acute syndrome classically erupting within the first 100 days post-engraftment and a sclerodermatous chronic syndrome.",
+            "Mitigated prophylactic via strict HLA matching and T-cell depletion; treated with high-dose systemic methylprednisolone and calcineurin inhibitors."
+    ]
+  },
+  "w594": {
+    "Arabic": [
+            "بروتين مناعي يصنعه الجهاز المناعي عن طريق الخطأ ويوجهه لمهاجمة خلايا وأنسجة وبروتينات الجسم السليمة نفسها.",
+            "يمثل الدعامة الباثولوجية والواسم التشخيصي الأساسي في جميع أمراض المناعة الذاتية مثل الذئبة، والوهن العضلي، والسكري النمطي الأول.",
+            "تنتجه نسائل من الخلايا البائية والبلازمية التي أفلتت من آليات الرقابة والتسامح المناعي المركزي والمحيطي.",
+            "من أمثلتها الشهيرة: العامل الروماتويدي (RF)، والأجسام المضادة للنواة (ANA)، والأجسام المضادة للغدة الدرقية (Anti-TPO).",
+            "يمكن اكتشافها وتحديد معايرتها في عينات مصل الدم باستخدام تقنيات المقايسة الامتصاصية المناعية (ELISA) والتألق المناعي."
+    ],
+    "English": [
+            "A pathological immunoglobulin produced aberrantly by the immune system that specifically targets host self-antigens.",
+            "Forms the diagnostic cornerstone and driving pathogenic mechanism across the spectrum of autoimmune rheumatic and organ-specific diseases.",
+            "Synthesized by self-reactive B-cell and plasma-cell clones that successfully evade central negative selection and peripheral tolerance checkpoints.",
+            "Classic clinical prototypes include Rheumatoid Factor (RF), Antinuclear Antibodies (ANA), and anti-thyroid peroxidase (anti-TPO).",
+            "Quantitatively titered in patient serum utilizing enzyme-linked immunosorbent assays (ELISA) or indirect immunofluorescence microscopy."
+    ]
+  },
+  "w595": {
+    "Arabic": [
+            "ورم لمفاوي خبيث يصيب الجهاز اللمفاوي ويتميز بوجود خلايا ريد-ستيرنبيرغ (Reed-Sternberg) العملاقة الشبيهة بعيون البومة.",
+            "يظهر كلاسيكياً بتضخم غير مؤلم وصلب ومطاطي في العقد اللمفاوية الرقبية أو فوق الترقوة، وينتشر بنمط متتالٍ منتظم.",
+            "يترافق بأعراض جهازية مشهورة تعرف بـ (B symptoms): حمى متموجة (Pel-Ebstein)، تعرق ليلي غزير، وفقدان غير مبرر للوزن.",
+            "من العلامات السريرية الغريبة والمميزة له حدوث ألم حاد في العقد اللمفاوية المتضخمة فور تناول المشروبات الكحولية.",
+            "يصيب فئتين عمريتين (توزيع ثنائي الذروة): الشباب في العشرينات وكبار السن، ويستجيب بنسب شفاء عالية لبروتوكول ABVD الكيميائي."
+    ],
+    "English": [
+            "A lymphoid malignancy distinguished histopathologically by the presence of pathognomonic binucleated Reed-Sternberg cells with prominent owl-eye nucleoli.",
+            "Typically debuts as a firm, rubbery, non-tender, painless lymphadenopathy in the cervical or supraclavicular chains, spreading contiguously.",
+            "Frequently accompanied by constitutional 'B symptoms': Pel-Ebstein cyclic fevers, drenching nocturnal diaphoresis, and unexplained weight loss.",
+            "Features a rare, highly specific physical clue: immediate severe localized aching pain within involved lymph nodes upon alcohol ingestion.",
+            "Exhibits a bimodal age distribution peaking in young adulthood and late life; boasts extraordinary cure rates via the ABVD chemotherapy regimen."
+    ]
+  },
+  "w596": {
+    "Arabic": [
+            "مجموعة غير متجانسة ومتنوعة من الأورام الخبيثة التي تنشأ من الخلايا اللمفاوية التائية أو البائية وتفوق غيرها انتشاراً بنحو خمسة أضعاف.",
+            "تتميز بانتشار عشوائي غير متتالٍ، مع إصابة شائعة للأنسجة اللمفاوية خارج العقد (كالجهاز الهضمي، الجلد، ونخاع العظم).",
+            "أكثر أنواعها انتشاراً وشراسة هو سرطان الخلايا البائية الكبيرة المنتشر (DLBCL)، بينما الليمفوما الجريبية هي الأكثر بطئاً.",
+            "ترتبط بنقص المناعة المكتسب (الإيدز)، ومثبطات المناعة بعد زراعة الأعضاء، وعدوى بكتيريا الملوية البوابية في ليمفوما المعدة.",
+            "يعتمد علاج أكثر أنواعها البائية شيوعاً على البروتوكول المناعي الكيميائي الشهير (R-CHOP) المحتوي على عقار ريتوكسيماب."
+    ],
+    "English": [
+            "A heterogeneous cohort of lymphoid malignancies arising from B, T, or NK lineage precursors, outnumbering other lymphomas five-fold.",
+            "Exhibits unpredictable, non-contiguous hematogenous dissemination, with frequent involvement of extranodal sites (GI tract, skin, marrow).",
+            "The most prevalent aggressive histologic subtype is Diffuse Large B-Cell Lymphoma (DLBCL), while Follicular Lymphoma represents the indolent prototype.",
+            "Strongly correlated with secondary immunodeficiency states (HIV/AIDS), post-transplant immunosuppression, and Helicobacter pylori (MALT lymphoma).",
+            "Standard front-line curative chemoimmunotherapy for CD20+ B-cell phenotypes revolves around the famous R-CHOP regimen (Rituximab-CHOP)."
+    ]
+  },
+  "w597": {
+    "Arabic": [
+            "أكثر أورام الرئة شراسة وسرعة في الانتشار والانقسام، ويرتبط ارتباطاً سببياً شبه مطلق بالتدخين الكثيف (أكثر من 98%).",
+            "ينشأ مركزياً في الشعب الهوائية الكبرى من خلايا كولتشيتسكي ذات الإفراز العصبي الصماوي (Neuroendocrine origin).",
+            "تظهر خلاياه المجهرية صغيرة الحجم كحبات الشوفان مع سيتوبلازم ضئيل جداً وتفتت كروماتيني داكن (Salt-and-pepper chromatin).",
+            "يشتهر بإحداث متلازمات الأباعد الورمية (Paraneoplastic) كإفراز هرمون ACTH المسبب لكوشينغ، أو هرمون ADH مسبباً نقص الصوديوم SIADH.",
+            "بسبب سرعة انبثاثه الباكر للدماغ والكبد، نادراً ما يكون مرشحاً للجراحة ويعالج بالكيميائي (بلاتينوم + إيتوبوسيد) وإشعاع الدماغ الوقائي."
+    ],
+    "English": [
+            "The most biologically aggressive lung malignancy, notorious for rapid doubling times and an almost absolute linkage to heavy tobacco smoking (>98%).",
+            "Originates centrally near bronchial hilums from neuroendocrine Kulchitsky cells expressing chromogranin and synaptophysin.",
+            "Histologically composed of small, fragile round-to-oval cells with scant cytoplasm, granular 'salt-and-pepper' chromatin, and nuclear molding.",
+            "Renowned for driving florid paraneoplastic endocrinopathies, including ectopic ACTH secretion (Cushingoid state) and SIADH hyponatremia.",
+            "Virtually never amenable to curative surgical resection due to micro-metastases at diagnosis; treated with platinum-etoposide and prophylactic cranial irradiation."
+    ]
+  },
+  "w598": {
+    "Arabic": [
+            "الورم الخبيث الأولي الأكثر شيوعاً في الكبد، وينشأ في أكثر من 80% من الحالات كاختلاط متأخر لتليف الكبد المزمن.",
+            "أهم عوامل خطورته العالمية هي العدوى المزمنة بفيروسات الكبد الوبائي (B و C)، وتليف الكبد الكحولي والدهني، وسموم الأفلاتوكسين.",
+            "الواسم الورمي المصلي الرئيسي المستخدم في مسحه ومتابعته في الدم هو بروتين ألفا فيتو (Alpha-Fetoprotein - AFP).",
+            "يمكن تشخيصه بالأشعة المقطعية أو الرنين متعدد المراحل دون حاجة لخزعة: تعزيز سريع للشريان (Wash-in) وغسيل مبكر بالوريد (Wash-out).",
+            "تشمل خياراته العلاجية: الاستئصال الجراحي، زراعة الكبد (ضمن معايير ميلانو)، الكي بالتردد الحراري، أو سد الشريان الكيميائي (TACE)."
+    ],
+    "English": [
+            "The predominant primary malignancy of the liver parenchyma, developing in upwards of 80% of cases upon a background of established cirrhosis.",
+            "Major global etiologic drivers comprise chronic viral hepatitis B and C, non-alcoholic steatohepatitis (NASH), alcohol abuse, and aflatoxin B1.",
+            "The sentinel oncologic serum biomarker utilized for clinical screening and surveillance of high-risk cirrhotic cohorts is Alpha-Fetoprotein (AFP).",
+            "Can be definitively diagnosed non-invasively via multiphase dynamic CT or MRI demonstrating arterial hyperenhancement and venous phase washout.",
+            "Therapeutic armamentarium spans anatomical resection, orthotopic liver transplantation (within Milan criteria), RF ablation, and TACE."
+    ]
+  },
+  "w599": {
+    "Arabic": [
+            "ورم خبيث ينشأ من الخلايا الغدية المبطنة للمعدة، ويرتبط ارتباطاً وثيقاً بعدوى جرثومة المعدة الملوية البوابية (H. pylori).",
+            "تشمل عوامل خطورته البيئية تناول الأطعمة المملحة والمدخنة بكثرة، والتدخين، وفقر الدم الخبيث بنقص فيتامين B12.",
+            "النوع المنتشر منه (Diffuse type) يتميز بظهور خلايا مجهرية تشبه الخاتم فصي الخاتم (Signet-ring cells) وتصلب جدار المعدة كالزجاجة.",
+            "يشتهر بظهور نقائل ورمية بعيدة مميزة: عقدة فيرجوف (عقدة فوق الترقوة اليسرى)، وعقدة ماري جوزيف (في السرة)، وورم كروكنبرغ بالمبيض.",
+            "المعيار الذهبي لتشخيصه هو المنظار الهضمي العلوي مع أخذ خزعات متعددة، ويعالج بالاستئصال الجراحي مع تجريف العقد اللمفاوية."
+    ],
+    "English": [
+            "A lethal gastrointestinal malignancy originating from gastric mucosal glandular epithelia, powerfully tied to chronic Helicobacter pylori gastritis.",
+            "Dietary risk factors include excessive intake of salted, smoked, and nitrate-preserved foods, compounded by smoking and autoimmune gastritis.",
+            "Diffuse histologic subtypes feature malignant signet-ring cells diffusely infiltrating the muscularis, producing a rigid 'leather bottle' stomach (linitis plastica).",
+            "Renowned for classic metastatic physical signs: Virchow node (left supraclavicular), Sister Mary Joseph nodule (umbilicus), and Krukenberg ovarian tumors.",
+            "The indisputable diagnostic gold standard is esophagogastroduodenoscopy (EGD) with direct mucosal biopsies, followed by surgical gastrectomy."
+    ]
+  },
+  "w600": {
+    "Arabic": [
+            "أحد أشد الأورام السرطانية فتكاً وصعوبة في الكشف المبكر، وينشأ في أكثر من 70% من الحالات في رأس غدة البنكرياس.",
+            "يتظاهر كلاسيكياً بيرقان انسدادي غير مؤلم (Painless jaundice) مع بول داكن وبراز شاحب وحكة جلدية شديدة.",
+            "يترافق بعلامة كورفوازيه (Courvoisier sign) الإيجابية حيث تكون المرارة متضخمة وملموسة وغير مؤلمة بوجود اليرقان.",
+            "قد يرافقه التهاب الوريد الخثاري المهاجر المتنقل في الأطراف والمعروف بمتلازمة تروسو (Trousseau syndrome).",
+            "الواسم الورمي المرتبط به في الدم هو CA 19-9، والجراحة الاستئصالية الكبرى المعتمدة لرأس البنكرياس هي عملية ويبل (Whipple procedure)."
+    ],
+    "English": [
+            "One of the most lethal human neoplasms with exceptionally dismal 5-year survival, arising predominantly within the pancreatic head (70%).",
+            "Classically heralds its presence via painless obstructive jaundice accompanied by dark tea-colored urine, acholic pale stools, and pruritus.",
+            "Demonstrates a positive Courvoisier sign: an enlarged, palpable, non-tender gallbladder in the setting of clinical jaundice.",
+            "Frequently precipitates Trousseau syndrome, a migratory superficial thrombophlebitis driven by cancer-induced hypercoagulability.",
+            "Monitored serologically via tumor marker CA 19-9; surgical candidates undergo pancreaticoduodenectomy (the Whipple procedure)."
+    ]
+  },
+  "w601": {
+    "Arabic": [
+            "القاتل الصامت في أورام النساء والتوليد لغياب الأعراض المبكرة واكتشافه غالباً في مراحل متقدمة بعد انتشاره في التجويف البطني.",
+            "يرتبط ارتباطاً وراثياً وثيقاً بطفرات جينات إصلاح الحمض النووي (BRCA1 و BRCA2) ومتلازمة لينش الوراثية.",
+            "تأتي أكثر من 90% من أنواعه من الظهارة السطحية وأشهرها السرطان المصلي عالي الدرجة (High-grade serous).",
+            "تتظاهر أعراضه المتأخرة بانتفاخ البطن المستمر، الشبع المبكر، آلام الحوض، وتجمع السائل الاستسقائي (Ascites).",
+            "يستخدم واسم الورم CA-125 في الدم لمتابعة الاستجابة للعلاج، ويعالج بجراحة تقليص الورم القصوى مع العلاج الكيميائي القائم على البلاتين."
+    ],
+    "English": [
+            "Referred to as the silent gynecological killer because early disease is asymptomatic, with >70% presenting with peritoneal carcinomatosis.",
+            "Powerfully linked to germline hereditary breast and ovarian cancer mutations in BRCA1 and BRCA2, as well as Lynch syndrome.",
+            "The predominant histological subtype is high-grade serous carcinoma, thought to originate largely within the fimbriated ends of Fallopian tubes.",
+            "Clinical late signs comprise progressive abdominal distension, early satiety, pelvic pain, weight loss, and malignant ascites accumulation.",
+            "Monitored serologically via serum CA-125 biomarker; managed with maximal cytoreductive debulking surgery and platinum-taxane chemotherapy."
+    ]
+  },
+  "w602": {
+    "Arabic": [
+            "بروتين سكري إنزيمي يفرزه النسيج الطلائي لغدة البروستاتا وظيفته الفسيولوجية تسييل السائل المنوي المتخثر.",
+            "يستخدم كأشهر واسم حيوي في الدم للمسح والمتابعة السريرية لسرطان البروستاتا لدى الرجال فوق سن الخمسين.",
+            "المستوى الطبيعي في الدم يعتبر تقليدياً أقل من 4 نانوغرام/مل، وتجاوزه يستوجب استقصاءات إضافية كأخذ خزعة.",
+            "ليس نوعياً للسرطان فقط؛ إذ يمكن أن يرتفع أيضاً في حالات تضخم البروستاتا الحميد (BPH)، والتهاب البروستاتا، وبعد الفحص الشرجي.",
+            "يساعد حساب نسبة النوع الحر إلى الكلي (Free-to-total ratio) في تقليل الخزعات غير الضرورية عند وجود قيم حدودية مشبوهة."
+    ],
+    "English": [
+            "A kallikrein-related serine protease synthesized by prostatic epithelial cells, whose physiological duty is liquefaction of the seminal coagulum.",
+            "The universally utilized serum biomarker for screening, risk stratification, and post-treatment monitoring of adenocarcinoma of the prostate.",
+            "Historically defined by a normal upper threshold limit of 4.0 ng/mL, above which the suspicion for malignancy escalates.",
+            "Organ-specific but not cancer-specific: levels spike in benign prostatic hyperplasia (BPH), acute prostatitis, and mechanical catheterization.",
+            "The ratio of free to total biomarker (free/total ratio) helps differentiate benign prostatic enlargement from true aggressive carcinoma."
+    ]
+  },
+  "w603": {
+    "Arabic": [
+            "بروتين سكري جنيني ورمي يوجد طبيعياً بتراكيز عالية في أنسجة القناة الهضمية للجنين أثناء الحمل وينخفض للحد الأدنى بعد الولادة.",
+            "يعاد إنتاجه وإفرازه في دم البالغين بكميات كبيرة بواسطة الأورام السرطانية، وخاصة سرطان القولون والمستقيم.",
+            "لا يصلح كأداة مسح أولي لعشواء العامة لعدم نوعيته، لكنه المعيار الذهبي الأهم لمتابعة عودة أو انتكاس سرطان القولون بعد الجراحة.",
+            "يرتفع بدرجات طفيفة لدى المدخنين الأصحاء، ومرضى التهاب القولون التقرحي، وتليف الكبد المزمن.",
+            "الارتفاع المتصاعد في مستوياته بعد استئصال الورم الجراحي يعد المؤشر الأول على حدوث نقائل خبيثة في الكبد."
+    ],
+    "English": [
+            "An oncofetal glycoprotein synthesized abundantly in embryonic endodermal gut tissues during gestation, dropping to near zero postnatally.",
+            "Re-expressed and shed into adult systemic circulation by various carcinomas, most famously colorectal adenocarcinomas.",
+            "Lacks sufficient sensitivity and specificity for initial population cancer screening, but is vital for post-resection recurrence monitoring.",
+            "Mild non-malignant elevations occur in chronic cigarette smokers, inflammatory bowel disease, and hepatic cirrhosis.",
+            "A persistent post-surgical elevation or steady upward trajectory serves as the earliest biochemical harbinger of occult hepatic metastases."
+    ]
+  },
+  "w604": {
+    "Arabic": [
+            "بروتين بلازمي جنيني رئيسي يصنعه الكيس المحي وكبد الجنين، ويمثل المكافئ الجنيني لبروتين الألبومين لدى البالغين.",
+            "يستخدم كواسم ورمي أساسي في دم البالغين لتشخيص ومتابعة سرطان الخلايا الكبدية (HCC) وأورام الخلايا الجرثومية في الخصية والمبيض.",
+            "يقاس روتينياً في دم الحامل بالسائل الأمنيوسي؛ فارتفاعه الشديد ينذر بعيوب الأنبوب العصبي للجنين كالسنسنة المشقوقة (Spina bifida).",
+            "انخفاض مستواه بشكل ملحوظ في دم الأم الحامل خلال الثلث الثاني من الحمل يعد مؤشراً مسحياً على احتمالية متلازمة داون.",
+            "يساعد قياسه المتزامن مع هرمون HCG في تصنيف ومتابعة أورام الخصية غير المنوية (Non-seminomatous germ cell tumors)."
+    ],
+    "English": [
+            "The dominant fetal plasma glycoprotein synthesized sequentially by the yolk sac and embryonic liver, serving as the fetal analogue of albumin.",
+            "Utilized in adult clinical oncology as the primary surveillance and diagnostic serum biomarker for hepatocellular carcinoma and testicular germ cell tumors.",
+            "Routinely measured during maternal antenatal screening: marked maternal elevations alert clinicians to open neural tube defects (spina bifida).",
+            "Abnormally depressed maternal serum levels during the second-trimester quadruple screen correlate with fetal Down syndrome (Trisomy 21).",
+            "Paired routinely with beta-hCG to stage, stratify, and monitor therapeutic responses in non-seminomatous testicular germ cell tumors."
+    ]
+  },
+  "w605": {
+    "Arabic": [
+            "بروتين سكري تركيبي كبير مشتق من ظهارة اللولوم الجنينية، ويعد أشهر واسم ورمي مرتبط بسرطان المبيض الظهاري.",
+            "يستخدم سريرياً لتقييم الكتل الحوضية لدى النساء بعد سن اليأس، ولمتابعة الاستجابة للعلاج الكيميائي ورصد انتكاس الورم.",
+            "القيمة الطبيعية له في الدم تعتبر عموماً أقل من 35 وحدة/مل، وقد يتجاوز آلاف الوحدات في حالات سرطان المبيض المصلي المنتشر.",
+            "ليس خاصاً بالسرطان فقط؛ إذ يمكن أن يرتفع في حالات حميدة كبطانة الرحم المهاجرة (Endometriosis)، وألياف الرحم، والحمل، وأثناء الطمث.",
+            "يعد جزءاً أساسياً في حساب مؤشر خطورة الخباثة (RMI) مع معايير السونار المهبلي وحالة انقطاع الطمث لتوجيه الجراحة."
+    ],
+    "English": [
+            "A high-molecular-weight transmembrane mucin glycoprotein (MUC16) derived embryologically from coelomic and Müllerian epithelia.",
+            "The premier oncologic serum biomarker deployed for tracking disease progression and post-surgical recurrence in epithelial ovarian cancer.",
+            "Historically calibrated to a standard laboratory upper reference limit of 35 U/mL, often soaring into thousands in disseminated serous cancer.",
+            "Lacks absolute tumor specificity: physiological or benign spikes occur during menstruation, pregnancy, endometriosis, and pelvic peritonitis.",
+            "Serves as an integral arithmetic variable within the Risk of Malignancy Index (RMI) scoring system guiding specialist gynecologic surgery."
+    ]
+  },
+  "w606": {
+    "Arabic": [
+            "صنف رئيسي من العلاجات الدوائية الجهازية يعتمد على استخدام عقاقير سامة للخلايا لتدمير الخلايا السرطانية سريعة الانقسام.",
+            "تشمل فئاته: العوامل المؤلكلة التي تدمر الحمض النووي (كسيكلوفوسفاميد)، ومضادات المستقلبات (كميثوتريكسات)، وسموم المغزل (كباكليتاكسيل).",
+            "نظراً لاستهدافه جميع الخلايا سريعة الانقسام في الجسم دون تمييز، فإنه يؤثر على بصيلات الشعر مسبباً الصلع، وبطانة الأمعاء مسبباً القيء.",
+            "يعد تثبيط نخاع العظم (Myelosuppression) وما ينجم عنه من فقر دم، ونزف بنقص الصفائح، وعدوى خطيرة بنقص العدلات أخطر سمياته الحادة.",
+            "يعطى ببروتوكولات دورية دقيقة لحساب الجرعة بناءً على مساحة سطح جسم المريض (Body Surface Area) مع أدوية مانعة للغثيان."
+    ],
+    "English": [
+            "A major category of systemic pharmacological antineoplastic therapy employing cytotoxic agents designed to disrupt cellular mitosis.",
+            "Spans diverse mechanistic classes: alkylating agents (cyclophosphamide), antimetabolites (methotrexate), and microtubule poisons (paclitaxel).",
+            "Because it non-specifically attacks rapidly proliferating cell lines, it damages hair follicles (alopecia) and gut mucosa (mucositis/emesis).",
+            "Dose-limiting acute toxicity is profound bone marrow suppression, generating life-threatening febrile neutropenia, anemia, and thrombocytopenia.",
+            "Administered in scheduled cyclical regimens strictly dosed to calculated body surface area (BSA) alongside prophylactic antiemetic 5-HT3 blockers."
+    ]
+  },
+  "w607": {
+    "Arabic": [
+            "أسلوب علاجي موضعي للسرطان يعتمد على توجيه حزم مكثفة من الإشعاعات المؤينة عالية الطاقة لتدمير الحمض النووي للخلايا الخبيثة.",
+            "تولد فوتونات الأشعة السينية أو الجسيمات المشحونة جذوراً حرة تسبب كسوراً مزدوجة في شريطي الحمض النووي مما يمنع انقسام الورم.",
+            "يطبق إما عبر حزم خارجية من مسرع خطي (Linear accelerator) موجه نحو المريض، أو داخلياً بزرع بذور مشعة موضعية (Brachytherapy).",
+            "تجزأ الجرعة الكلية إلى جرعات صغيرة متساوية (Fractions) تعطى يومياً على مدى أسابيع للسماح للأنسجة السليمة المجاورة بإصلاح نفسها.",
+            "يستخدم إما بهدف الشفاء الجذري، أو كعلاج مساعد قبل أو بعد الجراحة، أو كعلاج تلطيفي مسكن لآلام النقائل العظمية وضغط الحبل الشوكي."
+    ],
+    "English": [
+            "A localized oncological treatment modality delivering high doses of ionizing radiation to permanently fracture malignant double-stranded DNA.",
+            "Operates via direct ionization or indirect generation of reactive oxygen free radicals, incapacitating cellular replication machinery.",
+            "Delivered externally via specialized medical linear accelerators (LINACs) or internally via implanted radioactive sealed sources (brachytherapy).",
+            "Total therapeutic doses are fractionated into daily aliquots over multiple weeks to exploit normal tissue DNA repair kinetics.",
+            "Deployed with curative intent, as adjuvant or neoadjuvant surgical therapy, or for emergent palliation of painful bone metastases."
+    ]
+  },
+  "w608": {
+    "Arabic": [
+            "نهج علاجي ثوري في طب الأورام لا يستهدف الخلايا السرطانية مباشرة، بل يعيد تحفيز وتنشيط الجهاز المناعي للمريض لمهاجمة الورم.",
+            "أبرز أصنافه هي مثبطات نقاط التفتيش المناعية (Checkpoint inhibitors) التي تحصر بروتينات (PD-1, PD-L1, CTLA-4).",
+            "تقوم بإزالة المكابح التي تضعها الخلايا السرطانية الخبيثة على الخلايا التائية، مما يمكن الأخيرة من التعرف على الورم وتدميره.",
+            "أحدثت طفرة هائلة في معدلات الشفاء والبقاء على قيد الحياة في أورام كانت تعتبر ميؤوسة مثل الميلانوما المتقدمة وسرطان الرئة.",
+            "تترافق مع آثار جانبية مميزة تشبه أمراض المناعة الذاتية مثل التهاب القولون، والتهاب الكبد، والتهاب الغدد الصماء."
+    ],
+    "English": [
+            "A revolutionary paradigm in oncology that does not poison tumor cells directly, but instead re-arms the host immune system to eradicate them.",
+            "Dominated by immune checkpoint inhibitor monoclonal antibodies blocking inhibitory molecules including PD-1, PD-L1, and CTLA-4.",
+            "Releases the biological 'molecular brakes' through which malignant cells induce T-cell exhaustion, unleashing potent anti-tumor cytotoxicity.",
+            "Transformed historical prognoses in formerly refractory metastatic malignancies, establishing durable remissions in melanoma and lung cancer.",
+            "Exhibits a distinct toxicity spectrum termed immune-related adverse events (irAEs) manifesting as autoimmune colitis, pneumonitis, and hypophysitis."
+    ]
+  },
+  "w609": {
+    "Arabic": [
+            "الخاصية البيولوجية الأخطر للأورام الخبيثة، وتتمثل في انتشار خلايا السرطان من موضع الورم الأولي إلى أعضاء وأنسجة بعيدة.",
+            "تعد السبب المباشر لأكثر من 90% من إجمالي الوفيات المرتبطة بمرض السرطان بين البشر.",
+            "تسلك الخلايا الخبيثة ثلاثة مسارات رئيسية: الانتشار عبر الأوعية اللمفاوية (للعقد)، عبر مجرى الدم (للأعضاء)، أو عبر التجاويف الصفاقية.",
+            "أشهر الأعضاء المستهدفة باستقبال هذه المستعمرات الثانوية هي الكبد، الرئتان، العظام، والدماغ.",
+            "يحدد وجودها وصول المريض إلى المرحلة الرابعة (Stage IV) من مراحل تدريج المرض، وتتحول الأهداف العلاجية غالباً إلى التلطيف والتحكم."
+    ],
+    "English": [
+            "The lethal hallmark characteristic of malignant neoplasms, defined as the biological dissemination of cancer cells from a primary nidus to distant organs.",
+            "Directly responsible for upwards of 90% of all cancer-associated mortalities worldwide.",
+            "Operates through three anatomical pathways: lymphatic dissemination to regional nodes, hematogenous spread, or transcoelomic cavity seeding.",
+            "The most notorious sanctuary target organs receptive to secondary colonization comprise the liver, lungs, bone matrix, and brain.",
+            "Its clinical presence automatically upstages disease to Stage IV in TNM taxonomy, pivoting therapeutic goals toward disease control and palliation."
+    ]
+  },
+  "w610": {
+    "Arabic": [
+            "إجراء تشخيصي سريع وقليل التوغل يستخدم إبرة رفيعة مجوفة ومحقنة لسحب عينات خلوية من الكتل السطحية لفحصها مجهرياً.",
+            "يعد الفحص الأولي المعياري لتقييم عقيدات الغدة الدرقية، والكتل المشبوهة في الثدي، وتضخم العقد اللمفاوية الرقبية.",
+            "غالباً ما يجرى تحت توجيه فوري بأجهزة الموجات فوق الصوتية (السونار) لضمان دخول الإبرة بدقة في مركز الكتلة المشتبهة.",
+            "يقدم فحصاً خلوياً (Cytology) سريعاً يظهر الخلايا المفردة لكنه لا يحافظ على المعمارية النسيجية الشاملة للأنسجة.",
+            "يتميز بعدم حاجته لتخدير عام أو شق جراحي، مع انعدام شبه تام للمضاعفات وإمكانية إجرائه في العيادة الخارجية خلال دقائق."
+    ],
+    "English": [
+            "A rapid, minimally invasive diagnostic outpatient procedure utilizing a narrow-gauge needle and syringe to aspirate free cells from lesions.",
+            "Serves as the frontline standard of care investigation for thyroid nodules, palpable breast masses, and suspicious cervical lymphadenopathy.",
+            "Routinely performed under direct real-time ultrasound guidance to steer the needle tip into the solid or suspicious core of the lesion.",
+            "Yields purely cytological specimens evaluating cellular nuclear-to-cytoplasmic morphology rather than preserved histological architecture.",
+            "Requires no general anesthesia or surgical incisions, carrying near-zero morbidity and providing provisional answers within hours."
+    ]
+  },
+  "w611": {
+    "Arabic": [
+            "النظام المعياري العالمي الموحد الأكثر استخداماً في طب الأورام لتوثيق وتصنيف مدى انتشار الورم الخبيث في جسم المريض.",
+            "يعتمد على ثلاثة محاور رئيسية: حجم الورم الأولي وعمقه، إصابة العقد اللمفاوية الإقليمية، ووجود نقائل ورمية بعيدة.",
+            "يستخدم الحرف الأول لتوصيف الكتلة من 0 إلى 4، والحرف الثاني للعقد من 0 إلى 3، والحرف الثالث للنقائل (M0 أو M1).",
+            "يعد المحدد الحاسم لاختيار الخطة العلاجية: فالأورام المبكرة تكون مرشحة للجراحة الاستئصالية، بينما المتقدمة تتطلب علاجاً جهازياً.",
+            "يمنح الأطباء حول العالم لغة مشتركة دقيقة وموحدة لتحديد الإنذار المستقبلي للمرض ومقارنة نتائج الأبحاث السريرية."
+    ],
+    "English": [
+            "The universally accepted benchmark anatomical staging language developed by the AJCC and UICC to categorize cancer extent.",
+            "Anchored upon three pivotal parameters: primary tumor size and extent, regional lymph node involvement, and distant metastasis.",
+            "Designates primary tumor progression numerically from 0 to 4, regional nodal status from 0 to 3, and distant spread as M0 or M1.",
+            "Serves as the indispensable decision-making blueprint for therapeutic triage (curative surgical resection versus palliative chemotherapy).",
+            "Establishes a rigorous, standardized international nomenclature providing vital prognostic stratification for oncologic trials."
+    ]
+  },
+  "w612": {
+    "Arabic": [
+            "ورم عظمي خبيث شديد العدوانية يصيب الأطفال والمراهقين، وينشأ كلاسيكياً في جذع العظام الطويلة (Diaphysis) كعظم الفخذ وعظام الحوض.",
+            "ينتمي لعائلة أورام الخلايا الزرقاء الصغيرة المستديرة (Small round blue cell tumors) تحت الفحص المجهري.",
+            "ينتج جينياً عن انتقال صبغي مميز جداً بنسبة تفوق 85% بين الكروموسومين 11 و 22 مسبباً الجين المندمج (EWS-FLI1).",
+            "تظهر الأشعة السينية للعظم المصاب تفاعلاً سمحاقياً متعدداً يشبه قشرة البصل (Onion-skinning periosteal reaction).",
+            "قد يقلد التهاب العظم والنقي الإنتاني لظهوره بألم عظمي موضعي، تورم، ارتفاع بالحرارة، وزيادة في كريات الدم البيضاء."
+    ],
+    "English": [
+            "A highly aggressive primary malignant pediatric bone tumor, classically predilecting the diaphyses of long tubular bones and the pelvis.",
+            "Belongs histologically to the classic diagnostic category of small round blue cell neoplasms packed with high nuclear-to-cytoplasmic ratios.",
+            "Defined cytogenetically by a pathognomonic balanced reciprocal translocation t(11;22)(q24;q12) forging the oncogenic EWS-FLI1 fusion transcript.",
+            "Plain radiographs demonstrate an aggressive lamellated periosteal reaction creating a classic multi-layered 'onion-skin' appearance.",
+            "Frequently mimics acute bacterial osteomyelitis on presentation with localized bone pain, swelling, systemic pyrexia, and leukocytosis."
+    ]
+  },
+  "w613": {
+    "Arabic": [
+            "أكثر أورام العين الخبيثة انتشاراً لدى الرضع والأطفال الصغار دون سن الخامسة، وينشأ من الخلايا العصبية الجنينية لشبكية العين.",
+            "المرض النموذجي الذي صاغ العالم كوندسون من خلاله فرضية الضربتين (Knudson two-hit hypothesis) لتعطيل الجين الكابت للأورام (RB1).",
+            "العلامة السريرية الأكثر شيوعاً هي ابيضاض بؤبؤ العين (Leukocoria) حيث ينعكس الضوء الأبيض من الحدقة في الصور بدلاً من المنعكس الأحمر.",
+            "تعد الحول (Strabismus) ثاني أكثر العلامات ظهوراً نتيجة فقدان التثبيت البصري المركزي في العين المصابة.",
+            "يمنع منعاً باتاً أخذ خزعة بالإبرة من مقلة العين تجنباً لانتشار الخلايا السرطانية الخبيثة خارج المدار إلى الدماغ."
+    ],
+    "English": [
+            "The most prevalent primary intraocular malignancy of infancy and early childhood, developing from primitive neuroepithelial retinal precursors.",
+            "Serves as the historical prototype establishing Knudson's famous 'two-hit hypothesis' of tumor suppressor gene inactivation (RB1 gene on 13q14).",
+            "The leading cardinal clinical sign is leukocoria ('cat's eye reflex'), where a white pupillary reflection replaces the normal red reflex in photographs.",
+            "Strabismus ranks as the second most common presenting complaint, precipitated by macular involvement disrupting central binocular fixation.",
+            "Incisional or aspiration biopsy of the globe is strictly and absolutely contraindicated to prevent catastrophic extraocular tumor dissemination."
+    ]
+  },
+  "w614": {
+    "Arabic": [
+            "ورم عصبي صماوي بطيء النمو ينشأ من خلايا كولتشيتسكي المعوية الأليفة للفضة، ويصيب غالباً الزائدة الدودية والأمعاء الدقيقة والرئتين.",
+            "يفرز كميات هائلة من المواد الفعالة الحيوية كالسيروتونين (Serotonin)، والهيستامين، والبراديكينين في مجرى الدم.",
+            "تحدث المتلازمة المرتبطة به كلاسيكياً فقط بعد حدوث نقائل كبدية تتجاوز قدرة الكبد على استقلاب السيروتونين المفرز.",
+            "تتظاهر المتلازمة بنوبات احمرار فجائي بالوجه والرقبة (Flushing)، إسهال مائي مزمن، وتضيق قصبي ربوي، وتلف صمامات القلب اليمنى.",
+            "يشخص مخبرياً بقياس ناتج أيض السيروتونين في البول على مدار 24 ساعة وهو حمض (5-HIAA)، ويعالج بمشابهات السوماتوستاتين (Octreotide)."
+    ],
+    "English": [
+            "A well-differentiated, indolent neuroendocrine neoplasm derived from enterochromaffin cells, most frequently residing in the appendix, ileum, and bronchi.",
+            "Actively secretes vasoactive biogenic amines, predominantly massive quantities of serotonin (5-HT), histamine, and prostaglandins.",
+            "The classic clinical syndrome erupts strictly once hepatic metastases develop, bypassing liver first-pass metabolic serotonin degradation.",
+            "Features the classic clinical tetrad: paroxysmal cutaneous flushing of the face, secretory explosive diarrhea, wheezing, and right-sided tricuspid fibrosis.",
+            "Confirmed biochemically through elevated 24-hour urinary 5-hydroxyindoleacetic acid (5-HIAA); medically managed with octreotide somatostatin analogues."
+    ]
+  },
+  "w615": {
+    "Arabic": [
+            "أسرع الأورام البشرية نمواً وانقساماً على الإطلاق، حيث يتضاعف حجم كتلته الورمية خلال أقل من 24 ساعة ومؤشر تكاثره Ki-67 يقارب 100%.",
+            "يرتبط انتقالياً بطفرة إزفاء مميزة جداً t(8;14) تؤدي إلى فرط تعبير الجين الورمي المحفز للنمو (c-MYC) تحت تأثير محفز الجينات المناعية.",
+            "النوع المتوطن في إفريقيا يرتبط بفيروس إبشتاين-بار (EBV) ويظهر ككتلة ضخمة مشوهة سريعة النمو في عظام الفك والوجه عند الأطفال.",
+            "النوع غير المتوطن (العشوائي) يصيب عادة منطقة البطن حول الأعور واللفائفي مسبباً آلاماً حادة وانسداداً في الأمعاء.",
+            "الفحص المجهري يظهر منظراً باثولوجياً كلاسيكياً يسمى السماء المرصعة بالنجوم (Starry sky pattern) بسبب التهام البلاعم للخلايا الميتة."
+    ],
+    "English": [
+            "The fastest-growing human malignancy known, boasting cellular doubling times under 24 hours and a proliferative Ki-67 growth fraction nearing 100%.",
+            "Defined cytogenetically by reciprocal translocation t(8;14) translocating the c-MYC proto-oncogene downstream of the heavy-chain Ig promoter.",
+            "Endemic African forms are universally driven by Epstein-Barr virus (EBV), presenting as a rapidly expanding disfiguring pediatric jaw/mandibular mass.",
+            "Sporadic Western variants present primarily as a rapidly expanding abdominal or ileocecal mass presenting with pain or bowel intussusception.",
+            "Histopathology displays the iconic 'starry-sky appearance', wherein tingible-body macrophages digesting apoptotic debris stand out against sheets of basophilic blasts."
+    ]
+  },
+  "w616": {
+    "Arabic": [
+        "حالة توليدية طارئة تسير فيها أوعية دم الجنين غير المحمية داخل الأغشية عبر عنق الرحم الداخلي تحت المجيء الجنيني.",
+        "تحدث غالباً مع انغراس الحبل السري الغشائي (Velamentous insertion) أو وجود فص مشيمي إضافي ملحق (Succenturiate lobe).",
+        "تتظاهر سريرياً بـ نزف مهبلي فجائي غير مؤلم بلون أحمر فاقع يحدث فور تمزق الأغشية الجنينية (Amniotomy) أثناء المخاض.",
+        "يعقب النزف مباشرة بطء شديد في نبض قلب الجنين واضطراب نظم جيبي جيبي (Sinusoidal fetal heart tracing) وصدمة وليدية.",
+        "الدم النازف هو دم جنيني بالكامل، واختبار آبت (Apt test) يثبت وجود هيموغلوبين الجنين المقاوم للقلويات.",
+        "تتطلب عملية ولادة قيصرية إسعافية عاجلة وفورية لإنقاذ حياة الجنين من الوفاة بالنزف الحاد خلال دقائق معدودة."
+  ],
+    "English": [
+        "A catastrophic obstetric emergency wherein unprotected fetal umbilical vessels traverse the membranes over the internal cervical os.",
+        "Strongly linked to velamentous umbilical cord insertion, multi-lobed placentas, or accessory succenturiate lobes.",
+        "Presents classically with painless, brisk vaginal bleeding occurring immediately following spontaneous or artificial rupture of membranes.",
+        "Rapidly accompanied by acute fetal bradycardia or a sinister agonal sinusoidal fetal heart rate pattern on cardiotocography.",
+        "The hemorrhage is entirely of fetal origin; the qualitative Apt alkali denaturation test confirms fetal hemoglobin resistance.",
+        "Demands immediate emergency STAT cesarean delivery to salvage the fetus from exsanguination and fatal hemorrhagic shock."
+  ]
+  },
+  "w617": {
+    "Arabic": [
+            "أكثر الاضطرابات الهرمونية الصماوية انتشاراً لدى النساء في سن الإنجاب، وتعد السبب الرئيسي لعقم انعدام الإباضة.",
+            "تعتمد في تشخيصها الدولي على معايير روتردام (Rotterdam): تباعد الطمث، فرط الأندروجينات السريري أو المخبري، ومظهر المبيض بالسونار.",
+            "تتظاهر سريرياً بالشعرانية الزائدة (Hirsutism) في الوجه والذقن، حب الشباب المستعصي، تساقط شعر الرأس الذكوري، وزيادة الوزن.",
+            "ترتبط جذورها المرضية بمقاومة شديدة للإنسولين وفرط إفرازه، مما يحفز خلايا القراب في المبيض على إنتاج كميات مفرطة من التيستوستيرون.",
+            "يظهر فحص السونار المهبلي مبيضين متضخمين محاطين بأكثر من 12 إلى 20 جريب صغير تشبه قلادة اللؤلؤ (String of pearls)."
+    ],
+    "English": [
+            "The most prevalent reproductive endocrine pathology afflicting premenopausal women, standing as the leading cause of anovulatory infertility.",
+            "Diagnosed globally using the Rotterdam consensus criteria: oligo-/anovulation, clinical or biochemical hyperandrogenism, and polycystic ovaries.",
+            "Clinically marked by terminal male-pattern hirsutism on the face and trunk, cystic recalcitrant acne, androgenic alopecia, and central obesity.",
+            "Fundamentally driven by compensatory hyperinsulinemia secondary to peripheral insulin resistance, driving theca cell androgen synthesis.",
+            "Pelvic ultrasound typically demonstrates enlarged ovaries bearing multiple small subcapsular antral follicles arranged like a 'string of pearls'."
+    ]
+  },
+  "w618": {
+    "Arabic": [
+            "الورم الحميد الأكثر شيوعاً على الإطلاق في الجهاز التناسلي الأنثوي، وينشأ من خلايا العضلات الملساء لجدار الرحم.",
+            "ورم حساس جداً للإستروجين والبروجستيرون، لذا ينمو ويكبر أثناء سنوات الخصوبة والحمل، ويضمر وينكمش تلقائياً بعد سن اليأس.",
+            "يصنف تشريحياً حسب موقعه إلى: تحت المخاطية (Submucosal)، وداخل الجدار العضلي (Intramural)، وتحت المصلية (Subserosal).",
+            "العرض الأكثر شيوعاً هو غزارة الطمث ونزيف الدورة الشديد والمطول (Menorrhagia) مما يسبب فقر دم مزمن بنقص الحديد.",
+            "تسبب الأورام الكبيرة أعراض ضغط كتلي على المثانة مسببة تكرار التبول، أو ضغطاً على المستقيم مسببة الإمساك."
+    ],
+    "English": [
+            "The single most ubiquitous benign neoplasm of the female reproductive tract, originating clonally from uterine smooth muscle myometrium.",
+            "Exquisitely hormone-dependent, growing under estrogen and progesterone exposure during fertile years and regressing after menopause.",
+            "Anatomically subclassified according to FIGO guidelines into submucosal, intramural, subserosal, or pedunculated topological variants.",
+            "The leading presenting complaint is heavy, prolonged, cyclical menstrual bleeding (menorrhagia) predisposing to microcytic iron-deficiency anemia.",
+            "Substantial bulk effect produces pelvic pressure, urinary frequency through anterior bladder compression, and chronic tenesmus."
+    ]
+  },
+  "w619": {
+    "Arabic": [
+            "ورم خبيث يصيب مدخل الرحم، وتعود أكثر من 99% من حالاته سببياً إلى عدوى مزمنة بالأنماط عالية الخطورة من فيروس الورم الحليمي البشري (HPV).",
+            "النوعان الفيروسيان 16 و 18 مسؤولان وحدهما عن نحو 70% من جميع حالات الإصابة حول العالم.",
+            "تنتج بروتيناته الفيروسية (E6 و E7) مواد تعطل الجينات الكابتة للأورام الأساسية (p53 و Rb) مما يحفز التسرطن.",
+            "العرض الأكثر دلالة عليه هو النزيف المهبلي بعد الجماع (Post-coital bleeding) أو النزيف غير المنتظم بين الدورات.",
+            "يمكن الوقاية منه بفعالية تامة عبر اللقاح المضاد للفيروس قبل الزواج وإجراء مسحة عنق الرحم الدورية للكشف المبكر."
+    ],
+    "English": [
+            "A gynecologic malignancy affecting the lower uterine segment, virtually 100% etiologically linked to persistent high-risk Human Papillomavirus (HPV).",
+            "Oncogenic viral genotypes 16 and 18 alone account for approximately 70% of invasive cervical carcinoma burdens globally.",
+            "Viral oncoproteins E6 and E7 drive malignant transformation by accelerating the targeted degradation of p53 and RB tumor suppressors.",
+            "The quintessential presenting symptom is post-coital vaginal contact bleeding or abnormal, malodorous intermenstrual staining.",
+            "Extremely preventable via routine prophylactic adolescent HPV vaccination programs paired with periodic cervical screening."
+    ]
+  },
+  "w620": {
+    "Arabic": [
+            "فحص مسحي خلوي دوري للنساء ابتكره العالم جورجيوس بابانيكولاو للكشف عن التغيرات قبل السرطانية في عنق الرحم.",
+            "يستخدم فيه منظار مهبلي (Speculum) وفرشاة دقيقة لكشط خلايا طلائية متساقطة من منطقة التحول (Transformation zone).",
+            "توضع الخلايا على شريحة زجاجية أو في سائل مثبت خاص ليتم فحصها مجهرياً بحثاً عن خلل التنسج (Dysplasia).",
+            "أدى تطبيقها الروتيني الشامل إلى خفض معدلات الوفاة من سرطان عنق الرحم بنسبة تفوق 70% في الدول المتقدمة.",
+            "تدمج حالياً مع اختبار الكشف عن الحمض النووي للأنماط المسرطنة من فيروس الورم الحليمي البشري (HPV Co-testing)."
+    ],
+    "English": [
+            "A routine gynecological cytological screening procedure engineered by George Papanicolaou to detect preinvasive cervical dysplasia.",
+            "Conducted during speculum examination utilizing an Ayre spatula and endocervical cytobrush to sample the transformation zone.",
+            "Exfoliated cells are transferred to liquid-based fixative vials for high-resolution Papanicolaou staining and microscopic screening.",
+            "Widespread implementation of this screening test has reduced invasive cervical cancer incidence and mortality by over 70%.",
+            "Routinely coupled in modern clinical guidelines with molecular co-testing for high-risk oncogenic human papillomavirus (HPV) DNA."
+    ]
+  },
+  "w621": {
+    "Arabic": [
+            "أي درجة من عدم تحمل الجلوكوز وارتفاع سكر الدم يتم تشخيصها لأول مرة أثناء الثلث الثاني أو الثالث من فترة الحمل.",
+            "ينتج عن إفراز المشيمة لهرمونات مضادة للإنسولين تعزز نمو الجنين، وأهمها هرمون لاكتوجين المشيمة البشري (hPL).",
+            "يتم مسحه روتينياً لجميع الحوامل بين الأسبوعين 24 و 28 من الحمل عبر اختبار تحمل الجلوكوز الفموي (OGTT).",
+            "يؤدي سكر الأم المرتفع إلى فرط إفراز إنسولين الجنين مما يسبب كبر حجم الجنين وضخامته (Macrosomia) وصعوبة الولادة.",
+            "يبدأ علاجه بالحمية والرياضة، وفي حال عدم الانضباط يعد الإنسولين البشري هو الخيار الدوائي الآمن الأول المفضل."
+    ],
+    "English": [
+            "Any degree of carbohydrate intolerance with hyperglycemia manifesting with initial onset or first recognition during pregnancy.",
+            "Pathophysiologically initiated by placental secretion of diabetogenic contrainsular hormones, principally human placental lactogen (hPL).",
+            "Screened universally among all pregnant gravidas between the 24th and 28th weeks of gestation via oral glucose tolerance testing (OGTT).",
+            "Maternal hyperglycemia drives fetal hyperinsulinemia, prompting accelerated fetal adiposity, macrosomia, and birth trauma risks.",
+            "First-line management centers upon Medical Nutrition Therapy and physical activity; subcutaneous insulin is the gold-standard pharmacotherapy."
+    ]
+  },
+  "w622": {
+    "Arabic": [
+            "حدوث تمزق وتدفق للسائل السلوي المحيط بالجنين قبل بدء المخاض وانقباضات الولادة الفعلية.",
+            "إذا حدث قبل إتمام الأسبوع 37 من الحمل يسمى التمزق المبكر جداً (PPROM) ويرتبط بمخاطر الولادة المبكرة والخداج.",
+            "تشكو الحامل من تدفق مفاجئ أو تسريب مستمر لسائل مائي شفاف دافئ من المهبل.",
+            "يثبت تشخيصه برؤية تجمع السائل بالمنظار المعقم المعاين، وتغير لون ورقة النيترازين (Nitrazine) للأزرق بسبب قلوية السائل.",
+            "أخطر مضاعفاته هو صعود البكتيريا المهبلية وحدوث عدوى والتهاب داخل الكيس الأمنيوسي وحمى للأم تعرف بـ (Chorioamnionitis)."
+    ],
+    "English": [
+            "Spontaneous rupture of the amniotic sac and chorionic membranes occurring prior to the clinical onset of active labor contractions.",
+            "Designated as preterm (PPROM) when occurring prior to 37 completed gestational weeks, serving as a primary driver of prematurity.",
+            "Patients recount a classic history of an abrupt gush or continuous persistent warm watery trickling from the vaginal introitus.",
+            "Confirmed via sterile speculum examination observing fluid pooling, positive nitrazine paper alkaline blue shift, and ferning patterns.",
+            "The most dreaded acute maternal-fetal infectious sequela is ascending intraamniotic bacterial infection (chorioamnionitis)."
+    ]
+  },
+  "w623": {
+    "Arabic": [
+            "حالة طوارئ ولادية حادة لا يمكن التنبؤ بها، ينحشر فيها الكتف الأمامي للجنين خلف عظم عانة الأم بعد خروج الرأس.",
+            "تتظاهر بالعلامة الشهيرة المسماة علامة السلحفاة (Turtle sign) حيث يتراجع رأس الجنين المولود ويلتصق بقوة بالعجان.",
+            "يشكل كبر وزن الجنين وتضخمه (خاصة في أمهات السكري) والولادة بالشفاط أهم عوامل خطورتها.",
+            "يمنع منعاً باتاً ممارسة الشد إلى الأسفل على رأس الجنين تجنباً لتمزق الضفيرة العضدية وحدوث شلل إرب (Erb palsy).",
+            "تدار بمناورات إسعافية قياسية فورية كـ مناورة ماكروبرتس (ثني فخذي الأم بقوة للبطن) والضغط فوق العانة لتخليص الكتف."
+    ],
+    "English": [
+            "An unpredictable, dramatic obstetric emergency wherein the anterior fetal shoulder becomes impacted behind the maternal pubic symphysis.",
+            "Characterized clinically by the cardinal 'turtle sign', where the delivered fetal head retracts tightly back against the maternal perineum.",
+            "Strongly preconditioned by fetal macrosomia (>4000g), maternal gestational diabetes, post-dates pregnancy, and instrumental vacuum delivery.",
+            "Downward traction on the fetal head is strictly contraindicated to prevent avulsion of the brachial plexus and resulting Erb's palsy.",
+            "Resolved via standardized sequential obstetric emergency drills: McRoberts maneuver (hyperflexing maternal thighs) and suprapubic pressure."
+    ]
+  },
+  "w624": {
+    "Arabic": [
+            "حالة خطيرة تنغرس فيها الزغابات المشيمية مباشرة داخل الطبقة العضلية لجدار الرحم بسبب غياب الطبقة الساقطة الإسفنجية (Decidua).",
+            "أهم عامل خطورة للإصابة بها هو وجود سوابق لعمليات قيصرية متعددة مع وجود مشيمة منزاحة تغطي ندبة الجرح القديم.",
+            "تشمل درجاتها الأكثر عمقاً: المشيمة المنغرسة بعمق في العضل (Increta)، والمشيمة المخترقة لجدار الرحم والمثانة (Percreta).",
+            "تفشل المشيمة في الانفصال التلقائي بعد ولادة الجنين، وتؤدي محاولات شدها أو نزعها يدوياً إلى نزيف صاعق مهدد للحياة.",
+            "تتطلب ولادة قيصرية مخططة بدقة بفريق متعدد التخصصات وتجهيز وحدات دم مكثفة مع استئصال الرحم في نفس الوقت غالباً."
+    ],
+    "English": [
+            "A life-threatening obstetric condition where chorionic villi attach abnormally directly to the myometrium due to absent decidua basalis.",
+            "The overriding risk factor is the combination of prior Cesarean deliveries and an overlying anterior placenta previa over the hysterotomy scar.",
+            "Spectrum encompasses increta (invading deep into myometrium) and percreta (penetrating through the uterine serosa into the urinary bladder).",
+            "The placenta fails to separate spontaneously following delivery; attempts at manual traction provoke torrential, catastrophic hemorrhage.",
+            "Demands planned multidisciplinary Cesarean delivery with massive transfusion protocol on standby, culminating in planned Cesarean hysterectomy."
+    ]
+  },
+  "w625": {
+    "Arabic": [
+            "السبب الرئيسي لوفيات الأمهات حول العالم بعد الولادة، ويعرف بفقدان دم يتجاوز 500 مل بعد الولادة الطبيعية أو 1000 مل بعد القيصرية.",
+            "تختصر أسبابه الرئيسية في القاعدة التذكيرية الشهيرة (4Ts): ارتخاء الرحم (Tone)، بقايا المشيمة (Tissue)، الجروح (Trauma)، والتخثر (Thrombin).",
+            "يعد ارتخاء وكسل عضلات الرحم (Uterine Atony) المسؤول عن أكثر من 70% إلى 80% من جميع الحالات.",
+            "يظهر الفحص السريري رحماً رخواً طرياً يشبه الإسفنج (Boggy uterus) لا ينقبض ليغلق الأوعية الدموية المفتوحة.",
+            "يبدأ تدبيره فوراً بالتدليك الخارجي لعضلة الرحم، وإعطاء مقبضات الرحم الوريدية وأولها هرمون الأوكسيتوسين (Oxytocin)."
+    ],
+    "English": [
+            "The leading cause of maternal mortality worldwide, defined as cumulative blood loss exceeding 500 mL following vaginal or 1000 mL post-Cesarean delivery.",
+            "Etiological drivers are systematically categorized by the classic '4 Ts' mnemonic: Tone (atony), Tissue (retained products), Trauma, and Thrombin.",
+            "Failure of effective myometrial contraction (uterine atony) accounts for greater than 70% to 80% of all severe clinical hemorrhages.",
+            "Bimanual abdominal examination reveals an uncontracted, soft, flaccid, sponge-like uterus (classically described as a 'boggy' uterus).",
+            "Immediate emergency protocol dictates continuous bimanual fundal massage and rapid infusion of uterotonic agents, headlined by oxytocin."
+    ]
+  },
+  "w626": {
+    "Arabic": [
+          "متلازمة توليدية إسعافية شديدة الخطورة تعد شكلاً وخيماً ومعقداً من أشكال مقدمات الارتعاج الحملي.",
+          "يشتق اسمها من الحروف الأولى لأركانها الثلاثة: انحلال الدم (Hemolysis)، ارتفاع إنزيمات الكبد (Elevated Liver enzymes)، ونقص الصفائح (Low Platelets).",
+          "تتظاهر بألم حاد ومستمر في المراق الأيمن أو شرسوف المعدة ناجم عن احتقان ونقص تروية وتمدد محفظة غليسون الكبدية.",
+          "فحص لطاخة الدم المحيطية يظهر فقر دم انحلالي ميكروي اعتلالي مع وجود كرات دم مجزأة مشوهة (Schistocytes).",
+          "تنخفض الصفائح الدموية إلى ما دون 100,000 وتصل إنزيمات الكبد (AST/ALT) وقيمة البيليروبين والـ LDH إلى أرقام مرتفعة.",
+          "تتطلب ولادة عاجلة وفورية للجنين والمشيمة مع كبريتات المغنيسيوم للوقاية من التشنجات ونقل الصفيحات الدموية."
+    ],
+    "English": [
+          "A life-threatening obstetric complication considered a severe variant or manifestation of preeclampsia with severe features.",
+          "The acronym encapsulates its three cardinal pillars: Hemolysis, Elevated Liver enzymes, and Low Platelet counts.",
+          "Presents classically in the third trimester with severe right upper quadrant or epigastric pain due to hepatic distension.",
+          "Peripheral blood smear demonstrates microangiopathic hemolytic anemia with pathognomonic fragmented red cells (schistocytes).",
+          "Diagnostic criteria (Tennessee classification) mandate platelet count <100,000, AST ≥70 IU/L, and LDH ≥600 IU/L.",
+          "Immediate definitive management centers on emergent delivery of the fetus, intravenous magnesium sulfate, and platelet support."
+    ]
+  },
+  "w627": {
+    "Arabic": [
+            "تدخل جراحي توليدي رئيسي يتم فيه توليد الجنين عبر إحداث شق جراحي في جدار البطن وجدار الرحم.",
+            "أكثر الجراحات الكبرى إجراءً على مستوى العالم، وتجرى عادة تحت التخدير النخاعي الموضعي (Spinal anesthesia).",
+            "أشهر شق رحمي مستخدم هو الشق المستعرض في القطعة السفلية للرحم (Pfannenstiel / Lower segment) لتقليل النزيف وخطر التمزق لاحقاً.",
+            "تجرى كإجراء طارئ منقذ في حالات ضيق واختناق الجنين، انفصال المشيمة، تدلي الحبل السري، أو تعسر تقدم المخاض.",
+            "تشمل استطباباتها المنتخبة المسبقة: المشيمة المنزاحة المركزية، المجيء المقعدي المستعصي، أو وجود سوابق لجراحات رحمية واسعة."
+    ],
+    "English": [
+            "A major operative obstetric intervention delivering one or more neonates via surgical incisions through the anterior abdominal wall and uterus.",
+            "The most commonly executed inpatient surgical procedure globally, predominantly conducted under spinal regional anesthesia.",
+            "The standard anatomical hysterotomy is the low transverse uterine incision, optimized to minimize intraoperative bleeding and rupture risk.",
+            "Executed emergently for non-reassuring fetal heart status, umbilical cord prolapse, severe placental abruption, or arrest of dilation.",
+            "Elective maternal indications include complete placenta previa, persistent transverse or breech presentations, and prior classical hysterotomies."
+    ]
+  },
+  "w628": {
+    "Arabic": [
+            "جهاز مراقبة إلكتروني توليدي يسجل في نفس الوقت وبشكل مستمر كلاً من معدل نبضات قلب الجنين وانقباضات عضلات الرحم.",
+            "يستخدم مسبارين يثبتان على بطن الأم الحامل بحزامين: أحدهما مسبار دوبلر للنبض والآخر مقياس لضغط انقباضات الرحم (Tocodynamometer).",
+            "المعدل الطبيعي لنبض الجنين على الشريط الورقي يتراوح بين 110 و 160 نبضة في الدقيقة مع وجود تغيرية طبيعية صحية (Variability).",
+            "يقيم الأنماط الإنذارية كالتباطؤ المبكر (الضاغط للرأس)، والتباطؤ المتغير (انضغاط الحبل السري)، والتباطؤ المتأخر (قصور المشيمة).",
+            "ظهور التباطؤ المتأخر المتكرر المتزامن مع انخفاض التغيرية يشير إلى حماض ونقص أكسجة جنيني ويستدعي التدخل العاجل."
+    ],
+    "English": [
+            "An electronic fetal assessment technology simultaneously and continuously tracing the baseline fetal heart rate alongside uterine contractions.",
+            "Utilizes two elastic transducers secured across the gravid abdomen: an ultrasound Doppler crystal and a pressure-sensitive tocodynamometer.",
+            "Normal baseline physiological fetal heart rate traces oscillate between 110 and 160 beats per minute with reassuring baseline variability.",
+            "Diagnoses decelerations: early decelerations (fetal head compression), variable decelerations (cord compression), and late decelerations (placental insufficiency).",
+            "Recurrent late decelerations accompanied by loss of variability warn of developing fetal hypoxemia and acidemia demanding rapid delivery."
+    ]
+  },
+  "w629": {
+    "Arabic": [
+            "إجراء تشخيصي باضع قبل الولادة يتم فيه إدخال إبرة رفيعة عبر جدار بطن الحامل لسحب عينة من السائل المحيط بالجنين.",
+            "يجرى عادة بين الأسبوعين 15 و 20 من الحمل تحت مراقبة وتوجيه مستمر بالموجات فوق الصوتية لتجنب إصابة الجنين أو المشيمة.",
+            "تستخدم الخلايا الجنينية المتساقطة في السائل لإجراء الفحص الجيني للكروموسومات والتأكد من متلازمة داون والتشوهات الصبغية.",
+            "يمكن من خلاله قياس مستوى بروتين ألفا فيتو بالسائل لتأكيد عيوب الأنبوب العصبي المفتوحة كالقيلة السحائية النخاعية.",
+            "يحمل خطورة ضئيلة للغاية لحدوث إجهاض تلقائي تقدر بنحو 0.1% إلى 0.3%، ويجب إعطاء حقنة Anti-D للأمهات سالبات العامل الريزوسي."
+    ],
+    "English": [
+            "An invasive prenatal diagnostic procedure wherein a fine-gauge needle is introduced transabdominally to aspirate amniotic fluid.",
+            "Routinely scheduled between the 15th and 20th gestational weeks under continuous real-time sonographic guidance to safeguard the fetus.",
+            "Desquamated fetal cells harvested from the fluid undergo cytogenetic karyotyping or chromosomal microarray to diagnose Trisomy 21.",
+            "Measures amniotic alpha-fetoprotein and acetylcholinesterase concentrations to definitively verify open neural tube lesions.",
+            "Carries an estimated procedural pregnancy loss risk under 0.3%; mandates prophylactic Anti-D immunoglobulin in Rh-negative mothers."
+    ]
+  },
+  "w630": {
+    "Arabic": [
+            "السائل الصافي الشفاف الذي يحيط بالجنين داخل الكيس الأمنيوسي طوال فترة تطوره في الرحم.",
+            "ينتج في النصف الثاني من الحمل أساساً من بول الجنين وإفرازات الرئة، ويبتلعه الجنين ويعاد امتصاصه في دورة مستمرة.",
+            "يوفر حماية ميكانيكية للجنين من الصدمات الخارجية، ويسمح بحريته الحركية، ويعد ضرورياً جداً لنمو وتوسع الرئتين الطبيعي.",
+            "يقاس حجمه بالسونار عبر مؤشر السائل السلوي (AFI)؛ ونقصه الشديد (Oligohydramnios) يسبب متلازمة بوتر وتخلف نمو الرئتين.",
+            "زيادته المفرطة (Polyhydramnios) ترتبط بتشوهات ابتلاع الجنين كرتتق المريء وسكري الحمل لدى الأم."
+    ],
+    "English": [
+            "The sterile, dynamic protective liquid volume enveloping the developing fetus within the membranous amniotic sac.",
+            "In the second half of gestation, its volume is predominantly derived from fetal micturition, balanced by fetal swallowing dynamics.",
+            "Furnishes vital hydraulic cushioning against external abdominal trauma, permits skeletal movement, and is critical for pulmonary alveolization.",
+            "Quantified via the ultrasound fluid pocket index (AFI); marked deficit (oligohydramnios) provokes pulmonary hypoplasia and Potter sequence.",
+            "Pathological excess (polyhydramnios) strongly correlates with fetal upper GI tract atresias (esophageal/duodenal) and maternal diabetes."
+    ]
+  },
+  "w631": {
+    "Arabic": [
+            "الجزء السفلي الأسطواني الضيق من الرحم الذي يبرز في الجزء العلوي من المهبل ويربط تجويف الرحم بالعالم الخارجي.",
+            "يحتوي على قناة داخلية مبطنة بخلايا عمودية مفرزة للمخاط، بينما سطحه الخارجي مبطن بظهارة حرشفية مطبقة غير متقرنة.",
+            "تعتبر منطقة التحول (Transformation zone) بين نوعي الخلايا البؤرة الأساسية التي ينشأ منها سرطان هذا العضو بفيروس HPV.",
+            "يفرز مخاطاً متغيراً بتأثير الهرمونات: يصبح مائياً رائقاً ومطاطياً كالخيوط أثناء التبويض لتسهيل مرور النطاف.",
+            "أثناء المخاض يخضع لعمليتي الإمحاء والترقق (Effacement) والتوسع حتى يصل قطره إلى 10 سم ليسمح بمرور رأس الجنين."
+    ],
+    "English": [
+            "The fibromuscular, cylindrical lower anatomical portal of the uterus projecting into the apex of the vaginal canal.",
+            "Encloses an endocervical canal lined by mucin-secreting columnar cells, terminating externally at the ectocervix covered by stratified squamous epithelium.",
+            "The squamocolumnar junction (transformation zone) represents the pivotal oncogenic niche susceptible to HPV-induced dysplastic transformation.",
+            "Cervical mucus fluctuates cyclically: becoming thin, clear, and highly elastic (spinnbarkeit) under midcycle estrogen peaks to facilitate sperm entry.",
+            "Undergoes progressive physiological softening, effacement, and dilatation to a terminal 10 cm aperture during active first-stage labor."
+    ]
+  },
+  "w632": {
+    "Arabic": [
+            "كيس ممتلئ بسائل يتشكل داخل مبيض المرأة أو على سطحه الخارجي، وأكثره أكياس وظيفية فسيولوجية حميدة.",
+            "أشهر أنواعه الوظيفية هي كيس الجريب (Follicular cyst) عندما تفشل البويضة في الانفلاق، وكيس الجسم الأصفر بعد التبويض.",
+            "تزول معظم الأكياس الوظيفية الصغيرة تلقائياً دون أي علاج دوائي خلال دورة إلى دورتين شهريتين.",
+            "قد يتعرض لمضاعفات حادة طارئة تشمل التمزق مع نزيف داخلي، أو التواء المبيض الحاد (Ovarian Torsion) مسبباً نقص تروية وألماً مبرحاً.",
+            "الكيس الديرمويدي (Dermoid / Teratoma) هو ورم كيسي حميد شهير يحتوي على أنسجة غريبة كالشعر والأسنان والدهون والغضاريف."
+    ],
+    "English": [
+            "A fluid-filled sac situated within the ovarian parenchyma or perched upon its cortical surface, the vast majority being benign functional cysts.",
+            "The most frequent functional variants comprise simple follicular cysts from unruptured follicles and persistent corpus luteum cysts.",
+            "Most physiological simple unilocular thin-walled cysts spontaneously regress within one to two menstrual cycles without medical intervention.",
+            "Acute catastrophic complications include spontaneous intraperitoneal rupture with hemoperitoneum, or acute ovarian torsion causing ischemia.",
+            "Mature cystic teratomas (dermoid cysts) represent benign germ-cell cysts famously packed with hair, sebum, calcified teeth, and thyroid tissue."
+    ]
+  },
+  "w633": {
+    "Arabic": [
+            "شق جراحي مقصود يجريه الطبيب في جدار المهبل والعجان لتوسيع مخرج الولادة وتسهيل خروج رأس الجنين.",
+            "النوع الأكثر أماناً واستخداماً دولياً هو الشق الجانبي الإنسي (Mediolateral) لحماية مصرة الشرج من التمزق.",
+            "يمنع استخدامه كإجراء روتيني في التوصيات الحديثة، ويقتصر على حالات الضرورة كتعسر ولادة الكتف أو استخدام الجفت.",
+            "يجرى تحت تأثير التخدير الموضعي في ذروة انقباضة الرحم عندما يكون جلد العجان مشدوداً على آخره فوق رأس الجنين.",
+            "يخاط جراحياً بعد ولادة المشيمة بخيوط قابلة للامتصاص على طبقات تشمل الغشاء المخاطي وعضلات العجان والجلد."
+    ],
+    "English": [
+            "A surgical incision strategically placed across the posterior vaginal orifice and perineum to broaden the outlet during second-stage labor.",
+            "The preferred technique worldwide is the mediolateral approach, engineered to prevent catastrophic propagation into the external anal sphincter.",
+            "Routine liberal execution is discouraged by international guidelines, restricted to specific indications like operative forceps or shoulder dystocia.",
+            "Infiltrated with local lidocaine and cut at the acme of a uterine contraction when the perineum is maximally thinned by crowning fetal head.",
+            "Repaired systematically in anatomical layers following placental delivery utilizing absorbable polyglactin sutures."
+    ]
+  },
+  "w634": {
+    "Arabic": [
+            "فشل عضلة الرحم في الانقباض والتقلص القوي بعد انفصال وولادة المشيمة، ويعد السبب رقم واحد لنزيف ما بعد الولادة (PPH).",
+            "تعتمد الآلية الطبيعية لمنع النزيف على انقباض ألياف الرحم المتقاطعة لتضغط كأربطة حية شريانية تسد الشرايين الحلزونية.",
+            "تزداد خطورة حدوثه عند فرط تمدد جدار الرحم (كالحمل بتوائم، الجنين الضخم، وزيادة السائل السلوي) أو طول مدة المخاض.",
+            "عند فحص بطن المريضة باليد، يشعر الفاحص برحم طري ورخو وإسفنجي يفتقد تماماً للصلابة الكروية الطبيعية.",
+            "يتطلب تدليكاً قوياً للرحم عبر البطن مع التسريب الفوري لمقبضات الرحم (الأوكسيتوسين وميثيل إرغومترين والميزوبروستول)."
+    ],
+    "English": [
+            "The inability of the myometrium to achieve sustained physiological contraction and tone following placental delivery.",
+            "Represents the single most prevalent cause of severe postpartum hemorrhage, accounting for over 70% of acute obstetrical hemorrhages.",
+            "Precipitated by uterine overdistension (multifetal gestation, fetal macrosomia, polyhydramnios), prolonged dysfunctional labor, or chorioamnionitis.",
+            "Palpation through the anterior abdominal wall reveals a soft, flaccid, ill-defined 'boggy' uterus unable to clamp maternal spiral vessels.",
+            "Managed by immediate vigorous fundal massage alongside synchronized intravenous uterotonic pharmacotherapy (oxytocin, ergots, prostaglandins)."
+    ]
+  },
+  "w635": {
+    "Arabic": [
+            "حالة طوارئ توليدية نادرة وشديدة الخطورة ينقلب فيها قاع الرحم إلى الداخل كالجورب ويبرز في المهبل أو خارجه.",
+            "تحدث غالباً نتيجة الشد المفرط العنيف على الحبل السري قبل انفصال المشيمة بالكامل مع الضغط بقوة على قاع الرحم.",
+            "تتظاهر بكتلة لحمية حمراء كروية تبرز فجأة من فتحة المهبل مع غياب قاع الرحم الملموس كروياً في أسفل البطن.",
+            "تسبب صدمة عصبية ونزفية صاعقة تفوق كمية الدم الظاهرة للخارج نتيجة الشد الشديد على البريتوان والأعصاب الحشوية.",
+            "تتطلب إيقاف مقبضات الرحم فوراً وإعادة الرحم يدوياً لمكانه الطبيعي (مناورة جونسون Johnson maneuver) تحت تخدير عام قبل انغلاق عنقه."
+    ],
+    "English": [
+            "A rare, catastrophic obstetric emergency where the uterine fundus collapses inward into the endometrial cavity like an inverted sock.",
+            "Iatrogenically precipitated by premature, excessive traction on the umbilical cord paired with fundal pressure before complete placental separation.",
+            "Evident as a globular, beefy red, bleeding vascular mass protruding through the vulva, alongside a conspicuous abdominal fundal hollow.",
+            "Induces severe, disproportionate neurogenic and hypovolemic shock driven by peritoneal stretching and parasympathetic visceral traction.",
+            "Mandates immediate cessation of uterotonics and urgent manual uterine replacement (Johnson's maneuver) under general tocolytic anesthesia."
+    ]
+  },
+  "w636": {
+    "Arabic": [
+            "عجز وظيفي وتشريحي في أنسجة عنق الرحم يجعله يتسع ويترقق في الثلث الثاني من الحمل دون وجود مخاض أو ألم.",
+            "السبب الكلاسيكي الأكثر شيوعاً لحدوث الإجهاض المتكرر في منتصف الحمل (الثلث الثاني) دون سابق إنذار.",
+            "يرتبط بتاريخ جراحي سابق على عنق الرحم كاستئصال مخروطي (Conization) لعلاج خلل التنسج، أو ولادات سابقة متعسرة.",
+            "يظهر بالسونار المهبلي ترقق شديد في طول عنق الرحم لأقل من 25 ملم مع تشكل قمعي لكيس الماء (Funneling).",
+            "يعالج جراحياً بربط وتطويق عنق الرحم بخيط غير قابل للامتصاص (Cervical Cerclage) في بداية الثلث الثاني ويفك قبل موعد الولادة."
+    ],
+    "English": [
+            "Structural inability of the cervical stroma to retain an intrauterine pregnancy in the absence of clinical contractions or labor.",
+            "The quintessential cause of recurrent, painless, second-trimester miscarriages occurring typically between 16 and 24 weeks of gestation.",
+            "Frequently precipitated by prior mechanical cervical trauma, notably diagnostic cone biopsies, loop electrosurgical excisions, or cervical tears.",
+            "Transvaginal ultrasonography demonstrates progressive cervical shortening below 25 mm alongside characteristic membrane 'funneling'.",
+            "Treated surgically via cervical cerclage (McDonald or Shirodkar tape placement) deployed prophylactically at 12 to 14 weeks."
+    ]
+  },
+  "w637": {
+    "Arabic": [
+            "عدوى بكتيرية حادة تصيب الجهاز التناسلي للمرأة خلال فترة النفاس (أول 6 أسابيع بعد الولادة) مسببة حمى وارتعاشاً.",
+            "تاريخياً كانت القاتل الأول للأمهات في المستشفيات قبل أن يثبت الطبيب إجناتس سيملفيس أهمية غسيل أيدي الأطباء بالمطهر.",
+            "أهم عامل خطورة على الإطلاق لحدوثها هو الولادة عبر عملية قيصرية، وطول مدة تمزق الأغشية الباكر، وكثرة الفحوصات المهبلية.",
+            "تتظاهر بحمى تتجاوز 38.5 درجة مئوية، ألم ومضض شديد فوق الرحم، وإفرازات مهبلية كريهة الرائحة غزيرة (Lochia).",
+            "تعد عدوى مختلطة متعددة الميكروبات (بكتيريا لا هوائية وهوائية)، وتعالج بالمضادات الحيوية الوريدية التوليفية كالكليندامايسين والجنتاميسين."
+    ],
+    "English": [
+            "A severe bacterial infection of the genital tract occurring at any time from rupture of membranes or labor up to the 42nd postpartum day.",
+            "Historically claimed thousands of maternal lives in hospital wards before Ignaz Semmelweis championed hand hygiene with chlorinated lime.",
+            "Cesarean delivery stands as the single most prominent predisposing risk factor, alongside prolonged rupture of membranes and multiple digital exams.",
+            "Presents with fever exceeding 38.5°C, marked exquisite uterine tenderness on bimanual exam, and foul-smelling purulent lochial discharge.",
+            "Characterized microbiologically as a polymicrobial mixed aerobic-anaerobic infection, managed with IV clindamycin plus gentamicin."
+    ]
+  },
+  "w638": {
+    "Arabic": [
+        "خلل في الصمام بين البطين الأيسر والشريان الأبهر يسمح بتدفق الدم عائداً إلى البطين أثناء الانبساط.",
+        "يشكو المريض من خفقان وضيق تنفس عند الجهد وإحساس بنبض قوي في الرقبة أو الصدر.",
+        "يكشف الفحص عن نفخة انبساطية مبكرة متناقصة الشدة تُسمع بشكل أفضل على الحد الأيسر للقص، مع ضغط نبضي واسع.",
+        "تبين تخطيط صدى القلب دوبلر تدفقاً عكسياً عبر الصمام الأبهر في الانبساط وقد يُظهر أسباباً مثل توسع الجذر الأبهري أو الصمام ثنائي الشرف.",
+        "العلاج الدوائي يشمل موسعات الأوعية مثل مثبطات الإنزيم المحول للأنجيوتنسين، والعلاج الجراحي باستبدال الصمام يُؤخذ بعين الاعتبار عند الأعراض أو خلل البطين الأيسر."
+  ],
+    "English": [
+        "A valve lesion causing diastolic volume overload of the left ventricle due to retrograde blood flow into the left ventricle during diastole.",
+        "Typical symptoms include palpitations, exercise intolerance, dyspnea on exertion, and a bounding pulse sensation in the neck or chest.",
+        "A high-pitched, early diastolic decrescendo murmur best heard at the left sternal border; often associated with a wide pulse pressure and collapsing pulses.",
+        "Transthoracic echocardiography with Doppler confirms diastolic regurgitant flow across the aortic valve and identifies the underlying mechanism.",
+        "Vasodilators such as ACE inhibitors are the mainstay of medical therapy, while aortic valve repair or replacement is the definitive surgical management."
+  ]
+  },
+  "w639": {
+    "Arabic": [
+        "مسار توصيل خلقي إضافي يتجاوز العقدة الأذينية البطينية، مما يسمح بتوصيل سريع بين الأذينين والبطينين.",
+        "قد يعاني المريض من خفقان أو دوخة أو إغماء بسبب تسرع قلب فوق بطيني انتيابي.",
+        "يُظهر تخطيط القلب أثناء الراحة فترة PR قصيرة وموجة دلتا (صعود مائل في بداية مركب QRS).",
+        "في الرجفان الأذيني، يمكن أن يسبب التوصيل عبر المسار الإضافي تسرع قلب سريع وغير منتظم وعريض قد يتطور إلى رجفان بطيني.",
+        "علاج النوبة الحادة يتجنب حاصرات العقدة الأذينية البطينية؛ ويُفضل بروكاييناميد أو التقويم الكهربائي المتزامن في الحالات غير المستقرة."
+  ],
+    "English": [
+        "A congenital accessory pathway bypasses the atrioventricular node, allowing rapid conduction between atria and ventricles.",
+        "Patients may present with palpitations, dizziness, or syncope due to paroxysmal supraventricular tachycardia.",
+        "The resting ECG shows a short PR interval and a slurred upstroke of the QRS complex known as a delta wave.",
+        "During atrial fibrillation, conduction down the accessory pathway can produce a very rapid, irregular, broad-complex tachycardia that may degenerate to ventricular fibrillation.",
+        "Management of acute tachyarrhythmia avoids AV nodal blockers; procainamide or synchronized cardioversion are preferred in unstable patients."
+  ]
+  },
+  "w640": {
+    "Arabic": [
+        "حالة فشل دوراني سببها عجز القلب عن ضخ كمية كافية من الدم، وتحدث غالباً بعد احتشاء عضلة القلب واسع.",
+        "يبدو المريض شاحباً وبارد الأطراف مع تعرق، هبوط حاد في ضغط الدم، تسرع نبض ضعيف، وتشوش ذهني أو خمول.",
+        "بالفحص قد نسمع صوت القلب الثالث (S3) أو نفخة انقباضية جديدة إذا حدث اختلاط ميكانيكي كتمزق حاجز بين البطينين.",
+        "المختبر يظهر ارتفاع حمض اللاكتيك وتدهور الوظيفة الكلوية؛ والإيكو يظهر انقباضية قلبية منخفضة جداً مع ناتج قلبي غير فعال.",
+        "العلاج يعتمد على إعادة التروية التاجية العاجلة والدعم الميكانيكي المؤقت للدورة الدموية، وليس مجرد السوائل ومقبضات الأوعية."
+  ],
+    "English": [
+        "A state of circulatory failure resulting from the heart's inability to pump enough blood, most often after a large heart attack.",
+        "Patients appear pale, clammy, confused or lethargic, with very low blood pressure, rapid weak pulse, and cold extremities.",
+        "On auscultation, you may hear an S3 gallop, faint heart sounds, or a new systolic murmur if a mechanical complication has occurred.",
+        "Labs show rising lactate and worsening renal function; echo reveals severely reduced ejection fraction with ineffective cardiac output.",
+        "Management hinges on urgent revascularization and temporary mechanical circulatory support, not just fluids and pressors alone."
+  ]
+  },
+  "w641": {
+    "Arabic": [
+        "حالة قلبية حادة قابلة للعكس، غالبًا ما تظهر بعد ضغط عاطفي أو جسدي شديد، وتصيب النساء بعد سن اليأس بشكل أكثر شيوعًا.",
+        "تتمثل الأعراض في ألم صدري حاد وضيق نفس وتغيرات بتخطيط القلب وارتفاع طفيف في التروبونين، مما يحاكي متلازمة الشريان التاجي الحادة.",
+        "العلامة المميزة هي قصور بطيني أيسر عابر مع انتفاخ قمي يشبه البالون وقاعدة مفرطة الحركة، لكن هذا الخلل لا يتناسب مع الارتفاع البسيط للأنزيمات.",
+        "القسطرة القلبية تُظهر غياب انسداد تاجي ذي أهمية، بينما يُظهر تصوير البطين الأيسر اضطراب الحركة الجدارية النموذجي.",
+        "العلاج داعم باستخدام حاصرات بيتا ومثبطات الإنزيم المحول للأنجيوتنسين ومدرات البول عند الحاجة، مع تعافٍ كامل للوظيفة القلبية خلال أسابيع."
+  ],
+    "English": [
+        "This acute reversible cardiac condition is often triggered by intense emotional or physical stress and predominantly affects postmenopausal women.",
+        "Patients typically present with acute chest pain, dyspnea, ST-segment changes on ECG, and mildly elevated cardiac troponin, mimicking an acute coronary syndrome.",
+        "The hallmark is transient left ventricular systolic dysfunction with apical ballooning and hyperdynamic basal segments, disproportionate to the modest biomarker rise.",
+        "Coronary angiography reveals no significant obstructive coronary artery disease, while left ventriculography demonstrates the characteristic regional wall-motion abnormality.",
+        "Management is largely supportive with beta-blockers, ACE inhibitors, and diuretics as needed; left ventricular function usually recovers within weeks."
+  ]
+  },
+  "w642": {
+    "Arabic": [
+        "التهاب وعائي يصيب الشرايين متوسطة وكبيرة الحجم، شائع لدى كبار السن.",
+        "أعراض كلاسيكية: صداع جديد، عرج الفك، فقدان بصر، حساسية فروة الرأس، حمى ونقص وزن.",
+        "العلامة المميزة: خزعة الشريان الصدغي تظهر ارتشاحاً حبيبومياً مع خلايا عملاقة.",
+        "المختبر: ارتفاع شديد في ESR وCRP، وقد يوجد فقر دم وصفائح مرتفعة.",
+        "العلاج: كورتيكوستيرويدات بجرعة عالية فوراً، لتجنب العمى، مع متابعة الاستجابة."
+  ],
+    "English": [
+        "A vasculitis of medium and large arteries, typically seen in the elderly.",
+        "Classic symptoms include new-onset headache, jaw claudication, visual loss, scalp tenderness, fever, and weight loss.",
+        "Hallmark finding: temporal artery biopsy showing granulomatous infiltration with giant cells.",
+        "Markedly elevated ESR and CRP are typical; anemia and thrombocytosis may also be present.",
+        "Immediate high-dose corticosteroids are required to prevent irreversible blindness."
+  ]
+  },
+  "w643": {
+    "Arabic": [
+        "يحدث بسبب انضغاط جذور الأعصاب أسفل النخاع، غالباً من انفتاق قرص قطني كبير.",
+        "أعراض كلاسيكية: ألم قطني ينتشر للفخذين، خدر في منطقة السرج، ضعف عضلات الأطراف السفلية.",
+        "علامة تحذيرية: اضطراب بولي/معوي حديث يترافق مع فقد حس العجان.",
+        "الأساس التشخيصي: تصوير رنين مغناطيسي طارئ للقطني، ويجب عدم تأخير التدخل.",
+        "العلاج الأولي جراحي طارئ خلال 48 ساعة لتخفيف الضغط مع جرعة عالية من الستيرويد."
+  ],
+    "English": [
+        "Usually caused by massive midline disc herniation compressing the lumbosacral nerve roots below the conus.",
+        "Classic presentation: severe low back pain with sciatica, saddle anesthesia, and progressive leg weakness.",
+        "Red flag: acute urinary retention or overflow incontinence with loss of anal sphincter tone.",
+        "Confirm by urgent MRI of the lumbosacral spine; CT is less sensitive for nerve root compression.",
+        "Emergency decompression laminectomy within 24–48 hours plus high-dose corticosteroids is the standard."
+  ]
+  },
+  "w644": {
+    "Arabic": [
+        "توسع تجويفي مملوء بالسائل داخل الحبل الشوكي، غالباً يرتبط بتشوه خلفي في قاعدة الجمجمة.",
+        "يحدث فقدان حس الألم والحرارة مع بقاء اللمس والاهتزاز في المناطق المصابة (تفارق حسي).",
+        "قد يظهر ضعف وضمور في عضلات اليدين والكتفين، مع فقدان المنعكسات الوترية.",
+        "التصوير بالرنين المغناطيسي للعمود الفقري هو الأداة الحاسمة لإظهار التجويف السائل داخل النخاع.",
+        "في الحالات المرافقة لانزياح اللوزتين المخيخيتين، قد يكون العلاج جراحياً لتخفيف الضغط أو تحويل السائل."
+  ],
+    "English": [
+        "A fluid-filled cavity forms within the spinal cord, often associated with a hindbrain malformation.",
+        "Patients classically lose pain and temperature sensation while preserving light touch and proprioception in the same areas.",
+        "Look for progressive weakness and wasting of hand and shoulder muscles with depressed deep tendon reflexes.",
+        "MRI of the spine is the definitive imaging modality to visualize the intramedullary fluid collection.",
+        "When linked to downward displacement of the cerebellar tonsils, surgical decompression or shunting may be considered."
+  ]
+  },
+  "w645": {
+    "Arabic": [
+        "مرض صفراوي مزمن يتميز بالتهاب وتليف في القنوات الصفراوية داخل وخارج الكبد، مترافق غالباً مع مرض التهاب الأمعاء.",
+        "يترافق بشكل شائع مع التهاب القولون التقرحي وقد يظهر بزيادة الفوسفاتاز القلوية وارتفاع خفيف في البيليروبين.",
+        "تصوير القنوات الصفراوية يُظهر تضيقات متعددة وتوسعات بينها تشبه نمط الخرز (beading).",
+        "الأجسام المضادة السيتوبلازمية المضادة للعدلات (p-ANCA) قد تكون إيجابية في مصل المريض.",
+        "قد يتطور إلى تشمع الكبد ويحتاج زراعة كبد، مع ضرورة مراقبة سرطان القنوات الصفراوية."
+  ],
+    "English": [
+        "A chronic cholestatic liver disease characterized by inflammation and fibrosis of intrahepatic and extrahepatic bile ducts, often associated with inflammatory bowel disease.",
+        "Commonly linked with ulcerative colitis; labs may show elevated alkaline phosphatase with mild hyperbilirubinemia.",
+        "Cholangiography reveals multifocal strictures with intervening dilation producing a characteristic beaded pattern.",
+        "Perinuclear anti-neutrophil cytoplasmic antibodies (p-ANCA) may be positive in serum.",
+        "Progressive disease can lead to cirrhosis and require liver transplantation; surveillance for cholangiocarcinoma is important."
+  ]
+  },
+  "w646": {
+    "Arabic": [
+        "حالة إسعافية نادرة تنتج عن تمزق كامل في جدار المريء، غالباً بعد نوبة قيء عنيف، وتؤدي إلى التهاب المنصف.",
+        "ألم صدري حاد مفاجئ، حمى، ضيق تنفس، وانتفاخ الرقبة مع إحساس بالفرقعة تحت الجلد.",
+        "العلامة المميزة في التصوير: هواء حر في المنصف مع انصباب جنبي أيسر، وأحياناً علامة ماء البئر.",
+        "الفحص الذهبي للتأكيد هو تصوير المريء بمادة ظليلة قابلة للذوبان في الماء أو التصوير المقطعي المحوسب للكشف عن تسرب خارج المريء.",
+        "العلاج الأساسي هو التدخل الجراحي الطارئ لإصلاح التمزق وتنظيف المنصف، مع إعطاء مضادات حيوية واسعة الطيف ودعم حيوي."
+  ],
+    "English": [
+        "A rare life-threatening emergency caused by full-thickness rupture of the esophageal wall, usually after a bout of forceful vomiting, leading to mediastinitis.",
+        "Sudden severe chest pain, fever, dyspnea, and neck swelling with palpable subcutaneous crepitus.",
+        "The hallmark imaging finding is mediastinal air with a left-sided pleural effusion, sometimes described as a V-sign on chest radiograph.",
+        "The gold standard for confirmation is an esophagogram with water-soluble contrast or a CT scan demonstrating contrast extravasation outside the esophagus.",
+        "Mainstay management is urgent surgical repair with mediastinal drainage, broad-spectrum antibiotics, and aggressive hemodynamic support."
+  ]
+  },
+  "w647": {
+    "Arabic": [
+        "إسهال مائي متكرر يظهر غالباً بعد تناول مضادات حيوية واسعة الطيف لدى مريض كبير بالسن أو مريض منوم في المستشفى.",
+        "يترافق مع تقلصات بطنية وحمى وارتفاع في عدد كريات الدم البيضاء، وقد يتطور إلى تضخم القولون السام.",
+        "العلامة المميزة بالتنظير القولوني عبارة عن لويحات صفراء بارزة تلتصق بالغشاء المخاطي الملتهب.",
+        "يُفضل تأكيد التشخيص بفحص البراز للكشف عن الجين المرمز للسموم باستخدام تقنية تضخيم الأحماض النووية.",
+        "الخطوة الأولى هي إيقاف العامل المسبب، ثم يعطى مضاد حيوي فموي مثل فانكومايسين أو فيداكسومايسين، مع تجنب مضادات الحركة."
+  ],
+    "English": [
+        "Profuse watery diarrhea classically occurring after broad-spectrum antibiotics in an older adult or hospitalized patient.",
+        "Associated with crampy abdominal pain, fever, and leukocytosis; may progress to toxic megacolon.",
+        "Endoscopic hallmark is raised yellowish plaques adherent to an inflamed colonic mucosa.",
+        "Preferred diagnostic confirmation is a stool nucleic acid amplification test for the toxin gene.",
+        "Management begins by stopping the offending agent, then giving oral vancomycin or fidaxomicin; avoid anti-motility drugs."
+  ]
+  },
+  "w648": {
+    "Arabic": [
+        "فكر في هذا الكائن الانتهازي لدى مريض نقص المناعة، خاصة مع انخفاض الخلايا التائية المساعدة.",
+        "يظهر ببداية تدريجية مع حمى، سعال جاف، وتسرع تنفس، وقد تسمع خراخر ثنائية.",
+        "الصورة الشعاعية قد تكون طبيعية أو عتامة زجاجية أرضية حول النقير، مع انخفاض نسبة PaO2.",
+        "الفحص المجهري للبلغم أو غسل القصبات بصبغة خاصة يكشف الكيسات.",
+        "العلاج المفضل هو مضاد حيوي مثبط لتصنيع حمض الفوليك مع مشتق كوتريموكسازول، والوقاية للفئات المعرضة."
+  ],
+    "English": [
+        "Consider this opportunistic organism in an immunocompromised host, especially with depleted CD4 helper cells.",
+        "Presents subacutely with fever, dry cough, tachypnea, and diffuse crackles on auscultation.",
+        "Chest imaging may be normal or show bilateral perihilar ground-glass opacities with a low PaO2.",
+        "Definitive detection relies on staining cysts in induced sputum or bronchoalveolar lavage.",
+        "First-line management uses a sulfonamide-dihydrofolate reductase inhibitor combination, with prophylaxis for at-risk patients."
+  ]
+  },
+  "w649": {
+    "Arabic": [
+        "فشل تنفسي حاد يتميز بنفاذية وعائية سنخية متزايدة ووذمة رئوية غير قلبية.",
+        "سريرياً: نقص تأكسج شديد مقاوم للأكسجين، مع خشخيشات ثنائية وضيق تنفس.",
+        "شعاعياً: ارتشاح ثنائي منتشر مع عتامات زجاجية أرضية وحجم قلب طبيعي.",
+        "مخبرياً: نسبة PaO2/FiO2 أقل من أو تساوي 300 وفق معايير برلين بعد استبعاد فرط الضغط الأذيني الأيسر.",
+        "إدارياً: تهوية ميكانيكية واقية مع PEEP واستراتيجية رئة مفتوحة وتقييد السوائل."
+  ],
+    "English": [
+        "Acute hypoxemic respiratory failure with increased alveolar-capillary permeability and non-cardiogenic pulmonary edema.",
+        "Clinically: severe hypoxemia refractory to oxygen, bilateral crackles, and respiratory distress.",
+        "Imaging: bilateral diffuse infiltrates with ground-glass opacities and a normal cardiac silhouette.",
+        "Labs/ABG: PaO2/FiO2 ratio ≤ 300 by Berlin criteria after excluding left atrial hypertension.",
+        "Management: lung-protective mechanical ventilation with PEEP, liberal use of neuromuscular blockers, and conservative fluid strategy."
+  ]
+  },
+  "w650": {
+    "Arabic": [
+        "ضيق تنفس تدريجي وألم جنبي لدى مريض لديه تاريخ تعرض مهني للأسبستوس.",
+        "انصباب جنبي نضحي متكرر لا يستجيب للبزل مع سماكة جنبية منتشرة.",
+        "تصوير الصدر يُظهر لويحات جنبية متكلسة وسماكة عقدية غير منتظمة على غشاء الجنب.",
+        "الفحص النسيجي للخزعة يكشف خلايا ظهارية متوسطة غير نمطية مع إيجابية الكالريتينين وWT1.",
+        "نادرًا ما يُشفى بالجراحة؛ غالبًا يُكتشف في مرحلة متقدمة مع ألم صدري وضيق تنفس شديد."
+  ],
+    "English": [
+        "Progressive dyspnea and chest pain in a patient with prior asbestos exposure.",
+        "Recurrent exudative pleural effusion with diffuse pleural thickening and trapped lung.",
+        "CT shows nodular pleural thickening, calcified pleural plaques, and unilateral pleural effusion.",
+        "Pleural biopsy demonstrates atypical epithelioid cells positive for calretinin and WT1.",
+        "Poor prognosis; often presents late with chest pain, dyspnea, and weight loss."
+  ]
+  },
+  "w651": {
+    "Arabic": [
+        "يحدث عند مرضى السكري من النوع الثاني غالبًا، ويتميز بجفاف شديد وضعف وعي تدريجي دون تنفس كيتوني واضح.",
+        "العلامات السريرية تشمل نقص حجم الدم، جفاف الأغشية المخاطية، هبوط ضغط الدم، وارتفاع الحرارة أحيانًا.",
+        "العلامة المميزة: سكر دم مرتفع جدًا >600 ملغ/دل مع أسمولية بلازما >320 MOSM/كغ وبدون أجسام كيتونية مهمة.",
+        "سوء إدارة السكري أو عدوى أو دواء مثل الستيرويدات أو مدرات البول قد يكون العامل المسبب.",
+        "العلاج الأساسي: إعطاء السوائل الوريدية بكثرة تدريجيًا، وتعويض البوتاسيوم، والأنسولين وريدي بجرعات منخفضة بعد استقرار الحالة."
+  ],
+    "English": [
+        "Typically occurs in type 2 diabetes with severe dehydration and progressive mental obtundation, but without significant ketoacidosis.",
+        "Clinical signs include dry mucous membranes, poor skin turgor, hypotension, tachycardia, and possibly fever.",
+        "Definitive laboratory hallmark: marked hyperglycemia >600 mg/dL, serum osmolality >320 mOsm/kg, and minimal ketone bodies/acidosis.",
+        "Common precipitants include infection, nonadherence to antidiabetic therapy, or medications like corticosteroids and thiazides.",
+        "Management begins with aggressive but controlled IV fluid resuscitation, potassium replacement, and low-dose IV insulin after volume and potassium are addressed."
+  ]
+  },
+  "w652": {
+    "Arabic": [
+        "حالة مهددة للحياة تنتج عن فرط نشاط الغدة الدرقية الشديد، وغالباً يسبقها عدوى أو إجهاد أو جراحة.",
+        "أعراض سريرية تجمع بين ارتفاع الحرارة والتعرق الغزير وتسارع ضربات القلب والرجفان الأذيني، مع هياج أو تراجع وعي.",
+        "العلامة المميزة هي وجود فرط استقلاب جهازي حاد مع حمى وخلل وظيفي في الجهاز العصبي المركزي لدى مريض مدمن للثيروكسين أو مصاب بداء غريفز.",
+        "مخبرياً: ارتفاع هرمون T4 الحر وT3 مع تثبيط TSH، وقد توجد قصور كظر نسبي؛ ويكون قياس هرمونات الغدة الدرقية أساس التشخيص.",
+        "العلاج يتطلب خافضات الحرارة والبروبرانولول والبروبيل ثيويوراسيل واليود والهيدروكورتيزون بالإضافة إلى دعم حيوي في وحدة العناية."
+  ],
+    "English": [
+        "A life-threatening endocrine emergency caused by excessive thyroid hormone activity, often precipitated by infection, surgery, or stress.",
+        "Typical presentation includes high fever, profuse sweating, tachycardia, atrial fibrillation, and altered mentation ranging from agitation to coma.",
+        "The hallmark is a severe hypermetabolic state with fever and central nervous system dysfunction in a patient with known thyroid disease or levothyroxine overuse.",
+        "Laboratory findings show elevated free T4 and T3 with suppressed TSH, often accompanied by relative adrenal insufficiency; thyroid function tests are diagnostic.",
+        "Management includes antipyretics, beta-blockers, thionamides, inorganic iodide, and corticosteroids along with intensive supportive care."
+  ]
+  },
+  "w653": {
+    "Arabic": [
+        "متلازمة وراثية نادرة تنجم عن طفرات مكتسبة أو جسدية تؤدي إلى تكوّن أورام في أكثر من غدة صماء في نفس المريض، وغالباً ما تكون الأورام حميدة أو خبيثة.",
+        "قد يظهر المريض بأعراض فرط نشاط الغدة جارة الدرقية مع حصيات كلوية، وقرحة هضمية متكررة، وأعراض ورم القواتم، وتغيرات جلدية.",
+        "العلامة المميزة هي إصابة متزامنة أو متعاقبة لغدتين صماويتين على الأقل، كالغدة جارة الدرقية والبنكرياس والنخامية أو الغدة الدرقية والكظرية.",
+        "ترتفع هرمونات مثل الكالسيوم والبرولاكتين والأنسولين والكاتيكولامينات بحسب الغدد المصابة، وتكشف التصوير الطبي عن أورام متعددة.",
+        "يشمل التدبير استئصال الأورام المفرزة، ومعالجة فرط الكالسيوم، وعلاج القصور الهرموني، ومراقبة العائلة والفحص الجيني."
+  ],
+    "English": [
+        "A rare inherited disorder characterized by tumors arising in two or more hormone-producing glands within the same individual, often with a germline mutation.",
+        "Typical clinical clues include recurrent nephrolithiasis from hypercalcemia, refractory peptic ulcers, episodic hypertension with palpitations, and skin manifestations such as lichen planus amyloidosis.",
+        "The syndromic hallmark is the combined involvement of parathyroid and pancreatic islet cells with pituitary tumors, or medullary thyroid cancer with pheochromocytoma.",
+        "Diagnosis is supported by elevated serum calcium, PTH, prolactin, insulin, gastrin, or metanephrines, plus imaging showing bilateral or multifocal endocrine masses.",
+        "Management prioritizes surgical resection of functioning tumors, control of hormonal excess, surveillance for new primary tumors, and genetic counseling/testing of relatives."
+  ]
+  },
+  "w654": {
+    "Arabic": [
+        "يظهر هذا المرض الكلوي عادة بعد أسابيع من التهاب بلعوم أو عدوى جلدية ببكتيريا معينة، مع فترة كامنة مميزة قبل بدء الأعراض البولية.",
+        "تشمل الأعراض الكلاسيكية: بول بلون الكوكاكولا، وذمة حول العينين والقدمين، ارتفاع ضغط الدم، وقلة البول.",
+        "مخبرياً: انخفاض مستوى المتممة C3، وارتفاع عيار ASO أو anti-DNase B، مع بيلة دموية وبيلة بروتينية.",
+        "في الخزعة الكلوية، يُشاهد تكاثر خلوي في الكبيبات مع رواسب تحت الظهارة بشكل سنام (humps) بالمجهر الإلكتروني.",
+        "العلاج في معظم الحالات داعم ويتضمن السيطرة على ضغط الدم والوذمة، مع تحسن تلقائي خاصة عند الأطفال."
+  ],
+    "English": [
+        "This renal condition classically appears weeks after a throat or skin infection caused by a specific bacterium, with a distinctive latent period before urinary symptoms emerge.",
+        "Typical features include cola-colored urine, periorbital and pedal edema, hypertension, and oliguria.",
+        "Laboratory findings show low complement C3, elevated ASO or anti-DNase B titers, hematuria, and proteinuria.",
+        "Kidney biopsy shows diffuse proliferative glomerulonephritis with subepithelial hump-shaped deposits on electron microscopy.",
+        "Management is largely supportive, focusing on blood pressure and edema control, with excellent spontaneous recovery particularly in children."
+  ]
+  },
+  "w655": {
+    "Arabic": [
+        "ألم صفني حاد مفاجئ أحادي الجانب عند مراهق، يترافق مع غثيان وإقياء، وقد يحدث بعد نشاط أو رض خفيف.",
+        "تكون الخصية المصابة مرتفعة وأفقية الوضع، مع غياب المنعكس المشمري في الفحص السريري.",
+        "يُظهر الدوبلكس الملون انعدام أو انخفاضاً حاداً في التروية الدموية للخصية على الجانب المصاب، وهذه حالة جراحية إسعافية.",
+        "الاستكشاف الجراحي العاجل هو الإجراء الحاسم عند الشك، مع أفضلية إنقاذ الخصية خلال الساعات الست الأولى من بدء الألم.",
+        "الآلية الكامنة تتمثل في وجود تشوه يشبه الجرس يسمح بحركة مفرطة للغدة التناسلية داخل كيس الصفن."
+  ],
+    "English": [
+        "A teenager presents with sudden severe unilateral scrotal pain, nausea, and vomiting, often after minor trauma or exercise.",
+        "On examination the affected testis is high-riding and horizontally oriented, and the cremasteric reflex is absent.",
+        "Color Doppler ultrasound reveals absent or severely reduced blood flow to the affected testis; this is a surgical emergency.",
+        "Urgent surgical exploration is the decisive step when suspected, with the best chance of organ salvage within the first six hours.",
+        "The underlying mechanism is a bell-clapper deformity allowing excessive mobility of the gonad within the scrotum."
+  ]
+  },
+  "w656": {
+    "Arabic": [
+        "بداية حادة لمتلازمة كلوية عند طفل صغير؛ البول رغوي ووذمة حول العينين صباحاً.",
+        "الفحص المجهري الضوئي للكلية يبدو طبيعياً، بينما يكشف المجهر الإلكتروني اندماج الزغيبات (Foot Process Effacement).",
+        "ارتفاع شديد في البروتين بالبول مع زلال مصلي منخفض، ولا يوجد دليل التهاب أو دم بالبول.",
+        "يستجيب بشكل درامي للكورتيكوستيرويدات خلال أيام إلى أسابيع.",
+        "أكثر أسباب المتلازمة الكلوية شيوعاً في الأطفال، ويتميز بعدم وجود آفات التهابية بالكبيبات."
+  ],
+    "English": [
+        "Acute-onset nephrotic syndrome in a young child with frothy urine and morning periorbital edema.",
+        "Light microscopy of kidney tissue appears normal; electron microscopy shows diffuse podocyte foot-process effacement.",
+        "Heavy proteinuria with hypoalbuminemia, without hematuria or active urinary sediment.",
+        "Responds dramatically to corticosteroids within days to weeks.",
+        "The most common cause of childhood nephrotic syndrome, with no glomerular inflammatory lesions."
+  ]
+  },
+  "w657": {
+    "Arabic": [
+        "تناوُل جرعة كبيرة من مسكّن شائع يؤدي إلى مستقلب سام يستنزف الغلوتاثيون الكبدي ويسبب نخراً في المنطقة المركزية بالفصيص.",
+        "خلال 24-48 ساعة قد يظهر غثيان وإقياء وألم في الربع العلوي الأيمن، ثم يرقان واضطراب تخثر.",
+        "نمط مخبري مميز: ارتفاع شديد جداً في الترانساميناسات (أكثر من 1000 وربما 10000 وحدة/لتر) مع بيليروبين منخفض مبكراً.",
+        "الترياق يعيد بناء مخزون الغلوتاثيون الكبدي، ويُعطى بأسرع ما يمكن، وتكون فعاليته القصوى خلال 8-10 ساعات.",
+        "عند التأخر في الحضور، يُقاس مستوى الدواء في الدم ويُقارن بمخطط زمني (نوموغرام) لتقرير الحاجة إلى الترياق."
+  ],
+    "English": [
+        "After a large single ingestion of this common analgesic, a toxic metabolite overwhelms hepatic glutathione, causing centrilobular liver necrosis.",
+        "Within 24–48 hours, patients may have nausea, vomiting, and right upper quadrant pain; then jaundice and coagulopathy may appear.",
+        "A very high serum aminotransferase level often above 1,000 IU/L, sometimes above 10,000 IU/L, with low bilirubin early is a distinctive lab pattern.",
+        "The antidote replenishes hepatic glutathione and should be started as soon as possible; it is most effective within 8–10 hours.",
+        "If a patient presents late, measure the drug level against a timed nomogram; abnormal results guide antidotal therapy."
+  ]
+  },
+  "w658": {
+    "Arabic": [
+        "حالة مهددة للحياة تنتج عن فرط نشاط مستقبلات 5-HT في الجهاز العصبي المركزي والمحيطي.",
+        "تظهر عادة بتغير الحالة العقلية، فرط المنعكسات، الرمع العضلي، وفرط الحرارة.",
+        "العلامة المميزة هي الرمع العضلي وفرط المنعكسات مع فرط الحرارة وتغير الحالة العقلية.",
+        "التشخيص سريري يعتمد على معايير هانتر بعد استبعاد الأسباب الأخرى؛ لا يوجد اختبار مخبري مؤكد.",
+        "العلاج الأساسي هو إيقاف المحفز والدعم، مع استخدام بنزوديازيبينات للسيطرة على الأعراض؛ وقد يحتاج الشد العضلي الشديد إلى مرخيات عضلية."
+  ],
+    "English": [
+        "A potentially life-threatening condition caused by excessive 5-HT receptor activation in the central and peripheral nervous systems.",
+        "Typically presents with altered mental status, hyperreflexia, myoclonus, and hyperthermia.",
+        "The hallmark is myoclonus and hyperreflexia accompanied by hyperthermia and altered mental status.",
+        "Diagnosis is clinical using Hunter criteria after excluding other causes; no confirmatory laboratory test exists.",
+        "Main management is withdrawing the offending agent and supportive care, with benzodiazepines for symptoms; severe muscle rigidity may require muscle relaxants."
+  ]
+  },
+  "w659": {
+    "Arabic": [
+        "حالة طارئة تظهر بعد التعرض لأدوية التخدير الاستنشاقي أو مرخيات العضلات، مع ارتفاع شديد في درجة الحرارة وتصلب عضلي.",
+        "يحدث تسارع قلبي، وارتفاع ثاني أكسيد الكربون في نهاية الزفير، وتشنج عضلات الفك، وبول بلون الكولا.",
+        "العلامة المميزة: ارتفاع حرارة لا يستجيب لمخفضات الحرارة، مع حماض أيضي وتحلل عضلي هائل.",
+        "العلاج الأساسي هو دانترولين، ويجب إيقاف العامل المسبب فوراً وإعطاء الأكسجين 100% وتبريد الجسم.",
+        "الوراثة مرتبطة بمستقبلات الريانودين (RYR1) وقنوات الكالسيوم في العضلات الهيكلية."
+  ],
+    "English": [
+        "A hypermetabolic emergency triggered by inhaled anesthetics or succinylcholine, presenting with severe hyperthermia and muscle rigidity.",
+        "Look for tachycardia, rising end-tidal CO2, jaw spasm, and dark urine (cola-colored) due to rhabdomyolysis.",
+        "Hallmark: hyperthermia unresponsive to antipyretics, accompanied by metabolic acidosis and massive creatine kinase elevation.",
+        "Immediate management: discontinue trigger, hyperventilate with 100% oxygen, cool the patient, and administer dantrolene as the specific antidote.",
+        "Genetic predisposition involves ryanodine receptor (RYR1) mutations causing uncontrolled calcium release from sarcoplasmic reticulum."
+  ]
+  },
+  "w660": {
+    "Arabic": [
+        "فحص تصويري عند السرير يُجرى في غرفة الطوارئ للمصابين برضوض حادة.",
+        "يبحث عن تجمع سائل حر في البطن أو حول القلب أو الرئتين.",
+        "يعتمد على موجات فوق صوتية محمولة ويُكرر عند الحاجة لتقييم التدهور.",
+        "يقيم أربعة أو خمسة مواضع تشريحية رئيسية خلال دقائق.",
+        "يساعد في قرار التدخل الجراحي العاجل دون نقل المريض."
+  ],
+    "English": [
+        "Bedside imaging technique for blunt trauma patients in the resuscitation area.",
+        "Detects free fluid in the abdomen, pericardium, and pleural spaces.",
+        "Uses a portable transducer and can be repeated as the patient deteriorates.",
+        "Surveys a small set of anatomic windows in under a few minutes.",
+        "Guides urgent surgical triage without moving the patient to the scanner."
+  ]
+  },
+  "w661": {
+    "Arabic": [
+        "علامة تصويرية تظهر عندما تبقى القصبات ممتلئة بالهواء وسط منطقة مصابة من الرئة.",
+        "مرتبطة بحالات مثل الالتهاب الرئوي والوذمة الرئوية ومتلازمة الضائقة التنفسية الحادة.",
+        "على الأشعة المقطعية تُرى القصبات الهوائية كخطوط سوداء متفرعة داخل عتامة بيضاء.",
+        "تُظهر الصورة الشعاعية للصدر عتامة سنخية مع وجود فروع هوائية داكنة تخترقها.",
+        "العلامة تدل على أن القصبات مفتوحة، لذا فهي مفيدة للتفريق بين الارتشاح السنخي والانخماص."
+  ],
+    "English": [
+        "A radiographic sign seen when air-filled bronchi stand out against an opacified lung background.",
+        "Associated with conditions like pneumonia, pulmonary edema, and acute respiratory distress syndrome.",
+        "On CT, branching linear lucencies are visible within a consolidated opaque lung region.",
+        "Chest radiograph shows alveolar opacity with dark branching air lucencies coursing through it.",
+        "The sign confirms patent airways, helping distinguish airspace consolidation from collapse."
+  ]
+  },
+  "w662": {
+    "Arabic": [
+        "تضيق قطاعي حاد في الأمعاء الغليظة يسبب صعوبة مرور الباريوم، وغالباً ما يرتبط بآفة ورمية دائرية.",
+        "يعاني المريض من أعراض انسداد معوي تدريجي، ونزيف شرجي، وفقدان وزن، مع قصة خبيثة قولونية منتشرة.",
+        "صورة الباريوم للحقنة الشرجية تظهر عيب حشو مفصص بشكل حلقة مع ارتفاعات مخاطية على الحواف تشبه الكتفين.",
+        "يحدث غالباً في القولون الأيسر أو السيني، ويكون التضيق غير قابل للتوسع مع تآكل الغشاء المخاطي في المنطقة الوسطى.",
+        "الفحص المقطعي يظهر سماكة جدار دائرية غير متماثلة وتمتد خارج الجدار، مما يجعل التنظير صعباً لعبور المنظار."
+  ],
+    "English": [
+        "A short, annular constricting lesion in the colon creates a shouldered luminal narrowing on contrast studies.",
+        "The patient typically presents with progressive large-bowel obstruction, hematochezia, and unexplained weight loss.",
+        "Barium enema reveals a focal, irregular filling defect with overhanging mucosal edges at both ends.",
+        "It is most common in the left colon or sigmoid and represents a circumferential mucosal tumor causing luminal stenosis.",
+        "Cross-sectional imaging shows a thickened, encircling bowel wall with pericolonic extension, often preventing endoscopic passage."
+  ]
+  },
+  "w384": {
+    "Arabic": [
+          "بنية صماوية مؤقتة داخل المبيض تتشكل من بقايا الجريب الناضج المنفجر عقب عملية الإباضة مباشرة.",
+          "تفرز خلاياه المحببة الصفراء كميات وفيرة من هرمون البروجسترون لتحضير بطانة الرحم لانغراس الجنين.",
+          "تعتمد استمراريته في الطور اللوتئيني على نبضات الهرمون الملوتن (LH) الصادر من النخامية الأمامية.",
+          "في حال حدوث الحمل، ينقذه هرمون موجهة الغدد التناسلية المشيمائية (hCG) من التراجع ليواصل إفراز البروجسترون للأسبوع العاشر.",
+          "في حال عدم الإخصاب، يتنكس تدريجياً ليتليف ويتحول إلى ندبة ضامرة بيضاء تعرف بالجسم الأبيض (Corpus albicans)."
+    ],
+    "English": [
+          "A transient ovarian endocrine structure developing from the collapsed remnants of a Graafian follicle post-ovulation.",
+          "Luteinized granulosa and theca cells synthesize copious progesterone to prime the secretory endometrium for blastocyst implantation.",
+          "Maintained during the mid-luteal phase under the pulsatile trophic influence of pituitary luteinizing hormone (LH).",
+          "Rescued from luteolysis during successful pregnancy by syncytiotrophoblast-derived human chorionic gonadotropin (hCG).",
+          "In the absence of fertilization, undergoes spontaneous regression into an inactive avascular scar termed the corpus albicans."
+    ]
+  },
+  "w404": {
+    "Arabic": [
+          "ورم عظمي خبيث ينتج نسيجاً غضروفياً ورمياً غير عظمي ويعد ثاني أشيع الأورام العظمية الخبيثة الأولية.",
+          "يصيب غالباً البالغين وكبار السن في العقد الرابع إلى السادس من العمر في الحوض والقفص الصدري والداني من عظم الفخذ.",
+          "الصورة الشعاعية تظهر تنخراً عظمياً غير منتظم مع تكلسات غضروفية مميزة تشبه حلقات الفشار (Popcorn calcifications).",
+          "يتميز بمقاومته الشديدة لكل من العلاج الكيميائي والعلاج الإشعاعي نظراً لضعف ترويته الدموية ومطرقته الغضروفية الكثيفة.",
+          "يعتبر الاستئصال الجراحي التام بحواف أمان واسعة هو العلاج الشافي والأساسي الوحيد للحالة."
+    ],
+    "English": [
+          "A malignant bone neoplasm characterized by the direct production of neoplastic cartilaginous matrix without osteoid formation.",
+          "The second most common primary osseous malignancy, predominantly striking adults aged 40 to 70 within axial skeleton and pelvis.",
+          "Plain radiographs demonstrate endosteal scalloping with classic chondroid 'popcorn', ring-and-arc matrix calcifications.",
+          "Demonstrates notorious biological resistance to conventional systemic chemotherapy and ionizing radiation.",
+          "Complete surgical resection with wide negative oncologic margins remains the sole curative therapeutic option."
+    ]
+  },
+  "w406": {
+    "Arabic": [
+          "رتج كاذب ينشأ من بروز الغشاء المخاطي وتحت المخاطي عبر مثلث كيليان في الجدار الخلفي للبلعوم السفلي.",
+          "ينجم عن اضطراب في وظيفة وارتخاء العضلة البلعومية الحلقية (Cricopharyngeus) مع ارتفاع الضغط داخل التجويف.",
+          "يتظاهر بعسر بلع متقدم ورائحة فم كريهة للغاية (Halitosis) وقلس طعام غير مهضوم بعد ساعات من تناوله.",
+          "يحدث لدى كبار السن ويترافق بكتلة عنقية مجسوسة تصدر صوتاً قرقعياً (Borborygmi) عند الضغط عليها باليد.",
+          "يُشخص نوعياً بابتلاع الباريوم مع تصوير المريء بالأشعة (Barium swallow) الذي يظهر كيس الرتج بارزاً للخلف."
+    ],
+    "English": [
+          "A false pulsion diverticulum herniating through Killian's triangle above the cricopharyngeus muscle in the posterior hypopharynx.",
+          "Pathophysiologically initiated by impaired relaxation and uncoordinated spasm of the cricopharyngeal muscle during swallowing.",
+          "Clinically characterized by progressive oropharyngeal dysphagia, severe halitosis, and regurgitation of undigested food hours later.",
+          "Affects elderly males, often presenting with a palpable compressible neck mass that produces gurgling noises on palpation.",
+          "Definitively diagnosed using a dynamic barium swallow esophagram displaying a posterior pouch at the C5-C6 vertebral level."
+    ]
+  },
+  "w407": {
+    "Arabic": [
+          "متلازمة صماوية ناجمة عن ورم إفرازي عصبي (غاسترينوما) يفرز الغاسترين بشكل مفرط في البنكرياس أو العفج.",
+          "تتظاهر بقرحات هضمية شديدة ومتعددة وناكسة في مواقع غير معتادة كالصائم مع إسهال إفرازي مائي دهني.",
+          "يرتبط ربع حالاتها بمتلازمة الأورام الصماوية المتعددة من النوع الأول (MEN 1).",
+          "الفحص المخبري يظهر ارتفاعاً هائلاً في مستوى الغاسترين المصلي عند الصيام (>1000 pg/mL) مع حموضة معدية مفرطة.",
+          "اختبار تحفيز السيكريتين (Secretin test) يسبب ارتفاعاً متناقضاً حاداً في مستوى الغاسترين في الدم."
+    ],
+    "English": [
+          "An endocrine disorder driven by a gastrin-secreting neuroendocrine tumor (gastrinoma) located within the gastrinoma triangle.",
+          "Clinically hallmarked by refractory, multiple, recurrent peptic ulcers in atypical locations (jejunum) and secretory diarrhea.",
+          "Approximately 25% of cases arise in association with Multiple Endocrine Neoplasia type 1 (MEN 1).",
+          "Laboratory diagnosis reveals fasting hypergastrinemia (>1000 pg/mL) paired with gastric acid hyperchlorhydria (pH <2).",
+          "Secretin stimulation testing paradoxically provokes a dramatic surge in circulating serum gastrin levels (>120 pg/mL rise)."
+    ]
+  },
+  "w408": {
+    "Arabic": [
+          "تمزق حاد في الطبقة الباطنة للشريان الأبهر يتيح للدم النفاذ إلى الطبقة المتوسطة وتشكيل تجويف كاذب جارٍ.",
+          "يتظاهر بألم تمزقي مفاجئ حاد في الصدر أو بين لوحي الكتف يبلغ ذروته القصوى فور حدوثه.",
+          "الفحص السريري يظهر تبايناً واضحاً في ضغط الدم بين الذراعين (>20 ملم زئبقي) ونقصاً في النبضات المحيطية.",
+          "التصنيف يتبع نظام ستانفورد: النوع A يشمل الأبهر الصاعد ويتطلب جراحة فورية، والنوع B للأبهر النازل.",
+          "الأشعة المقطعية بالصبغة للأبهر (CTA) هي الفحص التشخيصي الذهبي السريع لتحديد موقع التمزق وامتداده."
+    ],
+    "English": [
+          "A catastrophic acute tear in the aortic intima allowing pressurized blood to cleave the tunica media and create a false lumen.",
+          "Presents with sudden, severe chest or interscapular back pain described classically as tearing or ripping in nature.",
+          "Physical examination frequently identifies asymmetric blood pressure between upper extremities (>20 mmHg differential) or pulse deficits.",
+          "Classified via the Stanford system: Type A involves the ascending aorta mandating emergency surgery; Type B is distal to left subclavian.",
+          "Contrast-enhanced computed tomography angiography (CTA) is the rapid gold-standard modality to confirm the intimomedial flap."
+    ]
+  },
+  "w410": {
+    "Arabic": [
+          "التهاب مناعي مزيل للميالين يصيب العصب القحفي الثاني ويترافق بشدة مع التصلب اللويحي المتعدد (MS).",
+          "يتظاهر بفقدان بصر حاد وحيد الجانب يتطور خلال ساعات إلى أيام ومصحوب بألم حجاجي يتفاقم بحركة العين.",
+          "يتميز بوجود خلل في الرؤية اللونية (Dyschromatopsia) يؤثر خصوصاً على تمييز اللون الأحمر.",
+          "الفحص العيني يظهر عيباً حدقياً وارد نسبياً (RAPD / حدقة ماركوس غان Marcus Gunn pupil).",
+          "الرنين المغناطيسي للدماغ والحجاج بالجادولينيوم يظهر فرط إشارة والتماعاً في العصب البصري مع لويحات بيضاء دماغية."
+    ],
+    "English": [
+          "An inflammatory demyelinating condition of the second cranial nerve with a powerful clinical association with multiple sclerosis.",
+          "Presents as acute, monocular visual acuity decline evolving over days, characteristically accompanied by pain on extraocular eye movement.",
+          "Disproportionately impairs color perception (dyschromatopsia), with prominent red color desaturation.",
+          "Physical examination demonstrates a relative afferent pupillary defect (RAPD / Marcus Gunn pupil) in the affected eye.",
+          "Contrast-enhanced orbital MRI demonstrates intense T1 post-gadolinium enhancement and T2 hyperintensity of the optic nerve."
+    ]
+  },
+  "w411": {
+    "Arabic": [
+          "عدوى عينية جرثومية مزمنة تسببها الأنماط المصلية A و B و Ba و C لبكتيريا المتدثرة الحثرية (Chlamydia trachomatis).",
+          "تعد السبب المعدي الأول المؤدي للعمى غير القابل للعلاج على مستوى العالم وتنتقل عبر الذباب والملامسة.",
+          "تبدأ بالتهاب ملتحمة جريبي في الجفن العلوي يتلوه تشكل ندبات ملتحمية وشريط أرلت (Arlt's line).",
+          "تؤدي الندبات لانقلاب حافة الجفن للداخل (Entropion) واحتكاك الأهداب بالقرنية (Trichiasis) مما يسبب عتامة القرنية.",
+          "تعتمد منظمة الصحة العالمية استراتيجية (SAFE): الجراحة، المضادات الحيوية (أزيثرومايسين)، نظافة الوجه، وتحسين البيئة."
+    ],
+    "English": [
+          "A chronic keratoconjunctivitis initiated by recurring infections with Chlamydia trachomatis serovars A, B, Ba, and C.",
+          "The world's leading infectious cause of irreversible blindness, transmitted by eye-seeking flies and close personal contact.",
+          "Characterized initially by follicular conjunctival inflammation beneath the upper tarsus, forming Arlt's scarring bands.",
+          "Cicatricial inward rolling of the eyelid (entropion) causes eyelashes to abrade the corneal surface (trichiasis).",
+          "Targeted globally via the WHO 'SAFE' strategy: Surgery for trichiasis, Antibiotics (Azithromycin), Facial cleanliness, and Environmental improvement."
+    ]
+  },
+  "w412": {
+    "Arabic": [
+          "انقطاع حاد ومفاجئ في التروية الشريانية للأمعاء الدقيقة ناجم غالباً عن صمة قلبية المنشأ في الشريان المساريقي العلوي (SMA).",
+          "العلامة السريرية الفارقة هي ألم بطني حاد ومبرح يتناقض تماماً مع النتائج الطبيعية للفحص البطني في المراحل الأولى.",
+          "تعتبر الرجفان الأذيني واعتلال الشرايين العصيدي أهم العوامل المؤهبة لنشوء الصمات المساريقية الحادة.",
+          "تطور الحالة إلى مرحلة النخر الجداري يؤدي لظهور حماض لاكتيكي حاد وتطبل البطن وانبعاث براز بلون هلام الكشمش الأحمر.",
+          "الأشعة المقطعية بالصبغة لشرايين البطن (CT Angiography) هي الفحص الذهبي لتأكيد انقطاع الجريان وتوجيه التدخل الوعائي."
+    ],
+    "English": [
+          "Critical hypoperfusion of the small intestine most frequently precipitated by an acute cardiac embolus lodging in the SMA.",
+          "The quintessential hallmark is sudden, excruciating periumbilical abdominal pain out of proportion to physical examination findings.",
+          "Atrial fibrillation, recent myocardial infarction, and generalized advanced atherosclerotic disease represent the paramount risk factors.",
+          "Transmural bowel infarction unleashes severe high-anion-gap lactic acidosis, peritoneal guarding, and currant-jelly stools.",
+          "Biphasic mesenteric computed tomography angiography (CTA) represents the definitive gold-standard imaging modality."
+    ]
+  },
+  "w413": {
+    "Arabic": [
+          "عدوى بكتيرية حادة تسببها عصيات الوتدية الإيجابية الغرام المفرزة للذيفان (Corynebacterium diphtheriae) الإيجابية لصبغة غرام.",
+          "تتميز بتشكل غشاء كاذب رمادي سميك ليفي ملتصق بشدة في البلعوم واللوزتين ينزف بغزارة عند محاولة نزعه.",
+          "يفرز الذيفان الخناقي الخارجي المعطل لترجمة البروتين عبر ريبوزلة عامل الاستطالة (EF-2) الخلوي.",
+          "تسبب تضخماً شديداً في العقد اللمفاوية الرقبية مع وذمة رخوة تمنح العنق مظهراً ضخماً يعرف بـ 'عنق الثور' (Bull neck).",
+          "تشمل مضاعفاتها القاتلة التهاب عضلة القلب السمّي واعتلال الأعصاب القحفية والانسداد التنفسي الخانق.",
+          "تُعالج فورياً بالترياق المضاد للذيفان (Diphtheria antitoxin) مع الإريثروميسين أو البنسلين الوريدي."
+    ],
+    "English": [
+          "An acute toxigenic infection caused by the non-spore-forming Gram-positive rod Corynebacterium diphtheriae.",
+          "Pathognomonically characterized by a dense, adherent, leathery grayish pseudomembrane over the tonsils that bleeds upon dislodgement.",
+          "Exotoxin mediates pathogenesis by catalyzing ADP-ribosylation of eukaryotic elongation factor 2 (EF-2), halting cellular translation.",
+          "Massive tender cervical lymphadenopathy and soft-tissue edema confer a classic, striking 'bull neck' physical appearance.",
+          "Severe complications include toxin-mediated myocarditis, progressive cranial motor neuropathies, and fatal asphyxiation.",
+          "Treated emergently with equine diphtheria antitoxin to neutralize circulating unbound toxin, combined with IV Erythromycin or Penicillin."
+    ]
+  },
+  "w414": {
+    "Arabic": [
+          "اضطراب وراثي جسمي متنحٍ ينجم عن طفرات في جين منظم الموصلية عبر الغشاء (CFTR) على الصبغي 7 (أشهرها دلتا F508).",
+          "يسبب خللاً في قنوات نقل الكلوريد مما يجعل الإفرازات المخاطية في الرئتين والبنكرياس سميكة ولزجة وجافة.",
+          "يتظاهر عند حديثي الولادة بعلوص العقي (Meconium ileus) وفشل النمو مع التهابات تنفسية متكررة وتوسع القصبات.",
+          "تستعمر الرئتين جراثيم الزائفة الزنجارية (Pseudomonas aeruginosa) وعصيات بوركهولديريا سيباسيا مسببة تدهوراً تنفسياً.",
+          "اختبار العرق بالرحلان الشاردي للبلوروكاربين (Sweat chloride test) يظهر تركيز كلوريد ≥ 60 مليمول/لتر لتأكيد التشخيص."
+    ],
+    "English": [
+          "An autosomal recessive genetic disorder caused by mutations in the CFTR gene on chromosome 7, most commonly delta-F508.",
+          "Defective epithelial chloride and bicarbonate transport creates abnormally thick, viscous, dehydrated exocrine mucus.",
+          "Presents in neonates with meconium ileus, failure to thrive from pancreatic insufficiency, and recurrent sinopulmonary infections.",
+          "Characterized by early respiratory colonization with Staphylococcus aureus followed by chronic mucoid Pseudomonas aeruginosa.",
+          "The quantitative pilocarpine iontophoresis sweat test demonstrating chloride concentrations ≥60 mmol/L is diagnostic."
+    ]
+  },
+  "w415": {
+    "Arabic": [
+          "دواء مضاد للالتهاب غير ستيرويدي (NSAID) واسع الاستخدام مشتق من حمض فينيل أسيتيك.",
+          "يثبط إنزيمات الأكسدة الحلقية (COX-1 و COX-2) مما يعطل تصنيع البروستاغلاندينات المسببة للألم والالتهاب.",
+          "يستخدم بكثرة كمسكن للألم ومضاد للالتهاب في التهاب المفاصل الروماتويدي والهشاشة العظمية والمغص الكلوي.",
+          "يتوفر بأشكال متعددة تشمل الأقراص، التحاميل، الحقن العضلي العميق، والجل الموضعي (Voltaren Emulgel).",
+          "يرتبط بزيادة خطورة الحوادث القلبية الوعائية التخثرية والتقرح الهضمي والسمية الكلوية عند الاستخدام المديد."
+    ],
+    "English": [
+          "A potent non-steroidal anti-inflammatory drug (NSAID) structurally derived from phenylacetic acid.",
+          "Exerts analgesic, antipyretic, and anti-inflammatory actions through non-selective inhibition of COX-1 and COX-2 enzymes.",
+          "Extensively prescribed for acute musculoskeletal trauma, osteoarthritis flares, rheumatoid arthritis, and acute renal colic.",
+          "Formulated across numerous delivery routes including oral tablets, rectal suppositories, deep intramuscular injections, and topical gel.",
+          "Carries an elevated boxed warning for gastrointestinal ulceration/bleeding and adverse thrombotic cardiovascular events."
+    ]
+  },
+  "w416": {
+    "Arabic": [
+          "الجزء الأوسط من الأمعاء الدقيقة الذي يمتد من ثنية الاثني عشر والمعي المعلق (برباط ترايتز) وحتى الدقاق.",
+          "يشكل حوالي خُمسي (2/5) طول الأمعاء الدقيقة الكلي ويقع معظمه في الربع العلوي الأيسر من البطن.",
+          "يتميز بجدار سميك غني بالتروية الدموية مع وجود طيات دائرية مخاطية بارزة وكثيفة (Plicae circulares).",
+          "تمتلك شرايينه المساريقية أقواس شريانية قليلة (Arcades) ذات فروع مستقيمة طويلة (Vasa recta) مقارنة بالدقاق.",
+          "يعد الموقع الرئيسي لامتصاص معظم العناصر الغذائية الرئيسية بما فيها السكريات والبروتينات والفيتامينات والدهون."
+    ],
+    "English": [
+          "The intermediate segment of the small intestine extending from the duodenojejunal flexure (ligament of Treitz) to the ileum.",
+          "Constitutes approximately the proximal two-fifths of the post-duodenal small bowel, primarily situated in the left upper quadrant.",
+          "Distinguished by a thicker wall, a wider lumen, and prominent, closely packed circular mucosal folds (plicae circulares).",
+          "Its mesenteric blood supply features simple arterial arcades giving rise to distinctly long, straight vasa recta branches.",
+          "Serves as the primary physiological absorption site for the vast majority of carbohydrates, proteins, lipids, and water-soluble vitamins."
+    ]
+  },
+  "w417": {
+    "Arabic": [
+          "عدوى معوية طفيلية يسببها طفيلي أولي مسوط كمثري الشكل يعرف باسم الجيارديا اللمبلية (Giardia lamblia).",
+          "تنتقل عبر شرب المياه الملوثة بالأكياس في رحلات التخييم، وتعرف شعبياً بـ 'حمى القندس' (Beaver fever).",
+          "تلتصق الأتاريف السوطية ببطانة العفج بواسطة قرص مص بطني دون غزو جدار الأمعاء أو التسبب بنزف.",
+          "تسبب إسهالاً مائياً دهنياً رغوياً كريه الرائحة يطفو على سطح الماء مع انتفاخ بطني وتجشؤ برائحة الكبريت (Sulfur burps).",
+          "الفحص المجهري للبراز يظهر الأتاريف النمطية ثنائية النواة الشبيهة بوجه البومة أو الفحص المستضدي، وتعالج بالميترونيدازول."
+    ],
+    "English": [
+          "An enteric protozoan parasitosis caused by the flagellated binucleate diplomonad Giardia duodenalis (lamblia).",
+          "Typically contracted via ingestion of contaminated stream or lake water during wilderness travel ('beaver fever').",
+          "Trophozoites adhere firmly to duodenal and jejunal enterocytes using a ventral suction disk without mucosal tissue invasion.",
+          "Produces foul-smelling, non-bloody, greasy floating steatorrhea, profound bloating, and pathognomonic sulfurous eructations.",
+          "Stool examination reveals binucleated pear-shaped trophozoites with a classic 'face-like' appearance; treated with Metronidazole."
+    ]
+  },
+  "w418": {
+    "Arabic": [
+          "مضاد حيوي واسع الطيف مبيد للجراثيم ينتمي إلى الجيل الثالث من السيفالوسبورينات.",
+          "يثبط تصنيع الجدار الخلوي البكتيري عبر الارتباط التساهمي بالبروتينات الرابطة للبنسلين (PBPs).",
+          "يتميز بقدرة فائقة على اختراق الحاجز الدموي الدماغي بتركيزات علاجية ممتازة لعلاج التهاب السحايا الجرثومي.",
+          "يمتلك عمر نصف حيوياً طويلاً يسمح بإعطائه وريدياً أو عضلياً مرة واحدة فقط كل 24 ساعة.",
+          "يعتبر خط العلاج الإسعافي الأول في غرف الطوارئ لالتهاب السحايا، السيلان، الإنتان الدموي، والتهاب الحويضة والكلية."
+    ],
+    "English": [
+          "A broad-spectrum third-generation cephalosporin beta-lactam antibiotic exerting bactericidal cell-wall synthesis inhibition.",
+          "Irreversibly binds and acylates bacterial penicillin-binding proteins (PBPs), disrupting peptidoglycan cross-linking.",
+          "Features exceptional penetration across inflamed meninges into cerebrospinal fluid to treat acute bacterial meningitis.",
+          "Characterized by a prolonged elimination half-life enabling once-daily intravenous or deep intramuscular dosing.",
+          "The empirical first-line parenteral agent for Neisseria meningitidis, gonococcal urethritis, severe pyelonephritis, and sepsis."
+    ]
+  },
+  "w419": {
+    "Arabic": [
+          "اضطراب مزاجي نفسي شائع يتسم بمزاج حزين منخفض وفقدان تام للشعور بالمتعة والاهتمام (Anhedonia) لمدة أسبوعين متصلين.",
+          "تُختصر معاييره التشخيصية في الدليل DSM-5 بالاختصار السريري الشهير (SIG E CAPS).",
+          "يترافق مع اضطرابات واضحة في النوم، تغيرات بالشهية والوزن، بطء نفسي حركي، وتعب شديد وشعور مفرط بالذنب وانعدام القيمة.",
+          "يرتبط بنقص نسبي في النواقل العصبية أحادية الأمين (السيروتونين، النورإبينفرين، والدوبامين) في المشابك الدماغية.",
+          "يعالج بمثبطات إعادة قبط السيروتونين الانتقائية (SSRIs) كخط أول، مع العلاج النفسي السلوكي المعرفي (CBT)."
+    ],
+    "English": [
+          "A prevalent psychiatric mood disorder defined by pervasive depressed mood or anhedonia persisting for at least two weeks.",
+          "Diagnostic criteria according to DSM-5 require at least 5 out of 9 cardinal symptoms encapsulated in the SIG E CAPS mnemonic.",
+          "Accompanied by vegetative signs: sleep disturbances, appetite alterations, psychomotor agitation/retardation, and worthlessness.",
+          "Pathophysiologically linked to dysregulation of monoaminergic neurotransmission involving serotonin and norepinephrine pathways.",
+          "Treated with selective serotonin reuptake inhibitors (SSRIs) as first-line pharmacotherapy alongside cognitive behavioral therapy (CBT)."
+    ]
+  },
+  "w420": {
+    "Arabic": [
+          "أشيع تشوه خلقي في الجهاز الهضمي ينجم عن فشل الانغلاق الكامل للقناة المحية (Vitelline duct / Omphalomesenteric duct).",
+          "يعتبر رتجاً حقيقياً يشتمل على كافة طبقات جدار الأمعاء الدقيقة ويتوضع في الحافة المقابلة للمساريقا على الدقاق.",
+          "يتبع قاعدة الاثنان الشهيرة (Rule of 2s): يصيب 2% من السكان، يقع على بعد قدمين من الصمام اللفائفي، وطوله بوصتان.",
+          "يحتوي في نصف الحالات على مخاطية منتبذة (غالباً معدية مفرزة للحمض أو بنكرياسية) تسبب تقرحاً ونزفاً هضمياً غير مؤلم.",
+          "يُشخص نوعياً بمسح ميكل بالطب النووي باستخدام التكنيشيوم-99م المشع (Technetium-99m pertechnetate scan).",
+          "التظاهرة الأكثر شيوعاً عند الأطفال هي خروج دم أحمر قرمزي نقي أو براز داكن هلامي عبر الشرج دون ألم بطني."
+    ],
+    "English": [
+          "The most prevalent congenital gastrointestinal anomaly, arising from incomplete obliteration of the embryonic vitelline duct.",
+          "A true diverticulum encompassing all three mural layers of the bowel wall, arising from the antimesenteric border of the ileum.",
+          "Governed by the classic 'Rule of 2s': 2% prevalence, located 2 feet proximal to ileocecal valve, 2 inches long, and symptomatic before age 2.",
+          "Frequently contains heterotopic mucosa (gastric mucosa in 50% or pancreatic tissue) capable of acid secretion and ulceration.",
+          "Definitively identified using a Technetium-99m pertechnetate scintigraphy scan, which is avidly taken up by heterotopic gastric mucosa.",
+          "The quintessential presentation in pediatric patients is painless, massive lower gastrointestinal hematochezia or maroon stools."
+    ]
+  },
+  "w422": {
+    "Arabic": [
+          "متلازمة ألم عصبي حاد تصيب العصب القحفي الخامس وتعد من أشد الآلام العصبية التي يعرفها الطب البشري.",
+          "تتظاهر بنوبات ألم مباغتة وجيزة تشبه الصعق الكهربائي أو الطعن بالسكين تدوم لثوانٍ معدودة في توزيع الفرعين الفكي أو الفكي السفلي.",
+          "تُستثار النوبات بأبسط المثيرات اللمسية الخفيفة كغسيل الوجه، تنظيف الأسنان بالفرشاة، الحلاقة، أو حتى هبوب نسمة هواء باردة.",
+          "السبب الأكثر شيوعاً هو ضغط وعائي عصبي ميكانيكي للشريان المخيخي العلوي (SCA) على جذر العصب عند خروجه من الجذع.",
+          "العلاج الدوائي النوعي المعتمد كخط أول هو مضاد الصرع الكاربامازيبين (Carbamazepine).",
+          "في الحالات المعندة على الدواء، يتم إجراء عملية إزالة الضغط الوعائي المجهري (Jannetta microvascular decompression)."
+    ],
+    "English": [
+          "A severe neuropathic disorder affecting the fifth cranial nerve, historically termed 'tic douloureux' for its agonizing paroxysms.",
+          "Characterized by excruciating, lancinating, electric shock-like facial pain paroxysms lasting seconds within V2 or V3 dermatomes.",
+          "Triggered by innocuous non-noxious tactile stimuli including light facial touch, tooth brushing, shaving, mastication, or cold breeze.",
+          "Etiologically driven by neurovascular compression of the trigeminal root entry zone by an aberrant superior cerebellar artery loop.",
+          "Carbamazepine represents the guideline-directed first-line pharmacological treatment of choice.",
+          "Surgical intervention via suboccipital craniotomy for microvascular decompression (Jannetta procedure) provides long-term curative relief."
+    ]
+  },
+  "w425": {
+    "Arabic": [
+          "اعتلال جيني في القنوات الأيونية القلبية (Channelopathy) يورث بصفة سائدة ويرتبط بطفرات قنوات الصوديوم SCN5A.",
+          "يعد سبباً بارزاً للموت القلبي المفاجئ عند الذكور الشباب خاصة أثناء النوم أو في أوقات الراحة والحمى.",
+          "تخطيط القلب (النمط 1 الكلاسيكي) يظهر ارتفاعاً مقوساً لقطعة ST يشبه سنام القبة (Coved ST elevation ≥2 mm) في المساري V1-V2.",
+          "يعقب ارتفاع ST المعقوف موجة T مقلوبة سلبية في المساري الصدرية اليمنى دون وجود نقص تروية إقفاري حقيقي.",
+          "تظهر العلامات التخطيطية الكامنة أو تتفاقم بحمى المريض أو بتناول مضادات اضطراب النظم من الصنف Ia أو Ic كالأجملين والفليكاينيد.",
+          "العلاج النهائي والوقائي الوحيد الفعال لمنع الوفاة باضطراب النظم البطيني هو زرع مقوم نظم القلب ومزيل الرجفان (ICD)."
+    ],
+    "English": [
+          "An inherited cardiac channelopathy transmitted via autosomal dominant inheritance, linked to loss-of-function SCN5A sodium channel mutations.",
+          "A recognized etiology of nocturnal sudden cardiac death in structurally normal hearts, heavily predilecting young adult males.",
+          "Type 1 diagnostic ECG demonstrates pseudo-right bundle branch block with prominent coved ST-segment elevation ≥2 mm in V1-V2.",
+          "The distinctive coved ST-segment elevation ends directly in a negative, inverted T wave in the right precordial leads.",
+          "ECG abnormalities are dynamically unmasked or exaggerated by high fever or sodium channel blocker challenges (Flecanide, Ajmaline).",
+          "Implantation of an automatic implantable cardioverter-defibrillator (ICD) represents the sole definitive therapy to avert fatal arrest."
+    ]
+  },
+  "w427": {
+    "Arabic": [
+          "متلازمة عصبية تنجم عن انقطاع أو ضغط في المسار العصبي الودي ثلاثي العصبونات المغذي للعين والوجه.",
+          "تتظاهر بالثالوث السريري الكلاسيكي الشهير: تدلي الجفن الخفيف (Ptosis)، تضيق الحدقة (Miosis)، وغياب التعرق (Anhidrosis).",
+          "تدلي الجفن خفيف وغير كامل ناجم عن شلل عضلة مولر الملساء (Muller's muscle) على عكس شلل العصب القحفي الثالث.",
+          "تظهر علامة الغؤور الكاذب لمقلة العين (Enophthalmos) واتساع بطيء للحدقة المصابة في الظلام (Dilation lag).",
+          "تعد أورام قمة الرئة (Pancoast tumor) في التلم الرئوي العلوي الضاغطة على العقدة النجمية الودية أهم أسبابها الخطيرة.",
+          "تُؤكد بالقطرات العينية المشخصة مثل الكوكايين (يفشل في توسيع الحدقة المصابة) والأبراكلونيدين (Apraclonidine)."
+    ],
+    "English": [
+          "A neurologic syndrome resulting from disruption of the three-neuron oculosympathetic pathway connecting hypothalamus to orbit.",
+          "Classically recognized by the diagnostic triad of mild partial blepharoptosis, pupillary miosis, and facial anhidrosis.",
+          "The ptosis is typically subtle (1-2 mm), caused by paralysis of the superior tarsal (Muller's) smooth muscle.",
+          "Features dilation lag in dim lighting and apparent enophthalmos caused by narrowing of the palpebral fissure.",
+          "A malignant apical lung tumor (Pancoast tumor) invading the stellate ganglion represents a critical etiology to exclude.",
+          "Pharmacologically confirmed using topical eyedrops: apraclonidine (causes reversal with dilation) or cocaine testing."
+    ]
+  },
+  "w402": {
+    "Arabic": [
+          "مرض مناعي ذاتي جهازي مزمن يتميز بتليف وتصلب الأنسجة الضامة والأوعية الدموية الدقيقة في الجلد والأعضاء الداخلية.",
+          "يقسم إلى نمط محدود (متلازمة CREST مع أضداد السنترومير) ونمط منتشر يترافق مع أضداد Scl-70 وإصابة الرئة والكلى.",
+          "تعتبر ظاهرة رينود (Raynaud phenomenon) التظاهرة المبكرة الأولى في أكثر من 95% من الحالات وتسبق التصلب بسنوات.",
+          "تتصلب أصابع اليدين وتتقوس متخشبة (Sclerodactyly) مع تضيق فتحة الفم وظهور تشوهات الأوعية الدموية العنكبية.",
+          "أخطر مضاعفاته الحادة هي نوبة الكلى التصلبية المهددة للحياة والتي تعالج نوعياً بمثبطات الإنزيم المحول للأنجيوتنسين (ACE inhibitors)."
+    ],
+    "English": [
+          "A chronic autoimmune multisystem connective tissue disorder characterized by widespread microvascular injury and progressive tissue fibrosis.",
+          "Subtyped into limited cutaneous systemic sclerosis (CREST syndrome with anti-centromere antibodies) and diffuse disease (anti-Scl-70).",
+          "Raynaud's phenomenon represents the initial herald presentation in over 95% of patients, preceding cutaneous sclerosis by years.",
+          "Cutaneous manifestations include tight, indurated skin of the digits (sclerodactyly), microstomia, telangiectasias, and calcinosis.",
+          "Systemic sclerosis renal crisis presents with accelerated malignant hypertension and is treated specifically with ACE inhibitors."
+    ]
+  },
+  "w403": {
+    "Arabic": [
+          "التهاب مفاصل بلوري التهابي حاد ومؤلم ينجم عن ترسب بلورات يورات الصوديوم أحادية التكافؤ (MSU) في المفاصل.",
+          "يحدث نتيجة فرط حمض اليوريك في الدم (Hyperuricemia) إما بسبب نقص إفرازه الكلوي في 90% أو فرط إنتاجه.",
+          "يصيب كلاسيكياً المفصل المشطي السلامي الأول لإبهام القدم (Podagra) بألم احمراري وتورم مبرح يبدأ فجأة في الليل.",
+          "فحص سائل المفصل بالمجهر المستقطب يكشف عن بلورات إبرية الشكل ذات انكسار ضوئي ثنائي سالب (Negatively birefringent).",
+          "تعالج الهجمة الحادة بمضادات الالتهاب غير الستيرويدية (NSAIDs) أو الكولشيسين، بينما يستخدم الألوبيورينول لخفض اليوريك مزمناً."
+    ],
+    "English": [
+          "An acute, exquisitely painful inflammatory crystalline arthropathy caused by the intra-articular deposition of monosodium urate (MSU) crystals.",
+          "Driven pathophysiologically by persistent hyperuricemia, predominantly from impaired renal uric acid excretion (90% of cases).",
+          "Classically attacks the first metatarsophalangeal joint of the hallux (podagra), presenting with nocturnal warmth, erythema, and severe swelling.",
+          "Arthrocentesis synovial fluid polarized light microscopy demonstrates pathognomonic needle-shaped, negatively birefringent crystals.",
+          "Acute attacks are treated with NSAIDs, Colchicine, or systemic steroids; chronic xanthine oxidase inhibition (Allopurinol) lowers urate."
+    ]
+  },
+  "w405": {
+    "Arabic": [
+          "تضخم حميد غير سرطاني في حجم غدة البروستاتا ينجم عن تكاثر الخلايا الظهارية والسدوية تحت تأثير ثنائي هيدروتيستوستيرون (DHT).",
+          "يصيب غالبية الرجال فوق سن الخمسين عاماً ويتوضع بشكل رئيسي وانتخابي في المنطقة الانتقالية (Transition zone) المحيطة بالإحليل.",
+          "يتظاهر بأعراض السبيل البولي السفلي (LUTS) التي تشمل ضعف تدفق البول، التردد، الإلحاح، والتبول الليلي المتكرر (Nocturia).",
+          "الفحص المسحي يشمل المس الشرجي (DRE) الذي يظهر بروستاتا متضخمة ملساء مطاطية غير قاسية مع قياس PSA لاستبعاد السرطان.",
+          "يعالج دوائياً بحاصرات مستقبلات ألفا-1 (تامسولوسين) ومثبطات إنزيم 5-ألفا ريدوكتاز (فيناستيرايد)، وجراحياً عبر استئصال البروستاتا بالتنظير (TURP)."
+    ],
+    "English": [
+          "A non-malignant adenomatous hyperplasia of prostatic stromal and epithelial cells stimulated locally by dihydrotestosterone (DHT).",
+          "Affects the majority of aging men over 50, developing predominantly within the periurethral transition zone of the prostate.",
+          "Produces classic lower urinary tract symptoms (LUTS): urinary hesitancy, a weak interrupted urinary stream, straining, and nocturia.",
+          "Digital rectal examination reveals a symmetrically enlarged, smooth, firm, elastic prostate gland devoid of hard malignant nodules.",
+          "Managed with alpha-1 adrenergic antagonists (Tamsulosin) and 5-alpha-reductase inhibitors (Finasteride), or surgically via TURP."
+    ]
+  },
+  "w409": {
+    "Arabic": [
+          "اعتلال صمامي قلبي يحدث فيه ارتجاع وقلس للدم من البطين الأيمن إلى الأذين الأيمن أثناء الانقباض عبر الصمام ثلاثي الشرفات.",
+          "ينجم في معظمه وظيفياً عن تضخم وتوسع البطين الأيمن نتيجة ارتفاع ضغط الدم الرئوي، أو تشريحياً بسبب التهاب الشغاف لدى مدمني الحقن.",
+          "يتميز بنفخة شاملة للانقباض (Holosystolic murmur) تسمع بأعلى شدة عند الحافة القصية السفلية اليسرى وتزداد بالشهيق (علامة كارفالو Carvallo).",
+          "الفحص السريري يظهر ارتفاع ضغط الوريد الوداجي مع ظهور موجة V انقباضية عملاقة ونبضان كبدي نابض مع الاستسقاء وتورم الساقين.",
+          "تخطيط صدى القلب دوبلر (Echocardiography) هو الفحص الذهبي لتقدير شدة القلس وحساب الضغط الانقباضي الشرياني الرئوي."
+    ],
+    "English": [
+          "A valvular cardiac incompetence wherein blood leaks backward from the right ventricle into the right atrium during ventricular systole.",
+          "Most commonly functional/secondary due to right ventricular dilation from pulmonary hypertension; infective endocarditis seen in IV drug users.",
+          "Auscultation discloses a blowing holosystolic murmur heard best at the lower left sternal border that accentuates on inspiration (Carvallo's sign).",
+          "Examination reveals prominent jugular venous distension with giant systolic 'c-v' waves, a pulsatile liver, ascites, and peripheral edema.",
+          "Transthoracic echocardiography with color Doppler is the gold-standard modality to assess regurgitant jet area and estimate pulmonary pressures."
+    ]
+  },
+  "w421": {
+    "Arabic": [
+          "بروتين عبر غشائي ينتمي إلى عائلة مستقبلات التيروزين كينيز (Tyrosine kinase) يتألف من وحدتين ألفا خارجيتين ووحدتين بيتا عابرتين للغشاء.",
+          "يرتبط هرمون الأنسولين بوحدات ألفا مما يحفز الفسفرة الذاتية لنطاقات التيروزين في وحدات بيتا داخل الخلية.",
+          "تؤدي الفسفرة إلى تنشيط ركائز مستقبل الأنسولين (IRS) ومسار PI3K/Akt الذي يحفز هجرة نواقل الجلوكوز GLUT4 إلى الغشاء الخلوي.",
+          "تعتبر مقاومة هذا المستقبل وتراجع حساسيته في العضلات والكبد والنسيج الشحمي الآلية الإمراضية المركزية لمرض السكري من النوع الثاني.",
+          "تتحكم أدوية كالميتفورمين ومجموعات التيا زوليدين ديون (Thiazolidinediones) في تحسين حساسية هذه المستقبلات وتنشيطها."
+    ],
+    "English": [
+          "A transmembrane heterotetrameric receptor tyrosine kinase composed of two extracellular alpha subunits and two intracellular beta subunits.",
+          "Insulin binding to alpha subunits triggers autophosphorylation of specific tyrosine residues across the catalytic intracellular beta domains.",
+          "Activates insulin receptor substrate (IRS) scaffolding proteins and the downstream PI3K-Akt signaling cascade to translocate GLUT4 transporters.",
+          "Impaired signaling and post-receptor resistance in skeletal muscle, adipose tissue, and liver represent the core pathology of Type 2 diabetes.",
+          "Sensitizers such as Metformin and thiazolidinediones (Glitazones) work to augment insulin sensitivity and downstream receptor signaling."
+    ]
+  },
+  "w423": {
+    "Arabic": [
+          "جزيء DNA حلقي صغير مزدوج الخيطين يتواجد في البكتيريا ويتضاعف بشكل مستقل تماماً عن الكروموسوم البكتيري الأصلي.",
+          "يحمل جينات إضافية تمنح البكتيريا ميزات انتقائية بالغة الأهمية كجينات مقاومة المضادات الحيوية (Plasmid-mediated resistance).",
+          "ينتقل أفقياً بين السلالات البكتيرية المختلفة عبر عملية الاقتران البكتيري (Conjugation) باستخدام شعيرات الجنس (Sex pilus).",
+          "يعتبر الأداة الجزيئية الأساسية والناقل الرئيسي (Vector) المستخدم في الهندسة الوراثية وتوليف بروتينات الدواء المؤتلفة كالأنسولين.",
+          "يحتوي في المختبر على موقع استنساخ متعدد (MCS) وجينات اختيارية كجين مقاومة الأمبيسيلين ونقطة بدء تضاعف مستقلة (Ori)."
+    ],
+    "English": [
+          "A small, extrachromosomal, double-stranded circular DNA molecule naturally replicated autonomously within bacterial hosts.",
+          "Frequently carries non-essential accessory genes conferring potent selective survival advantages, notably antibiotic resistance determinants.",
+          "Transferred horizontally between bacteria via conjugative plasmids utilizing specialized donor-encoded sex pili.",
+          "Serves as the indispensable molecular cloning vector in genetic engineering, recombinant DNA technology, and synthetic insulin synthesis.",
+          "Engineered plasmids integrate an origin of replication (ori), a multiple cloning site (MCS), and selectable phenotypic antibiotic markers."
+    ]
+  },
+  "w424": {
+    "Arabic": [
+          "بكتيريا عصوية مجبرة الهوائية وبطيئة النمو تمتلك جداراً خلوياً شمعياً غنياً بحمض المايكوليك يمنحها خاصية الصمود أمام الحمض.",
+          "العامل المسبب لمرض السل البشري (Tuberculosis) وتنتقل عبر استنشاق القطيرات التنفسية المحمولة في الهواء إلى الأسناخ الرئوية.",
+          "تلتهمها البلاعم السنخية وتفشل في هضمها، مما يطلق استجابة مناعية خلوية تقود لتشكل أورام حبيبية كيسية متنخرة (Caseating granulomas).",
+          "تُشاهد مجهرياً كعصيات حمراء رفيعة عند صبغها بصبغة زيل-نيلسن المقاومة للأحماض (Ziehl-Neelsen stain).",
+          "تُعالج بالبروتوكول الرباعي المكثف الشهير (RIPE): ريفامبيسين، أيزونيازيد، بيرازيناميد، وإيثامبوتول لمدة 6 أشهر على الأقل."
+    ],
+    "English": [
+          "An obligate aerobic, slow-growing bacillus enveloped by a thick waxy lipid-rich envelope containing high concentrations of mycolic acids.",
+          "The etiologic agent of human tuberculosis, transmitted through inhalation of aerosolized droplet nuclei into pulmonary alveoli.",
+          "Survives inside alveolar macrophages by inhibiting phagolysosome fusion, triggering delayed-type hypersensitivity and caseating granulomas.",
+          "Visualized microscopically as bright red/pink slender rods following acid-fast staining with the classic Ziehl-Neelsen or Kinyoun techniques.",
+          "Treated with standard guideline-directed four-drug combination chemotherapy (RIPE regimen: Rifampin, Isoniazid, Pyrazinamide, Ethambutol)."
+    ]
+  },
+  "w426": {
+    "Arabic": [
+          "بكتيريا عصوية سالبة صبغة غرام تنتمي للعائلة المعوية، وتعتبر من أهم سكان الفلورا الميكروبية الطبيعية في أمعاء الإنسان.",
+          "تعد السبب الأكثر شيوعاً على الإطلاق لالتهابات المسالك البولية غير المعقدة (UTIs) بنسبة تتجاوز 80% من الحالات.",
+          "تمتلك زوائد شعرية لاصقة (P fimbriae) ترتبط بمستقبلات الظهارة البولية وتقود لالتهاب الحويضة والكلية الحاد.",
+          "السلالة النزفية O157:H7 تفرز ذيفان الشيغا المعوي وتسبب متلازمة انحلال الدم اليوريمي (HUS) مع قصور كلوي حاد.",
+          "تخمر سكر اللاكتوز وتظهر مستعمرات ذات بريق معدني أخضر داكن مميز على وسط آغار إيوزين ميثيلين بلو (EMB agar)."
+    ],
+    "English": [
+          "A facultatively anaerobic Gram-negative coliform rod belonging to the Enterobacteriaceae family, resident within the normal gut flora.",
+          "The preeminent leading etiologic pathogen causing uncomplicated and complicated urinary tract infections (UTIs) worldwide (>80%).",
+          "Uropathogenic strains (UPEC) utilize specialized P-fimbriae to adhere avidly to uroplakin receptors along the bladder and renal pelvis.",
+          "Enterohemorrhagic strain O157:H7 synthesizes Shiga-like toxins that trigger hemorrhagic colitis and Hemolytic Uremic Syndrome (HUS).",
+          "Rapidly ferments lactose yielding dark nucleated colonies with a classic, unmistakable green metallic sheen on Eosin Methylene Blue (EMB) agar."
+    ]
+  },
+  "w428": {
+    "Arabic": [
+          "عامل نمو سيتوكيني سكري يحفز نقي العظام على إنتاج وإطلاق العدلات (الخلايا الحبيبية) وتمايزها إلى خلايا وظيفية بالغة.",
+          "يستخدم في الطب الصيدلاني المؤتلف تحت اسم فيلغراستيم (Filgrastim) أو بيغفيلغراستيم مديد التأثير.",
+          "يُعطى كعلاج نوعي للوقاية من نقص العدلات الحاد الناجم عن العلاج الكيميائي لمرضى الأورام وتقليل خطورة الحمى العدلية القاتلة.",
+          "يستخدم لتعبئة وتحفيز خلايا الدم الجذعية المكونة للدم (CD34+) من النخاع العظمي إلى الدم المحيطي قبل جمعها للزرع.",
+          "يعد الألم العظمي الخفيف إلى المتوسط العرض الجانبي الأكثر شيوعاً عند حقنه تحت الجلد نتيجة فرط نشاط النخاع العظمي."
+    ],
+    "English": [
+          "A glycoprotein cytokine and colony-stimulating factor that selectively prompts the bone marrow to proliferate and differentiate neutrophils.",
+          "Manufactured via recombinant DNA technology and prescribed clinically as Filgrastim, Lenograstim, or long-acting Pegfilgrastim.",
+          "Indicated for the prevention and mitigation of severe chemotherapy-induced neutropenia and life-threatening febrile neutropenic sepsis.",
+          "Administered to mobilize peripheral blood hematopoietic progenitor stem cells (CD34+) prior to autologous or allogeneic stem cell harvest.",
+          "Medullary expansion and granulocyte proliferation commonly provoke transient, mild-to-moderate musculoskeletal deep bone pain."
+    ]
+  },
+  "w429": {
+    "Arabic": [
+          "أداة جراحية حادة ودقيقة للغاية ذات نصل فولاذي مقسى تستخدم لشق وفصل الأنسجة الحيوية في غرف العمليات.",
+          "يتألف من مقبض قابل لإعادة التعقيم (مثل مقبض باركر رقم 3 ورقم 4) وشفرات جراحية معقمة أحادية الاستخدام قابلة للتبديل.",
+          "الشفرة رقم 10 ذات الحافة المنحنية هي الأكثر شيوعاً لشقوق الجلد الكبيرة، بينما الشفرة رقم 11 المدببة تستخدم للطعن والبزل وتفجير الخراجات.",
+          "يمسك الجراح بالأداة بقبضة القوس (Dinner-knife grip) للشقوق الطويلة المتوازنة أو قبضة قلم الرصاص (Pencil grip) للشقوق الدقيقة.",
+          "يتم التخلص من شفراته المستعملة فوراً في حاويات الأدوات الحادة المقاومة للثقب لتفادي وخز الجراحين وانتقال العدوى المنقولة بالدم."
+    ],
+    "English": [
+          "A precision surgical bladed cutting instrument utilized for incising human tissues and executing sharp anatomical dissections.",
+          "Composed of a reusable ergonomically calibrated surgical handle (Bard-Parker #3 and #4) paired with disposable sterile carbon steel blades.",
+          "The curved #10 blade is standard for large primary skin incisions, whereas the sharp triangular #11 blade is favored for stab incisions.",
+          "Grasped by surgeons utilizing the balanced 'dinner-knife' grip for extended linear incisions, or the 'pencil' grip for meticulous fine control.",
+          "Blades must be discarded safely into dedicated puncture-resistant sharps disposal receptacles to avert transmissible bloodborne exposures."
+    ]
+  },
 };
 
 function makeArabicClueEgyptianAndClean(clue: string, index: number, wordId: string): string {
+  // Procedural clues arrive pre-tagged — no dialect surgery, no guessing
+  if (/^\[(Rx|Dx|Sx|Etiology|Anatomy|Classification|Pearl)\]\s/.test(clue)) return clue;
   let text = clue;
 
   // 1. Ensure standard scientific and medical terms have their English equivalents in brackets
@@ -9352,9 +14549,15 @@ function makeArabicClueEgyptianAndClean(clue: string, index: number, wordId: str
     "تدهور معرفي": "تدهور معرفي (Cognitive decline)"
   };
 
-  for (const [key, val] of Object.entries(medicalTermEnhancements)) {
-    if (text.includes(key) && !text.includes(val)) {
-      text = text.replace(new RegExp(key, 'g'), val);
+  // Longest keys first so 'التهاب المفاصل الروماتويدي' is not re-matched inside by 'التهاب المفاصل'
+  const entries = Object.entries(medicalTermEnhancements).sort((a, b) => b[0].length - a[0].length);
+  for (const [key, val] of entries) {
+    const enMatch = val.match(/\(([^)]+)\)/);
+    const enTerm = enMatch ? enMatch[1].toLowerCase() : '';
+    if (text.includes(key) && !text.includes(val) && (!enTerm || !text.toLowerCase().includes(enTerm))) {
+      const safeKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`(?<![\\u0621-\\u064A])${safeKey}(?![\\u0621-\\u064A])`, 'g');
+      text = text.replace(regex, val);
     }
   }
 
@@ -9405,7 +14608,7 @@ function makeArabicClueEgyptianAndClean(clue: string, index: number, wordId: str
     "المسؤولة عن": "هي المسؤولة عن",
     "دون توقف": "من غير ما يقف",
     "طوال حياتك": "طول حياتك",
-    "يقارب حجم": "قد حجم",
+    "يقارب حجم": "تقريباً زي",
     "تسمع أصواته": "بتسمع أصواته",
     "عند فشله": "لما بيفشل",
     "زيادة سمك جدرانه": "لما جدرانه بتخن",
@@ -9440,7 +14643,7 @@ function makeArabicClueEgyptianAndClean(clue: string, index: number, wordId: str
     "تظهر مقاومة": "بيحصل مقاومة",
     "يؤدي إلى حالة طارئة تسمى": "بيعمل حالة طارئة اسمها",
     "يعتبر المسبب الأول": "هو السبب الأول",
-    "يُنصح المصابون به بممارسة": "بيتنصحوا يلعبوا رياضة ويقللوا الكربوهيدرات",
+    
     "يتم علاجه إما": "بيتعالج إما",
     "مرض مداري شهير": "مرض مداري معروف",
     "تسببه بروتوزوا": "بتسببه طفيليات",
@@ -9472,54 +14675,52 @@ function makeArabicClueEgyptianAndClean(clue: string, index: number, wordId: str
     "أهم أعراضه نوبات الحمى الدورية الشديدة، الرعشة، والتعرق الغزير.": "أهم أعراضه هي السخونية اللي بتيجي وبتروح، مع رعشة وعرق كتير.",
     "يستهدف كرات الدم الحمراء ويسبب انفجارها الدوري (التححل الدموي).": "بيضرب كرات الدم الحمراء وبيفجرها كل شوية.",
     "يسبب تضخماً كبيراً في الطحال وقر دم حاد (أنيميا).": "بيعمل تضخم كبير في الطحال مع أنيميا حادة."
-  };
+  
+};
 
   for (const [key, val] of Object.entries(egyptianMap)) {
     text = text.replace(new RegExp(key, 'g'), val);
   }
 
-  // 2. We can categorize the clue content dynamically to prepend a beautiful, professional, and authoritative category prefix
-  let prefix = "";
+  // 2. Categorize with a machine-readable tag; the UI renders it as a chip (icon + label)
+  let prefix = "[Pearl] ";
   const lowerText = text.toLowerCase();
-  
-  if (lowerText.includes("علاج") || lowerText.includes("يعالج") || lowerText.includes("جرعة") || lowerText.includes("دواء") || lowerText.includes("مضاد") || lowerText.includes("عقار")) {
-    prefix = "💊 [علاجي / Rx]: ";
-  } else if (lowerText.includes("تشخيص") || lowerText.includes("يشخص") || lowerText.includes("فحص") || lowerText.includes("تحليل") || lowerText.includes("اختبار") || lowerText.includes("مخبري") || lowerText.includes("أشعة") || lowerText.includes("سماعة")) {
-    prefix = "🔍 [تشخيصي / Dx]: ";
-  } else if (lowerText.includes("أعراض") || lowerText.includes("يشتكي") || lowerText.includes("عرض") || lowerText.includes("ألم") || lowerText.includes("حرارة") || lowerText.includes("سعال") || lowerText.includes("أزيز") || lowerText.includes("صداع") || lowerText.includes("نزيف")) {
-    prefix = "🩺 [سريري / Sx]: ";
-  } else if (lowerText.includes("تسبب") || lowerText.includes("مسبب") || lowerText.includes("فيروس") || lowerText.includes("بكتيريا") || lowerText.includes("طفيلي") || lowerText.includes("عامل") || lowerText.includes("ينجم") || lowerText.includes("عدوى")) {
-    prefix = "🦠 [مسببات / Etiology]: ";
-  } else if (lowerText.includes("تشريح") || lowerText.includes("عضلة") || lowerText.includes("عصب") || lowerText.includes("عضو") || lowerText.includes("شريان") || lowerText.includes("وريد") || lowerText.includes("رأس") || lowerText.includes("فص") || lowerText.includes("القلب") || lowerText.includes("الكبد")) {
-    prefix = "🧬 [تشريحي / Anatomy]: ";
-  } else if (lowerText.includes("مقرر") || lowerText.includes("تخصص") || lowerText.includes("يدرس") || lowerText.includes("تصنيف") || lowerText.includes("امتحان")) {
-    prefix = "📚 [أكاديمي / Classification]: ";
-  } else {
-    prefix = "💡 [ملاحظة سريرية / Pearl]: ";
+
+  if (lowerText.includes("علاج") || lowerText.includes("يعالج") || lowerText.includes("جرعة") || lowerText.includes("دواء") || lowerText.includes("مضاد") || lowerText.includes("عقار") || lowerText.includes("كورتيزون") || lowerText.includes("مضاد حيوي")) {
+    prefix = "[Rx] ";
+  } else if (lowerText.includes("تشخيص") || lowerText.includes("يشخص") || lowerText.includes("فحص") || lowerText.includes("تحليل") || lowerText.includes("مخبر") || lowerText.includes("أشعة") || lowerText.includes("رنين") || lowerText.includes("سماعة") || lowerText.includes("مخطط") || lowerText.includes("اختبار")) {
+    prefix = "[Dx] ";
+  } else if (lowerText.includes("أعراض") || lowerText.includes("يشتكي") || lowerText.includes("ألم") || lowerText.includes("حرارة") || lowerText.includes("سعال") || lowerText.includes("أزيز") || lowerText.includes("صداع") || lowerText.includes("نزيف") || lowerText.includes("طفح") || lowerText.includes("حمى")) {
+    prefix = "[Sx] ";
+  } else if (lowerText.includes("تسبب") || lowerText.includes("مسبب") || lowerText.includes("فيروس") || lowerText.includes("بكتيريا") || lowerText.includes("طفيلي") || lowerText.includes("ينجم") || lowerText.includes("عدوى") || lowerText.includes("وراثي") || lowerText.includes("مناعي")) {
+    prefix = "[Etiology] ";
+  } else if (lowerText.includes("تشريح") || lowerText.includes("عظم") || lowerText.includes("عضلة") || lowerText.includes("عصب") || lowerText.includes("عضو") || lowerText.includes("شريان") || lowerText.includes("وريد") || lowerText.includes("الفص") || lowerText.includes("غدة") || lowerText.includes("مفصل")) {
+    prefix = "[Anatomy] ";
+  } else if (lowerText.includes("مقرر") || lowerText.includes("تخصص") || lowerText.includes("يدرس") || lowerText.includes("تصنيف") || lowerText.includes("امتحان") || lowerText.includes("مستوى") || lowerText.includes("منهج")) {
+    prefix = "[Classification] ";
   }
 
   return prefix + text;
 }
 
 function makeEnglishClueProfessional(clue: string): string {
+  if (/^\[(Rx|Dx|Sx|Etiology|Anatomy|Classification|Pearl)\]\s/.test(clue)) return clue;
   let text = clue;
-  let prefix = "";
+  let prefix = "[Pearl] ";
   const lowerText = text.toLowerCase();
-  
-  if (lowerText.includes("treatment") || lowerText.includes("therapy") || lowerText.includes("drug") || lowerText.includes("medication") || lowerText.includes("dose") || lowerText.includes("antibiotic") || lowerText.includes("corticosteroid")) {
-    prefix = "💊 [Rx / Treatment]: ";
-  } else if (lowerText.includes("diagnostic") || lowerText.includes("diagnosis") || lowerText.includes("diagnose") || lowerText.includes("test") || lowerText.includes("examination") || lowerText.includes("radiographic") || lowerText.includes("auscultat") || lowerText.includes("mri") || lowerText.includes("ct scan")) {
-    prefix = "🔍 [Dx / Diagnosis]: ";
-  } else if (lowerText.includes("symptom") || lowerText.includes("presentation") || lowerText.includes("present with") || lowerText.includes("pain") || lowerText.includes("fever") || lowerText.includes("cough") || lowerText.includes("wheez") || lowerText.includes("headache") || lowerText.includes("bleeding")) {
-    prefix = "🩺 [Sx / Symptoms]: ";
-  } else if (lowerText.includes("cause") || lowerText.includes("pathogen") || lowerText.includes("virus") || lowerText.includes("bacteria") || lowerText.includes("parasite") || lowerText.includes("etiology") || lowerText.includes("infect") || lowerText.includes("associate")) {
-    prefix = "🦠 [Etiology]: ";
-  } else if (lowerText.includes("anatom") || lowerText.includes("muscle") || lowerText.includes("nerve") || lowerText.includes("organ") || lowerText.includes("arter") || lowerText.includes("vein") || lowerText.includes("lobe") || lowerText.includes("heart") || lowerText.includes("liver")) {
-    prefix = "🧬 [Anatomy]: ";
-  } else if (lowerText.includes("curriculum") || lowerText.includes("special") || lowerText.includes("classif") || lowerText.includes("academic") || lowerText.includes("board")) {
-    prefix = "📚 [Classification]: ";
-  } else {
-    prefix = "💡 [Pearl]: ";
+
+  if (lowerText.includes("treatment") || lowerText.includes("therapy") || lowerText.includes("drug") || lowerText.includes("medication") || lowerText.includes("dose") || lowerText.includes("antibiotic") || lowerText.includes("corticosteroid") || lowerText.includes("management")) {
+    prefix = "[Rx] ";
+  } else if (lowerText.includes("diagnos") || lowerText.includes("test") || lowerText.includes("radiographic") || lowerText.includes("auscultat") || lowerText.includes("mri") || lowerText.includes("ct scan") || lowerText.includes("imaging") || lowerText.includes("biopsy")) {
+    prefix = "[Dx] ";
+  } else if (lowerText.includes("symptom") || lowerText.includes("presentation") || lowerText.includes("present with") || lowerText.includes("pain") || lowerText.includes("fever") || lowerText.includes("cough") || lowerText.includes("wheez") || lowerText.includes("headache") || lowerText.includes("bleeding") || lowerText.includes("rash")) {
+    prefix = "[Sx] ";
+  } else if (lowerText.includes("cause") || lowerText.includes("pathogen") || lowerText.includes("virus") || lowerText.includes("bacteria") || lowerText.includes("parasite") || lowerText.includes("etiology") || lowerText.includes("infect") || lowerText.includes("genetic") || lowerText.includes("autoimmune")) {
+    prefix = "[Etiology] ";
+  } else if (lowerText.includes("anatom") || lowerText.includes("muscle") || lowerText.includes("nerve") || lowerText.includes("organ") || lowerText.includes("arter") || lowerText.includes("vein") || lowerText.includes("lobe") || lowerText.includes("gland") || lowerText.includes("joint")) {
+    prefix = "[Anatomy] ";
+  } else if (lowerText.includes("curriculum") || lowerText.includes("special") || lowerText.includes("classif") || lowerText.includes("academic") || lowerText.includes("board") || lowerText.includes("examin") || lowerText.includes("frequently appear")) {
+    prefix = "[Classification] ";
   }
 
   return prefix + text;
@@ -9543,14 +14744,23 @@ export function getCluesForWord(wordId: string, item: any, lang: 'Arabic' | 'Eng
   const guessingDiff = item.guessingDifficulty || difficulty;
   const synonyms = item.synonyms || [];
 
-  // Prepare a pool of highly informative additional hints
-  const additionalPool: string[] = [];
+  // Procedural hints: structured, categorized, and never reveal the answer.
+  // NOTE: the old synonym-listing clue was removed because it printed the term itself!
+  const letterHint = (() => {
+    const srcName = (lang === 'Arabic' ? nameAr : nameEn).replace(/^ال/, '');
+    const letters = srcName.replace(/\s+/g, '');
+    const first = letters.charAt(0);
+    return lang === 'Arabic'
+      ? `اسمه يتكون من ${letters.length} أحرف ويبدأ بحرف "${first}".`
+      : `Its name consists of ${letters.length} letters and starts with "${first}".`;
+  })();
+
+  const additionalPool: { text: string; cat: string }[] = [];
 
   if (lang === 'Arabic') {
-    // Clue about medical classification type
     const typeAr = 
       type === 'Organ' ? 'عضو طبي رئيسي في جسم الإنسان' :
-      type === 'Component' ? 'جزء أو مركب تشريحي دقيق' :
+      type === 'Component' ? 'جزء تشريحي مكوّن لجسم الإنسان مثل العظام والغضاريف والأنسجة' :
       type === 'Disease' ? 'مرض أو حالة اعتلال طبي' :
       type === 'Equipment' ? 'جهاز أو أداة طبية تشخيصية/علاجية' :
       type === 'Syndrome' ? 'متلازمة طبية تضم مجموعة أعراض متلازمة' :
@@ -9561,45 +14771,25 @@ export function getCluesForWord(wordId: string, item: any, lang: 'Arabic' | 'Eng
       type === 'Technique' ? 'تقنية أو إجراء طبي تشخيصي/جراحي' :
       type === 'Cell' ? 'خلية حيوية متخصصة في الجسم' :
       type === 'Tissue' ? 'نسيج حيوي أو طبقة خلوية مبطنة' : 'مصطلح طبي متخصص';
-    
-    additionalPool.push(`من الناحية الهيكلية أو الوظيفية، يصنف هذا المصطلح كـ (${typeAr}).`);
 
-    // Clue about medical disciplines / subjects
+    additionalPool.push({ text: `من الناحية الهيكلية أو الوظيفية، يصنف هذا المصطلح كـ (${typeAr}).`, cat: 'Classification' });
+
     if (subjects.length > 0) {
-      additionalPool.push(`يرتبط هذا المفهوم الطبي بشكل وثيق وتدرسه بالتفصيل في تخصصات: ${subjects.join(' و ')}.`);
+      additionalPool.push({ text: `يرتبط هذا المفهوم الطبي بشكل وثيق وتدرسه بالتفصيل في تخصصات: ${subjects.join(' و ')}.`, cat: 'Classification' });
     }
 
-    // Clue about synonyms / alternative names
-    if (synonyms.length > 0) {
-      additionalPool.push(`من الأسماء البديلة أو المرادفات الشائعة المرتبطة به في الممارسة والكتب: ${synonyms.join(' أو ')}.`);
-    }
-
-    // Clue about academic/clinical level
     const levelAr = 
-      level === 'Both' ? 'المستويين الأكاديمي والسريري (العلوم الأساسية والتطبيقات العملية)' :
-      level === 'Academic' ? 'المستوى الأكاديمي الأساسي (علوم الطب الأساسية كالتشريح ووظائف الأعضاء)' :
-      'المستوى السريري (الطب الباطني، الجراحة، والأمراض العملية)';
-    additionalPool.push(`يقع هذا المصطلح الطبي تحت تصنيف مقرر ${levelAr}.`);
-
-    // Clue about difficulty
-    const diffText = difficulty === 3 ? 'متقدم وصعب جداً ويتطلب معرفة عميقة ودقيقة' : difficulty === 2 ? 'متوسط الصعوبة ويشكل ركيزة أساسية لطلاب الطب والعلوم' : 'أساسي وسهل ومعلومة قاعدية لكل طبيب وممارس';
-    additionalPool.push(`مستوى الصعوبة الطبية ومقدار تكرار هذا المصطلح هو: ${diffText}.`);
-
-    // Replace letters and length with clinical/anatomical facts
-    additionalPool.push(`لهذا المصطلح دور حيوي هام في الفهم الإكلينيكي وتشخيص الحالات المرتبطة بجهاز الجسم المعني.`);
-    additionalPool.push(`يُعتبر هذا المفهوم من الركائز الأساسية التي تظهر متكررة في الامتحانات الطبية المهنية ومسابقات الكليات.`);
-    if (subjects[0]) {
-      additionalPool.push(`يساهم استيعاب هذا المصطلح في تعزيز المهارات التشخيصية لدى أطباء المستقبل في قسم ${subjects[0]}.`);
-    }
-    additionalPool.push(`يُوصى بمراجعته وفهم تفاصيله الفسيولوجية والتشريحية لضمان تقديم الرعاية الطبية الفائقة للمرضى.`);
+      level === 'Both' ? 'المستويين الأكاديمي والسريري' :
+      level === 'Academic' ? 'المستوى الأكاديمي الأساسي' :
+      'المستوى السريري';
+    additionalPool.push({ text: `يقع هذا المصطلح الطبي تحت تصنيف مقرر ${levelAr}.`, cat: 'Classification' });
 
   } else {
-    // English dynamic clues
     const typeEn = 
       type === 'Organ' ? 'a major organ' :
       type === 'Component' ? 'an anatomical component' :
       type === 'Disease' ? 'a clinical pathology/disease' :
-      type === 'Equipment' ? 'a diagnostic or therapeutic equipment' :
+      type === 'Equipment' ? 'diagnostic or therapeutic equipment' :
       type === 'Syndrome' ? 'a medical syndrome' :
       type === 'Pharma' ? 'a pharmaceutical agent/drug' :
       type === 'Muscle' ? 'a skeletal muscle' :
@@ -9609,52 +14799,43 @@ export function getCluesForWord(wordId: string, item: any, lang: 'Arabic' | 'Eng
       type === 'Cell' ? 'a specialized biological cell' :
       type === 'Tissue' ? 'a specialized tissue layer' : 'a medical concept';
 
-    additionalPool.push(`Physiologically or structurally, this concept is classified as ${typeEn}.`);
+    additionalPool.push({ text: `Structurally or physiologically, this concept is classified as ${typeEn}.`, cat: 'Classification' });
 
     if (subjects.length > 0) {
-      additionalPool.push(`This topic is deeply integrated into the medical curriculum of: ${subjects.join(' & ')}.`);
-    }
-
-    if (synonyms.length > 0) {
-      additionalPool.push(`Common alternative terminology and clinical synonyms include: ${synonyms.join(', ')}.`);
+      additionalPool.push({ text: `This topic is deeply integrated into the medical curriculum of: ${subjects.join(' & ')}.`, cat: 'Classification' });
     }
 
     const levelEn = 
-      level === 'Both' ? 'both basic science and clinical application curricula' :
-      level === 'Academic' ? 'the basic medical sciences curriculum (such as Anatomy or Physiology)' :
+      level === 'Both' ? 'both basic science and clinical curricula' :
+      level === 'Academic' ? 'the basic medical sciences curriculum (Anatomy, Physiology, etc.)' :
       'the clinical medical sciences curriculum';
-    additionalPool.push(`This terminology is classified under ${levelEn}.`);
-
-    const diffTextEn = difficulty === 3 ? 'advanced and highly specialized' : difficulty === 2 ? 'moderate complexity, representing standard clinical knowledge' : 'basic and foundational for any healthcare trainee';
-    additionalPool.push(`The academic difficulty rating for this clinical concept is: ${diffTextEn}.`);
-
-    additionalPool.push(`This term holds crucial diagnostic value and plays a vital role in clinical assessments.`);
-    additionalPool.push(`Understanding this concept is highly recommended for board examinations and clinical practice.`);
-    if (subjects[0]) {
-      additionalPool.push(`Its mastery significantly enhances the diagnostic acumen of future clinicians in the department of ${subjects[0]}.`);
-    }
-    additionalPool.push(`A solid comprehension of this terminology is fundamental to safe patient care and medical education.`);
+    additionalPool.push({ text: `This terminology is classified under ${levelEn}.`, cat: 'Classification' });
   }
 
-  // Merge the base clues and additional dynamic clues to guarantee we reach exactly 10 high-quality hints!
-  for (const clue of additionalPool) {
+  additionalPool.push({ text: letterHint, cat: 'Pearl' });
+
+  // Backfill with subject-scoped variants until at least 5 clues exist for every word
+  let scopeIdx = 1;
+  while (baseClues.length + additionalPool.length < 5 && subjects.length > 0) {
+    const sub = subjects[scopeIdx % subjects.length];
+    additionalPool.push({
+      text: lang === 'Arabic'
+        ? `أسئلته بتتكرر كتير في امتحانات تخصص ${sub}.`
+        : `Questions about it frequently appear in ${sub} examinations.`,
+      cat: 'Classification',
+    });
+    scopeIdx++;
+    if (scopeIdx > 6) break;
+  }
+
+  // Merge without duplicates, capped at 10 — procedural clues carry their EXPLICIT category tag
+  for (const c of additionalPool) {
     if (baseClues.length >= 10) break;
-    // Avoid duplicates
-    if (!baseClues.includes(clue)) {
-      baseClues.push(clue);
-    }
+    const tagged = `[${c.cat}] ${c.text}`;
+    if (!baseClues.includes(tagged) && !baseClues.includes(c.text)) baseClues.push(tagged);
   }
 
-  // If still less than 10, fill up with generic ones
-  while (baseClues.length < 10) {
-    if (lang === 'Arabic') {
-      baseClues.push(`تلميح إضافي لتسهيل التخمين: المصطلح يخص تخصص ${subjects[0] || 'العلوم الطبية'}.`);
-    } else {
-      baseClues.push(`Extra hint to assist you: This concept belongs to ${subjects[0] || 'Medical Sciences'}.`);
-    }
-  }
-
-  // Now process with professional wrapper for both languages
+  // Wrap with a clean machine-readable category tag (rendered as a chip in the UI)
   if (lang === 'Arabic') {
     return baseClues.map((clue, index) => makeArabicClueEgyptianAndClean(clue, index, wordId));
   } else {

@@ -1,0 +1,1765 @@
+{
+  "w638": {
+    "id": "w638",
+    "word": {
+      "id": "w638",
+      "word": {
+        "Arabic": "قلس الأبهر",
+        "English": "Aortic Regurgitation"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Cardiology",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "قلس الأبهر",
+        "ارتجاع الصمام الأبهري",
+        "قصور الصمام الأبهري",
+        "Aortic Regurgitation",
+        "Aortic Insufficiency"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "خلل في الصمام بين البطين الأيسر والشريان الأبهر يسمح بتدفق الدم عائداً إلى البطين أثناء الانبساط.",
+        "يشكو المريض من خفقان وضيق تنفس عند الجهد وإحساس بنبض قوي في الرقبة أو الصدر.",
+        "يكشف الفحص عن نفخة انبساطية مبكرة متناقصة الشدة تُسمع بشكل أفضل على الحد الأيسر للقص، مع ضغط نبضي واسع.",
+        "تبين تخطيط صدى القلب دوبلر تدفقاً عكسياً عبر الصمام الأبهر في الانبساط وقد يُظهر أسباباً مثل توسع الجذر الأبهري أو الصمام ثنائي الشرف.",
+        "العلاج الدوائي يشمل موسعات الأوعية مثل مثبطات الإنزيم المحول للأنجيوتنسين، والعلاج الجراحي باستبدال الصمام يُؤخذ بعين الاعتبار عند الأعراض أو خلل البطين الأيسر."
+      ],
+      "English": [
+        "A valve lesion causing diastolic volume overload of the left ventricle due to retrograde blood flow into the left ventricle during diastole.",
+        "Typical symptoms include palpitations, exercise intolerance, dyspnea on exertion, and a bounding pulse sensation in the neck or chest.",
+        "A high-pitched, early diastolic decrescendo murmur best heard at the left sternal border; often associated with a wide pulse pressure and collapsing pulses.",
+        "Transthoracic echocardiography with Doppler confirms diastolic regurgitant flow across the aortic valve and identifies the underlying mechanism.",
+        "Vasodilators such as ACE inhibitors are the mainstay of medical therapy, while aortic valve repair or replacement is the definitive surgical management."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "الأسباب: حمى روماتيزمية سابقة، توسع جذر الأبهر، صمام أبهري ثنائي الشرف، التهاب شغاف، تسلخ الأبهر.",
+        "goldStandard": "المعيار الذهبي: تخطيط صدى القلب عبر الصدر مع دوبلر لتقييم شدة القلس وآليات الصمام.",
+        "firstLineRx": "العلاج الأول: موسعات الأوعية الدموية مثل مثبطات الإنزيم المحول للأنجيوتنسين؛ الجراحة لاستبدال الصمام عند المؤشرات.",
+        "keyDifferentiator": "المميز الرئيسي: نفخة انبساطية مبكرة على الحد الأيسر للقص مع ضغط نبضي واسع ونبض محيطي قافز."
+      },
+      "English": {
+        "etiology": "Causes: prior rheumatic fever, aortic root dilation, bicuspid aortic valve, infective endocarditis, aortic dissection.",
+        "goldStandard": "Gold standard: transthoracic echocardiography with Doppler to assess severity and valve morphology.",
+        "firstLineRx": "First-line: vasodilators such as ACE inhibitors; surgical valve replacement when indicated.",
+        "keyDifferentiator": "Key differentiator: early diastolic murmur at the left sternal border with wide pulse pressure and bounding peripheral pulses."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما هو السبب الذي يؤدي إلى قصور الصمام الهجائي بين البطين الأيسر والأبهر؟ فكر في الحمى الروماتيزمية وتوسع جذر الأبهر.",
+        "hint2": "أعراض مثل الخفقان وضيق النفس الجهدي وإحساس بنبض قوي، مع وجود علامات سريرية تدل على ارتفاع ضغط النبض وقصور انبساطي.",
+        "hint3": "العلامة المحددة: نفخة انبساطية مبكرة متناقصة تُسمع بأفضل شكل على الحد الأيسر للقص مع نبض محيطي قافز.",
+        "pearl": "التشخيص النهائي: قلس الأبهر (Aortic Regurgitation) - من أساسيات Cardiology."
+      },
+      "English": {
+        "hint1": "What condition results from diastolic leakage of blood from the aorta back into the left ventricle? Think of rheumatic heart disease and aortic root dilation.",
+        "hint2": "Symptoms include palpitations, exertional dyspnea, and bounding pulses, with a wide pulse pressure on examination.",
+        "hint3": "The hallmark is an early diastolic decrescendo murmur best heard at the left sternal border with collapsing peripheral pulses.",
+        "pearl": "Definitive diagnosis: Aortic Regurgitation (قلس الأبهر) - Core Cardiology."
+      }
+    }
+  },
+  "w639": {
+    "id": "w639",
+    "word": {
+      "id": "w639",
+      "word": {
+        "Arabic": "متلازمة وولف-باركنسون-وايت",
+        "English": "Wolff-Parkinson-White Syndrome"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Cardiology",
+        "Internal Medicine",
+        "Emergency Medicine"
+      ],
+      "synonyms": [
+        "متلازمة وولف-باركنسون-وايت",
+        "وولف باركنسون وايت",
+        "WPW Syndrome",
+        "Wolff-Parkinson-White Syndrome"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "مسار توصيل خلقي إضافي يتجاوز العقدة الأذينية البطينية، مما يسمح بتوصيل سريع بين الأذينين والبطينين.",
+        "قد يعاني المريض من خفقان أو دوخة أو إغماء بسبب تسرع قلب فوق بطيني انتيابي.",
+        "يُظهر تخطيط القلب أثناء الراحة فترة PR قصيرة وموجة دلتا (صعود مائل في بداية مركب QRS).",
+        "في الرجفان الأذيني، يمكن أن يسبب التوصيل عبر المسار الإضافي تسرع قلب سريع وغير منتظم وعريض قد يتطور إلى رجفان بطيني.",
+        "علاج النوب�� الحادة يتجنب حاصرات العقدة الأذينية البطينية؛ ويُفضل بروكاييناميد أو التقويم الكهربائي المتزامن في الحالات غير المستقرة."
+      ],
+      "English": [
+        "A congenital accessory pathway bypasses the atrioventricular node, allowing rapid conduction between atria and ventricles.",
+        "Patients may present with palpitations, dizziness, or syncope due to paroxysmal supraventricular tachycardia.",
+        "The resting ECG shows a short PR interval and a slurred upstroke of the QRS complex known as a delta wave.",
+        "During atrial fibrillation, conduction down the accessory pathway can produce a very rapid, irregular, broad-complex tachycardia that may degenerate to ventricular fibrillation.",
+        "Management of acute tachyarrhythmia avoids AV nodal blockers; procainamide or synchronized cardioversion are preferred in unstable patients."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "وجود حزمة توصيل إضافية (مسلك كينت) خلقية تربط الأذينين بالبطينين خارج العقدة الأذينية البطينية.",
+        "goldStandard": "تخطيط القلب السطحي (ECG) مع معايير كلاسيكية: PR قصير، موجة دلتا، و��تساع QRS.",
+        "firstLineRx": "التحفيز المبهم أو أدينوسين للتسرع فوق البطيني المنتظم؛ وللرجفان الأذيني: بروكاييناميد أو تقويم كهربائي متزامن، وتجنب الديجوكسين وفيراباميل.",
+        "keyDifferentiator": "موجة دلتا مع PR قصير وQRS واسع لدى شاب يعاني نوبات خفقان."
+      },
+      "English": {
+        "etiology": "A congenital accessory pathway (bundle of Kent) directly connects atria and ventricles, bypassing the AV node.",
+        "goldStandard": "Surface ECG showing short PR interval, delta wave, and widened QRS.",
+        "firstLineRx": "Vagal maneuvers or adenosine for regular AVRT; for atrial fibrillation: procainamide or synchronized cardioversion; avoid AV nodal blockers.",
+        "keyDifferentiator": "Delta wave with short PR and wide QRS in a young patient with palpitations."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "فكر في اضطراب توصيل خلقي يسمح بالوصول السريع للبطينين عبر طريق إضافي، ويتجلى بنمط ECG مميز.",
+        "hint2": "أعراض نوبات خفقان سريع تبدأ وتتوقف فجأة، مع دوخة أو إغماء، وقد يكون الفحص القلبي طبيعياً بين النوبات.",
+        "hint3": "العلامة المميزة في التخطيط: PR قصير جداً وموجة دلتا قبل QRS الواسع.",
+        "pearl": "التشخيص النهائي: متلازمة وولف-باركنسون-وايت (Wolff-Parkinson-White Syndrome) - من أساسيات Cardiology."
+      },
+      "English": {
+        "hint1": "Think of a congenital conduction disorder that lets impulses reach the ventricles rapidly through an extra pathway, producing a distinctive ECG pattern.",
+        "hint2": "Recurrent episodes of sudden-onset palpitations with dizziness or syncope; cardiac exam is often normal between episodes.",
+        "hint3": "The ECG hallmark is a very short PR interval and a delta wave preceding a widened QRS.",
+        "pearl": "Definitive diagnosis: Wolff-Parkinson-White Syndrome (متلازمة وولف-باركنسون-وايت) - Core Cardiology."
+      }
+    }
+  },
+  "w640": {
+    "id": "w640",
+    "word": {
+      "id": "w640",
+      "word": {
+        "Arabic": "الصدمة قلبية المنشأ",
+        "English": "Cardiogenic Shock"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Cardiology",
+        "Emergency Medicine",
+        "Internal Medicine",
+        "Critical Care"
+      ],
+      "synonyms": [
+        "الصدمة قلبية المنشأ",
+        "صدمة قلبية",
+        "Cardiogenic Shock"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة فشل دوراني سببها عجز القلب عن ضخ كمية كافية من الدم، وتحدث غالباً بعد احتشاء عضلة القلب واسع.",
+        "يبدو المريض شاحباً وبارد الأطراف مع تعرق، هبوط حاد في ضغط الدم، تسرع نبض ضعيف، وتشوش ذهني أو خمول.",
+        "بالفحص قد نسمع صوت القلب الثالث (S3) أو نفخة انقباضية جديدة إذا حدث اختلاط ميكانيكي كتمزق حاجز بين البطينين.",
+        "المختبر يظهر ارتفاع حمض اللاكتيك وتدهور الوظيفة الكلوية؛ والإيكو يظهر انقباضية قلبية منخفضة جداً مع ناتج قلبي غير فعال.",
+        "العلاج يعتمد على إعادة الت��وية التاجية العاجلة والدعم الميكانيكي المؤقت للدورة الدموية، وليس مجرد السوائل ومقبضات الأوعية."
+      ],
+      "English": [
+        "A state of circulatory failure resulting from the heart's inability to pump enough blood, most often after a large heart attack.",
+        "Patients appear pale, clammy, confused or lethargic, with very low blood pressure, rapid weak pulse, and cold extremities.",
+        "On auscultation, you may hear an S3 gallop, faint heart sounds, or a new systolic murmur if a mechanical complication has occurred.",
+        "Labs show rising lactate and worsening renal function; echo reveals severely reduced ejection fraction with ineffective cardiac output.",
+        "Management hinges on urgent revascularization and temporary mechanical circulatory support, not just fluids and pressors alone."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "قصور أولي في مضخة القلب بسبب احتشاء عضلة القلب الحاد الواسع أو التهاب عضلة القلب أو اعتلال عضلة القلب أو مرض صمامي حاد.",
+        "goldStandard": "المعيار التشخيصي الذهبي هو القياس الغازي للديناميكا الدموية (Swan-Ganz): مؤش�� قلبي <2.2 لتر/دقيقة/م² وضغط إسفين شعيري رئوي >15 ملم زئبقي مع هبوط ضغط وعلامات نقص تروية طرفية.",
+        "firstLineRx": "خط أول: إعادة تروية تاجية فورية (PCI) + نورإبينفرين لرفع الضغط + دوبوتامين لزيادة الناتج + دعم ميكانيكي مؤقت مثل IABP أو Impella أو VA-ECMO.",
+        "keyDifferentiator": "تمييزه عن بقية أنواع الصدمات: وجود هبوط ضغط مع نقص تروية طرفية رغم امتلاء بطيني كافٍ وناتج قلبي منخفض، دون استجابة للسوائل."
+      },
+      "English": {
+        "etiology": "Primary pump failure due to acute extensive myocardial infarction, myocarditis, cardiomyopathy, or acute valvular disease.",
+        "goldStandard": "Gold standard is invasive hemodynamic measurement (Swan-Ganz): cardiac index <2.2 L/min/m² and pulmonary capillary wedge pressure >15 mmHg with hypotension and end-organ hypoperfusion.",
+        "firstLineRx": "First-line: immediate coronary revascularization (PCI) + norepinephrine for pressure + dobutamine for output + temporary mechanical support such as IABP, Impella, or VA-ECMO.",
+        "keyDifferentiator": "Distinguishes from other shocks: hypotension with end-organ hypoperfusion despite adequate ventricular filling and low cardiac output, with no response to fluids."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما هو السبب القلبي المباشر الذي يؤدي إلى فشل المضخة وهبوط الضغط مع برودة الأطراف؟",
+        "hint2": "مريض بعد احتشاء قلبي حاد يظهر بشحوب وتعرق وهبوط ضغط وتشوش ذهني وقلة تبول - ما المتلازمة السريرية؟",
+        "hint3": "العلامة المميزة هي هبوط ضغط مع نقص تروية طرفية رغم امتلاء البطينين وناتج قلبي منخفض جداً.",
+        "pearl": "التشخيص النهائي: الصدمة قلبية المنشأ (Cardiogenic Shock) - من أساسيات Cardiology."
+      },
+      "English": {
+        "hint1": "Which direct cardiac cause leads to pump failure and hypotension with cold extremities?",
+        "hint2": "Post large myocardial infarction, the patient is pale, diaphoretic, hypotensive, confused, and oliguric – what syndrome?",
+        "hint3": "The hallmark is hypotension with end-organ hypoperfusion despite adequate ventricular filling and very low cardiac output.",
+        "pearl": "Definitive diagnosis: Cardiogenic Shock (الصدمة قلبية المنشأ) - Core Cardiology."
+      }
+    }
+  },
+  "w641": {
+    "id": "w641",
+    "word": {
+      "id": "w641",
+      "word": {
+        "Arabic": "اعتلال تاكوتسوبو لعضلة القلب",
+        "English": "Takotsubo Cardiomyopathy"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Cardiology",
+        "Internal Medicine",
+        "Emergency Medicine"
+      ],
+      "synonyms": [
+        "اعتلال تاكوتسوبو لعضلة القلب",
+        "متلازمة القلب المنكسر",
+        "اعتلال تاكوتسوبو",
+        "Takotsubo Cardiomyopathy",
+        "Broken Heart Syndrome",
+        "Stress Cardiomyopathy"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة قلبية حادة قابلة للعكس، غالبًا ما تظهر بعد ضغط عاطفي أو جسدي شديد، وتصيب النساء بعد سن اليأس بشكل أكثر شيوعًا.",
+        "تتمثل الأعراض في ألم صدري حاد وضيق نفس وتغيرات بتخطيط القلب وارتفاع طفيف في التروبونين، مما يحاكي متلازمة الشريان التاجي الحادة.",
+        "العلامة المميزة هي قصور بطيني أيسر عابر مع انتفاخ قمي يشبه البالون وقاعدة مفرطة الحركة، لكن هذا الخلل لا يتناسب مع الارتفاع البسيط للأنزيمات.",
+        "القسطرة القلبية تُظهر غياب انسداد تاجي ذي أهمية، بينما يُظهر تصوير البطين الأيسر اضطراب الحركة الجدارية النموذجي.",
+        "العلاج داعم باستخدام حاصرات بيتا ومثبطات الإنزيم المحول للأنجيوتنسين ومدرات البول عند الحاجة، مع تعافٍ كامل للوظيفة القلبية خلال أسابيع."
+      ],
+      "English": [
+        "This acute reversible cardiac condition is often triggered by intense emotional or physical stress and predominantly affects postmenopausal women.",
+        "Patients typically present with acute chest pain, dyspnea, ST-segment changes on ECG, and mildly elevated cardiac troponin, mimicking an acute coronary syndrome.",
+        "The hallmark is transient left ventricular systolic dysfunction with apical ballooning and hyperdynamic basal segments, disproportionate to the modest biomarker rise.",
+        "Coronary angiography reveals no significant obstructive coronary artery disease, while left ventriculography demonstrates the characteristic regional wall-motion abnormality.",
+        "Management is largely supportive with beta-blockers, ACE inhibitors, and diuretics as needed; left ventricular function usually recovers within weeks."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "زيادة الكاتيكولامينات الحادة الناتجة عن الإجهاد النفسي أو الجسدي الشديد، مما يؤدي إلى ذهول مؤقت بعضلة القلب.",
+        "goldStandard": "القسطرة القلبية مع تصوير البطين الأيسر: غياب انسداد تاجي مهم + انتفاخ قمي بالوني مميز.",
+        "firstLineRx": "العلاج الداعم: حاصرات بيتا، مثبطات الإنزيم المحول للأنجيوتنسين، ومدرات البول عند الحاجة.",
+        "keyDifferentiator": "خلل قلبي عابر قابل للعكس دون وجود انسداد تاجي، مع ارتفاع طفيف للتروبونين مقارنة بحدّة اضطراب الحركة الجدارية."
+      },
+      "English": {
+        "etiology": "Acute catecholamine surge from intense emotional or physical stress causing transient myocardial stunning.",
+        "goldStandard": "Coronary angiography and left ventriculography demonstrating apical ballooning without significant obstructive coronary artery disease.",
+        "firstLineRx": "Supportive care including beta-blockers, ACE inhibitors, and diuretics as needed.",
+        "keyDifferentiator": "Transient reversible left ventricular dysfunction disproportionate to mild troponin elevation, in the absence of obstructive coronary disease."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "امرأة في سن اليأس تصاب بألم صدري حاد بعد صدمة عاطفية شديدة، وتخطيط القلب يُظهر تغيرات إقفارية لكن القسطرة التاجية سليمة.",
+        "hint2": "يظهر العرض بقصور قلبي حاد مع ألم صدري وضيق نفس وتعرق، وقد توجد علامات احتقان رئوي.",
+        "hint3": "العلامة المميزة على تصوير البطين الأيسر هي انتفاخ القمة بشكل بالوني مع فرط حركة القاعدة.",
+        "pearl": "التشخيص النهائي: اعتلال تاكوتسوبو لعضلة القلب (Takotsubo Cardiomyopathy) - من أساسيات Cardiology."
+      },
+      "English": {
+        "hint1": "A postmenopausal woman develops sudden crushing chest pain after devastating emotional news; ECG shows ischemic changes but coronary angiography is normal.",
+        "hint2": "Patients often present with acute heart failure features including chest pain, dyspnea, diaphoresis, and possible pulmonary congestion signs.",
+        "hint3": "The hallmark on left ventriculography is apical ballooning with a hypercontractile base and preserved basal function.",
+        "pearl": "Definitive diagnosis: Takotsubo Cardiomyopathy (اعتلال تاكوتسوبو لعضلة القلب) - Core Cardiology."
+      }
+    }
+  },
+  "w642": {
+    "id": "w642",
+    "word": {
+      "id": "w642",
+      "word": {
+        "Arabic": "التهاب الشرايين الخلوية العملاقة",
+        "English": "Giant Cell Arteritis"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Neurology",
+        "Rheumatology",
+        "Internal Medicine",
+        "Ophthalmology"
+      ],
+      "synonyms": [
+        "التهاب الشرايين الخلوية العملاقة",
+        "التهاب الشريان الصدغي",
+        "Giant Cell Arteritis",
+        "Temporal Arteritis",
+        "Horton Disease"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "التهاب وعائي يصيب الشرايين متوسطة وكبيرة الحجم، شائع لدى كبار السن.",
+        "أعراض كلاسيكية: صداع جديد، عرج الفك، فقدان بصر، حساسية فروة الرأس، حمى ونقص وزن.",
+        "العلامة المميزة: خزعة الشريان الصدغي تظهر ارتشاحاً حبيبومياً مع خلايا عملاقة.",
+        "المختبر: ارتفاع شديد في ESR وCRP، وقد يوجد فقر دم وصفائح مرتفعة.",
+        "العلاج: كورتيكوستيرويدات بجرعة عالية ��وراً، لتجنب العمى، مع متابعة الاستجابة."
+      ],
+      "English": [
+        "A vasculitis of medium and large arteries, typically seen in the elderly.",
+        "Classic symptoms include new-onset headache, jaw claudication, visual loss, scalp tenderness, fever, and weight loss.",
+        "Hallmark finding: temporal artery biopsy showing granulomatous infiltration with giant cells.",
+        "Markedly elevated ESR and CRP are typical; anemia and thrombocytosis may also be present.",
+        "Immediate high-dose corticosteroids are required to prevent irreversible blindness."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "التهاب وعائي حبيبي يصيب الشرايين الكبيرة والمتوسطة، خاصة فروع الشريان السباتي؛ السبب غير معروف ويرتبط بالتقدم بالعمر.",
+        "goldStandard": "خزعة الشريان الصدغي التي تُظهر التهاباً حبيبومياً مع خلايا عملاقة.",
+        "firstLineRx": "كورتيكوستيرويدات بجرعة عالية (بريدنيزون) فوراً ولا يُنتظر تأكيد الخزعة.",
+        "keyDifferentiator": "صداع جديد مع عرج الفك وارتفاع كبير في ESR لدى مريض مسن، مع خطر فقدان بصر لا رجعة فيه."
+      },
+      "English": {
+        "etiology": "Granulomatous vasculitis of large and medium arteries, especially branches of the carotid artery; unknown cause, strongly age-related.",
+        "goldStandard": "Temporal artery biopsy demonstrating granulomatous inflammation with giant cells.",
+        "firstLineRx": "High-dose corticosteroids (prednisone) immediately, without waiting for biopsy confirmation.",
+        "keyDifferentiator": "New headache with jaw claudication and markedly elevated ESR in an elderly patient, with risk of irreversible vision loss."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "مريض مسن يعاني صداعاً جديداً وحساسية في فروة الرأس وألماً عند المضغ، ما التشخيص الأرجح؟",
+        "hint2": "ارتفاع شديد في ESR مع أعراض بصرية عابرة أو فقدان بصر، وأحياناً حمى ونقص وزن.",
+        "hint3": "العلامة الحاسمة تأتي من خزعة وعائية تبين التهاباً حبيبومياً وخلايا عملاقة.",
+        "pearl": "التشخيص النهائي: التهاب الشرايين الخلوية العملاقة (Giant Cell Arteritis) - من أساسيات Neurology."
+      },
+      "English": {
+        "hint1": "An elderly patient with new headache, scalp tenderness, and jaw pain on chewing—what is the likely diagnosis?",
+        "hint2": "Markedly elevated ESR with transient visual symptoms or vision loss, sometimes fever and weight loss.",
+        "hint3": "The decisive clue comes from a vascular biopsy showing granulomatous inflammation and giant cells.",
+        "pearl": "Definitive diagnosis: Giant Cell Arteritis (التهاب الشرايين الخلوية العملاقة) - Core Neurology."
+      }
+    }
+  },
+  "w643": {
+    "id": "w643",
+    "word": {
+      "id": "w643",
+      "word": {
+        "Arabic": "متلازمة ذيل الفرس",
+        "English": "Cauda Equina Syndrome"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Neurology",
+        "Emergency Medicine",
+        "Neurosurgery",
+        "Orthopedics"
+      ],
+      "synonyms": [
+        "متلازمة ذيل الفرس",
+        "انضغاط ذيل الفرس",
+        "Cauda Equina Syndrome"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "يحدث بسبب انضغاط جذور الأعصاب أسفل النخاع، غالباً من انفتاق قرص قطني كبير.",
+        "أعراض كلاسيكية: ألم قطني ينتشر للفخذين، خدر في منطقة السرج، ضعف عضلات الأطراف السفلية.",
+        "علامة تحذيرية: اضطراب بولي/معوي حديث يترافق مع فقد حس العجان.",
+        "الأساس التشخيصي: تصوير رنين مغناطيسي طارئ للقطني، ويجب عدم تأخير التدخل.",
+        "العلاج الأولي جراحي طارئ خلال 48 ساعة لتخفيف الضغط مع جرعة عالية من الستيرويد."
+      ],
+      "English": [
+        "Usually caused by massive midline disc herniation compressing the lumbosacral nerve roots below the conus.",
+        "Classic presentation: severe low back pain with sciatica, saddle anesthesia, and progressive leg weakness.",
+        "Red flag: acute urinary retention or overflow incontinence with loss of anal sphincter tone.",
+        "Confirm by urgent MRI of the lumbosacral spine; CT is less sensitive for nerve root compression.",
+        "Emergency decompression laminectomy within 24–48 hours plus high-dose corticosteroids is the standard."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "انضغاط جذور ذيل الفرس بسبب انفتاق قرص قطني مركزي، ورم، أو تضيق شوكي حاد.",
+        "goldStandard": "التصوير بالرنين المغناطيسي الطارئ للقطني.",
+        "firstLineRx": "استئصال جراحي طارئ لتخفيف الضغط خلال 24-48 ساعة مع جرعة عالية من الستيرويد.",
+        "keyDifferentiator": "وجود احتباس بولي وخدر سرجي وفقد حس العجان مع ضعف سفلي."
+      },
+      "English": {
+        "etiology": "Compression of lumbosacral nerve roots by a massive central disc herniation, tumor, or spinal stenosis.",
+        "goldStandard": "Emergency MRI of the lumbosacral spine.",
+        "firstLineRx": "Urgent surgical decompression within 24–48 hours plus high-dose corticosteroids.",
+        "keyDifferentiator": "Acute urinary retention with saddle anesthesia and perianal sensory loss."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما المتلازمة السريرية التي تتطلب رنيناً مغناطيسياً طارئاً وجراحة عاجلة؟",
+        "hint2": "أعراض: ألم قطني حاد، خدر سرجي، ضعف سفلي مترقي.",
+        "hint3": "العلامة المميزة: احتباس بولي حاد مع فقد حس العجان.",
+        "pearl": "التشخيص النهائي: متلازمة ذيل الفرس (Cauda Equina Syndrome) - من أساسيات Neurology."
+      },
+      "English": {
+        "hint1": "Which clinical syndrome demands urgent MRI and emergency decompression?",
+        "hint2": "Symptoms: acute back pain, saddle anesthesia, ascending leg weakness.",
+        "hint3": "Hallmark: acute urinary retention with perianal sensory loss.",
+        "pearl": "Definitive diagnosis: Cauda Equina Syndrome (متلازمة ذيل الفرس) - Core Neurology."
+      }
+    }
+  },
+  "w644": {
+    "id": "w644",
+    "word": {
+      "id": "w644",
+      "word": {
+        "Arabic": "تكهف النخاع",
+        "English": "Syringomyelia"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Neurology",
+        "Neurosurgery",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "تكهف النخاع",
+        "تكهف النخاع الشوكي",
+        "استسقاء النخاع",
+        "Syringomyelia",
+        "Syrinx"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "توسع تجويفي مملوء بالسائل داخل الحبل الشوكي، غالباً يرتبط بتشوه خلفي في قاعدة الجمجمة.",
+        "يحدث فقدان حس الألم والحرارة مع بقاء اللمس والاهتزاز في المناطق المصابة (تفارق حسي).",
+        "قد يظهر ضعف وضمور في عضلات اليدين والكتفين، مع فقدان المنعكسات الوترية.",
+        "التصوير بالرنين المغناطيسي للعمود الفقري هو الأداة الحاسمة لإظهار التجويف السائل داخل النخاع.",
+        "في الحالات المرافقة لانزياح اللوزتين المخيخيتين، قد يكون العلاج جراحياً لتخفيف الضغط أو تحويل السائل."
+      ],
+      "English": [
+        "A fluid-filled cavity forms within the spinal cord, often associated with a hindbrain malformation.",
+        "Patients classically lose pain and temperature sensation while preserving light touch and proprioception in the same areas.",
+        "Look for progressive weakness and wasting of hand and shoulder muscles with depressed deep tendon reflexes.",
+        "MRI of the spine is the definitive imaging modality to visualize the intramedullary fluid collection.",
+        "When linked to downward displacement of the cerebellar tonsils, surgical decompression or shunting may be considered."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "غالباً خِلقي مع تشوه خلفي (متلازمة كياري)، أو مكتسب بسبب أورام/تشوهات في النخاع أو صدمة.",
+        "goldStandard": "تصوير الرنين المغناطيسي (MRI) للحبل الشوكي هو المعيار الذهبي للتشخيص.",
+        "firstLineRx": "العلاج يعتمد على السبب؛ جراحة تخفيف الضغط الخلفي في حالات كياري، أو تحويل السائل (shunt) للنخاع.",
+        "keyDifferentiator": "التفارق الحسي (فقدان الألم والحرارة مع بقاء اللمس والاهتزاز) هو العلامة المميزة."
+      },
+      "English": {
+        "etiology": "Mostly congenital with hindbrain malformation (Chiari syndrome), or acquired from spinal cord tumors/trauma.",
+        "goldStandard": "MRI of the spinal cord is the gold standard for diagnosis.",
+        "firstLineRx": "Treatment is cause-driven; posterior fossa decompression for Chiari, or syrinx shunting when needed.",
+        "keyDifferentiator": "Dissociated sensory loss (loss of pain/temperature with preserved touch/vibration) is the hallmark feature."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما الحالة التي تتميز بتجمع سائل داخل نسيج الحبل الشوكي وتسبب أعراضاً عصبية تدريجية؟",
+        "hint2": "يعاني المريض من ضعف وضمور في اليدين مع فقدان الإحساس بالألم والحرارة في الطرفين العلويين.",
+        "hint3": "العلامة المميزة هي التفارق الحسي: فقدان الحس النخاعي الشوكي المهادي مع بقاء حس العمود الخلفي.",
+        "pearl": "التشخيص النهائي: تكهف النخاع (Syringomyelia) - من أساسيات Neurology."
+      },
+      "English": {
+        "hint1": "What condition features a fluid-filled cavity inside the spinal cord causing progressive neurological deficits?",
+        "hint2": "The patient has hand weakness and wasting with loss of pain and temperature sensation in the upper limbs.",
+        "hint3": "The hallmark is dissociated sensory loss: impairment of spinothalamic sensation with preserved dorsal column function.",
+        "pearl": "Definitive diagnosis: Syringomyelia (تكهف النخاع) - Core Neurology."
+      }
+    }
+  },
+  "w645": {
+    "id": "w645",
+    "word": {
+      "id": "w645",
+      "word": {
+        "Arabic": "التهاب الأقنية الصفراوية المصلب البدئي",
+        "English": "Primary Sclerosing Cholangitis"
+      },
+      "level": "Clinical",
+      "difficulty": 3,
+      "type": "Disease",
+      "subjects": [
+        "Gastroenterology",
+        "Internal Medicine",
+        "Hepatology"
+      ],
+      "synonyms": [
+        "التهاب الأقنية الصفراوية المصلب البدئي",
+        "التهاب القنوات الصفراوية المصلب",
+        "Primary Sclerosing Cholangitis",
+        "PSC"
+      ],
+      "guessingDifficulty": 3
+    },
+    "hints": {
+      "Arabic": [
+        "مرض صفراوي مزمن يتميز بالتهاب وتليف في القنوات الصفراوية داخل وخارج الكبد، مترافق غالباً مع مرض التهاب الأمعاء.",
+        "يترافق بشكل شائع مع التهاب القولون التقرحي وقد يظهر بزيادة الفوسفاتاز القلوية وارتفاع خفيف في البيليروبين.",
+        "تصوير القنوات الصفراوية يُظهر تضيقات متعددة وتوسعات بينها تشبه نمط الخرز (beading).",
+        "الأجسام المضادة السيتوبلازمية المضادة للعدلات (p-ANCA) قد تكون إيجابية في مصل المريض.",
+        "قد يتطور إلى تشمع الكبد ويحتاج زراعة كبد، مع ضرورة مراقبة سرطان القنوات الصفراوية."
+      ],
+      "English": [
+        "A chronic cholestatic liver disease characterized by inflammation and fibrosis of intrahepatic and extrahepatic bile ducts, often associated with inflammatory bowel disease.",
+        "Commonly linked with ulcerative colitis; labs may show elevated alkaline phosphatase with mild hyperbilirubinemia.",
+        "Cholangiography reveals multifocal strictures with intervening dilation producing a characteristic beaded pattern.",
+        "Perinuclear anti-neutrophil cytoplasmic antibodies (p-ANCA) may be positive in serum.",
+        "Progressive disease can lead to cirrhosis and require liver transplantation; surveillance for cholangiocarcinoma is important."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "التهاب وتليف القنوات الصفراوية ذو منشأ مناعي، يرتبط بقوة مع مرض التهاب الأمعاء (خاصة التهاب القولون التقرحي).",
+        "goldStandard": "تصوير القنوات الصفراوية بالرنين المغناطيسي (MRCP) أو تصوير البنكرياس والقنوات الصفراوية بالتنظير (ERCP) اللذان يظهران نمط الخرز.",
+        "firstLineRx": "لا يوجد علاج طبي مثبت يبطئ المرض؛ يستخدم حمض أورسوديوكسيكوليك (UDCA) لتحسين إنزيمات الكبد لكن دون إثبات تحسين البقيا، والعلاج النهائي زراعة الكبد.",
+        "keyDifferentiator": "وجود تضيقات متعددة في القنوات الصفراوية مع مرض التهاب الأمعاء يرجّح التشخيص، وتتميز عن التهاب الأقنية الصفراوية الأولي بغياب الأجسام المضادة للميتوكوندريا."
+      },
+      "English": {
+        "etiology": "Immune-mediated inflammation and fibrosis of bile ducts, strongly associated with inflammatory bowel disease, especially ulcerative colitis.",
+        "goldStandard": "Magnetic resonance cholangiopancreatography (MRCP) or endoscopic retrograde cholangiopancreatography (ERCP) showing a beaded ductal pattern.",
+        "firstLineRx": "No proven disease-modifying medical therapy; ursodeoxycholic acid (UDCA) may improve liver enzymes but does not improve survival, and liver transplantation is definitive.",
+        "keyDifferentiator": "Multifocal bile duct strictures with inflammatory bowel disease strongly suggest the diagnosis; unlike primary biliary cholangitis, anti-mitochondrial antibodies are absent."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ابدأ بأعراض ركود صفراوي مزمن عند مريض شاب لديه تاريخ التهاب قولون تقرحي.",
+        "hint2": "يظهر ارتفاع الفوسفاتاز القلوية مع تصوير قنوات يُظهر تضيقات متعددة وتوسعات بينها.",
+        "hint3": "النمط التصويري يشبه حبات الخرز على طول الشجرة الصفراوية.",
+        "pearl": "التشخيص النهائي: التهاب الأقنية الصفراوية المصلب البدئي (Primary Sclerosing Cholangitis) - من أساسيات Gastroenterology."
+      },
+      "English": {
+        "hint1": "Think of chronic cholestasis in a young patient with a history of ulcerative colitis.",
+        "hint2": "Elevated alkaline phosphatase with multifocal biliary strictures and intervening dilatations on imaging.",
+        "hint3": "The cholangiographic appearance of multiple strictures and dilations resembles a string of beads.",
+        "pearl": "Definitive diagnosis: Primary Sclerosing Cholangitis (التهاب الأقنية الصفراوية المصلب البدئي) - Core Gastroenterology."
+      }
+    }
+  },
+  "w646": {
+    "id": "w646",
+    "word": {
+      "id": "w646",
+      "word": {
+        "Arabic": "متلازمة بورهاف",
+        "English": "Boerhaave Syndrome"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Gastroenterology",
+        "Emergency Medicine",
+        "General Surgery",
+        "Cardiothoracic Surgery"
+      ],
+      "synonyms": [
+        "متلازمة بورهاف",
+        "تمزق المريء التلقائي",
+        "Boerhaave Syndrome",
+        "Esophageal Rupture"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة إسعافية نادرة تنتج عن تمزق كامل في جدار المريء، غالباً بعد نوبة قيء عنيف، وتؤدي إلى التهاب المنصف.",
+        "ألم صدري حاد مفاجئ، حمى، ضيق تنفس، وانتفاخ الرقبة مع إحساس بالفرقعة تحت الجلد.",
+        "العلامة المميزة في التصوير: هواء حر في المنصف مع انصباب جنبي أيسر، وأحياناً علامة ماء البئر.",
+        "الفحص الذهبي للتأكيد هو تصوير المريء بمادة ظليلة قابلة للذوبان في الماء أو التصوير المقطعي المحوسب للكشف عن تسرب خارج المريء.",
+        "العلاج الأساسي هو التدخل الجراحي الطارئ لإصلاح التمزق وتنظيف المنصف، مع إعطاء مضادات حيوية واسعة الطيف ودعم حيوي."
+      ],
+      "English": [
+        "A rare life-threatening emergency caused by full-thickness rupture of the esophageal wall, usually after a bout of forceful vomiting, leading to mediastinitis.",
+        "Sudden severe chest pain, fever, dyspnea, and neck swelling with palpable subcutaneous crepitus.",
+        "The hallmark imaging finding is mediastinal air with a left-sided pleural effusion, sometimes described as a V-sign on chest radiograph.",
+        "The gold standard for confirmation is an esophagogram with water-soluble contrast or a CT scan demonstrating contrast extravasation outside the esophagus.",
+        "Mainstay management is urgent surgical repair with mediastinal drainage, broad-spectrum antibiotics, and aggressive hemodynamic support."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "تمزق كامل في جدار المريء بسبب ارتفاع مفاجئ في الضغط داخل لمعة المريء، غالباً من قيء عنيف بعد تناول وجبة كبيرة أو كحول.",
+        "goldStandard": "تصوير المريء بوسيط تباين قابل للذوبان في الماء أو التصوير المقطعي المحوسب لإظهار تسرب التباين خارج المريء.",
+        "firstLineRx": "جراحة طارئة لإصلاح التمزق مع تصريف المنصف، بالإضافة إلى مضادات حيوية واسعة الطيف ودعم دموي.",
+        "keyDifferentiator": "ثالوث ماكلر: قيء، ألم صدري، وانتفاخ رقبة مع فرقعة تحت الجلد."
+      },
+      "English": {
+        "etiology": "Full-thickness esophageal tear due to a sudden rise in intraluminal pressure, typically from forceful vomiting after a large meal or alcohol intake.",
+        "goldStandard": "Water-soluble contrast esophagography or CT scan demonstrating contrast extravasation outside the esophagus.",
+        "firstLineRx": "Emergency surgery to repair the tear and drain the mediastinum, along with broad-spectrum antibiotics and hemodynamic support.",
+        "keyDifferentiator": "Mackler's triad: vomiting, chest pain, and neck swelling with subcutaneous emphysema."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "تخيل مريضاً أتى للطوارئ بألم صدري حاد بعد نوبة قيء عنيفة؛ ما الحالة الإسعافية التي يجب استبعادها فوراً؟",
+        "hint2": "تترافق الحالة مع حمى، وضيق ت��فس، وانتفاخ في الرقبة مع الفرقعة تحت الجلد، وقد يتطور صدمة إنتانية.",
+        "hint3": "العلامة المفصلية: هواء في المنصف وانصباب جنبي أيسر، مع تسرب تباين خارج المريء عند التصوير.",
+        "pearl": "التشخيص النهائي: متلازمة بورهاف (Boerhaave Syndrome) - من أساسيات Gastroenterology."
+      },
+      "English": {
+        "hint1": "Imagine a patient presenting to the ER with severe chest pain after forceful vomiting; what life-threatening condition must you rule out immediately?",
+        "hint2": "This condition is associated with fever, dyspnea, neck swelling with subcutaneous crepitus, and can progress to septic shock.",
+        "hint3": "The defining clue is pneumomediastinum with left pleural effusion and contrast extravasation outside the esophagus on imaging.",
+        "pearl": "Definitive diagnosis: Boerhaave Syndrome (متلازمة بورهاف) - Core Gastroenterology."
+      }
+    }
+  },
+  "w647": {
+    "id": "w647",
+    "word": {
+      "id": "w647",
+      "word": {
+        "Arabic": "التهاب القولون بالمطثية العسيرة",
+        "English": "Clostridioides difficile Colitis"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Gastroenterology",
+        "Infectious Diseases",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "التهاب القولون بالمطثية العسيرة",
+        "التهاب القولون الغشائي الكاذب",
+        "عدوى المطثية العسيرة",
+        "Clostridioides difficile Colitis",
+        "C. difficile Infection",
+        "Pseudomembranous Colitis"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "إسهال مائي متكرر يظهر غالباً بعد تناول مضادات حيوية واسعة الطيف لدى مريض كبير بالسن أو مريض منوم في المستشفى.",
+        "يترافق مع تقلصات بطنية وحمى وارتفاع في عدد كريات الدم البيضاء، وقد يتطور إلى تضخم القولون السام.",
+        "العلامة المميزة بالتنظير القولوني عبارة عن لويحات صفراء بارزة تلتصق بالغشاء المخاطي الملتهب.",
+        "يُفضل تأكيد التشخيص بفحص البراز للكشف عن الجين المرمز للسموم باستخدام تقنية تضخيم الأحماض النووية.",
+        "الخطوة الأولى هي إيقاف العامل المسبب، ثم يعطى مضاد حيوي فموي مثل فانكومايسين أو فيداكسومايسين، مع تجنب مضادات الحركة."
+      ],
+      "English": [
+        "Profuse watery diarrhea classically occurring after broad-spectrum antibiotics in an older adult or hospitalized patient.",
+        "Associated with crampy abdominal pain, fever, and leukocytosis; may progress to toxic megacolon.",
+        "Endoscopic hallmark is raised yellowish plaques adherent to an inflamed colonic mucosa.",
+        "Preferred diagnostic confirmation is a stool nucleic acid amplification test for the toxin gene.",
+        "Management begins by stopping the offending agent, then giving oral vancomycin or fidaxomicin; avoid anti-motility drugs."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "خلل الجراثيم نتيجة مضادات حيوية حديثة تسمح بنمو المطثية العسيرة وإنتاج سموم A وB المؤذية لخلايا القولون.",
+        "goldStandard": "فحص البراز بتقنية PCR للكشف عن جين السموم، والتنظير القولوني الذي يُظهر الأغشية الكاذبة عند الحاجة.",
+        "firstLineRx": "إيقاف المضاد الحيوي المسبب ثم فانكومايسين فموياً أو فيداكسومايسين.",
+        "keyDifferentiator": "حدوث إسهال بعد مضادات حيوية مع لويحات صفراء على الغشاء المخاطي بالتنظير."
+      },
+      "English": {
+        "etiology": "Antibiotic-induced gut dysbiosis permits Clostridioides difficile overgrowth and toxin A/B-mediated colonic epithelial injury.",
+        "goldStandard": "Stool PCR/NAAT for toxin genes; colonoscopy demonstrating pseudomembranes in uncertain cases.",
+        "firstLineRx": "Discontinue the precipitating antibiotic; treat with oral vancomycin or fidaxomicin.",
+        "keyDifferentiator": "History of recent antibiotic use plus yellowish mucosal plaques (pseudomembranes) on endoscopy."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "مريض مسن أصيب بإسهال مائي غزير بعد دورة علاج بمضاد حيوي واسع الطيف، فما السبب الأرجح؟",
+        "hint2": "الحالة تترافق مع تشنجات بطنية وحمى وارتفاع كريات الدم البيضاء، وقد تحدث ��ضاعفات كتضخم القولون السام.",
+        "hint3": "بالمنظار القولوني تظهر لويحات صفراء ملتصقة على الغشاء المخاطي الملتهب، وهي العلامة المفصلية للتشخيص.",
+        "pearl": "التشخيص النهائي: التهاب القولون بالمطثية العسيرة (Clostridioides difficile Colitis) - من أساسيات Gastroenterology."
+      },
+      "English": {
+        "hint1": "An elderly patient develops profuse watery diarrhea after a course of broad-spectrum antibiotics. What is the most likely disease?",
+        "hint2": "The illness includes abdominal cramping, fever, and leukocytosis, with risk of toxic megacolon.",
+        "hint3": "Colonoscopy shows raised yellowish plaques adherent to the inflamed mucosa, the pivotal diagnostic feature.",
+        "pearl": "Definitive diagnosis: Clostridioides difficile Colitis (التهاب القولون بالمطثية العسيرة) - Core Gastroenterology."
+      }
+    }
+  },
+  "w648": {
+    "id": "w648",
+    "word": {
+      "id": "w648",
+      "word": {
+        "Arabic": "ذات الرئة بالمتكيسة الرئوية الجيروفيسية",
+        "English": "Pneumocystis Jirovecii Pneumonia"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Pulmonology",
+        "Infectious Diseases",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "ذات الرئة بالمتكيسة الرئوية الجيروفيسية",
+        "التهاب رئوي بالمتكيسة الجيروفيسية",
+        "PCP Pneumonia",
+        "Pneumocystis Jirovecii Pneumonia",
+        "Pneumocystis Carinii Pneumonia"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "فكر في هذا الكائن الانتهازي لدى مريض نقص المناعة، خاصة مع انخفاض الخلايا التائية المساعدة.",
+        "يظهر ببداية تدريجية مع حمى، سعال جاف، وتسرع تنفس، وقد تسمع خراخر ثنائية.",
+        "الصورة الشعاعية قد تكون طبيعية أو عتامة زجاجية أرضية حول النقير، مع انخفاض نسبة PaO2.",
+        "الفحص المجهري للبلغم أو غسل القصبات بصبغة خاصة يكشف الكيسات.",
+        "العلاج المفضل هو مضاد حيوي مثبط لتصنيع حمض الفوليك مع مشتق كوتريموكسازول، والوقاية للفئات المعرضة."
+      ],
+      "English": [
+        "Consider this opportunistic organism in an immunocompromised host, especially with depleted CD4 helper cells.",
+        "Presents subacutely with fever, dry cough, tachypnea, and diffuse crackles on auscultation.",
+        "Chest imaging may be normal or show bilateral perihilar ground-glass opacities with a low PaO2.",
+        "Definitive detection relies on staining cysts in induced sputum or bronchoalveolar lavage.",
+        "First-line management uses a sulfonamide-dihydrofolate reductase inhibitor combination, with prophylaxis for at-risk patients."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "فطر انتهازي يسبب التهاب رئوي عند نقص المناعة، خاصة الإيدز مع CD4 أقل من 200.",
+        "goldStandard": "رؤية الكيسات في عينة البلغم المستحث أو غسل القصبات بصبغة غوموري أو كالكوفلور الأبيض.",
+        "firstLineRx": "تريميثوبريم-سلفاميثوكسازول (كوتريموكسازول).",
+        "keyDifferentiator": "نقص CD4 أقل من 200، صورة زجاجية أرضية متناظرة مع نقص تأكسج واضح."
+      },
+      "English": {
+        "etiology": "Opportunistic fungus causing pneumonia in immunosuppression, especially HIV with CD4 below 200.",
+        "goldStandard": "Visualization of cysts in induced sputum or BAL with Gomori methenamine silver or calcofluor white.",
+        "firstLineRx": "Trimethoprim-sulfamethoxazole (co-trimoxazole).",
+        "keyDifferentiator": "CD4 <200, bilateral interstitial ground-glass opacities with disproportionate hypoxemia."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما الكائن الانتهازي الذي يسبب التهاب رئوي حاد لدى مريض الإيدز مع تعداد CD4 منخفض جداً؟",
+        "hint2": "حمى تحت حادة، سعال جاف، تسرع تنفس، ونقص تأكسج متفاقم مع خراخر ثنائية.",
+        "hint3": "عتامات زجاجية أرضية حول النقير في التصوير المقطعي ووجود كيسات في صبغة فطرية.",
+        "pearl": "التشخيص النهائي: ذات الرئة بالمتكيسة الرئوية الجيروفيسية (Pneumocystis Jirovecii Pneumonia) - من أساسيات Pulmonology."
+      },
+      "English": {
+        "hint1": "Which opportunistic organism causes pneumonia in AIDS patients with very low CD4 counts?",
+        "hint2": "Subacute fever, dry cough, tachypnea, and progressive hypoxemia with bilateral crackles.",
+        "hint3": "Perihilar ground-glass opacities on CT and cysts seen on fungal stain.",
+        "pearl": "Definitive diagnosis: Pneumocystis Jirovecii Pneumonia (ذات الرئة بالمتكيسة الرئوية الجيروفيسية) - Core Pulmonology."
+      }
+    }
+  },
+  "w649": {
+    "id": "w649",
+    "word": {
+      "id": "w649",
+      "word": {
+        "Arabic": "متلازمة الضائقة التنفسية الحادة",
+        "English": "Acute Respiratory Distress Syndrome"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Pulmonology",
+        "Critical Care",
+        "Internal Medicine",
+        "Emergency Medicine"
+      ],
+      "synonyms": [
+        "متلازمة الضائقة التنفسية الحادة",
+        "ARDS",
+        "متلازمة العوز التنفسي الحاد",
+        "Acute Respiratory Distress Syndrome"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "فشل تنفسي حاد يتميز بنفاذية وعائية سنخية متزايدة ووذمة رئوية غير قلبية.",
+        "سريرياً: نقص تأكسج شديد مقاوم للأكسجين، مع خشخيشات ثنائية وضيق تنفس.",
+        "شعاعياً: ارتشاح ثنائي منتشر مع عتامات زجاجية أرضية وحجم قلب طبيعي.",
+        "مخبرياً: نسبة PaO2/FiO2 أقل من أو تساوي 300 وفق معايير برلين بعد استبعاد فرط الضغط الأذيني الأيسر.",
+        "إدارياً: تهوية ميكانيكية واقية مع PEEP واستراتيجية رئة مفتوحة وتقييد السوائل."
+      ],
+      "English": [
+        "Acute hypoxemic respiratory failure with increased alveolar-capillary permeability and non-cardiogenic pulmonary edema.",
+        "Clinically: severe hypoxemia refractory to oxygen, bilateral crackles, and respiratory distress.",
+        "Imaging: bilateral diffuse infiltrates with ground-glass opacities and a normal cardiac silhouette.",
+        "Labs/ABG: PaO2/FiO2 ratio ≤ 300 by Berlin criteria after excluding left atrial hypertension.",
+        "Management: lung-protective mechanical ventilation with PEEP, liberal use of neuromuscular blockers, and conservative fluid strategy."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "محفزات متعددة مثل الإنتان والالتهاب الرئوي والصدمة التي تؤدي إلى أذى سنخي منتشر.",
+        "goldStandard": "معايير برلين السريرية مع تصوير الصدر وغازات الدم واستبعاد فرط الضغط الأذيني الأيسر.",
+        "firstLineRx": "تهوية واقية للرئة بحجم مدي منخفض 4-6 مل/كغ مع PEEP.",
+        "keyDifferentiator": "بداية حادة وارتشاح ثنائي ووذمة غير قلبية مع نقص تأكسج شديد."
+      },
+      "English": {
+        "etiology": "Multiple triggers including sepsis, pneumonia, and trauma causing diffuse alveolar damage.",
+        "goldStandard": "Berlin clinical criteria with chest imaging and ABG, excluding left atrial hypertension.",
+        "firstLineRx": "Lung-protective ventilation with low tidal volume 4-6 mL/kg ideal body weight and PEEP.",
+        "keyDifferentiator": "Acute onset, bilateral opacities, non-cardiogenic edema, and severe hypoxemia."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ابدأ بالتمييز بين الوذمة الرئوية القلبية وغير القلبية لدى مريض يعاني نقص تأكسج حاداً.",
+        "hint2": "تسرع تنفس، زلة تنفسية شديدة، وخشخيشات ثنائية مع زرقة.",
+        "hint3": "العلامة المميزة: PaO2/FiO2 أقل من أو يساوي 300 مع ارتشاح ثنائي واستبعاد قصور القلب الأيسر.",
+        "pearl": "التشخيص النهائي: متلازمة الضائقة التنفسية الحادة (Acute Respiratory Distress Syndrome) - من أساسيات Pulmonology."
+      },
+      "English": {
+        "hint1": "Start by distinguishing cardiogenic from non-cardiogenic pulmonary edema in a patient with acute hypoxemia.",
+        "hint2": "Tachypnea, severe dyspnea, bilateral crackles, and cyanosis.",
+        "hint3": "Definitive hallmark: PaO2/FiO2 ≤ 300 with bilateral opacities and no left atrial hypertension.",
+        "pearl": "Definitive diagnosis: Acute Respiratory Distress Syndrome (متلازمة الضائقة التنفسية الحادة) - Core Pulmonology."
+      }
+    }
+  },
+  "w650": {
+    "id": "w650",
+    "word": {
+      "id": "w650",
+      "word": {
+        "Arabic": "ورم الظهارة المتوسطة",
+        "English": "Mesothelioma"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Pulmonology",
+        "Oncology",
+        "Pathology",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "ورم الظهارة المتوسطة",
+        "ميزوثليوما",
+        "ورم غشاء الجنب الخبيث",
+        "Mesothelioma",
+        "Malignant Pleural Mesothelioma"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "ضيق تنفس تدريجي وألم جنبي لدى مريض لديه تاريخ تعرض مهني للأسبستوس.",
+        "انصباب جنبي نضحي متكرر لا يستجيب للبزل مع سماكة جنبية منتشرة.",
+        "تصوير الصدر يُظهر لويحات جنبية متكلسة وسماكة عقدية غير منتظمة على غشاء الجنب.",
+        "الفحص النسيجي للخزعة يكشف خلايا ظهارية متوسطة غير نمطية مع إيجابية الكالريتينين وWT1.",
+        "نادرًا ما يُشفى بالجراحة؛ غالبًا يُكتشف في مرحلة متقدمة مع ألم صدري وضيق تنفس شديد."
+      ],
+      "English": [
+        "Progressive dyspnea and chest pain in a patient with prior asbestos exposure.",
+        "Recurrent exudative pleural effusion with diffuse pleural thickening and trapped lung.",
+        "CT shows nodular pleural thickening, calcified pleural plaques, and unilateral pleural effusion.",
+        "Pleural biopsy demonstrates atypical epithelioid cells positive for calretinin and WT1.",
+        "Poor prognosis; often presents late with chest pain, dyspnea, and weight loss."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "ورم خبيث ينشأ من الخلايا الظهارية المتوسطة لبطانة غشاء الجنب، ويرتبط بشدة بالتعرض المهني للأسبستوس.",
+        "goldStandard": "الخزعة الجنبية مع الفحص الكيميائي المناعي (إيجابية الكالريتينين وWT1).",
+        "firstLineRx": "العلاج الكيميائي المركب: بيميتريكسيد مع سيسبلاتين؛ مع تقييم الجراحة في الحالات الموضعية.",
+        "keyDifferentiator": "الارتباط الوثيق بالأسبستوس وظهور لويحات جنبية وسماكة منتشرة مع انصباب نضحي متكرر."
+      },
+      "English": {
+        "etiology": "Malignancy arising from mesothelial lining of the pleura, strongly linked to asbestos exposure.",
+        "goldStandard": "Pleural biopsy with immunohistochemistry (positive for calretinin and WT1).",
+        "firstLineRx": "Combination chemotherapy with pemetrexed and cisplatin; surgery considered in localized cases.",
+        "keyDifferentiator": "Strong asbestos association with pleural plaques, diffuse thickening, and recurrent exudative effusion."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "مريض يعاني ضيق تنفس تدريجي وألم جنبي مع تاريخ تعرض مهني لغبار عازل حراري قديم.",
+        "hint2": "انخفاض أصوات التنفس، باهتية القرع، وانخفاض التوسع الصدري على الجانب المصاب.",
+        "hint3": "تصوير الصور المقطعي يُظهر سماكة جنبية عقدية ولويحات متكلسة مع انصباب جنبي نضحي.",
+        "pearl": "التشخيص النهائي: ورم الظهارة المتوسطة (Mesothelioma) - من أساسيات Pulmonology."
+      },
+      "English": {
+        "hint1": "Progressive dyspnea and pleuritic chest pain in a patient with remote occupational exposure to heat-resistant fibrous insulation.",
+        "hint2": "Decreased breath sounds, dullness to percussion, and reduced chest expansion over the affected hemithorax.",
+        "hint3": "CT shows nodular pleural thickening, pleural plaques, and an exudative effusion.",
+        "pearl": "Definitive diagnosis: Mesothelioma (ورم الظهارة المتوسطة) - Core Pulmonology."
+      }
+    }
+  },
+  "w651": {
+    "id": "w651",
+    "word": {
+      "id": "w651",
+      "word": {
+        "Arabic": "متلازمة فرط سكر الدم وفرط الأسمولية",
+        "English": "Hyperosmolar Hyperglycemic State"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Endocrinology",
+        "Emergency Medicine",
+        "Internal Medicine",
+        "Critical Care"
+      ],
+      "synonyms": [
+        "متلازمة فرط سكر الدم وفرط الأسمولية",
+        "غيبوبة السكر التناضحية",
+        "فرط الأسمولية السكري",
+        "Hyperosmolar Hyperglycemic State",
+        "HHS",
+        "HONK"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "يحدث عند مرضى السكري من النوع الثاني غالبًا، ويتميز بجفاف شديد وضعف وعي تدريجي دون تنفس كيتوني واضح.",
+        "العلامات السريرية تشمل نقص حجم الدم، جفاف الأغشية المخاطية، هبوط ضغط الدم، وارتفاع الحرارة أحيانًا.",
+        "العلامة المميزة: سكر دم مرتفع جدًا >600 ملغ/دل مع أسمولية بلازما >320 MOSM/كغ وبدون أجسام كيتونية مهمة.",
+        "سوء إدارة السكري أو عدوى أو دواء مثل الستيرويدات أو مدرات البول قد يكون العامل المسبب.",
+        "العلاج الأساسي: إعطاء السوائل الوريدية بكثرة تدريجيًا، وتعويض البوتاسيوم، والأنسولين وريدي بجرعات منخفضة بعد استقرار الحالة."
+      ],
+      "English": [
+        "Typically occurs in type 2 diabetes with severe dehydration and progressive mental obtundation, but without significant ketoacidosis.",
+        "Clinical signs include dry mucous membranes, poor skin turgor, hypotension, tachycardia, and possibly fever.",
+        "Definitive laboratory hallmark: marked hyperglycemia >600 mg/dL, serum osmolality >320 mOsm/kg, and minimal ketone bodies/acidosis.",
+        "Common precipitants include infection, nonadherence to antidiabetic therapy, or medications like corticosteroids and thiazides.",
+        "Management begins with aggressive but controlled IV fluid resuscitation, potassium replacement, and low-dose IV insulin after volume and potassium are addressed."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "نقص نسبي شديد في الإنسولين مع ارتفاع هرمونات مضادة للعمل مثل الجلوكاجون يؤدي إلى فرط سكر دم حاد، إدرار تناضحي، وفقدان سوائل شديد دون تكوين كيتوني مهم.",
+        "goldStandard": "قياس سكر الدم والأسمولية الفع��لة والكهارل؛ القيمة النمطية سكر >600 ملغ/دل وأسمولية >320.",
+        "firstLineRx": "سوائل وريدية (محلول ملحي 0.45% أو 0.9%) تدريجيًا، تعويض البوتاسيوم، ثم أنسولين وريدي منخفض الجرعة.",
+        "keyDifferentiator": "غياب الحماض الكيتوني المهم مقابل DKA؛ الأسمولية مرتفعة جدًا مع سكر دم شديد الارتفاع."
+      },
+      "English": {
+        "etiology": "Relative severe insulin deficiency with elevated counter-regulatory hormones causing profound hyperglycemia, osmotic diuresis, and massive volume depletion with minimal ketogenesis.",
+        "goldStandard": "Diagnosis confirmed by blood glucose >600 mg/dL, effective serum osmolality >320 mOsm/kg, and absence of significant ketones/acidosis.",
+        "firstLineRx": "Aggressive IV fluid resuscitation with 0.9% or 0.45% saline, potassium replacement, then low-dose IV insulin once potassium is stable.",
+        "keyDifferentiator": "Presence of extreme hyperosmolarity and dehydration with little to no ketoacidosis, unlike diabetic ketoacidosis."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "لماذا يشكو مريض سكر من النوع الثاني من العطش الشديد وقلة البول ثم تشوش ذهني خلال أيام دون رائحة فواكه؟",
+        "hint2": "الفحص يظهر جفافًا واضحًا، انخفاض ضغط الدم، تسرع القلب، ودرجة وعي متقلبة من التعب إلى الغيبوبة.",
+        "hint3": "المختبر يكشف سكر دم أعلى من 600 ملغ/دل وأسمولية بلازما أعلى من 320 دون حماض كيتوني مهم.",
+        "pearl": "التشخيص النهائي: متلازمة فرط سكر الدم وفرط الأسمولية (Hyperosmolar Hyperglycemic State) - من أساسيات Endocrinology."
+      },
+      "English": {
+        "hint1": "Why would a type 2 diabetic patient develop intense thirst, worsening dehydration, and lethargy over days without a fruity breath odor?",
+        "hint2": "Examination reveals poor skin turgor, dry mucosa, hypotension, tachycardia, and fluctuating mental status ranging from drowsiness to coma.",
+        "hint3": "Labs show glucose >600 mg/dL, osmolality >320 mOsm/kg, and no significant ketones or metabolic acidosis.",
+        "pearl": "Definitive diagnosis: Hyperosmolar Hyperglycemic State (متلازمة فرط سكر الدم وفرط الأسمولية) - Core Endocrinology."
+      }
+    }
+  },
+  "w652": {
+    "id": "w652",
+    "word": {
+      "id": "w652",
+      "word": {
+        "Arabic": "العاصفة الدرقية",
+        "English": "Thyroid Storm"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Endocrinology",
+        "Emergency Medicine",
+        "Internal Medicine",
+        "Critical Care"
+      ],
+      "synonyms": [
+        "العاصفة الدرقية",
+        "نوبة التسمم الدرقي",
+        "عاصفة الغدة الدرقية",
+        "Thyroid Storm",
+        "Thyrotoxic Crisis"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة مهددة للحياة تنتج عن فرط نشاط الغدة الدرقية الشديد، وغالباً يسبقها عدوى أو إجهاد أو جراحة.",
+        "أعراض سريرية تجمع بين ارتفاع الحرارة والتعرق الغزير وتسارع ضربات القلب والرجفان الأذيني، مع هياج أو تراجع وعي.",
+        "العلامة المميزة هي وجود فرط استقلاب جهازي حاد مع حمى وخلل وظيفي في الجهاز العصبي المركزي لدى مريض مدمن للثيروكسين أو مصاب بداء غريفز.",
+        "مخبرياً: ارتفاع هرمون T4 الحر وT3 مع تثبيط TSH، وقد توجد قصور كظر نسبي؛ ويكون قياس هرمونات الغدة الدرقية أساس التشخيص.",
+        "العلاج يتطلب خافضات الحرارة والبروبرانولول والبروبيل ثيويوراسيل واليود والهيدروكورتيزون بالإضافة إلى دعم حيوي في وحدة العناية."
+      ],
+      "English": [
+        "A life-threatening endocrine emergency caused by excessive thyroid hormone activity, often precipitated by infection, surgery, or stress.",
+        "Typical presentation includes high fever, profuse sweating, tachycardia, atrial fibrillation, and altered mentation ranging from agitation to coma.",
+        "The hallmark is a severe hypermetabolic state with fever and central nervous system dysfunction in a patient with known thyroid disease or levothyroxine overuse.",
+        "Laboratory findings show elevated free T4 and T3 with suppressed TSH, often accompanied by relative adrenal insufficiency; thyroid function tests are diagnostic.",
+        "Management includes antipyretics, beta-blockers, thionamides, inorganic iodide, and corticosteroids along with intensive supportive care."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "فرط إفراز هرمونات الغدة الدرقية بشكل حاد يؤدي إلى تعويض استقلابي مهدد للحياة.",
+        "goldStandard": "التقييم السريري بمقياس Burch-Wartofsky مع مخبرية تؤكد ارتفاع T4/T3 وانخفاض TSH.",
+        "firstLineRx": "بروبرانولول + بروبيل ثيويوراسيل + يود البوتاسيوم + هيدروكورتيزون مع دعم حيوي.",
+        "keyDifferentiator": "الحمى المرتفعة مع الهياج وتسرع القلب رغم خافضات الحرارة تميز هذه الحالة عن القصور الدرقي."
+      },
+      "English": {
+        "etiology": "Acute excessive thyroid hormone release causing life-threatening metabolic decompensation.",
+        "goldStandard": "Clinical scoring with Burch-Wartofsky criteria plus labs showing elevated T4/T3 and suppressed TSH.",
+        "firstLineRx": "Propranolol plus propylthiouracil plus potassium iodide plus hydrocortisone with intensive supportive care.",
+        "keyDifferentiator": "High fever with agitation and tachycardia unresponsive to antipyretics distinguishes this from hypothyroid coma."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما الحالة الطارئة التي تظهر بسبب تعرض مريض الدرقية لعدوى أو عملية جراحية؟",
+        "hint2": "أعراضها حمى شديدة وتعرق وتسارع القلب واضطراب الوعي.",
+        "hint3": "العلامة المميزة هي فرط الاستقلاب الحاد مع حمى وخلل عصبي مركزي.",
+        "pearl": "التشخيص النهائي: العاصفة الدرقية (Thyroid Storm) - من أساسيات Endocrinology."
+      },
+      "English": {
+        "hint1": "What endocrine emergency occurs in a thyroid patient after infection or surgery?",
+        "hint2": "It presents with high fever, sweating, tachycardia, and altered mental status.",
+        "hint3": "The hallmark is acute hypermetabolism with fever and CNS dysfunction.",
+        "pearl": "Definitive diagnosis: Thyroid Storm (العاصفة الدرقية) - Core Endocrinology."
+      }
+    }
+  },
+  "w653": {
+    "id": "w653",
+    "word": {
+      "id": "w653",
+      "word": {
+        "Arabic": "تعدد الأورام الصماوية الصمائية",
+        "English": "Multiple Endocrine Neoplasia"
+      },
+      "level": "Clinical",
+      "difficulty": 3,
+      "type": "Syndrome",
+      "subjects": [
+        "Endocrinology",
+        "Oncology",
+        "Genetics",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "تعدد الأورام الصماوية الصمائية",
+        "متلازمة الأورام الصماء المتعددة",
+        "Multiple Endocrine Neoplasia",
+        "MEN Syndrome",
+        "MEN1",
+        "MEN2"
+      ],
+      "guessingDifficulty": 3
+    },
+    "hints": {
+      "Arabic": [
+        "متلازمة وراثية نادرة تنجم عن طفرات مكتسبة أو جسدية تؤدي إلى تكوّن أورام في أكثر من غدة صماء في نفس المريض، وغالباً ما تكون الأورام حميدة أو خبيثة.",
+        "قد يظهر المريض بأعراض فرط نشاط الغدة جارة الدرقية مع حصيات كلوية، وقرحة هضمية متكررة، وأعراض ورم القواتم، وتغيرات جلدية.",
+        "العلامة المميزة هي إصابة متزامنة أو متعاقبة لغدتين صماويتين على الأقل، كالغدة جارة الدرقية والبنكرياس والنخامية أو الغدة الدرقية والكظرية.",
+        "ترتفع هرمونات مثل الكالسيوم والبرولاكتين والأنسولين والكاتيكولامينات بحسب الغدد المصابة، وتكشف التصوير الطبي عن أورام متعددة.",
+        "يشمل التدبير استئصال الأورام المفرزة، ومعالجة فرط الكالسيوم، وعلاج القصور الهرموني، ومراقبة العائلة والفحص الجيني."
+      ],
+      "English": [
+        "A rare inherited disorder characterized by tumors arising in two or more hormone-producing glands within the same individual, often with a germline mutation.",
+        "Typical clinical clues include recurrent nephrolithiasis from hypercalcemia, refractory peptic ulcers, episodic hypertension with palpitations, and skin manifestations such as lichen planus amyloidosis.",
+        "The syndromic hallmark is the combined involvement of parathyroid and pancreatic islet cells with pituitary tumors, or medullary thyroid cancer with pheochromocytoma.",
+        "Diagnosis is supported by elevated serum calcium, PTH, prolactin, insulin, gastrin, or metanephrines, plus imaging showing bilateral or multifocal endocrine masses.",
+        "Management prioritizes surgical resection of functioning tumors, control of hormonal excess, surveillance for new primary tumors, and genetic counseling/testing of relatives."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "طفرات جينية في جينات مثل MEN1 وRET تسبب أوراماً متعددة في الغدد الصماء.",
+        "goldStandard": "الفحص الجيني والتقييم الهرموني والتصوير المتعدد.",
+        "firstLineRx": "الاستئصال الجراحي للأورام المفرزة وعلاج فرط الإفراز الهرموني.",
+        "keyDifferentiator": "وجود ورمين صماويين أو أكثر لدى مريض واحد مع نمط وراثي واضح."
+      },
+      "English": {
+        "etiology": "Germline mutations in genes such as MEN1 and RET cause multiple endocrine gland tumors.",
+        "goldStandard": "Genetic testing combined with biochemical screening and multimodality imaging.",
+        "firstLineRx": "Surgical resection of functioning tumors and medical control of hormonal hypersecretion.",
+        "keyDifferentiator": "Two or more endocrine tumors in one patient with a clear inherited pattern."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "أي متلازمة وراثية تسبب أوراماً متعددة في الغدد الصماء وتُكشف بطفرات جينية؟",
+        "hint2": "فرط كالسيوم الدم، قرحات هضمية، ورم القواتم، وتضخم النخامية.",
+        "hint3": "إصابة متزامنة لغدتين صماويتين على الأقل لدى فرد واحد تؤكد المتلازمة.",
+        "pearl": "التشخيص النهائي: تعدد الأورام الصماوية الصمائية (Multiple Endocrine Neoplasia) - من أساسيات Endocrinology."
+      },
+      "English": {
+        "hint1": "Which genetic syndrome presents with multiple endocrine tumors and is linked to defined germline mutations?",
+        "hint2": "Think of a patient with hypercalcemia, recurrent ulcers, pheochromocytoma, and pituitary enlargement.",
+        "hint3": "The hallmark is synchronous or metachronous neoplasms in at least two endocrine glands.",
+        "pearl": "Definitive diagnosis: Multiple Endocrine Neoplasia (تعدد الأورام الصماوية الصمائية) - Core Endocrinology."
+      }
+    }
+  },
+  "w654": {
+    "id": "w654",
+    "word": {
+      "id": "w654",
+      "word": {
+        "Arabic": "التهاب كبيبات الكلى بعد العقديات",
+        "English": "Post-Streptococcal Glomerulonephritis"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Nephrology",
+        "Pediatrics",
+        "Internal Medicine",
+        "Pathology"
+      ],
+      "synonyms": [
+        "التهاب كبيبات الكلى بعد العقديات",
+        "التهاب الكبيبات بعد عدوى العقدية",
+        "Post-Streptococcal Glomerulonephritis",
+        "PSGN"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "يظهر هذا المرض الكلوي عادة بعد أسابيع من التهاب بلعوم أو عدوى جلدية ببكتيريا معينة، مع فترة كامنة مميزة قبل بدء الأعراض البولية.",
+        "تشمل الأعراض الكلاسيكية: بول بلون الكوكاكولا، وذمة حول العينين والقدمين، ارتفاع ضغط الدم، وقلة البول.",
+        "مخبرياً: انخفاض مستوى المتممة C3، وارتفاع عيار ASO أو anti-DNase B، مع بيلة دموية وبيلة بروتينية.",
+        "في الخزعة الكلوية، يُشاهد تكاثر خلوي في الكبيبات مع رواسب تحت الظهارة بشكل سنام (humps) بالمجهر الإلكتروني.",
+        "العلاج في معظم الحالات داعم ويتضمن السيطرة على ضغط الدم والوذمة، مع تحسن تلقائي خاصة عند الأطفال."
+      ],
+      "English": [
+        "This renal condition classically appears weeks after a throat or skin infection caused by a specific bacterium, with a distinctive latent period before urinary symptoms emerge.",
+        "Typical features include cola-colored urine, periorbital and pedal edema, hypertension, and oliguria.",
+        "Laboratory findings show low complement C3, elevated ASO or anti-DNase B titers, hematuria, and proteinuria.",
+        "Kidney biopsy shows diffuse proliferative glomerulonephritis with subepithelial hump-shaped deposits on electron microscopy.",
+        "Management is largely supportive, focusing on blood pressure and edema control, with excellent spontaneous recovery particularly in children."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "عدوى سابقة بالمكورات العقدية الحالة للدم من المجموعة A (التهاب بلعوم أو عدوى جلدية) تؤدي إلى تفاعل مناعي ومعقدات مناعية في الكبيبات.",
+        "goldStandard": "التشخيص يعتمد على الصورة السريرية مع انخفاض C3 وارتفاع ASO/anti-DNase B، وقد تُستخدم الخزعة الكلوية في الحالات غير النمطية.",
+        "firstLineRx": "علاج داعم: السيطرة على ارتفاع ضغط الدم والوذمة بمدرات البول وتقييد الصوديوم والماء، ومعالجة العدوى البكتيرية النشطة إن وجدت.",
+        "keyDifferentiator": "فترة كامنة تتراوح بين 1-3 أسابيع بعد التهاب البلعوم أو 2-6 أسابيع بعد العدوى الجلدية، مع نقص المتممة C3."
+      },
+      "English": {
+        "etiology": "Previous infection with group A beta-hemolytic Streptococcus (pharyngitis or skin infection) triggering immune complex deposition in glomeruli.",
+        "goldStandard": "Diagnosis is based on clinical presentation with low C3 and elevated ASO/anti-DNase B; renal biopsy is reserved for atypical cases.",
+        "firstLineRx": "Supportive care: control hypertension and edema with diuretics, restrict sodium and fluids, and treat active bacterial infection if present.",
+        "keyDifferentiator": "A latent period of 1-3 weeks after pharyngitis or 2-6 weeks after skin infection, accompanied by low serum C3."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "كلوي حاد يظهر لدى طفل بعد التهاب حلق أو قوباء جلدية بأسبوع إلى ثلاثة أسابيع، فما التشخيص الأرجح؟",
+        "hint2": "يشتكي المريض من بول دموي داكن، وذمة صباحية حول العينين، وارتفاع ضغط الدم مع قلة البول.",
+        "hint3": "العلامة المميزة: انخفاض المتممة C3 مع ارتفاع ASO وظهور رواسب سنامية في الخزعة الكلوية.",
+        "pearl": "التشخيص النهائي: التهاب كبيبات الكلى بعد العقديات (Post-Streptococcal Glomerulonephritis) - من أساسيات Nephrology."
+      },
+      "English": {
+        "hint1": "A child develops acute nephritis 1-3 weeks after a sore throat or impetigo; what is the most likely diagnosis?",
+        "hint2": "The patient has dark brown urine, morning periorbital edema, hypertension, and decreased urine output.",
+        "hint3": "The hallmark is low serum C3 with elevated ASO titers and subepithelial hump deposits on kidney biopsy.",
+        "pearl": "Definitive diagnosis: Post-Streptococcal Glomerulonephritis (التهاب كبيبات الكلى بعد العقديات) - Core Nephrology."
+      }
+    }
+  },
+  "w655": {
+    "id": "w655",
+    "word": {
+      "id": "w655",
+      "word": {
+        "Arabic": "انفتال الخصية",
+        "English": "Testicular Torsion"
+      },
+      "level": "Clinical",
+      "difficulty": 1,
+      "type": "Disease",
+      "subjects": [
+        "Nephrology and Urology",
+        "Emergency Medicine",
+        "Pediatrics",
+        "General Surgery"
+      ],
+      "synonyms": [
+        "انفتال الخصية",
+        "التواء الخصية",
+        "انفتال الحبل المنوي",
+        "Testicular Torsion",
+        "Torsion of the Testis"
+      ],
+      "guessingDifficulty": 1
+    },
+    "hints": {
+      "Arabic": [
+        "ألم صفني حاد مفاجئ أحادي الجانب عند مراهق، يترافق مع غثيان وإقياء، وقد يحدث بعد نشاط أو رض خفيف.",
+        "تكون الخصية المصابة مرتفعة وأفقية الوضع، مع غياب المنعكس المشمري في الفحص السريري.",
+        "يُظهر الدوبلكس الملون انعدام أو انخفاضاً حاداً في التروية الدموية للخصية على الجانب المصاب، وهذه حالة جراحية إسعافية.",
+        "الاستكشاف الجراحي العاجل هو الإجراء الحاسم عند الشك، مع أفضلية إنقاذ الخصية خلال الساعات الست الأولى من بدء الألم.",
+        "الآلية الكامنة تتمثل في وجود تشوه يشبه الجرس يسمح بحركة مفرطة للغدة التناسلية داخل كيس الصفن."
+      ],
+      "English": [
+        "A teenager presents with sudden severe unilateral scrotal pain, nausea, and vomiting, often after minor trauma or exercise.",
+        "On examination the affected testis is high-riding and horizontally oriented, and the cremasteric reflex is absent.",
+        "Color Doppler ultrasound reveals absent or severely reduced blood flow to the affected testis; this is a surgical emergency.",
+        "Urgent surgical exploration is the decisive step when suspected, with the best chance of organ salvage within the first six hours.",
+        "The underlying mechanism is a bell-clapper deformity allowing excessive mobility of the gonad within the scrotum."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "انزياح اتصال الغلالة المهبلية بشكل غير طبيعي فوق الحبل المنوي (تشوه الجرس) يسمح بدوران الخصية.",
+        "goldStandard": "الاستكشاف الجراحي العاجل للصفن هو المعيار التشخيصي والعلاجي المؤكد عند الشك.",
+        "firstLineRx": "تثبيت الخصية (أوركيدوبكسي) بع�� إعادة الالتواء يدوياً أو جراحياً، وقد تُثَبَّت الخصية المقابلة أيضاً.",
+        "keyDifferentiator": "ألم خصية حاد مفاجئ مع غياب التروية الدموية في الدوبلكس وغياب المنعكس المشمري يميزه عن التهاب البربخ."
+      },
+      "English": {
+        "etiology": "Abnormal high insertion of the tunica vaginalis on the spermatic cord (bell-clapper deformity) allows the testis to twist.",
+        "goldStandard": "Urgent scrotal surgical exploration is the definitive diagnostic and therapeutic standard when torsion is suspected.",
+        "firstLineRx": "Surgical detorsion with orchiopexy; the contralateral testis is usually fixed as well.",
+        "keyDifferentiator": "Sudden severe scrotal pain with absent flow on Doppler and absent cremasteric reflex differentiates it from epididymitis."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "مريض صغير بالسن يعاني ألماً صفنياً حاداً مفاجئاً دون حمى أو أعراض بولية؛ ما أول تشخيص يجب استبعاده؟",
+        "hint2": "يوجد غثيان وإقياء، والخصية المصابة مرتفعة وأفقية، والمنعكس المشمري غائب.",
+        "hint3": "الدوبلكس الملون يظهر انعدام التروية الدموية للخصية؛ أي تأخير قد يفقد العضو.",
+        "pearl": "التشخيص النهائي: انفتال الخصية (Testicular Torsion) - من أساسيات Nephrology and Urology."
+      },
+      "English": {
+        "hint1": "A young male has abrupt, severe scrotal pain with no fever or urinary symptoms—what must be ruled out first?",
+        "hint2": "Nausea and vomiting are present; the affected testis is high-riding and horizontal, and the cremasteric reflex is absent.",
+        "hint3": "Color Doppler shows no blood flow to the testis; any delay can cost the organ.",
+        "pearl": "Definitive diagnosis: Testicular Torsion (انفتال الخصية) - Core Nephrology and Urology."
+      }
+    }
+  },
+  "w656": {
+    "id": "w656",
+    "word": {
+      "id": "w656",
+      "word": {
+        "Arabic": "مرض التغير الأدنى",
+        "English": "Minimal Change Disease"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Disease",
+      "subjects": [
+        "Nephrology",
+        "Pediatrics",
+        "Pathology",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "مرض التغير الأدنى",
+        "داء الآفات الصغرى",
+        "الاعتلال الكلوي بالأدنى تغير",
+        "Minimal Change Disease",
+        "Nil Lesion",
+        "MCD"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "بداية حادة لمتلازمة كلوية عند طفل صغير؛ البول رغوي ووذمة حول العينين صباحاً.",
+        "الفحص المجهري الضوئي للكلية يبدو طبيعياً، بينما يكشف المجهر الإلكتروني اندماج الزغيبات (Foot Process Effacement).",
+        "ارتفاع شديد في البروتين بالبول مع زلال مصلي منخفض، ولا يوجد دليل التهاب أو دم بالبول.",
+        "يستجيب بشكل درامي للكورتيكوستيرويدات خلال أيام إلى أسابيع.",
+        "أكثر أسباب المتلازمة الكلوية شيوعاً في الأطفال، ويتميز بعدم وجود آفات التهابية بالكبيبات."
+      ],
+      "English": [
+        "Acute-onset nephrotic syndrome in a young child with frothy urine and morning periorbital edema.",
+        "Light microscopy of kidney tissue appears normal; electron microscopy shows diffuse podocyte foot-process effacement.",
+        "Heavy proteinuria with hypoalbuminemia, without hematuria or active urinary sediment.",
+        "Responds dramatically to corticosteroids within days to weeks.",
+        "The most common cause of childhood nephrotic syndrome, with no glomerular inflammatory lesions."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "غير معروف غالباً؛ قد يتبع عدوى فيروسية أو تطعيماً أو أدوية معينة.",
+        "goldStandard": "الخزعة الكلوية: طبيعية بالمجهر الضوئي مع اندماج الزغيبات بالمجهر الإلكتروني.",
+        "firstLineRx": "الكورتيكوستيرويدات (بريدنيزون) كخط أول.",
+        "keyDifferentiator": "متلازمة كلوية نقية بدون بيلة دموية أو ارتفاع ضغط الدم أو فشل كلوي؛ مع استجابة سريعة للستيرويد."
+      },
+      "English": {
+        "etiology": "Unknown; may follow a viral infection, immunization, or certain medications.",
+        "goldStandard": "Renal biopsy: normal on light microscopy with foot-process effacement on electron microscopy.",
+        "firstLineRx": "Corticosteroids (prednisone) as first-line therapy.",
+        "keyDifferentiator": "Pure nephrotic syndrome without hematuria, hypertension, or renal failure; rapid steroid response."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "طفل يعاني وذمة معممة ووزناً زائداً وبولاً رغوياً؛ ما السبب الكلوي الأرجح؟",
+        "hint2": "لا دم في البول، ضغط الدم طبيعي، والزلال منخفض جداً مع بروتين بولي مرتفع.",
+        "hint3": "الخزعة سليمة بالمجهر الضوئي، والتغير يظهر فقط بالمجهر الإلكتروني في الكبيبات.",
+        "pearl": "التشخيص النهائي: مرض التغير الأدنى (Minimal Change Disease) - من أساسيات Nephrology."
+      },
+      "English": {
+        "hint1": "A child with generalized edema, weight gain, and frothy urine; what renal cause tops the differential?",
+        "hint2": "No hematuria, normal blood pressure, very low albumin, and heavy proteinuria.",
+        "hint3": "Biopsy is unremarkable by light microscopy; the change is visible only on electron microscopy.",
+        "pearl": "Definitive diagnosis: Minimal Change Disease (مرض التغير الأدنى) - Core Nephrology."
+      }
+    }
+  },
+  "w657": {
+    "id": "w657",
+    "word": {
+      "id": "w657",
+      "word": {
+        "Arabic": "تسمم الباراسيتامول",
+        "English": "Acetaminophen Toxicity"
+      },
+      "level": "Clinical",
+      "difficulty": 1,
+      "type": "Disease",
+      "subjects": [
+        "Clinical Toxicology",
+        "Emergency Medicine",
+        "Pharmacology",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "تسمم الباراسيتامول",
+        "تسمم الأسيتامينوفين",
+        "جرعة زائدة من الباراسيتامول",
+        "Acetaminophen Toxicity",
+        "Paracetamol Poisoning",
+        "APAP Toxicity"
+      ],
+      "guessingDifficulty": 1
+    },
+    "hints": {
+      "Arabic": [
+        "تناوُل جرعة كبيرة من مسكّن شائع يؤدي إلى مستقلب سام يستنزف الغلوتاثيون الكبدي ويسبب نخراً في المنطقة المركزية بالفصيص.",
+        "خلال 24-48 ساعة قد يظهر غثيان وإقياء وألم في الربع العلوي الأيمن، ثم يرقان واضطراب تخثر.",
+        "نمط مخبري مميز: ارتفاع شديد جداً في الترانساميناسات (أكثر من 1000 وربما 10000 وحدة/لتر) مع بيليروبين منخفض مبكراً.",
+        "ا��ترياق يعيد بناء مخزون الغلوتاثيون الكبدي، ويُعطى بأسرع ما يمكن، وتكون فعاليته القصوى خلال 8-10 ساعات.",
+        "عند التأخر في الحضور، يُقاس مستوى الدواء في الدم ويُقارن بمخطط زمني (نوموغرام) لتقرير الحاجة إلى الترياق."
+      ],
+      "English": [
+        "After a large single ingestion of this common analgesic, a toxic metabolite overwhelms hepatic glutathione, causing centrilobular liver necrosis.",
+        "Within 24–48 hours, patients may have nausea, vomiting, and right upper quadrant pain; then jaundice and coagulopathy may appear.",
+        "A very high serum aminotransferase level often above 1,000 IU/L, sometimes above 10,000 IU/L, with low bilirubin early is a distinctive lab pattern.",
+        "The antidote replenishes hepatic glutathione and should be started as soon as possible; it is most effective within 8–10 hours.",
+        "If a patient presents late, measure the drug level against a timed nomogram; abnormal results guide antidotal therapy."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "جرعة زائدة من مسكن ألم خافض للحرارة شائع، يُستقلب في الكبد عبر CYP2E1 إلى NAPQI؛ وع��د استنزاف الغلوتاثيون يحدث نخر كبدي حاد.",
+        "goldStandard": "مستوى الدواء في الدم وتطبيق مخطط رماك-ماثيو (Rumack-Matthew) لتقييم خطورة الجرعة الزائدة.",
+        "firstLineRx": "N-أسيتيل سيستئين (NAC) وريدياً أو فموياً، وهو ترياق يعيد تجديد الغلوتاثيون.",
+        "keyDifferentiator": "ارتفاع ترانساميناسات الكبد بشكل ضخم غالباً > 1000 وحدة/لتر مع بيليروبين منخفض نسبياً في البداية، مقابل التهاب كبدي آخر."
+      },
+      "English": {
+        "etiology": "Massive ingestion of a widely used analgesic leads to accumulation of NAPQI after glutathione depletion, causing severe centrilobular hepatic necrosis.",
+        "goldStandard": "Plasma drug level interpreted on the Rumack-Matthew nomogram, with liver panel and coagulation studies.",
+        "firstLineRx": "N-acetylcysteine (NAC) IV or oral; initiates glutathione repletion and should be started early.",
+        "keyDifferentiator": "A striking aminotransferase elevation often >1,000, sometimes >10,000 IU/L early with relatively low bilirubin, distinguishing it from other hepatitis causes."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "مريض تناول كمية كبيرة من مسكن شائع قبل ساعات؛ ما أهم سؤال بعد تحديد كمية الجرعة وتوقيت آخر تناول؟",
+        "hint2": "يبدأ بغثيان وإقياء وألم بطني علوي أيمن، ثم يتطور إلى يرقان ونزف واضطراب وعي خلال أيام.",
+        "hint3": "نمط كبدي مخبري حاد جداً: ترانساميناسات تتجاوز 1000 وحدة/لتر بكثير مع بيليروبين طبيعي أو منخفض نسبياً في البداية.",
+        "pearl": "التشخيص النهائي: تسمم الباراسيتامول (Acetaminophen Toxicity) - من أساسيات Clinical Toxicology."
+      },
+      "English": {
+        "hint1": "A patient presents after ingesting a whole bottle of a common OTC analgesic: what two questions most urgently guide your risk assessment?",
+        "hint2": "Early nausea and vomiting with right-upper-quadrant pain progress over days to jaundice, coagulopathy, and altered mentation.",
+        "hint3": "Markedly elevated aminotransferases often several thousand IU/L with relatively preserved bilirubin early is the classic biochemical signature.",
+        "pearl": "Definitive diagnosis: Acetaminophen Toxicity (تسمم ال��اراسيتامول) - Core Clinical Toxicology."
+      }
+    }
+  },
+  "w658": {
+    "id": "w658",
+    "word": {
+      "id": "w658",
+      "word": {
+        "Arabic": "متلازمة السيروتونين",
+        "English": "Serotonin Syndrome"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Clinical Toxicology",
+        "Emergency Medicine",
+        "Psychiatry",
+        "Pharmacology"
+      ],
+      "synonyms": [
+        "متلازمة السيروتونين",
+        "سمية السيروتونين",
+        "تسمم السيروتونين",
+        "Serotonin Syndrome",
+        "Serotonin Toxicity"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة مهددة للحياة تنتج عن فرط نشاط مستقبلات 5-HT في الجهاز العصبي المركزي والمحيطي.",
+        "تظهر عادة بتغير الحالة العقلية، فرط المنعكسات، الرمع العضلي، وفرط الحرارة.",
+        "العلامة المميزة هي الرمع العضلي وفرط المنعكسات مع فرط الحرارة وتغير الحالة العقلية.",
+        "التشخيص سريري يعتمد على معايير هانتر بعد استبعاد الأسباب الأخرى؛ لا يوجد اختبار مخبري مؤكد.",
+        "العلاج الأساسي هو إيقاف المحفز والدعم، مع استخدام بنزوديازيبينات للسيطرة على الأعراض؛ وقد يحتاج الشد العضلي الشديد إلى مرخيات عضلية."
+      ],
+      "English": [
+        "A potentially life-threatening condition caused by excessive 5-HT receptor activation in the central and peripheral nervous systems.",
+        "Typically presents with altered mental status, hyperreflexia, myoclonus, and hyperthermia.",
+        "The hallmark is myoclonus and hyperreflexia accompanied by hyperthermia and altered mental status.",
+        "Diagnosis is clinical using Hunter criteria after excluding other causes; no confirmatory laboratory test exists.",
+        "Main management is withdrawing the offending agent and supportive care, with benzodiazepines for symptoms; severe muscle rigidity may require muscle relaxants."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "استخدام الأدوية السيروتونينية مثل مثبطات استرداد السيروتونين، ترامادول، أو خطأ دوائي بجرعة زائدة.",
+        "goldStandard": "معايير هانتر السريرية (Hunter Criteria) بعد استبعاد الأسباب الأخرى.",
+        "firstLineRx": "إيقاف المحفز، ال��عاية الداعمة، والبنزوديازيبينات للسيطرة على الأعراض.",
+        "keyDifferentiator": "الرمع العضلي وفرط المنعكسات مع فرط الحرارة وتغير الحالة العقلية، مقارنة بمتلازمة الذهان الخبيث."
+      },
+      "English": {
+        "etiology": "Use of serotonergic agents such as SSRIs, tramadol, or a medication error with an overdose.",
+        "goldStandard": "Hunter Criteria clinically after excluding other causes.",
+        "firstLineRx": "Discontinue the offending agent, supportive care, and benzodiazepines for symptom control.",
+        "keyDifferentiator": "Myoclonus and hyperreflexia with hyperthermia and altered mental status, unlike neuroleptic malignant syndrome."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما المتلازمة التي تجمع بين تغير الحالة العقلية وفرط المنعكسات والرمع العضلي بعد التعرض لدواء يرفع السيروتونين؟",
+        "hint2": "مراقبة العلامات الحيوية قد تظهر فرط حرارة وتسارع قلب، والفحص العصبي يظهر فرط منعكسات ورمع عضلي.",
+        "hint3": "العلامة المميزة هي الرمع العضلي وفرط المنعكسات مع تغير الحالة العقلية وفرط الحرارة.",
+        "pearl": "التشخيص النهائي: متلازمة السيروتونين (Serotonin Syndrome) - من أساسيات Clinical Toxicology."
+      },
+      "English": {
+        "hint1": "What syndrome combines altered mental status, hyperreflexia, and myoclonus after exposure to a serotonin-boosting drug?",
+        "hint2": "Vitals may show hyperthermia and tachycardia; neurologic exam reveals hyperreflexia and myoclonus.",
+        "hint3": "The hallmark is myoclonus and hyperreflexia with altered mental status and hyperthermia.",
+        "pearl": "Definitive diagnosis: Serotonin Syndrome (متلازمة السيروتونين) - Core Clinical Toxicology."
+      }
+    }
+  },
+  "w659": {
+    "id": "w659",
+    "word": {
+      "id": "w659",
+      "word": {
+        "Arabic": "فرط الحرارة الخبيث",
+        "English": "Malignant Hyperthermia"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Syndrome",
+      "subjects": [
+        "Clinical Toxicology",
+        "Emergency Medicine",
+        "Pharmacology",
+        "Anesthesia"
+      ],
+      "synonyms": [
+        "فرط الحرارة الخبيث",
+        "متلازمة فرط الحرارة الخبيث",
+        "Malignant Hyperthermia",
+        "MH"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "حالة طارئة تظهر بعد التعرض لأدوية التخدير الاستنشاقي أو مرخيات العضلات، مع ارتفاع شديد في درجة الحرارة وتصلب عضلي.",
+        "يحدث تسارع قلبي، وارتفاع ثاني أكسيد الكربون في نهاية الزفير، وتشنج عضلات الفك، وبول بلون الكولا.",
+        "العلامة المميزة: ارتفاع حرارة لا يستجيب لمخفضات الحرارة، مع حماض أيضي وتحلل عضلي هائل.",
+        "العلاج الأساسي هو دانترولين، ويجب إيقاف العامل المسبب فوراً وإعطاء الأكسجين 100% وتبريد الجسم.",
+        "الوراثة مرتبطة بمستقبلات الريانودين (RYR1) وقنوات الكالسيوم في العضلات الهيكلية."
+      ],
+      "English": [
+        "A hypermetabolic emergency triggered by inhaled anesthetics or succinylcholine, presenting with severe hyperthermia and muscle rigidity.",
+        "Look for tachycardia, rising end-tidal CO2, jaw spasm, and dark urine (cola-colored) due to rhabdomyolysis.",
+        "Hallmark: hyperthermia unresponsive to antipyretics, accompanied by metabolic acidosis and massive creatine kinase elevation.",
+        "Immediate management: discontinue trigger, hyperventilate with 100% oxygen, cool the patient, and administer dantrolene as the specific antidote.",
+        "Genetic predisposition involves ryanodine receptor (RYR1) mutations causing uncontrolled calcium release from sarcoplasmic reticulum."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "طفرة في مستقبل الريانودين (RYR1) تؤدي لانطلاق كالسيوم غير منضبط بعد التعرض لمخدر استنشاقي أو سكسينيل كولين.",
+        "goldStandard": "التشخيص يعتمد على المعايير السريرية: ارتفاع حرارة، تصلب عضلي، ارتفاع CO2 نهاية الزفير، حماض أيضي، وارتفاع CK.",
+        "firstLineRx": "دانترولي�� الصوديوم 2.5 ملغ/كغ وريدياً مع إيقاف المحفز فوراً.",
+        "keyDifferentiator": "ارتفاع الحرارة لا يستجيب للباراسيتامول أو مضادات الالتهاب، ويترافق مع فرط ثاني أكسيد الكربون وتصلب عضلي."
+      },
+      "English": {
+        "etiology": "Ryanodine receptor (RYR1) mutation causes uncontrolled calcium release after exposure to volatile anesthetics or succinylcholine.",
+        "goldStandard": "Clinical diagnosis using standard criteria: hyperthermia, muscle rigidity, elevated end-tidal CO2, metabolic acidosis, and elevated CK.",
+        "firstLineRx": "Dantrolene sodium 2.5 mg/kg IV immediately after discontinuing the triggering agent.",
+        "keyDifferentiator": "Hyperthermia does not respond to antipyretics and is associated with hypercapnia and muscle rigidity."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما هي المتلازمة الوراثية التي تظهر بعد التخدير العام مع ارتفاع حرارة وتصلب عضلي؟",
+        "hint2": "أعراض سريرية: تسرع قلب، فرط ثاني أكسيد الكربون، تشنج عضلي، بول داكن.",
+        "hint3": "العلامة المميزة: ارتفاع حرارة غير مستجيب للخافضات مع فرط استقلاب عضلي.",
+        "pearl": "التشخيص النهائي: فرط الحرارة الخبيث (Malignant Hyperthermia) - من أساسيات Clinical Toxicology."
+      },
+      "English": {
+        "hint1": "Which inherited syndrome occurs after general anesthesia with high fever and muscle rigidity?",
+        "hint2": "Clinical features: tachycardia, hypercarbia, muscle spasm, and dark urine.",
+        "hint3": "Hallmark: severe hyperthermia unresponsive to antipyretics with hypermetabolic state.",
+        "pearl": "Definitive diagnosis: Malignant Hyperthermia (فرط الحرارة الخبيث) - Core Clinical Toxicology."
+      }
+    }
+  },
+  "w660": {
+    "id": "w660",
+    "word": {
+      "id": "w660",
+      "word": {
+        "Arabic": "السونار السريع لرضوض البطن",
+        "English": "FAST Ultrasound"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Technique",
+      "subjects": [
+        "Radiology",
+        "Emergency Medicine",
+        "General Surgery",
+        "Trauma"
+      ],
+      "synonyms": [
+        "السونار السريع لرضوض البطن",
+        "سونار الطوارئ للإصابات",
+        "فحص فاست",
+        "FAST Ultrasound",
+        "Focused Assessment with Sonography for Trauma",
+        "E-FAST"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "فحص تصويري عند السرير يُجرى في غرفة الطوارئ للمصابين برضوض حادة.",
+        "يبحث عن تجمع سائل حر في البطن أو حول القلب أو الرئتين.",
+        "يعتمد على موجات فوق صوتية محمولة ويُكرر عند الحاجة لتقييم التدهور.",
+        "يقيم أربعة أو خمسة مواضع تشريحية رئيسية خلال دقائق.",
+        "يساعد في قرار التدخل الجراحي العاجل دون نقل المريض."
+      ],
+      "English": [
+        "Bedside imaging technique for blunt trauma patients in the resuscitation area.",
+        "Detects free fluid in the abdomen, pericardium, and pleural spaces.",
+        "Uses a portable transducer and can be repeated as the patient deteriorates.",
+        "Surveys a small set of anatomic windows in under a few minutes.",
+        "Guides urgent surgical triage without moving the patient to the scanner."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "رضض حادة أو اختراقية تسبب نزيفًا داخليًا وتجمعًا حرًا في السوائل.",
+        "goldStandard": "الفحص بالموجات فوق الصوتية عند السرير (FAST/E-FAST) وهو المعيار الذهبي للكشف السريع.",
+        "firstLineRx": "إنعاش فوري وتحويل للحالات الإيجابية إلى تدخل جراحي أو إجراءات تداخلية.",
+        "keyDifferentiator": "يكشف بسرعة دم البطن أو التأمور أو الصدر بدون نقل المريض، مقارنة بالتصوير المقطعي."
+      },
+      "English": {
+        "etiology": "Blunt or penetrating trauma causing internal hemorrhage and free fluid accumulation.",
+        "goldStandard": "Bedside sonography (FAST/E-FAST) is the gold standard for rapid detection.",
+        "firstLineRx": "Immediate resuscitation and surgical referral when positive.",
+        "keyDifferentiator": "Rapidly identifies hemoperitoneum, pericardial, or pleural fluid without transporting the patient, unlike CT."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "ما الفحص التصويري الذي يجرى فورًا عند سرير مريض الرضض ليكشف النزيف الداخلي؟",
+        "hint2": "يظهر تجمعًا سائلًا حرًا في البطن أو حول القلب أو الرئتين مع أعراض صدمة.",
+        "hint3": "العلامة المميزة هي ظهور سائل حر في جيب Morrison أو حول الطحال أو التأمور.",
+        "pearl": "التشخيص النهائي: السونار السريع لرضوض البطن (FAST Ultrasound) - من أساسيات Radiology."
+      },
+      "English": {
+        "hint1": "What bedside imaging test is performed emergently on trauma patients to detect internal bleeding?",
+        "hint2": "It shows free fluid in the abdomen, around the heart, or in the chest with shock features.",
+        "hint3": "The hallmark is free fluid in Morison's pouch, perisplenic view, or pericardial view.",
+        "pearl": "Definitive diagnosis: FAST Ultrasound (السونار السريع لرضوض البطن) - Core Radiology."
+      }
+    }
+  },
+  "w661": {
+    "id": "w661",
+    "word": {
+      "id": "w661",
+      "word": {
+        "Arabic": "مخطط القصبات الهوائي الظليل",
+        "English": "Air Bronchogram"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Other",
+      "subjects": [
+        "Radiology",
+        "Pulmonology",
+        "Internal Medicine"
+      ],
+      "synonyms": [
+        "مخطط القصبات الهوائي الظليل",
+        "علامة القصبة الهوائية الظليلة",
+        "القصبات الهوائية الشعاعية",
+        "Air Bronchogram",
+        "Air Bronchogram Sign"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "علامة تصويرية تظهر عندما تبقى القصبات ممتلئة بالهواء وسط منطقة مصابة من الرئة.",
+        "مرتبطة بحالات مثل الالتهاب الرئوي والوذمة الرئوية ومتلازمة الضائقة التنفسية الحادة.",
+        "على الأشعة المقطعية تُرى القصبات الهوائية كخطوط سوداء متفرعة داخل عتامة بيضاء.",
+        "تُظهر الصورة الشعاعية للصدر عتامة سنخية مع وجود فروع هوائية داكنة تخترقها.",
+        "العلامة تدل على أن القصبات مفتوحة، لذا فهي مفيدة للتفريق بين الارتشاح السنخي والانخماص."
+      ],
+      "English": [
+        "A radiographic sign seen when air-filled bronchi stand out against an opacified lung background.",
+        "Associated with conditions like pneumonia, pulmonary edema, and acute respiratory distress syndrome.",
+        "On CT, branching linear lucencies are visible within a consolidated opaque lung region.",
+        "Chest radiograph shows alveolar opacity with dark branching air lucencies coursing through it.",
+        "The sign confirms patent airways, helping distinguish airspace consolidation from collapse."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "الالتهاب الرئوي، الوذمة الرئوية، النزف السنخي، اللمفوما، أو الساركويد.",
+        "goldStandard": "التصوير المقطعي عالي الدقة للصدر هو الأفضل لإظهار هذا العلامة التشخيصية.",
+        "firstLineRx": "علاج السبب الأساسي؛ المضادات الحيوية للالتهاب الرئوي الجرثومي، مدرات البول للوذمة، إلخ.",
+        "keyDifferentiator": "رؤية قصبات هوائية مفتوحة داخل عتامة رئوية تميز الارتشاح السنخي عن الانخماص."
+      },
+      "English": {
+        "etiology": "Pneumonia, pulmonary edema, alveolar hemorrhage, lymphoma, or sarcoidosis.",
+        "goldStandard": "High-resolution CT chest is the best modality to demonstrate this diagnostic sign.",
+        "firstLineRx": "Treat the underlying cause; antibiotics for bacterial pneumonia, diuretics for edema, etc.",
+        "keyDifferentiator": "Seeing patent air-filled bronchi within lung opacity differentiates airspace consolidation from collapse."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "تخيل علامة شعاعية تظهر عندما تملأ الهواء القصبات وسط نسيج رئوي كثيف ومعتم.",
+        "hint2": "تظهر في التهابات الرئة المتجمعة والوذمة الرئوية أو النزف السنخي.",
+        "hint3": "العلامة المميزة هي خطوط هوائية متفرعة داخل عتامة رئوية.",
+        "pearl": "التشخيص النهائي: مخطط القصبات الهوائي الظليل (Air Bronchogram) - من أساسيات Radiology."
+      },
+      "English": {
+        "hint1": "Imagine a radiographic sign where air fills bronchi within an opaque, consolidated lung.",
+        "hint2": "It appears in lobar pneumonia, pulmonary edema, or alveolar hemorrhage.",
+        "hint3": "The hallmark is branching air lucencies within a pulmonary opacity.",
+        "pearl": "Definitive diagnosis: Air Bronchogram (مخطط القصبات الهوائي الظليل) - Core Radiology."
+      }
+    }
+  },
+  "w662": {
+    "id": "w662",
+    "word": {
+      "id": "w662",
+      "word": {
+        "Arabic": "علامة لب التفاحة",
+        "English": "Apple Core Sign"
+      },
+      "level": "Clinical",
+      "difficulty": 2,
+      "type": "Other",
+      "subjects": [
+        "Radiology",
+        "Gastroenterology",
+        "General Surgery",
+        "Oncology"
+      ],
+      "synonyms": [
+        "علامة لب التفاحة",
+        "مظهر لب التفاحة بالأشعة",
+        "علامة قمع التفاحة",
+        "Apple Core Sign",
+        "Napkin Ring Sign"
+      ],
+      "guessingDifficulty": 2
+    },
+    "hints": {
+      "Arabic": [
+        "تضيق قطاعي حاد في الأمعاء الغليظة يسبب صعوبة مرور الباريوم، وغالباً ما يرتبط بآفة ورمية دائرية.",
+        "يعاني المريض من أعراض انسداد معوي تدريجي، ونزيف شرجي، وفقدان وزن، مع قصة خبيثة قولونية منتشرة.",
+        "صورة الباريوم للحقنة الشرجية تظهر عيب حشو مفصص بشكل حلقة مع ارتفاعات مخاطية على الحواف تشبه الكتفين.",
+        "يحدث غالباً في القولون الأيسر أو السيني، ويكون التضيق غير قابل للتوسع مع تآكل الغشاء المخاطي في المنطقة الوسطى.",
+        "الفحص المقطعي يظهر سماكة جدار دائرية غير متماثلة وتمتد خارج الجدار، مما يجعل التنظير صعباً لعبور المنظار."
+      ],
+      "English": [
+        "A short, annular constricting lesion in the colon creates a shouldered luminal narrowing on contrast studies.",
+        "The patient typically presents with progressive large-bowel obstruction, hematochezia, and unexplained weight loss.",
+        "Barium enema reveals a focal, irregular filling defect with overhanging mucosal edges at both ends.",
+        "It is most common in the left colon or sigmoid and represents a circumferential mucosal tumor causing luminal stenosis.",
+        "Cross-sectional imaging shows a thickened, encircling bowel wall with pericolonic extension, often preventing endoscopic passage."
+      ]
+    },
+    "flashcard": {
+      "Arabic": {
+        "etiology": "ورم غدي أو سرطان قولوني حلقي النمو يسبب تضيقاً دائرياً في تجويف الأمعاء.",
+        "goldStandard": "حقنة الباريوم الشرجية أو التصوير المقطعي المحوري للقولون، مع التنظير والخزعة للتأكيد النسيجي.",
+        "firstLineRx": "استئصال القولون الجزئي مع تفريغ العقد اللمفاوية، يليه علاج كيميائي مساعد حسب المرحلة.",
+        "keyDifferentiator": "تضيق قصير دائري بحواف مرفوعة كالكتفين ومخاطية متقرحة في الوسط، مع قناة مركزية ضيقة جداً."
+      },
+      "English": {
+        "etiology": "A circumferential colorectal adenocarcinoma growing as an annular lesion that narrows the bowel lumen.",
+        "goldStandard": "Barium enema or CT colonography shows the classic shouldered stricture; endoscopy with biopsy confirms histology.",
+        "firstLineRx": "Segmental colectomy with lymph node dissection, followed by adjuvant chemotherapy based on staging.",
+        "keyDifferentiator": "A short, annular stricture with overhanging 'shouldered' edges and a severely narrowed central lumen."
+      }
+    },
+    "soloHint": {
+      "Arabic": {
+        "hint1": "فكر في حالة تضيق قصير دائري في القولون يسبب انسداداً تدريجياً لدى مريض كبير بالسن.",
+        "hint2": "المريض يعاني من تغير في عادات التغوط، نزيف شرجي، ألم بطني مغص، وفقدان وزن.",
+        "hint3": "العلامة الحاسمة: عيب حشو مركزي في حقنة الباريوم بحواف مرفوعة كالكتفين وقناة ضيقة جداً.",
+        "pearl": "التشخيص النهائي: علامة لب التفاحة (Apple Core Sign) - من أساسيات Radiology."
+      },
+      "English": {
+        "hint1": "Think of a short, annular constricting bowel lesion causing progressive obstruction in an older adult.",
+        "hint2": "Look for altered bowel habits, rectal bleeding, colicky pain, and weight loss in the clinical picture.",
+        "hint3": "The hallmark on barium study is a central filling defect with overhanging 'shouldered' edges and a narrow residual lumen.",
+        "pearl": "Definitive diagnosis: Apple Core Sign (علامة لب التفاحة) - Core Radiology."
+      }
+    }
+  }
+}

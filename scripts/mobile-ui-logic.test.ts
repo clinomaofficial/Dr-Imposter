@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import { rosterForMode, roomMatchesMode, minimumRoomPlayers, roomInvitation } from '../src/lib/mobileGame';
+const cached = ['Ahmed', 'Sara', 'Mona', 'Ali'];
+assert.deepEqual(rosterForMode(cached, [0,1,2,3], 'BATTLE_1V1', false).names, ['Ahmed','Sara']);
+assert.equal(rosterForMode([], [], 'DR_IMPOSTER', true).names.length, 3);
+assert.equal(rosterForMode(cached, [], 'DR_IMPOSTER', false).names.length, 4);
+assert.equal(rosterForMode(Array(20).fill('Doctor'), [], 'DR_IMPOSTER', false).names.length, 10);
+assert.deepEqual(rosterForMode(['',null,5] as any, [-2,50,'x'] as any, 'DR_IMPOSTER', false), {names:['Doctor 1','Doctor 2','Doctor 3'], avatars:[0,1,2]});
+for (const n of [0,1,3,4,10,11]) assert.equal(roomMatchesMode(n,'BATTLE_1V1'), false);
+assert.equal(roomMatchesMode(2,'BATTLE_1V1'),true);
+for (const n of [0,1,2,11]) assert.equal(roomMatchesMode(n,'DR_IMPOSTER'),false);
+for (const n of [3,4,5,6,8,10]) assert.equal(roomMatchesMode(n,'DR_IMPOSTER'),true);
+assert.equal(minimumRoomPlayers(2),2);
+for (const n of [3,4,8,10]) assert.equal(minimumRoomPlayers(n),3);
+assert.ok(!roomInvitation('DRIMPZ',false,'capacitor://localhost/').includes('://'));
+assert.ok(!roomInvitation('DRIMPZ',false,'http://localhost:4000/').includes('://'));
+assert.ok(roomInvitation('DRIMPZ',true,'https://play.example/game?old=1#section').endsWith('https://play.example/game?room=DRIMPZ'));
+console.log('Roster, room and invitation regression assertions passed');

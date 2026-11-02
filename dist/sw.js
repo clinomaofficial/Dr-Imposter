@@ -1,9 +1,9 @@
-const CACHE_NAME = 'dr-imposter-v1';
+const CACHE_NAME = 'dr-imposter-v2';
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  'https://i.ibb.co/FqgZdVFj/Dr-Imposter-202606261532.jpg'
+  './',
+  'index.html',
+  'manifest.json',
+  'logo.jpg'
 ];
 
 // Install Event - cache core shell
@@ -69,7 +69,7 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // Fallback to offline index.html for SPA routing if offline
         if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
+          return caches.match('index.html') || caches.match('/index.html');
         }
       });
     })

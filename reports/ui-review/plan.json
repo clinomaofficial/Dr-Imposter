@@ -1,0 +1,31 @@
+{
+  "max_output_tokens": 4000,
+  "max_request_bytes": 120000,
+  "tasks": [
+    {
+      "workspace": "D:\\antigravity\\My Apps\\Dr Imposter\\reports\\ui-review\\home",
+      "id": "home",
+      "prompt": "Review current home screen and shared UI against: grouped diagnosis vs spy modes, compact hero, quieter cards, independent ranking/help buttons, readable responsive Arabic/English text and visual mystery copy. Identify actual implemented fixes and remaining defects with file line evidence. Read-only audit. Do not edit source. Return concise findings, no speculation or claimed runtime testing.",
+      "files": [
+        "src/components/views/MedicalCupView.tsx",
+        "src/components/game/ui.tsx",
+        "src/App.tsx",
+        "src/index.css"
+      ]
+    },
+    {
+      "workspace": "D:\\antigravity\\My Apps\\Dr Imposter\\reports\\ui-review\\solo",
+      "id": "solo",
+      "prompt": "Review solo setup and play and help copy against: correct clue count, advanced options collapsed with visible enabled summary, specialty/difficulty first, start button reachable, readable typography and RTL. Identify actual fixes and remaining defects with file line evidence. Read-only audit. Do not edit source. Return concise findings, no speculation or claimed runtime testing.",
+      "files": [
+        "src/components/views/MedicalCupView.tsx",
+        "src/components/game/ui.tsx",
+        "src/App.tsx",
+        "src/index.css"
+      ]
+    }
+  ],
+  "model": "mercury-2.5",
+  "max_turns": 8,
+  "concurrency": 2
+}

@@ -19,7 +19,12 @@ service cloud.firestore {
     }
 
     function isSuperAdmin() {
-      return request.auth.token.email == 'salahsalman4455@gmail.com';
+      return isSignedIn() && (
+        request.auth.token.get('admin', false) == true ||
+        request.auth.token.get('role', '') == 'super_admin' ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid)) && 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('role', '') == 'super_admin')
+      );
     }
 
     function isAdmin() {
@@ -54,9 +59,8 @@ service cloud.firestore {
     }
 
     function isTargetSuperAdmin(userId) {
-      return userId == 'oQnUKHWGGteNSnkRBRHjZJ9fw3x1' || 
-             (exists(/databases/$(database)/documents/users/$(userId)) && 
-              get(/databases/$(database)/documents/users/$(userId)).data.get('email', '') == 'salahsalman4455@gmail.com');
+      return exists(/databases/$(database)/documents/users/$(userId)) && 
+             get(/databases/$(database)/documents/users/$(userId)).data.get('role', '') == 'super_admin';
     }
 
     function isValidSession(data) {
@@ -89,8 +93,39 @@ service cloud.firestore {
       return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.subscriptionActive == true;
     }
 
+    // ============ MULTIPLAYER ROOMS ============
     match /rooms/{roomId} {
-      allow read, write: if true;
+      function validRoomStatus() {
+        return incoming().status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'];
+      }
+
+      allow get: if true;
+
+      // Public rooms browser only: open lobbies, small page, no live games.
+      allow list: if request.query.limit <= 25
+        && request.query.offset == 0
+        && resource.data.status == 'LOBBY'
+        && resource.data.isPublic == true;
+
+      allow create: if incoming().status == 'LOBBY'
+        && incoming().isPublic == true
+        && incoming().players.size() == 1
+        && incoming().hostId == incoming().players[0].id
+        && incoming().players[0].id is string
+        && incoming().maxPlayers >= 2 && incoming().maxPlayers <= 10
+        && incoming().secretWord == null
+        && incoming().imposterAssignedWord == null
+        && incoming().votes.size() == 0;
+
+      allow update: if validRoomStatus()
+        // Identity + capacity are immutable once the room exists.
+        && incoming().hostId == resource.data.hostId
+        && incoming().maxPlayers == resource.data.maxPlayers
+        && incoming().players.size() >= 1
+        // Roster changes are capped: max +1 (a join) and never empty.
+        && incoming().players.size() <= resource.data.players.size() + 1;
+
+      allow delete: if false;
     }
 
     match /users/{userId} {
@@ -122,6 +157,20 @@ service cloud.firestore {
 
     match /hiddenProjects/{hiddenId} {
       allow read, write: if isSupervisor();
+    }
+
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /ads/{adId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /mail/{mailId} {
+      allow read, write: if isAdmin();
     }
   }
 }
