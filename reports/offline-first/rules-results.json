@@ -1,0 +1,11 @@
+{
+  "passed": [
+    "unauthenticated room create rejected",
+    "host creates authenticated lobby",
+    "host identity cannot be forged",
+    "outsider cannot modify game state",
+    "over-capacity roster rejected"
+  ],
+  "project": "demo-clinoma-offline",
+  "productionAccessed": false
+}

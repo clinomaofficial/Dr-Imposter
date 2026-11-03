@@ -1122,6 +1122,18 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     };
   }, []);
 
+  useEffect(() => {
+    if (!onlineRoomState?.expiresAt) return;
+    const timer = setTimeout(() => {
+      closeRoomConnection();
+      setRoomId('');
+      setOnlineRoomState(null);
+      setPhase('MULTI_SETUP_ONLINE');
+      setNotice(t('انتهت مدة الغرفة. أنشئ غرفة جديدة.', 'Room expired. Create a new room.'));
+    }, Math.max(0, onlineRoomState.expiresAt - Date.now()));
+    return () => clearTimeout(timer);
+  }, [onlineRoomState?.expiresAt]);
+
   // Optional settings come from disk, never a live listener during local play.
   useEffect(() => subscribePublicData(({ gameConfig: cfg }) => {
     if (typeof cfg.turnTimeLimit === 'number' && cfg.turnTimeLimit >= 0) setQuestionTimeLimit(cfg.turnTimeLimit);
@@ -1334,8 +1346,16 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
     setLoadingLeaderboard(true);
     setLeaderboardError(false);
     try {
-      const q = query(collection(db,'users'), orderBy('detectiveScore','desc'), limit(25));
-      const snap = await withCloudAccess(() => getDocs(q));
+      const cached = readLocal<{ at: number; rows: any[] } | null>('clinoma-leaderboard', null);
+      let rows = cached?.rows;
+      if (!cached || Date.now() - cached.at >= 24 * 60 * 60 * 1000) {
+        await ensureOnlineIdentity();
+        const q = query(collection(db,'users'), orderBy('detectiveScore','desc'), limit(25));
+        const snap = await withCloudAccess(() => getDocs(q));
+        rows = snap.docs.map(d => ({ ...d.data(), id: d.id }));
+        writeLocal('clinoma-leaderboard', { at: Date.now(), rows });
+      }
+      const snap = { forEach: (fn: (d: any) => void) => rows!.forEach(row => fn({ id: row.id, data: () => row })) };
       const list: any[] = [];
       snap.forEach(docSnap => {
         const data = docSnap.data();
@@ -2497,7 +2517,9 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
         setPhase('TWO_PLAYERS_DISCUSSION_GUESS');
       }
     }, (error) => {
-      console.warn("⚠️ Room real-time subscription error:", error);
+      closeRoomConnection();
+      setNotice(t('انقطع اتصال الغرفة. اخرج وأعد الانضمام عند توفر الاتصال.', 'Room connection failed. Leave and rejoin when connected.'));
+      console.warn("Room subscription error:", error);
     });
 
     roomUnsubscribeRef.current = unsub;

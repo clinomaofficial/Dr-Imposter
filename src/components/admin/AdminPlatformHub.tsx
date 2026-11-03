@@ -102,6 +102,7 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
 
   // 2. Real-time Rooms Listener
   useEffect(() => {
+    if (activeTab !== 'rooms' && activeTab !== 'overview') return;
     const q = query(collection(db, 'rooms'), limit(50));
     const unsub = onSnapshot(q, (snap) => {
       const list: any[] = [];
@@ -110,10 +111,11 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
     }, (err) => console.warn("Rooms listener warning:", err));
 
     return () => unsub();
-  }, []);
+  }, [activeTab]);
 
   // 3. Real-time Announcements Listener
   useEffect(() => {
+    if (activeTab !== 'announcements' && activeTab !== 'overview') return;
     const q = query(collection(db, 'announcements'), orderBy('createdAt', 'desc'), limit(20));
     const unsub = onSnapshot(q, (snap) => {
       const list: any[] = [];
@@ -122,11 +124,12 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
     }, (err) => console.warn("Announcements listener warning:", err));
 
     return () => unsub();
-  }, []);
+  }, [activeTab]);
 
   // 4. Real-time Ads Listener
   useEffect(() => {
-    const q = query(collection(db, 'ads'));
+    if (activeTab !== 'ads' && activeTab !== 'overview') return;
+    const q = query(collection(db, 'ads'), limit(25));
     const unsub = onSnapshot(q, (snap) => {
       const list: AdCampaign[] = [];
       snap.forEach(d => list.push({ id: d.id, ...d.data() } as AdCampaign));
@@ -134,10 +137,11 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
     }, (err) => console.warn("Ads listener warning:", err));
 
     return () => unsub();
-  }, []);
+  }, [activeTab]);
 
   // 5. Real-time Game Config Listener
   useEffect(() => {
+    if (activeTab !== 'game_config' && activeTab !== 'overview') return;
     const unsub = onSnapshot(doc(db, 'settings', 'gameConfig'), (snap) => {
       if (snap.exists()) {
         const data = snap.data();
@@ -146,7 +150,7 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
     }, (err) => console.warn("Game config listener warning:", err));
 
     return () => unsub();
-  }, []);
+  }, [activeTab]);
 
   // Initial load
   useEffect(() => {
@@ -166,7 +170,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
 
       if (roleFilter === 'all') return true;
       if (roleFilter === 'admin') return u.role === 'admin' || u.role === 'super_admin';
-      if (roleFilter === 'subscribed') return u.subscriptionActive === true;
       if (roleFilter === 'blocked') return u.status === 'blocked';
       return true;
     });
@@ -178,32 +181,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
   const overallCTR = totalAdViews > 0 ? ((totalAdClicks / totalAdViews) * 100).toFixed(1) : '0.0';
 
   // Actions on Users
-  const handleUpdateUserAttempts = async (userId: string, newAttempts: number) => {
-    try {
-      await updateDoc(doc(db, 'users', userId), {
-        remainingAttempts: newAttempts,
-        remainingDetectiveAttempts: newAttempts,
-        totalAttempts: Math.max(newAttempts, 100)
-      });
-      showToast(`تم تعديل محاولات المستخدم بنجاح (${newAttempts})`, 'success');
-      fetchUsers();
-    } catch (err: any) {
-      showToast("فشل التعديل: " + err.message, 'error');
-    }
-  };
-
-  const handleToggleSubscription = async (userId: string, current: boolean) => {
-    try {
-      await updateDoc(doc(db, 'users', userId), {
-        subscriptionActive: !current
-      });
-      showToast(!current ? "تم تفعيل الاشتراك الذهبي للمستخدم!" : "تم إلغاء الاشتراك", 'success');
-      fetchUsers();
-    } catch (err: any) {
-      showToast("فشل التعديل: " + err.message, 'error');
-    }
-  };
-
   const handleToggleBlock = async (userId: string, currentStatus: string) => {
     try {
       const next = currentStatus === 'blocked' ? 'active' : 'blocked';
@@ -336,9 +313,10 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
     try {
       await setDoc(doc(db, 'settings', 'gameConfig'), {
         ...gameConfig,
+        enforceAttemptLimits: false,
         updatedAt: Date.now()
       }, { merge: true });
-      showToast("تم حفظ وتطبيق الإعدادات السحابية الحية بنجاح.", 'success');
+      showToast("تم حفظ الإعدادات؛ تصل للاعبين عند تحديث البيانات.", 'success');
     } catch (err: any) {
       showToast("فشل حفظ الإعدادات: " + err.message, 'error');
     } finally {
@@ -592,7 +570,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
                   {[
                     { id: 'all', label: 'الكل' },
                     { id: 'admin', label: 'المشرفين' },
-                    { id: 'subscribed', label: 'المشتركين' },
                     { id: 'blocked', label: 'المحظورين' }
                   ].map(f => (
                     <button
@@ -639,11 +616,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
                                 مشرف
                               </span>
                             )}
-                            {u.subscriptionActive && (
-                              <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-mint/15 text-mint border border-mint/30">
-                                ذهبي مدى الحياة
-                              </span>
-                            )}
                             {u.status === 'blocked' && (
                               <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-coral/15 text-coral border border-coral/30">
                                 محظور
@@ -653,7 +625,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
                           <p className="text-xs font-mono text-white/50">{u.email}</p>
                           <div className="flex items-center gap-3 text-[11px] text-white/40 pt-1 font-bold">
                             <span>النقاط: <strong className="text-gold">{u.detectiveScore || 0}</strong></span>
-                            <span>المحاولات: <strong className="text-mint">{u.remainingAttempts ?? 99999}</strong></span>
                             {u.university && <span>الجامعة: {u.university}</span>}
                           </div>
                         </div>
@@ -668,23 +639,6 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
                         >
                           <Mail size={13} />
                           <span>إرسال إيميل</span>
-                        </button>
-                        <button
-                          onClick={() => handleUpdateUserAttempts(u.id, 99999)}
-                          className="px-2.5 py-1.5 rounded-xl bg-mint/10 border border-mint/20 text-mint text-xs font-bold hover:bg-mint/20 active:scale-95 transition-all"
-                          title="منح محاولات غير محدودة"
-                        >
-                          +99k محاولات
-                        </button>
-                        <button
-                          onClick={() => handleToggleSubscription(u.id, u.subscriptionActive)}
-                          className={`px-2.5 py-1.5 rounded-xl text-xs font-bold active:scale-95 transition-all ${
-                            u.subscriptionActive
-                              ? 'bg-ink-3 border border-ink-4 text-white/50'
-                              : 'bg-gold/15 border border-gold/30 text-gold'
-                          }`}
-                        >
-                          {u.subscriptionActive ? 'إلغاء الاشتراك' : 'تفعيل اشتراك ذهبي'}
                         </button>
                         <button
                           onClick={() => handlePromoteRole(u.id, u.role)}
@@ -834,10 +788,10 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
               <div>
                 <h3 className="font-display font-bold text-lg text-white flex items-center gap-2">
                   <Sliders size={20} className="text-gold" />
-                  التحكم السحابي الحي بإعدادات اللعبة (Remote Config)
+                  إعدادات اللعبة الاختيارية
                 </h3>
                 <p className="text-xs text-white/50 pt-1">
-                  تعديل هذه القيم هنا يُحدث قواعد اللعبة لحظياً على كافة هواتف اللاعبين دون الحاجة لإعادة رفع التطبيق.
+                  تصل هذه القيم عندما يختار اللاعب تحديث البيانات. اللعب المحلي يستخدم آخر نسخة محفوظة.
                 </p>
               </div>
 
@@ -846,19 +800,10 @@ export function AdminPlatformHub({ user, onGoogleLogin, onBackToApp }: AdminPlat
                 <div className="space-y-0.5">
                   <h4 className="font-display font-bold text-sm text-mint">نظام اللعب المفتوح والمجاني للجميع</h4>
                   <p className="text-xs text-white/60">
-                    اللعبة مجانية وتعتمد على شبكة إعلانات الرعاة. قفل المحاولات معطل افتراضياً.
+                    اللعبة مجانية وتعتمد على شبكة إعلانات الرعاة. بدون اشتراكات أو حدود للمحاولات.
                   </p>
                 </div>
-                <button
-                  onClick={() => setGameConfig({ ...gameConfig, enforceAttemptLimits: !gameConfig.enforceAttemptLimits })}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    gameConfig.enforceAttemptLimits
-                      ? 'bg-coral/20 text-coral border border-coral/40'
-                      : 'bg-mint text-emerald-950 font-black'
-                  }`}
-                >
-                  {gameConfig.enforceAttemptLimits ? 'حصر المحاولات (مفعل)' : 'لعب مفتوح مجاني (نشط 🟢)'}
-                </button>
+                <span className="text-mint text-sm font-bold">مجاني دائمًا</span>
               </div>
 
               <div className="space-y-4">

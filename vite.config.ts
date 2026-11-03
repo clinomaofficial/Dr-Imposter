@@ -7,13 +7,15 @@ import {defineConfig, loadEnv} from 'vite';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
+  let offlineOutDir = path.resolve('dist');
   return {
     base: '/',
     plugins: [react(), tailwindcss(), {
       name: 'offline-game-manifest',
       apply: 'build',
+      configResolved(config) { offlineOutDir = path.resolve(config.root, config.build.outDir); },
       closeBundle() {
-        const outDir = path.resolve('dist');
+        const outDir = offlineOutDir;
         if (!fs.existsSync(path.join(outDir, 'index.html'))) return;
         // Include lazy game chunks and bundled fonts/media, not just the shell.
         const files = fs.readdirSync(outDir, { recursive: true }).map(String)

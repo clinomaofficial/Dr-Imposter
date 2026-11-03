@@ -95,122 +95,121 @@ service cloud.firestore {
     // Rooms require a Firebase identity (anonymous identities are sufficient).
     match /rooms/{roomId} {
       function member() {
-        return isSignedIn() && request.auth.uid in existing().memberIds;
+        return isSignedIn() && request.auth.uid in resource.data.memberIds;
       }
-      function live() { return existing().expiresAt > request.time.toMillis(); }
-      function changed() { return incoming().diff(existing()).affectedKeys(); }
+      function live() { return resource.data.expiresAt > request.time.toMillis(); }
+      function changed() { return request.resource.data.diff(resource.data).affectedKeys(); }
       function playerAt(i) {
-        return incoming().players.size() <= i || (
-          incoming().players[i].id == incoming().memberIds[i] &&
-          incoming().players[i].name is string && incoming().players[i].name.size() <= 40 &&
-          incoming().players[i].score is number && incoming().players[i].score >= 0 &&
-          incoming().players[i].role in ['NORMAL', 'IMPOSTER'] &&
-          incoming().players[i].assignedWordId is string
+        return request.resource.data.players.size() <= i || (
+          request.resource.data.players[i].id == request.resource.data.memberIds[i] &&
+          request.resource.data.players[i].name is string && request.resource.data.players[i].name.size() <= 40 &&
+          request.resource.data.players[i].score is number && request.resource.data.players[i].score >= 0 &&
+          request.resource.data.players[i].role in ['NORMAL', 'IMPOSTER'] &&
+          request.resource.data.players[i].assignedWordId is string
         );
       }
       function validRoster() {
-        return incoming().players is list && incoming().memberIds is list &&
-          incoming().players.size() == incoming().memberIds.size() &&
-          incoming().memberIds.toSet().size() == incoming().memberIds.size() &&
-          incoming().players.size() >= 1 && incoming().players.size() <= incoming().maxPlayers &&
-          playerAt(0) && playerAt(1) && playerAt(2) && playerAt(3) && playerAt(4) &&
-          playerAt(5) && playerAt(6) && playerAt(7) && playerAt(8) && playerAt(9);
+        return request.resource.data.players is list && request.resource.data.memberIds is list &&
+          request.resource.data.players.size() == request.resource.data.memberIds.size() &&
+          request.resource.data.memberIds.toSet().size() == request.resource.data.memberIds.size() &&
+          request.resource.data.players.size() >= 1 && request.resource.data.players.size() <= request.resource.data.maxPlayers;
       }
       function joining() {
-        return existing().status == 'LOBBY' && !(request.auth.uid in existing().memberIds) &&
+        return resource.data.status == 'LOBBY' && !(request.auth.uid in resource.data.memberIds) &&
           changed().hasOnly(['players', 'memberIds']) &&
-          incoming().memberIds == existing().memberIds.concat([request.auth.uid]) &&
-          incoming().players.size() == existing().players.size() + 1 &&
-          incoming().players == existing().players.concat([incoming().players[existing().players.size()]]) &&
-          incoming().players[existing().players.size()].score == 0 &&
-          incoming().players[existing().players.size()].role == 'NORMAL' &&
-          incoming().players[existing().players.size()].assignedWordId == '';
+          request.resource.data.memberIds == resource.data.memberIds.concat([request.auth.uid]) &&
+          request.resource.data.players.size() == resource.data.players.size() + 1 &&
+          request.resource.data.players == resource.data.players.concat([request.resource.data.players[resource.data.players.size()]]) &&
+          playerAt(resource.data.players.size()) && request.resource.data.players[resource.data.players.size()].id == request.auth.uid &&
+          request.resource.data.players[resource.data.players.size()].score == 0 &&
+          request.resource.data.players[resource.data.players.size()].role == 'NORMAL' &&
+          request.resource.data.players[resource.data.players.size()].assignedWordId == '';
       }
       function leaving() {
-        return member() && existing().status == 'LOBBY' && request.auth.uid != existing().hostId &&
+        return member() && resource.data.status == 'LOBBY' && request.auth.uid != resource.data.hostId &&
           changed().hasOnly(['players', 'memberIds']) &&
-          incoming().memberIds == existing().memberIds.removeAll([request.auth.uid]) &&
-          incoming().players.size() == existing().players.size() - 1 &&
-          incoming().players.toSet().difference(existing().players.toSet()).size() == 0;
+          request.resource.data.memberIds == resource.data.memberIds.removeAll([request.auth.uid]) &&
+          request.resource.data.players.size() == resource.data.players.size() - 1 &&
+          request.resource.data.players.toSet().difference(resource.data.players.toSet()).size() == 0;
       }
       function voting() {
-        return member() && existing().status == 'VOTING' &&
+        return member() && resource.data.status == 'VOTING' &&
           changed().hasOnly(['votes', 'status', 'votedOutPlayerId']) &&
-          !(request.auth.uid in existing().votes) &&
-          incoming().votes.diff(existing().votes).affectedKeys().hasOnly([request.auth.uid]) &&
-          incoming().votes[request.auth.uid] in existing().memberIds &&
-          ((incoming().votes.size() < existing().players.size() && incoming().status == 'VOTING' &&
+          !(request.auth.uid in resource.data.votes) &&
+          request.resource.data.votes.diff(resource.data.votes).affectedKeys().hasOnly([request.auth.uid]) &&
+          request.resource.data.votes[request.auth.uid] in resource.data.memberIds &&
+          ((request.resource.data.votes.size() < resource.data.players.size() && request.resource.data.status == 'VOTING' &&
             !changed().hasAny(['votedOutPlayerId'])) ||
-           (incoming().votes.size() == existing().players.size() && incoming().status == 'REVEALED' &&
-            incoming().votedOutPlayerId in existing().memberIds));
+           (request.resource.data.votes.size() == resource.data.players.size() && request.resource.data.status == 'REVEALED' &&
+            request.resource.data.votedOutPlayerId in resource.data.memberIds));
       }
       function duelGuess() {
-        return member() && existing().status == 'TWO_PLAYERS_GUESS' && existing().maxPlayers == 2 &&
-          !(request.auth.uid in existing().twoPlayersGuessMatched) &&
+        return member() && resource.data.status == 'TWO_PLAYERS_GUESS' && resource.data.maxPlayers == 2 &&
+          !(request.auth.uid in resource.data.twoPlayersGuessMatched) &&
           changed().hasOnly(['twoPlayersGuessMatched', 'players', 'status']) &&
-          incoming().twoPlayersGuessMatched.diff(existing().twoPlayersGuessMatched).affectedKeys().hasOnly([request.auth.uid]) &&
-          incoming().twoPlayersGuessMatched[request.auth.uid] is string &&
-          ((incoming().twoPlayersGuessMatched.size() == 1 && !changed().hasAny(['players', 'status'])) ||
-           (incoming().twoPlayersGuessMatched.size() == 2 && incoming().status == 'SCOREBOARD' &&
-            incoming().players[0].diff(existing().players[0]).affectedKeys().hasOnly(['score']) &&
-            incoming().players[1].diff(existing().players[1]).affectedKeys().hasOnly(['score']) &&
-            incoming().players[0].score == existing().players[0].score +
-              (incoming().twoPlayersGuessMatched[existing().players[0].id] == existing().players[1].assignedWordId ? 50 : 0) &&
-            incoming().players[1].score == existing().players[1].score +
-              (incoming().twoPlayersGuessMatched[existing().players[1].id] == existing().players[0].assignedWordId ? 50 : 0)));
+          request.resource.data.twoPlayersGuessMatched.diff(resource.data.twoPlayersGuessMatched).affectedKeys().hasOnly([request.auth.uid]) &&
+          request.resource.data.twoPlayersGuessMatched[request.auth.uid] is string &&
+          ((request.resource.data.twoPlayersGuessMatched.size() == 1 && !changed().hasAny(['players', 'status'])) ||
+           (request.resource.data.twoPlayersGuessMatched.size() == 2 && request.resource.data.status == 'SCOREBOARD' &&
+            request.resource.data.players[0].diff(resource.data.players[0]).affectedKeys().hasOnly(['score']) &&
+            request.resource.data.players[1].diff(resource.data.players[1]).affectedKeys().hasOnly(['score']) &&
+            request.resource.data.players[0].score == resource.data.players[0].score +
+              (request.resource.data.twoPlayersGuessMatched[resource.data.players[0].id] == resource.data.players[1].assignedWordId ? 50 : 0) &&
+            request.resource.data.players[1].score == resource.data.players[1].score +
+              (request.resource.data.twoPlayersGuessMatched[resource.data.players[1].id] == resource.data.players[0].assignedWordId ? 50 : 0)));
       }
       function inquiryMove() {
-        return member() && existing().status in ['PLAYING_DISCUSSION', 'TWO_PLAYERS_GUESS'] &&
+        return member() && resource.data.status in ['PLAYING_DISCUSSION', 'TWO_PLAYERS_GUESS'] &&
           changed().hasOnly(['inquiry']) &&
-          ((existing().inquiry.turnPlayerId == request.auth.uid &&
-            existing().inquiry.activeQuestion == null &&
-            incoming().inquiry.diff(existing().inquiry).affectedKeys().hasOnly(['activeQuestion', 'activeAnswer', 'targetPlayerId']) &&
-            incoming().inquiry.activeQuestion is map && incoming().inquiry.targetPlayerId in existing().memberIds) ||
-           (existing().inquiry.targetPlayerId == request.auth.uid &&
-            existing().inquiry.activeQuestion != null &&
-            incoming().inquiry.turnPlayerId == existing().inquiry.targetPlayerId &&
-            incoming().inquiry.targetPlayerId == existing().inquiry.turnPlayerId &&
-            incoming().inquiry.activeQuestion == null));
+          ((resource.data.inquiry.turnPlayerId == request.auth.uid &&
+            resource.data.inquiry.activeQuestion == null &&
+            request.resource.data.inquiry.diff(resource.data.inquiry).affectedKeys().hasOnly(['activeQuestion', 'activeAnswer', 'targetPlayerId']) &&
+            request.resource.data.inquiry.activeQuestion is map && request.resource.data.inquiry.targetPlayerId in resource.data.memberIds) ||
+           (resource.data.inquiry.targetPlayerId == request.auth.uid &&
+            resource.data.inquiry.activeQuestion != null &&
+            request.resource.data.inquiry.turnPlayerId == resource.data.inquiry.targetPlayerId &&
+            request.resource.data.inquiry.targetPlayerId == resource.data.inquiry.turnPlayerId &&
+            request.resource.data.inquiry.activeQuestion == null));
       }
       function imposterAt(i) {
-        return existing().players.size() > i && existing().players[i].id == request.auth.uid && existing().players[i].role == 'IMPOSTER';
+        return resource.data.players.size() > i && resource.data.players[i].id == request.auth.uid && resource.data.players[i].role == 'IMPOSTER';
       }
       function isImposter() {
         return imposterAt(0) || imposterAt(1) || imposterAt(2) || imposterAt(3) || imposterAt(4) ||
           imposterAt(5) || imposterAt(6) || imposterAt(7) || imposterAt(8) || imposterAt(9);
       }
       function cycleMove() {
-        return member() && existing().status == 'PLAYING_DISCUSSION' &&
+        return member() && resource.data.status == 'PLAYING_DISCUSSION' &&
           changed().hasOnly(['questioningCycle', 'currentCycleIdx']) &&
-          existing().currentCycleIdx < existing().questioningCycle.size() &&
-          existing().questioningCycle[existing().currentCycleIdx].askerId == request.auth.uid &&
-          incoming().currentCycleIdx == existing().currentCycleIdx + 1 &&
-          incoming().questioningCycle.size() == existing().questioningCycle.size();
+          resource.data.currentCycleIdx < resource.data.questioningCycle.size() &&
+          resource.data.questioningCycle[resource.data.currentCycleIdx].askerId == request.auth.uid &&
+          request.resource.data.currentCycleIdx == resource.data.currentCycleIdx + 1 &&
+          request.resource.data.questioningCycle.size() == resource.data.questioningCycle.size();
       }
       // Lobby metadata is discoverable; live room contents are member-only.
-      allow get: if isSignedIn() && (member() || (existing().status == 'LOBBY' && existing().isPublic == true));
+      allow get: if isSignedIn() && (member() || (resource.data.status == 'LOBBY' && resource.data.isPublic == true));
       allow list: if isAdmin() || (isSignedIn() && request.query.limit <= 25 &&
         resource.data.status == 'LOBBY' && resource.data.isPublic == true);
       allow create: if isSignedIn() && roomId.matches('^[A-Z0-9]{6}$') &&
-        incoming().status == 'LOBBY' && incoming().isPublic == true &&
-        incoming().players.size() == 1 && incoming().memberIds == [request.auth.uid] &&
-        incoming().hostId == request.auth.uid && incoming().maxPlayers >= 2 && incoming().maxPlayers <= 10 &&
-        incoming().createdAt >= request.time.toMillis() - 300000 &&
-        incoming().expiresAt > request.time.toMillis() &&
-        incoming().expiresAt <= request.time.toMillis() + 7500000 &&
-        incoming().secretWord == null && incoming().imposterAssignedWord == null &&
-        incoming().votes.size() == 0 && validRoster();
+        request.resource.data.status == 'LOBBY' && request.resource.data.isPublic == true &&
+        request.resource.data.players.size() == 1 && request.resource.data.memberIds == [request.auth.uid] &&
+        request.resource.data.hostId == request.auth.uid && request.resource.data.maxPlayers >= 2 && request.resource.data.maxPlayers <= 10 &&
+        request.resource.data.createdAt >= request.time.toMillis() - 300000 &&
+        request.resource.data.expiresAt > request.time.toMillis() &&
+        request.resource.data.expiresAt <= request.time.toMillis() + 7500000 &&
+        request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null &&
+        request.resource.data.votes.size() == 0 && validRoster() && playerAt(0);
       allow update: if isSignedIn() && live() && validRoster() &&
-        incoming().hostId == existing().hostId && incoming().maxPlayers == existing().maxPlayers &&
-        incoming().createdAt == existing().createdAt && incoming().expiresAt == existing().expiresAt &&
-        incoming().isPublic == existing().isPublic &&
+        request.resource.data.hostId == resource.data.hostId && request.resource.data.maxPlayers == resource.data.maxPlayers &&
+        request.resource.data.createdAt == resource.data.createdAt && request.resource.data.expiresAt == resource.data.expiresAt &&
+        request.resource.data.isPublic == resource.data.isPublic &&
         (joining() || leaving() ||
-         (member() && incoming().memberIds == existing().memberIds &&
-          incoming().status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
-          ((request.auth.uid == existing().hostId &&
-             (incoming().status != 'LOBBY' || (incoming().secretWord == null && incoming().imposterAssignedWord == null))) ||
+         (member() && request.resource.data.memberIds == resource.data.memberIds &&
+          request.resource.data.status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
+          ((request.auth.uid == resource.data.hostId &&
+             (request.resource.data.status != 'LOBBY' || (request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null))) ||
            voting() || duelGuess() || inquiryMove() || cycleMove() ||
-           (existing().status == 'GUESSING' && incoming().status == 'SCOREBOARD' &&
+           (resource.data.status == 'GUESSING' && request.resource.data.status == 'SCOREBOARD' &&
             isImposter() &&
             changed().hasOnly(['players', 'imposterGuessedWordId', 'status'])))));
       allow delete: if member();
