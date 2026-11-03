@@ -199,19 +199,30 @@ service cloud.firestore {
         request.resource.data.expiresAt <= request.time.toMillis() + 7500000 &&
         request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null &&
         request.resource.data.votes.size() == 0 && validRoster() && playerAt(0);
-      allow update: if isSignedIn() && live() && validRoster() &&
-        request.resource.data.hostId == resource.data.hostId && request.resource.data.maxPlayers == resource.data.maxPlayers &&
-        request.resource.data.createdAt == resource.data.createdAt && request.resource.data.expiresAt == resource.data.expiresAt &&
-        request.resource.data.isPublic == resource.data.isPublic &&
-        (joining() || leaving() ||
-         (member() && request.resource.data.memberIds == resource.data.memberIds &&
-          request.resource.data.status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
-          ((request.auth.uid == resource.data.hostId &&
-             (request.resource.data.status != 'LOBBY' || (request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null))) ||
-           voting() || duelGuess() || inquiryMove() || cycleMove() ||
-           (resource.data.status == 'GUESSING' && request.resource.data.status == 'SCOREBOARD' &&
-            isImposter() &&
-            changed().hasOnly(['players', 'imposterGuessedWordId', 'status'])))));
+      function stable() {
+        return request.resource.data.hostId == resource.data.hostId &&
+          request.resource.data.maxPlayers == resource.data.maxPlayers &&
+          request.resource.data.createdAt == resource.data.createdAt &&
+          request.resource.data.expiresAt == resource.data.expiresAt &&
+          request.resource.data.isPublic == resource.data.isPublic;
+      }
+      function memberUpdate() {
+        return member() && live() && stable() &&
+          request.resource.data.memberIds == resource.data.memberIds;
+      }
+      // Separate rules keep each permission check below the expression budget.
+      allow update: if isSignedIn() && live() && stable() && validRoster() && joining();
+      allow update: if isSignedIn() && live() && stable() && validRoster() && leaving();
+      allow update: if memberUpdate() && request.auth.uid == resource.data.hostId && validRoster() &&
+        request.resource.data.status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
+        (request.resource.data.status != 'LOBBY' || (request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null));
+      allow update: if memberUpdate() && voting();
+      allow update: if memberUpdate() && duelGuess();
+      allow update: if memberUpdate() && inquiryMove();
+      allow update: if memberUpdate() && cycleMove();
+      allow update: if memberUpdate() && resource.data.status == 'GUESSING' &&
+        request.resource.data.status == 'SCOREBOARD' && isImposter() &&
+        changed().hasOnly(['players', 'imposterGuessedWordId', 'status']);
       allow delete: if member();
     }
 
