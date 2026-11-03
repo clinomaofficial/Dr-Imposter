@@ -13,9 +13,15 @@ createRoot(document.getElementById('root')!).render(
 // Register Service Worker for offline PWA support
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
+    // Re-registering on every reload forces an unnecessary worker download.
+    // Existing installations work from cache; manual sync checks for updates.
+    navigator.serviceWorker.getRegistration().then(existing => {
+      if (existing) return existing;
+      if (!navigator.onLine) return undefined;
+      return navigator.serviceWorker.register('sw.js');
+    })
       .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        if (registration) console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })
       .catch((err) => {
         console.log('ServiceWorker registration failed: ', err);

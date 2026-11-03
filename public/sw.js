@@ -1,6 +1,6 @@
 const CACHE_PREFIX = 'clinoma-offline-';
 const CACHE_NAME = CACHE_PREFIX + '__BUILD_VERSION__';
-const PRECACHE = /* __PRECACHE_FILES__ */ ['/index.html', '/manifest.json', '/logo.jpg'];
+const PRECACHE = self.__PRECACHE_FILES__ || ['/index.html', '/manifest.json', '/logo.jpg'];
 
 self.addEventListener('install', event => {
   // The worker waits until every game chunk and bundled asset is available.
@@ -10,7 +10,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+    await Promise.all(keys.filter(key => (key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME) || key === 'dr-imposter-v2')
       .map(key => caches.delete(key)));
     await self.clients.claim();
   })());

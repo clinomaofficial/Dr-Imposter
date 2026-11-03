@@ -19,18 +19,19 @@ export async function syncAccount() {
     claimGuestScore(user.uid, profile.detectiveScore);
     const bank = scoreBank(user.uid, profile.detectiveScore);
     const receipt = doc(db, 'users', user.uid, 'scoreReceipts', deviceId());
-    if (bank.earned > 0) {
+    if (bank.earned !== readLocal(`clinoma-score-ack:${user.uid}`, 0)) {
       profile.detectiveScore = await runTransaction(db, async tx => {
         const [current, saved] = await Promise.all([tx.get(doc(db, 'users', user.uid)), tx.get(receipt)]);
         const prior = saved.exists() ? saved.data().earned || 0 : 0;
-        const delta = Math.max(0, bank.earned - prior);
-        const total = (current.data()?.detectiveScore || 0) + delta;
-        if (delta > 0) {
+        const delta = bank.earned - prior;
+        const total = Math.max(0, (current.data()?.detectiveScore || 0) + delta);
+        if (delta !== 0) {
           tx.update(doc(db, 'users', user.uid), { detectiveScore: total });
           tx.set(receipt, { earned: bank.earned });
         }
         return total;
       });
+      writeLocal(`clinoma-score-ack:${user.uid}`, bank.earned);
     }
     acceptCloudScore(user.uid, profile.detectiveScore, bank.earned);
     writeLocal(`clinoma-profile:${user.uid}`, profile);

@@ -10,7 +10,7 @@ export function readLocal<T>(key: string, fallback: T): T {
 export function writeLocal(key: string, value: unknown) {
   memory.set(key, value);
   try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* memory fallback */ }
-  if (typeof window !== 'undefined') window.dispatchEvent(new Event('clinoma-local-data'));
+  if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('clinoma-local-data', { detail: { key } }));
 }
 export function deviceId(): string {
   let id = readLocal('clinoma-device-id', '');

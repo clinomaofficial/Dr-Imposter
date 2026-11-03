@@ -263,6 +263,9 @@ export default function App() {
     if (isSyncing) return;
     setIsSyncing(true);
     try {
+      if ('serviceWorker' in navigator && navigator.onLine) {
+        void navigator.serviceWorker.getRegistration().then(reg => reg?.update()).catch(() => {});
+      }
       await refreshPublicData();
       const profile = await syncAccount();
       if (profile) setAppUser(profile);

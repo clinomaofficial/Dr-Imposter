@@ -14,7 +14,11 @@ export const cachedPublicData = () => readLocal<PublicData>(KEY, {
   ads: [], announcement: null, gameConfig: {}, refreshedAt: 0,
 });
 export function subscribePublicData(listener: (data: PublicData) => void) {
-  const update = () => listener(cachedPublicData());
+  const update = (event?: Event) => {
+    if (event instanceof StorageEvent && event.key !== KEY && event.key !== null) return;
+    if (event instanceof CustomEvent && event.detail?.key !== KEY) return;
+    listener(cachedPublicData());
+  };
   update();
   window.addEventListener('storage', update);
   window.addEventListener('clinoma-local-data', update);

@@ -1,0 +1,19 @@
+{
+  "offline_match_completed": true,
+  "firestore_reads": 0,
+  "firestore_writes": 0,
+  "offline_asset_downloads": 0,
+  "cached_bytes": 6959306,
+  "cached_files": 59,
+  "online_three_player_match_completed": true,
+  "security_checks_passed": 25,
+  "production_deployed": false,
+  "billing_changed": false,
+  "apk": {
+    "path": "D:\\antigravity\\My Apps\\Dr Imposter\\Clinoma-Games.apk",
+    "bytes": 9071020,
+    "sha256": "1edc5d09ce34c699b1d2b0eefba09f1eecf7a5b99c328b5c6e0d1131b5405719",
+    "verified_build_files": 60,
+    "physical_android_device_tested": false
+  }
+}

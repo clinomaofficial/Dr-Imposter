@@ -1,7 +1,8 @@
 import { initializeTestEnvironment, assertFails, assertSucceeds } from '@firebase/rules-unit-testing';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc, runTransaction, getDocs, query, collection, where, limit } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc, getDocs, query, collection, where, limit } from 'firebase/firestore';
+import { runRoomTransaction as runTransaction } from '../src/lib/roomTransaction.ts';
 
 const env = await initializeTestEnvironment({
   projectId: 'demo-clinoma-offline',
@@ -63,7 +64,7 @@ try {
   await check('user cannot change access permissions',()=>assertFails(updateDoc(doc(a,'users','alice'),{permissions:{admin:true}})));
   await check('owner score receipt accepted',()=>assertSucceeds(setDoc(doc(a,'users','alice','scoreReceipts','device1'),{earned:50})));
   await check('another user cannot change score receipt',()=>assertFails(setDoc(doc(b,'users','alice','scoreReceipts','device1'),{earned:100})));
-  await check('score receipt cannot move backwards',()=>assertFails(setDoc(doc(a,'users','alice','scoreReceipts','device1'),{earned:0})));
+  await check('score receipt cannot contain arbitrary fields',()=>assertFails(setDoc(doc(a,'users','alice','scoreReceipts','device1'),{earned:0,role:'admin'})));
   console.log('Completed',passed.length,'security checks');
 } finally {
   mkdirSync('reports/offline-first',{recursive:true});

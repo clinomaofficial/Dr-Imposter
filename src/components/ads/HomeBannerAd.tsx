@@ -14,6 +14,11 @@ export function HomeBannerAd({ language = 'Arabic' }: HomeBannerAdProps) {
   useEffect(() => {
     const unsub = subscribeToAds(() => {
       const bannerAd = getRandomAdForPlacement('home_banner');
+      if (!bannerAd) {
+        setAd(null);
+        impressionTrackedRef.current = null;
+        return;
+      }
       if (bannerAd && bannerAd.id !== impressionTrackedRef.current) {
         setAd(bannerAd);
         impressionTrackedRef.current = bannerAd.id;

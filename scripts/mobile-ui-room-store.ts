@@ -41,6 +41,17 @@ export const setDoc = async (ref: any, value: any) => {
   if (!ref.path.startsWith('rooms/')) throw new Error('Cloud writes are disabled in UI fixtures');
   room=structuredClone(value); localId=room.hostId; emit();
 };
+export const runTransaction = async (_db: unknown, action: (tx: any) => Promise<any>) => {
+  room.memberIds ??= room.players.map((p: any) => p.id);
+  room.expiresAt ??= Date.now()+7200000;
+  const writes: Array<() => Promise<unknown>> = [];
+  const result = await action({ get: getDoc,
+    update: (ref: any, patch: any) => writes.push(() => updateDoc(ref, patch)),
+    set: (ref: any, data: any) => writes.push(() => setDoc(ref, data)), delete: () => {},
+  });
+  for (const write of writes) await write();
+  return result;
+};
 (window as any).roomFixture = {
   get: () => structuredClone(room), localId: () => localId,
   failNextWrite: () => { failNextWrite=true; },

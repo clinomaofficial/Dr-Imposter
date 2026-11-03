@@ -37,7 +37,7 @@ export const medicalWords: MedicalWord[] = [
     id: 'w3',
     word: { Arabic: "العضلة ثنائية الرؤوس", English: "Biceps" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Muscle',
     subjects: ["Anatomy","Physiology","Orthopedics","General Surgery","Rheumatology"],
     synonyms: ["العضلة ثنائية الرؤوس","الباي","البايسبس","بايسيبس","العضلة ذات الرأسين","ثنائية الرؤوس العضدية"],
@@ -49,7 +49,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Physiology","Neurology","Orthopedics","General Surgery"],
     synonyms: ["عصب الزند","العصب الزندي","عصب كوع","الزند","عرق الزند","Ulnar"],
     guessingDifficulty: 3
   },
@@ -69,7 +69,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
-    subjects: ["General Medicine","Emergency Medicine","Anaesthesia","Clinical Toxicology","Pharmacology"],
+    subjects: ["General Medicine","Internal Medicine","Emergency Medicine","Cardiology","Pulmonology","Pediatrics"],
     synonyms: ["سماعة طبيبة","سماعة","سماعه","السماعة الطبية","سماعة الطبيب","سماعه طبيه"],
     guessingDifficulty: 1
   },
@@ -115,11 +115,11 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w11',
-    word: { Arabic: "الأنيوريزم", English: "Aneurysm" },
+    word: { Arabic: "تمدد الأوعية الدموية (أم الدم)", English: "Aneurysm" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["General Surgery","Cardiology"],
+    subjects: ["Vascular Surgery","Cardiology","Neurology","General Surgery","Emergency Medicine"],
     synonyms: ["الأنيوريزم","أنيوريزم","تمدد الشرايين","أم الدم","تمدد لوكالي","Aneurism"],
     guessingDifficulty: 3
   },
@@ -127,19 +127,19 @@ export const medicalWords: MedicalWord[] = [
     id: 'w12',
     word: { Arabic: "الميتوكوندريا", English: "Mitochondria" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Biochemistry","Histology"],
     synonyms: ["الميتوكوندريا","ميتوكوندريا","بيوت الطاقة","الميتوكندريا","مصنع الطاقة"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w13',
     word: { Arabic: "عضلة الحجاب الحاجز", English: "Diaphragm" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Muscle',
-    subjects: ["Anatomy","Physiology","Orthopedics","General Surgery","Pulmonology","Emergency Medicine","Anaesthesia","Internal Medicine","Rheumatology"],
+    subjects: ["Anatomy","Physiology","Pulmonology","General Surgery","Anaesthesia"],
     synonyms: ["عضلة الحجاب الحاجز","حجاب حاجز","الحجاب الحاجز","حجاب الحاجز"],
     guessingDifficulty: 2
   },
@@ -149,7 +149,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Physiology","Neurology","Gastroenterology"],
     synonyms: ["العصب الحائر","الحائر","العصب العاشر","العصب المبهم","العصب المبهم العاشر","Vagus"],
     guessingDifficulty: 3
   },
@@ -167,17 +167,17 @@ export const medicalWords: MedicalWord[] = [
     id: 'w16',
     word: { Arabic: "جهاز الضغط", English: "Sphygmomanometer" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Equipment',
     subjects: ["General Medicine","Emergency Medicine","Anaesthesia"],
     synonyms: ["جهاز الضغط","مقياس الضغط","جهاز ضغط الدم","زئبقي الضغط","كفة الضغط"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w17',
     word: { Arabic: "ثلاثي الرؤوس العضدية", English: "Triceps brachii" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Muscle',
     subjects: ["Anatomy","Physiology","Orthopedics","General Surgery"],
     synonyms: ["ثلاثي الرؤوس العضدية","التراي","ترايسبس","ترايسيبس","العضلة ثلاثية الرؤوس","ثنائية العضدية"],
@@ -189,7 +189,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Physiology","Neurology","Orthopedics","Rheumatology"],
     synonyms: ["العصب الوركي","عرق النسا","العصب النساوي","عرق نسا","الوركي","Sciatica"],
     guessingDifficulty: 3
   },
@@ -257,7 +257,7 @@ export const medicalWords: MedicalWord[] = [
     id: 'w25',
     word: { Arabic: "عضلة الفخذ", English: "Quadriceps" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Muscle',
     subjects: ["Anatomy","Physiology","Orthopedics","General Surgery","Rheumatology"],
     synonyms: ["عضلة الفخذ","الكوادرسبس","رباعية الرؤوس","عضلة الفخذ الأمامية","رباعية الفخذ"],
@@ -269,7 +269,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry","Ophthalmology"],
+    subjects: ["Anatomy","Physiology","Ophthalmology","Neurology"],
     synonyms: ["العصب البصري","العصب الثاني","عصب بصري","عصب العين","Optic"],
     guessingDifficulty: 3
   },
@@ -287,11 +287,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w28',
     word: { Arabic: "عظمة الفخذ", English: "Femur" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Anatomy","Orthopedics","Rheumatology","Physiology","General Surgery"],
     synonyms: ["عظمة الفخذ","فخذ","عظم الفخذ","الفيمر","علاية الورك"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w29',
@@ -405,11 +405,11 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w40',
-    word: { Arabic: "الرباط الصليبي خلفي او امامي", English: "Cruciate Ligament" },
+    word: { Arabic: "الرباط الصليبي", English: "Cruciate Ligament" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Anatomy","General Surgery"],
+    subjects: ["Anatomy","Orthopedics","General Surgery"],
     synonyms: ["الرباط الصليبي خلفي او امامي","صليبي","الرباط الصليبي","رباط الصليبي","قطع صليبي","ACL","PCL"],
     guessingDifficulty: 3
   },
@@ -429,7 +429,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Internal Medicine","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Rheumatology","Internal Medicine","Immunology","Orthopedics"],
     synonyms: ["التهاب المفاصل الروماتويدي","روماتويد","الروماتويد","المفاصل الروماتيدي","التهاب روماتويدي","RA"],
     guessingDifficulty: 2
   },
@@ -447,9 +447,9 @@ export const medicalWords: MedicalWord[] = [
     id: 'w44',
     word: { Arabic: "الأدرينالين", English: "Adrenaline" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Physiology","Pharmacology","Urology","Internal Medicine","Anatomy","Pathology","Endocrinology","Biochemistry"],
+    subjects: ["Physiology","Endocrinology","Pharmacology","Emergency Medicine","Biochemistry"],
     synonyms: ["الأدرينالين","ادرينالين","ادريانالين","هرمون الخوف","إبينفرين","Epinephrine"],
     guessingDifficulty: 2
   },
@@ -469,7 +469,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Neurology","Physiology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology","Otolaryngology"],
     synonyms: ["العصب السابع","عصب سابع","العصب الوجهي","شلل بيل","اللقوة","Bell Palsy"],
     guessingDifficulty: 2
   },
@@ -487,11 +487,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w48',
     word: { Arabic: "اليرقان", English: "Jaundice" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Disease',
     subjects: ["Internal Medicine","Pediatrics"],
     synonyms: ["اليرقان","الصفار","صفار الكبد","أبو صفار","سفيرة","اليرقان المواليد"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w49',
@@ -507,11 +507,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w50',
     word: { Arabic: "القولون العصبي", English: "Irritable Bowel Syndrome" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Disease',
     subjects: ["Internal Medicine","Neurology","Anatomy","Physiology","Psychiatry","Gastroenterology","General Surgery"],
     synonyms: ["القولون العصبي","قولون عصبي","تهيج القولون","تشنج القولون","IBS"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w51',
@@ -565,7 +565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w56',
-    word: { Arabic: "تلسكوب داخلي", English: "Endoscope" },
+    word: { Arabic: "المنظار الداخلي", English: "Endoscope" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -619,7 +619,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Internal Medicine"],
+    subjects: ["Internal Medicine","Pulmonology","Infectious Diseases","Microbiology"],
     synonyms: ["السل","الدرن","درن رئوي","درن","سل","تي بي","TB"],
     guessingDifficulty: 1
   },
@@ -707,11 +707,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w70',
     word: { Arabic: "التصوير بالرنين المغناطيسي", English: "MRI" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Equipment',
     subjects: ["Radiology","Emergency Medicine","General Medicine","Anaesthesia"],
     synonyms: ["التصوير بالرنين المغناطيسي","رنين مغناطيسي","اشعة رنين","رنين","ام ار اي"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w71',
@@ -719,7 +719,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 1,
     type: 'Other',
-    subjects: ["Physiology","Cardiology","Vascular Surgery","Anatomy","Internal Medicine","Emergency Medicine"],
+    subjects: ["Physiology","Cardiology","Emergency Medicine"],
     synonyms: ["النبض","نبض","نبضات القلب","معدل النبض","Heart Rate"],
     guessingDifficulty: 1
   },
@@ -737,9 +737,9 @@ export const medicalWords: MedicalWord[] = [
     id: 'w73',
     word: { Arabic: "النخاع الشوكي", English: "Spinal Cord" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Organ',
-    subjects: ["Anatomy","Neurology","Physiology","Pathology","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology"],
     synonyms: ["النخاع الشوكي","حبل شوكي","النخاع الشوكي","النخاع المقذوف"],
     guessingDifficulty: 2
   },
@@ -747,11 +747,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w74',
     word: { Arabic: "عظم الترقوة", English: "Clavicle" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Anatomy","Orthopedics","Rheumatology","Physiology","General Surgery"],
     synonyms: ["عظم الترقوة","الترقوة","ترقوة","عظمة الترقوة"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w75',
@@ -785,11 +785,11 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w78',
-    word: { Arabic: "الألبcontrolتول", English: "Albuterol" },
+    word: { Arabic: "سالبوتامول (فنتولين)", English: "Albuterol" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Pharmacology","Internal Medicine"],
+    subjects: ["Pharmacology","Pulmonology","Emergency Medicine","Internal Medicine"],
     synonyms: ["الألبcontrolتول","فنتولين","سالبوتامول","بخاخ الربو الأزرق","Ventolin","Salbutamol"],
     guessingDifficulty: 2
   },
@@ -799,7 +799,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Physiology","Biochemistry"],
+    subjects: ["Endocrinology","Biochemistry","Physiology","Internal Medicine"],
     synonyms: ["الكورتيزول","كورتيزول","هرمون الإجهاد","هرمون الكورتيزول"],
     guessingDifficulty: 3
   },
@@ -889,7 +889,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pediatrics","Family Medicine","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Otolaryngology","Pediatrics","Family Medicine","Infectious Diseases"],
     synonyms: ["التهاب الأذن الوسطى","التهاب اذن وسطى","اذن وسطى","الم الأذن للأطفال","التهاب أذن"],
     guessingDifficulty: 2
   },
@@ -928,8 +928,8 @@ export const medicalWords: MedicalWord[] = [
     word: { Arabic: "استئصال الغدة الدرقية", English: "Thyroidectomy" },
     level: 'Clinical',
     difficulty: 2,
-    type: 'Other',
-    subjects: ["General Surgery","Endocrinology","Internal Medicine","Physiology","Biochemistry"],
+    type: 'Technique',
+    subjects: ["General Surgery","Endocrinology","Otolaryngology"],
     synonyms: ["استئصال الغدة الدرقية","شيل الدرقية","عملية جراحة الدرق","استئصال الدرقية"],
     guessingDifficulty: 2
   },
@@ -939,7 +939,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
-    subjects: ["Anatomy","Physiology","Orthopedics","General Surgery","Cardiology","Vascular Surgery","Internal Medicine","Emergency Medicine","Rheumatology"],
+    subjects: ["Anatomy","Physiology","Cardiology","Pathology"],
     synonyms: ["عضلة القلب","عضلة قلبية","القلبية المصمتة","العضلة القلبية المتخصصة"],
     guessingDifficulty: 3
   },
@@ -949,7 +949,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pediatrics","Family Medicine","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Otolaryngology","Pediatrics","Family Medicine","Infectious Diseases"],
     synonyms: ["التهاب البلعوم والحلق","احتقان الحلق","التهاب حلق","لوزتين","التهاب اللوز"],
     guessingDifficulty: 2
   },
@@ -959,7 +959,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Neurology"],
+    subjects: ["Neurology","Internal Medicine","Immunology"],
     synonyms: ["تصلب متعدد","تصلب لويحي","التصلب المتعدد","ام اس","MS"],
     guessingDifficulty: 2
   },
@@ -969,7 +969,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Neurology","Internal Medicine","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Neurology","Internal Medicine","Immunology"],
     synonyms: ["الوهن العضلي الوبيل","وهن عضلي","الوهن العضلي","مياستينا"],
     guessingDifficulty: 3
   },
@@ -1009,7 +1009,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Internal Medicine","General Surgery","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology","Internal Medicine","General Surgery","Emergency Medicine"],
     synonyms: ["التهاب البنكرياس","التهاب بنكرياس","تكلس بنكرياسي حاد","البنكرياس الحاد"],
     guessingDifficulty: 2
   },
@@ -1049,7 +1049,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","General Surgery","Anatomy","Physiology"],
+    subjects: ["Obstetrics and Gynecology","Emergency Medicine","General Surgery"],
     synonyms: ["الحمل خارج الرحم","حمل مهاجر","حمل خارجي","اكطوبيك","Ectopic"],
     guessingDifficulty: 2
   },
@@ -1059,7 +1059,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Anatomy","Physiology","General Surgery","Clinical Toxicology","Emergency Medicine","Pharmacology"],
+    subjects: ["Obstetrics and Gynecology","Internal Medicine","Emergency Medicine"],
     synonyms: ["تسمم الحمل","ضغط حملي زلالي","اكلامبسيا","تالق الحمل","Pre-eclampsia"],
     guessingDifficulty: 2
   },
@@ -1069,7 +1069,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Internal Medicine","Urology","Physiology","Anatomy","Pathology","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Nephrology","Internal Medicine","Pediatrics","Pathology"],
     synonyms: ["التهاب كبيبات الكلى","التهاب الفراش الكببي","كبيبي كلوي","التهاب كبيبي"],
     guessingDifficulty: 3
   },
@@ -1109,7 +1109,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pediatrics"],
+    subjects: ["Pediatrics","Infectious Diseases","Pulmonology"],
     synonyms: ["السعال الديكي","كحة ديكية","سعال ديكي","سعال منبح","Pertussis"],
     guessingDifficulty: 2
   },
@@ -1145,11 +1145,11 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w114',
-    word: { Arabic: "التهاب هاشيموتو غدة", English: "Hashimoto Thyroiditis" },
+    word: { Arabic: "التهاب هاشيموتو المناعي", English: "Hashimoto Thyroiditis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Internal Medicine","Endocrinology","Physiology","Biochemistry","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Endocrinology","Internal Medicine","Immunology","Pathology"],
     synonyms: ["التهاب هاشيموتو غدة","هاشيموتو","هشموتو","خمول الدرقية المناعي"],
     guessingDifficulty: 3
   },
@@ -1157,61 +1157,61 @@ export const medicalWords: MedicalWord[] = [
     id: 'w115',
     word: { Arabic: "النقرس", English: "Gout" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Internal Medicine","Rheumatology"],
     synonyms: ["النقرس","داء الملوك","نقرس","اليوريك اسيد","حمض البوليك"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w116',
     word: { Arabic: "هشاشة العظام", English: "Osteoporosis" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Internal Medicine","Rheumatology","Orthopedics","Anatomy","Physiology","General Surgery"],
     synonyms: ["هشاشة العظام","هشاشة عظام","ضعف العظم الكلسي","نقص الكثافة العظمية"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w117',
     word: { Arabic: "الصدفية", English: "Psoriasis" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Dermatology","Pathology","Histology"],
     synonyms: ["الصدفية","صدفية","صدفيه","لوحات فضية بالجلد"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w118',
     word: { Arabic: "الأكزيما", English: "Eczema" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Dermatology","Pathology","Histology"],
     synonyms: ["الأكزيما","اكزيما","أكزيما التهاب وتأتب","الحكة الجلدية"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w119',
     word: { Arabic: "المياه الزرقاء بالعين", English: "Glaucoma" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Ophthalmology","Anatomy","General Surgery"],
     synonyms: ["المياه الزرقاء بالعين","جلوكوما","الجلوكوما","الماء الازرق","ضغط العين"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w120',
     word: { Arabic: "إعتام عدسة العين", English: "Cataract" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Ophthalmology","Anatomy","General Surgery"],
     synonyms: ["إعتام عدسة العين","الماء الابيض","مياه بيضاء","ساد","كتاركت"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w121',
@@ -1259,7 +1259,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Nerve',
-    subjects: ["Anatomy","Neurology","Physiology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology"],
     synonyms: ["العصب ثلاثي التوائم","العصب الخامس","ثلاثي التوائم","عصب الاسنان والوجه الرئيسي"],
     guessingDifficulty: 3
   },
@@ -1279,7 +1279,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Pediatrics","Internal Medicine","Emergency Medicine","General Medicine","Anaesthesia","Urology","Physiology","Anatomy","Pathology"],
+    subjects: ["Pulmonology","Emergency Medicine","Pediatrics","Internal Medicine"],
     synonyms: ["جهاز النيبولايزر","جلسات بخار","جهاز البخار الصدري","نيبولايزر","تبخيرة"],
     guessingDifficulty: 2
   },
@@ -1349,7 +1349,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Vascular Surgery","Physiology","Anatomy","Internal Medicine","Emergency Medicine","Orthopedics","Rheumatology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Cardiology","Internal Medicine","Infectious Diseases","Pediatrics","Pathology"],
     synonyms: ["التهاب عضلة القلب","التهاب العضلة القلبية"],
     guessingDifficulty: 2
   },
@@ -1459,7 +1459,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Internal Medicine","General Surgery","Gastroenterology","Physiology","Anatomy","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology","Internal Medicine","General Surgery","Pathology"],
     synonyms: ["التهاب القولون التقرحي","قولون تقرحي","القولون التقرحي","UC"],
     guessingDifficulty: 2
   },
@@ -1469,7 +1469,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Internal Medicine","Gastroenterology","General Surgery","Physiology","Anatomy","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology","Internal Medicine","General Surgery"],
     synonyms: ["ارتجاع المريء","ارتجاع المريء","حرقان الصدر للمعدة","GERD","ارتجاع"],
     guessingDifficulty: 2
   },
@@ -1479,7 +1479,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["General Surgery","Hematology","Physiology","Biochemistry","Internal Medicine","Gastroenterology","Anatomy"],
+    subjects: ["General Surgery","Gastroenterology"],
     synonyms: ["البواسير","بواسير","شرخ شرجي وبواسير"],
     guessingDifficulty: 2
   },
@@ -1499,7 +1499,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Emergency Medicine","General Surgery"],
+    subjects: ["Pulmonology","Emergency Medicine","General Surgery","Thoracic Surgery"],
     synonyms: ["استرواح الصدر","هواء على الرئة","انكماش الرئة الميكانيكي","هواء بالصدر"],
     guessingDifficulty: 2
   },
@@ -1509,7 +1509,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pulmonology","Emergency Medicine","Anatomy","Physiology","Anaesthesia","Internal Medicine"],
+    subjects: ["Pulmonology","Emergency Medicine","Cardiology","Internal Medicine","Vascular Surgery"],
     synonyms: ["الجلطة الرئوية","جلطة الرئة","انصمام رئوي","PE"],
     guessingDifficulty: 2
   },
@@ -1549,7 +1549,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Neurology","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Neurology","Internal Medicine"],
     synonyms: ["التصلب الضموري الجانبي","ضمور العضلات الشوكي","ALS"],
     guessingDifficulty: 3
   },
@@ -1569,7 +1569,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Psychiatry","Internal Medicine"],
+    subjects: ["Psychiatry"],
     synonyms: ["الاضطراب ثنائي القطب","ثنائي القطب","الهوس الاكتئابي","امراض وجدانية"],
     guessingDifficulty: 2
   },
@@ -1579,7 +1579,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Pediatrics","Psychiatry","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Pediatrics","Psychiatry","Neurology","Genetics"],
     synonyms: ["طيف التوحد","توحد","التوحد","ASD"],
     guessingDifficulty: 2
   },
@@ -1639,7 +1639,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Hematology","Neurology","Anatomy","Physiology","Internal Medicine","Psychiatry","Orthopedics","Rheumatology","General Surgery","Pathology"],
+    subjects: ["Hematology","Oncology","Internal Medicine","Orthopedics","Pathology"],
     synonyms: ["سرطان نخاع العظم","المايلوما المتعددة","مايلوما"],
     guessingDifficulty: 2
   },
@@ -1649,7 +1649,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Pediatrics","Urology","Genetics","Internal Medicine","Neurology","Physiology","Anatomy","Pathology"],
+    subjects: ["Nephrology","Pediatrics","Internal Medicine","Pathology"],
     synonyms: ["المتلازمة الكلوية","نفروتيك","زلال البول الكثيف"],
     guessingDifficulty: 2
   },
@@ -1659,7 +1659,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Urology","Infectious Diseases","Internal Medicine","Physiology","Anatomy","Pathology","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Nephrology","Urology","Infectious Diseases","Internal Medicine"],
     synonyms: ["التهاب حوض الكلية","تهيج الكلى البكتيري","التهاب حوض كلى"],
     guessingDifficulty: 2
   },
@@ -1699,7 +1699,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Rheumatology","Orthopedics","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Rheumatology","Orthopedics","Internal Medicine"],
     synonyms: ["التهاب الفقار المقسط","صلابة العمود الفقري","التهاب الفقار الالتصاقي","البامبو"],
     guessingDifficulty: 2
   },
@@ -1759,7 +1759,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Pharmacology","Endocrinology","Internal Medicine","Forensic Medicine","Pathology"],
+    subjects: ["Pharmacology","Endocrinology","Internal Medicine"],
     synonyms: ["ميتفورمين","منظم السكر","جلوكوفاج","Glucophage"],
     guessingDifficulty: 2
   },
@@ -1889,7 +1889,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology","Orthopedics"],
     synonyms: ["العصب الفخذي","عصب فخذي","فخذي"],
     guessingDifficulty: 3
   },
@@ -1899,7 +1899,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology","Orthopedics"],
     synonyms: ["العصب الكعبري","كعبري","عصب كعبري","تسبب اليد المنسدلة"],
     guessingDifficulty: 3
   },
@@ -1909,7 +1909,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
-    subjects: ["Anatomy","General Surgery","Physiology","Pathology","Gastroenterology","Internal Medicine","Urology"],
+    subjects: ["Anatomy","Physiology","Gastroenterology","General Surgery","Pathology"],
     synonyms: ["المرارة","مرارة","كيس الصفراء","الحويصلة الصفراوية"],
     guessingDifficulty: 3
   },
@@ -1939,7 +1939,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
-    subjects: ["Anatomy","Neurology","Physiology","Pathology","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Physiology"],
     synonyms: ["المخيخ","مخيخ","مسؤول التوازن الحركي بالمخ"],
     guessingDifficulty: 3
   },
@@ -1959,7 +1959,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Anatomy","Physiology","Urology","Internal Medicine","Pathology"],
+    subjects: ["Anatomy","Physiology","Nephrology","Pathology"],
     synonyms: ["النيفرون","نيفرون الكلى","نيفرونات الكلية","وحدة تصفية الكلى"],
     guessingDifficulty: 3
   },
@@ -1989,7 +1989,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases"],
+    subjects: ["Infectious Diseases","Dermatology","Urology"],
     synonyms: ["الزهري","مرض الزهري","قرحة سيفلس بنسلينية"],
     guessingDifficulty: 2
   },
@@ -1999,7 +1999,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases"],
+    subjects: ["Infectious Diseases","Urology","Obstetrics and Gynecology"],
     synonyms: ["السيلان","سيلان بكتيري جنسي"],
     guessingDifficulty: 2
   },
@@ -2009,7 +2009,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases"],
+    subjects: ["Infectious Diseases","Gastroenterology","Internal Medicine","Emergency Medicine"],
     synonyms: ["الكوليرا","كوليرا الإسهال المائي الكثيف","ماء الرز"],
     guessingDifficulty: 2
   },
@@ -2019,7 +2019,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Infectious Diseases"],
+    subjects: ["Infectious Diseases","Parasitology","Dermatology"],
     synonyms: ["الليشمانيا","حبة حلب","ليشمانيا جلدية أحشاء"],
     guessingDifficulty: 3
   },
@@ -2079,7 +2079,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Biochemistry","General Medicine","Pulmonology","Emergency Medicine","Anatomy","Physiology","Anaesthesia","Internal Medicine"],
+    subjects: ["Biochemistry","Pediatrics","Internal Medicine","Hematology"],
     synonyms: ["الإسقربوط","مرض الاسقربوط","نقص فيتامين ج","نزيف اللثة فيتامين سي"],
     guessingDifficulty: 2
   },
@@ -2139,7 +2139,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pediatrics","General Surgery","Gastroenterology","Physiology","Anatomy","Internal Medicine"],
+    subjects: ["Pediatrics","General Surgery","Emergency Medicine"],
     synonyms: ["انغلاف الأمعاء","تداخل الامعاء التلسكوبي المسبب للبراز الهلامي"],
     guessingDifficulty: 2
   },
@@ -2149,7 +2149,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
-    subjects: ["Biochemistry","Hematology","Physiology","Internal Medicine"],
+    subjects: ["Nephrology","Hematology","Physiology","Biochemistry","Internal Medicine"],
     synonyms: ["إريثروبويتين","هرمون تصنيع كرات الدم الحمراء الكلوي","EPO"],
     guessingDifficulty: 3
   },
@@ -2169,7 +2169,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Biochemistry","Cardiology","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Biochemistry","Cardiology","Physiology","Emergency Medicine"],
     synonyms: ["ميوجلوبين","ميوغلوبين العضلات القلبية الأول في الجلطة"],
     guessingDifficulty: 3
   },
@@ -2179,7 +2179,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Biochemistry","Urology"],
+    subjects: ["Biochemistry","Nephrology","Urology","Internal Medicine"],
     synonyms: ["كرياتينين","الكرياتينين","مؤشر وظائف الكلى المعملي الأساسي"],
     guessingDifficulty: 3
   },
@@ -2189,7 +2189,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Biochemistry","Gastroenterology"],
+    subjects: ["Biochemistry","Gastroenterology","Internal Medicine","Pediatrics"],
     synonyms: ["بيليروبين","الصفراء","البليروبين المسبب للصفر بالعيون والجلد"],
     guessingDifficulty: 3
   },
@@ -2199,7 +2199,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
-    subjects: ["Anatomy","Obstetrics and Gynecology","Physiology","Pathology","Endocrinology","Internal Medicine","Biochemistry"],
+    subjects: ["Anatomy","Obstetrics and Gynecology"],
     synonyms: ["غدة بارثولين","بارثولين التهاب تكيس"],
     guessingDifficulty: 3
   },
@@ -2229,7 +2229,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Physiology","Neurology","Orthopedics"],
     synonyms: ["العصب الأوسط","العصب المتوسط المسبب لتنميل متلازمة النفق الرسغي"],
     guessingDifficulty: 3
   },
@@ -2239,7 +2239,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Nerve',
-    subjects: ["Anatomy","Physiology","Neurology","General Surgery","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Physiology","Neurology","Pulmonology"],
     synonyms: ["العصب الحجابي","العصب المغذي للحجاب الحاجز التنفسي"],
     guessingDifficulty: 3
   },
@@ -2289,7 +2289,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Emergency Medicine","General Medicine","Anaesthesia","Cardiology","Vascular Surgery","Physiology","Anatomy","Internal Medicine"],
+    subjects: ["Pulmonology","Emergency Medicine","Anaesthesia","Pediatrics","Internal Medicine"],
     synonyms: ["جهاز قياس الأكسجين بالاصبع","نبضية الأكسجين بالأطراف"],
     guessingDifficulty: 2
   },
@@ -2299,17 +2299,17 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Anaesthesia","Emergency Medicine","General Medicine"],
+    subjects: ["Otolaryngology","Anaesthesia","Emergency Medicine"],
     synonyms: ["منظار الحنجرة","جهاز تنبيب القصبة الهوائية وتأمين مجرى المستشفى"],
     guessingDifficulty: 2
   },
   {
     id: 'w230',
-    word: { Arabic: "جهاز قياس السكر المنزلي بالوخز", English: "Glucometer" },
+    word: { Arabic: "جهاز قياس السكر (الجلوكوميتر)", English: "Glucometer" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Endocrinology","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Endocrinology","Internal Medicine","Emergency Medicine","Family Medicine"],
     synonyms: ["جهاز قياس السكر المنزلي بالوخز","شرائح قياس السكر"],
     guessingDifficulty: 2
   },
@@ -2319,7 +2319,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Parasite',
-    subjects: ["Parasitology","Microbiology","Obstetrics and Gynecology","Infectious Diseases","Gastroenterology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Parasitology","Obstetrics and Gynecology","Urology","Infectious Diseases"],
     synonyms: ["المشعرة المهبلية","تريكوموناس","داء المشعرات","Trichomonas","Trichomoniasis"],
     guessingDifficulty: 3
   },
@@ -2327,7 +2327,7 @@ export const medicalWords: MedicalWord[] = [
     id: 'w232',
     word: { Arabic: "الأميبا", English: "Amoeba" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Parasite',
     subjects: ["Parasitology","Gastroenterology","Microbiology","Infectious Diseases"],
     synonyms: ["الأميبا","أميبا","اميبا","الدوسنتاريا الأميبية","الزحار الأميبي"],
@@ -2357,7 +2357,7 @@ export const medicalWords: MedicalWord[] = [
     id: 'w235',
     word: { Arabic: "البلهارسيا", English: "Bilharzia" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Parasite',
     subjects: ["Parasitology","Urology","Microbiology","Infectious Diseases","Gastroenterology"],
     synonyms: ["البلهارسيا","بلهارسيا","شيستوسوما","بلهارسيا بولية"],
@@ -2449,7 +2449,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
-    subjects: ["Parasitology","Neurology","Microbiology","Infectious Diseases","Gastroenterology"],
+    subjects: ["Parasitology","Dermatology","Pediatrics"],
     synonyms: ["القمل","قمل","قمل الرأس","الصيبان"],
     guessingDifficulty: 3
   },
@@ -2509,7 +2509,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
-    subjects: ["Parasitology","Rheumatology","Microbiology","Infectious Diseases","Gastroenterology"],
+    subjects: ["Parasitology","Dermatology"],
     synonyms: ["بق الفراش","بق","البق","حشرة الفراش"],
     guessingDifficulty: 3
   },
@@ -2519,7 +2519,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Emergency Medicine","Cardiology","Anaesthesia","Vascular Surgery","Physiology","Anatomy","Internal Medicine"],
+    subjects: ["Emergency Medicine","Cardiology","Anaesthesia"],
     synonyms: ["الإنعاش القلبي الرئوي","إنعاش القلب الميكانيكي اليدوي"],
     guessingDifficulty: 1
   },
@@ -2537,11 +2537,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w253',
     word: { Arabic: "قناع الصمام الكيسي", English: "Bag Valve Mask" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Equipment',
     subjects: ["Emergency Medicine","Anaesthesia","Critical Care","General Medicine","Cardiology","Vascular Surgery","Physiology","Anatomy","Internal Medicine"],
     synonyms: ["قناع الصمام الكيسي","الأمبوباج","كيس أمبو","Bag Valve Mask","Ambu Bag","BVM"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w254',
@@ -2587,11 +2587,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w258',
     word: { Arabic: "الريبوسوم", English: "Ribosome" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Biochemistry","Physiology","Histology","Microbiology"],
     synonyms: ["الريبوسوم","جسيم ريبي","صانعة البروتين","Ribosome","Ribosomes"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w259',
@@ -2617,11 +2617,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w261',
     word: { Arabic: "الزائدة الدودية", English: "Appendix" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Anatomy","General Surgery","Gastroenterology","Physiology","Internal Medicine"],
     synonyms: ["الزائدة الدودية","التهاب الأعور الجراحي الحاد"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w262',
@@ -2647,11 +2647,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w264',
     word: { Arabic: "جلطة الأوردة العميقة", English: "Deep Vein Thrombosis" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Cardiology","Vascular Surgery","Internal Medicine","Physiology","Anatomy","Emergency Medicine","Hematology","Biochemistry"],
     synonyms: ["جلطة الأوردة العميقة","جلطة الساق العميقة","جلطة وريدية","دي في تي","تورم الساق","DVT"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w265',
@@ -2689,7 +2689,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Internal Medicine","Vascular Surgery","Physiology","Anatomy","Emergency Medicine","Orthopedics","Rheumatology","General Surgery"],
+    subjects: ["Cardiology","Internal Medicine","Pathology"],
     synonyms: ["اعتلال عضلة القلب","ضعف عضلة القلب","تضخم القلب","اعتلال القلب التوسعي","اعتلال تضخمي"],
     guessingDifficulty: 2
   },
@@ -2699,7 +2699,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Cardiology","Infectious Diseases","Internal Medicine","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Cardiology","Infectious Diseases","Internal Medicine","Microbiology","Pathology"],
     synonyms: ["التهاب الشغاف الإنتاني","التهاب بطانة القلب","بكتيريا الصمامات","عقيدات بوزلر","بقع روت"],
     guessingDifficulty: 3
   },
@@ -2709,7 +2709,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Internal Medicine","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Cardiology","Internal Medicine","Emergency Medicine"],
     synonyms: ["الرفرفة الأذينية","رفرفة الأذين","تسارع ضربات القلب الأذيني","تخطيط سن المنشار","نبضات منشارية"],
     guessingDifficulty: 2
   },
@@ -2749,7 +2749,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Neurology","Internal Medicine","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Neurology","Otolaryngology","Internal Medicine"],
     synonyms: ["شلل بل","شلل العصب السابع","اللقوة","التهاب العصب السابع","شلل وجهي نصفي"],
     guessingDifficulty: 2
   },
@@ -2759,7 +2759,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Pediatrics","Neurology","Genetics","Anatomy","Physiology","Internal Medicine","Psychiatry"],
+    subjects: ["Pediatrics","Neurology","Genetics"],
     synonyms: ["الضمور العضلي الشوكي","ضمور العضلات الشوكي","مرض SMA","ضمور شوكي","حقنة الزولجنسما"],
     guessingDifficulty: 3
   },
@@ -2775,7 +2775,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w277',
-    word: { Arabic: "التغفيق", English: "Narcolepsy" },
+    word: { Arabic: "التغفيق (داء النوم القهري)", English: "Narcolepsy" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -2819,7 +2819,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Psychiatry","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["Psychiatry","Family Medicine"],
     synonyms: ["اضطراب ما بعد الصدمة","صدمة نفسية","كرب ما بعد الصدمة","قلق الصدمة","PTSD"],
     guessingDifficulty: 2
   },
@@ -2869,7 +2869,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Gastroenterology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Gastroenterology","General Surgery","Internal Medicine"],
     synonyms: ["التهاب الرتوج","التهاب الجيوب القولونية","جيوب القولون المتهبة","فتق الغشاء المخاطي المعوي"],
     guessingDifficulty: 2
   },
@@ -2889,7 +2889,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["General Surgery","Emergency Medicine","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["General Surgery","Emergency Medicine","Gastroenterology","Internal Medicine"],
     synonyms: ["التهاب الصفاق","التهاب الغشاء البريتوني","تسمم البطن","التهاب تجويف البطن"],
     guessingDifficulty: 2
   },
@@ -2899,7 +2899,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Gastroenterology","General Surgery","Internal Medicine","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology","General Surgery","Internal Medicine","Infectious Diseases"],
     synonyms: ["التهاب القنوات الصفراوية","التهاب مجاري الصفراء","عدوى القنوات المرارية","خماسي رينولدز"],
     guessingDifficulty: 2
   },
@@ -2909,7 +2909,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Gastroenterology","Internal Medicine","Pathology","General Surgery","Physiology","Anatomy","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology","Internal Medicine","Immunology","Pathology"],
     synonyms: ["التهاب القنوات الصفراوية الأولي","تليف كبدي مراري أولي","مرض PBC","مناعة ذاتية للكبد"],
     guessingDifficulty: 3
   },
@@ -2919,7 +2919,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Internal Medicine","Gastroenterology","General Surgery","Physiology","Anatomy","Neurology","Psychiatry","Hematology","Biochemistry"],
+    subjects: ["Gastroenterology","Internal Medicine","Neurology","Critical Care"],
     synonyms: ["الاعتلال الدماغي الكبدي","غيبوبة كبدية","تسمم الدماغ بالأمونيا","ارتعاش اليدين الكبدي"],
     guessingDifficulty: 3
   },
@@ -2959,7 +2959,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Pulmonology","Neurology","Pediatrics","Genetics","Internal Medicine"],
+    subjects: ["Pulmonology","Otolaryngology","Neurology","Internal Medicine"],
     synonyms: ["متلازمة انقطاع النفس النومي","انقطاع التنفس أثناء النوم","الاختناق النومي","الشخير وانقطاع النفس"],
     guessingDifficulty: 2
   },
@@ -2969,7 +2969,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pulmonology","Internal Medicine","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Pulmonology","Internal Medicine"],
     synonyms: ["التهاب غشاء الجنب","ذات الجنب","التهاب الجنب","ألم صدر تنفسي غشائي"],
     guessingDifficulty: 2
   },
@@ -2979,7 +2979,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Otolaryngology","Family Medicine","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Otolaryngology","Family Medicine","Pediatrics"],
     synonyms: ["التهاب الحنجرة","بحة الصوت","التهاب الحبال الصوتية","فقدان الصوت المؤقت"],
     guessingDifficulty: 2
   },
@@ -3045,11 +3045,11 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w304',
-    word: { Arabic: "حصوات الكلى الطبية", English: "Nephrolithiasis" },
+    word: { Arabic: "داء التحصي البولي والكلوي", English: "Nephrolithiasis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Urology","General Surgery","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Urology","Nephrology","Emergency Medicine"],
     synonyms: ["حصوات الكلى الطبية","تحصي الكلى","حصوة الكلى","مغص كلوي","أكسالات الكالسيوم"],
     guessingDifficulty: 2
   },
@@ -3069,7 +3069,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Urology","Pediatrics","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Urology","Pediatrics","Nephrology"],
     synonyms: ["الارتجاع المثاني الحالببي","جزر مثاني حالبي","ارتداد البول للكلية","ارتجاع البول"],
     guessingDifficulty: 2
   },
@@ -3099,7 +3099,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Endocrinology","Obstetrics and Gynecology","Internal Medicine","Pediatrics","Genetics","Neurology"],
+    subjects: ["Obstetrics and Gynecology","Endocrinology","Internal Medicine"],
     synonyms: ["متلازمة شيهان","نخر الغدة النخامية بعد الولادة","قصور النخامية الولادي","نزيف الولادة المسبب لكسل الغدد"],
     guessingDifficulty: 3
   },
@@ -3109,17 +3109,17 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Endocrinology","Internal Medicine","Pediatrics","Genetics","Neurology"],
+    subjects: ["Endocrinology","Internal Medicine","Nephrology"],
     synonyms: ["متلازمة كون","ألدوسترونية أولية","زيادة الألدوسترون","ورم قشر الكظر المفرز للألدوسترون"],
     guessingDifficulty: 3
   },
   {
     id: 'w311',
-    word: { Arabic: "التهاب الغدة الدرقية الحاد", English: "De Quervain's Thyroiditis" },
+    word: { Arabic: "التهاب دي كيرفان الدرقي تحت الحاد", English: "De Quervain's Thyroiditis" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Endocrinology","Internal Medicine","Pathology","Physiology","Biochemistry","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Endocrinology","Internal Medicine"],
     synonyms: ["التهاب الغدة الدرقية الحاد","التهاب دي كيرفان للدرقية","التهاب الغدة الدرقية تحت الحاد المؤلم"],
     guessingDifficulty: 3
   },
@@ -3149,7 +3149,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Rheumatology","Immunology","Internal Medicine","Pediatrics","Genetics","Neurology"],
+    subjects: ["Rheumatology","Immunology","Internal Medicine"],
     synonyms: ["متلازمة شوغرن","متلازمة جفاف العين والفم المناعية","شوغرن","جفاف الأغشية المخاطية"],
     guessingDifficulty: 3
   },
@@ -3199,7 +3199,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Orthopedics","Infectious Diseases","General Surgery","Rheumatology","Anatomy","Physiology","Neurology","Internal Medicine","Psychiatry","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Orthopedics","Infectious Diseases","Microbiology","General Surgery","Pediatrics"],
     synonyms: ["التهاب نخاع العظم","التهاب العظم والنقي","عدوى العظام البكتيرية","التهاب العظام"],
     guessingDifficulty: 2
   },
@@ -3209,7 +3209,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Orthopedics","Neurology","General Surgery","Pediatrics","Genetics","Internal Medicine"],
+    subjects: ["Orthopedics","Neurology","Rheumatology","General Surgery"],
     synonyms: ["متلازمة النفق الرسغي","ضغط عصب اليد","اختناق العصب الأوسط","تنميل أصابع اليدين","CTS"],
     guessingDifficulty: 2
   },
@@ -3229,7 +3229,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Pediatrics","Family Medicine","Pathology","Histology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Dermatology","Pediatrics","Immunology","Family Medicine"],
     synonyms: ["التهاب الجلد التأتبي","الإكزيما البنيوية","إكزيما الأطفال المسببة للحكة","أكزيما تأتبية"],
     guessingDifficulty: 2
   },
@@ -3309,7 +3309,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Orthopedics","Pathology","Rheumatology","Anatomy","Physiology","General Surgery","Hematology","Internal Medicine"],
+    subjects: ["Oncology","Orthopedics","Pathology","General Surgery"],
     synonyms: ["سرطان العظام والغرن العظمي","ساركوما عظمية","أورام العظام الخبيثة للأطفال","غرن عظمي"],
     guessingDifficulty: 3
   },
@@ -3319,7 +3319,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Pediatrics","Pathology","Neurology","Anatomy","Physiology","Internal Medicine","Psychiatry"],
+    subjects: ["Oncology","Pediatrics","Pathology","Neurology"],
     synonyms: ["ورم الأرومة العصبية","نيوروبلاستوما","سرطان الغدة الكظرية للأطفال من الخلايا العصبية"],
     guessingDifficulty: 3
   },
@@ -3329,7 +3329,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Pediatrics","Urology","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Oncology","Pediatrics","Urology","Nephrology","Pathology"],
     synonyms: ["ورم ويلمز","سرطان الكلى للأطفال ويلمز","سرطان كلى طفولي"],
     guessingDifficulty: 3
   },
@@ -3379,7 +3379,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Hematology","Internal Medicine","Gastroenterology","Physiology","Biochemistry","Oncology","Pathology"],
+    subjects: ["Hematology","Gastroenterology","Internal Medicine","Immunology"],
     synonyms: ["الأنيميا الخبيثة","أنيميا فقر الدم الخبيث","نقص فيتامين ب12 بسبب نقص العامل الداخلي"],
     guessingDifficulty: 2
   },
@@ -3399,7 +3399,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases","Internal Medicine","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Infectious Diseases","Internal Medicine","Microbiology","Gastroenterology"],
     synonyms: ["حمى التيفوئيد","حمى التيفود","عدوى السالمونيلا التيفية","التيفود"],
     guessingDifficulty: 2
   },
@@ -3409,7 +3409,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases","Emergency Medicine","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Infectious Diseases","Internal Medicine","Emergency Medicine"],
     synonyms: ["الحمى الصفراء","الحمى الصفراء الفيروسية المنقولة بالبعوض","يرقان فيروسي"],
     guessingDifficulty: 2
   },
@@ -3419,7 +3419,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases","Pediatrics","Hematology","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Infectious Diseases","Hematology","Pediatrics","Internal Medicine"],
     synonyms: ["كثرة الوحيدات الخمجية","داء كثرة الوحيدات","مرض القبلة الفيروسي","حمى الغدد الإيبشتاين بار"],
     guessingDifficulty: 2
   },
@@ -3489,7 +3489,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Infectious Diseases","Dermatology","Microbiology","Obstetrics and Gynecology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Infectious Diseases","Dermatology","Obstetrics and Gynecology","Microbiology"],
     synonyms: ["داء المبيضات","عدوى الكانديدا الفطرية","فطريات الفم والمهبل كانديدا","السلاق الأبيض"],
     guessingDifficulty: 2
   },
@@ -3549,7 +3549,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Pathology","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology","Pathology"],
     synonyms: ["العضال الغدي الرحمي","تغدد الرحم","بطانة الرحم الداخلية المهاجرة لعضلة الرحم"],
     guessingDifficulty: 2
   },
@@ -3589,7 +3589,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Otolaryngology","Family Medicine","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Otolaryngology","Dermatology","Family Medicine"],
     synonyms: ["التهاب الأذن الخارجية","أذن السباح","التهاب مجرى السمع الظاهر"],
     guessingDifficulty: 2
   },
@@ -3609,7 +3609,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Otolaryngology","Neurology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Otolaryngology","Neurology"],
     synonyms: ["التهاب التيه الأذني","التهاب الأذن الداخلية الدهليزي","التهاب التيه المسبب للدوخة والدوار"],
     guessingDifficulty: 2
   },
@@ -3635,7 +3635,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w363',
-    word: { Arabic: "لوح اليمين", English: "Scapula" },
+    word: { Arabic: "عظم لوح الكتف", English: "Scapula" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -3697,11 +3697,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w369',
     word: { Arabic: "الجمجمة", English: "Skull" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
     subjects: ["Anatomy","Neurosurgery","Physiology","Pathology"],
     synonyms: ["الجمجمة","جمجمة","عظام الرأس","الجمجمه"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w370',
@@ -3739,7 +3739,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Anatomy","Orthopedics","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["Anatomy","Orthopedics"],
     synonyms: ["عظام مشط القدم","مشط القدم","المشط الرجيلي","مشط قدم"],
     guessingDifficulty: 3
   },
@@ -3847,11 +3847,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w384',
     word: { Arabic: "الجسم الأصفر", English: "Corpus Luteum" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Anatomy","Physiology","Obstetrics and Gynecology","Endocrinology","Clinical Toxicology","Emergency Medicine","Pharmacology"],
+    subjects: ["Anatomy","Physiology","Obstetrics and Gynecology","Endocrinology"],
     synonyms: ["الجسم الأصفر","الغدة الصفراء المبيضية","Corpus Luteum"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w385',
@@ -3877,11 +3877,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w387',
     word: { Arabic: "الخلية العصبية", English: "Neuron" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Cell',
-    subjects: ["Histology","Neurology","Physiology","Pathology","Biochemistry","Anatomy","Internal Medicine","Psychiatry"],
+    subjects: ["Histology","Neurology","Physiology"],
     synonyms: ["الخلية العصبية","خلية عصبية","عصبون","العصبون"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w388',
@@ -3989,7 +3989,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
-    subjects: ["Anatomy","Obstetrics and Gynecology","Histology","Physiology","Pathology","Biochemistry","Orthopedics","Rheumatology","General Surgery"],
+    subjects: ["Anatomy","Obstetrics and Gynecology","Histology","Physiology"],
     synonyms: ["عضلة الرحم","عضلات الرحم","الطبقة العضلية للرحم"],
     guessingDifficulty: 3
   },
@@ -3999,7 +3999,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
-    subjects: ["Anatomy","Neurology","Histology","Physiology","Pathology","Biochemistry","Internal Medicine","Psychiatry"],
+    subjects: ["Anatomy","Neurology","Histology","Physiology"],
     synonyms: ["السحايا","أغشية السحايا","الأغشية الدماغية","أم جافية وعنكبوتية وأم حنون"],
     guessingDifficulty: 3
   },
@@ -4009,7 +4009,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pediatrics","Cardiology","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Pediatrics","Cardiology","Rheumatology","Infectious Diseases","Internal Medicine"],
     synonyms: ["الحمى الروماتيزمية","حمى روماتيزمية","الروماتيزم المفصلي","الميكروب السبحي"],
     guessingDifficulty: 2
   },
@@ -4039,7 +4039,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Rheumatology","Orthopedics","Anatomy","Physiology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Rheumatology","Internal Medicine","Orthopedics"],
     synonyms: ["التهاب المفاصل النقرس","نقرس المفاصل","النقرس الحاد","داء الملوك في المفاصل"],
     guessingDifficulty: 2
   },
@@ -4079,7 +4079,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Gastroenterology","Endocrinology","Oncology","General Surgery","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Gastroenterology","Endocrinology","Oncology","Internal Medicine","General Surgery"],
     synonyms: ["متلازمة زولينجر-إليسون","ورم غاستريني","زولينجر إليسون","Zollinger-Ellison Syndrome","Gastrinoma"],
     guessingDifficulty: 2
   },
@@ -4109,7 +4109,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Neurology","Internal Medicine","Anatomy","Physiology","Psychiatry","Infectious Diseases","Microbiology","Parasitology","Pediatrics","General Surgery"],
+    subjects: ["Ophthalmology","Neurology","Internal Medicine"],
     synonyms: ["التهاب العصب البصري","اعتلال العصب البصري الالتهابي","Optic Neuritis"],
     guessingDifficulty: 2
   },
@@ -4157,11 +4157,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w415',
     word: { Arabic: "ديكلوفيناك", English: "Diclofenac" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Pharma',
     subjects: ["Pharmacology","Rheumatology","Orthopedics","Emergency Medicine","Internal Medicine"],
     synonyms: ["ديكلوفيناك","فولتارين","كاتافلام","Diclofenac","Voltaren","Cataflam"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w416',
@@ -4187,11 +4187,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w418',
     word: { Arabic: "سيفترياكسون", English: "Ceftriaxone" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Pharma',
     subjects: ["Pharmacology","Infectious Diseases","Emergency Medicine","Pediatrics","Internal Medicine"],
     synonyms: ["سيفترياكسون","روسيفين","Ceftriaxone","Rocephin"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w419',
@@ -4229,7 +4229,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Neurology","Internal Medicine","General Surgery","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Neurology","Neurosurgery","Internal Medicine"],
     synonyms: ["ألم العصب ثلاثي التوائم","ألم العصب الخامس","العرة المؤلمة","Trigeminal Neuralgia","Tic Douloureux"],
     guessingDifficulty: 2
   },
@@ -4249,7 +4249,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
-    subjects: ["Microbiology","Infectious Diseases","Pulmonology","Pathology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Microbiology","Infectious Diseases","Pulmonology","Pathology"],
     synonyms: ["عصيات كوخ","بكتيريا السل","ميكروب السل","درن","Tubercle bacillus","Mycobacterium","بكتيريا الدرن"],
     guessingDifficulty: 3
   },
@@ -4257,11 +4257,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w425',
     word: { Arabic: "متلازمة بروغادا", English: "Brugada Syndrome" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Disease',
     subjects: ["Cardiology","Genetics","Emergency Medicine","Internal Medicine"],
     synonyms: ["متلازمة بروغادا","اعتلال بروغادا القلبي","Brugada Syndrome","Brugada"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w426',
@@ -4269,7 +4269,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Microbiology","Infectious Diseases","Gastroenterology","Urology","General Surgery","Physiology","Anatomy","Internal Medicine","Parasitology","Pediatrics"],
+    subjects: ["Microbiology","Infectious Diseases","Gastroenterology","Urology"],
     synonyms: ["القولونية","إي كولاي","الإشريكية القولونية","بكتيريا الأمعاء","E. coli","Escherichia coli","بكتيريا القولون"],
     guessingDifficulty: 2
   },
@@ -4297,21 +4297,21 @@ export const medicalWords: MedicalWord[] = [
     id: 'w429',
     word: { Arabic: "المشرط الجراحي", English: "Scalpel" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Equipment',
     subjects: ["General Surgery","Orthopedics","Emergency Medicine","General Medicine","Anaesthesia"],
     synonyms: ["مشرط","المشرط الجراحي","شفرة جراحية","Scalpel","Surgical blade","مبضع"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w430',
     word: { Arabic: "ملقط الشرايين الجراحي", English: "Hemostatic Forceps" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Equipment',
-    subjects: ["General Surgery","Vascular Surgery","Emergency Medicine","Obstetrics and Gynecology","General Medicine","Anaesthesia","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["General Surgery","Vascular Surgery","Emergency Medicine","Obstetrics and Gynecology"],
     synonyms: ["ملقط كلي","ملقط شرايين","ملقط وقف النزيف","Kelly Forceps","Hemostat","Artery Forceps"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w431',
@@ -4327,41 +4327,41 @@ export const medicalWords: MedicalWord[] = [
     id: 'w432',
     word: { Arabic: "برودة الجثة", English: "Algor Mortis" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["برودة الجثة","برودة رمية","انخفاض حرارة الميت","Algor mortis","cooling of body","postmortem cooling"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w433',
     word: { Arabic: "التيبس الرمي", English: "Rigor Mortis" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["التيبس الرمي","تيبس رمي","تصلب الجثة","Rigor mortis","cadaveric rigidity","postmortem rigidity"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w434',
     word: { Arabic: "الرسوب الدموي الرمي", English: "Livor Mortis" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Other',
-    subjects: ["Forensic Medicine","Pathology","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["الرسوب الدموي الرمي","الانحدار الرمي","تبقع الجثة الموتي","Livor mortis","postmortem hypostasis","postmortem lividity"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w435',
     word: { Arabic: "التشنج الكادافيري", English: "Cadaveric Spasm" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine"],
     synonyms: ["التشنج الكادافيري","تشنج الموت المفاجئ","التيبس اللحظي","Cadaveric spasm","instantaneous rigor","cataleptic rigidity"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w436',
@@ -4397,41 +4397,41 @@ export const medicalWords: MedicalWord[] = [
     id: 'w439',
     word: { Arabic: "الشنق", English: "Hanging" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["الشنق","وفاة بالشنق","شنق جنائي","Hanging","asphyxia by hanging","ligature hanging"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w440',
     word: { Arabic: "الخنق برباط", English: "Ligature Strangulation" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["الخنق برباط","خنق بالرباط","خنق بحبل","Ligature strangulation","strangulation by ligature"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w441',
     word: { Arabic: "الخنق اليدوي", English: "Throttling" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["الخنق اليدوي","الخنق باليدين","كتم العنق باليد","Throttling","manual strangulation","choking by hand"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w442',
     word: { Arabic: "الغرق", English: "Drowning" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","Emergency Medicine","Pathology"],
     synonyms: ["الغرق","موت بالغرق","الغرق الرطب","Drowning","submersion asphyxia","wet drowning"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w443',
@@ -4447,51 +4447,51 @@ export const medicalWords: MedicalWord[] = [
     id: 'w444',
     word: { Arabic: "السحجة", English: "Abrasion" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","General Surgery","Pathology"],
     synonyms: ["السحجة","خدش جلدي","كشط جلدي","Abrasion","cutaneous scratch","friction excoriation"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w445',
     word: { Arabic: "الكدمة", English: "Contusion" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
-    subjects: ["Forensic Medicine","General Surgery","Hematology","Physiology","Biochemistry","Internal Medicine","Pathology"],
+    subjects: ["Forensic Medicine","General Surgery","Pathology"],
     synonyms: ["الكدمة","كدمة دموية","انصباب دموي جلدي","Contusion","bruise","ecchymosis"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w446',
     word: { Arabic: "الجرح القطعي", English: "Incised Wound" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","General Surgery","Pathology"],
     synonyms: ["الجرح القطعي","جرح قطعي ذباحي","قطع جراحي","Incised wound","slash wound","cut wound"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w447',
     word: { Arabic: "الجرح الطعني", English: "Stab Wound" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","General Surgery","Pathology"],
     synonyms: ["الجرح الطعني","طعنة سكين","جرح وخزي طعني","Stab wound","puncture wound","penetrating incised wound"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w448',
     word: { Arabic: "الجرح الرضي", English: "Lacerated Wound" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","General Surgery","Pathology"],
     synonyms: ["الجرح الرضي","جرح متهتك","تهتك جلدي رضي","Lacerated wound","laceration","tear wound"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w449',
@@ -4527,7 +4527,7 @@ export const medicalWords: MedicalWord[] = [
     id: 'w452',
     word: { Arabic: "طوق التنميش البارودي", English: "Powder Tattooing" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine"],
     synonyms: ["طوق التنميش البارودي","تنميش البارود","ترميل البارود الجلدي","Powder tattooing","powder stippling","peppering"],
@@ -4537,21 +4537,21 @@ export const medicalWords: MedicalWord[] = [
     id: 'w453',
     word: { Arabic: "نزيف فوق الجافية", English: "Epidural Hematoma" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Forensic Medicine","Neurosurgery","Emergency Medicine"],
     synonyms: ["نزيف فوق الجافية","ورم دموي إكسترا ديورال","نزف فوق الأم الجافية","Epidural hematoma","extradural hemorrhage","EDH"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w454',
     word: { Arabic: "نزيف تحت الجافية", English: "Subdural Hematoma" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Forensic Medicine","Neurosurgery","Emergency Medicine"],
     synonyms: ["نزيف تحت الجافية","ورم دموي سب ديورال","نزف وريدي تحت الجافية","Subdural hematoma","subdural hemorrhage","SDH"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w455',
@@ -4569,7 +4569,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Forensic Medicine","Pediatrics","Neurology","Genetics","Internal Medicine","Family Medicine"],
+    subjects: ["Forensic Medicine","Pediatrics"],
     synonyms: ["متلازمة هز الرضيع","إصابة الرأس الرضية غير العرضية","عنف الأطفال بالهز","Shaken baby syndrome","abusive head trauma","AHT"],
     guessingDifficulty: 2
   },
@@ -4577,9 +4577,9 @@ export const medicalWords: MedicalWord[] = [
     id: 'w457',
     word: { Arabic: "اختبار طفو الرئة", English: "Hydrostatic Lung Test" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Technique',
-    subjects: ["Forensic Medicine","Pediatrics","Pulmonology","Emergency Medicine","Anatomy","Physiology","Anaesthesia","Internal Medicine"],
+    subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["اختبار طفو الرئة","اختبار الطفو الرئوي","اختبار بريسلاو","Hydrostatic lung test","Breslau docimasia","float test"],
     guessingDifficulty: 3
   },
@@ -4587,11 +4587,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w458',
     word: { Arabic: "بصمات الأصابع", English: "Dactylography" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Technique',
     subjects: ["Forensic Medicine"],
     synonyms: ["بصمات الأصابع","علم البصمات","الخطوط الحلمية","Dactylography","fingerprinting","dermatoglyphics"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w459',
@@ -4609,7 +4609,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Forensic Medicine","Anatomy","Radiology","Orthopedics","Rheumatology","Physiology","General Surgery"],
+    subjects: ["Forensic Medicine","Anatomy","Orthopedics","Radiology"],
     synonyms: ["التحام المشاش العظمي","تعظم المشاش","الالتحام المشاشي","Epiphyseal union","epiphyseal closure","bone age estimation"],
     guessingDifficulty: 3
   },
@@ -4617,17 +4617,17 @@ export const medicalWords: MedicalWord[] = [
     id: 'w461',
     word: { Arabic: "الجروح المصطنعة", English: "Fabricated Wounds" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Psychiatry","Pathology"],
     synonyms: ["الجروح المصطنعة","جروح مفتعلة","إصابات مصطنعة ذاتياً","Fabricated wounds","self-inflicted wounds","fictitious injuries"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w462',
     word: { Arabic: "إطلاق ناري ملاصق", English: "Contact Bullet Wound" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Radiology","Pathology"],
     synonyms: ["إطلاق ناري ملاصق","طلق ناري تماسي","جرح ناري ملاصق","Contact bullet wound","contact gunshot wound"],
@@ -4637,17 +4637,17 @@ export const medicalWords: MedicalWord[] = [
     id: 'w463',
     word: { Arabic: "فتحة خروج العيار الناري", English: "Firearm Exit Wound" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Pathology"],
     synonyms: ["فتحة خروج العيار الناري","مخرج الرصاصة","جرح الخروج الناري","Firearm exit wound","bullet exit wound"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w464',
     word: { Arabic: "شخشنة السلاح الناري", English: "Rifling" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine"],
     synonyms: ["شخشنة السلاح الناري","حلزنة ماسورة السلاح","الخطوط الحلزونية","Rifling","barrel rifling","lands and grooves"],
@@ -4657,17 +4657,17 @@ export const medicalWords: MedicalWord[] = [
     id: 'w465',
     word: { Arabic: "قاعدة التسعات للحروق", English: "Rule of Nines" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Technique',
     subjects: ["Forensic Medicine","General Surgery","Emergency Medicine"],
     synonyms: ["قاعدة التسعات للحروق","قاعدة والاس للتسعات","حساب مساحة الحرق","Rule of Nines","Wallace rule of nines","burn surface area estimation"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w466',
     word: { Arabic: "حرق جول الكهربائي", English: "Electric Joule Burn" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Emergency Medicine"],
     synonyms: ["حرق جول الكهربائي","علامة الدخول الكهربائية","حرق التيار الكهربائي","Electric Joule burn","electrical entrance mark","Joule burn"],
@@ -4677,21 +4677,21 @@ export const medicalWords: MedicalWord[] = [
     id: 'w467',
     word: { Arabic: "ضربة الشمس", English: "Heat Stroke" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Forensic Medicine","Emergency Medicine","Internal Medicine","Neurology","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Emergency Medicine","Internal Medicine","Critical Care"],
     synonyms: ["ضربة الشمس","فرط الحرارة الخبيث البيئي","ضربة حرارية","Heat stroke","severe hyperthermia","sunstroke"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w468',
     word: { Arabic: "انخفاض حرارة الجسم المميت", English: "Hypothermia" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Forensic Medicine","Emergency Medicine","Clinical Toxicology","Pharmacology"],
+    subjects: ["Emergency Medicine","Internal Medicine","Forensic Medicine"],
     synonyms: ["انخفاض حرارة الجسم المميت","التجمد المميت","هبوط الحرارة","Hypothermia","accidental hypothermia","freezing death"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w469',
@@ -4699,7 +4699,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Forensic Medicine","Pediatrics","Genetics","Internal Medicine","Neurology","Family Medicine","Pathology"],
+    subjects: ["Forensic Medicine","Pediatrics"],
     synonyms: ["متلازمة الطفل المعنف","إيذاء الأطفال البدني","العنف ضد الأطفال","Battered child syndrome","non-accidental physical child abuse","Kempe syndrome"],
     guessingDifficulty: 2
   },
@@ -4707,9 +4707,9 @@ export const medicalWords: MedicalWord[] = [
     id: 'w470',
     word: { Arabic: "كسر الصدمة المصدية", English: "Bumper Fracture" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
-    subjects: ["Forensic Medicine","Orthopedics","Rheumatology","Anatomy","Physiology","General Surgery","Hematology","Biochemistry","Internal Medicine"],
+    subjects: ["Forensic Medicine","Orthopedics"],
     synonyms: ["كسر الصدمة المصدية","كسر صدام السيارة","كسر صدمة المشاة","Bumper fracture","pedestrian bumper injury"],
     guessingDifficulty: 3
   },
@@ -4717,41 +4717,41 @@ export const medicalWords: MedicalWord[] = [
     id: 'w471',
     word: { Arabic: "إصابة المصع العنقي", English: "Whiplash Injury" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Other',
     subjects: ["Forensic Medicine","Orthopedics","Emergency Medicine"],
     synonyms: ["إصابة المصع العنقي","إصابة المصعة","صدمة الرقبة الارتدادية","Whiplash injury","cervical acceleration-deceleration","CAD"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w472',
     word: { Arabic: "كتم النفس الجنائي", English: "Smothering" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine"],
     synonyms: ["كتم النفس الجنائي","كتم فتحات التنفس","سد الفم والأنف","Smothering","suffocation by smothering"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w473',
     word: { Arabic: "الغصص الأسفكسي", English: "Choking" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Forensic Medicine","Emergency Medicine"],
     synonyms: ["الغصص الأسفكسي","الغصص والتشردق","انسداد المجرى التنفسي بجسم غريب","Choking","airway obstruction","cafe coronary"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w474',
     word: { Arabic: "التسمم بالفوسفات العضوي", English: "Organophosphate Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Internal Medicine"],
     synonyms: ["التسمم بالفوسفات العضوي","تسمم المبيدات الحشرية","تسمم فوسفاتي","Organophosphate poisoning","OP toxicity","cholinergic crisis"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w475',
@@ -4767,47 +4767,47 @@ export const medicalWords: MedicalWord[] = [
     id: 'w476',
     word: { Arabic: "فوسفيد الألومنيوم", English: "Aluminium Phosphide" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Forensic Medicine","Pharmacology","Internal Medicine"],
+    subjects: ["Clinical Toxicology","Emergency Medicine","Forensic Medicine"],
     synonyms: ["فوسفيد الألومنيوم","حبة الغلة القاتلة","قرص حفظ الغلال","Aluminium phosphide","grain pill","celphos"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w477',
     word: { Arabic: "التسمم بالباراكوات", English: "Paraquat Toxicity" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Pulmonology","Emergency Medicine","Pharmacology"],
+    subjects: ["Clinical Toxicology","Emergency Medicine","Pulmonology"],
     synonyms: ["التسمم بالباراكوات","تسمم مبيد الأعشاب","تليف الرئة بالباراكوات","Paraquat toxicity","paraquat poisoning","gramoxone ingestion"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w478',
     word: { Arabic: "متلازمة الكولينيرجيك", English: "Cholinergic Toxidrome" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Internal Medicine"],
     synonyms: ["متلازمة الكولينيرجيك","متلازمة فرط الكولين","التسمم الكوليني","Cholinergic toxidrome","cholinergic crisis","acetylcholine toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w479',
     word: { Arabic: "التسمم بالرصاص", English: "Lead Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Pediatrics","Internal Medicine","Emergency Medicine","Pharmacology"],
     synonyms: ["التسمم بالرصاص","التسمم الرصاصي","بلومبيزم","Lead poisoning","plumbism","saturnism"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w480',
     word: { Arabic: "خط بورتون", English: "Burtonian Line" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
     subjects: ["Clinical Toxicology","Internal Medicine"],
     synonyms: ["خط بورتون","خط الرصاص اللثوي","الخط الرصاصي الأزرق","Burtonian line","Burton's line","lead line"],
@@ -4817,19 +4817,19 @@ export const medicalWords: MedicalWord[] = [
     id: 'w481',
     word: { Arabic: "التسمم بالزرنيخ", English: "Arsenic Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Forensic Medicine","Internal Medicine","Emergency Medicine","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Forensic Medicine", "Emergency Medicine", "Pharmacology"],
     synonyms: ["التسمم بالزرنيخ","تسمم الزرنيخ الجنائي","سم الملوك","Arsenic poisoning","arsenicosis","arsenical toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w482',
-    word: { Arabic: "خطوط ميس", English: "Mee's Lines" },
+    word: { Arabic: "خطوط ميس", English: "Mees' Lines" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Other',
-    subjects: ["Clinical Toxicology","Dermatology","Forensic Medicine"],
+    subjects: ["Clinical Toxicology", "Dermatology", "Forensic Medicine"],
     synonyms: ["خطوط ميس","خطوط الأظافر البيضاء","خطوط الزرنيخ الظفرية","Mee's lines","Aldrich-Mees lines","leukonychia striata"],
     guessingDifficulty: 3
   },
@@ -4837,11 +4837,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w483',
     word: { Arabic: "التسمم بالزئبق", English: "Mercury Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Neurology","Pediatrics","Emergency Medicine","Pharmacology"],
     synonyms: ["التسمم بالزئبق","داء ميناماتا","مرض الزئبق","Mercury poisoning","Minamata disease","mercurialism"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w484',
@@ -4859,7 +4859,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Emergency Medicine"],
     synonyms: ["ديمركابرول","ترياق بال","مضاد اللويزيت البريطاني","Dimercaprol","British Anti-Lewisite","BAL"],
     guessingDifficulty: 2
   },
@@ -4869,7 +4869,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Hematology","Pharmacology","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Hematology", "Pharmacology", "Pediatrics"],
     synonyms: ["ديفيروكسامين","ترياق الحديد","خالب الحديد الوريدي","Deferoxamine","Desferal","DFO"],
     guessingDifficulty: 2
   },
@@ -4879,7 +4879,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Gastroenterology","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Gastroenterology", "Rheumatology"],
     synonyms: ["بنسيلامين","خالب النحاس الفموي","دي-بنسيلامين","Penicillamine","D-penicillamine","Cuprimine"],
     guessingDifficulty: 2
   },
@@ -4887,11 +4887,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w488',
     word: { Arabic: "التسمم بالميثانول", English: "Methanol Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Emergency Medicine","Ophthalmology","Pharmacology"],
     synonyms: ["التسمم بالميثانول","تسمم الكحول الميثيلي","تسمم كحول الخشب","Methanol poisoning","wood alcohol toxicity","methyl alcohol poisoning"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w489',
@@ -4917,19 +4917,19 @@ export const medicalWords: MedicalWord[] = [
     id: 'w491',
     word: { Arabic: "التسمم بالكيروسين", English: "Kerosene Ingestion" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Pediatrics","Emergency Medicine","Pulmonology","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Pediatrics", "Emergency Medicine", "Pulmonology"],
     synonyms: ["التسمم بالكيروسين","تسمم الجاز","تسمم الهيدروكربونات","Kerosene ingestion","hydrocarbon poisoning","chemical pneumonitis"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w492',
-    word: { Arabic: "حمض الفينيك", English: "Carbolic Acid" },
+    word: { Arabic: "حمض الفينيك (الفينول)", English: "Carbolic Acid (Phenol)" },
     level: 'Both',
     difficulty: 2,
-    type: 'Pharma',
-    subjects: ["Clinical Toxicology","Dermatology","Forensic Medicine","Pharmacology","Internal Medicine"],
+    type: 'Other',
+    subjects: ["Clinical Toxicology", "Forensic Medicine", "Emergency Medicine"],
     synonyms: ["حمض الفينيك","الفينول","حمض الكربوليك","Carbolic acid","phenol","phenic acid"],
     guessingDifficulty: 2
   },
@@ -4937,19 +4937,19 @@ export const medicalWords: MedicalWord[] = [
     id: 'w493',
     word: { Arabic: "الصودا الكاوية", English: "Caustic Soda" },
     level: 'Clinical',
-    difficulty: 1,
-    type: 'Pharma',
-    subjects: ["Clinical Toxicology","Emergency Medicine","General Surgery","Pharmacology","Internal Medicine"],
+    difficulty: 3,
+    type: 'Other',
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Gastroenterology", "General Surgery"],
     synonyms: ["الصودا الكاوية","هيدروكسيد الصوديوم","القلويات الكاوية","Caustic soda","sodium hydroxide","lye ingestion"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w494',
     word: { Arabic: "حمض الأوكزاليك", English: "Oxalic Acid" },
     level: 'Both',
     difficulty: 2,
-    type: 'Pharma',
-    subjects: ["Clinical Toxicology","Nephrology","Pharmacology","Internal Medicine"],
+    type: 'Other',
+    subjects: ["Clinical Toxicology", "Nephrology", "Emergency Medicine"],
     synonyms: ["حمض الأوكزاليك","حمض الحماض","أوكزالات","Oxalic acid","dicarboxylic acid","wood bleach"],
     guessingDifficulty: 2
   },
@@ -4957,11 +4957,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w495',
     word: { Arabic: "التسمم بأول أكسيد الكربون", English: "Carbon Monoxide Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Forensic Medicine","Pulmonology","Anatomy","Physiology","Anaesthesia","Internal Medicine","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Forensic Medicine", "Pulmonology", "Internal Medicine"],
     synonyms: ["التسمم بأول أكسيد الكربون","القاتل الصامت","تسمم غاز السخان","Carbon monoxide poisoning","CO toxicity","silent killer"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w496',
@@ -4969,7 +4969,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Clinical Toxicology","Biochemistry","Hematology","Pulmonology","Emergency Medicine","Anatomy","Physiology","Anaesthesia","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Biochemistry", "Hematology", "Pulmonology", "Emergency Medicine"],
     synonyms: ["كربوكسي هيموجلوبين","خضاب الدم الكربوني","مركب COHb","Carboxyhemoglobin","COHb"],
     guessingDifficulty: 3
   },
@@ -4979,7 +4979,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Clinical Toxicology","Emergency Medicine"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Pulmonology"],
     synonyms: ["الأكسجين عالي الضغط","العلاج بالأكسجين المضغوط","كبسولة الأكسجين","Hyperbaric oxygen therapy","HBOT","hyperbaric chamber"],
     guessingDifficulty: 2
   },
@@ -4987,11 +4987,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w498',
     word: { Arabic: "التسمم بالسيانيد", English: "Cyanide Poisoning" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Emergency Medicine","Forensic Medicine","Pharmacology"],
     synonyms: ["التسمم بالسيانيد","تسمم حمض الهيدروسيانيك","سم اللوز المر","Cyanide poisoning","cyanide toxicity","bitter almond poison"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w499',
@@ -4999,7 +4999,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Emergency Medicine","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Emergency Medicine", "Hematology"],
     synonyms: ["هيدروكسوكوبالامين","ترياق السيانيد الوريدي","مقدمة فيتامين ب12","Hydroxocobalamin","Cyanokit","vitamin B12a"],
     guessingDifficulty: 2
   },
@@ -5008,8 +5008,8 @@ export const medicalWords: MedicalWord[] = [
     word: { Arabic: "كبريتيد الهيدروجين", English: "Hydrogen Sulfide" },
     level: 'Clinical',
     difficulty: 2,
-    type: 'Disease',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Forensic Medicine"],
+    type: 'Other',
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Forensic Medicine"],
     synonyms: ["كبريتيد الهيدروجين","غاز البيض الفاسد","غاز المجاري السام","Hydrogen sulfide","sewer gas","H2S poisoning"],
     guessingDifficulty: 2
   },
@@ -5017,31 +5017,31 @@ export const medicalWords: MedicalWord[] = [
     id: 'w501',
     word: { Arabic: "التسمم بالأفيونات", English: "Opioid Overdose" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Emergency Medicine","Anaesthesia","Pharmacology"],
     synonyms: ["التسمم بالأفيونات","جرعة زائدة من الأفيون","التسمم بالمورفين والهيروين","Opioid overdose","opioid toxidrome","narcotic toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w502',
     word: { Arabic: "نالوكسون", English: "Naloxone" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Pharmacology", "Anaesthesia"],
     synonyms: ["نالوكسون","ترياق الأفيونات","مضاد الناركوتيك","Naloxone","Narcan"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w503',
     word: { Arabic: "التسمم بالبنزوديازيبينات", English: "Benzodiazepine Toxicity" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
     subjects: ["Clinical Toxicology","Emergency Medicine","Psychiatry","Pharmacology"],
     synonyms: ["التسمم بالبنزوديازيبينات","تسمم المهدئات","جرعة زائدة من فاليوم","Benzodiazepine toxicity","BZD overdose","sedative hypnotic toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w504',
@@ -5049,7 +5049,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Emergency Medicine","Internal Medicine","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Emergency Medicine", "Anaesthesia", "Psychiatry"],
     synonyms: ["فلومازينيل","ترياق البنزوديازيبين","مضاد المهدئات","Flumazenil","Romazicon"],
     guessingDifficulty: 2
   },
@@ -5067,11 +5067,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w506',
     word: { Arabic: "بيكربونات الصوديوم", English: "Sodium Bicarbonate" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Cardiology","Emergency Medicine","Nephrology","Pharmacology","Internal Medicine","Pulmonology","Anatomy","Physiology","Anaesthesia"],
+    subjects: ["Clinical Toxicology", "Cardiology", "Emergency Medicine", "Nephrology", "Pharmacology", "Internal Medicine", "Anaesthesia"],
     synonyms: ["بيكربونات الصوديوم","بيكربونات وريدية","صوديوم بايكارب","Sodium bicarbonate","NaHCO3","hypertonic bicarbonate"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w507',
@@ -5087,49 +5087,49 @@ export const medicalWords: MedicalWord[] = [
     id: 'w508',
     word: { Arabic: "التسمم بالساليسيلات", English: "Salicylate Toxicity" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Internal Medicine","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Internal Medicine", "Pediatrics", "Pharmacology"],
     synonyms: ["التسمم بالساليسيلات","تسمم الأسبرين","فرط الساليسيلات","Salicylate toxicity","aspirin overdose","salicylism"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w509',
     word: { Arabic: "إدرار البول القلوي", English: "Alkaline Diuresis" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Technique',
-    subjects: ["Clinical Toxicology","Nephrology","Emergency Medicine","Urology","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Clinical Toxicology", "Nephrology", "Emergency Medicine"],
     synonyms: ["إدرار البول القلوي","قلوية البول القسرية","حبس الأيونات البولية","Alkaline diuresis","forced alkaline diuresis","urine alkalinization"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w510',
     word: { Arabic: "التسمم الكبدي بالباراسيتامول", English: "Paracetamol Hepatotoxicity" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Gastroenterology","Internal Medicine","Emergency Medicine","General Surgery","Physiology","Anatomy","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Gastroenterology", "Internal Medicine", "Emergency Medicine", "Pharmacology"],
     synonyms: ["التسمم الكبدي بالباراسيتامول","تسمم البانادول","التسمم بالأسيتامينوفين","Paracetamol hepatotoxicity","acetaminophen overdose","APAP toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w511',
     word: { Arabic: "إن-أسيتيل سيستئين", English: "N-Acetylcysteine" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Gastroenterology","Emergency Medicine","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Gastroenterology", "Emergency Medicine", "Pulmonology"],
     synonyms: ["إن-أسيتيل سيستئين","ترياق الباراسيتامول","دواء إن إيه سي","N-Acetylcysteine","NAC","Mucomyst"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w512',
     word: { Arabic: "مخطط روماك-ماثيو", English: "Rumack-Matthew Nomogram" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Technique',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Gastroenterology","Neurology","Anatomy","Physiology","Internal Medicine","Psychiatry"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Pediatrics", "Gastroenterology"],
     synonyms: ["مخطط روماك-ماثيو","منحنى الباراسيتامول","نوموجرام التسمم الكبدي","Rumack-Matthew nomogram","acetaminophen toxicity nomogram"],
     guessingDifficulty: 3
   },
@@ -5138,20 +5138,20 @@ export const medicalWords: MedicalWord[] = [
     word: { Arabic: "نبات ست الحسن", English: "Atropa Belladonna" },
     level: 'Both',
     difficulty: 2,
-    type: 'Disease',
-    subjects: ["Clinical Toxicology","Pharmacology"],
+    type: 'Other',
+    subjects: ["Clinical Toxicology", "Pharmacology", "Forensic Medicine"],
     synonyms: ["نبات ست الحسن","البلادونا","التوت القاتل","Atropa belladonna","deadly nightshade","belladonna poisoning"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w514',
     word: { Arabic: "متلازمة مضادات الكولين", English: "Anticholinergic Toxidrome" },
     level: 'Both',
-    difficulty: 1,
+    difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Pharmacology", "Internal Medicine", "Neurology"],
     synonyms: ["متلازمة مضادات الكولين","متلازمة حصر الكولين","متلازمة الأتروبين","Anticholinergic toxidrome","anticholinergic crisis","atropine toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 3
   },
   {
     id: 'w515',
@@ -5159,7 +5159,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Clinical Toxicology","Pharmacology","Emergency Medicine","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Pharmacology", "Emergency Medicine", "Neurology"],
     synonyms: ["فوسوستيجمين","ترياق مضادات الكولين","إيزيرين","Physostigmine","Antilirium","eserine"],
     guessingDifficulty: 2
   },
@@ -5167,11 +5167,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w516',
     word: { Arabic: "التسمم بالاستركنين", English: "Strychnine Poisoning" },
     level: 'Both',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Neurology","Forensic Medicine","Emergency Medicine","Pharmacology"],
+    subjects: ["Clinical Toxicology", "Forensic Medicine", "Emergency Medicine", "Neurology"],
     synonyms: ["التسمم بالاستركنين","تسمم سم الجرذان القاتل","سم الاستركنين","Strychnine poisoning","strychnine toxicity"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w517',
@@ -5179,7 +5179,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Ophthalmology","Infectious Diseases","Pediatrics","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Ophthalmology", "Pediatrics", "Internal Medicine", "Infectious Diseases"],
     synonyms: ["التهاب الملتحمة","الرمد","احمرار العين المعدي","العين الوردية","pink eye"],
     guessingDifficulty: 1
   },
@@ -5189,7 +5189,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Ophthalmology","Physiology"],
+    subjects: ["Ophthalmology"],
     synonyms: ["اللابؤرية","الاستجماتيزم","انحراف النظر","حرج البصر"],
     guessingDifficulty: 3
   },
@@ -5199,7 +5199,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Neurology","Pediatrics"],
+    subjects: ["Ophthalmology", "Pediatrics", "Neurology"],
     synonyms: ["الحول","انحراف العينين","العين المتصالبة","crossed eyes","squint"],
     guessingDifficulty: 2
   },
@@ -5207,11 +5207,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w520',
     word: { Arabic: "قرحة القرنية", English: "Corneal Ulcer" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Infectious Diseases","Emergency Medicine"],
+    subjects: ["Ophthalmology", "Emergency Medicine", "Infectious Diseases"],
     synonyms: ["قرحة القرنية","تقرح القرنية","Corneal Ulcer"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w521',
@@ -5219,7 +5219,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Ophthalmology","Immunology","Rheumatology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Ophthalmology", "Immunology", "Rheumatology", "Internal Medicine"],
     synonyms: ["التهاب القزحية","التهاب العنبية","التهاب باطن العين المناعي","Uveitis"],
     guessingDifficulty: 3
   },
@@ -5229,9 +5229,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Other',
-    subjects: ["Ophthalmology","Physiology","Orthopedics","Rheumatology","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology"],
     synonyms: ["قصر النظر","حسر النظر","قصر البصر","Nearsightedness"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w523',
@@ -5239,9 +5239,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Other',
-    subjects: ["Ophthalmology","Physiology"],
+    subjects: ["Ophthalmology"],
     synonyms: ["طول النظر","مد البصر","بعد النظر","Farsightedness"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w524',
@@ -5249,7 +5249,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Ophthalmology","Physiology","General Medicine"],
+    subjects: ["Ophthalmology"],
     synonyms: ["طول النظر الشيخوخي","قصر البصر الشيخوخي","مد البصر الكبري","Presbyopia"],
     guessingDifficulty: 2
   },
@@ -5259,7 +5259,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Dermatology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Ophthalmology", "Dermatology"],
     synonyms: ["التهاب الجفن","التهاب حافة الجفن","Blepharitis"],
     guessingDifficulty: 2
   },
@@ -5269,9 +5269,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy","Physiology"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["القرنية","قرنية العين","نافذة العين الأمامية","Cornea"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w527',
@@ -5279,19 +5279,19 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy","Physiology","Neurology","General Surgery"],
+    subjects: ["Ophthalmology", "Anatomy", "Neurology"],
     synonyms: ["الشبكية","شبكية العين","الطبقة الحساسة للضوء","Retina"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w528',
-    word: { Arabic: "العنبية", English: "Iris" },
+    word: { Arabic: "القزحية", English: "Iris" },
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["العنبية","قزحية العين","الحدقة والملونة","Iris"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w529',
@@ -5299,69 +5299,69 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["السائل الزجاجي","الجسم الزجاجي","الخلط الزجاجي","Vitreous Humor","Vitreous body"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w530',
     word: { Arabic: "الصلبة", English: "Sclera" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["الصلبة","صلبة العين","بياض العين","Sclera"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w531',
     word: { Arabic: "الملتحمة", English: "Conjunctiva" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["الملتحمة","ملتحمة العين","غشاء العين المخاطي","Conjunctiva"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w532',
-    word: { Arabic: "العدسة", English: "Lens" },
+    word: { Arabic: "عدسة العين", English: "Lens" },
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy","Physiology"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["العدسة","عدسة العين","العدسة البلورية","Crystalline Lens"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w533',
-    word: { Arabic: "البقعة المركزية", English: "Macula" },
+    word: { Arabic: "البقعة الشبكية (الماكيولا)", English: "Macula" },
     level: 'Academic',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy"],
+    subjects: ["Ophthalmology", "Anatomy"],
     synonyms: ["البقعة المركزية","اللطخة الصفراء","الماكيولا","Macula lutea","Fovea"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w534',
     word: { Arabic: "القرص البصري", English: "Optic Disc" },
     level: 'Academic',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Ophthalmology","Anatomy","Neurology","General Surgery"],
+    subjects: ["Ophthalmology", "Anatomy", "Neurology"],
     synonyms: ["القرص البصري","حليمة العصب البصري","رأس العصب البصري","Optic Disc","Optic nerve head"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w535',
     word: { Arabic: "عمى الألوان", English: "Color Blindness" },
     level: 'Academic',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Other',
-    subjects: ["Ophthalmology","Genetics"],
+    subjects: ["Ophthalmology", "Genetics"],
     synonyms: ["عمى الألوان","عجز تمييز الألوان","الدلتونية","Color Vision Deficiency","Daltonism"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w536',
@@ -5369,19 +5369,19 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Ophthalmology","Neurology","Emergency Medicine"],
+    subjects: ["Ophthalmology", "Neurology", "Emergency Medicine"],
     synonyms: ["الرؤية المزدوجة","ازدواج الرؤية","ازدواج البصر","Diplopia","Double Vision"],
     guessingDifficulty: 2
   },
   {
     id: 'w537',
-    word: { Arabic: "العمى الليلي", English: "Nyctalopia" },
+    word: { Arabic: "العمى الليلي (العشى الليلي)", English: "Nyctalopia" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Other',
-    subjects: ["Ophthalmology","Biochemistry"],
+    subjects: ["Ophthalmology", "Biochemistry"],
     synonyms: ["العمى الليلي","العشى الليلي","صعوبة الرؤية في الظلام","Nyctalopia","Night Blindness"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w538',
@@ -5389,7 +5389,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Other',
-    subjects: ["Ophthalmology","Neurology"],
+    subjects: ["Ophthalmology", "Neurology"],
     synonyms: ["الوميض الضوئي","فلاشات العين","رؤية ومضات مضيئة","بريق العين","Photopsia"],
     guessingDifficulty: 3
   },
@@ -5399,7 +5399,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Ophthalmology", "Infectious Diseases"],
     synonyms: ["التهاب القرنية","عدوى القرنية","Keratitis"],
     guessingDifficulty: 2
   },
@@ -5419,13 +5419,13 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Pharma',
-    subjects: ["Ophthalmology","Pharmacology","Internal Medicine","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology", "Pharmacology"],
     synonyms: ["قطرات العين","المحاليل العينية الموضعية","قطرة عينية","Ophthalmic Solutions","Eye Drops"],
     guessingDifficulty: 1
   },
   {
     id: 'w542',
-    word: { Arabic: "الكيس الدهني الجفني", English: "Chalazion" },
+    word: { Arabic: "البردة (كيس دهني في الجفن)", English: "Chalazion" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5439,7 +5439,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Ophthalmology","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology"],
     synonyms: ["ظفرة العين","الظفرة","اللحمية في العين","Pterygium","surfers eye"],
     guessingDifficulty: 2
   },
@@ -5449,7 +5449,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Ophthalmology","Genetics","Neurology","Anatomy","Physiology","Internal Medicine","Psychiatry"],
+    subjects: ["Ophthalmology"],
     synonyms: ["القرنية المخروطية","تخروط القرنية","Keratoconus"],
     guessingDifficulty: 3
   },
@@ -5459,7 +5459,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Ophthalmology","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology"],
     synonyms: ["قياس ضغط العين","مقياس التوتر العيني","فحص ضغط العين","Tonometry"],
     guessingDifficulty: 2
   },
@@ -5469,7 +5469,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Ophthalmology","Internal Medicine","Neurology","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology", "Neurology"],
     synonyms: ["فحص قاع العين","تنظير قاع العين","تنظير الشبكية","Fundoscopy","Ophthalmoscopy"],
     guessingDifficulty: 1
   },
@@ -5479,7 +5479,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Ophthalmology","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Ophthalmology"],
     synonyms: ["المصباح الشقي","المجهر الشقي","جهاز فحص العين الشقي","Slit Lamp","Biomicroscope"],
     guessingDifficulty: 2
   },
@@ -5487,31 +5487,31 @@ export const medicalWords: MedicalWord[] = [
     id: 'w548',
     word: { Arabic: "اعتلال الشبكية الخداجي", English: "Retinopathy of Prematurity" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Disease',
-    subjects: ["Ophthalmology","Pediatrics","Anatomy","General Surgery"],
+    subjects: ["Ophthalmology", "Pediatrics"],
     synonyms: ["اعتلال الشبكية الخداجي","اعتلال شبكية الخدج","Retinopathy of Prematurity","ROP"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w549',
     word: { Arabic: "الأشعة المقطعية", English: "Computed Tomography" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Emergency Medicine","Internal Medicine","Neurology","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Emergency Medicine", "General Surgery", "Internal Medicine", "Neurology"],
     synonyms: ["الأشعة المقطعية","الأشعة المحوسبة","المفراس الحلزوني","CT scan","CAT scan"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w550',
     word: { Arabic: "الرنين المغناطيسي", English: "Magnetic Resonance Imaging" },
     level: 'Both',
-    difficulty: 3,
+    difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Neurology","Orthopedics","Anatomy","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Neurology", "Orthopedics", "Internal Medicine"],
     synonyms: ["الرنين المغناطيسي","التصوير بالرنين المغناطيسي","جهاز الرنين","MRI","NMR"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w551',
@@ -5519,7 +5519,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Obstetrics and Gynecology","Cardiology","General Medicine","Emergency Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Obstetrics and Gynecology", "Cardiology", "Emergency Medicine", "General Surgery"],
     synonyms: ["الموجات فوق الصوتية","السونار","التصوير الصوتي","Ultrasound","Sonography"],
     guessingDifficulty: 1
   },
@@ -5529,7 +5529,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Radiology","Gastroenterology","General Surgery","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Radiology", "Gastroenterology", "General Surgery", "Cardiology"],
     synonyms: ["التصوير التألقي","التنظير التألقي","الأشعة السينية المستمرة","Fluoroscopy"],
     guessingDifficulty: 2
   },
@@ -5539,7 +5539,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Radiology","Pharmacology","Internal Medicine"],
+    subjects: ["Radiology", "Pharmacology", "Nephrology"],
     synonyms: ["مواد التباين","صبغة الأشعة","عوامل التباين الإشعاعي","الصبغة الظليلة","Contrast Media","Contrast Agents"],
     guessingDifficulty: 2
   },
@@ -5547,31 +5547,31 @@ export const medicalWords: MedicalWord[] = [
     id: 'w554',
     word: { Arabic: "التصوير البوزيتروني", English: "PET Scan" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Equipment',
-    subjects: ["Radiology","Oncology","Physiology","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Oncology"],
     synonyms: ["التصوير البوزيتروني","التصوير المقطعي بالإصدار البوزيتروني","فحص بي إي تي","PET Scan"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w555',
     word: { Arabic: "تصوير الثدي الشعاعي", English: "Mammography" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Oncology","Obstetrics and Gynecology","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Oncology", "Obstetrics and Gynecology"],
     synonyms: ["تصوير الثدي الشعاعي","الماموجرام","أشعة الثدي","الماموجرافي","Mammography","Mammogram"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w556',
     word: { Arabic: "تصوير الأوعية", English: "Angiography" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Technique',
-    subjects: ["Radiology","Vascular Surgery","Cardiology"],
+    subjects: ["Radiology", "Vascular Surgery", "Cardiology"],
     synonyms: ["تصوير الأوعية","القسطرة الوعائية الظليلة","تصوير الشرايين","Angiography","Arteriography"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w557',
@@ -5579,29 +5579,29 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Anatomy","Orthopedics","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Orthopedics", "Emergency Medicine", "Pulmonology"],
     synonyms: ["الأشعة السينية","أشعة رونتجن","أشعة إكس","X-Ray","Radiography"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w558',
     word: { Arabic: "تصوير الأوعية المقطعي", English: "CT Angiography" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Technique',
-    subjects: ["Radiology","Cardiology","Vascular Surgery","Emergency Medicine"],
+    subjects: ["Radiology", "Cardiology", "Vascular Surgery", "Emergency Medicine"],
     synonyms: ["تصوير الأوعية المقطعي","الأشعة المقطعية للأوعية","قسطرة مقطعية","CT Angiography","CTA"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w559',
     word: { Arabic: "تخطيط صدى القلب", English: "Echocardiography" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Equipment',
-    subjects: ["Radiology","Cardiology","Physiology","Internal Medicine","Emergency Medicine","General Medicine","Anaesthesia","Vascular Surgery","Anatomy"],
+    subjects: ["Cardiology", "Radiology", "Internal Medicine", "Emergency Medicine"],
     synonyms: ["تخطيط صدى القلب","إيكو القلب","سونار القلب","Echocardiography","Echo"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w560',
@@ -5609,7 +5609,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Radiology","Vascular Surgery","Cardiology"],
+    subjects: ["Radiology", "Vascular Surgery", "Cardiology", "Obstetrics and Gynecology"],
     synonyms: ["الدوبلر الصوتي","سونار دوبلر","أشعة الدوبلر الملون","Doppler Ultrasound","Doppler Sonography"],
     guessingDifficulty: 2
   },
@@ -5619,7 +5619,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Radiology","Rheumatology","Orthopedics","Endocrinology","Emergency Medicine","General Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Rheumatology", "Orthopedics", "Endocrinology"],
     synonyms: ["فحص كثافة العظام","مقياس كثافة العظام ديكسا","أشعة الديكسا","DEXA Scan","DXA","Bone Densitometry"],
     guessingDifficulty: 2
   },
@@ -5649,7 +5649,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Dermatology","Endocrinology","Pathology","Histology"],
+    subjects: ["Dermatology"],
     synonyms: ["حب الشباب","العُد الشائع","بثور الوجه","حبوب الشباب","Acne Vulgaris","Pimples"],
     guessingDifficulty: 1
   },
@@ -5659,7 +5659,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Oncology","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Dermatology", "Oncology", "Pathology"],
     synonyms: ["سرطان الخلايا القاعدية","كارسينوما الخلايا القاعدية","الورم القاعدي الخبيث","Basal Cell Carcinoma","BCC"],
     guessingDifficulty: 2
   },
@@ -5669,7 +5669,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Pediatrics","Pathology","Histology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Dermatology", "Pediatrics"],
     synonyms: ["الالتهاب الجلدي الدهني","الأكزيما الدهنية","قشرة الرأس المرضية","طاقية المهد","Seborrheic Dermatitis","Cradle cap"],
     guessingDifficulty: 2
   },
@@ -5679,7 +5679,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Emergency Medicine","General Surgery","Dermatology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics"],
+    subjects: ["Emergency Medicine", "General Surgery", "Infectious Diseases", "Dermatology"],
     synonyms: ["التهاب اللفافة الناخر","بكتيريا آكلة اللحوم","الغرغرينا الغازية","Necrotizing Fasciitis","Flesh-eating Disease"],
     guessingDifficulty: 2
   },
@@ -5689,7 +5689,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Dermatology","Immunology","Emergency Medicine"],
+    subjects: ["Dermatology", "Immunology", "Emergency Medicine", "Pediatrics"],
     synonyms: ["الشرى","الأرتيكاريا","حكة الحساسية","الدرنات الجلدية","Urticaria","Hives"],
     guessingDifficulty: 1
   },
@@ -5699,7 +5699,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Immunology","Infectious Diseases"],
+    subjects: ["Dermatology", "Immunology", "Infectious Diseases"],
     synonyms: ["الحمامى متعددة الأشكال","الحمامى عديدة الأشكال","Erythema Multiforme","EM"],
     guessingDifficulty: 2
   },
@@ -5717,11 +5717,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w571',
     word: { Arabic: "التهاب الجلد التماسي", English: "Contact Dermatitis" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Immunology","Pathology","Histology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine","Pediatrics","Radiology"],
+    subjects: ["Dermatology", "Immunology"],
     synonyms: ["التهاب الجلد التماسي","أكزيما التماس","الأكزيما التلامسية","Contact Dermatitis"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w572',
@@ -5729,7 +5729,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Dermatology","Oncology","Pathology","Histology","Hematology","Internal Medicine"],
+    subjects: ["Dermatology", "Oncology", "Pathology"],
     synonyms: ["سرطان الخلايا الحرشفية الجلدي","كارسينوما حرشفية الخلايا","SCC","Cutaneous Squamous Cell Carcinoma"],
     guessingDifficulty: 2
   },
@@ -5739,7 +5739,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Dermatology","Neurology","Infectious Diseases"],
+    subjects: ["Dermatology", "Infectious Diseases", "Neurology"],
     synonyms: ["الحزام الناري","داء المنطقة","القوباء المنطقية","Herpes Zoster","Shingles"],
     guessingDifficulty: 1
   },
@@ -5749,9 +5749,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
-    subjects: ["Immunology","Histology","Physiology","Pathology","Biochemistry","Hematology","Internal Medicine"],
+    subjects: ["Immunology", "Hematology", "Histology"],
     synonyms: ["الخلية اللمفاوية التائية","الخلية التائية","خلايا تي","T Cell","T Lymphocyte"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w575',
@@ -5759,9 +5759,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
-    subjects: ["Immunology","Histology","Physiology","Pathology","Biochemistry","Hematology","Internal Medicine"],
+    subjects: ["Immunology", "Hematology", "Histology"],
     synonyms: ["الخلية اللمفاوية البائية","الخلية البائية","خلايا بي","B Cell","B Lymphocyte"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w576',
@@ -5769,9 +5769,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Cell',
-    subjects: ["Immunology","Histology","Oncology","Physiology","Pathology","Biochemistry"],
+    subjects: ["Immunology", "Hematology", "Oncology"],
     synonyms: ["الخلية القاتلة الطبيعية","خلايا إن كي","الخلايا الفاتكة الطبيعية","NK Cell","Natural Killer"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w577',
@@ -5779,9 +5779,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
-    subjects: ["Immunology","Histology","Pathology","Physiology","Biochemistry"],
+    subjects: ["Immunology", "Histology", "Pathology"],
     synonyms: ["البلعم الكبير","الخلايا البلعمية الكبيرة","الماكروفاج","البلعميات","Macrophage"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w578',
@@ -5789,19 +5789,19 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Cell',
-    subjects: ["Immunology","Histology","Physiology","Pathology","Biochemistry"],
+    subjects: ["Immunology", "Histology", "Pathology"],
     synonyms: ["الخلية المتغصنة","الخلايا التغصنية","خلايا لانجرهانز","Dendritic Cell","DC"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w579',
     word: { Arabic: "الغلوبولين المناعي G", English: "Immunoglobulin G" },
     level: 'Academic',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Biochemistry","Pathology","Urology","Internal Medicine","Physiology","Anatomy"],
+    subjects: ["Immunology", "Biochemistry", "Pathology", "Pediatrics"],
     synonyms: ["الغلوبولين المناعي G","الأجسام المضادة IgG","غلوبيولين مناعي ج","IgG","Immunoglobulin G"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w580',
@@ -5809,9 +5809,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Biochemistry","Pediatrics","Urology","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Immunology", "Biochemistry", "Pulmonology", "Dermatology", "Pediatrics"],
     synonyms: ["الغلوبولين المناعي E","الأجسام المضادة IgE","غلوبيولين مناعي هـ","IgE","Immunoglobulin E"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w581',
@@ -5819,9 +5819,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Biochemistry","Gastroenterology","Urology","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Immunology", "Biochemistry", "Gastroenterology", "Nephrology"],
     synonyms: ["الغلوبولين المناعي A","الأجسام المضادة IgA","غلوبيولين مناعي أ","IgA","Immunoglobulin A"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w582',
@@ -5829,9 +5829,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Biochemistry","Infectious Diseases","Urology","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Immunology", "Biochemistry", "Infectious Diseases", "Hematology"],
     synonyms: ["الغلوبولين المناعي M","الأجسام المضادة IgM","غلوبيولين مناعي م","IgM","Immunoglobulin M"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w583',
@@ -5839,9 +5839,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Physiology","Pathology"],
+    subjects: ["Immunology", "Physiology", "Pathology"],
     synonyms: ["الجهاز المتمم","نظام المتممة","بروتينات المتممة","Complement System","Complement Cascade"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w584',
@@ -5849,9 +5849,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Immunology","Pharmacology","Physiology"],
+    subjects: ["Immunology", "Pharmacology", "Physiology"],
     synonyms: ["الهيستامين","وسيط الحساسية","Histamine"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w585',
@@ -5859,9 +5859,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Pharmacology","Infectious Diseases"],
+    subjects: ["Immunology", "Pharmacology", "Infectious Diseases"],
     synonyms: ["الإنترفيرون","بروتينات الإنترفيرون","IFN","Interferon"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w586',
@@ -5869,7 +5869,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Immunology","Emergency Medicine","Pediatrics","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["Immunology", "Emergency Medicine", "Pediatrics", "Internal Medicine", "Anaesthesia"],
     synonyms: ["الصدمة التأقية","التأق","الحساسية المفرطة القاتلة","فرط الحساسية الحاد","Anaphylaxis","Anaphylactic shock"],
     guessingDifficulty: 1
   },
@@ -5877,11 +5877,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w587',
     word: { Arabic: "الذئبة الحمامية الجهازية", English: "Systemic Lupus Erythematosus" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Disease',
-    subjects: ["Immunology","Rheumatology","Internal Medicine","Nephrology"],
+    subjects: ["Rheumatology", "Immunology", "Internal Medicine", "Nephrology", "Dermatology"],
     synonyms: ["الذئبة الحمامية الجهازية","الذئبة الحمراء","مرض اللوبس","Systemic Lupus Erythematosus","SLE"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w588',
@@ -5889,7 +5889,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Immunology","Nephrology","Pulmonology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Immunology", "Nephrology", "Pulmonology", "Internal Medicine"],
     synonyms: ["متلازمة غودباستشر","مرض الأجسام المضادة للغشاء القاعدي","Anti-GBM Disease","Goodpasture Syndrome"],
     guessingDifficulty: 3
   },
@@ -5899,7 +5899,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Immunology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Pediatrics", "Genetics", "Immunology", "Cardiology"],
     synonyms: ["متلازمة دي جورج","متلازمة الحذف الصبغي 22q11","متلازمة الحنك والقلب والوجه","DiGeorge Syndrome","22q11.2 deletion"],
     guessingDifficulty: 3
   },
@@ -5919,7 +5919,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Immunology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Immunology", "Pediatrics", "Genetics"],
     synonyms: ["عوز المناعة المشترك الشديد","مرض طفل الفقاعة","السيد","Severe Combined Immunodeficiency","SCID"],
     guessingDifficulty: 3
   },
@@ -5929,7 +5929,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Genetics","Pathology"],
+    subjects: ["Immunology", "Genetics", "Pathology"],
     synonyms: ["مستضد الكريات البيضاء البشرية","نظام مستضدات الكريات البيضاء","معقد HLA","معقد التوافق النسيجي البشري","HLA","Human Leukocyte Antigen"],
     guessingDifficulty: 3
   },
@@ -5949,7 +5949,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Immunology","Pathology","Rheumatology","Clinical Toxicology","Emergency Medicine","Pharmacology"],
+    subjects: ["Immunology", "Pathology", "Rheumatology"],
     synonyms: ["الجسم المضاد الذاتي","الأضداد الذاتية","الأجسام المناعية الذاتية","Autoantibody","Autoantibodies"],
     guessingDifficulty: 3
   },
@@ -5959,7 +5959,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Hematology","Pathology","Internal Medicine","Physiology","Biochemistry"],
+    subjects: ["Oncology", "Hematology", "Pathology", "Internal Medicine"],
     synonyms: ["ليمفوما هودجكين","داء هودجكين","ورم هودجكين اللمفاوي","Hodgkin Lymphoma","Hodgkins Disease"],
     guessingDifficulty: 2
   },
@@ -5969,7 +5969,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Hematology","Internal Medicine","Pathology","Physiology","Biochemistry"],
+    subjects: ["Oncology", "Hematology", "Pathology", "Internal Medicine"],
     synonyms: ["الليمفوما اللاهودجكينية","ورم الغدد اللمفاوية اللاهودجكيني","Non-Hodgkin Lymphoma","NHL"],
     guessingDifficulty: 2
   },
@@ -5979,7 +5979,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Pulmonology","Pathology","Emergency Medicine","Anatomy","Physiology","Anaesthesia","Internal Medicine","Hematology"],
+    subjects: ["Oncology", "Pulmonology", "Pathology", "Internal Medicine"],
     synonyms: ["سرطان الرئة صغير الخلايا","أورام الرئة صغيرة الخلايا","ورم خلايا الشوفان","Small Cell Lung Cancer","SCLC"],
     guessingDifficulty: 3
   },
@@ -5989,7 +5989,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Gastroenterology","Internal Medicine","General Surgery","Physiology","Anatomy","Pathology","Hematology"],
+    subjects: ["Oncology", "Gastroenterology", "Internal Medicine", "General Surgery", "Pathology"],
     synonyms: ["سرطان الخلايا الكبدية","سرطان الكبد الأولي","كارسينوما الكبد","Hepatocellular Carcinoma","HCC"],
     guessingDifficulty: 2
   },
@@ -5999,7 +5999,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Gastroenterology","General Surgery","Physiology","Anatomy","Internal Medicine","Pathology","Hematology"],
+    subjects: ["Oncology", "Gastroenterology", "General Surgery", "Pathology", "Internal Medicine"],
     synonyms: ["سرطان المعدة","سرطان المعدة الغدي","أورام المعدة الخبيثة","Gastric Carcinoma","Stomach Cancer"],
     guessingDifficulty: 2
   },
@@ -6009,7 +6009,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Gastroenterology","General Surgery","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Oncology", "Gastroenterology", "General Surgery", "Pathology", "Internal Medicine"],
     synonyms: ["سرطان البنكرياس الغدي","سرطان البنكرياس","أورام البنكرياس","Pancreatic Adenocarcinoma","Pancreatic Cancer"],
     guessingDifficulty: 3
   },
@@ -6019,7 +6019,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Obstetrics and Gynecology","Pathology","Hematology","Internal Medicine","Anatomy","Physiology","General Surgery"],
+    subjects: ["Oncology", "Obstetrics and Gynecology", "Pathology", "General Surgery"],
     synonyms: ["سرطان المبيض","أورام المبيض الخبيثة","السرطان المبيضي الظهاري","Ovarian Carcinoma","Ovarian Cancer"],
     guessingDifficulty: 2
   },
@@ -6029,9 +6029,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Oncology","Urology","Biochemistry","Internal Medicine","Physiology","Anatomy","Pathology"],
+    subjects: ["Oncology", "Urology", "Biochemistry"],
     synonyms: ["مستضد البروستاتا النوعي","واسم البي إس إيه","إنزيم البروستاتا","Prostate-Specific Antigen","PSA"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w603',
@@ -6039,7 +6039,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Oncology","Gastroenterology","Biochemistry","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Oncology", "Gastroenterology", "Biochemistry", "Pathology"],
     synonyms: ["المستضد السرطاني المضغي","واسم سي إي إيه","بروتين الجنين السرطاني","Carcinoembryonic Antigen","CEA"],
     guessingDifficulty: 3
   },
@@ -6049,7 +6049,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Oncology","Obstetrics and Gynecology","Pediatrics"],
+    subjects: ["Oncology", "Obstetrics and Gynecology", "Pediatrics", "Biochemistry"],
     synonyms: ["ألفا فيتو بروتين","بروتين الجنين ألفا","واسم إيه إف بي","Alpha-Fetoprotein","AFP"],
     guessingDifficulty: 3
   },
@@ -6059,7 +6059,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
-    subjects: ["Oncology","Obstetrics and Gynecology","Biochemistry","Clinical Toxicology","Emergency Medicine","Pharmacology"],
+    subjects: ["Oncology", "Obstetrics and Gynecology", "Biochemistry"],
     synonyms: ["واسم الورم CA-125","مستضد السرطان 125","واسم سرطان المبيض","CA-125","Cancer Antigen 125"],
     guessingDifficulty: 3
   },
@@ -6069,7 +6069,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Pharma',
-    subjects: ["Oncology","Pharmacology","Internal Medicine","Pathology","Hematology","Physiology","Biochemistry"],
+    subjects: ["Oncology", "Pharmacology"],
     synonyms: ["العلاج الكيميائي للسرطان","الكيماوي","الأدوية السامة للخلايا","العلاج الكيماوي","Chemotherapy","Chemo"],
     guessingDifficulty: 1
   },
@@ -6079,7 +6079,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Oncology","Radiology","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Oncology", "Radiology"],
     synonyms: ["العلاج الإشعاعي للأورام","العلاج بالأشعة","الإشعاعي","الراديوي العلاجي","Radiation Therapy","Radiotherapy"],
     guessingDifficulty: 1
   },
@@ -6089,7 +6089,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Pharma',
-    subjects: ["Oncology","Immunology","Pharmacology","Internal Medicine","Pathology","Hematology"],
+    subjects: ["Oncology", "Immunology", "Pharmacology"],
     synonyms: ["العلاج المناعي للأورام","العلاج المناعي للسرطان","مثبطات نقاط التفتيش","Cancer Immunotherapy","Immune Checkpoint Inhibitors"],
     guessingDifficulty: 2
   },
@@ -6097,11 +6097,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w609',
     word: { Arabic: "النقائل الورمية الخبيثة", English: "Neoplasm Metastasis" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Oncology","Pathology","Hematology","Internal Medicine","Forensic Medicine"],
+    subjects: ["Oncology", "Pathology", "Internal Medicine", "General Surgery"],
     synonyms: ["النقائل الورمية الخبيثة","انبثاث السرطان","انتشار الورم الثانوي","النقائل السرطانية","Metastasis","Metastatic Disease"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w610',
@@ -6109,7 +6109,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Oncology","Pathology","General Surgery"],
+    subjects: ["Oncology", "Pathology", "General Surgery"],
     synonyms: ["الخزعة بالإبرة الدقيقة","سحب العينات بالإبرة الدقيقة","السحب الخلوي","Fine Needle Aspiration","FNA","FNAC"],
     guessingDifficulty: 2
   },
@@ -6119,7 +6119,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Oncology","Pathology","General Surgery","Hematology","Internal Medicine"],
+    subjects: ["Oncology", "Pathology", "General Surgery"],
     synonyms: ["نظام تدريج الأورام TNM","تدريج السرطان TNM","تصنيف TNM","TNM Staging System","TNM"],
     guessingDifficulty: 2
   },
@@ -6129,7 +6129,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Orthopedics","Pediatrics","Rheumatology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Oncology", "Orthopedics", "Pediatrics", "Pathology"],
     synonyms: ["ساركوما إيوينغ العظمية","ورم إيوينغ","ساركوما يوينغ","Ewing Sarcoma"],
     guessingDifficulty: 3
   },
@@ -6139,7 +6139,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Ophthalmology","Pediatrics","Genetics","Anatomy","General Surgery"],
+    subjects: ["Oncology", "Ophthalmology", "Pediatrics", "Genetics"],
     synonyms: ["ورم أرومة الشبكية","سرطان شبكية العين لدى الأطفال","ريتينوبلاستوما","Retinoblastoma"],
     guessingDifficulty: 3
   },
@@ -6149,7 +6149,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Gastroenterology","Endocrinology","Pathology","Hematology","Internal Medicine"],
+    subjects: ["Oncology", "Gastroenterology", "Endocrinology", "Pathology"],
     synonyms: ["الورم السرطاوي","أورام الغدد الصم العصبية","الورم الكارسينويدي","Carcinoid Tumor","Neuroendocrine Tumor","NET"],
     guessingDifficulty: 3
   },
@@ -6159,19 +6159,19 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Oncology","Hematology","Pediatrics","Pathology","Internal Medicine","Physiology","Biochemistry"],
+    subjects: ["Oncology", "Hematology", "Pediatrics", "Pathology"],
     synonyms: ["ليمفوما بوركيت","ورم بوركيت اللمفاوي","Burkitt Lymphoma"],
     guessingDifficulty: 3
   },
   {
     id: 'w616',
-    word: { Arabic: "المشيمة المنزاحة", English: "Vasa Previa" },
+    word: { Arabic: "الأوعية المتقدمة (Vasa Previa)", English: "Vasa Previa" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Emergency Medicine","Pediatrics"],
+    subjects: ["Obstetrics and Gynecology", "Emergency Medicine", "Pediatrics"],
     synonyms: ["الأوعية المنزاحة","المشيمة المنزاحة للأوعية","Vasa Previa"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w617',
@@ -6179,7 +6179,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Syndrome',
-    subjects: ["Obstetrics and Gynecology","Endocrinology","Pediatrics","Genetics","Internal Medicine","Neurology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Endocrinology"],
     synonyms: ["متلازمة تكيس المبايض","تكيسات المبيضين","متلازمة شتاين-ليفينثال","Polycystic Ovary Syndrome","PCOS"],
     guessingDifficulty: 1
   },
@@ -6187,11 +6187,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w618',
     word: { Arabic: "الورم العضلي الأملس الرحمي", English: "Uterine Leiomyoma" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","General Surgery","Orthopedics","Rheumatology","Anatomy","Physiology"],
+    subjects: ["Obstetrics and Gynecology", "General Surgery", "Pathology"],
     synonyms: ["الورم العضلي الأملس الرحمي","ألياف الرحم","تليف الرحم","الورم الليفي الرحمي","Uterine Fibroids","Fibroid","Leiomyoma"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w619',
@@ -6199,7 +6199,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Oncology","Infectious Diseases","Pathology","Hematology","Internal Medicine","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Oncology", "Pathology"],
     synonyms: ["سرطان عنق الرحم","خباثة عنق الرحم","كارسينوما عنق الرحم","Cervical Cancer","Cervical Carcinoma"],
     guessingDifficulty: 1
   },
@@ -6209,7 +6209,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Obstetrics and Gynecology","Oncology","Pathology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Oncology", "Pathology"],
     synonyms: ["مسحة عنق الرحم","لطاخة بابانيكولاو","فحص باب سمير","مسحة باب","Pap Smear","Papanicolaou Test"],
     guessingDifficulty: 1
   },
@@ -6217,11 +6217,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w621',
     word: { Arabic: "سكري الحمل", English: "Gestational Diabetes" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Endocrinology","Internal Medicine","Physiology","Biochemistry","Anatomy","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Endocrinology", "Internal Medicine"],
     synonyms: ["سكري الحمل","مرض السكر أثناء الحمل","داء السكري الحملي","Gestational Diabetes Mellitus","GDM"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w622',
@@ -6229,7 +6229,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology"],
+    subjects: ["Obstetrics and Gynecology", "Pediatrics"],
     synonyms: ["تمزق الأغشية الباكر","نزول ماء الرأس المبكر","انفجار جيب المياه الباكر","PROM","PPROM"],
     guessingDifficulty: 2
   },
@@ -6237,9 +6237,9 @@ export const medicalWords: MedicalWord[] = [
     id: 'w623',
     word: { Arabic: "عسر ولادة الكتف", English: "Shoulder Dystocia" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Emergency Medicine","Pediatrics","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Emergency Medicine", "Pediatrics"],
     synonyms: ["عسر ولادة الكتف","انحشار كتف الجنين","عسرة الكتف التوليدية","Shoulder Dystocia"],
     guessingDifficulty: 3
   },
@@ -6247,11 +6247,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w624',
     word: { Arabic: "المشيمة الملتصقة", English: "Placenta Accreta" },
     level: 'Clinical',
-    difficulty: 3,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","General Surgery","Anatomy","Physiology"],
+    subjects: ["Obstetrics and Gynecology", "General Surgery"],
     synonyms: ["المشيمة الملتصقة","التصاق المشيمة غير الطبيعي","المشيمة الغازية","Placenta Accreta","Placenta Accreta Spectrum","PAS"],
-    guessingDifficulty: 3
+    guessingDifficulty: 2
   },
   {
     id: 'w625',
@@ -6259,7 +6259,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Emergency Medicine","Hematology","Physiology","Biochemistry","Internal Medicine"],
+    subjects: ["Obstetrics and Gynecology", "Emergency Medicine"],
     synonyms: ["نزف ما بعد الوضع","نزيف ما بعد الولادة","النزف النفاسي الحاد","PPH","Postpartum Hemorrhage"],
     guessingDifficulty: 1
   },
@@ -6269,7 +6269,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Obstetrics and Gynecology","Hematology","Emergency Medicine","Internal Medicine","Pediatrics","Genetics","Neurology"],
+    subjects: ["Obstetrics and Gynecology", "Hematology", "Emergency Medicine"],
     synonyms: ["متلازمة هيلب","متلازمة انحلال الدم ونقص الصفائح","HELLP Syndrome","HELLP"],
     guessingDifficulty: 2
   },
@@ -6279,7 +6279,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Obstetrics and Gynecology","General Surgery","Anaesthesia"],
+    subjects: ["Obstetrics and Gynecology", "General Surgery", "Anaesthesia"],
     synonyms: ["العملية القيصرية","الولادة القيصرية","شق البطن التوليدي","Cesarean Section","C-section"],
     guessingDifficulty: 1
   },
@@ -6289,7 +6289,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
-    subjects: ["Obstetrics and Gynecology","Pediatrics","Emergency Medicine","General Medicine","Anaesthesia","Cardiology","Vascular Surgery","Physiology","Anatomy","Internal Medicine","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Pediatrics"],
     synonyms: ["تخطيط قلب الجنين والرحم","جهاز رسم نبض الجنين","مراقبة الجنين الإلكترونية","Cardiotocography","CTG","Electronic Fetal Monitoring"],
     guessingDifficulty: 2
   },
@@ -6299,7 +6299,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Obstetrics and Gynecology","Genetics","Pediatrics"],
+    subjects: ["Obstetrics and Gynecology", "Genetics", "Pediatrics"],
     synonyms: ["بزل السائل السلوي الأمنيوسي","سحب ماء الجنين","بزل السلى","Amniocentesis"],
     guessingDifficulty: 2
   },
@@ -6309,9 +6309,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
-    subjects: ["Obstetrics and Gynecology","Pediatrics","Physiology","Infectious Diseases","Microbiology","Parasitology","Internal Medicine"],
+    subjects: ["Obstetrics and Gynecology", "Pediatrics"],
     synonyms: ["السائل السلوي الأمنيوسي","ماء الجنين","السائل الأمنيوسي","السلى","Amniotic Fluid"],
-    guessingDifficulty: 3
+    guessingDifficulty: 1
   },
   {
     id: 'w631',
@@ -6319,9 +6319,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Academic',
     difficulty: 1,
     type: 'Organ',
-    subjects: ["Obstetrics and Gynecology","Anatomy","Physiology","Pathology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Anatomy"],
     synonyms: ["عنق الرحم","فوهة الرحم","مدخل الرحم","Cervix","Cervix Uteri"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w632',
@@ -6329,7 +6329,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "General Surgery"],
     synonyms: ["كيس المبيض","تكيسات المبيض المفردة","الأكياس المبيضية","Ovarian Cyst"],
     guessingDifficulty: 1
   },
@@ -6339,7 +6339,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
-    subjects: ["Obstetrics and Gynecology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "General Surgery"],
     synonyms: ["شق العجان التوليدي","بضع الفرج","شق الولادة المهبلية","Episiotomy"],
     guessingDifficulty: 1
   },
@@ -6349,7 +6349,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Emergency Medicine","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Emergency Medicine"],
     synonyms: ["ونى الرحم الارتخائي","ارتخاء الرحم","قصور انقباض الرحم بعد الولادة","Uterine Atony"],
     guessingDifficulty: 2
   },
@@ -6359,7 +6359,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Emergency Medicine","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology", "Emergency Medicine", "General Surgery"],
     synonyms: ["انقلاب الرحم","انقلاب الرحم التوليدي","انقلاب قاع الرحم","Uterine Inversion"],
     guessingDifficulty: 3
   },
@@ -6369,7 +6369,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Anatomy","Physiology","General Surgery"],
+    subjects: ["Obstetrics and Gynecology"],
     synonyms: ["قصور عنق الرحم","ارتخاء عنق الرحم","عجز عنق الرحم","قصور فوهة الرحم","Incompetent Cervix","Cervical Insufficiency"],
     guessingDifficulty: 2
   },
@@ -6377,11 +6377,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w637',
     word: { Arabic: "حمى النفاس الإنتانية", English: "Puerperal Sepsis" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 1,
     type: 'Disease',
-    subjects: ["Obstetrics and Gynecology","Infectious Diseases","Internal Medicine","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Obstetrics and Gynecology", "Infectious Diseases"],
     synonyms: ["حمى النفاس الإنتانية","حمى النفاس","إنتان ما بعد الولادة","التهاب بطانة الرحم النفاسي","Puerperal Sepsis","Postpartum Endometritis"],
-    guessingDifficulty: 2
+    guessingDifficulty: 1
   },
   {
     id: 'w638',
@@ -6389,7 +6389,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Internal Medicine"],
+    subjects: ["Cardiology", "Internal Medicine"],
     synonyms: ["قلس الأبهر","ارتجاع الصمام الأبهري","قصور الصمام الأبهري","Aortic Regurgitation","Aortic Insufficiency"],
     guessingDifficulty: 2
   },
@@ -6399,7 +6399,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Cardiology","Internal Medicine","Emergency Medicine","Pediatrics","Genetics","Neurology","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Cardiology", "Internal Medicine", "Emergency Medicine"],
     synonyms: ["متلازمة وولف-باركنسون-وايت","وولف باركنسون وايت","WPW Syndrome","Wolff-Parkinson-White Syndrome"],
     guessingDifficulty: 2
   },
@@ -6409,7 +6409,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Emergency Medicine","Internal Medicine","Critical Care","Vascular Surgery","Physiology","Anatomy","Hematology","Biochemistry"],
+    subjects: ["Cardiology", "Emergency Medicine", "Internal Medicine", "Anaesthesia"],
     synonyms: ["الصدمة قلبية المنشأ","صدمة قلبية","Cardiogenic Shock"],
     guessingDifficulty: 2
   },
@@ -6419,7 +6419,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Cardiology","Internal Medicine","Emergency Medicine","Vascular Surgery","Physiology","Anatomy","Orthopedics","Rheumatology","General Surgery"],
+    subjects: ["Cardiology", "Internal Medicine", "Emergency Medicine"],
     synonyms: ["اعتلال تاكوتسوبو لعضلة القلب","متلازمة القلب المنكسر","اعتلال تاكوتسوبو","Takotsubo Cardiomyopathy","Broken Heart Syndrome","Stress Cardiomyopathy"],
     guessingDifficulty: 2
   },
@@ -6429,7 +6429,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Neurology","Rheumatology","Internal Medicine","Ophthalmology","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Rheumatology", "Internal Medicine", "Ophthalmology", "Neurology"],
     synonyms: ["التهاب الشرايين الخلوية العملاقة","التهاب الشريان الصدغي","Giant Cell Arteritis","Temporal Arteritis","Horton Disease"],
     guessingDifficulty: 2
   },
@@ -6439,7 +6439,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Neurology","Emergency Medicine","Neurosurgery","Orthopedics","Pediatrics","Genetics","Internal Medicine"],
+    subjects: ["Neurology", "Emergency Medicine", "Neurosurgery", "Orthopedics"],
     synonyms: ["متلازمة ذيل الفرس","انضغاط ذيل الفرس","Cauda Equina Syndrome"],
     guessingDifficulty: 2
   },
@@ -6449,9 +6449,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Neurology","Neurosurgery","Internal Medicine","Anatomy","Physiology","Psychiatry"],
+    subjects: ["Neurology", "Neurosurgery"],
     synonyms: ["تكهف النخاع","تكهف النخاع الشوكي","استسقاء النخاع","Syringomyelia","Syrinx"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w645',
@@ -6459,7 +6459,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
-    subjects: ["Gastroenterology","Internal Medicine","Infectious Diseases","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology", "Internal Medicine"],
     synonyms: ["التهاب الأقنية الصفراوية المصلب البدئي","التهاب القنوات الصفراوية المصلب","Primary Sclerosing Cholangitis","PSC"],
     guessingDifficulty: 3
   },
@@ -6467,11 +6467,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w646',
     word: { Arabic: "متلازمة بورهاف", English: "Boerhaave Syndrome" },
     level: 'Clinical',
-    difficulty: 2,
+    difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Gastroenterology","Emergency Medicine","General Surgery","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Gastroenterology", "Emergency Medicine", "General Surgery"],
     synonyms: ["متلازمة بورهاف","تمزق المريء التلقائي","Boerhaave Syndrome","Esophageal Rupture"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w647',
@@ -6479,7 +6479,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Gastroenterology","Infectious Diseases","Internal Medicine","General Surgery","Physiology","Anatomy","Microbiology","Parasitology","Pediatrics"],
+    subjects: ["Gastroenterology", "Infectious Diseases", "Internal Medicine", "Microbiology"],
     synonyms: ["التهاب القولون بالمطثية العسيرة","التهاب القولون الغشائي الكاذب","عدوى المطثية العسيرة","Clostridioides difficile Colitis","C. difficile Infection","Pseudomembranous Colitis"],
     guessingDifficulty: 2
   },
@@ -6489,7 +6489,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pulmonology","Infectious Diseases","Internal Medicine","Emergency Medicine","Anatomy","Physiology","Anaesthesia"],
+    subjects: ["Pulmonology", "Infectious Diseases", "Internal Medicine", "Immunology"],
     synonyms: ["ذات الرئة بالمتكيسة الرئوية الجيروفيسية","التهاب رئوي بالمتكيسة الجيروفيسية","PCP Pneumonia","Pneumocystis Jirovecii Pneumonia","Pneumocystis Carinii Pneumonia"],
     guessingDifficulty: 2
   },
@@ -6499,7 +6499,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Pulmonology","Critical Care","Internal Medicine","Emergency Medicine","Pediatrics","Genetics","Neurology","Anatomy","Physiology","Anaesthesia"],
+    subjects: ["Pulmonology", "Critical Care", "Internal Medicine", "Emergency Medicine", "Anaesthesia"],
     synonyms: ["متلازمة الضائقة التنفسية الحادة","ARDS","متلازمة العوز التنفسي الحاد","Acute Respiratory Distress Syndrome"],
     guessingDifficulty: 2
   },
@@ -6509,7 +6509,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Pulmonology","Oncology","Pathology","Internal Medicine"],
+    subjects: ["Pulmonology", "Oncology", "Pathology", "Internal Medicine"],
     synonyms: ["ورم الظهارة المتوسطة","ميزوثليوما","ورم غشاء الجنب الخبيث","Mesothelioma","Malignant Pleural Mesothelioma"],
     guessingDifficulty: 2
   },
@@ -6519,7 +6519,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Endocrinology","Emergency Medicine","Internal Medicine","Critical Care","Hematology","Physiology","Biochemistry","Clinical Toxicology","Pharmacology"],
+    subjects: ["Endocrinology", "Emergency Medicine", "Internal Medicine", "Critical Care"],
     synonyms: ["متلازمة فرط سكر الدم وفرط الأسمولية","غيبوبة السكر التناضحية","فرط الأسمولية السكري","Hyperosmolar Hyperglycemic State","HHS","HONK"],
     guessingDifficulty: 2
   },
@@ -6529,7 +6529,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Endocrinology","Emergency Medicine","Internal Medicine","Critical Care","Physiology","Biochemistry"],
+    subjects: ["Endocrinology", "Emergency Medicine", "Internal Medicine", "Critical Care"],
     synonyms: ["العاصفة الدرقية","نوبة التسمم الدرقي","عاصفة الغدة الدرقية","Thyroid Storm","Thyrotoxic Crisis"],
     guessingDifficulty: 2
   },
@@ -6539,7 +6539,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
-    subjects: ["Endocrinology","Oncology","Genetics","Internal Medicine","Pediatrics","Neurology","Physiology","Biochemistry","Pathology","Hematology"],
+    subjects: ["Endocrinology", "Oncology", "Genetics", "Internal Medicine"],
     synonyms: ["تعدد الأورام الصماوية الصمائية","متلازمة الأورام الصماء المتعددة","Multiple Endocrine Neoplasia","MEN Syndrome","MEN1","MEN2"],
     guessingDifficulty: 3
   },
@@ -6549,7 +6549,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Nephrology","Pediatrics","Internal Medicine","Pathology","Urology","Physiology","Anatomy","Infectious Diseases","Microbiology","Parasitology"],
+    subjects: ["Nephrology", "Pediatrics", "Internal Medicine", "Infectious Diseases"],
     synonyms: ["التهاب كبيبات الكلى بعد العقديات","التهاب الكبيبات بعد عدوى العقدية","Post-Streptococcal Glomerulonephritis","PSGN"],
     guessingDifficulty: 2
   },
@@ -6559,7 +6559,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
-    subjects: ["Emergency Medicine","Pediatrics","General Surgery","Nephrology","Urology"],
+    subjects: ["Urology", "Emergency Medicine", "Pediatrics", "General Surgery"],
     synonyms: ["انفتال الخصية","التواء الخصية","انفتال الحبل المنوي","Testicular Torsion","Torsion of the Testis"],
     guessingDifficulty: 1
   },
@@ -6569,7 +6569,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
-    subjects: ["Nephrology","Pediatrics","Pathology","Internal Medicine"],
+    subjects: ["Nephrology", "Pediatrics", "Internal Medicine", "Pathology"],
     synonyms: ["مرض التغير الأدنى","داء الآفات الصغرى","الاعتلال الكلوي بالأدنى تغير","Minimal Change Disease","Nil Lesion","MCD"],
     guessingDifficulty: 2
   },
@@ -6577,11 +6577,11 @@ export const medicalWords: MedicalWord[] = [
     id: 'w657',
     word: { Arabic: "تسمم الباراسيتامول", English: "Acetaminophen Toxicity" },
     level: 'Clinical',
-    difficulty: 1,
+    difficulty: 2,
     type: 'Disease',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Internal Medicine"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Pharmacology", "Internal Medicine", "Gastroenterology"],
     synonyms: ["تسمم الباراسيتامول","تسمم الأسيتامينوفين","جرعة زائدة من الباراسيتامول","Acetaminophen Toxicity","Paracetamol Poisoning","APAP Toxicity"],
-    guessingDifficulty: 1
+    guessingDifficulty: 2
   },
   {
     id: 'w658',
@@ -6589,7 +6589,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Psychiatry","Pharmacology","Pediatrics","Genetics","Internal Medicine","Neurology"],
+    subjects: ["Clinical Toxicology", "Emergency Medicine", "Psychiatry", "Pharmacology", "Neurology", "Internal Medicine"],
     synonyms: ["متلازمة السيروتونين","سمية السيروتونين","تسمم السيروتونين","Serotonin Syndrome","Serotonin Toxicity"],
     guessingDifficulty: 2
   },
@@ -6599,7 +6599,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
-    subjects: ["Clinical Toxicology","Emergency Medicine","Pharmacology","Anaesthesia","Pediatrics","Genetics","Internal Medicine","Neurology","Oncology","Pathology","Hematology"],
+    subjects: ["Anaesthesia", "Emergency Medicine", "Pharmacology", "Clinical Toxicology", "Genetics"],
     synonyms: ["فرط الحرارة الخبيث","متلازمة فرط الحرارة الخبيث","Malignant Hyperthermia","MH"],
     guessingDifficulty: 2
   },
@@ -6609,7 +6609,7 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
-    subjects: ["Radiology","Emergency Medicine","General Surgery"],
+    subjects: ["Radiology", "Emergency Medicine", "General Surgery"],
     synonyms: ["السونار السريع لرضوض البطن","سونار الطوارئ للإصابات","فحص فاست","FAST Ultrasound","Focused Assessment with Sonography for Trauma","E-FAST"],
     guessingDifficulty: 2
   },
@@ -6619,9 +6619,9 @@ export const medicalWords: MedicalWord[] = [
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
-    subjects: ["Radiology","Pulmonology","Internal Medicine","Neurology","Anatomy","Physiology","Psychiatry","Emergency Medicine","Anaesthesia"],
+    subjects: ["Radiology", "Pulmonology", "Internal Medicine"],
     synonyms: ["مخطط القصبات الهوائي الظليل","علامة القصبة الهوائية الظليلة","القصبات الهوائية الشعاعية","Air Bronchogram","Air Bronchogram Sign"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   },
   {
     id: 'w662',
@@ -6631,195 +6631,24 @@ export const medicalWords: MedicalWord[] = [
     type: 'Other',
     subjects: ["Radiology","Gastroenterology","General Surgery","Oncology"],
     synonyms: ["علامة لب التفاحة","مظهر لب التفاحة بالأشعة","علامة قمع التفاحة","Apple Core Sign","Napkin Ring Sign"],
-    guessingDifficulty: 2
+    guessingDifficulty: 3
   }
 ];
 
-// In-place dynamic enrichment of specialties and guessing difficulty for all 260+ terms
+// Post-processing: Ensure subjects integrity and guessingDifficulty
 medicalWords.forEach(w => {
-  const nameEn = w.word.English.toLowerCase();
-  const nameAr = w.word.Arabic.toLowerCase();
-  const type = w.type;
-  
-  // Initialize set of subjects from existing subjects
-  const sSet = new Set<string>(w.subjects);
-  
-  // Base rules based on type
-  if (type === 'Organ') {
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('Pathology');
-  } else if (type === 'Muscle') {
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('Orthopedics');
-    sSet.add('General Surgery');
-  } else if (type === 'Nerve') {
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('Neurology');
-    sSet.add('General Surgery');
-  } else if (type === 'Pharma') {
-    sSet.add('Pharmacology');
-    sSet.add('Internal Medicine');
-  } else if (type === 'Equipment') {
-    sSet.add('Emergency Medicine');
-    sSet.add('General Medicine');
-    sSet.add('Anaesthesia');
-  } else if (type === 'Syndrome') {
-    sSet.add('Pediatrics');
-    sSet.add('Genetics');
-    sSet.add('Internal Medicine');
-    sSet.add('Neurology');
-  } else if (type === 'Parasite') {
-    sSet.add('Parasitology');
-    sSet.add('Microbiology');
-    sSet.add('Infectious Diseases');
-    sSet.add('Gastroenterology');
-  } else if (type === 'Cell' || type === 'Tissue') {
-    sSet.add('Histology');
-    sSet.add('Physiology');
-    sSet.add('Pathology');
-    sSet.add('Biochemistry');
+  if (!w.subjects || w.subjects.length === 0) {
+    w.subjects = ['General Medicine'];
   }
 
-  // Keyword rules for maximum specificity and multi-specialty coverage (up to 10 subjects per word!)
-  const containsAny = (keywords: string[]) => keywords.some(k => nameEn.includes(k) || nameAr.includes(k));
-
-  if (containsAny(['heart', 'myocard', 'cardio', 'aorta', 'infarct', 'valve', 'coronary', 'pulse', 'artery', 'ventricle', 'atrium', 'blood pressure', 'ecg', 'defibrillator', 'willis', 'vascul', 'vein', 'شريان', 'وريد', 'قلب', 'ضغط الدم', 'صمام'])) {
-    sSet.add('Cardiology');
-    sSet.add('Vascular Surgery');
-    sSet.add('Physiology');
-    sSet.add('Anatomy');
-    sSet.add('Internal Medicine');
-    sSet.add('Emergency Medicine');
+  if (!w.guessingDifficulty) {
+    let gd: 1 | 2 | 3 = w.difficulty;
+    if (w.level === 'Academic' && gd < 3) {
+      gd = (gd + 1) as 1 | 2 | 3;
+    }
+    if ((w.type === 'Parasite' || w.type === 'Cell' || w.type === 'Tissue' || w.type === 'Component') && gd < 3) {
+      gd = (gd + 1) as 1 | 2 | 3;
+    }
+    w.guessingDifficulty = gd;
   }
-  
-  if (containsAny(['brain', 'nerve', 'neuro', 'cerebr', 'mening', 'spinal', 'willis', 'seizure', 'stroke', 'parkinson', 'alzheimer', 'epilepsy', 'myasthenia', 'encephalitis', 'عصب', 'دماغ', 'مخ', 'شلل', 'صرع', 'نخاع'])) {
-    sSet.add('Neurology');
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('Internal Medicine');
-    sSet.add('Psychiatry');
-  }
-
-  if (containsAny(['stomach', 'gastric', 'colon', 'intestie', 'intestin', 'liver', 'hepatic', 'biliary', 'gallbladder', 'pancreas', 'esophag', 'enter', 'append', 'diarrhea', 'peptic', 'crohn', 'celiac', 'goblet', 'bile', 'معدة', 'كبد', 'مرارة', 'قولون', 'أمعاء', 'هضم', 'بواسير'])) {
-    sSet.add('Gastroenterology');
-    sSet.add('General Surgery');
-    sSet.add('Physiology');
-    sSet.add('Anatomy');
-    sSet.add('Internal Medicine');
-  }
-
-  if (containsAny(['lung', 'pulmon', 'respir', 'bronch', 'trachea', 'alveoli', 'asthma', 'pneumonia', 'copd', 'diaphragm', 'intubation', 'ventilator', 'رئة', 'تنفس', 'شعب هوائية', 'ربو', 'حجاب حاجز'])) {
-    sSet.add('Pulmonology');
-    sSet.add('Emergency Medicine');
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('Anaesthesia');
-    sSet.add('Internal Medicine');
-  }
-
-  if (containsAny(['kidney', 'renal', 'nephr', 'urea', 'urinary', 'bladder', 'urine', 'prostate', 'glomerul', 'كلية', 'كلى', 'بول', 'مثانة', 'بروستاتا'])) {
-    sSet.add('Urology');
-    sSet.add('Internal Medicine');
-    sSet.add('Physiology');
-    sSet.add('Anatomy');
-    sSet.add('Pathology');
-  }
-
-  if (containsAny(['thyroid', 'insulin', 'diabetes', 'hormone', 'endocrin', 'adrenal', 'pituitary', 'cushing', 'addison', 'graves', 'غدة', 'أنسولين', 'سكري', 'هرمون'])) {
-    sSet.add('Endocrinology');
-    sSet.add('Internal Medicine');
-    sSet.add('Physiology');
-    sSet.add('Biochemistry');
-  }
-
-  if (containsAny(['bone', 'joint', 'fracture', 'osteo', 'muscle', 'biceps', 'myo', 'skeletal', 'tend', 'cartilage', 'rheumat', 'arthr', 'عظم', 'مفصل', 'عضلة', 'كسر', 'روماتيزم'])) {
-    sSet.add('Orthopedics');
-    sSet.add('Rheumatology');
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('General Surgery');
-  }
-
-  if (containsAny(['dermat', 'skin', 'psoriasis', 'eczema', 'melanoma', 'acne', 'جلد', 'صدفية', 'إكزيما', 'بشرة'])) {
-    sSet.add('Dermatology');
-    sSet.add('Pathology');
-    sSet.add('Histology');
-  }
-
-  if (containsAny(['cancer', 'oncol', 'tumor', 'malignant', 'chemo', 'lymphoma', 'leukemia', 'melanoma', 'سرطان', 'أورام', 'خبيث'])) {
-    sSet.add('Oncology');
-    sSet.add('Pathology');
-    sSet.add('Hematology');
-    sSet.add('Internal Medicine');
-  }
-
-  if (containsAny(['blood', 'hemo', 'anemia', 'leukemia', 'lymph', 'platelet', 'coagulat', 'erythro', 'thromb', 'دم', 'أنيميا', 'خلايا الدم'])) {
-    sSet.add('Hematology');
-    sSet.add('Physiology');
-    sSet.add('Biochemistry');
-    sSet.add('Internal Medicine');
-  }
-
-  if (containsAny(['antibiotic', 'vaccine', 'viral', 'bacteri', 'infect', 'sepsis', 'fever', 'flu', 'malaria', 'parasite', 'worm', 'ascaris', 'taenia', 'schisto', 'fasciola', 'cryptosporidium', 'strongyloid', 'trichin', 'عدوى', 'التهاب', 'ميكروب', 'بكتيريا', 'طفيلي', 'دودة'])) {
-    sSet.add('Infectious Diseases');
-    sSet.add('Microbiology');
-    sSet.add('Parasitology');
-    sSet.add('Internal Medicine');
-    sSet.add('Pediatrics');
-  }
-
-  if (containsAny(['pregnan', 'uterus', 'ovary', 'gyneco', 'placenta', 'vagina', 'cervix', 'birth', 'رحم', 'مبيض', 'حمل', 'ولادة', 'نساء'])) {
-    sSet.add('Obstetrics and Gynecology');
-    sSet.add('Anatomy');
-    sSet.add('Physiology');
-    sSet.add('General Surgery');
-  }
-
-  if (containsAny(['pediatr', 'infant', 'child', 'down syndrome', 'neonatal', 'kawasaki', 'أطفال', 'طفل', 'رضيع'])) {
-    sSet.add('Pediatrics');
-    sSet.add('Genetics');
-    sSet.add('Family Medicine');
-  }
-
-    if (containsAny(['x-ray', 'ct ', 'mri', 'ultrasound', 'radiolog', 'fluoroscop', 'mammogra', 'angiogra', 'contrast', 'pet scan', 'dexa', 'barium', 'أشعة', 'رنين', 'سونار', 'مقطعية', 'ماموجرام', 'دوبلر'])) {
-    sSet.add('Radiology');
-  }
-
-  if (containsAny(['eye', 'ocular', 'retina', 'vision', 'glaucoma', 'cataract', 'عين', 'بصر', 'شبكية', 'مياه زرقاء'])) {
-    sSet.add('Ophthalmology');
-    sSet.add('Anatomy');
-    sSet.add('General Surgery');
-  }
-
-  if (containsAny(['poison', 'toxic', 'antidote', 'overdose', 'cyanide', 'arsenic', 'lead', 'organophosphate', 'atropine', 'carbon monoxide', 'fomepizole', 'naloxone', 'strychnine', 'toxin', 'snake', 'scorpion', 'تسمم', 'سم', 'ترياق', 'مبيد', 'زرنيخ', 'رصاص', 'فوسفات'])) {
-    sSet.add('Clinical Toxicology');
-    sSet.add('Emergency Medicine');
-    sSet.add('Pharmacology');
-  }
-
-  if (containsAny(['mortis', 'asphyxia', 'drowning', 'hanging', 'strangulation', 'wound', 'abrasion', 'contusion', 'lacerat', 'incised', 'stab', 'firearm', 'bullet', 'infanticide', 'autopsy', 'postmortem', 'tardieu', 'hesitation', 'battered', 'جثة', 'رمي', 'شنق', 'خنق', 'غرق', 'جرح', 'سحجة', 'كدمة', 'طعن', 'عيار ناري', 'مقذوف', 'تشريح'])) {
-    sSet.add('Forensic Medicine');
-    sSet.add('Pathology');
-  }
-
-  // Also default to general categories if empty
-  if (sSet.size === 0) {
-    sSet.add('General Medicine');
-  }
-
-  // Set the final subjects list (converting to Array)
-  w.subjects = Array.from(sSet);
-
-  // Guessing difficulty mapping logic
-  let gd: 1 | 2 | 3 = w.difficulty;
-  if (w.level === 'Academic' && gd < 3) {
-    gd = (gd + 1) as 1 | 2 | 3;
-  }
-  if ((type === 'Parasite' || type === 'Cell' || type === 'Tissue' || type === 'Component') && gd < 3) {
-    gd = (gd + 1) as 1 | 2 | 3;
-  }
-  w.guessingDifficulty = gd;
 });

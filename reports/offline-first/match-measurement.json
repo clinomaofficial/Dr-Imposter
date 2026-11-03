@@ -1,0 +1,24 @@
+{
+  "production_accessed": false,
+  "checks": [
+    "all lazy chunks, bundled fonts, images and sounds cached before local play",
+    "completed a winning solo match entirely offline, including first lazy game load",
+    "both earned points and penalties survive offline reloads",
+    "zero Firebase requests and zero game asset downloads during offline matches and reloads"
+  ],
+  "build_sha256": "aee05a5a741659f9633086dc50766873df363f5023af8d4459bb196a8ae9b420",
+  "precached_files": 59,
+  "precached_bytes": 6959306,
+  "match_seconds": 4.25,
+  "earned_score": 60,
+  "browser_sw_update_checks": 2,
+  "offline_http_requests_total": 2,
+  "offline_game_asset_requests": 0,
+  "firebase_requests": 0,
+  "firestore_reads": 0,
+  "firestore_writes": 0,
+  "runtime_errors": [],
+  "browser": "151.0.7922.34",
+  "completed": true,
+  "completed_utc": "2026-11-03T14:30:27.213789+00:00"
+}

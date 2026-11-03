@@ -1,28 +1,39 @@
 import { readLocal, writeLocal } from './localStore';
 
-interface ScoreBank { total: number; earned: number; claimedGuest?: number }
+interface ScoreBank { total: number; earned: number }
 const key = (uid?: string) => `clinoma-score-v1:${uid || 'guest'}`;
+function recoverGuestTransfer() {
+  const pending = readLocal<{ uid: string; bank: ScoreBank } | null>('clinoma-guest-transfer', null);
+  if (!pending) return;
+  writeLocal(key(pending.uid), pending.bank);
+  writeLocal(key(), { total: 0, earned: 0 });
+  writeLocal('dr_imposter_guest_score', 0);
+  writeLocal('clinoma-guest-transfer', null);
+}
 export function scoreBank(uid?: string, cloudScore = 0): ScoreBank {
+  recoverGuestTransfer();
   const legacyGuest = readLocal('dr_imposter_guest_score', 0);
   const bank = readLocal<ScoreBank>(key(uid), { total: uid ? cloudScore : Number(legacyGuest) || 0, earned: 0 });
-  return { ...bank, total: Math.max(bank.total, cloudScore), earned: bank.earned };
+  return bank;
 }
 export function saveLocalScore(total: number, uid?: string, cloudScore = 0) {
   const bank = scoreBank(uid, cloudScore);
-  const delta = Math.max(0, total - bank.total);
-  writeLocal(key(uid), { ...bank, total: Math.max(total, bank.total), earned: bank.earned + delta });
+  const delta = total - bank.total;
+  writeLocal(key(uid), { total, earned: bank.earned + delta });
   if (!uid) writeLocal('dr_imposter_guest_score', total);
 }
 export function acceptCloudScore(uid: string, total: number, acknowledgedEarned = 0) {
   const bank = scoreBank(uid);
-  writeLocal(key(uid), { ...bank, total: total + Math.max(0, bank.earned - acknowledgedEarned) });
+  writeLocal(key(uid), { ...bank, total: Math.max(0, total + bank.earned - acknowledgedEarned) });
 }
 
 export function claimGuestScore(uid: string, cloudScore = 0) {
-  const guestTotal = Number(readLocal('dr_imposter_guest_score', 0)) || 0;
+  recoverGuestTransfer();
+  const guestTotal = scoreBank().total;
   const bank = scoreBank(uid, cloudScore);
-  // Persist the receipt alongside the earned points before clearing the legacy
-  // bank; replay after a crash cannot add the same guest points twice.
-  const delta = Math.max(0, guestTotal - (bank.claimedGuest || 0));
-  if (delta) writeLocal(key(uid), { ...bank, total: bank.total + delta, earned: bank.earned + delta, claimedGuest: guestTotal });
+  // A journal makes the multi-key transfer recoverable after a reload/crash.
+  if (guestTotal > 0) {
+    writeLocal('clinoma-guest-transfer', { uid, bank: { total: bank.total + guestTotal, earned: bank.earned + guestTotal } });
+    recoverGuestTransfer();
+  }
 }

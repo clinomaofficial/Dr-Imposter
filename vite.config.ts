@@ -25,7 +25,7 @@ export default defineConfig(({mode}) => {
         for (const file of files) hash.update(file).update(fs.readFileSync(path.join(outDir, file)));
         const sw = fs.readFileSync(path.resolve('public/sw.js'), 'utf8')
           .replace('__BUILD_VERSION__', hash.digest('hex').slice(0, 16))
-          .replace('/* __PRECACHE_FILES__ */', JSON.stringify(files.map(file => `/${file.replaceAll('\\', '/')}`)));
+          .replace('self.__PRECACHE_FILES__', JSON.stringify(files.map(file => `/${file.replaceAll('\\', '/')}`)));
         fs.writeFileSync(path.join(outDir, 'sw.js'), sw);
       },
     }],
@@ -51,6 +51,9 @@ export default defineConfig(({mode}) => {
     server: {
       port: 4000,
       host: '0.0.0.0',
+      // Generated reports and alternate build outputs can be locked on Windows;
+      // they are not application source and must not restart a running match.
+      watch: { ignored: ['**/.shots/**', '**/reports/**', '**/android/**/build/**', '**/android/app/src/main/assets/public/**'] },
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',

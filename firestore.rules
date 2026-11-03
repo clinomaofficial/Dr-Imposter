@@ -210,19 +210,23 @@ service cloud.firestore {
         return member() && live() && stable() &&
           request.resource.data.memberIds == resource.data.memberIds;
       }
-      // Separate rules keep each permission check below the expression budget.
-      allow update: if isSignedIn() && live() && stable() && validRoster() && joining();
-      allow update: if isSignedIn() && live() && stable() && validRoster() && leaving();
-      allow update: if memberUpdate() && request.auth.uid == resource.data.hostId && validRoster() &&
-        request.resource.data.status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
-        (request.resource.data.status != 'LOBBY' || (request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null));
-      allow update: if memberUpdate() && voting();
-      allow update: if memberUpdate() && duelGuess();
-      allow update: if memberUpdate() && inquiryMove();
-      allow update: if memberUpdate() && cycleMove();
-      allow update: if memberUpdate() && resource.data.status == 'GUESSING' &&
-        request.resource.data.status == 'SCOREBOARD' && isImposter() &&
-        changed().hasOnly(['players', 'imposterGuessedWordId', 'status']);
+      function hostMove() {
+        return request.resource.data.memberIds == resource.data.memberIds &&
+          request.resource.data.status in ['LOBBY', 'PLAYING', 'PLAYING_DISCUSSION', 'VOTING', 'REVEALED', 'GUESSING', 'SCOREBOARD', 'TWO_PLAYERS_GUESS'] &&
+          (request.resource.data.status != 'LOBBY' || (request.resource.data.secretWord == null && request.resource.data.imposterAssignedWord == null));
+      }
+      function memberMove() {
+        return request.resource.data.memberIds != resource.data.memberIds ? leaving() :
+          request.auth.uid == resource.data.hostId ? hostMove() :
+           resource.data.status == 'VOTING' ? voting() :
+            resource.data.status == 'TWO_PLAYERS_GUESS' ? (changed().hasAny(['twoPlayersGuessMatched']) ? duelGuess() : inquiryMove()) :
+             resource.data.status == 'PLAYING_DISCUSSION' ? (changed().hasAny(['inquiry']) ? inquiryMove() : cycleMove()) :
+              (resource.data.status == 'GUESSING' && request.resource.data.status == 'SCOREBOARD' && isImposter() &&
+               changed().hasOnly(['players', 'imposterGuessedWordId', 'status']));
+      }
+      // Dispatch one operation rather than evaluating every game permission.
+      allow update: if isSignedIn() && live() && stable() && validRoster() &&
+        (member() ? memberMove() : joining());
       allow delete: if member();
     }
 
@@ -242,8 +246,7 @@ service cloud.firestore {
     match /users/{userId}/scoreReceipts/{deviceId} {
       allow read: if isOwner(userId);
       allow create, update: if isOwner(userId) && incoming().keys().hasOnly(['earned']) &&
-        incoming().earned is number && incoming().earned >= 0 &&
-        (resource == null || incoming().earned >= existing().earned);
+        incoming().earned is number;
     }
 
     match /settings/{settingId} {

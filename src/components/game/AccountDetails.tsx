@@ -41,7 +41,7 @@ export function AccountDetails({ user, language, name, onNameChange, saving, sav
     <Disclosure title={t('تفاصيل الحساب', 'Account details')}>
       <dl className="space-y-3 text-sm">
         <Detail label={t('نوع الحساب', 'Account type')} value={user.role === 'super_admin' ? t('مشرف عام', 'Super Admin') : t('لاعب', 'Player')} />
-        <Detail label={t('الاشتراك', 'Subscription')} value={user.subscriptionActive ? t('مدى الحياة', 'Lifetime') : t('مجاني', 'Free')} />
+        <Detail label={t('اللعب', 'Access')} value={t('مجاني بدون اشتراك', 'Free, no subscription')} />
       </dl>
     </Disclosure>
     {onAdmin && <BigBtn variant="gold" onClick={onAdmin}><Crown aria-hidden size={18} />{t('إدارة المنصة', 'Manage platform')}</BigBtn>}

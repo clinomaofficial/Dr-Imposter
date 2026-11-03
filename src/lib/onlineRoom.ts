@@ -1,4 +1,5 @@
-import { doc, runTransaction, deleteDoc } from 'firebase/firestore';
+import { doc } from 'firebase/firestore';
+import { runRoomTransaction as runTransaction } from './roomTransaction';
 import { db, ensureOnlineIdentity } from '../firebase';
 
 // All contested read/modify/write operations use a server transaction. No stale

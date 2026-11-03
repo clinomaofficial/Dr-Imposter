@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "three real browser identities create and join the same room",
+    "real votes synchronize and produce a shared result",
+    "completed an actual three-player online match through results"
+  ],
+  "runtime_errors": [],
+  "production_requests": [],
+  "completed": true
+}

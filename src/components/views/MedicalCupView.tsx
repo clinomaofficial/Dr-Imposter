@@ -1105,7 +1105,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   const leaveCurrentRoom = async () => {
     roomUnsubscribeRef.current?.();
     roomUnsubscribeRef.current = null;
-    try { if (roomId && localPlayerId) await leaveRoom(roomId, localPlayerId); }
+    try { if (roomId && localPlayerId) await withCloudAccess(() => leaveRoom(roomId, localPlayerId)); }
     catch (error) { console.warn('Room departure failed; room has a two-hour expiry.', error); }
     finally { closeRoomConnection(); }
   };
@@ -1250,7 +1250,7 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
 
   // Fetch active open rooms whenever online setup is active
   useEffect(() => {
-    if (phase === 'MULTI_SETUP_ONLINE' && isCreatingRoom !== true) {
+    if (phase === 'MULTI_SETUP_ONLINE' && isCreatingRoom !== true && !initialRoomCode) {
       fetchPublicRooms();
     }
   }, [phase, isCreatingRoom]);
@@ -1540,65 +1540,64 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
   };
 
   const getRelatedWord = (baseWord: MedicalWord, candidateWords: MedicalWord[] = medicalWords): MedicalWord => {
-    // Guard: the DB has duplicate-name entries (e.g. two "Heparin") — never hand the imposter the same name
+    // Guard: never hand the imposter or second player the same word
     const diffName = (w: MedicalWord) =>
-      w.word.English !== baseWord.word.English && w.word.Arabic !== baseWord.word.Arabic;
-
-    // Stage 1: Same difficulty AND same guessingDifficulty, but DIFFERENT type and NOT necessarily sharing subjects
-    // This makes their memory recall, suspicion level, and overall difficulty perfectly identical,
-    // while preventing the easy"category/subject hack" (e.g. if one gets a nerve, the other gets a nerve).
-    let pool = candidateWords.filter(w =>
       w.id !== baseWord.id &&
+      w.word.English.trim().toLowerCase() !== baseWord.word.English.trim().toLowerCase() &&
+      w.word.Arabic.trim() !== baseWord.word.Arabic.trim();
+
+    const isDiseaseLike = (t: string) => t === 'Disease' || t === 'Syndrome';
+    const isAnatomyLike = (t: string) => ['Organ', 'Muscle', 'Nerve', 'Component', 'Cell', 'Tissue'].includes(t);
+    const isToolLike = (t: string) => t === 'Equipment' || t === 'Technique';
+
+    // Priority 1: Same type AND exact same difficulty within candidate pool
+    let pool = candidateWords.filter(w =>
       diffName(w) &&
-      w.difficulty === baseWord.difficulty &&
-      w.guessingDifficulty === baseWord.guessingDifficulty &&
-      w.type !== baseWord.type
+      w.type === baseWord.type &&
+      w.difficulty === baseWord.difficulty
     );
 
-    // Stage 2: Same difficulty and same guessingDifficulty (allows same type if no different type exists)
+    // If multiple candidates exist, prioritize those sharing the most clinical subjects
+    if (pool.length > 1) {
+      const baseSubjSet = new Set(baseWord.subjects);
+      const withOverlap = pool.filter(w => w.subjects.some(s => baseSubjSet.has(s)));
+      if (withOverlap.length > 0) {
+        pool = withOverlap;
+      }
+    }
+
+    // Priority 2: Compatible clinical type (Disease <-> Syndrome, Anatomy <-> Anatomy, Equipment <-> Technique) with same difficulty
     if (pool.length === 0) {
       pool = candidateWords.filter(w =>
-        w.id !== baseWord.id &&
         diffName(w) &&
         w.difficulty === baseWord.difficulty &&
-        w.guessingDifficulty === baseWord.guessingDifficulty
+        ((isDiseaseLike(baseWord.type) && isDiseaseLike(w.type)) ||
+         (isAnatomyLike(baseWord.type) && isAnatomyLike(w.type)) ||
+         (isToolLike(baseWord.type) && isToolLike(w.type)))
       );
     }
 
-    // Stage 3: Same difficulty and different type
+    // Priority 3: Same type, any difficulty within candidate pool
     if (pool.length === 0) {
-      pool = candidateWords.filter(w =>
-        w.id !== baseWord.id &&
-        diffName(w) &&
-        w.difficulty === baseWord.difficulty &&
-        w.type !== baseWord.type
-      );
+      pool = candidateWords.filter(w => diffName(w) && w.type === baseWord.type);
     }
 
-    // Stage 4: Just same difficulty
+    // Priority 4: Same difficulty, any type within candidate pool
     if (pool.length === 0) {
-      pool = candidateWords.filter(w =>
-        w.id !== baseWord.id &&
-        diffName(w) &&
-        w.difficulty === baseWord.difficulty
-      );
+      pool = candidateWords.filter(w => diffName(w) && w.difficulty === baseWord.difficulty);
     }
 
-    // Stage 5: Fallback to different type (any difficulty)
+    // Priority 5: Any distinct word from candidateWords
     if (pool.length === 0) {
-      pool = candidateWords.filter(w =>
-        w.id !== baseWord.id &&
-        diffName(w) &&
-        w.type !== baseWord.type
-      );
+      pool = candidateWords.filter(w => diffName(w));
     }
 
-    // Stage 6: Absolute fallback (any other word with a different name)
+    // Priority 6: Absolute safety fallback from full medicalWords
     if (pool.length === 0) {
-      pool = candidateWords.filter(w => w.id !== baseWord.id && diffName(w));
+      pool = medicalWords.filter(w => diffName(w));
     }
 
-    return pool[Math.floor(Math.random() * pool.length)];
+    return pool[Math.floor(Math.random() * pool.length)] || baseWord;
   };
 
   const startSingleGame = () => {
@@ -1987,7 +1986,9 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
           : medicalWords[Math.floor(Math.random() * medicalWords.length)]);
     setSecretWord(chosenWord);
 
-    const secondaryPool = multiImageOnlyMode && playerCount === 2 ? wordsWithImages : medicalWords;
+    const secondaryPool = filtered.length >= 2
+      ? filtered
+      : (multiImageOnlyMode && wordsWithImages.length > 0 ? wordsWithImages : medicalWords);
     const secondaryWord = getRelatedWord(chosenWord, secondaryPool);
     setImposterAssignedWord(secondaryWord);
 
@@ -2289,7 +2290,10 @@ export const MedicalCupView: React.FC<Props> = ({ language, onSetView, onGoBack,
       : (onlineRoomState.imageOnlyMode && wordsWithImages.length > 0
           ? wordsWithImages[Math.floor(Math.random() * wordsWithImages.length)]
           : medicalWords[Math.floor(Math.random() * medicalWords.length)]);
-    const secondaryWord = getRelatedWord(chosenWord);
+    const secondaryPool = filtered.length >= 2
+      ? filtered
+      : (onlineRoomState.imageOnlyMode && wordsWithImages.length > 0 ? wordsWithImages : medicalWords);
+    const secondaryWord = getRelatedWord(chosenWord, secondaryPool);
 
     const members = [...onlineRoomState.players];
     const nPlayers = members.length;
