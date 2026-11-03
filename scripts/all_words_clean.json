@@ -52,7 +52,7 @@
   },
   {
     "id": "w3",
-    "arabic": "العضلة ثنائية الرؤوس",
+    "arabic": "العضلة ذات الرأسين العضدية (البايسبس)",
     "english": "Biceps",
     "level": "Academic",
     "difficulty": 2,
@@ -76,7 +76,7 @@
   },
   {
     "id": "w4",
-    "arabic": "عصب الزند",
+    "arabic": "العصب الزندي",
     "english": "Ulnar Nerve",
     "level": "Academic",
     "difficulty": 2,
@@ -100,7 +100,7 @@
   },
   {
     "id": "w5",
-    "arabic": "السكري",
+    "arabic": "داء السكري",
     "english": "Diabetes",
     "level": "Clinical",
     "difficulty": 1,
@@ -124,7 +124,7 @@
   },
   {
     "id": "w6",
-    "arabic": "سماعة طبيبة",
+    "arabic": "السماعة الطبية",
     "english": "Stethoscope",
     "level": "Clinical",
     "difficulty": 1,
@@ -219,7 +219,7 @@
   },
   {
     "id": "w10",
-    "arabic": "تليف الكبد",
+    "arabic": "تشمع الكبد",
     "english": "Cirrhosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -287,7 +287,7 @@
   },
   {
     "id": "w13",
-    "arabic": "عضلة الحجاب الحاجز",
+    "arabic": "الحجاب الحاجز",
     "english": "Diaphragm",
     "level": "Academic",
     "difficulty": 2,
@@ -309,7 +309,7 @@
   },
   {
     "id": "w14",
-    "arabic": "العصب الحائر",
+    "arabic": "العصب المبهم (الحائر)",
     "english": "Vagus Nerve",
     "level": "Academic",
     "difficulty": 2,
@@ -353,7 +353,7 @@
   },
   {
     "id": "w16",
-    "arabic": "جهاز الضغط",
+    "arabic": "جهاز قياس ضغط الدم",
     "english": "Sphygmomanometer",
     "level": "Both",
     "difficulty": 2,
@@ -374,7 +374,7 @@
   },
   {
     "id": "w17",
-    "arabic": "ثلاثي الرؤوس العضدية",
+    "arabic": "العضلة ثلاثية الرؤوس العضدية (الترايسبس)",
     "english": "Triceps brachii",
     "level": "Academic",
     "difficulty": 2,
@@ -397,7 +397,7 @@
   },
   {
     "id": "w18",
-    "arabic": "العصب الوركي",
+    "arabic": "العصب الوركي (عرق النسا)",
     "english": "Sciatic Nerve",
     "level": "Academic",
     "difficulty": 2,
@@ -467,7 +467,7 @@
   },
   {
     "id": "w21",
-    "arabic": "الأموكسيسيلين",
+    "arabic": "أموكسيسيلين",
     "english": "Amoxicillin",
     "level": "Both",
     "difficulty": 1,
@@ -487,7 +487,7 @@
   },
   {
     "id": "w22",
-    "arabic": "الصمام الميترالي",
+    "arabic": "الصمام التاجي (الميترالي)",
     "english": "Mitral Valve",
     "level": "Academic",
     "difficulty": 2,
@@ -556,7 +556,7 @@
   },
   {
     "id": "w25",
-    "arabic": "عضلة الفخذ",
+    "arabic": "العضلة رباعية الرؤوس الفخذية",
     "english": "Quadriceps",
     "level": "Academic",
     "difficulty": 2,
@@ -601,7 +601,7 @@
   },
   {
     "id": "w27",
-    "arabic": "جهاز غسيل الكلى",
+    "arabic": "جهاز الغسيل الكلوي",
     "english": "Dialysis Machine",
     "level": "Clinical",
     "difficulty": 2,
@@ -627,7 +627,7 @@
   },
   {
     "id": "w28",
-    "arabic": "عظمة الفخذ",
+    "arabic": "عظم الفخذ",
     "english": "Femur",
     "level": "Academic",
     "difficulty": 2,
@@ -650,7 +650,7 @@
   },
   {
     "id": "w29",
-    "arabic": "التهاب الرئة",
+    "arabic": "الالتهاب الرئوي (ذات الرئة)",
     "english": "Pneumonia",
     "level": "Clinical",
     "difficulty": 1,
@@ -679,7 +679,7 @@
   },
   {
     "id": "w30",
-    "arabic": "الليبيتر",
+    "arabic": "ليبيتور (أتورفاستاتين)",
     "english": "Lipitor",
     "level": "Clinical",
     "difficulty": 2,
@@ -849,7 +849,7 @@
   },
   {
     "id": "w37",
-    "arabic": "مرض باركنسون",
+    "arabic": "داء باركنسون (الشلل الرعاش)",
     "english": "Parkinson Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -873,7 +873,7 @@
   },
   {
     "id": "w38",
-    "arabic": "مرض ألزهايمر",
+    "arabic": "داء ألزهايمر",
     "english": "Alzheimer Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -924,7 +924,7 @@
   },
   {
     "id": "w40",
-    "arabic": "الرباط الصليبي",
+    "arabic": "الرباط الصليبي للركبة",
     "english": "Cruciate Ligament",
     "level": "Academic",
     "difficulty": 2,
@@ -994,7 +994,7 @@
   },
   {
     "id": "w43",
-    "arabic": "مستقبلات بيتا",
+    "arabic": "حاصرات بيتا (Beta Blockers)",
     "english": "Beta Blockers",
     "level": "Both",
     "difficulty": 2,
@@ -1064,7 +1064,7 @@
   },
   {
     "id": "w46",
-    "arabic": "العصب السابع",
+    "arabic": "العصب الوجهي (العصب السابع)",
     "english": "Facial Nerve",
     "level": "Both",
     "difficulty": 2,
@@ -1087,7 +1087,7 @@
   },
   {
     "id": "w47",
-    "arabic": "التهاب السحايا",
+    "arabic": "التهاب السحايا (الحمى الشوكية)",
     "english": "Meningitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -1115,7 +1115,7 @@
   },
   {
     "id": "w48",
-    "arabic": "اليرقان",
+    "arabic": "اليرقان (الصفراء)",
     "english": "Jaundice",
     "level": "Clinical",
     "difficulty": 1,
@@ -1160,7 +1160,7 @@
   },
   {
     "id": "w50",
-    "arabic": "القولون العصبي",
+    "arabic": "متلازمة القولون العصبي (IBS)",
     "english": "Irritable Bowel Syndrome",
     "level": "Clinical",
     "difficulty": 1,
@@ -1311,7 +1311,7 @@
   },
   {
     "id": "w56",
-    "arabic": "المنظار الداخلي",
+    "arabic": "المنظار الطبي الداخلي",
     "english": "Endoscope",
     "level": "Clinical",
     "difficulty": 2,
@@ -1354,7 +1354,7 @@
   },
   {
     "id": "w58",
-    "arabic": "الحجامة",
+    "arabic": "العلاج بالحجامة",
     "english": "Cupping Therapy",
     "level": "Both",
     "difficulty": 2,
@@ -1373,7 +1373,7 @@
   },
   {
     "id": "w59",
-    "arabic": "التهاب الكبد الوبائي",
+    "arabic": "التهاب الكبد الفيروسي",
     "english": "Hepatitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -1400,7 +1400,7 @@
   },
   {
     "id": "w60",
-    "arabic": "الشلل الرعاش",
+    "arabic": "متلازمة الشلل الرعاش",
     "english": "Parkinsonism",
     "level": "Clinical",
     "difficulty": 2,
@@ -1578,7 +1578,7 @@
   },
   {
     "id": "w68",
-    "arabic": "جهاز الصدمات الكهربائية",
+    "arabic": "جهاز مزيل الرجفان (الصدمات الكهربائية)",
     "english": "Defibrillator",
     "level": "Clinical",
     "difficulty": 2,
@@ -1608,7 +1608,7 @@
   },
   {
     "id": "w69",
-    "arabic": "رسم القلب",
+    "arabic": "تخطيط كهربية القلب (رسم القلب ECG)",
     "english": "Electrocardiogram",
     "level": "Clinical",
     "difficulty": 1,
@@ -1637,7 +1637,7 @@
   },
   {
     "id": "w70",
-    "arabic": "التصوير بالرنين المغناطيسي",
+    "arabic": "التصوير بالرنين المغناطيسي (MRI)",
     "english": "MRI",
     "level": "Clinical",
     "difficulty": 2,
@@ -1680,7 +1680,7 @@
   },
   {
     "id": "w72",
-    "arabic": "البلازما",
+    "arabic": "بلازما الدم",
     "english": "Blood Plasma",
     "level": "Academic",
     "difficulty": 2,
@@ -1701,7 +1701,7 @@
   },
   {
     "id": "w73",
-    "arabic": "النخاع الشوكي",
+    "arabic": "الحبل الشوكي (النخاع الشوكي)",
     "english": "Spinal Cord",
     "level": "Academic",
     "difficulty": 2,
@@ -1917,7 +1917,7 @@
   },
   {
     "id": "w83",
-    "arabic": "التهاب السحايا الجرثومي",
+    "arabic": "التهاب السحايا البكتيري",
     "english": "Bacterial Meningitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -1943,7 +1943,7 @@
   },
   {
     "id": "w84",
-    "arabic": "الصداع النصفي",
+    "arabic": "الصداع النصفي (الشقيقة)",
     "english": "Migraine",
     "level": "Clinical",
     "difficulty": 1,
@@ -1987,7 +1987,7 @@
   },
   {
     "id": "w86",
-    "arabic": "الفصام",
+    "arabic": "الفصام (الشيزوفرينيا)",
     "english": "Schizophrenia",
     "level": "Clinical",
     "difficulty": 2,
@@ -2008,7 +2008,7 @@
   },
   {
     "id": "w87",
-    "arabic": "الاكتئاب",
+    "arabic": "الاكتئاب النفسي",
     "english": "Depression",
     "level": "Clinical",
     "difficulty": 1,
@@ -2180,7 +2180,7 @@
   },
   {
     "id": "w95",
-    "arabic": "تصلب متعدد",
+    "arabic": "التصلب المتعدد (MS)",
     "english": "Multiple Sclerosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -2201,7 +2201,7 @@
   },
   {
     "id": "w96",
-    "arabic": "الوهن العضلي الوبيل",
+    "arabic": "الوهن العضلي الوبيل (Myasthenia)",
     "english": "Myasthenia Gravis",
     "level": "Clinical",
     "difficulty": 3,
@@ -2242,7 +2242,7 @@
   },
   {
     "id": "w98",
-    "arabic": "الكرون",
+    "arabic": "داء كرون",
     "english": "Crohn Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -2264,7 +2264,7 @@
   },
   {
     "id": "w99",
-    "arabic": "القرحة الهضمية",
+    "arabic": "القرحة الهضمية (قرحة المعدة)",
     "english": "Peptic Ulcer",
     "level": "Clinical",
     "difficulty": 2,
@@ -2332,7 +2332,7 @@
   },
   {
     "id": "w102",
-    "arabic": "تضخم البروستاتا",
+    "arabic": "تضخم البروستاتا الحميد",
     "english": "Prostate Hyperplasia",
     "level": "Clinical",
     "difficulty": 2,
@@ -2384,7 +2384,7 @@
   },
   {
     "id": "w104",
-    "arabic": "الحمل خارج الرحم",
+    "arabic": "الحمل خارج الرحم (الحمل المنتبذ)",
     "english": "Ectopic Pregnancy",
     "level": "Clinical",
     "difficulty": 2,
@@ -2405,7 +2405,7 @@
   },
   {
     "id": "w105",
-    "arabic": "تسمم الحمل",
+    "arabic": "تسمم الحمل (مقدمات الارتعاج)",
     "english": "Preeclampsia",
     "level": "Clinical",
     "difficulty": 2,
@@ -2492,7 +2492,7 @@
   },
   {
     "id": "w109",
-    "arabic": "أم الدم الأبهرية",
+    "arabic": "أم الدم الأبهرية (تمدد الشريان الأورطي)",
     "english": "Aortic Aneurysm",
     "level": "Clinical",
     "difficulty": 3,
@@ -2582,7 +2582,7 @@
   },
   {
     "id": "w113",
-    "arabic": "داء غريفز",
+    "arabic": "داء غريفز (جحوظ العينين الدرقي)",
     "english": "Graves Disease",
     "level": "Clinical",
     "difficulty": 3,
@@ -2604,7 +2604,7 @@
   },
   {
     "id": "w114",
-    "arabic": "التهاب هاشيموتو المناعي",
+    "arabic": "التهاب درقية هاشيموتو المناعي",
     "english": "Hashimoto Thyroiditis",
     "level": "Clinical",
     "difficulty": 3,
@@ -2645,7 +2645,7 @@
   },
   {
     "id": "w116",
-    "arabic": "هشاشة العظام",
+    "arabic": "هشاشة العظام (تخلخل العظام)",
     "english": "Osteoporosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -2708,7 +2708,7 @@
   },
   {
     "id": "w119",
-    "arabic": "المياه الزرقاء بالعين",
+    "arabic": "المياه الزرقاء (الجلوكوما)",
     "english": "Glaucoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -2729,7 +2729,7 @@
   },
   {
     "id": "w120",
-    "arabic": "إعتام عدسة العين",
+    "arabic": "المياه البيضاء (الساد / إعتام عدسة العين)",
     "english": "Cataract",
     "level": "Clinical",
     "difficulty": 2,
@@ -2772,7 +2772,7 @@
   },
   {
     "id": "w122",
-    "arabic": "العضلات الوربية",
+    "arabic": "العضلات الوربية (بين الأضلاع)",
     "english": "Intercostal Muscles",
     "level": "Academic",
     "difficulty": 3,
@@ -2794,7 +2794,7 @@
   },
   {
     "id": "w123",
-    "arabic": "العظم القذالي",
+    "arabic": "العظم القذالي (مؤخرة الجمجمة)",
     "english": "Occipital Bone",
     "level": "Academic",
     "difficulty": 3,
@@ -2841,7 +2841,7 @@
   },
   {
     "id": "w125",
-    "arabic": "العصب ثلاثي التوائم",
+    "arabic": "العصب ثلاثي التوائم (العصب الخامس)",
     "english": "Trigeminal Nerve",
     "level": "Academic",
     "difficulty": 3,
@@ -2881,7 +2881,7 @@
   },
   {
     "id": "w127",
-    "arabic": "جهاز النيبولايزر",
+    "arabic": "جهاز الرذاذ (النيبولايزر)",
     "english": "Nebulizer",
     "level": "Clinical",
     "difficulty": 2,
@@ -2903,7 +2903,7 @@
   },
   {
     "id": "w128",
-    "arabic": "حقنة الإبينفرين",
+    "arabic": "قلم الإبينفرين الذاتي (EpiPen)",
     "english": "EpiPen",
     "level": "Clinical",
     "difficulty": 2,
@@ -2965,7 +2965,7 @@
   },
   {
     "id": "w131",
-    "arabic": "الرجفان الأذيني",
+    "arabic": "الرجفان الأذيني (AFib)",
     "english": "Atrial Fibrillation",
     "level": "Clinical",
     "difficulty": 2,
@@ -2985,7 +2985,7 @@
   },
   {
     "id": "w132",
-    "arabic": "تضيق الأبهر",
+    "arabic": "تضيق الصمام الأبهري (الأورطي)",
     "english": "Aortic Stenosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3004,7 +3004,7 @@
   },
   {
     "id": "w133",
-    "arabic": "التهاب شغاف القلب",
+    "arabic": "التهاب شغاف القلب (Endocarditis)",
     "english": "Endocarditis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3050,7 +3050,7 @@
   },
   {
     "id": "w135",
-    "arabic": "التهاب غشاء القلب",
+    "arabic": "التهاب غشاء التامور (Pericarditis)",
     "english": "Pericarditis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3076,7 +3076,7 @@
   },
   {
     "id": "w136",
-    "arabic": "ارتجاع الصمام الميترالي",
+    "arabic": "ارتجاع الصمام التاجي (الميترالي)",
     "english": "Mitral Regurgitation",
     "level": "Clinical",
     "difficulty": 2,
@@ -3099,7 +3099,7 @@
   },
   {
     "id": "w137",
-    "arabic": "قصور القلب",
+    "arabic": "قصور عضلة القلب (فشل القلب)",
     "english": "Heart Failure",
     "level": "Clinical",
     "difficulty": 2,
@@ -3141,7 +3141,7 @@
   },
   {
     "id": "w139",
-    "arabic": "ورم القواتم",
+    "arabic": "ورم القواتم (الفيوكروموسيتوما)",
     "english": "Pheochromocytoma",
     "level": "Clinical",
     "difficulty": 3,
@@ -3159,7 +3159,7 @@
   },
   {
     "id": "w140",
-    "arabic": "ضخامة الأطراف",
+    "arabic": "ضخامة الأطراف (العملقة / ضخامة النهايات)",
     "english": "Acromegaly",
     "level": "Clinical",
     "difficulty": 3,
@@ -3176,7 +3176,7 @@
   },
   {
     "id": "w141",
-    "arabic": "البوال التفه",
+    "arabic": "السكري الكاذب (البوال التفه)",
     "english": "Diabetes Insipidus",
     "level": "Clinical",
     "difficulty": 2,
@@ -3197,7 +3197,7 @@
   },
   {
     "id": "w142",
-    "arabic": "نشاط جارات الدرقية",
+    "arabic": "فرط نشاط جارات الدرقية",
     "english": "Hyperparathyroidism",
     "level": "Clinical",
     "difficulty": 2,
@@ -3242,7 +3242,7 @@
   },
   {
     "id": "w144",
-    "arabic": "مرض سيلياك",
+    "arabic": "مرض حساسية القمح (الداء البطني / سيلياك)",
     "english": "Celiac Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -3286,7 +3286,7 @@
   },
   {
     "id": "w146",
-    "arabic": "ارتجاع المريء",
+    "arabic": "ارتجاع المريء المعدي (GERD)",
     "english": "Gastroesophageal Reflux",
     "level": "Clinical",
     "difficulty": 2,
@@ -3346,7 +3346,7 @@
   },
   {
     "id": "w149",
-    "arabic": "استرواح الصدر",
+    "arabic": "استرواح الصدر (انكماش الرئة بالهواء)",
     "english": "Pneumothorax",
     "level": "Clinical",
     "difficulty": 2,
@@ -3367,7 +3367,7 @@
   },
   {
     "id": "w150",
-    "arabic": "الجلطة الرئوية",
+    "arabic": "الانصمام الرئوي (الجلطة الرئوية)",
     "english": "Pulmonary Embolism",
     "level": "Clinical",
     "difficulty": 2,
@@ -3389,7 +3389,7 @@
   },
   {
     "id": "w151",
-    "arabic": "السدة الرئوية المزمنة",
+    "arabic": "الانسداد الرئوي المزمن (COPD)",
     "english": "COPD",
     "level": "Clinical",
     "difficulty": 2,
@@ -3412,7 +3412,7 @@
   },
   {
     "id": "w152",
-    "arabic": "توسع القصبات",
+    "arabic": "توسع القصبات الهوائية",
     "english": "Bronchiectasis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3434,7 +3434,7 @@
   },
   {
     "id": "w153",
-    "arabic": "تليف الرئة بالأسبيستوس",
+    "arabic": "داء الأسبستوس الرئوي",
     "english": "Asbestosis",
     "level": "Academic",
     "difficulty": 2,
@@ -3456,7 +3456,7 @@
   },
   {
     "id": "w154",
-    "arabic": "التصلب الضموري الجانبي",
+    "arabic": "التصلب الجانبي الضموري (ALS)",
     "english": "Amyotrophic Lateral Sclerosis",
     "level": "Clinical",
     "difficulty": 3,
@@ -3474,7 +3474,7 @@
   },
   {
     "id": "w155",
-    "arabic": "داء هانتينغتون",
+    "arabic": "داء هنتنغتون",
     "english": "Huntington Disease",
     "level": "Clinical",
     "difficulty": 3,
@@ -3492,7 +3492,7 @@
   },
   {
     "id": "w156",
-    "arabic": "الاضطراب ثنائي القطب",
+    "arabic": "الاضطراب الوجداني ثنائي القطب",
     "english": "Bipolar Disorder",
     "level": "Clinical",
     "difficulty": 2,
@@ -3510,7 +3510,7 @@
   },
   {
     "id": "w157",
-    "arabic": "طيف التوحد",
+    "arabic": "اضطراب طيف التوحد",
     "english": "Autism",
     "level": "Clinical",
     "difficulty": 2,
@@ -3571,7 +3571,7 @@
   },
   {
     "id": "w160",
-    "arabic": "الأنيميا المنجلية",
+    "arabic": "فقر الدم المنجلي (الأنيميا المنجلية)",
     "english": "Sickle Cell Anemia",
     "level": "Clinical",
     "difficulty": 2,
@@ -3593,7 +3593,7 @@
   },
   {
     "id": "w161",
-    "arabic": "سرطان الدم",
+    "arabic": "ابيضاض الدم (اللوكيميا)",
     "english": "Leukemia",
     "level": "Clinical",
     "difficulty": 2,
@@ -3616,7 +3616,7 @@
   },
   {
     "id": "w162",
-    "arabic": "سرطان الغدد الليمفاوية",
+    "arabic": "الليمفوما (أورام العقد اللمفاوية)",
     "english": "Lymphoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -3639,7 +3639,7 @@
   },
   {
     "id": "w163",
-    "arabic": "سرطان نخاع العظم",
+    "arabic": "المايلوما المتعددة (الورم النخاعي المتعدد)",
     "english": "Multiple Myeloma",
     "level": "Clinical",
     "difficulty": 2,
@@ -3660,7 +3660,7 @@
   },
   {
     "id": "w164",
-    "arabic": "المتلازمة الكلوية",
+    "arabic": "المتلازمة الكلوية (النفروزية)",
     "english": "Nephrotic Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -3680,7 +3680,7 @@
   },
   {
     "id": "w165",
-    "arabic": "التهاب حوض الكلية",
+    "arabic": "التهاب الحويضة والكلية",
     "english": "Pyelonephritis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3700,7 +3700,7 @@
   },
   {
     "id": "w166",
-    "arabic": "استسقاء الكلية",
+    "arabic": "موه الكلية (استسقاء الكلية)",
     "english": "Hydronephrosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3722,7 +3722,7 @@
   },
   {
     "id": "w167",
-    "arabic": "الذئبة الحمراء",
+    "arabic": "الذئبة الحمامية الشاملة (الذئبة الحمراء)",
     "english": "Systemic Lupus",
     "level": "Clinical",
     "difficulty": 3,
@@ -3742,7 +3742,7 @@
   },
   {
     "id": "w168",
-    "arabic": "خشونة المفاصل",
+    "arabic": "الفصال العظمي (خشونة المفاصل)",
     "english": "Osteoarthritis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3764,7 +3764,7 @@
   },
   {
     "id": "w169",
-    "arabic": "التهاب الفقار المقسط",
+    "arabic": "التهاب الفقار المقسط (التصلبي)",
     "english": "Ankylosing Spondylitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -3784,7 +3784,7 @@
   },
   {
     "id": "w170",
-    "arabic": "الألم العضلي الليفي",
+    "arabic": "المتلازمة الليفية العضلية (الفيبروميالغيا)",
     "english": "Fibromyalgia",
     "level": "Clinical",
     "difficulty": 3,
@@ -3803,7 +3803,7 @@
   },
   {
     "id": "w171",
-    "arabic": "الميلانوما",
+    "arabic": "الميلانوما (سرطان الخلايا الصبغية)",
     "english": "Melanoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -3825,7 +3825,7 @@
   },
   {
     "id": "w172",
-    "arabic": "الثعلبة",
+    "arabic": "داء الثعلبة (تساقط الشعر البقعي)",
     "english": "Alopecia Areata",
     "level": "Clinical",
     "difficulty": 2,
@@ -3919,7 +3919,7 @@
   },
   {
     "id": "w177",
-    "arabic": "بروفين",
+    "arabic": "إيبوبروفين (بروفين)",
     "english": "Ibuprofen",
     "level": "Both",
     "difficulty": 1,
@@ -4081,7 +4081,7 @@
   },
   {
     "id": "w185",
-    "arabic": "العضلة الدالية",
+    "arabic": "العضلة الدالية (عضلة الكتف)",
     "english": "Deltoid",
     "level": "Academic",
     "difficulty": 2,
@@ -4103,7 +4103,7 @@
   },
   {
     "id": "w186",
-    "arabic": "عضلة بطن الساق",
+    "arabic": "عضلة الساق التوأمية (السمانة)",
     "english": "Gastrocnemius",
     "level": "Academic",
     "difficulty": 2,
@@ -4210,7 +4210,7 @@
   },
   {
     "id": "w191",
-    "arabic": "الغدة الزعترية",
+    "arabic": "الغدة الصعترية (التيموسية)",
     "english": "Thymus",
     "level": "Academic",
     "difficulty": 2,
@@ -4234,7 +4234,7 @@
   },
   {
     "id": "w192",
-    "arabic": "الحصين",
+    "arabic": "الحصين (قرن آمون)",
     "english": "Hippocampus",
     "level": "Academic",
     "difficulty": 2,
@@ -4274,7 +4274,7 @@
   },
   {
     "id": "w194",
-    "arabic": "الحويصلات الهوائية",
+    "arabic": "الحويصلات الهوائية الرئوية",
     "english": "Alveoli",
     "level": "Academic",
     "difficulty": 2,
@@ -4296,7 +4296,7 @@
   },
   {
     "id": "w195",
-    "arabic": "النيفرون",
+    "arabic": "الكليون (النيفرون)",
     "english": "Nephron",
     "level": "Academic",
     "difficulty": 2,
@@ -4317,7 +4317,7 @@
   },
   {
     "id": "w196",
-    "arabic": "الكزاز",
+    "arabic": "الكزاز (التيتانوس)",
     "english": "Tetanus",
     "level": "Clinical",
     "difficulty": 2,
@@ -4336,7 +4336,7 @@
   },
   {
     "id": "w197",
-    "arabic": "داء الكلب",
+    "arabic": "داء الكلب (السعار)",
     "english": "Rabies",
     "level": "Clinical",
     "difficulty": 2,
@@ -4392,7 +4392,7 @@
   },
   {
     "id": "w200",
-    "arabic": "الكوليرا",
+    "arabic": "الكوليرا (الهيضة)",
     "english": "Cholera",
     "level": "Clinical",
     "difficulty": 2,
@@ -4412,7 +4412,7 @@
   },
   {
     "id": "w201",
-    "arabic": "الليشمانيا",
+    "arabic": "داء الليشمانيات (حبة حلب)",
     "english": "Leishmaniasis",
     "level": "Clinical",
     "difficulty": 3,
@@ -4448,7 +4448,7 @@
   },
   {
     "id": "w203",
-    "arabic": "التسمم السجقي",
+    "arabic": "التسمم الوشيقي (السجقي Botulism)",
     "english": "Botulism",
     "level": "Clinical",
     "difficulty": 3,
@@ -4527,7 +4527,7 @@
   },
   {
     "id": "w207",
-    "arabic": "الإسقربوط",
+    "arabic": "داء الإسقربوط (عوز فيتامين ج)",
     "english": "Scurvy",
     "level": "Clinical",
     "difficulty": 2,
@@ -4548,7 +4548,7 @@
   },
   {
     "id": "w208",
-    "arabic": "الكساح",
+    "arabic": "الكساح (لين العظام عند الأطفال)",
     "english": "Rickets",
     "level": "Clinical",
     "difficulty": 2,
@@ -4566,7 +4566,7 @@
   },
   {
     "id": "w209",
-    "arabic": "البلاغرا",
+    "arabic": "البلاغرا (الحصاف)",
     "english": "Pellagra",
     "level": "Clinical",
     "difficulty": 2,
@@ -4584,7 +4584,7 @@
   },
   {
     "id": "w210",
-    "arabic": "البري بري",
+    "arabic": "مرض البري بري (عوز فيتامين ب1)",
     "english": "Beriberi",
     "level": "Clinical",
     "difficulty": 2,
@@ -4601,7 +4601,7 @@
   },
   {
     "id": "w211",
-    "arabic": "أنيميا الفول",
+    "arabic": "عوز سداسي فوسفات الجلوكوز (أنيميا الفول)",
     "english": "G6PD Deficiency",
     "level": "Clinical",
     "difficulty": 2,
@@ -4622,7 +4622,7 @@
   },
   {
     "id": "w212",
-    "arabic": "تضيق البواب",
+    "arabic": "تضيق بواب المعدة الضخامي",
     "english": "Pyloric Stenosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -4639,7 +4639,7 @@
   },
   {
     "id": "w213",
-    "arabic": "انغلاف الأمعاء",
+    "arabic": "انغلاف الأمعاء (التداخل المعوي)",
     "english": "Intussusception",
     "level": "Clinical",
     "difficulty": 2,
@@ -4657,7 +4657,7 @@
   },
   {
     "id": "w214",
-    "arabic": "إريثروبويتين",
+    "arabic": "إريثروبويتين (هرمون إنتاج كريات الدم)",
     "english": "Erythropoietin",
     "level": "Academic",
     "difficulty": 3,
@@ -4810,7 +4810,7 @@
   },
   {
     "id": "w222",
-    "arabic": "العصب الأوسط",
+    "arabic": "العصب الناصف (العصب المتوسط)",
     "english": "Median Nerve",
     "level": "Academic",
     "difficulty": 2,
@@ -4848,7 +4848,7 @@
   },
   {
     "id": "w224",
-    "arabic": "العقدة الجيب أذينية",
+    "arabic": "العقدة الجيبية الأذينية (منظم ضربات القلب)",
     "english": "Sinoatrial Node",
     "level": "Academic",
     "difficulty": 3,
@@ -4883,7 +4883,7 @@
   },
   {
     "id": "w226",
-    "arabic": "مستقبلات الضغط الشريانية",
+    "arabic": "المستقبلات الضغطية الوعائية",
     "english": "Baroreceptor",
     "level": "Academic",
     "difficulty": 3,
@@ -4904,7 +4904,7 @@
   },
   {
     "id": "w227",
-    "arabic": "ماسك فينتوري",
+    "arabic": "قناع فنتوري للأكسجين",
     "english": "Venturi Mask",
     "level": "Clinical",
     "difficulty": 3,
@@ -4922,7 +4922,7 @@
   },
   {
     "id": "w228",
-    "arabic": "جهاز قياس الأكسجين بالاصبع",
+    "arabic": "مقياس التأكسج النبضي (أكسيمتر الإصبع)",
     "english": "Pulse Oximeter",
     "level": "Clinical",
     "difficulty": 2,
@@ -4942,7 +4942,7 @@
   },
   {
     "id": "w229",
-    "arabic": "منظار الحنجرة",
+    "arabic": "منظار الحنجرة المباشر",
     "english": "Laryngoscope",
     "level": "Clinical",
     "difficulty": 2,
@@ -4960,7 +4960,7 @@
   },
   {
     "id": "w230",
-    "arabic": "جهاز قياس السكر (الجلوكوميتر)",
+    "arabic": "جهاز قياس سكر الدم (الجلوكوميتر)",
     "english": "Glucometer",
     "level": "Clinical",
     "difficulty": 2,
@@ -5067,7 +5067,7 @@
   },
   {
     "id": "w235",
-    "arabic": "البلهارسيا",
+    "arabic": "البلهارسيا (داء المنشقات)",
     "english": "Bilharzia",
     "level": "Both",
     "difficulty": 2,
@@ -5135,7 +5135,7 @@
   },
   {
     "id": "w238",
-    "arabic": "أنكلستوما",
+    "arabic": "الدودة الشصية (الأنكلستوما)",
     "english": "Ancylostoma",
     "level": "Academic",
     "difficulty": 3,
@@ -5157,7 +5157,7 @@
   },
   {
     "id": "w239",
-    "arabic": "الدودة الدبوسية",
+    "arabic": "الدودة الدبوسية (الحرقص)",
     "english": "Pinworm",
     "level": "Both",
     "difficulty": 2,
@@ -5180,7 +5180,7 @@
   },
   {
     "id": "w240",
-    "arabic": "الدودة الشريطية",
+    "arabic": "الدودة الشريطية (تينيا)",
     "english": "Tapeworm",
     "level": "Both",
     "difficulty": 2,
@@ -5203,7 +5203,7 @@
   },
   {
     "id": "w241",
-    "arabic": "الجرب",
+    "arabic": "داء الجرب",
     "english": "Scabies",
     "level": "Both",
     "difficulty": 2,
@@ -5268,7 +5268,7 @@
   },
   {
     "id": "w244",
-    "arabic": "القمل",
+    "arabic": "قمل الرأس والجسم",
     "english": "Lice",
     "level": "Both",
     "difficulty": 2,
@@ -5310,7 +5310,7 @@
   },
   {
     "id": "w246",
-    "arabic": "هيداتيد",
+    "arabic": "المكورة الشوكية (الكيسة المائية العدارية)",
     "english": "Hydatid",
     "level": "Academic",
     "difficulty": 2,
@@ -5422,7 +5422,7 @@
   },
   {
     "id": "w251",
-    "arabic": "الإنعاش القلبي الرئوي",
+    "arabic": "الإنعاش القلبي الرئوي (CPR)",
     "english": "CPR",
     "level": "Clinical",
     "difficulty": 1,
@@ -5440,7 +5440,7 @@
   },
   {
     "id": "w252",
-    "arabic": "أنبوب القصبة الهوائية",
+    "arabic": "الأنبوب الرغامي (أنبوب القصبة الهوائية)",
     "english": "Endotracheal Tube",
     "level": "Clinical",
     "difficulty": 2,
@@ -5462,7 +5462,7 @@
   },
   {
     "id": "w253",
-    "arabic": "قناع الصمام الكيسي",
+    "arabic": "قناع كيس الصمام (حقيبة أمبو Ambu Bag)",
     "english": "Bag Valve Mask",
     "level": "Clinical",
     "difficulty": 2,
@@ -5490,7 +5490,7 @@
   },
   {
     "id": "w254",
-    "arabic": "جهاز التنفس الصناعي",
+    "arabic": "جهاز التنفس الصناعي الميكانيكي",
     "english": "Mechanical Ventilator",
     "level": "Clinical",
     "difficulty": 2,
@@ -5512,7 +5512,7 @@
   },
   {
     "id": "w255",
-    "arabic": "مقياس التنفس",
+    "arabic": "مقياس وظائف الرئة (السبايروميتر)",
     "english": "Spirometer",
     "level": "Clinical",
     "difficulty": 2,
@@ -5602,7 +5602,7 @@
   },
   {
     "id": "w259",
-    "arabic": "ناقضات العظم",
+    "arabic": "الخلايا الهادمة للعظم (ناقضات العظم)",
     "english": "Osteoclast",
     "level": "Academic",
     "difficulty": 3,
@@ -5625,7 +5625,7 @@
   },
   {
     "id": "w260",
-    "arabic": "حلقة ويليس الشريانية",
+    "arabic": "دائرة ويليس الشريانية الدماغية",
     "english": "Circle of Willis",
     "level": "Academic",
     "difficulty": 3,
@@ -5668,7 +5668,7 @@
   },
   {
     "id": "w262",
-    "arabic": "العضلة القصية الترقوية الخشائية",
+    "arabic": "العضلة القصية الترقوية الحلمية (الخشائية)",
     "english": "Sternocleidomastoid",
     "level": "Academic",
     "difficulty": 2,
@@ -5691,7 +5691,7 @@
   },
   {
     "id": "w263",
-    "arabic": "ارتخاء الصمام الميترالي",
+    "arabic": "تدلي الصمام التاجي (ارتخاء الميترالي)",
     "english": "Mitral Valve Prolapse",
     "level": "Clinical",
     "difficulty": 2,
@@ -5717,7 +5717,7 @@
   },
   {
     "id": "w264",
-    "arabic": "جلطة الأوردة العميقة",
+    "arabic": "خثار الأوردة العميقة (جلطة DVT)",
     "english": "Deep Vein Thrombosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -5785,7 +5785,7 @@
   },
   {
     "id": "w267",
-    "arabic": "اندحاس قلبي",
+    "arabic": "الاندحاس القلبي (انصباب التامور الحاصر)",
     "english": "Cardiac Tamponade",
     "level": "Clinical",
     "difficulty": 3,
@@ -5854,7 +5854,7 @@
   },
   {
     "id": "w270",
-    "arabic": "الرفرفة الأذينية",
+    "arabic": "الرفرفة الأذينية البطينية",
     "english": "Atrial Flutter",
     "level": "Clinical",
     "difficulty": 2,
@@ -5900,7 +5900,7 @@
   },
   {
     "id": "w272",
-    "arabic": "دوالي الساقين",
+    "arabic": "دوالي الأوردة (دوالي الساقين)",
     "english": "Varicose Veins",
     "level": "Clinical",
     "difficulty": 2,
@@ -5946,7 +5946,7 @@
   },
   {
     "id": "w274",
-    "arabic": "شلل بل",
+    "arabic": "شلل بيل (شلل العصب الوجهي النصفي)",
     "english": "Bell's Palsy",
     "level": "Clinical",
     "difficulty": 2,
@@ -5967,7 +5967,7 @@
   },
   {
     "id": "w275",
-    "arabic": "الضمور العضلي الشوكي",
+    "arabic": "الضمور العضلي الشوكي (SMA)",
     "english": "Spinal Muscular Atrophy",
     "level": "Both",
     "difficulty": 3,
@@ -5988,7 +5988,7 @@
   },
   {
     "id": "w276",
-    "arabic": "مرض كروتزفيلد جاكوب",
+    "arabic": "داء كروتزفيلد جاكوب (جنون البقر البشري)",
     "english": "Creutzfeldt-Jakob Disease",
     "level": "Both",
     "difficulty": 3,
@@ -6097,7 +6097,7 @@
   },
   {
     "id": "w281",
-    "arabic": "اضطراب ما بعد الصدمة",
+    "arabic": "اضطراب ما بعد الصدمة (PTSD)",
     "english": "Post-Traumatic Stress Disorder",
     "level": "Both",
     "difficulty": 2,
@@ -6163,7 +6163,7 @@
   },
   {
     "id": "w284",
-    "arabic": "تعذر الارتخاء المريئي",
+    "arabic": "لاارتخائية المريء (الأكالازيا)",
     "english": "Achalasia",
     "level": "Clinical",
     "difficulty": 2,
@@ -6206,7 +6206,7 @@
   },
   {
     "id": "w286",
-    "arabic": "التهاب الرتوج",
+    "arabic": "التهاب الرتوج المعوية",
     "english": "Diverticulitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -6248,7 +6248,7 @@
   },
   {
     "id": "w288",
-    "arabic": "التهاب الصفاق",
+    "arabic": "التهاب الصفاق (التهاب البريتون)",
     "english": "Peritonitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -6269,7 +6269,7 @@
   },
   {
     "id": "w289",
-    "arabic": "التهاب القنوات الصفراوية",
+    "arabic": "التهاب القنوات الصفراوية الصاعد",
     "english": "Cholangitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -6290,7 +6290,7 @@
   },
   {
     "id": "w290",
-    "arabic": "التهاب القنوات الصفراوية الأولي",
+    "arabic": "التهاب الأقنية الصفراوية الأولي (PBC)",
     "english": "Primary Biliary Cholangitis",
     "level": "Both",
     "difficulty": 3,
@@ -6311,7 +6311,7 @@
   },
   {
     "id": "w291",
-    "arabic": "الاعتلال الدماغي الكبدي",
+    "arabic": "الاعتلال الدماغي الكبدي (الغيبوبة الكبدية)",
     "english": "Hepatic Encephalopathy",
     "level": "Clinical",
     "difficulty": 3,
@@ -6395,7 +6395,7 @@
   },
   {
     "id": "w295",
-    "arabic": "متلازمة انقطاع النفس النومي",
+    "arabic": "متلازمة انقطاع النفس الانسدادي النومي",
     "english": "Sleep Apnea Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -6416,7 +6416,7 @@
   },
   {
     "id": "w296",
-    "arabic": "التهاب غشاء الجنب",
+    "arabic": "التهاب غشاء الجنب (ذات الجنب)",
     "english": "Pleurisy",
     "level": "Clinical",
     "difficulty": 2,
@@ -6455,7 +6455,7 @@
   },
   {
     "id": "w298",
-    "arabic": "الدبيلة الصدرية",
+    "arabic": "الدبيلة الصدرية (تجمع الصديد الجنبي)",
     "english": "Empyema",
     "level": "Clinical",
     "difficulty": 2,
@@ -6526,7 +6526,7 @@
   },
   {
     "id": "w301",
-    "arabic": "تنخر الأنابيب الحاد",
+    "arabic": "النخر الأنبوبي الحاد (ATN)",
     "english": "Acute Tubular Necrosis",
     "level": "Both",
     "difficulty": 3,
@@ -6547,7 +6547,7 @@
   },
   {
     "id": "w302",
-    "arabic": "تكيس الكلى",
+    "arabic": "داء الكلى المتعددة الكيسات (تكيس الكلى)",
     "english": "Polycystic Kidney Disease",
     "level": "Both",
     "difficulty": 2,
@@ -6596,7 +6596,7 @@
   },
   {
     "id": "w304",
-    "arabic": "داء التحصي البولي والكلوي",
+    "arabic": "داء الحصيات الكلوية (حصوات الكلى)",
     "english": "Nephrolithiasis",
     "level": "Both",
     "difficulty": 2,
@@ -6643,7 +6643,7 @@
   },
   {
     "id": "w306",
-    "arabic": "الارتجاع المثاني الحالببي",
+    "arabic": "الجزر المثاني الحالبي (VUR)",
     "english": "Vesicoureteral Reflux",
     "level": "Clinical",
     "difficulty": 2,
@@ -6685,7 +6685,7 @@
   },
   {
     "id": "w308",
-    "arabic": "التحمض الكيتوني السكري",
+    "arabic": "الحماض الكيتوني السكري (DKA)",
     "english": "Diabetic Ketoacidosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -6805,7 +6805,7 @@
   },
   {
     "id": "w314",
-    "arabic": "متلازمة شوغرن",
+    "arabic": "متلازمة شوغرن (متلازمة الجفاف)",
     "english": "Sjögren's Syndrome",
     "level": "Both",
     "difficulty": 3,
@@ -6825,7 +6825,7 @@
   },
   {
     "id": "w315",
-    "arabic": "تصلب الجلد المنهجي",
+    "arabic": "التصلب الجهازي (تصلب الجلد)",
     "english": "Systemic Sclerosis",
     "level": "Both",
     "difficulty": 3,
@@ -6846,7 +6846,7 @@
   },
   {
     "id": "w316",
-    "arabic": "ألم العضلات الروماتيزمي",
+    "arabic": "ألم العضلات الروماتزمي",
     "english": "Polymyalgia Rheumatica",
     "level": "Clinical",
     "difficulty": 3,
@@ -6869,7 +6869,7 @@
   },
   {
     "id": "w317",
-    "arabic": "مرض باجيت للعظام",
+    "arabic": "داء باجيت العظمي",
     "english": "Paget's Disease of Bone",
     "level": "Both",
     "difficulty": 3,
@@ -6893,7 +6893,7 @@
   },
   {
     "id": "w318",
-    "arabic": "الجنف",
+    "arabic": "الجنف (انحناء العمود الفقري جانباً)",
     "english": "Scoliosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -6912,7 +6912,7 @@
   },
   {
     "id": "w319",
-    "arabic": "التهاب نخاع العظم",
+    "arabic": "التهاب العظم والنقي",
     "english": "Osteomyelitis",
     "level": "Both",
     "difficulty": 2,
@@ -6975,7 +6975,7 @@
   },
   {
     "id": "w322",
-    "arabic": "التهاب الجلد التأتبي",
+    "arabic": "التهاب الجلد التأتبي (الإكزيما التأتبية)",
     "english": "Atopic Dermatitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -7035,7 +7035,7 @@
   },
   {
     "id": "w325",
-    "arabic": "النخالية المبرقشة",
+    "arabic": "السعفة المبرقشة (النخالية المبرقشة)",
     "english": "Tinea Versicolor",
     "level": "Clinical",
     "difficulty": 2,
@@ -7056,7 +7056,7 @@
   },
   {
     "id": "w326",
-    "arabic": "الوردية الجلدي",
+    "arabic": "العد الوردي (الوردية)",
     "english": "Rosacea",
     "level": "Clinical",
     "difficulty": 2,
@@ -7125,7 +7125,7 @@
   },
   {
     "id": "w329",
-    "arabic": "الأرومة الدبقية",
+    "arabic": "الورم الأرومي الدبقي متعدد الأشكال",
     "english": "Glioblastoma",
     "level": "Both",
     "difficulty": 3,
@@ -7145,7 +7145,7 @@
   },
   {
     "id": "w330",
-    "arabic": "سرطان العظام والغرن العظمي",
+    "arabic": "الساركوما العظمية (الغرن العظمي)",
     "english": "Osteosarcoma",
     "level": "Both",
     "difficulty": 3,
@@ -7186,7 +7186,7 @@
   },
   {
     "id": "w332",
-    "arabic": "ورم ويلمز",
+    "arabic": "ورم ويلمز (الورم الأرومي الكلوي)",
     "english": "Wilms' Tumor",
     "level": "Both",
     "difficulty": 3,
@@ -7207,7 +7207,7 @@
   },
   {
     "id": "w333",
-    "arabic": "فقر الدم اللاتنسجي",
+    "arabic": "فقر الدم اللاتنسجي (فشل نخاع العظم)",
     "english": "Aplastic Anemia",
     "level": "Both",
     "difficulty": 2,
@@ -7229,7 +7229,7 @@
   },
   {
     "id": "w334",
-    "arabic": "كثرة الحمر الحقيقية",
+    "arabic": "كثرة الحمر الحقيقية (احمرار الدم)",
     "english": "Polycythemia Vera",
     "level": "Both",
     "difficulty": 2,
@@ -7270,7 +7270,7 @@
   },
   {
     "id": "w336",
-    "arabic": "التخثر المنتثر داخل الأوعية",
+    "arabic": "التخثر المنتثر داخل الأوعية (DIC)",
     "english": "Disseminated Intravascular Coagulation",
     "level": "Both",
     "difficulty": 3,
@@ -7296,7 +7296,7 @@
   },
   {
     "id": "w337",
-    "arabic": "الأنيميا الخبيثة",
+    "arabic": "فقر الدم الخبيث (عوز فيتامين ب12)",
     "english": "Pernicious Anemia",
     "level": "Both",
     "difficulty": 2,
@@ -7377,7 +7377,7 @@
   },
   {
     "id": "w341",
-    "arabic": "كثرة الوحيدات الخمجية",
+    "arabic": "كثرة الوحيدات العدوائية (داء القبلات)",
     "english": "Infectious Mononucleosis",
     "level": "Both",
     "difficulty": 2,
@@ -7398,7 +7398,7 @@
   },
   {
     "id": "w342",
-    "arabic": "الكيسة العدارية",
+    "arabic": "الكيسة المائية العدارية",
     "english": "Hydatid Cyst",
     "level": "Clinical",
     "difficulty": 2,
@@ -7500,7 +7500,7 @@
   },
   {
     "id": "w347",
-    "arabic": "داء الرشاشيات",
+    "arabic": "داء الرشاشيات الفطري",
     "english": "Aspergillosis",
     "level": "Both",
     "difficulty": 3,
@@ -7519,7 +7519,7 @@
   },
   {
     "id": "w348",
-    "arabic": "داء المبيضات",
+    "arabic": "داء المبيضات (الكانديدا)",
     "english": "Candidiasis",
     "level": "Both",
     "difficulty": 2,
@@ -7540,7 +7540,7 @@
   },
   {
     "id": "w349",
-    "arabic": "بطانة الرحم المهاجرة",
+    "arabic": "الانتباذ البطاني الرحمي (بطانة الرحم المهاجرة)",
     "english": "Endometriosis",
     "level": "Both",
     "difficulty": 2,
@@ -7562,7 +7562,7 @@
   },
   {
     "id": "w350",
-    "arabic": "المشيمة المزاحة",
+    "arabic": "المشيمة المنزاحة (المتقدمة)",
     "english": "Placenta Previa",
     "level": "Clinical",
     "difficulty": 2,
@@ -7584,7 +7584,7 @@
   },
   {
     "id": "w351",
-    "arabic": "انفصال المشيمة المبكر",
+    "arabic": "انفصال المشيمة الباكر",
     "english": "Abruptio Placentae",
     "level": "Clinical",
     "difficulty": 2,
@@ -7605,7 +7605,7 @@
   },
   {
     "id": "w352",
-    "arabic": "القيء المفرط الحملي",
+    "arabic": "القيء الحملي المفرط",
     "english": "Hyperemesis Gravidarum",
     "level": "Clinical",
     "difficulty": 2,
@@ -7688,7 +7688,7 @@
   },
   {
     "id": "w356",
-    "arabic": "الضمور البقعي",
+    "arabic": "التنكس البقعي المرتبط بالعمر",
     "english": "Macular Degeneration",
     "level": "Clinical",
     "difficulty": 2,
@@ -7744,7 +7744,7 @@
   },
   {
     "id": "w359",
-    "arabic": "مرض مينيير",
+    "arabic": "داء مينيير الدوار",
     "english": "Meniere's Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -7762,7 +7762,7 @@
   },
   {
     "id": "w360",
-    "arabic": "التهاب التيه الأذني",
+    "arabic": "التهاب التيه (الأذن الداخلية)",
     "english": "Labyrinthitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -7780,7 +7780,7 @@
   },
   {
     "id": "w361",
-    "arabic": "الخناق للأطفال",
+    "arabic": "الخناق الحنجري (الكروپ)",
     "english": "Croup",
     "level": "Clinical",
     "difficulty": 2,
@@ -7801,7 +7801,7 @@
   },
   {
     "id": "w362",
-    "arabic": "التهاب الشعيبات الهوائية للأطفال",
+    "arabic": "التهاب القصيبات الهوائية الشعري",
     "english": "Bronchiolitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -7875,7 +7875,7 @@
   },
   {
     "id": "w365",
-    "arabic": "الرضفة",
+    "arabic": "رضفة الركبة (صابونة الركبة)",
     "english": "Patella",
     "level": "Academic",
     "difficulty": 2,
@@ -7984,7 +7984,7 @@
   },
   {
     "id": "w370",
-    "arabic": "عظمة الكعبرة",
+    "arabic": "عظم الكعبرة",
     "english": "Radius",
     "level": "Academic",
     "difficulty": 2,
@@ -8007,7 +8007,7 @@
   },
   {
     "id": "w371",
-    "arabic": "عظمة الزند",
+    "arabic": "عظم الزند",
     "english": "Ulna",
     "level": "Academic",
     "difficulty": 2,
@@ -8199,7 +8199,7 @@
   },
   {
     "id": "w380",
-    "arabic": "تحت المهاد",
+    "arabic": "الوطاء (تحت المهاد)",
     "english": "Hypothalamus",
     "level": "Academic",
     "difficulty": 2,
@@ -8289,7 +8289,7 @@
   },
   {
     "id": "w384",
-    "arabic": "الجسم الأصفر",
+    "arabic": "الجسم الأصفر المبيضي",
     "english": "Corpus Luteum",
     "level": "Academic",
     "difficulty": 2,
@@ -8506,7 +8506,7 @@
   },
   {
     "id": "w394",
-    "arabic": "شغاف القلب",
+    "arabic": "شغاف القلب (البطانة القلبية)",
     "english": "Endocardium",
     "level": "Academic",
     "difficulty": 3,
@@ -8532,7 +8532,7 @@
   },
   {
     "id": "w395",
-    "arabic": "غشاء التأمور",
+    "arabic": "غشاء التامور المحيط بالقلب",
     "english": "Pericardium",
     "level": "Academic",
     "difficulty": 3,
@@ -8555,7 +8555,7 @@
   },
   {
     "id": "w396",
-    "arabic": "غشاء الجنب",
+    "arabic": "غشاء الجنب الرئوي",
     "english": "Pleura",
     "level": "Academic",
     "difficulty": 3,
@@ -8578,7 +8578,7 @@
   },
   {
     "id": "w397",
-    "arabic": "الغشاء البريتوني",
+    "arabic": "غشاء الصفاق (البريتون)",
     "english": "Peritoneum",
     "level": "Academic",
     "difficulty": 3,
@@ -8601,7 +8601,7 @@
   },
   {
     "id": "w398",
-    "arabic": "عضلة الرحم",
+    "arabic": "عضلة الرحم (الطبقة العضلية الرحمية)",
     "english": "Myometrium",
     "level": "Academic",
     "difficulty": 3,
@@ -8664,7 +8664,7 @@
   },
   {
     "id": "w401",
-    "arabic": "مرض بهجت",
+    "arabic": "داء بهجت (المتلازمة الحريرية)",
     "english": "Behcet Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -8690,7 +8690,7 @@
   },
   {
     "id": "w402",
-    "arabic": "تصلب الجلد",
+    "arabic": "تصلب الجلد المجموعي",
     "english": "Scleroderma",
     "level": "Clinical",
     "difficulty": 3,
@@ -8711,7 +8711,7 @@
   },
   {
     "id": "w403",
-    "arabic": "التهاب المفاصل النقرس",
+    "arabic": "التهاب المفاصل النقرسي",
     "english": "Gouty Arthritis",
     "level": "Clinical",
     "difficulty": 2,
@@ -8731,7 +8731,7 @@
   },
   {
     "id": "w404",
-    "arabic": "الغرن الغضروفي",
+    "arabic": "الساركوما الغضروفية (الغرن الغضروفي)",
     "english": "Chondrosarcoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -8775,7 +8775,7 @@
   },
   {
     "id": "w406",
-    "arabic": "رتج زنكر",
+    "arabic": "رتج زنكر المريئي البلعومي",
     "english": "Zenker Diverticulum",
     "level": "Clinical",
     "difficulty": 2,
@@ -8796,7 +8796,7 @@
   },
   {
     "id": "w407",
-    "arabic": "متلازمة زولينجر-إليسون",
+    "arabic": "متلازمة زولينجر-إليسون (الورم الغاستريني)",
     "english": "Zollinger-Ellison Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -8819,7 +8819,7 @@
   },
   {
     "id": "w408",
-    "arabic": "سلخ الأبهر",
+    "arabic": "تسلخ الشريان الأبهري (التسلخ الأورطي)",
     "english": "Aortic Dissection",
     "level": "Clinical",
     "difficulty": 2,
@@ -8841,7 +8841,7 @@
   },
   {
     "id": "w409",
-    "arabic": "ارتجاع الصمام ثلاثي الشرفات",
+    "arabic": "قصور الصمام ثلاثي الشرف",
     "english": "Tricuspid Regurgitation",
     "level": "Clinical",
     "difficulty": 2,
@@ -8882,7 +8882,7 @@
   },
   {
     "id": "w411",
-    "arabic": "التراخوما",
+    "arabic": "التراخوما (الرمد الحبيبي)",
     "english": "Trachoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -8903,7 +8903,7 @@
   },
   {
     "id": "w412",
-    "arabic": "نقص التروية المساريقية",
+    "arabic": "نقص تروية الشرايين المساريقية",
     "english": "Mesenteric Ischemia",
     "level": "Clinical",
     "difficulty": 2,
@@ -8928,7 +8928,7 @@
   },
   {
     "id": "w413",
-    "arabic": "الخناق",
+    "arabic": "الدفتيريا (الخناق)",
     "english": "Diphtheria",
     "level": "Clinical",
     "difficulty": 2,
@@ -8950,7 +8950,7 @@
   },
   {
     "id": "w414",
-    "arabic": "التليف الكيسي",
+    "arabic": "التليف الكيسي (الداء الكيسي الليفي)",
     "english": "Cystic Fibrosis",
     "level": "Clinical",
     "difficulty": 2,
@@ -8996,7 +8996,7 @@
   },
   {
     "id": "w416",
-    "arabic": "الصائم",
+    "arabic": "الصائم (المعاء الصائم)",
     "english": "Jejunum",
     "level": "Academic",
     "difficulty": 2,
@@ -9084,7 +9084,7 @@
   },
   {
     "id": "w420",
-    "arabic": "رتج ميكل",
+    "arabic": "رتج ميكل الخلقي",
     "english": "Meckel Diverticulum",
     "level": "Clinical",
     "difficulty": 2,
@@ -9166,7 +9166,7 @@
   },
   {
     "id": "w424",
-    "arabic": "عصيات كوخ",
+    "arabic": "المتفطرة السلية (عصيات كوخ)",
     "english": "Mycobacterium tuberculosis",
     "level": "Academic",
     "difficulty": 3,
@@ -9190,7 +9190,7 @@
   },
   {
     "id": "w425",
-    "arabic": "متلازمة بروغادا",
+    "arabic": "متلازمة بروغادا القلبية",
     "english": "Brugada Syndrome",
     "level": "Clinical",
     "difficulty": 3,
@@ -9235,7 +9235,7 @@
   },
   {
     "id": "w427",
-    "arabic": "متلازمة هورنر",
+    "arabic": "متلازمة هورنر العصبية",
     "english": "Horner Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -9280,7 +9280,7 @@
   },
   {
     "id": "w429",
-    "arabic": "المشرط الجراحي",
+    "arabic": "المبضع الجراحي (المشرط)",
     "english": "Scalpel",
     "level": "Clinical",
     "difficulty": 2,
@@ -9304,7 +9304,7 @@
   },
   {
     "id": "w430",
-    "arabic": "ملقط الشرايين الجراحي",
+    "arabic": "ملقط الشرايين المرقئ (ملقط كوشر/بينس)",
     "english": "Hemostatic Forceps",
     "level": "Clinical",
     "difficulty": 2,
@@ -9354,7 +9354,7 @@
   },
   {
     "id": "w432",
-    "arabic": "برودة الجثة",
+    "arabic": "التبرّد الرمي (برودة الجثة)",
     "english": "Algor Mortis",
     "level": "Academic",
     "difficulty": 3,
@@ -9375,7 +9375,7 @@
   },
   {
     "id": "w433",
-    "arabic": "التيبس الرمي",
+    "arabic": "التيبس الرمي (تخشب الجثة)",
     "english": "Rigor Mortis",
     "level": "Academic",
     "difficulty": 3,
@@ -9396,7 +9396,7 @@
   },
   {
     "id": "w434",
-    "arabic": "الرسوب الدموي الرمي",
+    "arabic": "الرسوب الدموي الرمي (الزرقة الرمية)",
     "english": "Livor Mortis",
     "level": "Academic",
     "difficulty": 3,
@@ -9417,7 +9417,7 @@
   },
   {
     "id": "w435",
-    "arabic": "التشنج الكادافيري",
+    "arabic": "التشنج الرمي (التشنج الموتي الفوري)",
     "english": "Cadaveric Spasm",
     "level": "Both",
     "difficulty": 3,
@@ -9437,7 +9437,7 @@
   },
   {
     "id": "w436",
-    "arabic": "التعفن الرمي",
+    "arabic": "التعفن الرمي (التفسخ الجيفي)",
     "english": "Putrefaction",
     "level": "Academic",
     "difficulty": 2,
@@ -9458,7 +9458,7 @@
   },
   {
     "id": "w437",
-    "arabic": "التصبن الرمي",
+    "arabic": "التصبن الرمي (شحم الجثث)",
     "english": "Adipocere",
     "level": "Academic",
     "difficulty": 3,
@@ -9479,7 +9479,7 @@
   },
   {
     "id": "w438",
-    "arabic": "التحنط الطبيعي",
+    "arabic": "التحنط الرمي الجفافي",
     "english": "Mummification",
     "level": "Academic",
     "difficulty": 3,
@@ -9520,7 +9520,7 @@
   },
   {
     "id": "w440",
-    "arabic": "الخنق برباط",
+    "arabic": "الخنق برباط (الخنق الخناقي)",
     "english": "Ligature Strangulation",
     "level": "Both",
     "difficulty": 3,
@@ -9540,7 +9540,7 @@
   },
   {
     "id": "w441",
-    "arabic": "الخنق اليدوي",
+    "arabic": "الخنق اليدوي (كتم العنق باليد)",
     "english": "Throttling",
     "level": "Both",
     "difficulty": 3,
@@ -9604,7 +9604,7 @@
   },
   {
     "id": "w444",
-    "arabic": "السحجة",
+    "arabic": "السحجة الجلدية (الخدش الرضي)",
     "english": "Abrasion",
     "level": "Both",
     "difficulty": 2,
@@ -9648,7 +9648,7 @@
   },
   {
     "id": "w446",
-    "arabic": "الجرح القطعي",
+    "arabic": "الجرح القطعي المستوي",
     "english": "Incised Wound",
     "level": "Both",
     "difficulty": 2,
@@ -9670,7 +9670,7 @@
   },
   {
     "id": "w447",
-    "arabic": "الجرح الطعني",
+    "arabic": "الجرح الطعني الوخزي",
     "english": "Stab Wound",
     "level": "Both",
     "difficulty": 2,
@@ -9692,7 +9692,7 @@
   },
   {
     "id": "w448",
-    "arabic": "الجرح الرضي",
+    "arabic": "الجرح الرضي المتهتك",
     "english": "Lacerated Wound",
     "level": "Both",
     "difficulty": 2,
@@ -9734,7 +9734,7 @@
   },
   {
     "id": "w450",
-    "arabic": "جروح التردد",
+    "arabic": "جروح التردد الانتحارية",
     "english": "Hesitation Marks",
     "level": "Both",
     "difficulty": 2,
@@ -9756,7 +9756,7 @@
   },
   {
     "id": "w451",
-    "arabic": "فتحة دخول العيار الناري",
+    "arabic": "فتحة دخول المقذوف الناري",
     "english": "Firearm Entrance Wound",
     "level": "Both",
     "difficulty": 2,
@@ -9776,7 +9776,7 @@
   },
   {
     "id": "w452",
-    "arabic": "طوق التنميش البارودي",
+    "arabic": "الوشم البارودي (التنميش البارودي)",
     "english": "Powder Tattooing",
     "level": "Academic",
     "difficulty": 3,
@@ -9796,7 +9796,7 @@
   },
   {
     "id": "w453",
-    "arabic": "نزيف فوق الجافية",
+    "arabic": "ورم دموي فوق الجافية (نزف الإبيدورال)",
     "english": "Epidural Hematoma",
     "level": "Both",
     "difficulty": 2,
@@ -9818,7 +9818,7 @@
   },
   {
     "id": "w454",
-    "arabic": "نزيف تحت الجافية",
+    "arabic": "ورم دموي تحت الجافية (نزف السابديورال)",
     "english": "Subdural Hematoma",
     "level": "Both",
     "difficulty": 2,
@@ -9840,7 +9840,7 @@
   },
   {
     "id": "w455",
-    "arabic": "علامة لشتنبرغ البرقية",
+    "arabic": "علامة لشتنبرغ الكهربائية (شجرة البرق)",
     "english": "Lichtenberg Figures",
     "level": "Both",
     "difficulty": 3,
@@ -9882,7 +9882,7 @@
   },
   {
     "id": "w457",
-    "arabic": "اختبار طفو الرئة",
+    "arabic": "اختبار طفو الرئتين الهيدروستاتيكي",
     "english": "Hydrostatic Lung Test",
     "level": "Academic",
     "difficulty": 3,
@@ -9923,7 +9923,7 @@
   },
   {
     "id": "w459",
-    "arabic": "تحديد الجنس من الحوض",
+    "arabic": "تحديد الجنس من عظام الحوض",
     "english": "Pelvis Sexing",
     "level": "Academic",
     "difficulty": 2,
@@ -9944,7 +9944,7 @@
   },
   {
     "id": "w460",
-    "arabic": "التحام المشاش العظمي",
+    "arabic": "التحام المشاشات العظمية لتقدير العمر",
     "english": "Epiphyseal Union",
     "level": "Academic",
     "difficulty": 2,
@@ -9967,7 +9967,7 @@
   },
   {
     "id": "w461",
-    "arabic": "الجروح المصطنعة",
+    "arabic": "الجروح المفتعلة المصطنعة",
     "english": "Fabricated Wounds",
     "level": "Both",
     "difficulty": 3,
@@ -9989,7 +9989,7 @@
   },
   {
     "id": "w462",
-    "arabic": "إطلاق ناري ملاصق",
+    "arabic": "إطلاق عيار ناري ملاصق",
     "english": "Contact Bullet Wound",
     "level": "Academic",
     "difficulty": 3,
@@ -10010,7 +10010,7 @@
   },
   {
     "id": "w463",
-    "arabic": "فتحة خروج العيار الناري",
+    "arabic": "فتحة خروج المقذوف الناري",
     "english": "Firearm Exit Wound",
     "level": "Both",
     "difficulty": 3,
@@ -10030,7 +10030,7 @@
   },
   {
     "id": "w464",
-    "arabic": "شخشنة السلاح الناري",
+    "arabic": "شخشنة السبطانة (الأخاديد الحلزونية للسلاح)",
     "english": "Rifling",
     "level": "Academic",
     "difficulty": 3,
@@ -10050,7 +10050,7 @@
   },
   {
     "id": "w465",
-    "arabic": "قاعدة التسعات للحروق",
+    "arabic": "قاعدة التسعات لتقدير مساحة الحروق",
     "english": "Rule of Nines",
     "level": "Both",
     "difficulty": 3,
@@ -10115,7 +10115,7 @@
   },
   {
     "id": "w468",
-    "arabic": "انخفاض حرارة الجسم المميت",
+    "arabic": "انخفاض حرارة الجسم",
     "english": "Hypothermia",
     "level": "Both",
     "difficulty": 2,
@@ -10158,7 +10158,7 @@
   },
   {
     "id": "w470",
-    "arabic": "كسر الصدمة المصدية",
+    "arabic": "كسر المصد (كسر صدمة السيارة للساقين)",
     "english": "Bumper Fracture",
     "level": "Academic",
     "difficulty": 3,
@@ -10178,7 +10178,7 @@
   },
   {
     "id": "w471",
-    "arabic": "إصابة المصع العنقي",
+    "arabic": "إصابة المصع العنقي الارتدادية",
     "english": "Whiplash Injury",
     "level": "Both",
     "difficulty": 2,
@@ -10200,7 +10200,7 @@
   },
   {
     "id": "w472",
-    "arabic": "كتم النفس الجنائي",
+    "arabic": "كتم النفس (سد الفم والأنف الجنائي)",
     "english": "Smothering",
     "level": "Both",
     "difficulty": 3,
@@ -10219,7 +10219,7 @@
   },
   {
     "id": "w473",
-    "arabic": "الغصص الأسفكسي",
+    "arabic": "الغصص (انسداد مجرى الهواء بالأجسام الغريبة)",
     "english": "Choking",
     "level": "Both",
     "difficulty": 3,
@@ -10240,7 +10240,7 @@
   },
   {
     "id": "w474",
-    "arabic": "التسمم بالفوسفات العضوي",
+    "arabic": "التسمم بالمبيدات الفوسفاتية العضوية",
     "english": "Organophosphate Poisoning",
     "level": "Clinical",
     "difficulty": 3,
@@ -10286,7 +10286,7 @@
   },
   {
     "id": "w476",
-    "arabic": "فوسفيد الألومنيوم",
+    "arabic": "فوسفيد الألمنيوم (حبة الغلة القاتلة)",
     "english": "Aluminium Phosphide",
     "level": "Clinical",
     "difficulty": 3,
@@ -10308,7 +10308,7 @@
   },
   {
     "id": "w477",
-    "arabic": "التسمم بالباراكوات",
+    "arabic": "التسمم بمبيد الباراكوات",
     "english": "Paraquat Toxicity",
     "level": "Clinical",
     "difficulty": 3,
@@ -10330,7 +10330,7 @@
   },
   {
     "id": "w478",
-    "arabic": "متلازمة الكولينيرجيك",
+    "arabic": "المتلازمة الكولينية السامة",
     "english": "Cholinergic Toxidrome",
     "level": "Both",
     "difficulty": 3,
@@ -10377,7 +10377,7 @@
   },
   {
     "id": "w480",
-    "arabic": "خط بورتون",
+    "arabic": "خط بورتون (ترسب الرصاص باللثة)",
     "english": "Burtonian Line",
     "level": "Academic",
     "difficulty": 3,
@@ -10421,7 +10421,7 @@
   },
   {
     "id": "w482",
-    "arabic": "خطوط ميس",
+    "arabic": "خطوط ميس (ترسب الزرنيخ بالأظافر)",
     "english": "Mees' Lines",
     "level": "Academic",
     "difficulty": 3,
@@ -10467,7 +10467,7 @@
   },
   {
     "id": "w484",
-    "arabic": "التسمم الحاد بالحديد",
+    "arabic": "التسمم الحاد بأقراص الحديد",
     "english": "Acute Iron Toxicity",
     "level": "Clinical",
     "difficulty": 2,
@@ -10490,7 +10490,7 @@
   },
   {
     "id": "w485",
-    "arabic": "ديمركابرول",
+    "arabic": "ديمركابرول (BAL ترياق المعادن الثقيلة)",
     "english": "Dimercaprol",
     "level": "Both",
     "difficulty": 2,
@@ -10512,7 +10512,7 @@
   },
   {
     "id": "w486",
-    "arabic": "ديفيروكسامين",
+    "arabic": "ديفيروكسامين (ترياق مخلب الحديد)",
     "english": "Deferoxamine",
     "level": "Both",
     "difficulty": 2,
@@ -10535,7 +10535,7 @@
   },
   {
     "id": "w487",
-    "arabic": "بنسيلامين",
+    "arabic": "د-بنسيلامين (مخلب النحاس لمرض ويلسون)",
     "english": "Penicillamine",
     "level": "Both",
     "difficulty": 2,
@@ -10558,7 +10558,7 @@
   },
   {
     "id": "w488",
-    "arabic": "التسمم بالميثانول",
+    "arabic": "التسمم بالميثانول (كحول الخشب)",
     "english": "Methanol Poisoning",
     "level": "Clinical",
     "difficulty": 2,
@@ -10581,7 +10581,7 @@
   },
   {
     "id": "w489",
-    "arabic": "فومبيزول",
+    "arabic": "فومبيزول (ترياق الميثانول والإيثيلين جليكول)",
     "english": "Fomepizole",
     "level": "Both",
     "difficulty": 2,
@@ -10604,7 +10604,7 @@
   },
   {
     "id": "w490",
-    "arabic": "التسمم بإيثيلين جليكول",
+    "arabic": "التسمم بإيثيلين جلايكول (سائل التبريد)",
     "english": "Ethylene Glycol Poisoning",
     "level": "Clinical",
     "difficulty": 2,
@@ -10626,7 +10626,7 @@
   },
   {
     "id": "w491",
-    "arabic": "التسمم بالكيروسين",
+    "arabic": "ابتلاع الكيروسين (التسمم بالهيدروكربونات)",
     "english": "Kerosene Ingestion",
     "level": "Clinical",
     "difficulty": 2,
@@ -10649,7 +10649,7 @@
   },
   {
     "id": "w492",
-    "arabic": "حمض الفينيك (الفينول)",
+    "arabic": "حمض الفينيك (الفينول الكاوي)",
     "english": "Carbolic Acid (Phenol)",
     "level": "Both",
     "difficulty": 2,
@@ -10671,7 +10671,7 @@
   },
   {
     "id": "w493",
-    "arabic": "الصودا الكاوية",
+    "arabic": "الصودا الكاوية (هيدروكسيد الصوديوم)",
     "english": "Caustic Soda",
     "level": "Clinical",
     "difficulty": 3,
@@ -10694,7 +10694,7 @@
   },
   {
     "id": "w494",
-    "arabic": "حمض الأوكزاليك",
+    "arabic": "حمض الأوكساليك (ملح الليمون الصناعي)",
     "english": "Oxalic Acid",
     "level": "Both",
     "difficulty": 2,
@@ -10716,7 +10716,7 @@
   },
   {
     "id": "w495",
-    "arabic": "التسمم بأول أكسيد الكربون",
+    "arabic": "التسمم بأول أكسيد الكربون (القاتل الصامت)",
     "english": "Carbon Monoxide Poisoning",
     "level": "Clinical",
     "difficulty": 2,
@@ -10740,7 +10740,7 @@
   },
   {
     "id": "w496",
-    "arabic": "كربوكسي هيموجلوبين",
+    "arabic": "كربوكسي هيموغلوبين",
     "english": "Carboxyhemoglobin",
     "level": "Academic",
     "difficulty": 2,
@@ -10763,7 +10763,7 @@
   },
   {
     "id": "w497",
-    "arabic": "الأكسجين عالي الضغط",
+    "arabic": "العلاج بالأكسجين عالي الضغط (HBOT)",
     "english": "Hyperbaric Oxygen Therapy",
     "level": "Clinical",
     "difficulty": 2,
@@ -10808,7 +10808,7 @@
   },
   {
     "id": "w499",
-    "arabic": "هيدروكسوكوبالامين",
+    "arabic": "هيدروكسوكوبالامين (ترياق السيانيد)",
     "english": "Hydroxocobalamin",
     "level": "Both",
     "difficulty": 2,
@@ -10831,7 +10831,7 @@
   },
   {
     "id": "w500",
-    "arabic": "كبريتيد الهيدروجين",
+    "arabic": "كبريتيد الهيدروجين (غاز المجاري السام)",
     "english": "Hydrogen Sulfide",
     "level": "Clinical",
     "difficulty": 2,
@@ -10853,7 +10853,7 @@
   },
   {
     "id": "w501",
-    "arabic": "التسمم بالأفيونات",
+    "arabic": "جرعة زائدة من الأفيونات",
     "english": "Opioid Overdose",
     "level": "Clinical",
     "difficulty": 2,
@@ -10876,7 +10876,7 @@
   },
   {
     "id": "w502",
-    "arabic": "نالوكسون",
+    "arabic": "نالوكسون (ناركان ترياق الأفيونات)",
     "english": "Naloxone",
     "level": "Both",
     "difficulty": 2,
@@ -10898,7 +10898,7 @@
   },
   {
     "id": "w503",
-    "arabic": "التسمم بالبنزوديازيبينات",
+    "arabic": "التسمم بالمهدئات البنزوديازيبينية",
     "english": "Benzodiazepine Toxicity",
     "level": "Clinical",
     "difficulty": 2,
@@ -10921,7 +10921,7 @@
   },
   {
     "id": "w504",
-    "arabic": "فلومازينيل",
+    "arabic": "فلومازينيل (ترياق البنزوديازيبين)",
     "english": "Flumazenil",
     "level": "Both",
     "difficulty": 2,
@@ -11018,7 +11018,7 @@
   },
   {
     "id": "w508",
-    "arabic": "التسمم بالساليسيلات",
+    "arabic": "التسمم بالساليسيلات (جرعة الأسبرين الزائدة)",
     "english": "Salicylate Toxicity",
     "level": "Clinical",
     "difficulty": 2,
@@ -11042,7 +11042,7 @@
   },
   {
     "id": "w509",
-    "arabic": "إدرار البول القلوي",
+    "arabic": "إدرار البول القلوي بالبيكربونات",
     "english": "Alkaline Diuresis",
     "level": "Both",
     "difficulty": 3,
@@ -11064,7 +11064,7 @@
   },
   {
     "id": "w510",
-    "arabic": "التسمم الكبدي بالباراسيتامول",
+    "arabic": "السمية الكبدية للباراسيتامول",
     "english": "Paracetamol Hepatotoxicity",
     "level": "Clinical",
     "difficulty": 2,
@@ -11088,7 +11088,7 @@
   },
   {
     "id": "w511",
-    "arabic": "إن-أسيتيل سيستئين",
+    "arabic": "إن-أسيتيل سيستئين (NAC ترياق الباراسيتامول)",
     "english": "N-Acetylcysteine",
     "level": "Both",
     "difficulty": 2,
@@ -11112,7 +11112,7 @@
   },
   {
     "id": "w512",
-    "arabic": "مخطط روماك-ماثيو",
+    "arabic": "مخطط روماك-ماثيو لتقييم تسمم الباراسيتامول",
     "english": "Rumack-Matthew Nomogram",
     "level": "Academic",
     "difficulty": 3,
@@ -11134,7 +11134,7 @@
   },
   {
     "id": "w513",
-    "arabic": "نبات ست الحسن",
+    "arabic": "ست الحسن (الأتروبا بيلادونا السامة)",
     "english": "Atropa Belladonna",
     "level": "Both",
     "difficulty": 2,
@@ -11156,7 +11156,7 @@
   },
   {
     "id": "w514",
-    "arabic": "متلازمة مضادات الكولين",
+    "arabic": "المتلازمة المضادة للكولين",
     "english": "Anticholinergic Toxidrome",
     "level": "Both",
     "difficulty": 3,
@@ -11180,7 +11180,7 @@
   },
   {
     "id": "w515",
-    "arabic": "فوسوستيجمين",
+    "arabic": "فيزوستيغمين (ترياق مضادات الكولين)",
     "english": "Physostigmine",
     "level": "Both",
     "difficulty": 2,
@@ -11203,7 +11203,7 @@
   },
   {
     "id": "w516",
-    "arabic": "التسمم بالاستركنين",
+    "arabic": "التسمم بالاستركنين (سم الفئران التشنجي)",
     "english": "Strychnine Poisoning",
     "level": "Both",
     "difficulty": 3,
@@ -11247,7 +11247,7 @@
   },
   {
     "id": "w518",
-    "arabic": "اللابؤرية",
+    "arabic": "اللابؤرية (الاستجماتيزم)",
     "english": "Astigmatism",
     "level": "Academic",
     "difficulty": 2,
@@ -11326,7 +11326,7 @@
   },
   {
     "id": "w522",
-    "arabic": "قصر النظر",
+    "arabic": "حسر البصر (قصر النظر)",
     "english": "Myopia",
     "level": "Academic",
     "difficulty": 1,
@@ -11344,7 +11344,7 @@
   },
   {
     "id": "w523",
-    "arabic": "طول النظر",
+    "arabic": "مد البصر (طول النظر)",
     "english": "Hyperopia",
     "level": "Academic",
     "difficulty": 1,
@@ -11362,7 +11362,7 @@
   },
   {
     "id": "w524",
-    "arabic": "طول النظر الشيخوخي",
+    "arabic": "بصر الشيخوخة (قصور البصر الشيخي)",
     "english": "Presbyopia",
     "level": "Clinical",
     "difficulty": 2,
@@ -11437,7 +11437,7 @@
   },
   {
     "id": "w528",
-    "arabic": "القزحية",
+    "arabic": "قزحية العين",
     "english": "Iris",
     "level": "Academic",
     "difficulty": 1,
@@ -11456,7 +11456,7 @@
   },
   {
     "id": "w529",
-    "arabic": "السائل الزجاجي",
+    "arabic": "الجسم الزجاجي (الخلط الزجاجي للعين)",
     "english": "Vitreous Humor",
     "level": "Academic",
     "difficulty": 2,
@@ -11476,7 +11476,7 @@
   },
   {
     "id": "w530",
-    "arabic": "الصلبة",
+    "arabic": "صلبة العين (بياض العين)",
     "english": "Sclera",
     "level": "Academic",
     "difficulty": 2,
@@ -11533,7 +11533,7 @@
   },
   {
     "id": "w533",
-    "arabic": "البقعة الشبكية (الماكيولا)",
+    "arabic": "اللطخة الصفراء (الماكيولا البقعية)",
     "english": "Macula",
     "level": "Academic",
     "difficulty": 2,
@@ -11553,7 +11553,7 @@
   },
   {
     "id": "w534",
-    "arabic": "القرص البصري",
+    "arabic": "قرص العصب البصري",
     "english": "Optic Disc",
     "level": "Academic",
     "difficulty": 2,
@@ -11594,7 +11594,7 @@
   },
   {
     "id": "w536",
-    "arabic": "الرؤية المزدوجة",
+    "arabic": "ازدواج الرؤية (الشفع)",
     "english": "Diplopia",
     "level": "Clinical",
     "difficulty": 2,
@@ -11615,7 +11615,7 @@
   },
   {
     "id": "w537",
-    "arabic": "العمى الليلي (العشى الليلي)",
+    "arabic": "العشى الليلي (العمى الليلي)",
     "english": "Nyctalopia",
     "level": "Clinical",
     "difficulty": 2,
@@ -11635,7 +11635,7 @@
   },
   {
     "id": "w538",
-    "arabic": "الوميض الضوئي",
+    "arabic": "الومضان الضوئي (رؤية ومضات ضوئية)",
     "english": "Photopsia",
     "level": "Clinical",
     "difficulty": 3,
@@ -11712,7 +11712,7 @@
   },
   {
     "id": "w542",
-    "arabic": "البردة (كيس دهني في الجفن)",
+    "arabic": "البردة (كيس دهني جفني)",
     "english": "Chalazion",
     "level": "Clinical",
     "difficulty": 2,
@@ -11731,7 +11731,7 @@
   },
   {
     "id": "w543",
-    "arabic": "ظفرة العين",
+    "arabic": "الظفرة العينية",
     "english": "Pterygium",
     "level": "Clinical",
     "difficulty": 2,
@@ -11767,7 +11767,7 @@
   },
   {
     "id": "w545",
-    "arabic": "قياس ضغط العين",
+    "arabic": "قياس ضغط العين الداخلي",
     "english": "Tonometry",
     "level": "Clinical",
     "difficulty": 2,
@@ -11785,14 +11785,13 @@
   },
   {
     "id": "w546",
-    "arabic": "فحص قاع العين",
+    "arabic": "تنظير قاع العين",
     "english": "Fundoscopy",
     "level": "Clinical",
     "difficulty": 1,
     "type": "Technique",
     "subjects": [
       "Ophthalmology",
-      "Internal Medicine",
       "Neurology"
     ],
     "synonyms": [
@@ -11806,7 +11805,7 @@
   },
   {
     "id": "w547",
-    "arabic": "المصباح الشقي",
+    "arabic": "المصباح الشقي لفحص العين",
     "english": "Slit Lamp",
     "level": "Clinical",
     "difficulty": 2,
@@ -11825,7 +11824,7 @@
   },
   {
     "id": "w548",
-    "arabic": "اعتلال الشبكية الخداجي",
+    "arabic": "اعتلال الشبكية عند الخدج (ROP)",
     "english": "Retinopathy of Prematurity",
     "level": "Clinical",
     "difficulty": 3,
@@ -11844,7 +11843,7 @@
   },
   {
     "id": "w549",
-    "arabic": "الأشعة المقطعية",
+    "arabic": "التصوير المقطعي المحوسب (الأشعة المقطعية CT)",
     "english": "Computed Tomography",
     "level": "Clinical",
     "difficulty": 1,
@@ -11867,7 +11866,7 @@
   },
   {
     "id": "w550",
-    "arabic": "الرنين المغناطيسي",
+    "arabic": "التصوير بالرنين المغناطيسي (MRI)",
     "english": "Magnetic Resonance Imaging",
     "level": "Both",
     "difficulty": 1,
@@ -11889,7 +11888,7 @@
   },
   {
     "id": "w551",
-    "arabic": "الموجات فوق الصوتية",
+    "arabic": "التصوير بالموجات فوق الصوتية (السونار)",
     "english": "Ultrasound",
     "level": "Clinical",
     "difficulty": 1,
@@ -11912,7 +11911,7 @@
   },
   {
     "id": "w552",
-    "arabic": "التصوير التألقي",
+    "arabic": "التصوير التنظيري التألقي الشعاعي",
     "english": "Fluoroscopy",
     "level": "Clinical",
     "difficulty": 2,
@@ -11933,7 +11932,7 @@
   },
   {
     "id": "w553",
-    "arabic": "مواد التباين",
+    "arabic": "مواد التباين الشعاعية (صبغات الأشعة)",
     "english": "Contrast Media",
     "level": "Both",
     "difficulty": 2,
@@ -11955,7 +11954,7 @@
   },
   {
     "id": "w554",
-    "arabic": "التصوير البوزيتروني",
+    "arabic": "التصوير المقطعي بالإصدار البوزيتروني (PET)",
     "english": "PET Scan",
     "level": "Clinical",
     "difficulty": 2,
@@ -11974,7 +11973,7 @@
   },
   {
     "id": "w555",
-    "arabic": "تصوير الثدي الشعاعي",
+    "arabic": "تصوير الثدي الشعاعي (الماموجرام)",
     "english": "Mammography",
     "level": "Clinical",
     "difficulty": 1,
@@ -11996,7 +11995,7 @@
   },
   {
     "id": "w556",
-    "arabic": "تصوير الأوعية",
+    "arabic": "تصوير الأوعية الدموية بالصبغة",
     "english": "Angiography",
     "level": "Clinical",
     "difficulty": 2,
@@ -12039,7 +12038,7 @@
   },
   {
     "id": "w558",
-    "arabic": "تصوير الأوعية المقطعي",
+    "arabic": "تصوير الأوعية المقطعي المحوسب (CTA)",
     "english": "CT Angiography",
     "level": "Clinical",
     "difficulty": 2,
@@ -12061,7 +12060,7 @@
   },
   {
     "id": "w559",
-    "arabic": "تخطيط صدى القلب",
+    "arabic": "تخطيط صدى القلب (إيكو القلب)",
     "english": "Echocardiography",
     "level": "Clinical",
     "difficulty": 1,
@@ -12083,7 +12082,7 @@
   },
   {
     "id": "w560",
-    "arabic": "الدوبلر الصوتي",
+    "arabic": "الموجات فوق الصوتية دوبلر",
     "english": "Doppler Ultrasound",
     "level": "Clinical",
     "difficulty": 2,
@@ -12105,7 +12104,7 @@
   },
   {
     "id": "w561",
-    "arabic": "فحص كثافة العظام",
+    "arabic": "فحص مقياس امتصاص الأشعة السينية (كثافة العظام DEXA)",
     "english": "DEXA Scan",
     "level": "Clinical",
     "difficulty": 2,
@@ -12128,7 +12127,7 @@
   },
   {
     "id": "w562",
-    "arabic": "بلع الباريوم",
+    "arabic": "ابتلاع الباريوم لتصوير المريء",
     "english": "Barium Swallow",
     "level": "Clinical",
     "difficulty": 2,
@@ -12172,7 +12171,7 @@
   },
   {
     "id": "w564",
-    "arabic": "حب الشباب",
+    "arabic": "حب الشباب الشائع",
     "english": "Acne Vulgaris",
     "level": "Clinical",
     "difficulty": 1,
@@ -12213,7 +12212,7 @@
   },
   {
     "id": "w566",
-    "arabic": "الالتهاب الجلدي الدهني",
+    "arabic": "التهاب الجلد الدهني (قشرة الرأس)",
     "english": "Seborrheic Dermatitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -12234,7 +12233,7 @@
   },
   {
     "id": "w567",
-    "arabic": "التهاب اللفافة الناخر",
+    "arabic": "التهاب اللفافة الناخر (البكتيريا الآكلة للحم)",
     "english": "Necrotizing Fasciitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -12256,7 +12255,7 @@
   },
   {
     "id": "w568",
-    "arabic": "الشرى",
+    "arabic": "الشرى (الأرتيكاريا)",
     "english": "Urticaria",
     "level": "Clinical",
     "difficulty": 1,
@@ -12337,7 +12336,7 @@
   },
   {
     "id": "w572",
-    "arabic": "سرطان الخلايا الحرشفية الجلدي",
+    "arabic": "سرطان الخلايا الحرشفية",
     "english": "Squamous Cell Carcinoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -12357,7 +12356,7 @@
   },
   {
     "id": "w573",
-    "arabic": "الحزام الناري",
+    "arabic": "الهربس النطاقي (الحزام الناري)",
     "english": "Herpes Zoster",
     "level": "Clinical",
     "difficulty": 1,
@@ -12378,7 +12377,7 @@
   },
   {
     "id": "w574",
-    "arabic": "الخلية اللمفاوية التائية",
+    "arabic": "الخلايا اللمفاوية التائية (T-Cells)",
     "english": "T Lymphocyte",
     "level": "Academic",
     "difficulty": 1,
@@ -12399,7 +12398,7 @@
   },
   {
     "id": "w575",
-    "arabic": "الخلية اللمفاوية البائية",
+    "arabic": "الخلايا اللمفاوية البائية (B-Cells)",
     "english": "B Lymphocyte",
     "level": "Academic",
     "difficulty": 1,
@@ -12420,7 +12419,7 @@
   },
   {
     "id": "w576",
-    "arabic": "الخلية القاتلة الطبيعية",
+    "arabic": "الخلايا القاتلة الطبيعية (NK Cells)",
     "english": "Natural Killer Cell",
     "level": "Academic",
     "difficulty": 2,
@@ -12441,7 +12440,7 @@
   },
   {
     "id": "w577",
-    "arabic": "البلعم الكبير",
+    "arabic": "البلعم الكبير (الخلايا البلعمية الكبيرة)",
     "english": "Macrophage",
     "level": "Academic",
     "difficulty": 1,
@@ -12462,7 +12461,7 @@
   },
   {
     "id": "w578",
-    "arabic": "الخلية المتغصنة",
+    "arabic": "الخلايا التغصنية العارضة للمستضد",
     "english": "Dendritic Cell",
     "level": "Academic",
     "difficulty": 2,
@@ -12632,7 +12631,7 @@
   },
   {
     "id": "w586",
-    "arabic": "الصدمة التأقية",
+    "arabic": "التأق (الصدمة التحسسية الحادة)",
     "english": "Anaphylaxis",
     "level": "Clinical",
     "difficulty": 1,
@@ -12656,7 +12655,7 @@
   },
   {
     "id": "w587",
-    "arabic": "الذئبة الحمامية الجهازية",
+    "arabic": "الذئبة الحمامية الجهازية (SLE)",
     "english": "Systemic Lupus Erythematosus",
     "level": "Clinical",
     "difficulty": 1,
@@ -12679,7 +12678,7 @@
   },
   {
     "id": "w588",
-    "arabic": "متلازمة غودباستشر",
+    "arabic": "متلازمة غودباستشر الرئوية الكلوية",
     "english": "Goodpasture Syndrome",
     "level": "Clinical",
     "difficulty": 3,
@@ -12700,7 +12699,7 @@
   },
   {
     "id": "w589",
-    "arabic": "متلازمة دي جورج",
+    "arabic": "متلازمة دي جورج (انعدام التيموس الخلقي)",
     "english": "DiGeorge Syndrome",
     "level": "Clinical",
     "difficulty": 3,
@@ -12722,7 +12721,7 @@
   },
   {
     "id": "w590",
-    "arabic": "داء بروتون لنقص المناعة",
+    "arabic": "فقد غاما غلوبولين الدم لبروتون",
     "english": "Bruton Agammaglobulinemia",
     "level": "Clinical",
     "difficulty": 3,
@@ -12743,7 +12742,7 @@
   },
   {
     "id": "w591",
-    "arabic": "عوز المناعة المشترك الشديد",
+    "arabic": "العوز المناعي الشديد المشترك (SCID)",
     "english": "Severe Combined Immunodeficiency",
     "level": "Clinical",
     "difficulty": 3,
@@ -12764,7 +12763,7 @@
   },
   {
     "id": "w592",
-    "arabic": "مستضد الكريات البيضاء البشرية",
+    "arabic": "مستضد الكريات البيضاء البشرية (معقد التوافق HLA)",
     "english": "Human Leukocyte Antigen",
     "level": "Academic",
     "difficulty": 2,
@@ -12786,7 +12785,7 @@
   },
   {
     "id": "w593",
-    "arabic": "داء الطعم حيال الثوي",
+    "arabic": "داء الطعم ضد المضيف (GVHD)",
     "english": "Graft Versus Host Disease",
     "level": "Clinical",
     "difficulty": 3,
@@ -12807,7 +12806,7 @@
   },
   {
     "id": "w594",
-    "arabic": "الجسم المضاد الذاتي",
+    "arabic": "الأجسام المضادة الذاتية",
     "english": "Autoantibody",
     "level": "Academic",
     "difficulty": 2,
@@ -12871,7 +12870,7 @@
   },
   {
     "id": "w597",
-    "arabic": "سرطان الرئة صغير الخلايا",
+    "arabic": "سرطان الرئة صغير الخلايا (SCLC)",
     "english": "Small Cell Lung Carcinoma",
     "level": "Clinical",
     "difficulty": 3,
@@ -12893,7 +12892,7 @@
   },
   {
     "id": "w598",
-    "arabic": "سرطان الخلايا الكبدية",
+    "arabic": "سرطان الخلايا الكبدية (HCC)",
     "english": "Hepatocellular Carcinoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -12939,7 +12938,7 @@
   },
   {
     "id": "w600",
-    "arabic": "سرطان البنكرياس الغدي",
+    "arabic": "السرطان الغدي للبنكرياس",
     "english": "Pancreatic Adenocarcinoma",
     "level": "Clinical",
     "difficulty": 3,
@@ -12984,7 +12983,7 @@
   },
   {
     "id": "w602",
-    "arabic": "مستضد البروستاتا النوعي",
+    "arabic": "المستضد النوعي للبروستاتا (PSA)",
     "english": "Prostate-Specific Antigen",
     "level": "Clinical",
     "difficulty": 1,
@@ -13005,7 +13004,7 @@
   },
   {
     "id": "w603",
-    "arabic": "المستضد السرطاني المضغي",
+    "arabic": "المستضد السرطاني المضغي (CEA)",
     "english": "Carcinoembryonic Antigen",
     "level": "Clinical",
     "difficulty": 2,
@@ -13027,7 +13026,7 @@
   },
   {
     "id": "w604",
-    "arabic": "ألفا فيتو بروتين",
+    "arabic": "بروتين ألفا الجنيني (AFP)",
     "english": "Alpha-Fetoprotein",
     "level": "Clinical",
     "difficulty": 2,
@@ -13049,7 +13048,7 @@
   },
   {
     "id": "w605",
-    "arabic": "واسم الورم CA-125",
+    "arabic": "واسم الورم السرطاني CA-125",
     "english": "CA-125 Antigen",
     "level": "Clinical",
     "difficulty": 2,
@@ -13070,7 +13069,7 @@
   },
   {
     "id": "w606",
-    "arabic": "العلاج الكيميائي للسرطان",
+    "arabic": "العلاج الكيميائي للأورام",
     "english": "Chemotherapy",
     "level": "Clinical",
     "difficulty": 1,
@@ -13112,7 +13111,7 @@
   },
   {
     "id": "w608",
-    "arabic": "العلاج المناعي للأورام",
+    "arabic": "العلاج المناعي للسرطان",
     "english": "Cancer Immunotherapy",
     "level": "Clinical",
     "difficulty": 2,
@@ -13133,7 +13132,7 @@
   },
   {
     "id": "w609",
-    "arabic": "النقائل الورمية الخبيثة",
+    "arabic": "الانتقالات الورمية الخبيثة (النقائل)",
     "english": "Neoplasm Metastasis",
     "level": "Clinical",
     "difficulty": 2,
@@ -13156,7 +13155,7 @@
   },
   {
     "id": "w610",
-    "arabic": "الخزعة بالإبرة الدقيقة",
+    "arabic": "الرشف بالإبرة الدقيقة (خزعة FNA)",
     "english": "Fine Needle Aspiration",
     "level": "Clinical",
     "difficulty": 2,
@@ -13178,7 +13177,7 @@
   },
   {
     "id": "w611",
-    "arabic": "نظام تدريج الأورام TNM",
+    "arabic": "نظام التصنيف التدريجي للأورام TNM",
     "english": "TNM Staging System",
     "level": "Clinical",
     "difficulty": 2,
@@ -13220,7 +13219,7 @@
   },
   {
     "id": "w613",
-    "arabic": "ورم أرومة الشبكية",
+    "arabic": "ورم أرومة الشبكية العيني (الريتينوبلاستوما)",
     "english": "Retinoblastoma",
     "level": "Clinical",
     "difficulty": 3,
@@ -13241,7 +13240,7 @@
   },
   {
     "id": "w614",
-    "arabic": "الورم السرطاوي",
+    "arabic": "الورم السرطاوي (الورم الكارسينويدي)",
     "english": "Carcinoid Tumor",
     "level": "Clinical",
     "difficulty": 3,
@@ -13284,7 +13283,7 @@
   },
   {
     "id": "w616",
-    "arabic": "الأوعية المتقدمة (Vasa Previa)",
+    "arabic": "الأوعية المتقدمة (أوعية المشيمة الساقطة)",
     "english": "Vasa Previa",
     "level": "Clinical",
     "difficulty": 3,
@@ -13303,7 +13302,7 @@
   },
   {
     "id": "w617",
-    "arabic": "متلازمة تكيس المبايض",
+    "arabic": "متلازمة تكيس المبايض (PCOS)",
     "english": "Polycystic Ovary Syndrome",
     "level": "Clinical",
     "difficulty": 1,
@@ -13323,7 +13322,7 @@
   },
   {
     "id": "w618",
-    "arabic": "الورم العضلي الأملس الرحمي",
+    "arabic": "الورم العضلي الأملس الرحمي (ألياف الرحم)",
     "english": "Uterine Leiomyoma",
     "level": "Clinical",
     "difficulty": 2,
@@ -13367,7 +13366,7 @@
   },
   {
     "id": "w620",
-    "arabic": "مسحة عنق الرحم",
+    "arabic": "مسحة عنق الرحم (مسحة بابانيكولاو)",
     "english": "Pap Smear",
     "level": "Clinical",
     "difficulty": 1,
@@ -13389,7 +13388,7 @@
   },
   {
     "id": "w621",
-    "arabic": "سكري الحمل",
+    "arabic": "داء سكري الحمل",
     "english": "Gestational Diabetes",
     "level": "Clinical",
     "difficulty": 1,
@@ -13410,7 +13409,7 @@
   },
   {
     "id": "w622",
-    "arabic": "تمزق الأغشية الباكر",
+    "arabic": "التمزق المبكر للأغشية المحيطة بالجنين (PROM)",
     "english": "Premature Rupture of Membranes",
     "level": "Clinical",
     "difficulty": 2,
@@ -13430,7 +13429,7 @@
   },
   {
     "id": "w623",
-    "arabic": "عسر ولادة الكتف",
+    "arabic": "عسر ولادة الكتف التوليدي",
     "english": "Shoulder Dystocia",
     "level": "Clinical",
     "difficulty": 2,
@@ -13450,7 +13449,7 @@
   },
   {
     "id": "w624",
-    "arabic": "المشيمة الملتصقة",
+    "arabic": "المشيمة الملتصقة (الملتحمة)",
     "english": "Placenta Accreta",
     "level": "Clinical",
     "difficulty": 2,
@@ -13471,7 +13470,7 @@
   },
   {
     "id": "w625",
-    "arabic": "نزف ما بعد الوضع",
+    "arabic": "نزف ما بعد الولادة (PPH)",
     "english": "Postpartum Hemorrhage",
     "level": "Clinical",
     "difficulty": 1,
@@ -13491,7 +13490,7 @@
   },
   {
     "id": "w626",
-    "arabic": "متلازمة هيلب",
+    "arabic": "متلازمة هيلب (انحلال الدم وارتفاع إنزيمات الكبد)",
     "english": "HELLP Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -13511,7 +13510,7 @@
   },
   {
     "id": "w627",
-    "arabic": "العملية القيصرية",
+    "arabic": "العملية القيصرية التوليدية",
     "english": "Cesarean Section",
     "level": "Clinical",
     "difficulty": 1,
@@ -13532,7 +13531,7 @@
   },
   {
     "id": "w628",
-    "arabic": "تخطيط قلب الجنين والرحم",
+    "arabic": "تخطيط قلب الجنين وانقباضات الرحم (CTG)",
     "english": "Cardiotocography",
     "level": "Clinical",
     "difficulty": 2,
@@ -13553,7 +13552,7 @@
   },
   {
     "id": "w629",
-    "arabic": "بزل السائل السلوي الأمنيوسي",
+    "arabic": "بزل السائل الأمنيوسي",
     "english": "Amniocentesis",
     "level": "Clinical",
     "difficulty": 2,
@@ -13573,7 +13572,7 @@
   },
   {
     "id": "w630",
-    "arabic": "السائل السلوي الأمنيوسي",
+    "arabic": "السائل السلوي (السائل الأمنيوسي المحيط بالجنين)",
     "english": "Amniotic Fluid",
     "level": "Academic",
     "difficulty": 1,
@@ -13632,7 +13631,7 @@
   },
   {
     "id": "w633",
-    "arabic": "شق العجان التوليدي",
+    "arabic": "بضع الفرج (شق العجان التوليدي)",
     "english": "Episiotomy",
     "level": "Clinical",
     "difficulty": 1,
@@ -13651,7 +13650,7 @@
   },
   {
     "id": "w634",
-    "arabic": "ونى الرحم الارتخائي",
+    "arabic": "ونى الرحم (ارتخاء عضلة الرحم بعد الولادة)",
     "english": "Uterine Atony",
     "level": "Clinical",
     "difficulty": 2,
@@ -13670,7 +13669,7 @@
   },
   {
     "id": "w635",
-    "arabic": "انقلاب الرحم",
+    "arabic": "انقلاب الرحم الحاد",
     "english": "Uterine Inversion",
     "level": "Clinical",
     "difficulty": 3,
@@ -13690,7 +13689,7 @@
   },
   {
     "id": "w636",
-    "arabic": "قصور عنق الرحم",
+    "arabic": "قصور عنق الرحم (اتساع عنق الرحم المبكر)",
     "english": "Incompetent Cervix",
     "level": "Clinical",
     "difficulty": 2,
@@ -13710,7 +13709,7 @@
   },
   {
     "id": "w637",
-    "arabic": "حمى النفاس الإنتانية",
+    "arabic": "حمى النفاس الإنتانية (إنتان النفاس)",
     "english": "Puerperal Sepsis",
     "level": "Clinical",
     "difficulty": 1,
@@ -13731,7 +13730,7 @@
   },
   {
     "id": "w638",
-    "arabic": "قلس الأبهر",
+    "arabic": "قلس الصمام الأبهري (ارتجاع الأورطي)",
     "english": "Aortic Regurgitation",
     "level": "Clinical",
     "difficulty": 2,
@@ -13751,7 +13750,7 @@
   },
   {
     "id": "w639",
-    "arabic": "متلازمة وولف-باركنسون-وايت",
+    "arabic": "متلازمة وولف-باركنسون-وايت (WPW)",
     "english": "Wolff-Parkinson-White Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -13791,7 +13790,7 @@
   },
   {
     "id": "w641",
-    "arabic": "اعتلال تاكوتسوبو لعضلة القلب",
+    "arabic": "اعتلال تاكوتسوبو لعضلة القلب (متلازمة القلب المنكسر)",
     "english": "Takotsubo Cardiomyopathy",
     "level": "Clinical",
     "difficulty": 2,
@@ -13813,7 +13812,7 @@
   },
   {
     "id": "w642",
-    "arabic": "التهاب الشرايين الخلوية العملاقة",
+    "arabic": "التهاب الشرايين ذو الخلايا العملاقة (التهاب الشريان الصدغي)",
     "english": "Giant Cell Arteritis",
     "level": "Clinical",
     "difficulty": 2,
@@ -13835,7 +13834,7 @@
   },
   {
     "id": "w643",
-    "arabic": "متلازمة ذيل الفرس",
+    "arabic": "متلازمة ذيل الفرس العصبية",
     "english": "Cauda Equina Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -13855,7 +13854,7 @@
   },
   {
     "id": "w644",
-    "arabic": "تكهف النخاع",
+    "arabic": "تكهف النخاع الشوكي",
     "english": "Syringomyelia",
     "level": "Clinical",
     "difficulty": 2,
@@ -13875,7 +13874,7 @@
   },
   {
     "id": "w645",
-    "arabic": "التهاب الأقنية الصفراوية المصلب البدئي",
+    "arabic": "التهاب الأقنية الصفراوية المصلب الأولي (PSC)",
     "english": "Primary Sclerosing Cholangitis",
     "level": "Clinical",
     "difficulty": 3,
@@ -13894,7 +13893,7 @@
   },
   {
     "id": "w646",
-    "arabic": "متلازمة بورهاف",
+    "arabic": "متلازمة بورهاف (تمزق المريء التلقائي)",
     "english": "Boerhaave Syndrome",
     "level": "Clinical",
     "difficulty": 3,
@@ -13914,7 +13913,7 @@
   },
   {
     "id": "w647",
-    "arabic": "التهاب القولون بالمطثية العسيرة",
+    "arabic": "التهاب القولون الغشائي الكاذب (بالمطثية العسيرة)",
     "english": "Clostridioides difficile Colitis",
     "level": "Clinical",
     "difficulty": 2,
@@ -13937,7 +13936,7 @@
   },
   {
     "id": "w648",
-    "arabic": "ذات الرئة بالمتكيسة الرئوية الجيروفيسية",
+    "arabic": "التهاب الرئة بالمتكيسة الرئوية الجيروفيسية (PJP)",
     "english": "Pneumocystis Jirovecii Pneumonia",
     "level": "Clinical",
     "difficulty": 2,
@@ -13959,7 +13958,7 @@
   },
   {
     "id": "w649",
-    "arabic": "متلازمة الضائقة التنفسية الحادة",
+    "arabic": "متلازمة الضائقة التنفسية الحادة (ARDS)",
     "english": "Acute Respiratory Distress Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -13981,7 +13980,7 @@
   },
   {
     "id": "w650",
-    "arabic": "ورم الظهارة المتوسطة",
+    "arabic": "ورم الظهارة المتوسطة (الميزوثيليوما الخبيثة)",
     "english": "Mesothelioma",
     "level": "Clinical",
     "difficulty": 2,
@@ -14003,7 +14002,7 @@
   },
   {
     "id": "w651",
-    "arabic": "متلازمة فرط سكر الدم وفرط الأسمولية",
+    "arabic": "حالة فرط الأسمولية وفرط سكر الدم (HHS)",
     "english": "Hyperosmolar Hyperglycemic State",
     "level": "Clinical",
     "difficulty": 2,
@@ -14026,7 +14025,7 @@
   },
   {
     "id": "w652",
-    "arabic": "العاصفة الدرقية",
+    "arabic": "العاصفة الدرقية الحادة",
     "english": "Thyroid Storm",
     "level": "Clinical",
     "difficulty": 2,
@@ -14048,7 +14047,7 @@
   },
   {
     "id": "w653",
-    "arabic": "تعدد الأورام الصماوية الصمائية",
+    "arabic": "أورام الغدد الصماء المتعددة (متلازمة MEN)",
     "english": "Multiple Endocrine Neoplasia",
     "level": "Clinical",
     "difficulty": 3,
@@ -14071,7 +14070,7 @@
   },
   {
     "id": "w654",
-    "arabic": "التهاب كبيبات الكلى بعد العقديات",
+    "arabic": "التهاب كبيبات الكلى التالي للإنتان العقدي (PSGN)",
     "english": "Post-Streptococcal Glomerulonephritis",
     "level": "Clinical",
     "difficulty": 2,
@@ -14092,7 +14091,7 @@
   },
   {
     "id": "w655",
-    "arabic": "انفتال الخصية",
+    "arabic": "انفتال الخصية (التواء الخصية)",
     "english": "Testicular Torsion",
     "level": "Clinical",
     "difficulty": 1,
@@ -14114,7 +14113,7 @@
   },
   {
     "id": "w656",
-    "arabic": "مرض التغير الأدنى",
+    "arabic": "داء التبدلات البسيطة الكلوي (MCD)",
     "english": "Minimal Change Disease",
     "level": "Clinical",
     "difficulty": 2,
@@ -14137,7 +14136,7 @@
   },
   {
     "id": "w657",
-    "arabic": "تسمم الباراسيتامول",
+    "arabic": "التسمم الحاد بالباراسيتامول",
     "english": "Acetaminophen Toxicity",
     "level": "Clinical",
     "difficulty": 2,
@@ -14161,7 +14160,7 @@
   },
   {
     "id": "w658",
-    "arabic": "متلازمة السيروتونين",
+    "arabic": "متلازمة السيروتونين الحادة",
     "english": "Serotonin Syndrome",
     "level": "Clinical",
     "difficulty": 2,
@@ -14185,7 +14184,7 @@
   },
   {
     "id": "w659",
-    "arabic": "فرط الحرارة الخبيث",
+    "arabic": "فرط الحرارة الخبيث التحسسي للتخدير",
     "english": "Malignant Hyperthermia",
     "level": "Clinical",
     "difficulty": 2,
@@ -14207,7 +14206,7 @@
   },
   {
     "id": "w660",
-    "arabic": "السونار السريع لرضوض البطن",
+    "arabic": "فحص السونار السريع لرضوض البطن الحادة (FAST)",
     "english": "FAST Ultrasound",
     "level": "Clinical",
     "difficulty": 2,
@@ -14229,7 +14228,7 @@
   },
   {
     "id": "w661",
-    "arabic": "مخطط القصبات الهوائي الظليل",
+    "arabic": "علامة القصبات الهوائية الشعاعية (Air Bronchogram)",
     "english": "Air Bronchogram",
     "level": "Clinical",
     "difficulty": 2,
@@ -14250,7 +14249,7 @@
   },
   {
     "id": "w662",
-    "arabic": "علامة لب التفاحة",
+    "arabic": "علامة لب التفاحة الشعاعية (لسرطان القولون)",
     "english": "Apple Core Sign",
     "level": "Clinical",
     "difficulty": 2,

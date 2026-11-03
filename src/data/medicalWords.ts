@@ -35,7 +35,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w3',
-    word: { Arabic: "العضلة ثنائية الرؤوس", English: "Biceps" },
+    word: { Arabic: "العضلة ذات الرأسين العضدية (البايسبس)", English: "Biceps" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -45,7 +45,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w4',
-    word: { Arabic: "عصب الزند", English: "Ulnar Nerve" },
+    word: { Arabic: "العصب الزندي", English: "Ulnar Nerve" },
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
@@ -55,7 +55,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w5',
-    word: { Arabic: "السكري", English: "Diabetes" },
+    word: { Arabic: "داء السكري", English: "Diabetes" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -65,7 +65,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w6',
-    word: { Arabic: "سماعة طبيبة", English: "Stethoscope" },
+    word: { Arabic: "السماعة الطبية", English: "Stethoscope" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -105,7 +105,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w10',
-    word: { Arabic: "تليف الكبد", English: "Cirrhosis" },
+    word: { Arabic: "تشمع الكبد", English: "Cirrhosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -135,7 +135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w13',
-    word: { Arabic: "عضلة الحجاب الحاجز", English: "Diaphragm" },
+    word: { Arabic: "الحجاب الحاجز", English: "Diaphragm" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -145,7 +145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w14',
-    word: { Arabic: "العصب الحائر", English: "Vagus Nerve" },
+    word: { Arabic: "العصب المبهم (الحائر)", English: "Vagus Nerve" },
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
@@ -165,7 +165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w16',
-    word: { Arabic: "جهاز الضغط", English: "Sphygmomanometer" },
+    word: { Arabic: "جهاز قياس ضغط الدم", English: "Sphygmomanometer" },
     level: 'Both',
     difficulty: 2,
     type: 'Equipment',
@@ -175,7 +175,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w17',
-    word: { Arabic: "ثلاثي الرؤوس العضدية", English: "Triceps brachii" },
+    word: { Arabic: "العضلة ثلاثية الرؤوس العضدية (الترايسبس)", English: "Triceps brachii" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -185,7 +185,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w18',
-    word: { Arabic: "العصب الوركي", English: "Sciatic Nerve" },
+    word: { Arabic: "العصب الوركي (عرق النسا)", English: "Sciatic Nerve" },
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
@@ -215,7 +215,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w21',
-    word: { Arabic: "الأموكسيسيلين", English: "Amoxicillin" },
+    word: { Arabic: "أموكسيسيلين", English: "Amoxicillin" },
     level: 'Both',
     difficulty: 1,
     type: 'Pharma',
@@ -225,7 +225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w22',
-    word: { Arabic: "الصمام الميترالي", English: "Mitral Valve" },
+    word: { Arabic: "الصمام التاجي (الميترالي)", English: "Mitral Valve" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -255,7 +255,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w25',
-    word: { Arabic: "عضلة الفخذ", English: "Quadriceps" },
+    word: { Arabic: "العضلة رباعية الرؤوس الفخذية", English: "Quadriceps" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -275,7 +275,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w27',
-    word: { Arabic: "جهاز غسيل الكلى", English: "Dialysis Machine" },
+    word: { Arabic: "جهاز الغسيل الكلوي", English: "Dialysis Machine" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -285,7 +285,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w28',
-    word: { Arabic: "عظمة الفخذ", English: "Femur" },
+    word: { Arabic: "عظم الفخذ", English: "Femur" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -295,7 +295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w29',
-    word: { Arabic: "التهاب الرئة", English: "Pneumonia" },
+    word: { Arabic: "الالتهاب الرئوي (ذات الرئة)", English: "Pneumonia" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -305,7 +305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w30',
-    word: { Arabic: "الليبيتر", English: "Lipitor" },
+    word: { Arabic: "ليبيتور (أتورفاستاتين)", English: "Lipitor" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Pharma',
@@ -375,7 +375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w37',
-    word: { Arabic: "مرض باركنسون", English: "Parkinson Disease" },
+    word: { Arabic: "داء باركنسون (الشلل الرعاش)", English: "Parkinson Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -385,7 +385,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w38',
-    word: { Arabic: "مرض ألزهايمر", English: "Alzheimer Disease" },
+    word: { Arabic: "داء ألزهايمر", English: "Alzheimer Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -405,7 +405,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w40',
-    word: { Arabic: "الرباط الصليبي", English: "Cruciate Ligament" },
+    word: { Arabic: "الرباط الصليبي للركبة", English: "Cruciate Ligament" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -435,7 +435,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w43',
-    word: { Arabic: "مستقبلات بيتا", English: "Beta Blockers" },
+    word: { Arabic: "حاصرات بيتا (Beta Blockers)", English: "Beta Blockers" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -465,7 +465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w46',
-    word: { Arabic: "العصب السابع", English: "Facial Nerve" },
+    word: { Arabic: "العصب الوجهي (العصب السابع)", English: "Facial Nerve" },
     level: 'Both',
     difficulty: 2,
     type: 'Nerve',
@@ -475,7 +475,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w47',
-    word: { Arabic: "التهاب السحايا", English: "Meningitis" },
+    word: { Arabic: "التهاب السحايا (الحمى الشوكية)", English: "Meningitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -485,7 +485,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w48',
-    word: { Arabic: "اليرقان", English: "Jaundice" },
+    word: { Arabic: "اليرقان (الصفراء)", English: "Jaundice" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -505,7 +505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w50',
-    word: { Arabic: "القولون العصبي", English: "Irritable Bowel Syndrome" },
+    word: { Arabic: "متلازمة القولون العصبي (IBS)", English: "Irritable Bowel Syndrome" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -565,7 +565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w56',
-    word: { Arabic: "المنظار الداخلي", English: "Endoscope" },
+    word: { Arabic: "المنظار الطبي الداخلي", English: "Endoscope" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -585,7 +585,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w58',
-    word: { Arabic: "الحجامة", English: "Cupping Therapy" },
+    word: { Arabic: "العلاج بالحجامة", English: "Cupping Therapy" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -595,7 +595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w59',
-    word: { Arabic: "التهاب الكبد الوبائي", English: "Hepatitis" },
+    word: { Arabic: "التهاب الكبد الفيروسي", English: "Hepatitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -605,7 +605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w60',
-    word: { Arabic: "الشلل الرعاش", English: "Parkinsonism" },
+    word: { Arabic: "متلازمة الشلل الرعاش", English: "Parkinsonism" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -685,7 +685,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w68',
-    word: { Arabic: "جهاز الصدمات الكهربائية", English: "Defibrillator" },
+    word: { Arabic: "جهاز مزيل الرجفان (الصدمات الكهربائية)", English: "Defibrillator" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -695,7 +695,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w69',
-    word: { Arabic: "رسم القلب", English: "Electrocardiogram" },
+    word: { Arabic: "تخطيط كهربية القلب (رسم القلب ECG)", English: "Electrocardiogram" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -705,7 +705,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w70',
-    word: { Arabic: "التصوير بالرنين المغناطيسي", English: "MRI" },
+    word: { Arabic: "التصوير بالرنين المغناطيسي (MRI)", English: "MRI" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -725,7 +725,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w72',
-    word: { Arabic: "البلازما", English: "Blood Plasma" },
+    word: { Arabic: "بلازما الدم", English: "Blood Plasma" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -735,7 +735,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w73',
-    word: { Arabic: "النخاع الشوكي", English: "Spinal Cord" },
+    word: { Arabic: "الحبل الشوكي (النخاع الشوكي)", English: "Spinal Cord" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -835,7 +835,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w83',
-    word: { Arabic: "التهاب السحايا الجرثومي", English: "Bacterial Meningitis" },
+    word: { Arabic: "التهاب السحايا البكتيري", English: "Bacterial Meningitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -845,7 +845,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w84',
-    word: { Arabic: "الصداع النصفي", English: "Migraine" },
+    word: { Arabic: "الصداع النصفي (الشقيقة)", English: "Migraine" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -865,7 +865,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w86',
-    word: { Arabic: "الفصام", English: "Schizophrenia" },
+    word: { Arabic: "الفصام (الشيزوفرينيا)", English: "Schizophrenia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -875,7 +875,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w87',
-    word: { Arabic: "الاكتئاب", English: "Depression" },
+    word: { Arabic: "الاكتئاب النفسي", English: "Depression" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -955,7 +955,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w95',
-    word: { Arabic: "تصلب متعدد", English: "Multiple Sclerosis" },
+    word: { Arabic: "التصلب المتعدد (MS)", English: "Multiple Sclerosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -965,7 +965,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w96',
-    word: { Arabic: "الوهن العضلي الوبيل", English: "Myasthenia Gravis" },
+    word: { Arabic: "الوهن العضلي الوبيل (Myasthenia)", English: "Myasthenia Gravis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -985,7 +985,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w98',
-    word: { Arabic: "الكرون", English: "Crohn Disease" },
+    word: { Arabic: "داء كرون", English: "Crohn Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -995,7 +995,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w99',
-    word: { Arabic: "القرحة الهضمية", English: "Peptic Ulcer" },
+    word: { Arabic: "القرحة الهضمية (قرحة المعدة)", English: "Peptic Ulcer" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1025,7 +1025,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w102',
-    word: { Arabic: "تضخم البروستاتا", English: "Prostate Hyperplasia" },
+    word: { Arabic: "تضخم البروستاتا الحميد", English: "Prostate Hyperplasia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1045,7 +1045,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w104',
-    word: { Arabic: "الحمل خارج الرحم", English: "Ectopic Pregnancy" },
+    word: { Arabic: "الحمل خارج الرحم (الحمل المنتبذ)", English: "Ectopic Pregnancy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1055,7 +1055,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w105',
-    word: { Arabic: "تسمم الحمل", English: "Preeclampsia" },
+    word: { Arabic: "تسمم الحمل (مقدمات الارتعاج)", English: "Preeclampsia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1095,7 +1095,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w109',
-    word: { Arabic: "أم الدم الأبهرية", English: "Aortic Aneurysm" },
+    word: { Arabic: "أم الدم الأبهرية (تمدد الشريان الأورطي)", English: "Aortic Aneurysm" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1135,7 +1135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w113',
-    word: { Arabic: "داء غريفز", English: "Graves Disease" },
+    word: { Arabic: "داء غريفز (جحوظ العينين الدرقي)", English: "Graves Disease" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1145,7 +1145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w114',
-    word: { Arabic: "التهاب هاشيموتو المناعي", English: "Hashimoto Thyroiditis" },
+    word: { Arabic: "التهاب درقية هاشيموتو المناعي", English: "Hashimoto Thyroiditis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1165,7 +1165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w116',
-    word: { Arabic: "هشاشة العظام", English: "Osteoporosis" },
+    word: { Arabic: "هشاشة العظام (تخلخل العظام)", English: "Osteoporosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1195,7 +1195,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w119',
-    word: { Arabic: "المياه الزرقاء بالعين", English: "Glaucoma" },
+    word: { Arabic: "المياه الزرقاء (الجلوكوما)", English: "Glaucoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1205,7 +1205,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w120',
-    word: { Arabic: "إعتام عدسة العين", English: "Cataract" },
+    word: { Arabic: "المياه البيضاء (الساد / إعتام عدسة العين)", English: "Cataract" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1225,7 +1225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w122',
-    word: { Arabic: "العضلات الوربية", English: "Intercostal Muscles" },
+    word: { Arabic: "العضلات الوربية (بين الأضلاع)", English: "Intercostal Muscles" },
     level: 'Academic',
     difficulty: 3,
     type: 'Muscle',
@@ -1235,7 +1235,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w123',
-    word: { Arabic: "العظم القذالي", English: "Occipital Bone" },
+    word: { Arabic: "العظم القذالي (مؤخرة الجمجمة)", English: "Occipital Bone" },
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
@@ -1255,7 +1255,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w125',
-    word: { Arabic: "العصب ثلاثي التوائم", English: "Trigeminal Nerve" },
+    word: { Arabic: "العصب ثلاثي التوائم (العصب الخامس)", English: "Trigeminal Nerve" },
     level: 'Academic',
     difficulty: 3,
     type: 'Nerve',
@@ -1275,7 +1275,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w127',
-    word: { Arabic: "جهاز النيبولايزر", English: "Nebulizer" },
+    word: { Arabic: "جهاز الرذاذ (النيبولايزر)", English: "Nebulizer" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -1285,7 +1285,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w128',
-    word: { Arabic: "حقنة الإبينفرين", English: "EpiPen" },
+    word: { Arabic: "قلم الإبينفرين الذاتي (EpiPen)", English: "EpiPen" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -1315,7 +1315,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w131',
-    word: { Arabic: "الرجفان الأذيني", English: "Atrial Fibrillation" },
+    word: { Arabic: "الرجفان الأذيني (AFib)", English: "Atrial Fibrillation" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1325,7 +1325,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w132',
-    word: { Arabic: "تضيق الأبهر", English: "Aortic Stenosis" },
+    word: { Arabic: "تضيق الصمام الأبهري (الأورطي)", English: "Aortic Stenosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1335,7 +1335,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w133',
-    word: { Arabic: "التهاب شغاف القلب", English: "Endocarditis" },
+    word: { Arabic: "التهاب شغاف القلب (Endocarditis)", English: "Endocarditis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1355,7 +1355,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w135',
-    word: { Arabic: "التهاب غشاء القلب", English: "Pericarditis" },
+    word: { Arabic: "التهاب غشاء التامور (Pericarditis)", English: "Pericarditis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1365,7 +1365,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w136',
-    word: { Arabic: "ارتجاع الصمام الميترالي", English: "Mitral Regurgitation" },
+    word: { Arabic: "ارتجاع الصمام التاجي (الميترالي)", English: "Mitral Regurgitation" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1375,7 +1375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w137',
-    word: { Arabic: "قصور القلب", English: "Heart Failure" },
+    word: { Arabic: "قصور عضلة القلب (فشل القلب)", English: "Heart Failure" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1395,7 +1395,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w139',
-    word: { Arabic: "ورم القواتم", English: "Pheochromocytoma" },
+    word: { Arabic: "ورم القواتم (الفيوكروموسيتوما)", English: "Pheochromocytoma" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1405,7 +1405,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w140',
-    word: { Arabic: "ضخامة الأطراف", English: "Acromegaly" },
+    word: { Arabic: "ضخامة الأطراف (العملقة / ضخامة النهايات)", English: "Acromegaly" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1415,7 +1415,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w141',
-    word: { Arabic: "البوال التفه", English: "Diabetes Insipidus" },
+    word: { Arabic: "السكري الكاذب (البوال التفه)", English: "Diabetes Insipidus" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1425,7 +1425,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w142',
-    word: { Arabic: "نشاط جارات الدرقية", English: "Hyperparathyroidism" },
+    word: { Arabic: "فرط نشاط جارات الدرقية", English: "Hyperparathyroidism" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1445,7 +1445,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w144',
-    word: { Arabic: "مرض سيلياك", English: "Celiac Disease" },
+    word: { Arabic: "مرض حساسية القمح (الداء البطني / سيلياك)", English: "Celiac Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1465,7 +1465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w146',
-    word: { Arabic: "ارتجاع المريء", English: "Gastroesophageal Reflux" },
+    word: { Arabic: "ارتجاع المريء المعدي (GERD)", English: "Gastroesophageal Reflux" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1495,7 +1495,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w149',
-    word: { Arabic: "استرواح الصدر", English: "Pneumothorax" },
+    word: { Arabic: "استرواح الصدر (انكماش الرئة بالهواء)", English: "Pneumothorax" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1505,7 +1505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w150',
-    word: { Arabic: "الجلطة الرئوية", English: "Pulmonary Embolism" },
+    word: { Arabic: "الانصمام الرئوي (الجلطة الرئوية)", English: "Pulmonary Embolism" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1515,7 +1515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w151',
-    word: { Arabic: "السدة الرئوية المزمنة", English: "COPD" },
+    word: { Arabic: "الانسداد الرئوي المزمن (COPD)", English: "COPD" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1525,7 +1525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w152',
-    word: { Arabic: "توسع القصبات", English: "Bronchiectasis" },
+    word: { Arabic: "توسع القصبات الهوائية", English: "Bronchiectasis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1535,7 +1535,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w153',
-    word: { Arabic: "تليف الرئة بالأسبيستوس", English: "Asbestosis" },
+    word: { Arabic: "داء الأسبستوس الرئوي", English: "Asbestosis" },
     level: 'Academic',
     difficulty: 2,
     type: 'Disease',
@@ -1545,7 +1545,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w154',
-    word: { Arabic: "التصلب الضموري الجانبي", English: "Amyotrophic Lateral Sclerosis" },
+    word: { Arabic: "التصلب الجانبي الضموري (ALS)", English: "Amyotrophic Lateral Sclerosis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1555,7 +1555,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w155',
-    word: { Arabic: "داء هانتينغتون", English: "Huntington Disease" },
+    word: { Arabic: "داء هنتنغتون", English: "Huntington Disease" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1565,7 +1565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w156',
-    word: { Arabic: "الاضطراب ثنائي القطب", English: "Bipolar Disorder" },
+    word: { Arabic: "الاضطراب الوجداني ثنائي القطب", English: "Bipolar Disorder" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1575,7 +1575,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w157',
-    word: { Arabic: "طيف التوحد", English: "Autism" },
+    word: { Arabic: "اضطراب طيف التوحد", English: "Autism" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -1605,7 +1605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w160',
-    word: { Arabic: "الأنيميا المنجلية", English: "Sickle Cell Anemia" },
+    word: { Arabic: "فقر الدم المنجلي (الأنيميا المنجلية)", English: "Sickle Cell Anemia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1615,7 +1615,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w161',
-    word: { Arabic: "سرطان الدم", English: "Leukemia" },
+    word: { Arabic: "ابيضاض الدم (اللوكيميا)", English: "Leukemia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1625,7 +1625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w162',
-    word: { Arabic: "سرطان الغدد الليمفاوية", English: "Lymphoma" },
+    word: { Arabic: "الليمفوما (أورام العقد اللمفاوية)", English: "Lymphoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1635,7 +1635,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w163',
-    word: { Arabic: "سرطان نخاع العظم", English: "Multiple Myeloma" },
+    word: { Arabic: "المايلوما المتعددة (الورم النخاعي المتعدد)", English: "Multiple Myeloma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1645,7 +1645,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w164',
-    word: { Arabic: "المتلازمة الكلوية", English: "Nephrotic Syndrome" },
+    word: { Arabic: "المتلازمة الكلوية (النفروزية)", English: "Nephrotic Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -1655,7 +1655,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w165',
-    word: { Arabic: "التهاب حوض الكلية", English: "Pyelonephritis" },
+    word: { Arabic: "التهاب الحويضة والكلية", English: "Pyelonephritis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1665,7 +1665,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w166',
-    word: { Arabic: "استسقاء الكلية", English: "Hydronephrosis" },
+    word: { Arabic: "موه الكلية (استسقاء الكلية)", English: "Hydronephrosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1675,7 +1675,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w167',
-    word: { Arabic: "الذئبة الحمراء", English: "Systemic Lupus" },
+    word: { Arabic: "الذئبة الحمامية الشاملة (الذئبة الحمراء)", English: "Systemic Lupus" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1685,7 +1685,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w168',
-    word: { Arabic: "خشونة المفاصل", English: "Osteoarthritis" },
+    word: { Arabic: "الفصال العظمي (خشونة المفاصل)", English: "Osteoarthritis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1695,7 +1695,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w169',
-    word: { Arabic: "التهاب الفقار المقسط", English: "Ankylosing Spondylitis" },
+    word: { Arabic: "التهاب الفقار المقسط (التصلبي)", English: "Ankylosing Spondylitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1705,7 +1705,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w170',
-    word: { Arabic: "الألم العضلي الليفي", English: "Fibromyalgia" },
+    word: { Arabic: "المتلازمة الليفية العضلية (الفيبروميالغيا)", English: "Fibromyalgia" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -1715,7 +1715,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w171',
-    word: { Arabic: "الميلانوما", English: "Melanoma" },
+    word: { Arabic: "الميلانوما (سرطان الخلايا الصبغية)", English: "Melanoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1725,7 +1725,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w172',
-    word: { Arabic: "الثعلبة", English: "Alopecia Areata" },
+    word: { Arabic: "داء الثعلبة (تساقط الشعر البقعي)", English: "Alopecia Areata" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1775,7 +1775,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w177',
-    word: { Arabic: "بروفين", English: "Ibuprofen" },
+    word: { Arabic: "إيبوبروفين (بروفين)", English: "Ibuprofen" },
     level: 'Both',
     difficulty: 1,
     type: 'Pharma',
@@ -1855,7 +1855,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w185',
-    word: { Arabic: "العضلة الدالية", English: "Deltoid" },
+    word: { Arabic: "العضلة الدالية (عضلة الكتف)", English: "Deltoid" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -1865,7 +1865,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w186',
-    word: { Arabic: "عضلة بطن الساق", English: "Gastrocnemius" },
+    word: { Arabic: "عضلة الساق التوأمية (السمانة)", English: "Gastrocnemius" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -1915,7 +1915,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w191',
-    word: { Arabic: "الغدة الزعترية", English: "Thymus" },
+    word: { Arabic: "الغدة الصعترية (التيموسية)", English: "Thymus" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -1925,7 +1925,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w192',
-    word: { Arabic: "الحصين", English: "Hippocampus" },
+    word: { Arabic: "الحصين (قرن آمون)", English: "Hippocampus" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -1945,7 +1945,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w194',
-    word: { Arabic: "الحويصلات الهوائية", English: "Alveoli" },
+    word: { Arabic: "الحويصلات الهوائية الرئوية", English: "Alveoli" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -1955,7 +1955,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w195',
-    word: { Arabic: "النيفرون", English: "Nephron" },
+    word: { Arabic: "الكليون (النيفرون)", English: "Nephron" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -1965,7 +1965,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w196',
-    word: { Arabic: "الكزاز", English: "Tetanus" },
+    word: { Arabic: "الكزاز (التيتانوس)", English: "Tetanus" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -1975,7 +1975,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w197',
-    word: { Arabic: "داء الكلب", English: "Rabies" },
+    word: { Arabic: "داء الكلب (السعار)", English: "Rabies" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2005,7 +2005,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w200',
-    word: { Arabic: "الكوليرا", English: "Cholera" },
+    word: { Arabic: "الكوليرا (الهيضة)", English: "Cholera" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2015,7 +2015,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w201',
-    word: { Arabic: "الليشمانيا", English: "Leishmaniasis" },
+    word: { Arabic: "داء الليشمانيات (حبة حلب)", English: "Leishmaniasis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -2035,7 +2035,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w203',
-    word: { Arabic: "التسمم السجقي", English: "Botulism" },
+    word: { Arabic: "التسمم الوشيقي (السجقي Botulism)", English: "Botulism" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -2075,7 +2075,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w207',
-    word: { Arabic: "الإسقربوط", English: "Scurvy" },
+    word: { Arabic: "داء الإسقربوط (عوز فيتامين ج)", English: "Scurvy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2085,7 +2085,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w208',
-    word: { Arabic: "الكساح", English: "Rickets" },
+    word: { Arabic: "الكساح (لين العظام عند الأطفال)", English: "Rickets" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2095,7 +2095,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w209',
-    word: { Arabic: "البلاغرا", English: "Pellagra" },
+    word: { Arabic: "البلاغرا (الحصاف)", English: "Pellagra" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2105,7 +2105,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w210',
-    word: { Arabic: "البري بري", English: "Beriberi" },
+    word: { Arabic: "مرض البري بري (عوز فيتامين ب1)", English: "Beriberi" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2115,7 +2115,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w211',
-    word: { Arabic: "أنيميا الفول", English: "G6PD Deficiency" },
+    word: { Arabic: "عوز سداسي فوسفات الجلوكوز (أنيميا الفول)", English: "G6PD Deficiency" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2125,7 +2125,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w212',
-    word: { Arabic: "تضيق البواب", English: "Pyloric Stenosis" },
+    word: { Arabic: "تضيق بواب المعدة الضخامي", English: "Pyloric Stenosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2135,7 +2135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w213',
-    word: { Arabic: "انغلاف الأمعاء", English: "Intussusception" },
+    word: { Arabic: "انغلاف الأمعاء (التداخل المعوي)", English: "Intussusception" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2145,7 +2145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w214',
-    word: { Arabic: "إريثروبويتين", English: "Erythropoietin" },
+    word: { Arabic: "إريثروبويتين (هرمون إنتاج كريات الدم)", English: "Erythropoietin" },
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
@@ -2225,7 +2225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w222',
-    word: { Arabic: "العصب الأوسط", English: "Median Nerve" },
+    word: { Arabic: "العصب الناصف (العصب المتوسط)", English: "Median Nerve" },
     level: 'Academic',
     difficulty: 2,
     type: 'Nerve',
@@ -2245,7 +2245,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w224',
-    word: { Arabic: "العقدة الجيب أذينية", English: "Sinoatrial Node" },
+    word: { Arabic: "العقدة الجيبية الأذينية (منظم ضربات القلب)", English: "Sinoatrial Node" },
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
@@ -2265,7 +2265,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w226',
-    word: { Arabic: "مستقبلات الضغط الشريانية", English: "Baroreceptor" },
+    word: { Arabic: "المستقبلات الضغطية الوعائية", English: "Baroreceptor" },
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
@@ -2275,7 +2275,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w227',
-    word: { Arabic: "ماسك فينتوري", English: "Venturi Mask" },
+    word: { Arabic: "قناع فنتوري للأكسجين", English: "Venturi Mask" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Equipment',
@@ -2285,7 +2285,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w228',
-    word: { Arabic: "جهاز قياس الأكسجين بالاصبع", English: "Pulse Oximeter" },
+    word: { Arabic: "مقياس التأكسج النبضي (أكسيمتر الإصبع)", English: "Pulse Oximeter" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2295,7 +2295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w229',
-    word: { Arabic: "منظار الحنجرة", English: "Laryngoscope" },
+    word: { Arabic: "منظار الحنجرة المباشر", English: "Laryngoscope" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2305,7 +2305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w230',
-    word: { Arabic: "جهاز قياس السكر (الجلوكوميتر)", English: "Glucometer" },
+    word: { Arabic: "جهاز قياس سكر الدم (الجلوكوميتر)", English: "Glucometer" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2355,7 +2355,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w235',
-    word: { Arabic: "البلهارسيا", English: "Bilharzia" },
+    word: { Arabic: "البلهارسيا (داء المنشقات)", English: "Bilharzia" },
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
@@ -2385,7 +2385,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w238',
-    word: { Arabic: "أنكلستوما", English: "Ancylostoma" },
+    word: { Arabic: "الدودة الشصية (الأنكلستوما)", English: "Ancylostoma" },
     level: 'Academic',
     difficulty: 3,
     type: 'Parasite',
@@ -2395,7 +2395,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w239',
-    word: { Arabic: "الدودة الدبوسية", English: "Pinworm" },
+    word: { Arabic: "الدودة الدبوسية (الحرقص)", English: "Pinworm" },
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
@@ -2405,7 +2405,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w240',
-    word: { Arabic: "الدودة الشريطية", English: "Tapeworm" },
+    word: { Arabic: "الدودة الشريطية (تينيا)", English: "Tapeworm" },
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
@@ -2415,7 +2415,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w241',
-    word: { Arabic: "الجرب", English: "Scabies" },
+    word: { Arabic: "داء الجرب", English: "Scabies" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -2445,7 +2445,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w244',
-    word: { Arabic: "القمل", English: "Lice" },
+    word: { Arabic: "قمل الرأس والجسم", English: "Lice" },
     level: 'Both',
     difficulty: 2,
     type: 'Parasite',
@@ -2465,7 +2465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w246',
-    word: { Arabic: "هيداتيد", English: "Hydatid" },
+    word: { Arabic: "المكورة الشوكية (الكيسة المائية العدارية)", English: "Hydatid" },
     level: 'Academic',
     difficulty: 2,
     type: 'Parasite',
@@ -2515,7 +2515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w251',
-    word: { Arabic: "الإنعاش القلبي الرئوي", English: "CPR" },
+    word: { Arabic: "الإنعاش القلبي الرئوي (CPR)", English: "CPR" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
@@ -2525,7 +2525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w252',
-    word: { Arabic: "أنبوب القصبة الهوائية", English: "Endotracheal Tube" },
+    word: { Arabic: "الأنبوب الرغامي (أنبوب القصبة الهوائية)", English: "Endotracheal Tube" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2535,7 +2535,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w253',
-    word: { Arabic: "قناع الصمام الكيسي", English: "Bag Valve Mask" },
+    word: { Arabic: "قناع كيس الصمام (حقيبة أمبو Ambu Bag)", English: "Bag Valve Mask" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2545,7 +2545,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w254',
-    word: { Arabic: "جهاز التنفس الصناعي", English: "Mechanical Ventilator" },
+    word: { Arabic: "جهاز التنفس الصناعي الميكانيكي", English: "Mechanical Ventilator" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2555,7 +2555,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w255',
-    word: { Arabic: "مقياس التنفس", English: "Spirometer" },
+    word: { Arabic: "مقياس وظائف الرئة (السبايروميتر)", English: "Spirometer" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -2595,7 +2595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w259',
-    word: { Arabic: "ناقضات العظم", English: "Osteoclast" },
+    word: { Arabic: "الخلايا الهادمة للعظم (ناقضات العظم)", English: "Osteoclast" },
     level: 'Academic',
     difficulty: 3,
     type: 'Cell',
@@ -2605,7 +2605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w260',
-    word: { Arabic: "حلقة ويليس الشريانية", English: "Circle of Willis" },
+    word: { Arabic: "دائرة ويليس الشريانية الدماغية", English: "Circle of Willis" },
     level: 'Academic',
     difficulty: 3,
     type: 'Component',
@@ -2625,7 +2625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w262',
-    word: { Arabic: "العضلة القصية الترقوية الخشائية", English: "Sternocleidomastoid" },
+    word: { Arabic: "العضلة القصية الترقوية الحلمية (الخشائية)", English: "Sternocleidomastoid" },
     level: 'Academic',
     difficulty: 2,
     type: 'Muscle',
@@ -2635,7 +2635,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w263',
-    word: { Arabic: "ارتخاء الصمام الميترالي", English: "Mitral Valve Prolapse" },
+    word: { Arabic: "تدلي الصمام التاجي (ارتخاء الميترالي)", English: "Mitral Valve Prolapse" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2645,7 +2645,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w264',
-    word: { Arabic: "جلطة الأوردة العميقة", English: "Deep Vein Thrombosis" },
+    word: { Arabic: "خثار الأوردة العميقة (جلطة DVT)", English: "Deep Vein Thrombosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2675,7 +2675,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w267',
-    word: { Arabic: "اندحاس قلبي", English: "Cardiac Tamponade" },
+    word: { Arabic: "الاندحاس القلبي (انصباب التامور الحاصر)", English: "Cardiac Tamponade" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -2705,7 +2705,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w270',
-    word: { Arabic: "الرفرفة الأذينية", English: "Atrial Flutter" },
+    word: { Arabic: "الرفرفة الأذينية البطينية", English: "Atrial Flutter" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2725,7 +2725,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w272',
-    word: { Arabic: "دوالي الساقين", English: "Varicose Veins" },
+    word: { Arabic: "دوالي الأوردة (دوالي الساقين)", English: "Varicose Veins" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2745,7 +2745,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w274',
-    word: { Arabic: "شلل بل", English: "Bell's Palsy" },
+    word: { Arabic: "شلل بيل (شلل العصب الوجهي النصفي)", English: "Bell's Palsy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2755,7 +2755,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w275',
-    word: { Arabic: "الضمور العضلي الشوكي", English: "Spinal Muscular Atrophy" },
+    word: { Arabic: "الضمور العضلي الشوكي (SMA)", English: "Spinal Muscular Atrophy" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -2765,7 +2765,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w276',
-    word: { Arabic: "مرض كروتزفيلد جاكوب", English: "Creutzfeldt-Jakob Disease" },
+    word: { Arabic: "داء كروتزفيلد جاكوب (جنون البقر البشري)", English: "Creutzfeldt-Jakob Disease" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -2815,7 +2815,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w281',
-    word: { Arabic: "اضطراب ما بعد الصدمة", English: "Post-Traumatic Stress Disorder" },
+    word: { Arabic: "اضطراب ما بعد الصدمة (PTSD)", English: "Post-Traumatic Stress Disorder" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -2845,7 +2845,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w284',
-    word: { Arabic: "تعذر الارتخاء المريئي", English: "Achalasia" },
+    word: { Arabic: "لاارتخائية المريء (الأكالازيا)", English: "Achalasia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2865,7 +2865,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w286',
-    word: { Arabic: "التهاب الرتوج", English: "Diverticulitis" },
+    word: { Arabic: "التهاب الرتوج المعوية", English: "Diverticulitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2885,7 +2885,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w288',
-    word: { Arabic: "التهاب الصفاق", English: "Peritonitis" },
+    word: { Arabic: "التهاب الصفاق (التهاب البريتون)", English: "Peritonitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2895,7 +2895,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w289',
-    word: { Arabic: "التهاب القنوات الصفراوية", English: "Cholangitis" },
+    word: { Arabic: "التهاب القنوات الصفراوية الصاعد", English: "Cholangitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2905,7 +2905,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w290',
-    word: { Arabic: "التهاب القنوات الصفراوية الأولي", English: "Primary Biliary Cholangitis" },
+    word: { Arabic: "التهاب الأقنية الصفراوية الأولي (PBC)", English: "Primary Biliary Cholangitis" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -2915,7 +2915,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w291',
-    word: { Arabic: "الاعتلال الدماغي الكبدي", English: "Hepatic Encephalopathy" },
+    word: { Arabic: "الاعتلال الدماغي الكبدي (الغيبوبة الكبدية)", English: "Hepatic Encephalopathy" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -2955,7 +2955,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w295',
-    word: { Arabic: "متلازمة انقطاع النفس النومي", English: "Sleep Apnea Syndrome" },
+    word: { Arabic: "متلازمة انقطاع النفس الانسدادي النومي", English: "Sleep Apnea Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -2965,7 +2965,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w296',
-    word: { Arabic: "التهاب غشاء الجنب", English: "Pleurisy" },
+    word: { Arabic: "التهاب غشاء الجنب (ذات الجنب)", English: "Pleurisy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -2985,7 +2985,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w298',
-    word: { Arabic: "الدبيلة الصدرية", English: "Empyema" },
+    word: { Arabic: "الدبيلة الصدرية (تجمع الصديد الجنبي)", English: "Empyema" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3015,7 +3015,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w301',
-    word: { Arabic: "تنخر الأنابيب الحاد", English: "Acute Tubular Necrosis" },
+    word: { Arabic: "النخر الأنبوبي الحاد (ATN)", English: "Acute Tubular Necrosis" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3025,7 +3025,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w302',
-    word: { Arabic: "تكيس الكلى", English: "Polycystic Kidney Disease" },
+    word: { Arabic: "داء الكلى المتعددة الكيسات (تكيس الكلى)", English: "Polycystic Kidney Disease" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3045,7 +3045,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w304',
-    word: { Arabic: "داء التحصي البولي والكلوي", English: "Nephrolithiasis" },
+    word: { Arabic: "داء الحصيات الكلوية (حصوات الكلى)", English: "Nephrolithiasis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3065,7 +3065,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w306',
-    word: { Arabic: "الارتجاع المثاني الحالببي", English: "Vesicoureteral Reflux" },
+    word: { Arabic: "الجزر المثاني الحالبي (VUR)", English: "Vesicoureteral Reflux" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3085,7 +3085,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w308',
-    word: { Arabic: "التحمض الكيتوني السكري", English: "Diabetic Ketoacidosis" },
+    word: { Arabic: "الحماض الكيتوني السكري (DKA)", English: "Diabetic Ketoacidosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3145,7 +3145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w314',
-    word: { Arabic: "متلازمة شوغرن", English: "Sjögren's Syndrome" },
+    word: { Arabic: "متلازمة شوغرن (متلازمة الجفاف)", English: "Sjögren's Syndrome" },
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
@@ -3155,7 +3155,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w315',
-    word: { Arabic: "تصلب الجلد المنهجي", English: "Systemic Sclerosis" },
+    word: { Arabic: "التصلب الجهازي (تصلب الجلد)", English: "Systemic Sclerosis" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3165,7 +3165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w316',
-    word: { Arabic: "ألم العضلات الروماتيزمي", English: "Polymyalgia Rheumatica" },
+    word: { Arabic: "ألم العضلات الروماتزمي", English: "Polymyalgia Rheumatica" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -3175,7 +3175,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w317',
-    word: { Arabic: "مرض باجيت للعظام", English: "Paget's Disease of Bone" },
+    word: { Arabic: "داء باجيت العظمي", English: "Paget's Disease of Bone" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3185,7 +3185,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w318',
-    word: { Arabic: "الجنف", English: "Scoliosis" },
+    word: { Arabic: "الجنف (انحناء العمود الفقري جانباً)", English: "Scoliosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3195,7 +3195,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w319',
-    word: { Arabic: "التهاب نخاع العظم", English: "Osteomyelitis" },
+    word: { Arabic: "التهاب العظم والنقي", English: "Osteomyelitis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3225,7 +3225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w322',
-    word: { Arabic: "التهاب الجلد التأتبي", English: "Atopic Dermatitis" },
+    word: { Arabic: "التهاب الجلد التأتبي (الإكزيما التأتبية)", English: "Atopic Dermatitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3255,7 +3255,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w325',
-    word: { Arabic: "النخالية المبرقشة", English: "Tinea Versicolor" },
+    word: { Arabic: "السعفة المبرقشة (النخالية المبرقشة)", English: "Tinea Versicolor" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3265,7 +3265,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w326',
-    word: { Arabic: "الوردية الجلدي", English: "Rosacea" },
+    word: { Arabic: "العد الوردي (الوردية)", English: "Rosacea" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3295,7 +3295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w329',
-    word: { Arabic: "الأرومة الدبقية", English: "Glioblastoma" },
+    word: { Arabic: "الورم الأرومي الدبقي متعدد الأشكال", English: "Glioblastoma" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3305,7 +3305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w330',
-    word: { Arabic: "سرطان العظام والغرن العظمي", English: "Osteosarcoma" },
+    word: { Arabic: "الساركوما العظمية (الغرن العظمي)", English: "Osteosarcoma" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3325,7 +3325,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w332',
-    word: { Arabic: "ورم ويلمز", English: "Wilms' Tumor" },
+    word: { Arabic: "ورم ويلمز (الورم الأرومي الكلوي)", English: "Wilms' Tumor" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3335,7 +3335,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w333',
-    word: { Arabic: "فقر الدم اللاتنسجي", English: "Aplastic Anemia" },
+    word: { Arabic: "فقر الدم اللاتنسجي (فشل نخاع العظم)", English: "Aplastic Anemia" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3345,7 +3345,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w334',
-    word: { Arabic: "كثرة الحمر الحقيقية", English: "Polycythemia Vera" },
+    word: { Arabic: "كثرة الحمر الحقيقية (احمرار الدم)", English: "Polycythemia Vera" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3365,7 +3365,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w336',
-    word: { Arabic: "التخثر المنتثر داخل الأوعية", English: "Disseminated Intravascular Coagulation" },
+    word: { Arabic: "التخثر المنتثر داخل الأوعية (DIC)", English: "Disseminated Intravascular Coagulation" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3375,7 +3375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w337',
-    word: { Arabic: "الأنيميا الخبيثة", English: "Pernicious Anemia" },
+    word: { Arabic: "فقر الدم الخبيث (عوز فيتامين ب12)", English: "Pernicious Anemia" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3415,7 +3415,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w341',
-    word: { Arabic: "كثرة الوحيدات الخمجية", English: "Infectious Mononucleosis" },
+    word: { Arabic: "كثرة الوحيدات العدوائية (داء القبلات)", English: "Infectious Mononucleosis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3425,7 +3425,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w342',
-    word: { Arabic: "الكيسة العدارية", English: "Hydatid Cyst" },
+    word: { Arabic: "الكيسة المائية العدارية", English: "Hydatid Cyst" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3475,7 +3475,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w347',
-    word: { Arabic: "داء الرشاشيات", English: "Aspergillosis" },
+    word: { Arabic: "داء الرشاشيات الفطري", English: "Aspergillosis" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -3485,7 +3485,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w348',
-    word: { Arabic: "داء المبيضات", English: "Candidiasis" },
+    word: { Arabic: "داء المبيضات (الكانديدا)", English: "Candidiasis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3495,7 +3495,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w349',
-    word: { Arabic: "بطانة الرحم المهاجرة", English: "Endometriosis" },
+    word: { Arabic: "الانتباذ البطاني الرحمي (بطانة الرحم المهاجرة)", English: "Endometriosis" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -3505,7 +3505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w350',
-    word: { Arabic: "المشيمة المزاحة", English: "Placenta Previa" },
+    word: { Arabic: "المشيمة المنزاحة (المتقدمة)", English: "Placenta Previa" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3515,7 +3515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w351',
-    word: { Arabic: "انفصال المشيمة المبكر", English: "Abruptio Placentae" },
+    word: { Arabic: "انفصال المشيمة الباكر", English: "Abruptio Placentae" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3525,7 +3525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w352',
-    word: { Arabic: "القيء المفرط الحملي", English: "Hyperemesis Gravidarum" },
+    word: { Arabic: "القيء الحملي المفرط", English: "Hyperemesis Gravidarum" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3565,7 +3565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w356',
-    word: { Arabic: "الضمور البقعي", English: "Macular Degeneration" },
+    word: { Arabic: "التنكس البقعي المرتبط بالعمر", English: "Macular Degeneration" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3595,7 +3595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w359',
-    word: { Arabic: "مرض مينيير", English: "Meniere's Disease" },
+    word: { Arabic: "داء مينيير الدوار", English: "Meniere's Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3605,7 +3605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w360',
-    word: { Arabic: "التهاب التيه الأذني", English: "Labyrinthitis" },
+    word: { Arabic: "التهاب التيه (الأذن الداخلية)", English: "Labyrinthitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3615,7 +3615,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w361',
-    word: { Arabic: "الخناق للأطفال", English: "Croup" },
+    word: { Arabic: "الخناق الحنجري (الكروپ)", English: "Croup" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3625,7 +3625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w362',
-    word: { Arabic: "التهاب الشعيبات الهوائية للأطفال", English: "Bronchiolitis" },
+    word: { Arabic: "التهاب القصيبات الهوائية الشعري", English: "Bronchiolitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -3655,7 +3655,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w365',
-    word: { Arabic: "الرضفة", English: "Patella" },
+    word: { Arabic: "رضفة الركبة (صابونة الركبة)", English: "Patella" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -3705,7 +3705,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w370',
-    word: { Arabic: "عظمة الكعبرة", English: "Radius" },
+    word: { Arabic: "عظم الكعبرة", English: "Radius" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -3715,7 +3715,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w371',
-    word: { Arabic: "عظمة الزند", English: "Ulna" },
+    word: { Arabic: "عظم الزند", English: "Ulna" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -3805,7 +3805,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w380',
-    word: { Arabic: "تحت المهاد", English: "Hypothalamus" },
+    word: { Arabic: "الوطاء (تحت المهاد)", English: "Hypothalamus" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -3845,7 +3845,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w384',
-    word: { Arabic: "الجسم الأصفر", English: "Corpus Luteum" },
+    word: { Arabic: "الجسم الأصفر المبيضي", English: "Corpus Luteum" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -3945,7 +3945,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w394',
-    word: { Arabic: "شغاف القلب", English: "Endocardium" },
+    word: { Arabic: "شغاف القلب (البطانة القلبية)", English: "Endocardium" },
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
@@ -3955,7 +3955,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w395',
-    word: { Arabic: "غشاء التأمور", English: "Pericardium" },
+    word: { Arabic: "غشاء التامور المحيط بالقلب", English: "Pericardium" },
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
@@ -3965,7 +3965,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w396',
-    word: { Arabic: "غشاء الجنب", English: "Pleura" },
+    word: { Arabic: "غشاء الجنب الرئوي", English: "Pleura" },
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
@@ -3975,7 +3975,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w397',
-    word: { Arabic: "الغشاء البريتوني", English: "Peritoneum" },
+    word: { Arabic: "غشاء الصفاق (البريتون)", English: "Peritoneum" },
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
@@ -3985,7 +3985,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w398',
-    word: { Arabic: "عضلة الرحم", English: "Myometrium" },
+    word: { Arabic: "عضلة الرحم (الطبقة العضلية الرحمية)", English: "Myometrium" },
     level: 'Academic',
     difficulty: 3,
     type: 'Tissue',
@@ -4015,7 +4015,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w401',
-    word: { Arabic: "مرض بهجت", English: "Behcet Disease" },
+    word: { Arabic: "داء بهجت (المتلازمة الحريرية)", English: "Behcet Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -4025,7 +4025,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w402',
-    word: { Arabic: "تصلب الجلد", English: "Scleroderma" },
+    word: { Arabic: "تصلب الجلد المجموعي", English: "Scleroderma" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -4035,7 +4035,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w403',
-    word: { Arabic: "التهاب المفاصل النقرس", English: "Gouty Arthritis" },
+    word: { Arabic: "التهاب المفاصل النقرسي", English: "Gouty Arthritis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4045,7 +4045,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w404',
-    word: { Arabic: "الغرن الغضروفي", English: "Chondrosarcoma" },
+    word: { Arabic: "الساركوما الغضروفية (الغرن الغضروفي)", English: "Chondrosarcoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4065,7 +4065,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w406',
-    word: { Arabic: "رتج زنكر", English: "Zenker Diverticulum" },
+    word: { Arabic: "رتج زنكر المريئي البلعومي", English: "Zenker Diverticulum" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4075,7 +4075,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w407',
-    word: { Arabic: "متلازمة زولينجر-إليسون", English: "Zollinger-Ellison Syndrome" },
+    word: { Arabic: "متلازمة زولينجر-إليسون (الورم الغاستريني)", English: "Zollinger-Ellison Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -4085,7 +4085,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w408',
-    word: { Arabic: "سلخ الأبهر", English: "Aortic Dissection" },
+    word: { Arabic: "تسلخ الشريان الأبهري (التسلخ الأورطي)", English: "Aortic Dissection" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4095,7 +4095,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w409',
-    word: { Arabic: "ارتجاع الصمام ثلاثي الشرفات", English: "Tricuspid Regurgitation" },
+    word: { Arabic: "قصور الصمام ثلاثي الشرف", English: "Tricuspid Regurgitation" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4115,7 +4115,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w411',
-    word: { Arabic: "التراخوما", English: "Trachoma" },
+    word: { Arabic: "التراخوما (الرمد الحبيبي)", English: "Trachoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4125,7 +4125,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w412',
-    word: { Arabic: "نقص التروية المساريقية", English: "Mesenteric Ischemia" },
+    word: { Arabic: "نقص تروية الشرايين المساريقية", English: "Mesenteric Ischemia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4135,7 +4135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w413',
-    word: { Arabic: "الخناق", English: "Diphtheria" },
+    word: { Arabic: "الدفتيريا (الخناق)", English: "Diphtheria" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4145,7 +4145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w414',
-    word: { Arabic: "التليف الكيسي", English: "Cystic Fibrosis" },
+    word: { Arabic: "التليف الكيسي (الداء الكيسي الليفي)", English: "Cystic Fibrosis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4165,7 +4165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w416',
-    word: { Arabic: "الصائم", English: "Jejunum" },
+    word: { Arabic: "الصائم (المعاء الصائم)", English: "Jejunum" },
     level: 'Academic',
     difficulty: 2,
     type: 'Organ',
@@ -4205,7 +4205,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w420',
-    word: { Arabic: "رتج ميكل", English: "Meckel Diverticulum" },
+    word: { Arabic: "رتج ميكل الخلقي", English: "Meckel Diverticulum" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4245,7 +4245,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w424',
-    word: { Arabic: "عصيات كوخ", English: "Mycobacterium tuberculosis" },
+    word: { Arabic: "المتفطرة السلية (عصيات كوخ)", English: "Mycobacterium tuberculosis" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4255,7 +4255,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w425',
-    word: { Arabic: "متلازمة بروغادا", English: "Brugada Syndrome" },
+    word: { Arabic: "متلازمة بروغادا القلبية", English: "Brugada Syndrome" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -4275,7 +4275,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w427',
-    word: { Arabic: "متلازمة هورنر", English: "Horner Syndrome" },
+    word: { Arabic: "متلازمة هورنر العصبية", English: "Horner Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -4295,7 +4295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w429',
-    word: { Arabic: "المشرط الجراحي", English: "Scalpel" },
+    word: { Arabic: "المبضع الجراحي (المشرط)", English: "Scalpel" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -4305,7 +4305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w430',
-    word: { Arabic: "ملقط الشرايين الجراحي", English: "Hemostatic Forceps" },
+    word: { Arabic: "ملقط الشرايين المرقئ (ملقط كوشر/بينس)", English: "Hemostatic Forceps" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -4325,7 +4325,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w432',
-    word: { Arabic: "برودة الجثة", English: "Algor Mortis" },
+    word: { Arabic: "التبرّد الرمي (برودة الجثة)", English: "Algor Mortis" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4335,7 +4335,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w433',
-    word: { Arabic: "التيبس الرمي", English: "Rigor Mortis" },
+    word: { Arabic: "التيبس الرمي (تخشب الجثة)", English: "Rigor Mortis" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4345,7 +4345,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w434',
-    word: { Arabic: "الرسوب الدموي الرمي", English: "Livor Mortis" },
+    word: { Arabic: "الرسوب الدموي الرمي (الزرقة الرمية)", English: "Livor Mortis" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4355,7 +4355,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w435',
-    word: { Arabic: "التشنج الكادافيري", English: "Cadaveric Spasm" },
+    word: { Arabic: "التشنج الرمي (التشنج الموتي الفوري)", English: "Cadaveric Spasm" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4365,7 +4365,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w436',
-    word: { Arabic: "التعفن الرمي", English: "Putrefaction" },
+    word: { Arabic: "التعفن الرمي (التفسخ الجيفي)", English: "Putrefaction" },
     level: 'Academic',
     difficulty: 2,
     type: 'Other',
@@ -4375,7 +4375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w437',
-    word: { Arabic: "التصبن الرمي", English: "Adipocere" },
+    word: { Arabic: "التصبن الرمي (شحم الجثث)", English: "Adipocere" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4385,7 +4385,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w438',
-    word: { Arabic: "التحنط الطبيعي", English: "Mummification" },
+    word: { Arabic: "التحنط الرمي الجفافي", English: "Mummification" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4405,7 +4405,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w440',
-    word: { Arabic: "الخنق برباط", English: "Ligature Strangulation" },
+    word: { Arabic: "الخنق برباط (الخنق الخناقي)", English: "Ligature Strangulation" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4415,7 +4415,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w441',
-    word: { Arabic: "الخنق اليدوي", English: "Throttling" },
+    word: { Arabic: "الخنق اليدوي (كتم العنق باليد)", English: "Throttling" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4445,7 +4445,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w444',
-    word: { Arabic: "السحجة", English: "Abrasion" },
+    word: { Arabic: "السحجة الجلدية (الخدش الرضي)", English: "Abrasion" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4465,7 +4465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w446',
-    word: { Arabic: "الجرح القطعي", English: "Incised Wound" },
+    word: { Arabic: "الجرح القطعي المستوي", English: "Incised Wound" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4475,7 +4475,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w447',
-    word: { Arabic: "الجرح الطعني", English: "Stab Wound" },
+    word: { Arabic: "الجرح الطعني الوخزي", English: "Stab Wound" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4485,7 +4485,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w448',
-    word: { Arabic: "الجرح الرضي", English: "Lacerated Wound" },
+    word: { Arabic: "الجرح الرضي المتهتك", English: "Lacerated Wound" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4505,7 +4505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w450',
-    word: { Arabic: "جروح التردد", English: "Hesitation Marks" },
+    word: { Arabic: "جروح التردد الانتحارية", English: "Hesitation Marks" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4515,7 +4515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w451',
-    word: { Arabic: "فتحة دخول العيار الناري", English: "Firearm Entrance Wound" },
+    word: { Arabic: "فتحة دخول المقذوف الناري", English: "Firearm Entrance Wound" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4525,7 +4525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w452',
-    word: { Arabic: "طوق التنميش البارودي", English: "Powder Tattooing" },
+    word: { Arabic: "الوشم البارودي (التنميش البارودي)", English: "Powder Tattooing" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4535,7 +4535,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w453',
-    word: { Arabic: "نزيف فوق الجافية", English: "Epidural Hematoma" },
+    word: { Arabic: "ورم دموي فوق الجافية (نزف الإبيدورال)", English: "Epidural Hematoma" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -4545,7 +4545,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w454',
-    word: { Arabic: "نزيف تحت الجافية", English: "Subdural Hematoma" },
+    word: { Arabic: "ورم دموي تحت الجافية (نزف السابديورال)", English: "Subdural Hematoma" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -4555,7 +4555,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w455',
-    word: { Arabic: "علامة لشتنبرغ البرقية", English: "Lichtenberg Figures" },
+    word: { Arabic: "علامة لشتنبرغ الكهربائية (شجرة البرق)", English: "Lichtenberg Figures" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4575,7 +4575,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w457',
-    word: { Arabic: "اختبار طفو الرئة", English: "Hydrostatic Lung Test" },
+    word: { Arabic: "اختبار طفو الرئتين الهيدروستاتيكي", English: "Hydrostatic Lung Test" },
     level: 'Academic',
     difficulty: 3,
     type: 'Technique',
@@ -4595,7 +4595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w459',
-    word: { Arabic: "تحديد الجنس من الحوض", English: "Pelvis Sexing" },
+    word: { Arabic: "تحديد الجنس من عظام الحوض", English: "Pelvis Sexing" },
     level: 'Academic',
     difficulty: 2,
     type: 'Technique',
@@ -4605,7 +4605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w460',
-    word: { Arabic: "التحام المشاش العظمي", English: "Epiphyseal Union" },
+    word: { Arabic: "التحام المشاشات العظمية لتقدير العمر", English: "Epiphyseal Union" },
     level: 'Academic',
     difficulty: 2,
     type: 'Technique',
@@ -4615,7 +4615,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w461',
-    word: { Arabic: "الجروح المصطنعة", English: "Fabricated Wounds" },
+    word: { Arabic: "الجروح المفتعلة المصطنعة", English: "Fabricated Wounds" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4625,7 +4625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w462',
-    word: { Arabic: "إطلاق ناري ملاصق", English: "Contact Bullet Wound" },
+    word: { Arabic: "إطلاق عيار ناري ملاصق", English: "Contact Bullet Wound" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4635,7 +4635,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w463',
-    word: { Arabic: "فتحة خروج العيار الناري", English: "Firearm Exit Wound" },
+    word: { Arabic: "فتحة خروج المقذوف الناري", English: "Firearm Exit Wound" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4645,7 +4645,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w464',
-    word: { Arabic: "شخشنة السلاح الناري", English: "Rifling" },
+    word: { Arabic: "شخشنة السبطانة (الأخاديد الحلزونية للسلاح)", English: "Rifling" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4655,7 +4655,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w465',
-    word: { Arabic: "قاعدة التسعات للحروق", English: "Rule of Nines" },
+    word: { Arabic: "قاعدة التسعات لتقدير مساحة الحروق", English: "Rule of Nines" },
     level: 'Both',
     difficulty: 3,
     type: 'Technique',
@@ -4685,7 +4685,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w468',
-    word: { Arabic: "انخفاض حرارة الجسم المميت", English: "Hypothermia" },
+    word: { Arabic: "انخفاض حرارة الجسم", English: "Hypothermia" },
     level: 'Both',
     difficulty: 2,
     type: 'Disease',
@@ -4705,7 +4705,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w470',
-    word: { Arabic: "كسر الصدمة المصدية", English: "Bumper Fracture" },
+    word: { Arabic: "كسر المصد (كسر صدمة السيارة للساقين)", English: "Bumper Fracture" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4715,7 +4715,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w471',
-    word: { Arabic: "إصابة المصع العنقي", English: "Whiplash Injury" },
+    word: { Arabic: "إصابة المصع العنقي الارتدادية", English: "Whiplash Injury" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4725,7 +4725,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w472',
-    word: { Arabic: "كتم النفس الجنائي", English: "Smothering" },
+    word: { Arabic: "كتم النفس (سد الفم والأنف الجنائي)", English: "Smothering" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4735,7 +4735,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w473',
-    word: { Arabic: "الغصص الأسفكسي", English: "Choking" },
+    word: { Arabic: "الغصص (انسداد مجرى الهواء بالأجسام الغريبة)", English: "Choking" },
     level: 'Both',
     difficulty: 3,
     type: 'Other',
@@ -4745,7 +4745,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w474',
-    word: { Arabic: "التسمم بالفوسفات العضوي", English: "Organophosphate Poisoning" },
+    word: { Arabic: "التسمم بالمبيدات الفوسفاتية العضوية", English: "Organophosphate Poisoning" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -4765,7 +4765,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w476',
-    word: { Arabic: "فوسفيد الألومنيوم", English: "Aluminium Phosphide" },
+    word: { Arabic: "فوسفيد الألمنيوم (حبة الغلة القاتلة)", English: "Aluminium Phosphide" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Pharma',
@@ -4775,7 +4775,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w477',
-    word: { Arabic: "التسمم بالباراكوات", English: "Paraquat Toxicity" },
+    word: { Arabic: "التسمم بمبيد الباراكوات", English: "Paraquat Toxicity" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -4785,7 +4785,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w478',
-    word: { Arabic: "متلازمة الكولينيرجيك", English: "Cholinergic Toxidrome" },
+    word: { Arabic: "المتلازمة الكولينية السامة", English: "Cholinergic Toxidrome" },
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
@@ -4805,7 +4805,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w480',
-    word: { Arabic: "خط بورتون", English: "Burtonian Line" },
+    word: { Arabic: "خط بورتون (ترسب الرصاص باللثة)", English: "Burtonian Line" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4825,7 +4825,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w482',
-    word: { Arabic: "خطوط ميس", English: "Mees' Lines" },
+    word: { Arabic: "خطوط ميس (ترسب الزرنيخ بالأظافر)", English: "Mees' Lines" },
     level: 'Academic',
     difficulty: 3,
     type: 'Other',
@@ -4845,7 +4845,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w484',
-    word: { Arabic: "التسمم الحاد بالحديد", English: "Acute Iron Toxicity" },
+    word: { Arabic: "التسمم الحاد بأقراص الحديد", English: "Acute Iron Toxicity" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4855,7 +4855,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w485',
-    word: { Arabic: "ديمركابرول", English: "Dimercaprol" },
+    word: { Arabic: "ديمركابرول (BAL ترياق المعادن الثقيلة)", English: "Dimercaprol" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -4865,7 +4865,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w486',
-    word: { Arabic: "ديفيروكسامين", English: "Deferoxamine" },
+    word: { Arabic: "ديفيروكسامين (ترياق مخلب الحديد)", English: "Deferoxamine" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -4875,7 +4875,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w487',
-    word: { Arabic: "بنسيلامين", English: "Penicillamine" },
+    word: { Arabic: "د-بنسيلامين (مخلب النحاس لمرض ويلسون)", English: "Penicillamine" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -4885,7 +4885,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w488',
-    word: { Arabic: "التسمم بالميثانول", English: "Methanol Poisoning" },
+    word: { Arabic: "التسمم بالميثانول (كحول الخشب)", English: "Methanol Poisoning" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4895,7 +4895,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w489',
-    word: { Arabic: "فومبيزول", English: "Fomepizole" },
+    word: { Arabic: "فومبيزول (ترياق الميثانول والإيثيلين جليكول)", English: "Fomepizole" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -4905,7 +4905,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w490',
-    word: { Arabic: "التسمم بإيثيلين جليكول", English: "Ethylene Glycol Poisoning" },
+    word: { Arabic: "التسمم بإيثيلين جلايكول (سائل التبريد)", English: "Ethylene Glycol Poisoning" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4915,7 +4915,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w491',
-    word: { Arabic: "التسمم بالكيروسين", English: "Kerosene Ingestion" },
+    word: { Arabic: "ابتلاع الكيروسين (التسمم بالهيدروكربونات)", English: "Kerosene Ingestion" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4925,7 +4925,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w492',
-    word: { Arabic: "حمض الفينيك (الفينول)", English: "Carbolic Acid (Phenol)" },
+    word: { Arabic: "حمض الفينيك (الفينول الكاوي)", English: "Carbolic Acid (Phenol)" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4935,7 +4935,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w493',
-    word: { Arabic: "الصودا الكاوية", English: "Caustic Soda" },
+    word: { Arabic: "الصودا الكاوية (هيدروكسيد الصوديوم)", English: "Caustic Soda" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Other',
@@ -4945,7 +4945,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w494',
-    word: { Arabic: "حمض الأوكزاليك", English: "Oxalic Acid" },
+    word: { Arabic: "حمض الأوكساليك (ملح الليمون الصناعي)", English: "Oxalic Acid" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -4955,7 +4955,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w495',
-    word: { Arabic: "التسمم بأول أكسيد الكربون", English: "Carbon Monoxide Poisoning" },
+    word: { Arabic: "التسمم بأول أكسيد الكربون (القاتل الصامت)", English: "Carbon Monoxide Poisoning" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -4965,7 +4965,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w496',
-    word: { Arabic: "كربوكسي هيموجلوبين", English: "Carboxyhemoglobin" },
+    word: { Arabic: "كربوكسي هيموغلوبين", English: "Carboxyhemoglobin" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -4975,7 +4975,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w497',
-    word: { Arabic: "الأكسجين عالي الضغط", English: "Hyperbaric Oxygen Therapy" },
+    word: { Arabic: "العلاج بالأكسجين عالي الضغط (HBOT)", English: "Hyperbaric Oxygen Therapy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -4995,7 +4995,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w499',
-    word: { Arabic: "هيدروكسوكوبالامين", English: "Hydroxocobalamin" },
+    word: { Arabic: "هيدروكسوكوبالامين (ترياق السيانيد)", English: "Hydroxocobalamin" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5005,7 +5005,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w500',
-    word: { Arabic: "كبريتيد الهيدروجين", English: "Hydrogen Sulfide" },
+    word: { Arabic: "كبريتيد الهيدروجين (غاز المجاري السام)", English: "Hydrogen Sulfide" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -5015,7 +5015,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w501',
-    word: { Arabic: "التسمم بالأفيونات", English: "Opioid Overdose" },
+    word: { Arabic: "جرعة زائدة من الأفيونات", English: "Opioid Overdose" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5025,7 +5025,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w502',
-    word: { Arabic: "نالوكسون", English: "Naloxone" },
+    word: { Arabic: "نالوكسون (ناركان ترياق الأفيونات)", English: "Naloxone" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5035,7 +5035,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w503',
-    word: { Arabic: "التسمم بالبنزوديازيبينات", English: "Benzodiazepine Toxicity" },
+    word: { Arabic: "التسمم بالمهدئات البنزوديازيبينية", English: "Benzodiazepine Toxicity" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5045,7 +5045,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w504',
-    word: { Arabic: "فلومازينيل", English: "Flumazenil" },
+    word: { Arabic: "فلومازينيل (ترياق البنزوديازيبين)", English: "Flumazenil" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5085,7 +5085,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w508',
-    word: { Arabic: "التسمم بالساليسيلات", English: "Salicylate Toxicity" },
+    word: { Arabic: "التسمم بالساليسيلات (جرعة الأسبرين الزائدة)", English: "Salicylate Toxicity" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5095,7 +5095,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w509',
-    word: { Arabic: "إدرار البول القلوي", English: "Alkaline Diuresis" },
+    word: { Arabic: "إدرار البول القلوي بالبيكربونات", English: "Alkaline Diuresis" },
     level: 'Both',
     difficulty: 3,
     type: 'Technique',
@@ -5105,7 +5105,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w510',
-    word: { Arabic: "التسمم الكبدي بالباراسيتامول", English: "Paracetamol Hepatotoxicity" },
+    word: { Arabic: "السمية الكبدية للباراسيتامول", English: "Paracetamol Hepatotoxicity" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5115,7 +5115,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w511',
-    word: { Arabic: "إن-أسيتيل سيستئين", English: "N-Acetylcysteine" },
+    word: { Arabic: "إن-أسيتيل سيستئين (NAC ترياق الباراسيتامول)", English: "N-Acetylcysteine" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5125,7 +5125,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w512',
-    word: { Arabic: "مخطط روماك-ماثيو", English: "Rumack-Matthew Nomogram" },
+    word: { Arabic: "مخطط روماك-ماثيو لتقييم تسمم الباراسيتامول", English: "Rumack-Matthew Nomogram" },
     level: 'Academic',
     difficulty: 3,
     type: 'Technique',
@@ -5135,7 +5135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w513',
-    word: { Arabic: "نبات ست الحسن", English: "Atropa Belladonna" },
+    word: { Arabic: "ست الحسن (الأتروبا بيلادونا السامة)", English: "Atropa Belladonna" },
     level: 'Both',
     difficulty: 2,
     type: 'Other',
@@ -5145,7 +5145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w514',
-    word: { Arabic: "متلازمة مضادات الكولين", English: "Anticholinergic Toxidrome" },
+    word: { Arabic: "المتلازمة المضادة للكولين", English: "Anticholinergic Toxidrome" },
     level: 'Both',
     difficulty: 3,
     type: 'Syndrome',
@@ -5155,7 +5155,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w515',
-    word: { Arabic: "فوسوستيجمين", English: "Physostigmine" },
+    word: { Arabic: "فيزوستيغمين (ترياق مضادات الكولين)", English: "Physostigmine" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5165,7 +5165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w516',
-    word: { Arabic: "التسمم بالاستركنين", English: "Strychnine Poisoning" },
+    word: { Arabic: "التسمم بالاستركنين (سم الفئران التشنجي)", English: "Strychnine Poisoning" },
     level: 'Both',
     difficulty: 3,
     type: 'Disease',
@@ -5185,7 +5185,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w518',
-    word: { Arabic: "اللابؤرية", English: "Astigmatism" },
+    word: { Arabic: "اللابؤرية (الاستجماتيزم)", English: "Astigmatism" },
     level: 'Academic',
     difficulty: 2,
     type: 'Other',
@@ -5225,7 +5225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w522',
-    word: { Arabic: "قصر النظر", English: "Myopia" },
+    word: { Arabic: "حسر البصر (قصر النظر)", English: "Myopia" },
     level: 'Academic',
     difficulty: 1,
     type: 'Other',
@@ -5235,7 +5235,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w523',
-    word: { Arabic: "طول النظر", English: "Hyperopia" },
+    word: { Arabic: "مد البصر (طول النظر)", English: "Hyperopia" },
     level: 'Academic',
     difficulty: 1,
     type: 'Other',
@@ -5245,7 +5245,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w524',
-    word: { Arabic: "طول النظر الشيخوخي", English: "Presbyopia" },
+    word: { Arabic: "بصر الشيخوخة (قصور البصر الشيخي)", English: "Presbyopia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -5285,7 +5285,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w528',
-    word: { Arabic: "القزحية", English: "Iris" },
+    word: { Arabic: "قزحية العين", English: "Iris" },
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
@@ -5295,7 +5295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w529',
-    word: { Arabic: "السائل الزجاجي", English: "Vitreous Humor" },
+    word: { Arabic: "الجسم الزجاجي (الخلط الزجاجي للعين)", English: "Vitreous Humor" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5305,7 +5305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w530',
-    word: { Arabic: "الصلبة", English: "Sclera" },
+    word: { Arabic: "صلبة العين (بياض العين)", English: "Sclera" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5335,7 +5335,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w533',
-    word: { Arabic: "البقعة الشبكية (الماكيولا)", English: "Macula" },
+    word: { Arabic: "اللطخة الصفراء (الماكيولا البقعية)", English: "Macula" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5345,7 +5345,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w534',
-    word: { Arabic: "القرص البصري", English: "Optic Disc" },
+    word: { Arabic: "قرص العصب البصري", English: "Optic Disc" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5365,7 +5365,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w536',
-    word: { Arabic: "الرؤية المزدوجة", English: "Diplopia" },
+    word: { Arabic: "ازدواج الرؤية (الشفع)", English: "Diplopia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -5375,7 +5375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w537',
-    word: { Arabic: "العمى الليلي (العشى الليلي)", English: "Nyctalopia" },
+    word: { Arabic: "العشى الليلي (العمى الليلي)", English: "Nyctalopia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -5385,7 +5385,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w538',
-    word: { Arabic: "الوميض الضوئي", English: "Photopsia" },
+    word: { Arabic: "الومضان الضوئي (رؤية ومضات ضوئية)", English: "Photopsia" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Other',
@@ -5425,7 +5425,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w542',
-    word: { Arabic: "البردة (كيس دهني في الجفن)", English: "Chalazion" },
+    word: { Arabic: "البردة (كيس دهني جفني)", English: "Chalazion" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5435,7 +5435,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w543',
-    word: { Arabic: "ظفرة العين", English: "Pterygium" },
+    word: { Arabic: "الظفرة العينية", English: "Pterygium" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5455,7 +5455,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w545',
-    word: { Arabic: "قياس ضغط العين", English: "Tonometry" },
+    word: { Arabic: "قياس ضغط العين الداخلي", English: "Tonometry" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5465,7 +5465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w546',
-    word: { Arabic: "فحص قاع العين", English: "Fundoscopy" },
+    word: { Arabic: "تنظير قاع العين", English: "Fundoscopy" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
@@ -5475,7 +5475,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w547',
-    word: { Arabic: "المصباح الشقي", English: "Slit Lamp" },
+    word: { Arabic: "المصباح الشقي لفحص العين", English: "Slit Lamp" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -5485,7 +5485,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w548',
-    word: { Arabic: "اعتلال الشبكية الخداجي", English: "Retinopathy of Prematurity" },
+    word: { Arabic: "اعتلال الشبكية عند الخدج (ROP)", English: "Retinopathy of Prematurity" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -5495,7 +5495,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w549',
-    word: { Arabic: "الأشعة المقطعية", English: "Computed Tomography" },
+    word: { Arabic: "التصوير المقطعي المحوسب (الأشعة المقطعية CT)", English: "Computed Tomography" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -5505,7 +5505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w550',
-    word: { Arabic: "الرنين المغناطيسي", English: "Magnetic Resonance Imaging" },
+    word: { Arabic: "التصوير بالرنين المغناطيسي (MRI)", English: "Magnetic Resonance Imaging" },
     level: 'Both',
     difficulty: 1,
     type: 'Equipment',
@@ -5515,7 +5515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w551',
-    word: { Arabic: "الموجات فوق الصوتية", English: "Ultrasound" },
+    word: { Arabic: "التصوير بالموجات فوق الصوتية (السونار)", English: "Ultrasound" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -5525,7 +5525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w552',
-    word: { Arabic: "التصوير التألقي", English: "Fluoroscopy" },
+    word: { Arabic: "التصوير التنظيري التألقي الشعاعي", English: "Fluoroscopy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5535,7 +5535,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w553',
-    word: { Arabic: "مواد التباين", English: "Contrast Media" },
+    word: { Arabic: "مواد التباين الشعاعية (صبغات الأشعة)", English: "Contrast Media" },
     level: 'Both',
     difficulty: 2,
     type: 'Pharma',
@@ -5545,7 +5545,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w554',
-    word: { Arabic: "التصوير البوزيتروني", English: "PET Scan" },
+    word: { Arabic: "التصوير المقطعي بالإصدار البوزيتروني (PET)", English: "PET Scan" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -5555,7 +5555,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w555',
-    word: { Arabic: "تصوير الثدي الشعاعي", English: "Mammography" },
+    word: { Arabic: "تصوير الثدي الشعاعي (الماموجرام)", English: "Mammography" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -5565,7 +5565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w556',
-    word: { Arabic: "تصوير الأوعية", English: "Angiography" },
+    word: { Arabic: "تصوير الأوعية الدموية بالصبغة", English: "Angiography" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5585,7 +5585,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w558',
-    word: { Arabic: "تصوير الأوعية المقطعي", English: "CT Angiography" },
+    word: { Arabic: "تصوير الأوعية المقطعي المحوسب (CTA)", English: "CT Angiography" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5595,7 +5595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w559',
-    word: { Arabic: "تخطيط صدى القلب", English: "Echocardiography" },
+    word: { Arabic: "تخطيط صدى القلب (إيكو القلب)", English: "Echocardiography" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Equipment',
@@ -5605,7 +5605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w560',
-    word: { Arabic: "الدوبلر الصوتي", English: "Doppler Ultrasound" },
+    word: { Arabic: "الموجات فوق الصوتية دوبلر", English: "Doppler Ultrasound" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5615,7 +5615,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w561',
-    word: { Arabic: "فحص كثافة العظام", English: "DEXA Scan" },
+    word: { Arabic: "فحص مقياس امتصاص الأشعة السينية (كثافة العظام DEXA)", English: "DEXA Scan" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -5625,7 +5625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w562',
-    word: { Arabic: "بلع الباريوم", English: "Barium Swallow" },
+    word: { Arabic: "ابتلاع الباريوم لتصوير المريء", English: "Barium Swallow" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -5645,7 +5645,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w564',
-    word: { Arabic: "حب الشباب", English: "Acne Vulgaris" },
+    word: { Arabic: "حب الشباب الشائع", English: "Acne Vulgaris" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -5665,7 +5665,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w566',
-    word: { Arabic: "الالتهاب الجلدي الدهني", English: "Seborrheic Dermatitis" },
+    word: { Arabic: "التهاب الجلد الدهني (قشرة الرأس)", English: "Seborrheic Dermatitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5675,7 +5675,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w567',
-    word: { Arabic: "التهاب اللفافة الناخر", English: "Necrotizing Fasciitis" },
+    word: { Arabic: "التهاب اللفافة الناخر (البكتيريا الآكلة للحم)", English: "Necrotizing Fasciitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5685,7 +5685,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w568',
-    word: { Arabic: "الشرى", English: "Urticaria" },
+    word: { Arabic: "الشرى (الأرتيكاريا)", English: "Urticaria" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -5725,7 +5725,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w572',
-    word: { Arabic: "سرطان الخلايا الحرشفية الجلدي", English: "Squamous Cell Carcinoma" },
+    word: { Arabic: "سرطان الخلايا الحرشفية", English: "Squamous Cell Carcinoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -5735,7 +5735,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w573',
-    word: { Arabic: "الحزام الناري", English: "Herpes Zoster" },
+    word: { Arabic: "الهربس النطاقي (الحزام الناري)", English: "Herpes Zoster" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -5745,7 +5745,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w574',
-    word: { Arabic: "الخلية اللمفاوية التائية", English: "T Lymphocyte" },
+    word: { Arabic: "الخلايا اللمفاوية التائية (T-Cells)", English: "T Lymphocyte" },
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
@@ -5755,7 +5755,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w575',
-    word: { Arabic: "الخلية اللمفاوية البائية", English: "B Lymphocyte" },
+    word: { Arabic: "الخلايا اللمفاوية البائية (B-Cells)", English: "B Lymphocyte" },
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
@@ -5765,7 +5765,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w576',
-    word: { Arabic: "الخلية القاتلة الطبيعية", English: "Natural Killer Cell" },
+    word: { Arabic: "الخلايا القاتلة الطبيعية (NK Cells)", English: "Natural Killer Cell" },
     level: 'Academic',
     difficulty: 2,
     type: 'Cell',
@@ -5775,7 +5775,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w577',
-    word: { Arabic: "البلعم الكبير", English: "Macrophage" },
+    word: { Arabic: "البلعم الكبير (الخلايا البلعمية الكبيرة)", English: "Macrophage" },
     level: 'Academic',
     difficulty: 1,
     type: 'Cell',
@@ -5785,7 +5785,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w578',
-    word: { Arabic: "الخلية المتغصنة", English: "Dendritic Cell" },
+    word: { Arabic: "الخلايا التغصنية العارضة للمستضد", English: "Dendritic Cell" },
     level: 'Academic',
     difficulty: 2,
     type: 'Cell',
@@ -5865,7 +5865,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w586',
-    word: { Arabic: "الصدمة التأقية", English: "Anaphylaxis" },
+    word: { Arabic: "التأق (الصدمة التحسسية الحادة)", English: "Anaphylaxis" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -5875,7 +5875,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w587',
-    word: { Arabic: "الذئبة الحمامية الجهازية", English: "Systemic Lupus Erythematosus" },
+    word: { Arabic: "الذئبة الحمامية الجهازية (SLE)", English: "Systemic Lupus Erythematosus" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -5885,7 +5885,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w588',
-    word: { Arabic: "متلازمة غودباستشر", English: "Goodpasture Syndrome" },
+    word: { Arabic: "متلازمة غودباستشر الرئوية الكلوية", English: "Goodpasture Syndrome" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
@@ -5895,7 +5895,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w589',
-    word: { Arabic: "متلازمة دي جورج", English: "DiGeorge Syndrome" },
+    word: { Arabic: "متلازمة دي جورج (انعدام التيموس الخلقي)", English: "DiGeorge Syndrome" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
@@ -5905,7 +5905,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w590',
-    word: { Arabic: "داء بروتون لنقص المناعة", English: "Bruton Agammaglobulinemia" },
+    word: { Arabic: "فقد غاما غلوبولين الدم لبروتون", English: "Bruton Agammaglobulinemia" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -5915,7 +5915,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w591',
-    word: { Arabic: "عوز المناعة المشترك الشديد", English: "Severe Combined Immunodeficiency" },
+    word: { Arabic: "العوز المناعي الشديد المشترك (SCID)", English: "Severe Combined Immunodeficiency" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
@@ -5925,7 +5925,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w592',
-    word: { Arabic: "مستضد الكريات البيضاء البشرية", English: "Human Leukocyte Antigen" },
+    word: { Arabic: "مستضد الكريات البيضاء البشرية (معقد التوافق HLA)", English: "Human Leukocyte Antigen" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5935,7 +5935,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w593',
-    word: { Arabic: "داء الطعم حيال الثوي", English: "Graft Versus Host Disease" },
+    word: { Arabic: "داء الطعم ضد المضيف (GVHD)", English: "Graft Versus Host Disease" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -5945,7 +5945,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w594',
-    word: { Arabic: "الجسم المضاد الذاتي", English: "Autoantibody" },
+    word: { Arabic: "الأجسام المضادة الذاتية", English: "Autoantibody" },
     level: 'Academic',
     difficulty: 2,
     type: 'Component',
@@ -5975,7 +5975,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w597',
-    word: { Arabic: "سرطان الرئة صغير الخلايا", English: "Small Cell Lung Carcinoma" },
+    word: { Arabic: "سرطان الرئة صغير الخلايا (SCLC)", English: "Small Cell Lung Carcinoma" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -5985,7 +5985,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w598',
-    word: { Arabic: "سرطان الخلايا الكبدية", English: "Hepatocellular Carcinoma" },
+    word: { Arabic: "سرطان الخلايا الكبدية (HCC)", English: "Hepatocellular Carcinoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6005,7 +6005,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w600',
-    word: { Arabic: "سرطان البنكرياس الغدي", English: "Pancreatic Adenocarcinoma" },
+    word: { Arabic: "السرطان الغدي للبنكرياس", English: "Pancreatic Adenocarcinoma" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6025,7 +6025,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w602',
-    word: { Arabic: "مستضد البروستاتا النوعي", English: "Prostate-Specific Antigen" },
+    word: { Arabic: "المستضد النوعي للبروستاتا (PSA)", English: "Prostate-Specific Antigen" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Component',
@@ -6035,7 +6035,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w603',
-    word: { Arabic: "المستضد السرطاني المضغي", English: "Carcinoembryonic Antigen" },
+    word: { Arabic: "المستضد السرطاني المضغي (CEA)", English: "Carcinoembryonic Antigen" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
@@ -6045,7 +6045,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w604',
-    word: { Arabic: "ألفا فيتو بروتين", English: "Alpha-Fetoprotein" },
+    word: { Arabic: "بروتين ألفا الجنيني (AFP)", English: "Alpha-Fetoprotein" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
@@ -6055,7 +6055,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w605',
-    word: { Arabic: "واسم الورم CA-125", English: "CA-125 Antigen" },
+    word: { Arabic: "واسم الورم السرطاني CA-125", English: "CA-125 Antigen" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Component',
@@ -6065,7 +6065,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w606',
-    word: { Arabic: "العلاج الكيميائي للسرطان", English: "Chemotherapy" },
+    word: { Arabic: "العلاج الكيميائي للأورام", English: "Chemotherapy" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Pharma',
@@ -6085,7 +6085,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w608',
-    word: { Arabic: "العلاج المناعي للأورام", English: "Cancer Immunotherapy" },
+    word: { Arabic: "العلاج المناعي للسرطان", English: "Cancer Immunotherapy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Pharma',
@@ -6095,7 +6095,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w609',
-    word: { Arabic: "النقائل الورمية الخبيثة", English: "Neoplasm Metastasis" },
+    word: { Arabic: "الانتقالات الورمية الخبيثة (النقائل)", English: "Neoplasm Metastasis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6105,7 +6105,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w610',
-    word: { Arabic: "الخزعة بالإبرة الدقيقة", English: "Fine Needle Aspiration" },
+    word: { Arabic: "الرشف بالإبرة الدقيقة (خزعة FNA)", English: "Fine Needle Aspiration" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -6115,7 +6115,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w611',
-    word: { Arabic: "نظام تدريج الأورام TNM", English: "TNM Staging System" },
+    word: { Arabic: "نظام التصنيف التدريجي للأورام TNM", English: "TNM Staging System" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -6135,7 +6135,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w613',
-    word: { Arabic: "ورم أرومة الشبكية", English: "Retinoblastoma" },
+    word: { Arabic: "ورم أرومة الشبكية العيني (الريتينوبلاستوما)", English: "Retinoblastoma" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6145,7 +6145,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w614',
-    word: { Arabic: "الورم السرطاوي", English: "Carcinoid Tumor" },
+    word: { Arabic: "الورم السرطاوي (الورم الكارسينويدي)", English: "Carcinoid Tumor" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6165,7 +6165,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w616',
-    word: { Arabic: "الأوعية المتقدمة (Vasa Previa)", English: "Vasa Previa" },
+    word: { Arabic: "الأوعية المتقدمة (أوعية المشيمة الساقطة)", English: "Vasa Previa" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6175,7 +6175,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w617',
-    word: { Arabic: "متلازمة تكيس المبايض", English: "Polycystic Ovary Syndrome" },
+    word: { Arabic: "متلازمة تكيس المبايض (PCOS)", English: "Polycystic Ovary Syndrome" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Syndrome',
@@ -6185,7 +6185,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w618',
-    word: { Arabic: "الورم العضلي الأملس الرحمي", English: "Uterine Leiomyoma" },
+    word: { Arabic: "الورم العضلي الأملس الرحمي (ألياف الرحم)", English: "Uterine Leiomyoma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6205,7 +6205,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w620',
-    word: { Arabic: "مسحة عنق الرحم", English: "Pap Smear" },
+    word: { Arabic: "مسحة عنق الرحم (مسحة بابانيكولاو)", English: "Pap Smear" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
@@ -6215,7 +6215,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w621',
-    word: { Arabic: "سكري الحمل", English: "Gestational Diabetes" },
+    word: { Arabic: "داء سكري الحمل", English: "Gestational Diabetes" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -6225,7 +6225,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w622',
-    word: { Arabic: "تمزق الأغشية الباكر", English: "Premature Rupture of Membranes" },
+    word: { Arabic: "التمزق المبكر للأغشية المحيطة بالجنين (PROM)", English: "Premature Rupture of Membranes" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6235,7 +6235,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w623',
-    word: { Arabic: "عسر ولادة الكتف", English: "Shoulder Dystocia" },
+    word: { Arabic: "عسر ولادة الكتف التوليدي", English: "Shoulder Dystocia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6245,7 +6245,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w624',
-    word: { Arabic: "المشيمة الملتصقة", English: "Placenta Accreta" },
+    word: { Arabic: "المشيمة الملتصقة (الملتحمة)", English: "Placenta Accreta" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6255,7 +6255,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w625',
-    word: { Arabic: "نزف ما بعد الوضع", English: "Postpartum Hemorrhage" },
+    word: { Arabic: "نزف ما بعد الولادة (PPH)", English: "Postpartum Hemorrhage" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -6265,7 +6265,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w626',
-    word: { Arabic: "متلازمة هيلب", English: "HELLP Syndrome" },
+    word: { Arabic: "متلازمة هيلب (انحلال الدم وارتفاع إنزيمات الكبد)", English: "HELLP Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6275,7 +6275,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w627',
-    word: { Arabic: "العملية القيصرية", English: "Cesarean Section" },
+    word: { Arabic: "العملية القيصرية التوليدية", English: "Cesarean Section" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
@@ -6285,7 +6285,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w628',
-    word: { Arabic: "تخطيط قلب الجنين والرحم", English: "Cardiotocography" },
+    word: { Arabic: "تخطيط قلب الجنين وانقباضات الرحم (CTG)", English: "Cardiotocography" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Equipment',
@@ -6295,7 +6295,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w629',
-    word: { Arabic: "بزل السائل السلوي الأمنيوسي", English: "Amniocentesis" },
+    word: { Arabic: "بزل السائل الأمنيوسي", English: "Amniocentesis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -6305,7 +6305,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w630',
-    word: { Arabic: "السائل السلوي الأمنيوسي", English: "Amniotic Fluid" },
+    word: { Arabic: "السائل السلوي (السائل الأمنيوسي المحيط بالجنين)", English: "Amniotic Fluid" },
     level: 'Academic',
     difficulty: 1,
     type: 'Component',
@@ -6335,7 +6335,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w633',
-    word: { Arabic: "شق العجان التوليدي", English: "Episiotomy" },
+    word: { Arabic: "بضع الفرج (شق العجان التوليدي)", English: "Episiotomy" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Technique',
@@ -6345,7 +6345,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w634',
-    word: { Arabic: "ونى الرحم الارتخائي", English: "Uterine Atony" },
+    word: { Arabic: "ونى الرحم (ارتخاء عضلة الرحم بعد الولادة)", English: "Uterine Atony" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6355,7 +6355,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w635',
-    word: { Arabic: "انقلاب الرحم", English: "Uterine Inversion" },
+    word: { Arabic: "انقلاب الرحم الحاد", English: "Uterine Inversion" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6365,7 +6365,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w636',
-    word: { Arabic: "قصور عنق الرحم", English: "Incompetent Cervix" },
+    word: { Arabic: "قصور عنق الرحم (اتساع عنق الرحم المبكر)", English: "Incompetent Cervix" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6375,7 +6375,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w637',
-    word: { Arabic: "حمى النفاس الإنتانية", English: "Puerperal Sepsis" },
+    word: { Arabic: "حمى النفاس الإنتانية (إنتان النفاس)", English: "Puerperal Sepsis" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -6385,7 +6385,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w638',
-    word: { Arabic: "قلس الأبهر", English: "Aortic Regurgitation" },
+    word: { Arabic: "قلس الصمام الأبهري (ارتجاع الأورطي)", English: "Aortic Regurgitation" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6395,7 +6395,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w639',
-    word: { Arabic: "متلازمة وولف-باركنسون-وايت", English: "Wolff-Parkinson-White Syndrome" },
+    word: { Arabic: "متلازمة وولف-باركنسون-وايت (WPW)", English: "Wolff-Parkinson-White Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6415,7 +6415,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w641',
-    word: { Arabic: "اعتلال تاكوتسوبو لعضلة القلب", English: "Takotsubo Cardiomyopathy" },
+    word: { Arabic: "اعتلال تاكوتسوبو لعضلة القلب (متلازمة القلب المنكسر)", English: "Takotsubo Cardiomyopathy" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6425,7 +6425,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w642',
-    word: { Arabic: "التهاب الشرايين الخلوية العملاقة", English: "Giant Cell Arteritis" },
+    word: { Arabic: "التهاب الشرايين ذو الخلايا العملاقة (التهاب الشريان الصدغي)", English: "Giant Cell Arteritis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6435,7 +6435,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w643',
-    word: { Arabic: "متلازمة ذيل الفرس", English: "Cauda Equina Syndrome" },
+    word: { Arabic: "متلازمة ذيل الفرس العصبية", English: "Cauda Equina Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6445,7 +6445,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w644',
-    word: { Arabic: "تكهف النخاع", English: "Syringomyelia" },
+    word: { Arabic: "تكهف النخاع الشوكي", English: "Syringomyelia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6455,7 +6455,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w645',
-    word: { Arabic: "التهاب الأقنية الصفراوية المصلب البدئي", English: "Primary Sclerosing Cholangitis" },
+    word: { Arabic: "التهاب الأقنية الصفراوية المصلب الأولي (PSC)", English: "Primary Sclerosing Cholangitis" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Disease',
@@ -6465,7 +6465,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w646',
-    word: { Arabic: "متلازمة بورهاف", English: "Boerhaave Syndrome" },
+    word: { Arabic: "متلازمة بورهاف (تمزق المريء التلقائي)", English: "Boerhaave Syndrome" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
@@ -6475,7 +6475,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w647',
-    word: { Arabic: "التهاب القولون بالمطثية العسيرة", English: "Clostridioides difficile Colitis" },
+    word: { Arabic: "التهاب القولون الغشائي الكاذب (بالمطثية العسيرة)", English: "Clostridioides difficile Colitis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6485,7 +6485,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w648',
-    word: { Arabic: "ذات الرئة بالمتكيسة الرئوية الجيروفيسية", English: "Pneumocystis Jirovecii Pneumonia" },
+    word: { Arabic: "التهاب الرئة بالمتكيسة الرئوية الجيروفيسية (PJP)", English: "Pneumocystis Jirovecii Pneumonia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6495,7 +6495,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w649',
-    word: { Arabic: "متلازمة الضائقة التنفسية الحادة", English: "Acute Respiratory Distress Syndrome" },
+    word: { Arabic: "متلازمة الضائقة التنفسية الحادة (ARDS)", English: "Acute Respiratory Distress Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6505,7 +6505,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w650',
-    word: { Arabic: "ورم الظهارة المتوسطة", English: "Mesothelioma" },
+    word: { Arabic: "ورم الظهارة المتوسطة (الميزوثيليوما الخبيثة)", English: "Mesothelioma" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6515,7 +6515,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w651',
-    word: { Arabic: "متلازمة فرط سكر الدم وفرط الأسمولية", English: "Hyperosmolar Hyperglycemic State" },
+    word: { Arabic: "حالة فرط الأسمولية وفرط سكر الدم (HHS)", English: "Hyperosmolar Hyperglycemic State" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6525,7 +6525,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w652',
-    word: { Arabic: "العاصفة الدرقية", English: "Thyroid Storm" },
+    word: { Arabic: "العاصفة الدرقية الحادة", English: "Thyroid Storm" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6535,7 +6535,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w653',
-    word: { Arabic: "تعدد الأورام الصماوية الصمائية", English: "Multiple Endocrine Neoplasia" },
+    word: { Arabic: "أورام الغدد الصماء المتعددة (متلازمة MEN)", English: "Multiple Endocrine Neoplasia" },
     level: 'Clinical',
     difficulty: 3,
     type: 'Syndrome',
@@ -6545,7 +6545,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w654',
-    word: { Arabic: "التهاب كبيبات الكلى بعد العقديات", English: "Post-Streptococcal Glomerulonephritis" },
+    word: { Arabic: "التهاب كبيبات الكلى التالي للإنتان العقدي (PSGN)", English: "Post-Streptococcal Glomerulonephritis" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6555,7 +6555,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w655',
-    word: { Arabic: "انفتال الخصية", English: "Testicular Torsion" },
+    word: { Arabic: "انفتال الخصية (التواء الخصية)", English: "Testicular Torsion" },
     level: 'Clinical',
     difficulty: 1,
     type: 'Disease',
@@ -6565,7 +6565,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w656',
-    word: { Arabic: "مرض التغير الأدنى", English: "Minimal Change Disease" },
+    word: { Arabic: "داء التبدلات البسيطة الكلوي (MCD)", English: "Minimal Change Disease" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6575,7 +6575,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w657',
-    word: { Arabic: "تسمم الباراسيتامول", English: "Acetaminophen Toxicity" },
+    word: { Arabic: "التسمم الحاد بالباراسيتامول", English: "Acetaminophen Toxicity" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Disease',
@@ -6585,7 +6585,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w658',
-    word: { Arabic: "متلازمة السيروتونين", English: "Serotonin Syndrome" },
+    word: { Arabic: "متلازمة السيروتونين الحادة", English: "Serotonin Syndrome" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6595,7 +6595,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w659',
-    word: { Arabic: "فرط الحرارة الخبيث", English: "Malignant Hyperthermia" },
+    word: { Arabic: "فرط الحرارة الخبيث التحسسي للتخدير", English: "Malignant Hyperthermia" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Syndrome',
@@ -6605,7 +6605,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w660',
-    word: { Arabic: "السونار السريع لرضوض البطن", English: "FAST Ultrasound" },
+    word: { Arabic: "فحص السونار السريع لرضوض البطن الحادة (FAST)", English: "FAST Ultrasound" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Technique',
@@ -6615,7 +6615,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w661',
-    word: { Arabic: "مخطط القصبات الهوائي الظليل", English: "Air Bronchogram" },
+    word: { Arabic: "علامة القصبات الهوائية الشعاعية (Air Bronchogram)", English: "Air Bronchogram" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
@@ -6625,7 +6625,7 @@ export const medicalWords: MedicalWord[] = [
   },
   {
     id: 'w662',
-    word: { Arabic: "علامة لب التفاحة", English: "Apple Core Sign" },
+    word: { Arabic: "علامة لب التفاحة الشعاعية (لسرطان القولون)", English: "Apple Core Sign" },
     level: 'Clinical',
     difficulty: 2,
     type: 'Other',
